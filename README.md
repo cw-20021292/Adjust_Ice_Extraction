@@ -1,2 +1,380 @@
-# ICON_ICE_MINI
-ì•„ì´ì½˜ ì•„ì´ìŠ¤ ë¯¸ë‹ˆ
+# ¾óÀ½ ÃßÃâ Á¦¾î °³¼± ¹æ¾È
+## ICON-ICE-2KG ¾óÀ½ ±Õµî ¹èÃâ Á¦¾î ½Ã½ºÅÛ
+
+---
+
+## 1. ¹®Á¦ Á¤ÀÇ
+
+### 1.1 Çö»ó
+- ¾óÀ½Á¤¼ö±â¿¡¼­ ¾óÀ½À» ÀÚÁÖ ÃßÃâÇÒ ¶§ **¾óÀ½ÀÌ ÅÊÅ© ¾ÕÂÊÀ¸·Î ½ò¸®´Â Çö»ó** ¹ß»ý
+- ¾ÕÂÊ ¾óÀ½ ´õ¹Ì + ½ºÅ©·ù ÅäÃâºÐÀÌ ÁßÃ¸µÇ¾î **´Ü°èº°(1~4´Ü) ÅäÃâ·® ÆíÂ÷** Áõ°¡
+- Æ¯È÷ ¼Ò·®(1~2´Ü) ¹Ýº¹ ÃßÃâ ½Ã ¿À¹ö/¾ð´õ ¹ß»ý ºóµµ ³ôÀ½
+
+### 1.2 ¸ñÇ¥
+- **±¸Á¶ º¯°æ ¾øÀÌ** Á¦¾î ·ÎÁ÷¸¸À¸·Î ÇØ°á
+- ¸ðÅÍ/µµ¾î/Å¸ÀÌ¸Ó ·ÎÁ÷ Á¶Á¤
+- 1~4´Ü ´Ü°èº° ÀÏ°ýÀûÀÌ°í ¾ÈÁ¤ÀûÀÎ ¾óÀ½ ÃßÃâ·® È®º¸
+
+---
+
+## 2. Á¦¾È ¼Ö·ç¼Ç °³¿ä
+
+### 2.1 ÇÙ½É Àü·«
+1. **±ÕµîÈ­ µ¿ÀÛ (Equalization Drive)**: ÃßÃâ ÈÄ ÅÊÅ© ³» ¾óÀ½ Àç¹èÄ¡
+2. **ÀûÀÀÇü ÅäÃâ·® Á¦¾î (Adaptive Dispensing)**: ¾Õ½ò¸² Áö¼ö ±â¹Ý È¸Àü¼ö º¸Á¤
+3. **¼±ÅÃÀû °í±Þ Á¦¾î**: ¸ðÅÍ Àü·ù/È¦¼¾¼­ È°¿ë (ÇÏµå¿þ¾î °¡¿ë ½Ã)
+
+### 2.2 Á¦¾î Èå¸§µµ
+```
+[»ç¿ëÀÚ 1~4´Ü ¼±ÅÃ]
+    ¡é
+[F_front ¾÷µ¥ÀÌÆ® (½ò¸² »óÅÂ ¹Ý¿µ)]
+    ¡é
+[º¸Á¤µÈ È¸Àü¼ö °è»ê]
+    ¡é
+[½ºÅ©·ù ±¸µ¿ ¡æ ¾óÀ½ ÅäÃâ]
+    ¡é
+[±ÕµîÈ­ µ¿ÀÛ ¼öÇà]
+    ¡é
+[F_front °¨¼Ò Ã³¸®]
+```
+
+---
+
+## 3. »ó¼¼ ±¸Çö ¹æ¾È
+
+### 3.1 ±ÕµîÈ­ µ¿ÀÛ (Equalization Drive)
+
+#### 3.1.1 ¸ñÀû
+- ÅäÃâ±¸ ¾Õ¿¡ ½×ÀÎ ¾óÀ½ ´õ¹Ì¸¦ ¹«³Ê¶ß·Á °æ»ç ¿ÏÈ­
+- ÅÊÅ© ³»ºÎ ¾óÀ½À» ÆòÆòÇÏ°Ô Àç¹èÄ¡
+
+#### 3.1.2 µ¿ÀÛ ½ÃÄö½º
+```c
+void Ice_Equalize_AfterDispense(void)
+{
+    // 1) ¿ª¹æÇâ Âª°Ô (µÇ°¨±â)
+    Motor_SetDir(REVERSE);
+    Motor_Run_ms(REV_TIME_MS);   // ±ÇÀå: 150~400ms
+
+    // 2) Àú¼Ó Á¤¹æÇâ ±ÕµîÈ­ (ÅäÃâ±¸ ´ÝÈù »óÅÂ)
+    Close_Ice_Door();            // ¶Ç´Â Half_Open
+    Motor_SetDir(FORWARD);
+    Motor_SetSpeed(LOW_SPEED);   // Á¤°ÝÀÇ 30~40%
+    Motor_Run_ms(EQ_TIME_MS);    // ±ÇÀå: 300~600ms
+    Stop_Motor();
+}
+```
+
+#### 3.1.3 ÆÄ¶ó¹ÌÅÍ Æ©´×
+| ÆÄ¶ó¹ÌÅÍ | ±ÇÀå ¹üÀ§ | ¼³¸í |
+|---------|----------|------|
+| REV_TIME_MS | 150~400ms | ¿ª¹æÇâ ±¸µ¿ ½Ã°£ (³Ê¹« ±æ¸é ¼ÒÀ½ Áõ°¡) |
+| EQ_TIME_MS | 300~600ms | Àú¼Ó ±ÕµîÈ­ ½Ã°£ (±â±¸ Æ¯¼º¿¡ µû¶ó Á¶Á¤) |
+| LOW_SPEED | Á¤°ÝÀÇ 30~40% | ±ÕµîÈ­ ½Ã ¸ðÅÍ ¼Óµµ |
+
+---
+
+### 3.2 ¾Õ½ò¸² Áö¼ö (F_front) ±â¹Ý ÀûÀÀÇü Á¦¾î
+
+#### 3.2.1 F_front Á¤ÀÇ
+- **¹üÀ§**: 0.0 ~ 1.0
+- **ÀÇ¹Ì**:
+  - 0.0 = ¾óÀ½ÀÌ ÅÊÅ© ³» ±ÕÀÏÇÏ°Ô ºÐÆ÷
+  - 1.0 = ¾óÀ½ÀÌ ¾ÕÂÊÀ¸·Î ÃÖ´ëÇÑ ½ò¸° »óÅÂ
+
+#### 3.2.2 F_front ¾÷µ¥ÀÌÆ® ·ÎÁ÷ (¼öÁ¤µÈ ¹öÀü)
+
+**? Àß¸øµÈ ÀÌÀü ¸ðµ¨:**
+```c
+// 3,4´Ü¿¡¼­ F_front °¨¼Ò - ³í¸®Àû ¿À·ù!
+case ICE_LEVEL_3: F_front -= 0.05f; break;
+case ICE_LEVEL_4: F_front -= 0.08f; break;
+```
+
+**? ¿Ã¹Ù¸¥ ¸ðµ¨:**
+
+**ÃßÃâ µ¿ÀÛ ½Ã (¸ðµç ´Ü°è¿¡¼­ F_front Áõ°¡)**
+```c
+void Update_FrontIndex_OnDispense(IceLevel level)
+{
+    // ¸ðµç ÃßÃâÀº ¾ÕÀ¸·Î ½ò¸²À» Áõ°¡½ÃÅ´
+    switch(level){
+        case ICE_LEVEL_1: F_front += 0.10f; break;
+        case ICE_LEVEL_2: F_front += 0.12f; break;
+        case ICE_LEVEL_3: F_front += 0.15f; break;
+        case ICE_LEVEL_4: F_front += 0.18f; break;
+    }
+
+    // »óÇÑ Á¦ÇÑ
+    if(F_front > 1.0f) F_front = 1.0f;
+}
+```
+
+**ÆòÅºÈ­ µ¿ÀÛ ½Ã (F_front °¨¼Ò)**
+```c
+void Update_FrontIndex_OnEqualize(void)
+{
+    // ÆòÅºÈ­/±³¹Ý µ¿ÀÛ 1È¸ ¼öÇà ½Ã
+    F_front -= 0.20f;   // È¿°ú¿¡ µû¶ó Æ©´×
+    if(F_front < 0.0f) F_front = 0.0f;
+}
+```
+
+**½Ã°£ °æ°ú¿¡ µû¸¥ ÀÚ¿¬ °¨¼Ò (¼±ÅÃ»çÇ×)**
+```c
+void Update_FrontIndex_OnTime(void)
+{
+    // ¾óÀ½ Á¦Á¶/³«ÇÏ·Î ÀÚ¿¬ ºÐ»ê (30ÃÊ¸¶´Ù È£Ãâ µî)
+    F_front -= 0.01f;
+    if(F_front < 0.0f) F_front = 0.0f;
+}
+```
+
+#### 3.2.3 ÀûÀÀÇü ÅäÃâ·® °è»ê
+```c
+// ±âÁØ È¸Àü¼ö (¶Ç´Â ½Ã°£) Å×ÀÌºí
+const float base_cnt[4] = { N1, N2, N3, N4 };
+
+float Get_Adjusted_Count(IceLevel level)
+{
+    float K = 0.12f;  // ¾Õ½ò¸² º¸Á¤ °ÔÀÎ (Æ©´× ´ë»ó)
+    int idx = level - 1;
+
+    // ¾Õ¿¡ ½ò·ÁÀÖÀ»¼ö·Ï È¸Àü¼ö¸¦ ÁÙ¿©¼­ °úºÐÃâ »ó¼â
+    float factor = 1.0f - (K * F_front);
+
+    // °úµµÇÑ º¸Á¤ ¹æÁö
+    if(factor < 0.85f) factor = 0.85f;
+    if(factor > 1.05f) factor = 1.05f;
+
+    return base_cnt[idx] * factor;
+}
+```
+
+#### 3.2.4 EEPROM ÀúÀå (¼±ÅÃ»çÇ×)
+```c
+// F_front °ªÀ» EEPROM¿¡ ÁÖ±âÀûÀ¸·Î ÀúÀåÇÏ¿©
+// Àü¿ø Â÷´Ü ÈÄ¿¡µµ »óÅÂ À¯Áö
+void Save_FrontIndex_ToEEPROM(void)
+{
+    uint8_t f_front_u8 = (uint8_t)(F_front * 100.0f);
+    gu8_eeprom_wbuf[ADDR_F_FRONT] = f_front_u8;
+    // EEPROM write ¼öÇà
+}
+
+void Load_FrontIndex_FromEEPROM(void)
+{
+    uint8_t f_front_u8 = gu8_eeprom_rbuf[ADDR_F_FRONT];
+    if(f_front_u8 <= 100) {
+        F_front = (float)f_front_u8 / 100.0f;
+    } else {
+        F_front = 0.0f; // À¯È¿ÇÏÁö ¾ÊÀº °ªÀÌ¸é ÃÊ±âÈ­
+    }
+}
+```
+
+---
+
+### 3.3 ÀüÃ¼ Á¦¾î ½ÃÄö½º
+
+```c
+void Ice_Dispense_Control(IceLevel level)
+{
+    // 1. ÇöÀç ½ò¸² »óÅÂ ¾÷µ¥ÀÌÆ® (ÃßÃâ Àü)
+    Update_FrontIndex_OnDispense(level);
+
+    // 2. º¸Á¤µÈ È¸Àü¼ö °è»ê
+    float cnt = Get_Adjusted_Count(level);
+
+    // 3. ½ºÅ©·ù ±¸µ¿ÇÏ¿© ¾óÀ½ ÅäÃâ
+    Open_Ice_Door();
+    Motor_SetDir(FORWARD);
+    Motor_SetSpeed(NORMAL_SPEED);
+    Motor_Run_Count(cnt);  // ¶Ç´Â Motor_Run_ms()
+    Close_Ice_Door();
+
+    // 4. ±ÕµîÈ­ µ¿ÀÛ ¼öÇà
+    Ice_Equalize_AfterDispense();
+
+    // 5. ÆòÅºÈ­ È¿°ú ¹Ý¿µ
+    Update_FrontIndex_OnEqualize();
+
+    // 6. EEPROM ÀúÀå (¼±ÅÃ»çÇ×)
+    Save_FrontIndex_ToEEPROM();
+}
+```
+
+---
+
+## 4. °í±Þ Á¦¾î (ÇÏµå¿þ¾î Áö¿ø ½Ã)
+
+### 4.1 ¸ðÅÍ Àü·ù ±â¹Ý ¾óÀ½ °ø±Þ »óÅÂ °¨Áö
+
+#### 4.1.1 ¿ø¸®
+- ¾óÀ½ÀÌ ¸¹À»¼ö·Ï ¡æ ½ºÅ©·ù ºÎÇÏ Áõ°¡ ¡æ Àü·ù ¡è
+- ¾óÀ½ÀÌ ÀûÀ»¼ö·Ï ¡æ ½ºÅ©·ù ºÎÇÏ °¨¼Ò ¡æ Àü·ù ¡é
+
+#### 4.1.2 ±¸Çö
+```c
+float Get_IceSupplyFactor(void)
+{
+    // ÅäÃâ ½ÃÀÛ ÈÄ ÃÊ±â 300ms Æò±Õ Àü·ù ÃøÁ¤
+    float I = Measure_MotorCurrent_Initial();
+
+    if(I > I_REF_HIGH) return 0.95f;  // °ø±Þ Ç³ºÎ ¡æ 5% °¨¼Ò
+    if(I < I_REF_LOW)  return 1.05f;  // °ø±Þ ºÎÁ· ¡æ 5% Áõ°¡
+    return 1.0f;
+}
+
+// ÃÖÁ¾ ÅäÃâ·® °è»ê (ÀÌÁß º¸Á¤)
+float cnt = base_cnt[idx] * factor_front * factor_supply;
+```
+
+### 4.2 È¦¼¾¼­ ±â¹Ý Á¤¹Ð Á¦¾î
+- È¸Àü¼ö¸¦ Á÷Á¢ Ä«¿îÆ®ÇÏ¿© ´õ Á¤È®ÇÑ ÅäÃâ·® Á¦¾î
+- ¸ðÅÍ ½½¸³ÀÌ³ª ºÎÇÏ º¯µ¿¿¡ °­ÀÎÇÔ
+
+---
+
+## 5. ±¸Çö ½Ã ÁÖÀÇ»çÇ×
+
+### 5.1 ÆÄ¶ó¹ÌÅÍ Æ©´×
+| ÆÄ¶ó¹ÌÅÍ | ¿ªÇÒ | Æ©´× ¹æ¹ý |
+|---------|------|----------|
+| REV_TIME_MS | ¿ªÈ¸Àü ½Ã°£ | ½ÇÁ¦ ÃÔ¿µÀ¸·Î ¾ÕÂÊ ´õ¹Ì ¹«³ÊÁü È®ÀÎ |
+| EQ_TIME_MS | ÆòÅºÈ­ ½Ã°£ | DPP/LPP »ùÇÃ·Î ÅÊÅ© ³»ºÎ ±ÕÀÏµµ ÃøÁ¤ |
+| K (º¸Á¤ °ÔÀÎ) | ½ò¸² º¸Á¤ °­µµ | 1~4´Ü °¢ 10~20È¸ ¹Ýº¹ ½Ã ¡¾5~10% ÀÌ³» ¸ñÇ¥ |
+| F_front Áõ°¨·® | ½ò¸² ÃßÀû ¹Î°¨µµ | ½Ç»ç¿ë ÆÐÅÏ µ¥ÀÌÅÍ ±â¹Ý ÃÖÀûÈ­ |
+
+### 5.2 ¼ÒÀ½ ¹× ³»±¸¼º
+- **¿ª¹æÇâ ±¸µ¿**: °¢µµ/½Ã°£À» °úÇÏ°Ô ÀâÁö ¾Êµµ·Ï (±â¾î Ãæ°Ý)
+- **Àú¼Ó ±ÕµîÈ­**: ¼ÒÀ½ Å×½ºÆ® ÇÊ¼ö (¾ß°£ »ç¿ë °í·Á)
+- **¹Ýº¹ È½¼ö**: ÆòÅºÈ­ µ¿ÀÛÀÌ ³Ê¹« ÀæÀ¸¸é ºÎÇ° ¼ö¸í ÀúÇÏ
+
+### 5.3 ¿¡·¯ ÇÚµé¸µ
+```c
+// ¸ðÅÍ Àü·ù ÀÌ»ó °¨Áö
+if(Motor_Current > I_THRESHOLD_JAM) {
+    Stop_Motor();
+    Alarm_IceJam();  // ¾óÀ½ ¹¶Ä§/°É¸²
+}
+
+// ¾óÀ½ ºÎÁ· °¨Áö
+if(Motor_Current < I_THRESHOLD_EMPTY && dispense_count > 3) {
+    Warning_IceEmpty();  // ¾óÀ½ ºÎÁ· °æ°í
+}
+```
+
+---
+
+## 6. Å×½ºÆ® ½Ã³ª¸®¿À
+
+### 6.1 ±âº» ±â´É Å×½ºÆ®
+1. **1´Ü ¿¬¼Ó ÃßÃâ (20È¸)**
+   - ¸ñÇ¥: °¢ È¸´ç ÆíÂ÷ ¡¾10% ÀÌ³»
+   - È®ÀÎ: F_front Áõ°¡ ÃßÀÌ ¹× º¸Á¤ È¿°ú
+
+2. **4´Ü ¿¬¼Ó ÃßÃâ (10È¸)**
+   - ¸ñÇ¥: ´ë¿ë·® ¾ÈÁ¤¼º È®ÀÎ
+   - È®ÀÎ: ÅÊÅ© Àú¼öÀ§ ½Ã µ¿ÀÛ
+
+3. **È¥ÇÕ ÆÐÅÏ (1-2-3-4-1-2...)**
+   - ¸ñÇ¥: ½ÇÁ¦ »ç¿ë ÆÐÅÏ ¸ð»ç
+   - È®ÀÎ: F_front µ¿Àû º¯È­ ¹× ÀûÀÀ ¼º´É
+
+### 6.2 °æ°è Á¶°Ç Å×½ºÆ®
+- ÅÊÅ© ¸¸·® »óÅÂ¿¡¼­ 1´Ü ÃßÃâ
+- ÅÊÅ© Àú¼öÀ§ »óÅÂ¿¡¼­ 4´Ü ÃßÃâ
+- Àü¿ø Â÷´Ü ÈÄ F_front º¹¿ø (EEPROM)
+
+### 6.3 ³»±¸¼º Å×½ºÆ®
+- 1000È¸ ¿¬¼Ó ÃßÃâ (¼ÒÀ½, ¹ß¿­, ºÎÇ° ¸¶¸ð)
+- ±ÕµîÈ­ µ¿ÀÛ 10000È¸ (¸ðÅÍ, ±â¾î ¼ö¸í)
+
+---
+
+## 7. ÆÄÀÏ ±¸Á¶ ¹× ¼öÁ¤ ´ë»ó
+
+### 7.1 ÁÖ¿ä ¼öÁ¤ ÆÄÀÏ
+```
+Source/Ice_Mini/
+¦§¦¡¦¡ ice_dispense_control.c     [½Å±Ô] ¸ÞÀÎ Á¦¾î ·ÎÁ÷
+¦§¦¡¦¡ ice_equalize.c              [½Å±Ô] ±ÕµîÈ­ µ¿ÀÛ
+¦§¦¡¦¡ valve_ice_screw.c           [¼öÁ¤] ½ºÅ©·ù ¸ðÅÍ Á¦¾î
+¦§¦¡¦¡ M1_ice_dispense.c           [¼öÁ¤] ±âÁ¸ ÅäÃâ ·ÎÁ÷ ÅëÇÕ
+¦§¦¡¦¡ eeprom.c                    [¼öÁ¤] F_front ÀúÀå/·Îµå
+¦¦¦¡¦¡ Global_Variable.h           [¼öÁ¤] F_front º¯¼ö Ãß°¡
+```
+
+### 7.2 Àü¿ª º¯¼ö Ãß°¡
+```c
+// Global_Variable.h
+static float F_front = 0.0f;           // ¾Õ½ò¸² Áö¼ö (0.0~1.0)
+
+// Æ©´× ÆÄ¶ó¹ÌÅÍ
+#define REV_TIME_MS          250       // ¿ªÈ¸Àü ½Ã°£ (ms)
+#define EQ_TIME_MS           500       // ±ÕµîÈ­ ½Ã°£ (ms)
+#define LOW_SPEED            30        // Àú¼Ó ±ÕµîÈ­ ¼Óµµ (%)
+#define K_FRONT_GAIN         0.12f     // ¾Õ½ò¸² º¸Á¤ °ÔÀÎ
+
+// F_front Áõ°¨·®
+#define F_INC_LEVEL1         0.10f
+#define F_INC_LEVEL2         0.12f
+#define F_INC_LEVEL3         0.15f
+#define F_INC_LEVEL4         0.18f
+#define F_DEC_EQUALIZE       0.20f
+```
+
+---
+
+## 8. ÇâÈÄ °³¼± ¹æÇâ
+
+### 8.1 ´Ü±â (Phase 1)
+- [ ] ±âº» F_front ÃßÀû ¹× º¸Á¤ ±¸Çö
+- [ ] ±ÕµîÈ­ µ¿ÀÛ Ãß°¡
+- [ ] 1~4´Ü ÅäÃâ·® Á¤È®µµ Å×½ºÆ®
+
+### 8.2 Áß±â (Phase 2)
+- [ ] ¸ðÅÍ Àü·ù ¼¾½Ì ÅëÇÕ
+- [ ] »ç¿ë ÆÐÅÏ ÇÐ½À (1ÀÏ ´ÜÀ§ Åë°è)
+- [ ] ½Ã°£´ëº° ÀÚµ¿ ÆòÅºÈ­ ½ºÄÉÁÙ¸µ
+
+### 8.3 Àå±â (Phase 3)
+- [ ] IoT ¿¬µ¿ (¾Û¿¡¼­ ÅäÃâ·® Åë°è È®ÀÎ)
+- [ ] AI ±â¹Ý »ç¿ë ÆÐÅÏ ¿¹Ãø
+- [ ] ÀÚ°¡ Áø´Ü ±â´É (¾óÀ½ ¹¶Ä§, ºÎÇ° ¸¶¸ð ¿¹Ãø)
+
+---
+
+## 9. Âü°í ÀÚ·á
+
+### 9.1 °ü·Ã ¹®¼­
+- `README.md`: ÀüÃ¼ ÇÁ·ÎÁ§Æ® °³¿ä
+- `eeprom.c`: µ¥ÀÌÅÍ ÀúÀå ±¸Á¶
+- `M1_ice_dispense.c`: ±âÁ¸ ÅäÃâ ·ÎÁ÷
+
+### 9.2 º¯¼ö ¸í¸í ±ÔÄ¢ (º» ÇÁ·ÎÁ§Æ®)
+- `f_`: Flag º¯¼ö
+- `gu8_`: Global Unsigned 8-bit
+- `gu16_`: Global Unsigned 16-bit
+- `F_`: ´ë¹®ÀÚ Flag (ÁÖ¿ä »óÅÂ)
+
+### 9.3 ¿¬¶ôÃ³
+- ÀÛ¼ºÀÚ: [Cursor AI Assistant]
+- ÀÛ¼ºÀÏ: 2024-12-12
+- ¹öÀü: v1.0
+
+---
+
+## 10. ¶óÀÌ¼¾½º ¹× ÁÖÀÇ»çÇ×
+
+- º» ¹®¼­´Â ICON-ICE-2KG Á¦ºù±â ÇÁ·ÎÁ§Æ® ³»ºÎ ÀÚ·áÀÓ
+- ¿ÜºÎ À¯Ãâ ±ÝÁö
+- ÄÚµå ¼öÁ¤ ½Ã ¹Ýµå½Ã Korean (EUC-KR) ÀÎÄÚµù »ç¿ë
+- º¯°æ »çÇ×Àº ÁÖ¼®¿¡ ³¯Â¥¿Í ÀÛ¼ºÀÚ ±â·Ï ÇÊ¼ö
+
+---
+
+**END OF DOCUMENT**
+
