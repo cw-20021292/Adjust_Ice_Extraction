@@ -49,7 +49,7 @@ extern TYPE_BYTE          U8FrontTempOneB;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
-/*..hui [25-3-25¿ÀÈÄ 5:51:11] ÃµÀÇÀÚ¸® Ãß°¡..*/
+/*..hui [25-3-25ì˜¤í›„ 5:51:11] ì²œì˜ìë¦¬ ì¶”ê°€..*/
 extern TYPE_BYTE          U8FrontAmountThousandB;
 #define            gu8_front_amount_fnd_thousand               U8FrontAmountThousandB.byte
 #define            Bit0_Front_Amount_Fnd_Thousand_1            U8FrontAmountThousandB.Bit.b0

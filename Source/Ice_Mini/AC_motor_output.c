@@ -46,7 +46,7 @@ U16 gu16DualCheckDelay;
 U8 gu8_Err_Tray_Up_Count;
 U8 gu8_Err_Tray_Down_Count;
 
-/*..hui [19-12-13¿ÀÈÄ 7:12:16] Æ®·¹ÀÌ Å»ºù ÀÌµ¿ ´©Àû ¿¡·¯ Ä«¿îÆ®..*/
+/*..hui [19-12-13ì˜¤í›„ 7:12:16] íŠ¸ë ˆì´ íƒˆë¹™ ì´ë™ ëˆ„ì  ì—ëŸ¬ ì¹´ìš´íŠ¸..*/
 U8 gu8_err_tray_down_acc_count;
 
 
@@ -117,16 +117,16 @@ bit bit_ice_full_state;
 
 U8 gu8_ice_system_ok;
 
-/* ¾óÀ½°É¸² ÀÌ»ó °ü·Ã º¯¼ö */
+/* ì–¼ìŒê±¸ë¦¼ ì´ìƒ ê´€ë ¨ ë³€ìˆ˜ */
 bit bit_ice_stuck_back_state;
 U8 gu8_ice_stuck_reverse_timer;
 
-/* ¾óÀ½ Àúºù,¸¸ºù °¨Áö ÀÌ»ó °ü·Ã º¯¼ö */
-bit bit_ice_detection_abnormal_state;   /* Àúºù¹Ì°¨Áö, ¸¸ºù°¨Áö ½Ã */
-U8 gu8_ice_detect_abnormal_timer_100ms; /* µ¿ÀÛ Å¸ÀÌ¸Ó */
-U8 gu8_ice_detect_abnormal_op_count;    /* µ¿ÀÛ È½¼ö */
+/* ì–¼ìŒ ì €ë¹™,ë§Œë¹™ ê°ì§€ ì´ìƒ ê´€ë ¨ ë³€ìˆ˜ */
+bit bit_ice_detection_abnormal_state;   /* ì €ë¹™ë¯¸ê°ì§€, ë§Œë¹™ê°ì§€ ì‹œ */
+U8 gu8_ice_detect_abnormal_timer_100ms; /* ë™ì‘ íƒ€ì´ë¨¸ */
+U8 gu8_ice_detect_abnormal_op_count;    /* ë™ì‘ íšŸìˆ˜ */
 
-/* ¾óÀ½ ÃßÃâ ÈÄ ¾óÀ½ À§Ä¡ ÈÄÁø µ¿ÀÛ °ü·Ã º¯¼ö  */
+/* ì–¼ìŒ ì¶”ì¶œ í›„ ì–¼ìŒ ìœ„ì¹˜ í›„ì§„ ë™ì‘ ê´€ë ¨ ë³€ìˆ˜  */
 bit bit_ice_mix_back_state;
 U8 gu8_ice_mix_reverse_timer;
 
@@ -146,27 +146,27 @@ bit bit_ice_shake_state;
 U16 gu16_ice_full_shake_timer_100ms;
 U8  gu8_ice_full_shaking_op_timer_100ms;
 
-/* Á¤·®ÃßÃâ Á÷Àü ¾ÕµÚ·Î ¼¯´Â Á¦¾î¸¦ À§ÇÑ º¯¼ö */
+/* ì •ëŸ‰ì¶”ì¶œ ì§ì „ ì•ë’¤ë¡œ ì„ëŠ” ì œì–´ë¥¼ ìœ„í•œ ë³€ìˆ˜ */
 U8 gu8_ice_feeder_shake;
 U8 gu8_ice_feeder_shake_time;
 
-/* ÀÏ¹İ¾óÀ½ ÃßÃâ °ü·Ã º¯¼ö */
-U8 gu8_normal_ice_acc_cur_count_100ms = CLEAR;      // µ¿ÀÛ ÇöÀç½Ã°£
-U8 gu8_normal_ice_acc_set_count_100ms = CLEAR;      // µ¿ÀÛ Å¸°Ù½Ã°£
-U8 gu8_normal_ice_stay_count = CLEAR;               // Áß°£ ¸ØÃã È½¼ö
-bit bit_normal_ice_out_start;                       // ÀÏ¹İ¾óÀ½ ÃßÃâ µ¿ÀÛ ½ÃÀÛÇÃ·¡±×
+/* ì¼ë°˜ì–¼ìŒ ì¶”ì¶œ ê´€ë ¨ ë³€ìˆ˜ */
+U8 gu8_normal_ice_acc_cur_count_100ms = CLEAR;      // ë™ì‘ í˜„ì¬ì‹œê°„
+U8 gu8_normal_ice_acc_set_count_100ms = CLEAR;      // ë™ì‘ íƒ€ê²Ÿì‹œê°„
+U8 gu8_normal_ice_stay_count = CLEAR;               // ì¤‘ê°„ ë©ˆì¶¤ íšŸìˆ˜
+bit bit_normal_ice_out_start;                       // ì¼ë°˜ì–¼ìŒ ì¶”ì¶œ ë™ì‘ ì‹œì‘í”Œë˜ê·¸
 
 U16 gu16_ice_extract_timer_100ms;
 
 extern MODEL model;
 extern ICE_STUCK_1 IceStuck;
 
-// 1. bit_ice_out_back_1s_state   (1ÃÊ ¿ªÈ¸Àü)
-// 2. bit_ice_out_back_state      (3ÃÊ ¿ªÈ¸Àü)
-// 3. gu8_ice_feeder_shake        (ÃßÃâ Àü ¼¯±â)
-// 4. bit_ice_stuck_back_state    (¾óÀ½ °É¸² ÇØÁ¦)
-// 5. bit_ice_mix_back_state      (Á¦ºù ÈÄ ¼¯±â)
-// 6. bit_ice_shake_state         (¸¸ºù ½Ã ÁÖ±âÀû ¼¯±â)
+// 1. bit_ice_out_back_1s_state   (1ì´ˆ ì—­íšŒì „)
+// 2. bit_ice_out_back_state      (3ì´ˆ ì—­íšŒì „)
+// 3. gu8_ice_feeder_shake        (ì¶”ì¶œ ì „ ì„ê¸°)
+// 4. bit_ice_stuck_back_state    (ì–¼ìŒ ê±¸ë¦¼ í•´ì œ)
+// 5. bit_ice_mix_back_state      (ì œë¹™ í›„ ì„ê¸°)
+// 6. bit_ice_shake_state         (ë§Œë¹™ ì‹œ ì£¼ê¸°ì  ì„ê¸°)
 /***********************************************************************************************************************
 * Function Name: System_ini
 * Description  :
@@ -186,36 +186,36 @@ void output_ice_feeder_motor(void)
 {
     if(gu8IceOutCCWInterval > 0)
     {
-        gu8IceOutCCWInterval--;    // ÅäÃâ¸ğÅÍ ´ë±â3->2ÃÊ
+        gu8IceOutCCWInterval--;    // í† ì¶œëª¨í„° ëŒ€ê¸°3->2ì´ˆ
     }
     else{}
 
     if(gu16ErrIceOut > 0)
     {
-        gu16ErrIceOut--;                // ¾óÀ½ÅäÃâ ¸ğÅÍ¿¡·¯ 120ÃÊ
+        gu16ErrIceOut--;                // ì–¼ìŒí† ì¶œ ëª¨í„°ì—ëŸ¬ 120ì´ˆ
     }
     else{}
 
-/*..hui [20-4-17¿ÀÈÄ 3:04:49] ÇÇ´õ ¿ªÈ¸Àü ³ÖÀ»¶§ ice_extraction_finish¿¡ F_IR Áö¿öÁà¾ßÇÔ..²À~~~..*/
-/*..hui [20-4-17¿ÀÈÄ 3:04:59] ¸¸ºù °¨Áö¸¦ 2ÃÊ ¿ªÈ¸Àü ¿Ï·á ÈÄ ÇÏµµ·Ï ÇÏ±â À§ÇØ..*/
-    //===========================================// ¾óÀ½ÅäÃâ ¸ğÅÍ µ¿ÀÛ
-    if(F_IceOutCCW == SET)                      // ÅäÃâÈ¸Àü(¿ªÈ¸Àü)
+/*..hui [20-4-17ì˜¤í›„ 3:04:49] í”¼ë” ì—­íšŒì „ ë„£ì„ë•Œ ice_extraction_finishì— F_IR ì§€ì›Œì¤˜ì•¼í•¨..ê¼­~~~..*/
+/*..hui [20-4-17ì˜¤í›„ 3:04:59] ë§Œë¹™ ê°ì§€ë¥¼ 2ì´ˆ ì—­íšŒì „ ì™„ë£Œ í›„ í•˜ë„ë¡ í•˜ê¸° ìœ„í•´..*/
+    //===========================================// ì–¼ìŒí† ì¶œ ëª¨í„° ë™ì‘
+    if(F_IceOutCCW == SET)                      // í† ì¶œíšŒì „(ì—­íšŒì „)
     {
         if( F_IceBreak == CLEAR )
         {
-            /*..hui [20-4-14¿ÀÈÄ 12:42:38] 3ÃÊ ÈÄ ÇÇ´õ ÃßÃâ µ¿ÀÛ..*/
+            /*..hui [20-4-14ì˜¤í›„ 12:42:38] 3ì´ˆ í›„ í”¼ë” ì¶”ì¶œ ë™ì‘..*/
             if(pMOTOR_ICE_OUT_CCW != SET && gu8IceOutCCWInterval == 0)
             {
-                gu16ErrIceOut = 1200; 						 //¿¡·¯´ë±â 120ÃÊ
+                gu16ErrIceOut = 1200; 						 //ì—ëŸ¬ëŒ€ê¸° 120ì´ˆ
                 bit_normal_ice_out_start = SET;
             }
             else{}
 
-            /*..hui [20-4-14¿ÀÈÄ 12:45:16] ÃßÃâ 2ºĞ ÀÌ»ó Áö¼Ó½Ã °­Á¦ Á¤Áö..*/
+            /*..hui [20-4-14ì˜¤í›„ 12:45:16] ì¶”ì¶œ 2ë¶„ ì´ìƒ ì§€ì†ì‹œ ê°•ì œ ì •ì§€..*/
             if(pMOTOR_ICE_OUT_CCW == SET && gu16ErrIceOut == 0)
             {
                 pMOTOR_ICE_OUT_CCW = CLEAR;
-                /* ´©¸§ÃßÃâ ½Ã ÃßÃâ¿Ï·áµÇÁö ¾Ê´Â Çö»ó °³¼± 250808 CH.PARK */
+                /* ëˆ„ë¦„ì¶”ì¶œ ì‹œ ì¶”ì¶œì™„ë£Œë˜ì§€ ì•ŠëŠ” í˜„ìƒ ê°œì„  250808 CH.PARK */
                 ice_extraction_finish();
                 F_IceOutCCW = CLEAR;
                 bit_normal_ice_out_start = CLEAR;
@@ -224,7 +224,7 @@ void output_ice_feeder_motor(void)
 
             if( pMOTOR_ICE_OUT_CCW == SET )
             {
-                /* 2025-09-18 @CH.PARK ½ÇÁ¦ ÇÇ´õ°¡ Á¤È¸Àü ÇÏ´Â ½Ã°£À¸·Î ÆÇ´Ü (ÃßÃâ ¿ÀÂ÷ °³¼±) */
+                /* 2025-09-18 @CH.PARK ì‹¤ì œ í”¼ë”ê°€ ì •íšŒì „ í•˜ëŠ” ì‹œê°„ìœ¼ë¡œ íŒë‹¨ (ì¶”ì¶œ ì˜¤ì°¨ ê°œì„ ) */
                 gu16_ice_extract_timer_100ms++;
 
                 gu8_ice_out_operation_timer++;
@@ -243,7 +243,7 @@ void output_ice_feeder_motor(void)
             }
             else
             {
-                /*..hui [20-4-22¿ÀÀü 10:27:26] ÃßÃâ Á÷Àü¿¡ ¸¸ºùÀÏ °æ¿ì¿¡¸¸ °¨ÁöÇÏµµ·Ï..*/
+                /*..hui [20-4-22ì˜¤ì „ 10:27:26] ì¶”ì¶œ ì§ì „ì— ë§Œë¹™ì¼ ê²½ìš°ì—ë§Œ ê°ì§€í•˜ë„ë¡..*/
                 if( F_IceFull == SET )
                 {
                     bit_ice_full_state = SET;
@@ -256,135 +256,38 @@ void output_ice_feeder_motor(void)
                 }
             }
 
+            // ì‹¤ì œ ì¶”ì¶œ ë™ì‘
             if(bit_normal_ice_out_start != CLEAR)
             {
-                gu8_normal_ice_acc_cur_count_100ms++;
+                /* [V1.0.0.2] ì¼ë°˜ì–¼ìŒ ì—°ì† ì¶”ì¶œ ì‹œ 3ì´ˆ ì „ì§„, 1ì´ˆ íœ´ì§€ ë°˜ë³µ */
+                if(gu8_normal_ice_acc_cur_count_100ms <= gu8_normal_ice_acc_set_count_100ms)
+                {
+                    gu8_normal_ice_acc_cur_count_100ms++;
+                }
+                else
+                {
+                    gu8_normal_ice_acc_cur_count_100ms = gu8_normal_ice_acc_set_count_100ms;
+                }
 
-                if(gu8_ice_out_continue == SET)
+                gu8_ice_continue_acc_count_100ms++;
+                if(pMOTOR_ICE_OUT_CCW == SET)
                 {
-                    /* [V1.0.0.2] ÀÏ¹İ¾óÀ½ ¿¬¼Ó ÃßÃâ ½Ã 3ÃÊ ÀüÁø, 1ÃÊ ÈŞÁö ¹İº¹ */
-                    gu8_ice_continue_acc_count_100ms++;
-                    if(pMOTOR_ICE_OUT_CCW == SET)
+                    if(gu8_ice_continue_acc_count_100ms >= 30)      /* 3ì´ˆ ë™ì‘ */
                     {
-                        if(gu8_ice_continue_acc_count_100ms >= 30)      /* 3ÃÊ µ¿ÀÛ */
-                        {
-                            gu8_ice_continue_acc_count_100ms = 0;
-                            pMOTOR_ICE_OUT_CCW = CLEAR;
-                        }
-                        else {  }
-                    }
-                    else
-                    {
-                        if(gu8_ice_continue_acc_count_100ms >= 10)      /* 1ÃÊ Á¤Áö */
-                        {
-                            gu8_ice_continue_acc_count_100ms = 0;
-                            pMOTOR_ICE_OUT_CCW = SET;
-                        }
-                        else {  }
-                    }
-                }
-                else if(gu8_ice_amount_step == ICE_LEVEL_1_STEP)            // 1´Ü°è
-                {
-                    gu8_normal_ice_stay_count = 0;
-                    gu8_normal_ice_acc_set_count_100ms = ICE_OUT_1_STEP_TIME;
-                    if(gu8_normal_ice_acc_cur_count_100ms <= gu8_normal_ice_acc_set_count_100ms)
-                    {
-                        pMOTOR_ICE_OUT_CCW = SET;
-                    }
-                    else
-                    {
-                        gu8_normal_ice_acc_cur_count_100ms = 0;
-                    }
-                }
-                else if(gu8_ice_amount_step == ICE_LEVEL_2_STEP)
-                {
-                    if(gu8_normal_ice_stay_count >= 1)
-                    {
-                        gu8_normal_ice_acc_set_count_100ms = 30;
-                        if(gu8_normal_ice_acc_cur_count_100ms <= (gu8_normal_ice_acc_set_count_100ms - 10))      // 2ÃÊ ÀüÁø
-                        {
-                            pMOTOR_ICE_OUT_CCW = SET;
-                        }
-                        else if(gu8_normal_ice_acc_cur_count_100ms <= (gu8_normal_ice_acc_set_count_100ms + 1))  // 1ÃÊ Á¤Áö
-                        {
-                            pMOTOR_ICE_OUT_CCW = CLEAR;
-                        }
-                        else
-                        {
-                            gu8_normal_ice_acc_cur_count_100ms = 0;
-                        }
-                    }
-                    else
-                    {
-                        gu8_normal_ice_acc_set_count_100ms = 50;
-                        if(gu8_normal_ice_acc_cur_count_100ms <= (gu8_normal_ice_acc_set_count_100ms - 10))      // 4ÃÊ ÀüÁø
-                        {
-                            pMOTOR_ICE_OUT_CCW = SET;
-                        }
-                        else if(gu8_normal_ice_acc_cur_count_100ms <= gu8_normal_ice_acc_set_count_100ms)        // 1ÃÊ Á¤Áö
-                        {
-                            pMOTOR_ICE_OUT_CCW = CLEAR;
-                        }
-                        else
-                        {
-                            gu8_normal_ice_acc_cur_count_100ms = 0;
-                            gu8_normal_ice_stay_count++;
-                        }
-                    }
-                }
-                else if(gu8_ice_amount_step == ICE_LEVEL_3_STEP)
-                {
-                    if(gu8_normal_ice_stay_count >= 1)
-                    {
-                        gu8_normal_ice_acc_set_count_100ms = 30;
-                        if(gu8_normal_ice_acc_cur_count_100ms <= (gu8_normal_ice_acc_set_count_100ms - 10))      // 2ÃÊ ÀüÁø
-                        {
-                            pMOTOR_ICE_OUT_CCW = SET;
-                        }
-                        else if(gu8_normal_ice_acc_cur_count_100ms <= (gu8_normal_ice_acc_set_count_100ms))      // 1ÃÊ Á¤Áö
-                        {
-                            pMOTOR_ICE_OUT_CCW = CLEAR;
-                        }
-                        else
-                        {
-                            gu8_normal_ice_acc_cur_count_100ms = 0;
-                        }
-                    }
-                    else
-                    {
-                        gu8_normal_ice_acc_set_count_100ms = 50;
-                        if(gu8_normal_ice_acc_cur_count_100ms <= (gu8_normal_ice_acc_set_count_100ms - 10))      // 4ÃÊ ÀüÁø
-                        {
-                            pMOTOR_ICE_OUT_CCW = SET;
-                        }
-                        else if(gu8_normal_ice_acc_cur_count_100ms <= gu8_normal_ice_acc_set_count_100ms)        // 1ÃÊ Á¤Áö
-                        {
-                            pMOTOR_ICE_OUT_CCW = CLEAR;
-                        }
-                        else
-                        {
-                            gu8_normal_ice_acc_cur_count_100ms = 0;
-                            gu8_normal_ice_stay_count++;
-                        }
-                    }
-                }
-                else if(gu8_ice_amount_step == ICE_LEVEL_4_STEP)
-                {
-                    gu8_normal_ice_acc_set_count_100ms = 50;
-                    if(gu8_normal_ice_acc_cur_count_100ms <= (gu8_normal_ice_acc_set_count_100ms - 10))      // 4ÃÊ ÀüÁø
-                    {
-                        pMOTOR_ICE_OUT_CCW = SET;
-                    }
-                    else if(gu8_normal_ice_acc_cur_count_100ms <= gu8_normal_ice_acc_set_count_100ms)        // 1ÃÊ Á¤Áö
-                    {
+                        gu8_ice_continue_acc_count_100ms = 0;
                         pMOTOR_ICE_OUT_CCW = CLEAR;
                     }
-                    else
-                    {
-                        gu8_normal_ice_acc_cur_count_100ms = 0;
-                    }
+                    else {  }
                 }
-                else {  }
+                else
+                {
+                    if(gu8_ice_continue_acc_count_100ms >= 10)      /* 1ì´ˆ ì •ì§€ */
+                    {
+                        gu8_ice_continue_acc_count_100ms = 0;
+                        pMOTOR_ICE_OUT_CCW = SET;
+                    }
+                    else {  }
+                }
             }
             else
             {
@@ -395,7 +298,7 @@ void output_ice_feeder_motor(void)
         {
             bit_normal_ice_out_start = SET;
 
-            /* Á¶°¢¾óÀ½µµ 6ÃÊ ÀÌ»ó ÃßÃâÇÏ¸é ÈÄÁø */
+            /* ì¡°ê°ì–¼ìŒë„ 6ì´ˆ ì´ìƒ ì¶”ì¶œí•˜ë©´ í›„ì§„ */
             gu8_ice_out_operation_timer++;
             if( gu8_ice_out_operation_timer >= 30 && gu8_ice_out_operation_timer < 60 )
             {
@@ -410,14 +313,14 @@ void output_ice_feeder_motor(void)
             }
             else{}
 
-            /* Á¶°¢¾óÀ½ ½Ã 2ÃÊ ÀüÁø, 1ÃÊ Á¤Áö ¹İº¹ (ÃÖ½Å) ÀÓÃ¤Èñ´Ô naverworks ¿äÃ» 250704 ch.park */
+            /* ì¡°ê°ì–¼ìŒ ì‹œ 2ì´ˆ ì „ì§„, 1ì´ˆ ì •ì§€ ë°˜ë³µ (ìµœì‹ ) ì„ì±„í¬ë‹˜ naverworks ìš”ì²­ 250704 ch.park */
             gu8_ice_break_acc_count_100ms++;
             if(pMOTOR_ICE_OUT_CCW == SET)
             {
-                /* 2025-09-18 @CH.PARK ½ÇÁ¦ ÇÇ´õ°¡ Á¤È¸Àü ÇÏ´Â ½Ã°£À¸·Î ÆÇ´Ü (ÃßÃâ ¿ÀÂ÷ °³¼±) */
+                /* 2025-09-18 @CH.PARK ì‹¤ì œ í”¼ë”ê°€ ì •íšŒì „ í•˜ëŠ” ì‹œê°„ìœ¼ë¡œ íŒë‹¨ (ì¶”ì¶œ ì˜¤ì°¨ ê°œì„ ) */
                 gu16_ice_extract_timer_100ms++;
 
-                if(gu8_ice_break_acc_count_100ms >= 20)     /* 2ÃÊµ¿ÀÛ */
+                if(gu8_ice_break_acc_count_100ms >= 20)     /* 2ì´ˆë™ì‘ */
                 {
                     gu8_ice_break_acc_count_100ms = 0;
                     pMOTOR_ICE_OUT_CCW = CLEAR;
@@ -426,7 +329,7 @@ void output_ice_feeder_motor(void)
             }
             else
             {
-                if(gu8_ice_break_acc_count_100ms >= 10)     /* 1ÃÊÁ¤Áö */
+                if(gu8_ice_break_acc_count_100ms >= 10)     /* 1ì´ˆì •ì§€ */
                 {
                     gu8_ice_break_acc_count_100ms = 0;
                     pMOTOR_ICE_OUT_CCW = SET;
@@ -435,7 +338,7 @@ void output_ice_feeder_motor(void)
             }
         }
 
-        /*..hui [20-4-14¿ÀÈÄ 1:09:53] ÃßÃâ½Ã ¿ªÈ¸Àü Á¤Áö..*/
+        /*..hui [20-4-14ì˜¤í›„ 1:09:53] ì¶”ì¶œì‹œ ì—­íšŒì „ ì •ì§€..*/
         pMOTOR_ICE_OUT_CW = CLEAR;
         gu8_ice_out_reverse_timer = 0;
         gu8_ice_stuck_reverse_timer = 0;
@@ -447,17 +350,17 @@ void output_ice_feeder_motor(void)
         gu8_normal_ice_stay_count = CLEAR;
         bit_normal_ice_out_start = CLEAR;
 
-        /* ¾ç»êÇÁ·Î±×·¥ */
+        /* ì–‘ì‚°í”„ë¡œê·¸ë¨ */
         /* pMOTOR_ICE_OUT_CCW = CLEAR; */
         bit_ice_full_state = CLEAR;
         gu8_ice_out_operation_timer = 0;
         gu8_ice_break_acc_count_100ms = 0;
         gu8_ice_continue_acc_count_100ms = 0;
 
-        /*..hui [20-4-14¿ÀÈÄ 12:38:42] ÇÇ´õ½ºÅ©·ù°¡ ÃßÃâ ¹æÇâÀ¸·Î µ¿ÀÛÀ» ÇßÀ¸¸é..*/
+        /*..hui [20-4-14ì˜¤í›„ 12:38:42] í”¼ë”ìŠ¤í¬ë¥˜ê°€ ì¶”ì¶œ ë°©í–¥ìœ¼ë¡œ ë™ì‘ì„ í–ˆìœ¼ë©´..*/
         if(bit_ice_out_back_1s_state == SET)
         {
-            /* ¸®µå½ºÀ§Ä¡ »ç¿ëÇÏ´Â ¸ğµ¨ÀÌ°í ¾óÀ½ °É¸² È®ÀÎÁßÀÌ°Å³ª µ¿ÀÛÁßÀÏ ¶§´Â ÃßÃâ ¿ªÈ¸Àüµ¿ÀÛÀº ´ë±â */
+            /* ë¦¬ë“œìŠ¤ìœ„ì¹˜ ì‚¬ìš©í•˜ëŠ” ëª¨ë¸ì´ê³  ì–¼ìŒ ê±¸ë¦¼ í™•ì¸ì¤‘ì´ê±°ë‚˜ ë™ì‘ì¤‘ì¼ ë•ŒëŠ” ì¶”ì¶œ ì—­íšŒì „ë™ì‘ì€ ëŒ€ê¸° */
             if(model.u8model == MODEL_REED_USE)
             {
                 if((IceStuck.u8IceJamCheck == SET)
@@ -474,7 +377,7 @@ void output_ice_feeder_motor(void)
 
             gu8_ice_out_reverse_1s_timer++;
 
-            /* 3ÃÊ ÀÌ»ó ÃßÃâ¿Ï·á ½Ã 5ÃÊ ´ë±â (¸ØÃã) ÈÄ 1ÃÊ ÈÄÁø */
+            /* 3ì´ˆ ì´ìƒ ì¶”ì¶œì™„ë£Œ ì‹œ 5ì´ˆ ëŒ€ê¸° (ë©ˆì¶¤) í›„ 1ì´ˆ í›„ì§„ */
             if( gu8_ice_out_reverse_1s_timer < ICE_OUT_BACK_1S_DELAY_TIME )
             {
                 pMOTOR_ICE_OUT_CW = CLEAR;
@@ -487,7 +390,7 @@ void output_ice_feeder_motor(void)
             {
                 bit_ice_out_back_1s_state = CLEAR;
                 gu8_ice_out_reverse_1s_timer = 0;
-                /*..hui [20-4-22¿ÀÀü 10:35:40] ¿ªÈ¸Àü ¿Ï·á ÈÄ ¸¸ºù°¨Áö..*/
+                /*..hui [20-4-22ì˜¤ì „ 10:35:40] ì—­íšŒì „ ì™„ë£Œ í›„ ë§Œë¹™ê°ì§€..*/
                 F_IR = SET;
                 F_Low_IR = SET;
             }
@@ -498,7 +401,7 @@ void output_ice_feeder_motor(void)
         }
         else if( bit_ice_out_back_state == SET )
         {
-            /* ¸®µå½ºÀ§Ä¡ »ç¿ëÇÏ´Â ¸ğµ¨ÀÌ°í ¾óÀ½ °É¸² È®ÀÎÁßÀÌ°Å³ª µ¿ÀÛÁßÀÏ ¶§´Â ÃßÃâ ¿ªÈ¸Àüµ¿ÀÛÀº ´ë±â */
+            /* ë¦¬ë“œìŠ¤ìœ„ì¹˜ ì‚¬ìš©í•˜ëŠ” ëª¨ë¸ì´ê³  ì–¼ìŒ ê±¸ë¦¼ í™•ì¸ì¤‘ì´ê±°ë‚˜ ë™ì‘ì¤‘ì¼ ë•ŒëŠ” ì¶”ì¶œ ì—­íšŒì „ë™ì‘ì€ ëŒ€ê¸° */
             if(model.u8model == MODEL_REED_USE)
             {
                 if((IceStuck.u8IceJamCheck == SET)
@@ -515,7 +418,7 @@ void output_ice_feeder_motor(void)
 
             gu8_ice_out_reverse_timer++;
 
-            /* 6ÃÊ ÀÌ»ó ÃßÃâ¿Ï·á ½Ã 5ÃÊ ´ë±â (¸ØÃã) ÈÄ 3ÃÊ ÈÄÁø */
+            /* 6ì´ˆ ì´ìƒ ì¶”ì¶œì™„ë£Œ ì‹œ 5ì´ˆ ëŒ€ê¸° (ë©ˆì¶¤) í›„ 3ì´ˆ í›„ì§„ */
             if( gu8_ice_out_reverse_timer < ICE_OUT_BACK_2S_DELAY_TIME )
             {
                 pMOTOR_ICE_OUT_CW = CLEAR;
@@ -528,12 +431,12 @@ void output_ice_feeder_motor(void)
             {
                 bit_ice_out_back_state = CLEAR;
                 gu8_ice_out_reverse_timer = 0;
-                /*..hui [20-4-22¿ÀÀü 10:35:40] ¿ªÈ¸Àü ¿Ï·á ÈÄ ¸¸ºù°¨Áö..*/
+                /*..hui [20-4-22ì˜¤ì „ 10:35:40] ì—­íšŒì „ ì™„ë£Œ í›„ ë§Œë¹™ê°ì§€..*/
                 F_IR = SET;
                 F_Low_IR = SET;
 
-                /* 2025-09-18 CH.PARK 3ÃÊ ¿ªÈ¸Àü ÀÌÈÄ ¹İµå½Ã 1ÃÊ ´ë±â ÈÄ Á¤È¸ÀüµÇµµ·Ï ÇÔ.
-                ¹Ù·Î È¸Àü ¹æÇâÀ» µ¹¸®¸é ¾ÈµÊ */
+                /* 2025-09-18 CH.PARK 3ì´ˆ ì—­íšŒì „ ì´í›„ ë°˜ë“œì‹œ 1ì´ˆ ëŒ€ê¸° í›„ ì •íšŒì „ë˜ë„ë¡ í•¨.
+                ë°”ë¡œ íšŒì „ ë°©í–¥ì„ ëŒë¦¬ë©´ ì•ˆë¨ */
                 gu8IceOutCCWInterval = 10;
             }
 
@@ -543,29 +446,29 @@ void output_ice_feeder_motor(void)
         }
         else if(gu8_ice_feeder_shake == SET)
         {
-            /* 2025-10-13 CH.PARK Á¶°¢¾óÀ½ ÃßÃâ ½ÃÀÛ ½Ã 100% ¹Ğ ¶§´Â ÀÏ½ÃÀûÀ¸·Î ¼¯Áö ¾ÊÀ½ */
+            /* 2025-10-13 CH.PARK ì¡°ê°ì–¼ìŒ ì¶”ì¶œ ì‹œì‘ ì‹œ 100% ë°€ ë•ŒëŠ” ì¼ì‹œì ìœ¼ë¡œ ì„ì§€ ì•ŠìŒ */
             if(F_IceSelectClose == SET)
             {
                 return;
             }
 
             gu8_ice_feeder_shake_time++;
-            if(gu8_ice_feeder_shake_time <= ICE_SHAKE_DELAY_TIME)             // 4ÃÊ ´ë±â
+            if(gu8_ice_feeder_shake_time <= ICE_SHAKE_DELAY_TIME)                     // 1ì´ˆ ëŒ€ê¸°
             {
                 pMOTOR_ICE_OUT_CCW = CLEAR;
                 pMOTOR_ICE_OUT_CW = CLEAR;
             }
-            else if(gu8_ice_feeder_shake_time <= (ICE_SHAKE_DELAY_TIME + 10))        // 1ÃÊ ÀüÁø
+            else if(gu8_ice_feeder_shake_time <= (ICE_SHAKE_DELAY_TIME + 10))        // 1ì´ˆ ì „ì§„
             {
                 pMOTOR_ICE_OUT_CCW = SET;
                 pMOTOR_ICE_OUT_CW = CLEAR;
             }
-            else if(gu8_ice_feeder_shake_time <= (ICE_SHAKE_DELAY_TIME + 15))        // 0.5ÃÊ ´ë±â
+            else if(gu8_ice_feeder_shake_time <= (ICE_SHAKE_DELAY_TIME + 15))        // 0.5ì´ˆ ëŒ€ê¸°
             {
                 pMOTOR_ICE_OUT_CCW = CLEAR;
                 pMOTOR_ICE_OUT_CW = CLEAR;
             }
-            else if(gu8_ice_feeder_shake_time <= (ICE_SHAKE_DELAY_TIME + 25))        // 1ÃÊ ÈÄÁø
+            else if(gu8_ice_feeder_shake_time <= (ICE_SHAKE_DELAY_TIME + 25))        // 1ì´ˆ í›„ì§„
             {
                 pMOTOR_ICE_OUT_CCW = CLEAR;
                 pMOTOR_ICE_OUT_CW = SET;
@@ -582,7 +485,7 @@ void output_ice_feeder_motor(void)
 
             gu8_ice_stuck_reverse_timer++;
 
-            /*..hui [25-3-17¿ÀÈÄ 4:16:14] ¾óÀ½ °É¸² ÇØÁ¦ µ¿ÀÛ 2ÃÊ..*/
+            /*..hui [25-3-17ì˜¤í›„ 4:16:14] ì–¼ìŒ ê±¸ë¦¼ í•´ì œ ë™ì‘ 2ì´ˆ..*/
             if( gu8_ice_stuck_reverse_timer >= 20 )
             {
                 gu8_ice_stuck_reverse_timer = 0;
@@ -597,9 +500,9 @@ void output_ice_feeder_motor(void)
             gu8_ice_out_reverse_1s_timer = 0;
             gu8_ice_out_reverse_timer = 0;
         }
-        else if( bit_ice_mix_back_state == SET )              /* Á¦ºù¿Ï·á ÈÄ µÚ¼¯´Â Á¦¾î */
+        else if( bit_ice_mix_back_state == SET )              /* ì œë¹™ì™„ë£Œ í›„ ë’¤ì„ëŠ” ì œì–´ */
         {
-            /* ¸®µå½ºÀ§Ä¡ »ç¿ëÇÏ´Â ¸ğµ¨ÀÌ°í ¾óÀ½ °É¸² È®ÀÎÁßÀÌ°Å³ª µ¿ÀÛÁßÀÏ ¶§´Â ÃßÃâ ¿ªÈ¸Àüµ¿ÀÛÀº ´ë±â */
+            /* ë¦¬ë“œìŠ¤ìœ„ì¹˜ ì‚¬ìš©í•˜ëŠ” ëª¨ë¸ì´ê³  ì–¼ìŒ ê±¸ë¦¼ í™•ì¸ì¤‘ì´ê±°ë‚˜ ë™ì‘ì¤‘ì¼ ë•ŒëŠ” ì¶”ì¶œ ì—­íšŒì „ë™ì‘ì€ ëŒ€ê¸° */
             if(model.u8model == MODEL_REED_USE)
             {
                 if((IceStuck.u8IceJamCheck == SET)
@@ -613,20 +516,20 @@ void output_ice_feeder_motor(void)
             }
 
             gu8_ice_mix_reverse_timer++;
-            // if( gu8_ice_mix_reverse_timer <= 2 )           /* 0.2ÃÊ ÀüÁø */
-            if( gu8_ice_mix_reverse_timer <= 5 )              /* 0.5ÃÊ ÀüÁø (º¯°æ) 250828 CH.PARK */
+            // if( gu8_ice_mix_reverse_timer <= 2 )           /* 0.2ì´ˆ ì „ì§„ */
+            if( gu8_ice_mix_reverse_timer <= 5 )              /* 0.5ì´ˆ ì „ì§„ (ë³€ê²½) 250828 CH.PARK */
             {
                 pMOTOR_ICE_OUT_CCW = SET;
                 pMOTOR_ICE_OUT_CW = CLEAR;
             }
-            // else if( gu8_ice_mix_reverse_timer <= 12 )      /* 1ÃÊ ´ë±â */
-            else if( gu8_ice_mix_reverse_timer <= 15 )         /* 1ÃÊ ´ë±â */
+            // else if( gu8_ice_mix_reverse_timer <= 12 )      /* 1ì´ˆ ëŒ€ê¸° */
+            else if( gu8_ice_mix_reverse_timer <= 15 )         /* 1ì´ˆ ëŒ€ê¸° */
             {
                 pMOTOR_ICE_OUT_CCW = CLEAR;
                 pMOTOR_ICE_OUT_CW = CLEAR;
             }
-            // else if( gu8_ice_mix_reverse_timer <= 15 )      /* 0.3ÃÊ ÈÄÁø */
-            else if( gu8_ice_mix_reverse_timer <= 20 )         /* 0.5ÃÊ ÈÄÁø (º¯°æ) 250828 CH.PARK */
+            // else if( gu8_ice_mix_reverse_timer <= 15 )      /* 0.3ì´ˆ í›„ì§„ */
+            else if( gu8_ice_mix_reverse_timer <= 20 )         /* 0.5ì´ˆ í›„ì§„ (ë³€ê²½) 250828 CH.PARK */
             {
                 pMOTOR_ICE_OUT_CCW = CLEAR;
                 pMOTOR_ICE_OUT_CW = SET;
@@ -645,7 +548,7 @@ void output_ice_feeder_motor(void)
         }
         else if(bit_ice_shake_state == SET)
         {
-            /* ¸®µå½ºÀ§Ä¡ »ç¿ëÇÏ´Â ¸ğµ¨ÀÌ°í ¾óÀ½ °É¸² È®ÀÎÁßÀÌ°Å³ª µ¿ÀÛÁßÀÏ ¶§´Â ÃßÃâ ¿ªÈ¸Àüµ¿ÀÛÀº ´ë±â */
+            /* ë¦¬ë“œìŠ¤ìœ„ì¹˜ ì‚¬ìš©í•˜ëŠ” ëª¨ë¸ì´ê³  ì–¼ìŒ ê±¸ë¦¼ í™•ì¸ì¤‘ì´ê±°ë‚˜ ë™ì‘ì¤‘ì¼ ë•ŒëŠ” ì¶”ì¶œ ì—­íšŒì „ë™ì‘ì€ ëŒ€ê¸° */
             if(model.u8model == MODEL_REED_USE)
             {
                 if((IceStuck.u8IceJamCheck == SET)
@@ -660,17 +563,17 @@ void output_ice_feeder_motor(void)
 
             gu8_ice_full_shaking_op_timer_100ms++;
 
-            if( gu8_ice_full_shaking_op_timer_100ms <= 5 )              /* 0.5ÃÊ ÀüÁø */
+            if( gu8_ice_full_shaking_op_timer_100ms <= 5 )              /* 0.5ì´ˆ ì „ì§„ */
             {
                 pMOTOR_ICE_OUT_CCW = SET;
                 pMOTOR_ICE_OUT_CW = CLEAR;
             }
-            else if( gu8_ice_full_shaking_op_timer_100ms <= 15 )         /* 1ÃÊ ´ë±â */
+            else if( gu8_ice_full_shaking_op_timer_100ms <= 15 )         /* 1ì´ˆ ëŒ€ê¸° */
             {
                 pMOTOR_ICE_OUT_CCW = CLEAR;
                 pMOTOR_ICE_OUT_CW = CLEAR;
             }
-            else if( gu8_ice_full_shaking_op_timer_100ms <= 20 )         /* 0.5ÃÊ ÈÄÁø */
+            else if( gu8_ice_full_shaking_op_timer_100ms <= 20 )         /* 0.5ì´ˆ í›„ì§„ */
             {
                 pMOTOR_ICE_OUT_CCW = CLEAR;
                 pMOTOR_ICE_OUT_CW = SET;
@@ -721,7 +624,7 @@ void output_ice_feeder_motor(void)
 ***********************************************************************************************************************/
 void output_ice_tray_motor(void)
 {
-    /*..hui [18-2-9¿ÀÈÄ 1:09:49] CW CCW ¹æÇâ º¯°æ ½Ã 5ÃÊ ´ë±â ÈÄ ÀüÈ¯..*/
+    /*..hui [18-2-9ì˜¤í›„ 1:09:49] CW CCW ë°©í–¥ ë³€ê²½ ì‹œ 5ì´ˆ ëŒ€ê¸° í›„ ì „í™˜..*/
     inverse_direction_time_check();
 
     if( Bit18_Tray_Micro_SW_Up_Move_Error__E62 == SET
@@ -735,8 +638,8 @@ void output_ice_tray_motor(void)
     else if(F_ErrTrayMotor_DualInital == SET)
     {
         check_error_micro_sw_detect_at_once();
-        /*..hui [18-2-13¿ÀÈÄ 3:16:13] move ¿¡·¯ È®ÀÎ Áß µ¿½Ã°¨Áö ¿¡·¯ Ã¼Å©·Î ÀüÈ¯½Ã ¸ğµÎ Å¬¸®¾î..*/
-        /*..hui [18-2-13¿ÀÈÄ 3:16:29] ´Ù½Ã moveÁ¶°ÇÀÌµÇ¸é Ã³À½ºÎÅÍ ½ÃÀÛÇÏµµ·Ï....*/
+        /*..hui [18-2-13ì˜¤í›„ 3:16:13] move ì—ëŸ¬ í™•ì¸ ì¤‘ ë™ì‹œê°ì§€ ì—ëŸ¬ ì²´í¬ë¡œ ì „í™˜ì‹œ ëª¨ë‘ í´ë¦¬ì–´..*/
+        /*..hui [18-2-13ì˜¤í›„ 3:16:29] ë‹¤ì‹œ moveì¡°ê±´ì´ë˜ë©´ ì²˜ìŒë¶€í„° ì‹œì‘í•˜ë„ë¡....*/
         reset_micro_sw_move_err_check_state();
     }
     else
@@ -751,8 +654,8 @@ void output_ice_tray_motor(void)
         && Bit19_Tray_Micro_SW_Down_Move_Error__E63 == CLEAR
         && Bit17_Tray_Micro_SW_Dual_Detect_Error__E61 == CLEAR )
     {
-        /*..hui [25-3-17¿ÀÈÄ 3:16:46] ¾ÆÀÌ½ºÆ®·¹ÀÌ ¸ğÅÍ Ãâ·Â..*/
-        /*..hui [25-3-17¿ÀÈÄ 3:17:56] ¿¡·¯ ¾Æ´Ò¶§¸¸ Ãâ·ÂµÇµµ·Ï..*/
+        /*..hui [25-3-17ì˜¤í›„ 3:16:46] ì•„ì´ìŠ¤íŠ¸ë ˆì´ ëª¨í„° ì¶œë ¥..*/
+        /*..hui [25-3-17ì˜¤í›„ 3:17:56] ì—ëŸ¬ ì•„ë‹ë•Œë§Œ ì¶œë ¥ë˜ë„ë¡..*/
         control_ice_tray();
     }
     else{}
@@ -822,7 +725,7 @@ void inverse_direction_time_check(void)
 ***********************************************************************************************************************/
 void check_error_micro_sw_detect_at_once(void)
 {
-    /*..hui [18-2-1¿ÀÀü 10:43:34] Æ®·¹ÀÌ µ¿½Ã °¨Áö½Ã Àç½Ãµµ ..*/
+    /*..hui [18-2-1ì˜¤ì „ 10:43:34] íŠ¸ë ˆì´ ë™ì‹œ ê°ì§€ì‹œ ì¬ì‹œë„ ..*/
     if(gu16DualCheckDelay > 0)
     {
         gu16DualCheckDelay--;
@@ -841,13 +744,13 @@ void check_error_micro_sw_detect_at_once(void)
     {
         case 0 :
 
-            /*..hui [18-2-1¿ÀÀü 11:19:07] Æ®·¹ÀÌ Á¦ºù ¹æÇâ ÀÌµ¿..*/
+            /*..hui [18-2-1ì˜¤ì „ 11:19:07] íŠ¸ë ˆì´ ì œë¹™ ë°©í–¥ ì´ë™..*/
             /*pMOTOR_ICE_TRAY_CW = 1;*/
             /*pMOTOR_ICE_TRAY_CCW = 0;*/
             run_up_ice_tray();
 
-            /*gu16DualCheckDelay = 150;*/     // Á¦ºù 15ÃÊ ÀÌµ¿
-            gu16DualCheckDelay = 100;     // Á¦ºù 15ÃÊ ÀÌµ¿
+            /*gu16DualCheckDelay = 150;*/     // ì œë¹™ 15ì´ˆ ì´ë™
+            gu16DualCheckDelay = 100;     // ì œë¹™ 15ì´ˆ ì´ë™
             gu8DualTrayStep++;     // 1.CW
             break;
 
@@ -858,19 +761,19 @@ void check_error_micro_sw_detect_at_once(void)
                 /*pMOTOR_ICE_TRAY_CW = 0;*/
                 /*pMOTOR_ICE_TRAY_CCW = 0;*/
                 run_stop_ice_tray();
-                gu16DualCheckDelay = 20;    // 2ÃÊ Áö¿¬
-                gu8DualTrayStep++;     // 2.Á¦ºùÀ§Ä¡¿¡¼­ Á¤Áö
+                gu16DualCheckDelay = 20;    // 2ì´ˆ ì§€ì—°
+                gu8DualTrayStep++;     // 2.ì œë¹™ìœ„ì¹˜ì—ì„œ ì •ì§€
             }
             /*else if(gu16DualCheckDelay <= 130 && gu16DualCheckDelay >= 50)*/
             /*else if(gu16DualCheckDelay <= 130 && gu16DualCheckDelay >= 50)*/
             else if(gu16DualCheckDelay <= 90 && gu16DualCheckDelay >= 70)
             {
-                if(gu8IceLEV == 2)              // ÀÌµ¿Áß Dual Open ÇØÁ¦
+                if(gu8IceLEV == 2)              // ì´ë™ì¤‘ Dual Open í•´ì œ
                 {
                     gu8DualTrayStep = 0;
                     gu16DualCheckDelay = 0;
                     gu8DualTrayCheckCNT = 0;
-                    F_ErrTrayMotor_DualInital = 0;    // Tray ÀÎ½Ä ÀÌµ¿ÁßÀÌ¸é Tray M/S Error ÃÊ±â¹ß»ı ÇØÁ¦
+                    F_ErrTrayMotor_DualInital = 0;    // Tray ì¸ì‹ ì´ë™ì¤‘ì´ë©´ Tray M/S Error ì´ˆê¸°ë°œìƒ í•´ì œ
                     gu8IceStep = STATE_0_STANDBY;
                     gu8InitStep = 0;
                     F_IceInit = 1;
@@ -884,12 +787,12 @@ void check_error_micro_sw_detect_at_once(void)
 
             if(gu16DualCheckDelay == 0)
             {
-                /*..hui [18-2-1¿ÀÀü 11:19:15] Æ®·¹ÀÌ Å»ºù ¹æÇâ ÀÌµ¿..*/
+                /*..hui [18-2-1ì˜¤ì „ 11:19:15] íŠ¸ë ˆì´ íƒˆë¹™ ë°©í–¥ ì´ë™..*/
                 /*pMOTOR_ICE_TRAY_CW = 0;*/
                 /*pMOTOR_ICE_TRAY_CCW = 1;*/
                 run_down_ice_tray();
-                /*gu16DualCheckDelay = 150;*/   // Å»ºù 15ÃÊ ÀÌµ¿
-                gu16DualCheckDelay = 250;   // Å»ºù 15ÃÊ ÀÌµ¿
+                /*gu16DualCheckDelay = 150;*/   // íƒˆë¹™ 15ì´ˆ ì´ë™
+                gu16DualCheckDelay = 250;   // íƒˆë¹™ 15ì´ˆ ì´ë™
                 gu8DualTrayStep++;          // 3.CCW
             }
             else{}
@@ -903,18 +806,18 @@ void check_error_micro_sw_detect_at_once(void)
                 /*pMOTOR_ICE_TRAY_CW = 0;*/
                 /*pMOTOR_ICE_TRAY_CCW = 0;*/
                 run_stop_ice_tray();
-                gu16DualCheckDelay = 3000;     // 5ºĞ Áö¿¬
-                gu8DualTrayStep++;              // 4.Å»ºùÀ§Ä¡¿¡¼­ Á¤Áö
+                gu16DualCheckDelay = 3000;     // 5ë¶„ ì§€ì—°
+                gu8DualTrayStep++;              // 4.íƒˆë¹™ìœ„ì¹˜ì—ì„œ ì •ì§€
             }
             /*else if(gu16DualCheckDelay <= 130 && gu16DualCheckDelay >= 50)*/
             else if(gu16DualCheckDelay <= 220 && gu16DualCheckDelay >= 80)
             {
-                if(gu8IceLEV == 2)              // ÀÌµ¿Áß Dual Open ÇØÁ¦
+                if(gu8IceLEV == 2)              // ì´ë™ì¤‘ Dual Open í•´ì œ
                 {
                     gu8DualTrayStep = 0;
                     gu16DualCheckDelay = 0;
                     gu8DualTrayCheckCNT = 0;
-                    F_ErrTrayMotor_DualInital = 0;  // Tray ÀÎ½Ä ÀÌµ¿ÁßÀÌ¸é Tray M/S Error ÃÊ±â¹ß»ı ÇØÁ¦
+                    F_ErrTrayMotor_DualInital = 0;  // Tray ì¸ì‹ ì´ë™ì¤‘ì´ë©´ Tray M/S Error ì´ˆê¸°ë°œìƒ í•´ì œ
                     gu8IceStep = STATE_0_STANDBY;
                     gu8InitStep = 0;
                     F_IceInit = 1;
@@ -931,7 +834,7 @@ void check_error_micro_sw_detect_at_once(void)
                 gu8DualTrayStep = 0;
                 if(++gu8DualTrayCheckCNT >= 3)
                 {
-                    Bit17_Tray_Micro_SW_Dual_Detect_Error__E61 = SET;          // 3È¸ ½ÃµµÈÄ Error
+                    Bit17_Tray_Micro_SW_Dual_Detect_Error__E61 = SET;          // 3íšŒ ì‹œë„í›„ Error
                     F_ErrTrayMotor_DualInital = 0;
                 }
                 else{}
@@ -956,9 +859,9 @@ void check_error_micro_sw_detect_at_once(void)
 ***********************************************************************************************************************/
 void check_error_micro_sw_movement(void)
 {
-    //------------------------------------------------- ¾óÀ½¹ŞÀÌ È¸Àü
-    /*..hui [18-1-26¿ÀÈÄ 8:22:52] F_TrayMotorUP °¡ Á¦ºù F_TrayMotorCCW°¡ Å»ºùÀ§Ä¡.. ..*/
-    /*..hui [18-1-26¿ÀÈÄ 8:23:08] F_TrayMotorUP °¡ ½ÇÁ¦·Î´Â CCW·Î µ·´Ù..*/
+    //------------------------------------------------- ì–¼ìŒë°›ì´ íšŒì „
+    /*..hui [18-1-26ì˜¤í›„ 8:22:52] F_TrayMotorUP ê°€ ì œë¹™ F_TrayMotorCCWê°€ íƒˆë¹™ìœ„ì¹˜.. ..*/
+    /*..hui [18-1-26ì˜¤í›„ 8:23:08] F_TrayMotorUP ê°€ ì‹¤ì œë¡œëŠ” CCWë¡œ ëˆë‹¤..*/
     gu8_Tray_Motor_Direction = (U8)(((F_TrayMotorDOWN << 1) & 0x02) |
                                      (F_TrayMotorUP));
 
@@ -978,11 +881,11 @@ void check_error_micro_sw_movement(void)
 
         case TRAY_MOTOR_CW_DIRECTION:
 
-            /*..hui [18-2-6¿ÀÈÄ 1:32:40] CCW·Î µ¹°í 5ÃÊ°¡ ¾ÆÁ÷ ¾ÈÁö³­ »óÅÂ¸é ´ë±â..*/
+            /*..hui [18-2-6ì˜¤í›„ 1:32:40] CCWë¡œ ëŒê³  5ì´ˆê°€ ì•„ì§ ì•ˆì§€ë‚œ ìƒíƒœë©´ ëŒ€ê¸°..*/
             if(F_Tray_CCW_delay_finish == SET)
             {
-                /*..hui [18-2-2¿ÀÈÄ 3:11:59] Á¦ºù¹æÇâ ÀÌµ¿Áß ¿¡·¯ °¨Áö..*/
-                /*..hui [18-2-6¿ÀÈÄ 7:02:16] CW°¡ SETµÇ´Â ½ÃÁ¡Àº gu8IceStepÀÌ 1ÀÏ¶§¹Û¿¡ ¾øÀ½, Á¦ºù ½ÃÀÛÇÒ¶§..*/
+                /*..hui [18-2-2ì˜¤í›„ 3:11:59] ì œë¹™ë°©í–¥ ì´ë™ì¤‘ ì—ëŸ¬ ê°ì§€..*/
+                /*..hui [18-2-6ì˜¤í›„ 7:02:16] CWê°€ SETë˜ëŠ” ì‹œì ì€ gu8IceStepì´ 1ì¼ë•Œë°–ì— ì—†ìŒ, ì œë¹™ ì‹œì‘í• ë•Œ..*/
                 check_error_tray_motor_up_operation();
             }
             else
@@ -996,11 +899,11 @@ void check_error_micro_sw_movement(void)
 
         case TRAY_MOTOR_CCW_DIRECTION:
 
-            /*..hui [18-2-6¿ÀÈÄ 1:32:40] CCW·Î µ¹°í 5ÃÊ°¡ ¾ÆÁ÷ ¾ÈÁö³­ »óÅÂ¸é ´ë±â..*/
-            /*..hui [18-2-6¿ÀÈÄ 8:18:30] CCW°¡ SETµÇ´Â ½ÃÁ¡Àº ´õ¹ÌÅ»ºù/Á¦ºùÅ»ºù½Ã....*/
+            /*..hui [18-2-6ì˜¤í›„ 1:32:40] CCWë¡œ ëŒê³  5ì´ˆê°€ ì•„ì§ ì•ˆì§€ë‚œ ìƒíƒœë©´ ëŒ€ê¸°..*/
+            /*..hui [18-2-6ì˜¤í›„ 8:18:30] CCWê°€ SETë˜ëŠ” ì‹œì ì€ ë”ë¯¸íƒˆë¹™/ì œë¹™íƒˆë¹™ì‹œ....*/
             if(F_Tray_CW_delay_finish == SET)
             {
-                /*..hui [18-2-2¿ÀÈÄ 3:12:05] Å»ºù ¹æÇâ ÀÌµ¿Áß ¿¡·¯ °¨Áö..*/
+                /*..hui [18-2-2ì˜¤í›„ 3:12:05] íƒˆë¹™ ë°©í–¥ ì´ë™ì¤‘ ì—ëŸ¬ ê°ì§€..*/
                 check_error_tray_motor_down_retry_operation();
             }
             else
@@ -1022,17 +925,17 @@ void check_error_micro_sw_movement(void)
             break;
     }
 
-    ice_make_system_up_move_reset();        // Á¦ºù¹æÇâ ÇØºùÁ¦¾î
-    ice_make_system_down_move_reset();      // Å»ºù¹æÇâ ÇØºùÁ¦¾î
+    ice_make_system_up_move_reset();        // ì œë¹™ë°©í–¥ í•´ë¹™ì œì–´
+    ice_make_system_down_move_reset();      // íƒˆë¹™ë°©í–¥ í•´ë¹™ì œì–´
 
-    /*..hui [18-2-9¿ÀÈÄ 1:55:07] SWÀûÀ¸·Î µ¿½Ã¿¡ SETµÉ °æ¿ì ´ëºñ¿ë..*/
+    /*..hui [18-2-9ì˜¤í›„ 1:55:07] SWì ìœ¼ë¡œ ë™ì‹œì— SETë  ê²½ìš° ëŒ€ë¹„ìš©..*/
     if(F_TrayMotorUP == SET && F_TrayMotorDOWN == SET)
     {
         Bit18_Tray_Micro_SW_Up_Move_Error__E62 = SET;
     }
     else{}
 
-    /*..hui [19-12-13¿ÀÈÄ 7:25:08] Æ®·¹ÀÌ ³»¸° ÈÄ Á¤»óÀûÀ¸·Î Å»ºù ¸ğµå±îÁö ÁøÀÔ ½Ã ´©Àû Ä«¿îÆ® ÃÊ±âÈ­..*/
+    /*..hui [19-12-13ì˜¤í›„ 7:25:08] íŠ¸ë ˆì´ ë‚´ë¦° í›„ ì •ìƒì ìœ¼ë¡œ íƒˆë¹™ ëª¨ë“œê¹Œì§€ ì§„ì… ì‹œ ëˆ„ì  ì¹´ìš´íŠ¸ ì´ˆê¸°í™”..*/
     if( gu8IceStep >= STATE_43_ICE_TAKE_OFF )
     {
         gu8_err_tray_down_acc_count = 0;
@@ -1046,12 +949,12 @@ void check_error_micro_sw_movement(void)
 ***********************************************************************************************************************/
 void check_error_tray_motor_up_operation(void)
 {
-    /*..hui [18-2-6¿ÀÈÄ 5:25:47] Å»ºù¿¡¼­ Á¦ºù ¹æÇâÀ¸·Î ÀÌµ¿ ¹× ¿¡·¯°¨Áö..*/
+    /*..hui [18-2-6ì˜¤í›„ 5:25:47] íƒˆë¹™ì—ì„œ ì œë¹™ ë°©í–¥ìœ¼ë¡œ ì´ë™ ë° ì—ëŸ¬ê°ì§€..*/
     switch( gu8IceTrayLEV )
     {
         case ICE_TRAY_POSITION_ICE_MAKING:
 
-            /*..hui [18-2-6¿ÀÈÄ 2:14:43] Á¦ºù ¹æÇâÀ¸·Î °¨Áö½Ã Á¤Áö..*/
+            /*..hui [18-2-6ì˜¤í›„ 2:14:43] ì œë¹™ ë°©í–¥ìœ¼ë¡œ ê°ì§€ì‹œ ì •ì§€..*/
             /*pMOTOR_ICE_TRAY_CW = CLEAR;*/
             run_stop_ice_tray();
 
@@ -1136,7 +1039,7 @@ void check_error_tray_motor_up_operation(void)
 
                     if( gu8_Err_Tray_Up_Count <= TRAY_UP_ICE_STUCK_COUNT )
                     {
-                        /*..hui [25-3-17¿ÀÈÄ 4:18:38] Ã¹ 2È¸¸¸ ¾óÀ½°É¸² ¿ªÈ¸Àü Á¦¾î Ãß°¡..*/
+                        /*..hui [25-3-17ì˜¤í›„ 4:18:38] ì²« 2íšŒë§Œ ì–¼ìŒê±¸ë¦¼ ì—­íšŒì „ ì œì–´ ì¶”ê°€..*/
                         bit_ice_stuck_back_state = SET;
                     }
                     else{}
@@ -1147,8 +1050,8 @@ void check_error_tray_motor_up_operation(void)
 
         case ICE_TRAY_POSITION_ERROR:
 
-            /*..hui [18-2-6¿ÀÈÄ 4:49:15] Æ®·¹ÀÌ µ¿½Ã °¨Áö½Ã Áï½Ã Á¤Áö..*/
-            /*..hui [18-2-6¿ÀÈÄ 4:51:07] ÀÌÂÊÀ¸·Î µé¾î¿ÃÀÏÀº ¾øÀ½ À­ºÎºĞ µ¿½Ã°¨Áö ¿¡·¯ ºÎºĞ¿¡¼­ Ã³¸®..*/
+            /*..hui [18-2-6ì˜¤í›„ 4:49:15] íŠ¸ë ˆì´ ë™ì‹œ ê°ì§€ì‹œ ì¦‰ì‹œ ì •ì§€..*/
+            /*..hui [18-2-6ì˜¤í›„ 4:51:07] ì´ìª½ìœ¼ë¡œ ë“¤ì–´ì˜¬ì¼ì€ ì—†ìŒ ìœ—ë¶€ë¶„ ë™ì‹œê°ì§€ ì—ëŸ¬ ë¶€ë¶„ì—ì„œ ì²˜ë¦¬..*/
             /*pMOTOR_ICE_TRAY_CW = CLEAR;*/
             run_stop_ice_tray();
             F_TrayMotorUP = CLEAR;
@@ -1198,7 +1101,7 @@ void check_error_tray_motor_up_operation(void)
 
                 if( gu8_Err_Tray_Up_Count <= TRAY_UP_ICE_STUCK_COUNT )
                 {
-                    /*..hui [25-3-17¿ÀÈÄ 4:18:38] Ã¹ 2È¸¸¸ ¾óÀ½°É¸² ¿ªÈ¸Àü Á¦¾î Ãß°¡..*/
+                    /*..hui [25-3-17ì˜¤í›„ 4:18:38] ì²« 2íšŒë§Œ ì–¼ìŒê±¸ë¦¼ ì—­íšŒì „ ì œì–´ ì¶”ê°€..*/
                     bit_ice_stuck_back_state = SET;
                 }
                 else{}
@@ -1215,13 +1118,13 @@ void check_error_tray_motor_up_operation(void)
 ***********************************************************************************************************************/
 void check_error_tray_motor_down_retry_operation(void)
 {
-    /*..hui [18-2-6¿ÀÈÄ 8:26:55] Á¦ºù¿¡¼­ Å»ºùÀ¸·Î ÀÌµ¿ ¹× ¿¡·¯°¨Áö....*/
+    /*..hui [18-2-6ì˜¤í›„ 8:26:55] ì œë¹™ì—ì„œ íƒˆë¹™ìœ¼ë¡œ ì´ë™ ë° ì—ëŸ¬ê°ì§€....*/
     switch(gu8IceTrayLEV)
     {
         case ICE_TRAY_POSITION_ICE_MAKING:
 
             #if 0
-            /*..hui [18-2-6¿ÀÈÄ 8:27:13] 5ÃÊ ÀÌ»ó Á¦ºù À¯Áö½Ã Àç ½Ãµµ ±â´É ¼öÇà..*/
+            /*..hui [18-2-6ì˜¤í›„ 8:27:13] 5ì´ˆ ì´ìƒ ì œë¹™ ìœ ì§€ì‹œ ì¬ ì‹œë„ ê¸°ëŠ¥ ìˆ˜í–‰..*/
             gu16_Tray_down_moving_retry_timer++;
 
             if(gu16_Tray_down_moving_retry_timer <= 50)
@@ -1263,7 +1166,7 @@ void check_error_tray_motor_down_retry_operation(void)
             }
             #endif
 
-            /*..hui [18-2-6¿ÀÈÄ 8:27:13] 5ÃÊ ÀÌ»ó Á¦ºù À¯Áö½Ã Àç ½Ãµµ ±â´É ¼öÇà..*/
+            /*..hui [18-2-6ì˜¤í›„ 8:27:13] 5ì´ˆ ì´ìƒ ì œë¹™ ìœ ì§€ì‹œ ì¬ ì‹œë„ ê¸°ëŠ¥ ìˆ˜í–‰..*/
             gu16_Tray_down_moving_retry_timer++;
 
             if(gu16_Tray_down_moving_retry_timer <= 250)
@@ -1315,7 +1218,7 @@ void check_error_tray_motor_down_retry_operation(void)
 
         case ICE_TRAY_POSITION_ICE_THROW:
 
-            /*..hui [18-2-6¿ÀÈÄ 2:14:43] Á¦ºù ¹æÇâÀ¸·Î °¨Áö½Ã Á¤Áö..*/
+            /*..hui [18-2-6ì˜¤í›„ 2:14:43] ì œë¹™ ë°©í–¥ìœ¼ë¡œ ê°ì§€ì‹œ ì •ì§€..*/
             /*pMOTOR_ICE_TRAY_CCW = CLEAR;*/
             run_stop_ice_tray();
             F_TrayMotorDOWN = CLEAR;
@@ -1327,8 +1230,8 @@ void check_error_tray_motor_down_retry_operation(void)
 
         case ICE_TRAY_POSITION_ERROR:
 
-            /*..hui [18-2-6¿ÀÈÄ 4:49:15] Æ®·¹ÀÌ µ¿½Ã °¨Áö½Ã Áï½Ã Á¤Áö..*/
-            /*..hui [18-2-6¿ÀÈÄ 4:51:07] ÀÌÂÊÀ¸·Î µé¾î¿ÃÀÏÀº ¾øÀ½ À­ºÎºĞ µ¿½Ã°¨Áö ¿¡·¯ ºÎºĞ¿¡¼­ Ã³¸®..*/
+            /*..hui [18-2-6ì˜¤í›„ 4:49:15] íŠ¸ë ˆì´ ë™ì‹œ ê°ì§€ì‹œ ì¦‰ì‹œ ì •ì§€..*/
+            /*..hui [18-2-6ì˜¤í›„ 4:51:07] ì´ìª½ìœ¼ë¡œ ë“¤ì–´ì˜¬ì¼ì€ ì—†ìŒ ìœ—ë¶€ë¶„ ë™ì‹œê°ì§€ ì—ëŸ¬ ë¶€ë¶„ì—ì„œ ì²˜ë¦¬..*/
             /*pMOTOR_ICE_TRAY_CCW = CLEAR;*/
             run_stop_ice_tray();
             F_TrayMotorDOWN = CLEAR;
@@ -1390,12 +1293,12 @@ void ice_make_system_up_move_reset(void)
 
     if( gu8_Err_Tray_Up_Count <= TRAY_UP_ICE_STUCK_COUNT )
     {
-        /*..hui [25-3-17¿ÀÈÄ 3:59:26] Ã¹ 5È¸´Â 1ºĞÀ¸·Î..*/
-        mu16_delay_time = TRAY_UP_ICE_STUCK_DELAY_TIME;     // 1ºĞ ´ë±â
+        /*..hui [25-3-17ì˜¤í›„ 3:59:26] ì²« 5íšŒëŠ” 1ë¶„ìœ¼ë¡œ..*/
+        mu16_delay_time = TRAY_UP_ICE_STUCK_DELAY_TIME;     // 1ë¶„ ëŒ€ê¸°
     }
     else
     {
-        mu16_delay_time = TRAY_UP_RESET_DELAY_TIME;         // 90ºĞ
+        mu16_delay_time = TRAY_UP_RESET_DELAY_TIME;         // 90ë¶„
     }
 
     if(F_Ice_Tray_Up_Move_Reset == SET)
@@ -1409,7 +1312,7 @@ void ice_make_system_up_move_reset(void)
             {
                 ice_stuck_reset();
                 F_Ice_Tray_Up_Move_Reset = CLEAR;
-                /*..hui [25-3-17¿ÀÈÄ 4:20:05] Æ®·¹ÀÌ ³»¸®°í ´Ù½Ã ½ÃÀÛ..*/
+                /*..hui [25-3-17ì˜¤í›„ 4:20:05] íŠ¸ë ˆì´ ë‚´ë¦¬ê³  ë‹¤ì‹œ ì‹œì‘..*/
                 /*run_down_ice_tray();*/
                 down_tray_motor();
             }
@@ -1421,7 +1324,7 @@ void ice_make_system_up_move_reset(void)
         }
         else
         {
-            /*..hui [18-2-13¿ÀÈÄ 3:24:13] 10ºĞ ´ë±âÁß¿¡ Á¤»ó º¹±Í½Ã ÇÏ´ø°Å ÁßÁö....*/
+            /*..hui [18-2-13ì˜¤í›„ 3:24:13] 10ë¶„ ëŒ€ê¸°ì¤‘ì— ì •ìƒ ë³µê·€ì‹œ í•˜ë˜ê±° ì¤‘ì§€....*/
             if(gu8IceTrayLEV == ICE_TRAY_POSITION_ICE_MAKING)
             {
                 ice_system_reset();
@@ -1482,7 +1385,7 @@ void over_ice_making_check(void)
 ***********************************************************************************************************************/
 void over_ice_making_melt_proc(void)
 {
-    /*..hui [18-2-6¿ÀÈÄ 9:42:36] °úÁ¦ºùµÈ°Å ³ìÀÌ´ÂÁß¿¡ ¾ğÁ¦µç Æ®·¹ÀÌ Á¤»ó º¹±ÍµÇ¸é ÇÏ´ø°Å ÁßÁö..*/
+    /*..hui [18-2-6ì˜¤í›„ 9:42:36] ê³¼ì œë¹™ëœê±° ë…¹ì´ëŠ”ì¤‘ì— ì–¸ì œë“  íŠ¸ë ˆì´ ì •ìƒ ë³µê·€ë˜ë©´ í•˜ë˜ê±° ì¤‘ì§€..*/
     if(gu8IceTrayLEV == ICE_TRAY_POSITION_ICE_THROW)
     {
         ice_system_reset();
@@ -1502,11 +1405,11 @@ void over_ice_making_melt_proc(void)
 
         case 1:
 
-            /*..hui [18-2-6¿ÀÈÄ 9:16:17] ¸ÕÀú 10ÃÊµ¿¾È ³Ã¼ö ±Ş¼ö¹ëºê ONÇÑ´Ù..*/
+            /*..hui [18-2-6ì˜¤í›„ 9:16:17] ë¨¼ì € 10ì´ˆë™ì•ˆ ëƒ‰ìˆ˜ ê¸‰ìˆ˜ë°¸ë¸Œ ONí•œë‹¤..*/
             gu16_over_ice_melt_timer++;
 
             /*if(gu16_over_ice_melt_timer >= 100)*/
-            /*..hui [23-9-22¿ÀÀü 11:26:29] 15ÃÊ·Î ´Ã¸².. ¾ÆÀÌÄÜ¾ÆÀÌ½º »ç¾ç..*/
+            /*..hui [23-9-22ì˜¤ì „ 11:26:29] 15ì´ˆë¡œ ëŠ˜ë¦¼.. ì•„ì´ì½˜ì•„ì´ìŠ¤ ì‚¬ì–‘..*/
             if(gu16_over_ice_melt_timer >= 150)
             {
                 F_IceVV = CLEAR;
@@ -1524,14 +1427,14 @@ void over_ice_making_melt_proc(void)
 
         case 2:
 
-            /*..hui [18-2-6¿ÀÈÄ 9:21:25] ³Ã¼ö ÀÔ¼öÇÏ°í 20ÃÊµ¿¾È Å»ºùÈ÷ÅÍ¸¦ °¡µ¿ÇÑ´ç..*/
+            /*..hui [18-2-6ì˜¤í›„ 9:21:25] ëƒ‰ìˆ˜ ì…ìˆ˜í•˜ê³  20ì´ˆë™ì•ˆ íƒˆë¹™íˆí„°ë¥¼ ê°€ë™í•œë‹¹..*/
             gu16_over_ice_melt_timer++;
 
-            /*..hui [20-4-21¿ÀÈÄ 7:15:57] ¾ÈÀüÀ» À§ÇØ 10ÃÊ·Î º¯°æ..*/
-            /*..hui [20-4-21¿ÀÈÄ 7:22:24] AIS30Àº Å»ºù½Ã ÃÊ±â OFF ºÎÅÍ ½ÃÀÛÇÏ¹Ç·Î ´Ù½Ã 15ÃÊ·Î....*/
+            /*..hui [20-4-21ì˜¤í›„ 7:15:57] ì•ˆì „ì„ ìœ„í•´ 10ì´ˆë¡œ ë³€ê²½..*/
+            /*..hui [20-4-21ì˜¤í›„ 7:22:24] AIS30ì€ íƒˆë¹™ì‹œ ì´ˆê¸° OFF ë¶€í„° ì‹œì‘í•˜ë¯€ë¡œ ë‹¤ì‹œ 15ì´ˆë¡œ....*/
             /*if(gu16_over_ice_melt_timer >= 150)*/
             /*if(gu16_over_ice_melt_timer >= 6000)*/
-            /*..hui [23-9-22¿ÀÀü 11:26:49] Å»ºùÈ÷ÅÍ µ¿ÀÛ »èÁ¦.. 20ºĞµ¿¾È ´ë±â..*/
+            /*..hui [23-9-22ì˜¤ì „ 11:26:49] íƒˆë¹™íˆí„° ë™ì‘ ì‚­ì œ.. 20ë¶„ë™ì•ˆ ëŒ€ê¸°..*/
             if(gu16_over_ice_melt_timer >= 12000)
             {
                 F_Over_Ice_Heater_State = CLEAR;
@@ -1557,7 +1460,7 @@ void over_ice_making_melt_proc(void)
 
         case 4:
 
-            /*..hui [18-2-6¿ÀÈÄ 9:23:11] 5ÃÊµ¿¾È ³Ã¼ö ±Ş¼ö¹ëºê ON..*/
+            /*..hui [18-2-6ì˜¤í›„ 9:23:11] 5ì´ˆë™ì•ˆ ëƒ‰ìˆ˜ ê¸‰ìˆ˜ë°¸ë¸Œ ON..*/
             gu16_over_ice_melt_timer++;
 
             if(gu16_over_ice_melt_timer >= 50)
@@ -1577,19 +1480,19 @@ void over_ice_making_melt_proc(void)
 
         case 5:
 
-            /*..hui [18-2-6¿ÀÈÄ 9:23:58] 10ºĞµ¿¾È ´ë±â..*/
+            /*..hui [18-2-6ì˜¤í›„ 9:23:58] 10ë¶„ë™ì•ˆ ëŒ€ê¸°..*/
             gu16_over_ice_melt_timer++;
 
             if(gu16_over_ice_melt_timer >= 6000)
             {
-                /*..hui [18-2-6¿ÀÈÄ 9:25:47] 10ºĞµ¿¾È ´ë±âÈÄ¿¡ ´Ù½Ã ±Ş¼ö¹ëºê 5ÃÊ ONÇÑ´Ù..*/
+                /*..hui [18-2-6ì˜¤í›„ 9:25:47] 10ë¶„ë™ì•ˆ ëŒ€ê¸°í›„ì— ë‹¤ì‹œ ê¸‰ìˆ˜ë°¸ë¸Œ 5ì´ˆ ONí•œë‹¤..*/
                 gu16_over_ice_melt_timer = 0;
                 gu8_over_ice_melt_proc = 3;
 
-                /*..hui [18-2-6¿ÀÈÄ 9:29:04] ÃÑ 9¹ø ´ë·« 90ºĞµ¿¾È ¼öÇà..*/
+                /*..hui [18-2-6ì˜¤í›„ 9:29:04] ì´ 9ë²ˆ ëŒ€ëµ 90ë¶„ë™ì•ˆ ìˆ˜í–‰..*/
                 gu8_over_ice_melt_operation_count++;
 
-                /*..hui [18-2-6¿ÀÈÄ 9:30:30] 90ºĞ µ¿¾È ¼öÇà ÈÄ CCW µ¿ÀÛ ÇÑ¹ø ´õ ¼öÇà..*/
+                /*..hui [18-2-6ì˜¤í›„ 9:30:30] 90ë¶„ ë™ì•ˆ ìˆ˜í–‰ í›„ CCW ë™ì‘ í•œë²ˆ ë” ìˆ˜í–‰..*/
                 if(gu8_over_ice_melt_operation_count >= 10)
                 {
                     ice_system_reset();
@@ -1635,11 +1538,11 @@ void ice_system_reset(void)
     F_IceHeater = CLEAR;
     F_IceVV = CLEAR;
 
-    /*..hui [18-3-22¿ÀÀü 10:04:37] CCW ¹æÇâ ÀÌµ¿Áß¿¡µµ ¾óÀ½ÀÌ ÀÖÀ»¼öÀÖÀ½.. ´õ¹ÌÅ»ºù ÁøÇà..»ı°¢ÀÌ Âª¾Ò´Ù....*/
+    /*..hui [18-3-22ì˜¤ì „ 10:04:37] CCW ë°©í–¥ ì´ë™ì¤‘ì—ë„ ì–¼ìŒì´ ìˆì„ìˆ˜ìˆìŒ.. ë”ë¯¸íƒˆë¹™ ì§„í–‰..ìƒê°ì´ ì§§ì•˜ë‹¤....*/
     F_IceInit = SET;
 
 #if 0
-    /*..hui [18-2-9¿ÀÈÄ 2:34:20] CCW ¹æÇâÀ¸·Î ÀÌµ¿ Àç½ÃµµÁß¿¡´Â ±»ÀÌ ´õ¹ÌÅ»ºù ÇÒ ÇÊ¿ä ¾øÀ½..*/
+    /*..hui [18-2-9ì˜¤í›„ 2:34:20] CCW ë°©í–¥ìœ¼ë¡œ ì´ë™ ì¬ì‹œë„ì¤‘ì—ëŠ” êµ³ì´ ë”ë¯¸íƒˆë¹™ í•  í•„ìš” ì—†ìŒ..*/
     if(F_Ice_Tray_Up_Move_Reset == SET)
     {
         F_IceInit = CLEAR;

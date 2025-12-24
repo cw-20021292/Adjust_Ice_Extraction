@@ -64,16 +64,16 @@ extern bit F_IceInit;
 extern bit bit_ice_tray_1_2_uv_start;
 
 
-/*#define ICEFULL_LEV 125*/                         // ¸¸ºù ÀÎ½Ä ·¹º§ 1V(204)->0.6V(125)
-/*#define ICEFULL_LEV 250*/                         // ¸¸ºù ÀÎ½Ä ·¹º§ 1V(204)->0.6V(125)
-/*#define ICEFULL_LEV 700*/                         // ¸¸ºù ÀÎ½Ä ·¹º§ 1V(204)->0.6V(125)
+/*#define ICEFULL_LEV 125*/                         // ë§Œë¹™ ì¸ì‹ ë ˆë²¨ 1V(204)->0.6V(125)
+/*#define ICEFULL_LEV 250*/                         // ë§Œë¹™ ì¸ì‹ ë ˆë²¨ 1V(204)->0.6V(125)
+/*#define ICEFULL_LEV 700*/                         // ë§Œë¹™ ì¸ì‹ ë ˆë²¨ 1V(204)->0.6V(125)
 
-//#define ICEFULL_LEV 500                           // ¸¸ºù ÀÎ½Ä ·¹º§ 1V(204)->0.6V(125)
+//#define ICEFULL_LEV 500                           // ë§Œë¹™ ì¸ì‹ ë ˆë²¨ 1V(204)->0.6V(125)
 
-//#define ICEFULL_LEV 150                             // ¸¸ºù ÀÎ½Ä ·¹º§ 1V(204)->0.6V(125)
+//#define ICEFULL_LEV 150                             // ë§Œë¹™ ì¸ì‹ ë ˆë²¨ 1V(204)->0.6V(125)
 
-#define ICEFULL_LEV 250                             // ¸¸ºù ÀÎ½Ä ·¹º§ 1V(204)->0.6V(125)
-#define IR_INTERVAL 9000                            // ¸¸ºù ÀÎ½Ä ÁÖ±â 15ºÐ
+#define ICEFULL_LEV 250                             // ë§Œë¹™ ì¸ì‹ ë ˆë²¨ 1V(204)->0.6V(125)
+#define IR_INTERVAL 9000                            // ë§Œë¹™ ì¸ì‹ ì£¼ê¸° 15ë¶„
 
 
 

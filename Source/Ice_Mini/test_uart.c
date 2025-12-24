@@ -78,13 +78,13 @@ U8 gu8_uart_leakage;
 
 /*U16 gu16_uart_ir_ad;*/
 
-/* ¸¸ºù¼¾¼­ */
+/* ë§Œë¹™ì„¼ì„œ */
 U16 gu16_uart_ir_power_on_ad;
 U16 gu16_uart_ir_power_off_ad;
 U8 gu8_uart_ir_check_timer;
 U8 gu8_uart_ir_off_check_timer;
 
-/* Àúºù¼¾¼­ */
+/* ì €ë¹™ì„¼ì„œ */
 U16 gu16_uart_ir_ice_lack_power_on_ad;
 U16 gu16_uart_ir_ice_lack_power_off_ad;
 U8 gu8_uart_ir_ice_lack_check_timer;
@@ -235,8 +235,8 @@ U8 gu8_uart_setting_cold_temp_test_input;
 U8 gu8_uart_setting_sleep_mode_test_input;
 U8 gu8_uart_setting_ice_lock_test_input;
 U8 gu8_uart_setting_all_lock_test_input;
-U8 gu8_uart_setting_my_test_input;  /* MY ¼¼ÆÃÅ° Ãß°¡ 250213 @CH.PARK */
-U8 gu8_uart_setting_cold_off_input; /* ³Ã¼öOFF ¼¼ÆÃÅ° Ãß°¡ 250213 @CH.PARK */
+U8 gu8_uart_setting_my_test_input;  /* MY ì„¸íŒ…í‚¤ ì¶”ê°€ 250213 @CH.PARK */
+U8 gu8_uart_setting_cold_off_input; /* ëƒ‰ìˆ˜OFF ì„¸íŒ…í‚¤ ì¶”ê°€ 250213 @CH.PARK */
 
 bit bit_uart_purify_extract_finish;
 bit bit_uart_cold_extract_finish;
@@ -252,12 +252,12 @@ U16 gu16_uart_key_check;
 
 bit bit_hot_flow_continue;
 bit bit_ice_door_continue;
-bit bit_ice_select_continue;    /* ¾ÆÀÌ½º ¼¿·ºÆ® Á¦¾î Ãß°¡ 250311 CH.PARK */
+bit bit_ice_select_continue;    /* ì•„ì´ìŠ¤ ì…€ë ‰íŠ¸ ì œì–´ ì¶”ê°€ 250311 CH.PARK */
 bit bit_ice_tray_continue;
 
 U8 gu8_tray_continue_timer;
 
-// [2025-11-17] CH.PARK ¾ÆÀÌ½ºµµ¾î ¸®µå ½ºÀ§Ä¡ »óÅÂ Ãß°¡
+// [2025-11-17] CH.PARK ì•„ì´ìŠ¤ë„ì–´ ë¦¬ë“œ ìŠ¤ìœ„ì¹˜ ìƒíƒœ ì¶”ê°€
 bit bit_uart_inner_door_reed;
 
 /***********************************************************************************************************************
@@ -267,7 +267,7 @@ bit bit_uart_inner_door_reed;
 //
 void uart_test_mode_decision(void)
 {
-    /*..hui [17-12-28¿ÀÈÄ 10:45:49] PCB Å×½ºÆ® ¸ğµå ÁøÀÔ »óÅÂ¿¡¼­´Â ÁøÀÔ ºÒ°¡..*/
+    /*..hui [17-12-28ì˜¤í›„ 10:45:49] PCB í…ŒìŠ¤íŠ¸ ëª¨ë“œ ì§„ì… ìƒíƒœì—ì„œëŠ” ì§„ì… ë¶ˆê°€..*/
     if(gu8_test_mode_timeout_1s == 0 || u8FactoryTestMode != NONE_TEST_MODE)
     {
         return;
@@ -285,11 +285,11 @@ void uart_test_mode_decision(void)
         return;
     }
 
-    /*..hui [23-3-14¿ÀÈÄ 4:47:45] Åë½ÅÀ¸·Î ½ÃÀÛÇÏ±â¶§¹®¿¡ ..*/
+    /*..hui [23-3-14ì˜¤í›„ 4:47:45] í†µì‹ ìœ¼ë¡œ ì‹œì‘í•˜ê¸°ë•Œë¬¸ì— ..*/
     AT_UART_Communication();
 
-    /*..hui [20-1-20¿ÀÈÄ 8:58:56] ¼¾¼­ ÀĞ´Â½Ã°£ °í·Á, ¹öÀü µğ½ºÇÃ·¹ÀÌ ¿Ï·áµÈ ÈÄ ÁøÀÔ..*/
-    /* °øÁ¤°Ë»ç : °Ë»ç¸ğµå 1 ÁøÀÔ */
+    /*..hui [20-1-20ì˜¤í›„ 8:58:56] ì„¼ì„œ ì½ëŠ”ì‹œê°„ ê³ ë ¤, ë²„ì „ ë””ìŠ¤í”Œë ˆì´ ì™„ë£Œëœ í›„ ì§„ì…..*/
+    /* ê³µì •ê²€ì‚¬ : ê²€ì‚¬ëª¨ë“œ 1 ì§„ì… */
     if( (gu16ADLeakage >= 750)
     && (F_FW_Version_Display_Mode == SET)
     && (gu8_uart_test_mode == NOT_INCLUDE_FRONT_UART_TEST || gu8_uart_test_mode == INCLUDE_FRNOT_UART_TEST)
@@ -326,17 +326,17 @@ void TestUartStart(void)
     gu8_factory_test_step = 0;
     u8FactoryTestMode = UART_TEST_MODE;
 
-    /*..hui [19-12-19¿ÀÈÄ 1:26:46] Á¤¼ö ¿Âµµ¼¾¼­ Àü¿ø ON..*/
+    /*..hui [19-12-19ì˜¤í›„ 1:26:46] ì •ìˆ˜ ì˜¨ë„ì„¼ì„œ ì „ì› ON..*/
     pROOM_TH_POWER = SET;
     bit_adc_room_start = SET;
-    /*..hui [19-12-19¿ÀÈÄ 1:27:21] ³Ã¼ö ¿Âµµ¼¾¼­ Àü¿ø ON..*/
+    /*..hui [19-12-19ì˜¤í›„ 1:27:21] ëƒ‰ìˆ˜ ì˜¨ë„ì„¼ì„œ ì „ì› ON..*/
     pCOLD_TH_POWER = SET;
     bit_adc_cold_start = SET;
 
-    /*..hui [19-11-5¿ÀÈÄ 5:57:28] EEPROM / RTC ½Ã°£ ÃÊ±âÈ­..*/
+    /*..hui [19-11-5ì˜¤í›„ 5:57:28] EEPROM / RTC ì‹œê°„ ì´ˆê¸°í™”..*/
     gu8_initial_all_data = 1;
 
-    /*..hui [20-1-14¿ÀÈÄ 8:15:16] 12V Àü¿ø ON..*/
+    /*..hui [20-1-14ì˜¤í›„ 8:15:16] 12V ì „ì› ON..*/
     Bit2_Uart_Test_Mode_State = SET;
 
     gu8_uart_ice_heater = CLEAR;
@@ -375,7 +375,7 @@ void TestUartStart(void)
 
     F_ErrTrayMotor_DualInital = CLEAR;
 
-    /*..hui [21-2-18¿ÀÈÄ 5:08:19] WIFI °øÀå °Ë»ç Ãß°¡..*/
+    /*..hui [21-2-18ì˜¤í›„ 5:08:19] WIFI ê³µì¥ ê²€ì‚¬ ì¶”ê°€..*/
     //WifiKey(WIFI_KEY_TEST);
 	SetWifiSystemStatus(WIFI_FACTORY_STATUS, SET);
 
@@ -384,7 +384,7 @@ void TestUartStart(void)
 
     ///////////all_breath_stop();
 
-    /*..hui [23-7-3¿ÀÈÄ 2:20:40] ¼öµ¿ ±â¹Ğ°Ë»ç¸ğµå..*/
+    /*..hui [23-7-3ì˜¤í›„ 2:20:40] ìˆ˜ë™ ê¸°ë°€ê²€ì‚¬ëª¨ë“œ..*/
     if( bit_manual_test_start == SET )
     {
         gu8_uart_test_mode = INCLUDE_FRNOT_UART_TEST;
@@ -393,7 +393,7 @@ void TestUartStart(void)
 
         GasSwitchInit();
 
-        /*..hui [23-7-6¿ÀÈÄ 12:34:20] Ã³À½¿£ ÄÄÇÁ ¹Ù·Î °¡µ¿µÇ°Ô..*/
+        /*..hui [23-7-6ì˜¤í›„ 12:34:20] ì²˜ìŒì—” ì»´í”„ ë°”ë¡œ ê°€ë™ë˜ê²Œ..*/
         gu16_manaul_comp_delay_timer = COMP_START_TIME;
 
         gu8_icewater_test_input = 0;
@@ -412,13 +412,13 @@ void TestUartStart(void)
     gu16_uart_ice_faucet_2_uv_off_ad = 1024;
     gu16_uart_ice_tray_1_2_uv_off_ad = 1024;
     gu16_uart_ice_tank_1_2_uv_off_ad = 1024;
-    gu16_uart_ice_tank_3_uv_off_ad = 1024;      /* 2kg Ãß°¡ 250226 CH.PARK */
+    gu16_uart_ice_tank_3_uv_off_ad = 1024;      /* 2kg ì¶”ê°€ 250226 CH.PARK */
 
     gu16_uart_drain_pump_off_ad = 1024;
     gu16_uart_tray_pump_off_ad = 1024;
     gu16_uart_dc_fan_off_ad = 1024;
 
-    /* µµ¾îÈ÷ÅÍ Ãß°¡ */
+    /* ë„ì–´íˆí„° ì¶”ê°€ */
     gu16_Door_Heater_IAD_OFF_Data = 1024;
     gu16_Door_Heater_IAD_ON_Data = 0;
 
@@ -439,7 +439,7 @@ void TestUartStart(void)
     bit_uart_cold_extract_finish = CLEAR;
     bit_uart_hot_extract_finish = CLEAR;
 
-    /* ÀÚµ¿°øÁ¤°Ë»ç¸ğµå ÁøÀÔÇÏ±â Àü¿¡ NOS¹ëºê ´İÈ÷´Â Çö»ó °³¼± 250321 CH.PARK */
+    /* ìë™ê³µì •ê²€ì‚¬ëª¨ë“œ ì§„ì…í•˜ê¸° ì „ì— NOSë°¸ë¸Œ ë‹«íˆëŠ” í˜„ìƒ ê°œì„  250321 CH.PARK */
     pVALVE_NOS = CLEAR;
 }
 
@@ -464,7 +464,7 @@ void Uart_Test_Main(void)
         }
         else if( gu8_factory_test_step == 1 )
         {
-            /*..hui [23-3-15¿ÀÈÄ 2:28:58] Åë½Å Å×½ºÆ® ½ÃÀÛÇÏ¸é FND, LED ÀüÃ¼ ´Ù ÄÑ´Â°É·Î..*/
+            /*..hui [23-3-15ì˜¤í›„ 2:28:58] í†µì‹  í…ŒìŠ¤íŠ¸ ì‹œì‘í•˜ë©´ FND, LED ì „ì²´ ë‹¤ ì¼œëŠ”ê±¸ë¡œ..*/
             ///Bit0_Front_Left_Led_Ice_Full_Text ^= SET;
             fnd_left_uart_test();
             fnd_right_uart_test();
@@ -496,27 +496,27 @@ void Uart_Test_Main(void)
         bit_display_test_finish = SET;
     }
 
-    /*..hui [23-3-14¿ÀÈÄ 5:47:23] ¼¾¼­·ù ÀÔ·Â..*/
+    /*..hui [23-3-14ì˜¤í›„ 5:47:23] ì„¼ì„œë¥˜ ì…ë ¥..*/
     test_uart_input();
 
-    /*..hui [23-3-14¿ÀÈÄ 5:47:39] °Ë»ç ½ÃÀÛÇÏ¸é ¾ÆÀÌ½ºÆ®·¹ÀÌ ¿Ã·È´Ù ³»¸²..*/
+    /*..hui [23-3-14ì˜¤í›„ 5:47:39] ê²€ì‚¬ ì‹œì‘í•˜ë©´ ì•„ì´ìŠ¤íŠ¸ë ˆì´ ì˜¬ë ¸ë‹¤ ë‚´ë¦¼..*/
     test_uart_ice_tray();
 
-    /* ¾ÆÀÌ½ºµµ¾î È÷ÅÍ Ãß°¡ */
+    /* ì•„ì´ìŠ¤ë„ì–´ íˆí„° ì¶”ê°€ */
     test_uart_ice_door_heater();
 
-    /*..hui [23-3-14¿ÀÈÄ 5:48:41] Á¦ºù ¹× ³Ã°¢ Å×½ºÆ®´Â Å×ºí¸´¿¡¼­ ÇÏ´Â°É·Î º¯°æ..*/
+    /*..hui [23-3-14ì˜¤í›„ 5:48:41] ì œë¹™ ë° ëƒ‰ê° í…ŒìŠ¤íŠ¸ëŠ” í…Œë¸”ë¦¿ì—ì„œ í•˜ëŠ”ê±¸ë¡œ ë³€ê²½..*/
     /*test_ice_system();*/
     ControlGasSwitch();
 
-    /*..hui [23-3-14¿ÀÈÄ 5:48:46] EEPROM µ¥ÀÌÅ¸ ÃÊ±âÈ­..*/
+    /*..hui [23-3-14ì˜¤í›„ 5:48:46] EEPROM ë°ì´íƒ€ ì´ˆê¸°í™”..*/
     initial_all_data();
 
-    /*..hui [22-8-17¿ÀÀü 10:49:14] ÀÎÃµ°øÀå ¼öµ¿°Ë»ç¸ğµå Ãß°¡..*/
-    /*..hui [23-3-22¿ÀÈÄ 1:35:05] ¼öµ¿°Ë»ç ¸ğµå »èÁ¦.. ¼³Â÷Àå´Ô.. ¾îÂ÷ÇÇ Àü¿ø ÄÑÁö¸é ÇÇµå OPENµÊ..*/
+    /*..hui [22-8-17ì˜¤ì „ 10:49:14] ì¸ì²œê³µì¥ ìˆ˜ë™ê²€ì‚¬ëª¨ë“œ ì¶”ê°€..*/
+    /*..hui [23-3-22ì˜¤í›„ 1:35:05] ìˆ˜ë™ê²€ì‚¬ ëª¨ë“œ ì‚­ì œ.. ì„¤ì°¨ì¥ë‹˜.. ì–´ì°¨í”¼ ì „ì› ì¼œì§€ë©´ í”¼ë“œ OPENë¨..*/
     /*input_manual_test();*/
 
-    /* ¾óÀ½Æ®·¹ÀÌ Á¦¾î ÇÔ¼ö Ãß°¡ 250425 CH.PARK */
+    /* ì–¼ìŒíŠ¸ë ˆì´ ì œì–´ í•¨ìˆ˜ ì¶”ê°€ 250425 CH.PARK */
     inverse_direction_time_check();
     check_error_micro_sw_movement();
     control_ice_tray();
@@ -532,23 +532,23 @@ void Uart_Test_Main(void)
 
     ControlFlow();
 
-    /*..hui [19-7-22¿ÀÈÄ 7:36:53] À¯·®¼¾¼­..*/
+    /*..hui [19-7-22ì˜¤í›„ 7:36:53] ìœ ëŸ‰ì„¼ì„œ..*/
     calculate_flow_input();
 
-    /*..hui [25-1-23¿ÀÈÄ 7:34:11] ¹° ÃßÃâ Å×½ºÆ®..*/
+    /*..hui [25-1-23ì˜¤í›„ 7:34:11] ë¬¼ ì¶”ì¶œ í…ŒìŠ¤íŠ¸..*/
     test_extract();
     test_hot_flow_motor();
 
-    /*..hui [25-1-23¿ÀÈÄ 7:36:40] À¯·® Ã¼Å©..*/
+    /*..hui [25-1-23ì˜¤í›„ 7:36:40] ìœ ëŸ‰ ì²´í¬..*/
     input_uart_flow();
 
     test_comp_control();
 
 
-    /*..hui [19-12-19¿ÀÈÄ 1:26:46] Á¤¼ö ¿Âµµ¼¾¼­ Àü¿ø ON..*/
+    /*..hui [19-12-19ì˜¤í›„ 1:26:46] ì •ìˆ˜ ì˜¨ë„ì„¼ì„œ ì „ì› ON..*/
     pROOM_TH_POWER = SET;
     bit_adc_room_start = SET;
-    /*..hui [19-12-19¿ÀÈÄ 1:27:21] ³Ã¼ö ¿Âµµ¼¾¼­ Àü¿ø ON..*/
+    /*..hui [19-12-19ì˜¤í›„ 1:27:21] ëƒ‰ìˆ˜ ì˜¨ë„ì„¼ì„œ ì „ì› ON..*/
     pCOLD_TH_POWER = SET;
     bit_adc_cold_start = SET;
 
@@ -564,19 +564,19 @@ void factory_test(void)
 {
     switch(gu8_factory_test_step)
     {
-        case 0:         /* °Ë»ç 1¸ğµå */
+        case 0:         /* ê²€ì‚¬ 1ëª¨ë“œ */
 
             motor_test();
 
-            // °Ë»ç 2¸ğµå ÁøÀÔÁ¶°Ç
-            if((bit_uart_tank_cover_reed_two == SET)        // ÅÊÅ©Ä¿¹ö ¹Ì°¨Áö->°¨Áö
-            && (bit_uart_filter_reed == SET)                // ÇÊÅÍ¸®µå ¹Ì°¨Áö->°¨Áö
-            && (gu16_uart_key_check == 0x07)                // ³Ã¿ÂÁ¤ ÃßÃâ À¯·® 0x32 ÀÌ»ó °¨Áö
-            && (gu16ADLeakage < 50)                         // ´©¼ö ¹Ì°¨Áö
-            && (bit_uart_inner_door_reed == SET)            // [2025-11-17] CH.PARK ¾ÆÀÌ½ºµµ¾î ¸®µå °¨ÁöÁ¶°Ç Ãß°¡
+            // ê²€ì‚¬ 2ëª¨ë“œ ì§„ì…ì¡°ê±´
+            if((bit_uart_tank_cover_reed_two == SET)        // íƒ±í¬ì»¤ë²„ ë¯¸ê°ì§€->ê°ì§€
+            && (bit_uart_filter_reed == SET)                // í•„í„°ë¦¬ë“œ ë¯¸ê°ì§€->ê°ì§€
+            && (gu16_uart_key_check == 0x07)                // ëƒ‰ì˜¨ì • ì¶”ì¶œ ìœ ëŸ‰ 0x32 ì´ìƒ ê°ì§€
+            && (gu16ADLeakage < 50)                         // ëˆ„ìˆ˜ ë¯¸ê°ì§€
+            && (bit_uart_inner_door_reed == SET)            // [2025-11-17] CH.PARK ì•„ì´ìŠ¤ë„ì–´ ë¦¬ë“œ ê°ì§€ì¡°ê±´ ì¶”ê°€
             )
             {
-                /* °øÁ¤°Ë»ç 2¸ğµå ÁøÀÔ ½ÃÀÛ */
+                /* ê³µì •ê²€ì‚¬ 2ëª¨ë“œ ì§„ì… ì‹œì‘ */
                 UARTest_NO_LOAD_Set();
                 gu8_factory_test_step++;
 
@@ -610,7 +610,7 @@ void factory_test(void)
             break;
 
 
-        case 1:         /* °Ë»ç 2¸ğµå (ÀÚµ¿°øÁ¤°Ë»ç) */
+        case 1:         /* ê²€ì‚¬ 2ëª¨ë“œ (ìë™ê³µì •ê²€ì‚¬) */
             #ifdef __UART_TEST_MODE__
             bit_hot_flow_continue = SET;
             bit_ice_door_continue = SET;
@@ -635,7 +635,7 @@ void factory_test(void)
 
         case 2:
 
-            // ´ë±â
+            // ëŒ€ê¸°
             manual_test();
             comp_manual_test();
             fnd_left_uart_test();
@@ -666,7 +666,7 @@ void test_uart_input(void)
 {
     input_uart_level();
 
-    /*..hui [19-10-28¿ÀÈÄ 2:17:55] Á¦ºù °ü·Ã ¼¾¼­..*/
+    /*..hui [19-10-28ì˜¤í›„ 2:17:55] ì œë¹™ ê´€ë ¨ ì„¼ì„œ..*/
     input_uart_ice_sensor();
 
     input_uart_uv();
@@ -680,9 +680,9 @@ void test_uart_input(void)
 ***********************************************************************************************************************/
 void input_uart_level(void)
 {
-    /*..hui [19-6-26¿ÀÈÄ 1:54:08] ¼öÀ§¼¾¼­ ÀÔ·Â..*/
+    /*..hui [19-6-26ì˜¤í›„ 1:54:08] ìˆ˜ìœ„ì„¼ì„œ ì…ë ¥..*/
     input_uart_drain_level();
-    /*..hui [19-10-28¿ÀÈÄ 1:16:52] ´©¼ö¼¾¼­ ÀÔ·Â..*/
+    /*..hui [19-10-28ì˜¤í›„ 1:16:52] ëˆ„ìˆ˜ì„¼ì„œ ì…ë ¥..*/
     input_uart_leakage();
 }
 
@@ -717,10 +717,10 @@ void input_uart_drain_level(void)
 ***********************************************************************************************************************/
 void input_uart_leakage(void)
 {
-    /* 5. ´©¼ö ¼¾¼­ - Ä¿³ØÅÍ Short °Ë»ç */
+    /* 5. ëˆ„ìˆ˜ ì„¼ì„œ - ì»¤ë„¥í„° Short ê²€ì‚¬ */
     if( gu16ADLeakage < 50 )
     {
-        gu8_uart_leakage = 0x00;  // Á¤»ó
+        gu8_uart_leakage = 0x00;  // ì •ìƒ
     }
     else
     {
@@ -735,7 +735,7 @@ void input_uart_leakage(void)
 ***********************************************************************************************************************/
 void input_uart_ice_sensor(void)
 {
-    input_ice_lack();   /* Àúºù¼¾¼­ Ãß°¡ */
+    input_ice_lack();   /* ì €ë¹™ì„¼ì„œ ì¶”ê°€ */
     input_ice_full();
     input_drain_pump_ad();
 }
@@ -747,25 +747,25 @@ void input_uart_ice_sensor(void)
 void input_ice_lack(void)
 {
     #if 0
-    /*¹ß½Å Á¤»ó / ¼ö½Å Á¤»ó*/
+    /*ë°œì‹  ì •ìƒ / ìˆ˜ì‹  ì •ìƒ*/
     /*on / off*/
     /*983 / 0*/
-    /*¹ß½Å ¿ÀÇÂ / ¼ö½Å Á¤»ó*/
+    /*ë°œì‹  ì˜¤í”ˆ / ìˆ˜ì‹  ì •ìƒ*/
     /*on / off*/
     /*0 / 0*/
-    /*¹ß½Å ¼îÆ® / ¼ö½Å Á¤»ó*/
+    /*ë°œì‹  ì‡¼íŠ¸ / ìˆ˜ì‹  ì •ìƒ*/
     /*on / off*/
     /*0 / 0*/
-    /*¹ß½Å Á¤»ó / ¼ö½Å ¿ÀÇÂ*/
+    /*ë°œì‹  ì •ìƒ / ìˆ˜ì‹  ì˜¤í”ˆ*/
     /*on / off*/
     /*0 / 0*/
-    /*¹ß½Å Á¤»ó / ¼ö½Å ¼îÆ®*/
+    /*ë°œì‹  ì •ìƒ / ìˆ˜ì‹  ì‡¼íŠ¸*/
     /*on / off*/
     /*1023/ 1023*/
     #endif
 
 
-    //----------------- Àúºù¼¾¼­ IR µ¿ÀÛ------------------------------------
+    //----------------- ì €ë¹™ì„¼ì„œ IR ë™ì‘------------------------------------
     gu8_uart_ir_ice_lack_check_timer++;
 
     if(gu8_uart_ir_ice_lack_check_timer >= 70)
@@ -776,7 +776,7 @@ void input_ice_lack(void)
         {
             gu8_uart_ir_ice_lack_check_timer = 90;
 
-            /*..hui [23-11-15¿ÀÈÄ 1:38:56] ¸¸ºù¹ß½Å OFFÇÏ°í AD°ª Ã¼Å©(¼îÆ®È®ÀÎ)..*/
+            /*..hui [23-11-15ì˜¤í›„ 1:38:56] ë§Œë¹™ë°œì‹  OFFí•˜ê³  ADê°’ ì²´í¬(ì‡¼íŠ¸í™•ì¸)..*/
             gu8_uart_ir_ice_lack_off_check_timer++;
 
             if( gu8_uart_ir_ice_lack_off_check_timer < 30 )
@@ -819,25 +819,25 @@ void input_ice_lack(void)
 void input_ice_full(void)
 {
     #if 0
-    /*¹ß½Å Á¤»ó / ¼ö½Å Á¤»ó*/
+    /*ë°œì‹  ì •ìƒ / ìˆ˜ì‹  ì •ìƒ*/
     /*on / off*/
     /*983 / 0*/
-    /*¹ß½Å ¿ÀÇÂ / ¼ö½Å Á¤»ó*/
+    /*ë°œì‹  ì˜¤í”ˆ / ìˆ˜ì‹  ì •ìƒ*/
     /*on / off*/
     /*0 / 0*/
-    /*¹ß½Å ¼îÆ® / ¼ö½Å Á¤»ó*/
+    /*ë°œì‹  ì‡¼íŠ¸ / ìˆ˜ì‹  ì •ìƒ*/
     /*on / off*/
     /*0 / 0*/
-    /*¹ß½Å Á¤»ó / ¼ö½Å ¿ÀÇÂ*/
+    /*ë°œì‹  ì •ìƒ / ìˆ˜ì‹  ì˜¤í”ˆ*/
     /*on / off*/
     /*0 / 0*/
-    /*¹ß½Å Á¤»ó / ¼ö½Å ¼îÆ®*/
+    /*ë°œì‹  ì •ìƒ / ìˆ˜ì‹  ì‡¼íŠ¸*/
     /*on / off*/
     /*1023/ 1023*/
     #endif
 
 
-    //----------------- ¸¸ºù¼¾¼­ IR µ¿ÀÛ------------------------------------
+    //----------------- ë§Œë¹™ì„¼ì„œ IR ë™ì‘------------------------------------
     gu8_uart_ir_check_timer++;
 
     if(gu8_uart_ir_check_timer >= 70)
@@ -848,7 +848,7 @@ void input_ice_full(void)
         {
             gu8_uart_ir_check_timer = 90;
 
-            /*..hui [23-11-15¿ÀÈÄ 1:38:56] ¸¸ºù¹ß½Å OFFÇÏ°í AD°ª Ã¼Å©(¼îÆ®È®ÀÎ)..*/
+            /*..hui [23-11-15ì˜¤í›„ 1:38:56] ë§Œë¹™ë°œì‹  OFFí•˜ê³  ADê°’ ì²´í¬(ì‡¼íŠ¸í™•ì¸)..*/
             gu8_uart_ir_off_check_timer++;
 
             if( gu8_uart_ir_off_check_timer < 30 )
@@ -890,7 +890,7 @@ void input_ice_full(void)
 ***********************************************************************************************************************/
 void input_drain_pump_ad(void)
 {
-    /*..hui [23-3-24¿ÀÈÄ 12:15:07] 1¸ğµå¿¡¼­´Â °è¼Ó °¡µ¿ÇÏ´Â°É·Î º¯°æ.. ¼³Èñ¼® Â÷Àå´Ô ¿äÃ»..*/
+    /*..hui [23-3-24ì˜¤í›„ 12:15:07] 1ëª¨ë“œì—ì„œëŠ” ê³„ì† ê°€ë™í•˜ëŠ”ê±¸ë¡œ ë³€ê²½.. ì„¤í¬ì„ ì°¨ì¥ë‹˜ ìš”ì²­..*/
     if(gu8_factory_test_step != 0)
     {
         return;
@@ -931,7 +931,7 @@ void input_uart_uv(void)
 
     gu8_uart_uv_check_timer++;
 
-    /*..hui [19-10-28¿ÀÈÄ 3:13:29] UV¼¾¼­´Â 3ÃÊ¸¸..*/
+    /*..hui [19-10-28ì˜¤í›„ 3:13:29] UVì„¼ì„œëŠ” 3ì´ˆë§Œ..*/
     if(gu8_uart_uv_check_timer >= 30)
     {
         /*gu8_uart_uv_check_timer = 30;*/
@@ -978,7 +978,7 @@ void input_uart_uv(void)
             }
             else{}
 
-            /* ¾óÀ½ÅÊÅ© UV 3 LED Ãß°¡ 250226 CH.PARK */
+            /* ì–¼ìŒíƒ±í¬ UV 3 LED ì¶”ê°€ 250226 CH.PARK */
             if(gu16_AD_Result_UV_Ice_Tank_3_Current_Feed < gu16_uart_ice_tank_3_uv_off_ad)
             {
                 gu16_uart_ice_tank_3_uv_off_ad = gu16_AD_Result_UV_Ice_Tank_3_Current_Feed;
@@ -1027,7 +1027,7 @@ void input_uart_uv(void)
         }
         else{}
 
-        /* ¾óÀ½ÅÊÅ© UV 3 LED Ãß°¡ 250226 CH.PARK */
+        /* ì–¼ìŒíƒ±í¬ UV 3 LED ì¶”ê°€ 250226 CH.PARK */
         if(gu16_AD_Result_UV_Ice_Tank_3_Current_Feed > gu16_uart_ice_tank_3_uv_on_ad)
         {
             gu16_uart_ice_tank_3_uv_on_ad = gu16_AD_Result_UV_Ice_Tank_3_Current_Feed;
@@ -1057,7 +1057,7 @@ void input_reed_sw(void)
         {
             bit_tank_cover_two_old = CLEAR;
 
-            /*..hui [21-10-6¿ÀÈÄ 7:50:14] ¹Ì°¨Áö -> °¨Áö·Î º¯°æµÈ °æ¿ì¿¡¸¸ Á¤»ó..*/
+            /*..hui [21-10-6ì˜¤í›„ 7:50:14] ë¯¸ê°ì§€ -> ê°ì§€ë¡œ ë³€ê²½ëœ ê²½ìš°ì—ë§Œ ì •ìƒ..*/
             bit_uart_tank_cover_reed_two = SET;
             play_melody_warning_197();
         }
@@ -1073,14 +1073,14 @@ void input_reed_sw(void)
         else{}
     }
 
-    /*..hui [21-10-6¿ÀÈÄ 7:48:43] °¨Áö..*/
+    /*..hui [21-10-6ì˜¤í›„ 7:48:43] ê°ì§€..*/
     if( pREED_FILTER == CLEAR )
     {
         if( bit_filter_old == SET )
         {
             bit_filter_old = CLEAR;
 
-            /*..hui [21-10-6¿ÀÈÄ 7:50:14] ¹Ì°¨Áö -> °¨Áö·Î º¯°æµÈ °æ¿ì¿¡¸¸ Á¤»ó..*/
+            /*..hui [21-10-6ì˜¤í›„ 7:50:14] ë¯¸ê°ì§€ -> ê°ì§€ë¡œ ë³€ê²½ëœ ê²½ìš°ì—ë§Œ ì •ìƒ..*/
             bit_uart_filter_reed = SET;
             play_melody_warning_197();
         }
@@ -1096,7 +1096,7 @@ void input_reed_sw(void)
         else{}
     }
 
-    // [2025-11-17] CH.PARK ¾ÆÀÌ½ºµµ¾î ¸®µå ½ºÀ§Ä¡ Ãß°¡
+    // [2025-11-17] CH.PARK ì•„ì´ìŠ¤ë„ì–´ ë¦¬ë“œ ìŠ¤ìœ„ì¹˜ ì¶”ê°€
     if(GET_INNER_DOOR_REED_SW() == ACTIVE_LOW_DETECTED)
     {
         bit_uart_inner_door_reed = SET;
@@ -1105,7 +1105,7 @@ void input_reed_sw(void)
 
 void test_uart_ice_door_heater(void)
 {
-    /* °Ë»ç 2¸ğµå¿¡¼­ºÎÅÍ µ¿ÀÛµÉ ¼ö ÀÖµµ·Ï ÇÔ */
+    /* ê²€ì‚¬ 2ëª¨ë“œì—ì„œë¶€í„° ë™ì‘ë  ìˆ˜ ìˆë„ë¡ í•¨ */
     if( gu8_factory_test_step != 1 )
     {
         gu8_Door_Heater_Check_Timer_100ms = 0;
@@ -1115,7 +1115,7 @@ void test_uart_ice_door_heater(void)
     else{}
 
     gu8_Door_Heater_Check_Timer_100ms++;
-    if(gu8_Door_Heater_Check_Timer_100ms >= 30)     /* 3ÃÊ °£ µ¿ÀÛ ÈÄ ÇØÁ¦ */
+    if(gu8_Door_Heater_Check_Timer_100ms >= 30)     /* 3ì´ˆ ê°„ ë™ì‘ í›„ í•´ì œ */
     {
         pHEATER_ICE_DOOR = CLEAR;
 
@@ -1153,13 +1153,13 @@ void test_uart_ice_tray(void)
 
     if( gu8_uart_ice_tray_test_step >= 4 )
     {
-        /*..hui [19-11-8¿ÀÈÄ 5:12:28] Æ®·¹ÀÌ °Ë»ç ¿Ï·á ÈÄ Á¦ºù °Ë»çÇÒ¶§ Æ®·¹ÀÌ Á¦ºù¹æÇâÀ¸·Î ÀÌµ¿..*/
+        /*..hui [19-11-8ì˜¤í›„ 5:12:28] íŠ¸ë ˆì´ ê²€ì‚¬ ì™„ë£Œ í›„ ì œë¹™ ê²€ì‚¬í• ë•Œ íŠ¸ë ˆì´ ì œë¹™ë°©í–¥ìœ¼ë¡œ ì´ë™..*/
         return;
     }
     else{}
 
-    /*..hui [19-10-28¿ÀÈÄ 3:06:51] ¸¶ÀÌÅ©·Î½ºÀ§Ä¡ µ¿½Ã °¨Áö½Ã Á¤Áö..*/
-    /*..hui [19-10-28¿ÀÈÄ 3:08:17] Æ®·¹ÀÌ °Ë»ç ¿Ï·á½Ã¿¡µµ Á¤Áö..*/
+    /*..hui [19-10-28ì˜¤í›„ 3:06:51] ë§ˆì´í¬ë¡œìŠ¤ìœ„ì¹˜ ë™ì‹œ ê°ì§€ì‹œ ì •ì§€..*/
+    /*..hui [19-10-28ì˜¤í›„ 3:08:17] íŠ¸ë ˆì´ ê²€ì‚¬ ì™„ë£Œì‹œì—ë„ ì •ì§€..*/
     #if 0
     if( F_ErrTrayMotor_DualInital == SET )
     {
@@ -1175,7 +1175,7 @@ void test_uart_ice_tray(void)
     {
         gu16_uart_ice_tray_test_timer++;
 
-        /*..hui [19-11-5¿ÀÈÄ 12:26:04] ÃÖ´ë 35ÃÊ Á¦ÇÑ..*/
+        /*..hui [19-11-5ì˜¤í›„ 12:26:04] ìµœëŒ€ 35ì´ˆ ì œí•œ..*/
         if(gu16_uart_ice_tray_test_timer >= 500)
         {
             gu16_uart_ice_tray_test_timer = 0;
@@ -1187,7 +1187,7 @@ void test_uart_ice_tray(void)
     }
     else{}
 
-    /*..hui [18-2-9¿ÀÈÄ 1:09:49] CW CCW ¹æÇâ º¯°æ ½Ã 5ÃÊ ´ë±â ÈÄ ÀüÈ¯..*/
+    /*..hui [18-2-9ì˜¤í›„ 1:09:49] CW CCW ë°©í–¥ ë³€ê²½ ì‹œ 5ì´ˆ ëŒ€ê¸° í›„ ì „í™˜..*/
     inverse_direction_time_check();
 
     check_error_micro_sw_movement();
@@ -1201,7 +1201,7 @@ void test_uart_ice_tray(void)
             break;
 
         case 1:
-            up_tray_motor();   // ÀÚµ¿°øÁ¤°Ë»ç
+            up_tray_motor();   // ìë™ê³µì •ê²€ì‚¬
             gu8_uart_ice_tray_test_step++;
             break;
 
@@ -1211,7 +1211,7 @@ void test_uart_ice_tray(void)
             )
             {
                 gu8_uart_ice_tray_up = SET;
-                down_tray_motor();   // Æ®·¹ÀÌÁ¦¾î ÇÔ¼öº¯°æ
+                down_tray_motor();   // íŠ¸ë ˆì´ì œì–´ í•¨ìˆ˜ë³€ê²½
                 gu8_uart_ice_tray_test_step++;
             }
             else
@@ -1223,7 +1223,7 @@ void test_uart_ice_tray(void)
                     if( gu16_uart_ice_tray_test_timer >= 20 )
                     {
                         gu16_uart_ice_tray_test_timer = 0;
-                        up_tray_motor();    // ÀÚµ¿°øÁ¤°Ë»ç
+                        up_tray_motor();    // ìë™ê³µì •ê²€ì‚¬
                     }
                     else{}
                 }
@@ -1252,7 +1252,7 @@ void test_uart_ice_tray(void)
                     if( gu16_uart_ice_tray_test_timer >= 20 )
                     {
                         gu16_uart_ice_tray_test_timer = 0;
-                        down_tray_motor();    // Æ®·¹ÀÌÁ¦¾î ÇÔ¼öº¯°æ
+                        down_tray_motor();    // íŠ¸ë ˆì´ì œì–´ í•¨ìˆ˜ë³€ê²½
                     }
                     else{}
                 }
@@ -1265,7 +1265,7 @@ void test_uart_ice_tray(void)
             break;
 
         case 4:
-            /*..hui [19-10-28¿ÀÈÄ 2:40:33] ¿©±â¼­ ´ë±â..*/
+            /*..hui [19-10-28ì˜¤í›„ 2:40:33] ì—¬ê¸°ì„œ ëŒ€ê¸°..*/
             F_TrayMotorUP = 0;
             F_TrayMotorDOWN = 0;
             break;
@@ -1286,25 +1286,25 @@ void test_uart_ice_tray(void)
 ***********************************************************************************************************************/
 void input_uart_flow(void)
 {
-    /*..hui [23-12-8¿ÀÈÄ 4:37:31] 1¸ğµå, 2¸ğµå ¸ğµÎ È®ÀÎ.. ¼³Èñ¼® Â÷Àå´Ô..*/
+    /*..hui [23-12-8ì˜¤í›„ 4:37:31] 1ëª¨ë“œ, 2ëª¨ë“œ ëª¨ë‘ í™•ì¸.. ì„¤í¬ì„ ì°¨ì¥ë‹˜..*/
     if( gu8_factory_test_step == 2 )
     {
         return;
     }
     else{}
 
-    /*..hui [25-1-23¿ÀÈÄ 7:41:53] ÀüÃ¼ À¯·® MAX, 1~2¸ğµå¿¡¼­ È®ÀÎ..*/
+    /*..hui [25-1-23ì˜¤í›„ 7:41:53] ì „ì²´ ìœ ëŸ‰ MAX, 1~2ëª¨ë“œì—ì„œ í™•ì¸..*/
     if( gu8_Flow_1sec > gu8AT_Flow_1sec_All_Max )
     {
         gu8AT_Flow_1sec_All_Max = gu8_Flow_1sec;
     }
     else{}
 
-    /*..hui [25-1-23¿ÀÈÄ 7:42:03] ÇöÀç ½Ç½Ã°£ À¯·® °ª, 1~2 ¸ğµå¿¡¼­ È®ÀÎ..*/
+    /*..hui [25-1-23ì˜¤í›„ 7:42:03] í˜„ì¬ ì‹¤ì‹œê°„ ìœ ëŸ‰ ê°’, 1~2 ëª¨ë“œì—ì„œ í™•ì¸..*/
     gu8AT_Flow_1sec_Real = gu8_Flow_1sec;
 
 
-    /*..hui [25-1-23¿ÀÈÄ 7:42:38] ¿©±âºÎÅÏ 1¸ğµå¿¡¼­¸¸ È®ÀÎÇÏ´Â À¯·® °ª..*/
+    /*..hui [25-1-23ì˜¤í›„ 7:42:38] ì—¬ê¸°ë¶€í„´ 1ëª¨ë“œì—ì„œë§Œ í™•ì¸í•˜ëŠ” ìœ ëŸ‰ ê°’..*/
     if( gu8_factory_test_step == 1 )
     {
         return;
@@ -1315,7 +1315,7 @@ void input_uart_flow(void)
     {
         if( gu8_test_water_out == PURE_WATER_SELECT )
         {
-            /*..hui [25-1-23¿ÀÈÄ 7:45:24] Á¤¼öÃßÃâ½Ã À¯·® ÃÖ´ë°ª..*/
+            /*..hui [25-1-23ì˜¤í›„ 7:45:24] ì •ìˆ˜ì¶”ì¶œì‹œ ìœ ëŸ‰ ìµœëŒ€ê°’..*/
             if( gu8_Flow_1sec > gu8AT_Flow_1sec_Ambient_Extract_Max )
             {
                 gu8AT_Flow_1sec_Ambient_Extract_Max = gu8_Flow_1sec;
@@ -1326,7 +1326,7 @@ void input_uart_flow(void)
         }
         else if( gu8_test_water_out == COLD_WATER_SELECT )
         {
-            /*..hui [25-1-23¿ÀÈÄ 7:45:30] ³Ã¼ö ÃßÃâ½Ã À¯·® ÃÖ´ë°ª..*/
+            /*..hui [25-1-23ì˜¤í›„ 7:45:30] ëƒ‰ìˆ˜ ì¶”ì¶œì‹œ ìœ ëŸ‰ ìµœëŒ€ê°’..*/
             if( gu8_Flow_1sec > gu8AT_Flow_1sec_Cold_Extract_Max )
             {
                 gu8AT_Flow_1sec_Cold_Extract_Max = gu8_Flow_1sec;
@@ -1335,7 +1335,7 @@ void input_uart_flow(void)
         }
         else if( gu8_test_water_out == HOT_WATER_SELECT )
         {
-            /*..hui [25-1-23¿ÀÈÄ 7:45:35] ¿Â¼ö ÃßÃâ½Ã À¯·® ÃÖ´ë°ª..*/
+            /*..hui [25-1-23ì˜¤í›„ 7:45:35] ì˜¨ìˆ˜ ì¶”ì¶œì‹œ ìœ ëŸ‰ ìµœëŒ€ê°’..*/
             if( gu8_Flow_1sec > gu8AT_Flow_1sec_Hot_Extract_Max )
             {
                 gu8AT_Flow_1sec_Hot_Extract_Max = gu8_Flow_1sec;
@@ -1494,7 +1494,7 @@ void test_extract(void)
         Bit4_Front_Under_Water_White_Extract = CLEAR;
     }
 
-    /*..hui [21-7-16¿ÀÀü 11:14:46] LED´Â ¼±ÅÃ ¹öÆ° ´­¸° »óÅÂ Ç¥½Ã À¯Áö / ¸¶Áö¸·¿£ ´Ù ÄÑÁöµµ·Ï..*/
+    /*..hui [21-7-16ì˜¤ì „ 11:14:46] LEDëŠ” ì„ íƒ ë²„íŠ¼ ëˆŒë¦° ìƒíƒœ í‘œì‹œ ìœ ì§€ / ë§ˆì§€ë§‰ì—” ë‹¤ ì¼œì§€ë„ë¡..*/
     if( gu8_uart_purify_test_input == 1 )
     //if( gu8_test_water_out == PURE_WATER_SELECT )
     {
@@ -1590,7 +1590,7 @@ void test_hot_flow_motor(void)
 ***********************************************************************************************************************/
 void motor_test(void)
 {
-    /*..hui [19-10-28¿ÀÈÄ 9:23:38] Åë½Å ½ÃÀÛ Àü±îÁö¸¸ À°¾È Å×½ºÆ®..*/
+    /*..hui [19-10-28ì˜¤í›„ 9:23:38] í†µì‹  ì‹œì‘ ì „ê¹Œì§€ë§Œ ìœ¡ì•ˆ í…ŒìŠ¤íŠ¸..*/
     if(gu8_uart_comm_start == 1)
     {
         return;
@@ -1624,7 +1624,7 @@ void motor_test(void)
         gu8_ice_motor_test_timer = 0;
     }
 
-    /* 2KG ICE SELECT DOOR Ãß°¡ 250226 CH.PARK */
+    /* 2KG ICE SELECT DOOR ì¶”ê°€ 250226 CH.PARK */
     if( gu16_IceSelect_StepMotor == 0 )
     {
         F_IceSelect = SET;
@@ -1645,7 +1645,7 @@ void motor_test(void)
     }
     else{}
 
-    /*..hui [23-3-15¿ÀÈÄ 2:19:52] ¸ğÅÍ À°¾È Å×½ºÆ®ÇÒ¶§ ³Ã°¢ÆÒµµ °¡µ¿..*/
+    /*..hui [23-3-15ì˜¤í›„ 2:19:52] ëª¨í„° ìœ¡ì•ˆ í…ŒìŠ¤íŠ¸í• ë•Œ ëƒ‰ê°íŒ¬ë„ ê°€ë™..*/
     pDC_FAN = SET;
 
     if( gu16_AD_Result_Fan_Current > gu16_uart_dc_fan_on_ad )
@@ -1736,8 +1736,8 @@ void display_led_factory(void)
 ***********************************************************************************************************************/
 void display_factory_1_mode(void)
 {
-    /*..hui [25-2-3¿ÀÈÄ 2:02:18] ¾óÀ½ ÃßÃâ LED Á¡¸ê..*/
-    /*..hui [25-2-3¿ÀÈÄ 2:05:23] ¹° ÃßÃâ LED ¼Òµî À¯Áö..*/
+    /*..hui [25-2-3ì˜¤í›„ 2:02:18] ì–¼ìŒ ì¶”ì¶œ LED ì ë©¸..*/
+    /*..hui [25-2-3ì˜¤í›„ 2:05:23] ë¬¼ ì¶”ì¶œ LED ì†Œë“± ìœ ì§€..*/
     Bit3_Front_Under_Ice_Outer_White_Extract = F_Wink_500ms;
     Bit1_Front_Under_Ice_Inner_White_Extract = F_Wink_500ms;
     /*Bit4_Front_Under_Water_White_Extract = CLEAR;*/
@@ -1759,7 +1759,7 @@ void display_factory_1_mode(void)
                     gu8_water_ext_test_input = 0;
                     bit_uart_purify_extract_finish = SET;
 
-                    /* °øÁ¤°Ë»ç¿¡¼­ À¯·®ÀÌ È®ÀÎµÇ¾î¾ß¸¸ KEY CHECK ³Ñ¾î°¡µµ·Ï °³¼± */
+                    /* ê³µì •ê²€ì‚¬ì—ì„œ ìœ ëŸ‰ì´ í™•ì¸ë˜ì–´ì•¼ë§Œ KEY CHECK ë„˜ì–´ê°€ë„ë¡ ê°œì„  */
                     uart_start_input_check( ON, UART_CHECK_ROOM_EXTRACT );
                 }
                 else
@@ -1787,7 +1787,7 @@ void display_factory_1_mode(void)
                     bit_uart_cold_extract_finish = SET;
 
 
-                    /* °øÁ¤°Ë»ç¿¡¼­ À¯·®ÀÌ È®ÀÎµÇ¾î¾ß¸¸ KEY CHECK ³Ñ¾î°¡µµ·Ï °³¼± */
+                    /* ê³µì •ê²€ì‚¬ì—ì„œ ìœ ëŸ‰ì´ í™•ì¸ë˜ì–´ì•¼ë§Œ KEY CHECK ë„˜ì–´ê°€ë„ë¡ ê°œì„  */
                     uart_start_input_check( ON, UART_CHECK_COLD_EXTRACT );
                 }
                 else
@@ -1811,10 +1811,10 @@ void display_factory_1_mode(void)
                 {
                     gu8_uart_flow_timer = 0;
                     Bit2_Front_Led_Hot_Select = SET;
-                    // gu8_water_ext_test_input = 0;        /* ¿Â¼ö´Â ÃßÃâ¹öÆ° ´©¸£¸é Á¤Áö 250519 */
+                    // gu8_water_ext_test_input = 0;        /* ì˜¨ìˆ˜ëŠ” ì¶”ì¶œë²„íŠ¼ ëˆ„ë¥´ë©´ ì •ì§€ 250519 */
                     bit_uart_hot_extract_finish = SET;
 
-                    /* °øÁ¤°Ë»ç¿¡¼­ À¯·®ÀÌ È®ÀÎµÇ¾î¾ß¸¸ KEY CHECK ³Ñ¾î°¡µµ·Ï °³¼± */
+                    /* ê³µì •ê²€ì‚¬ì—ì„œ ìœ ëŸ‰ì´ í™•ì¸ë˜ì–´ì•¼ë§Œ KEY CHECK ë„˜ì–´ê°€ë„ë¡ ê°œì„  */
                     uart_start_input_check( ON, UART_CHECK_HOT_EXTRACT );
                 }
                 else
@@ -1908,7 +1908,7 @@ void display_factory_1_mode(void)
         Bit5_Front_Led_Amount_Select = CLEAR;
     }
 
-    // [2025-11-17] CH.PARK ¾ÆÀÌ½ºµµ¾î ¸®µå ½ºÀ§Ä¡ Ãß°¡
+    // [2025-11-17] CH.PARK ì•„ì´ìŠ¤ë„ì–´ ë¦¬ë“œ ìŠ¤ìœ„ì¹˜ ì¶”ê°€
     if(bit_uart_inner_door_reed == SET)
     {
         Bit1_Front_Led_Ice_Water_Select = SET;
@@ -1945,7 +1945,7 @@ void display_factory_2_mode(void)
 ***********************************************************************************************************************/
 void display_factory_manual_mode(void)
 {
-    /*..hui [25-2-3¿ÀÈÄ 2:00:39] Á¦¾îÇÏ´Â°÷¿¡¼­ Ã³¸®..*/
+    /*..hui [25-2-3ì˜¤í›„ 2:00:39] ì œì–´í•˜ëŠ”ê³³ì—ì„œ ì²˜ë¦¬..*/
     #if 0
     Bit3_Front_Under_Ice_Outer_White_Extract = SET;
     Bit4_Front_Under_Water_White_Extract = SET;
@@ -1988,7 +1988,7 @@ void display_factory_manual_mode(void)
 ***********************************************************************************************************************/
 void motor_test_continue(void)
 {
-    /* À¯·®Á¶Àı¹ëºê FULL OPEN/CLOSE ¾ÈµÇ´Â Çö»ó °³¼± */
+    /* ìœ ëŸ‰ì¡°ì ˆë°¸ë¸Œ FULL OPEN/CLOSE ì•ˆë˜ëŠ” í˜„ìƒ ê°œì„  */
     if( gu8_hot_flow_mode == FLOW_MODE_NONE )
     {
         if( bit_hot_flow_continue == SET )
@@ -2024,7 +2024,7 @@ void motor_test_continue(void)
         F_IceOpen = CLEAR;
     }
 
-    /* 2KG ICE SELECT DOOR Ãß°¡ 250226 CH.PARK */
+    /* 2KG ICE SELECT DOOR ì¶”ê°€ 250226 CH.PARK */
     if(bit_ice_select_continue == SET)
     {
         if( gu16_IceSelect_StepMotor == 0 )
@@ -2061,7 +2061,7 @@ void motor_test_continue(void)
 
         case 1:
 
-            up_tray_motor();   // ÀÚµ¿°øÁ¤°Ë»ç
+            up_tray_motor();   // ìë™ê³µì •ê²€ì‚¬
             gu16_uart_ice_tray_continue_timer = 0;
             gu8_uart_ice_tray_continue_step++;
 
@@ -2072,8 +2072,8 @@ void motor_test_continue(void)
             //////if(F_TrayMotorUP != SET && gu8IceTrayLEV == ICE_TRAY_POSITION_ICE_MAKING)
             if(gu8IceTrayLEV == ICE_TRAY_POSITION_ICE_MAKING && sStepMotor.state == STEP_STATE_DEACTIVE )
             {
-                /* Á¦ºùÀ§Ä¡·Î ¿Ã¶ó¿ÔÀ¸¸é ¹İ´ë·Î ³»¸®±â 250321 CH.PARK */
-                down_tray_motor();   // Æ®·¹ÀÌÁ¦¾î ÇÔ¼öº¯°æ
+                /* ì œë¹™ìœ„ì¹˜ë¡œ ì˜¬ë¼ì™”ìœ¼ë©´ ë°˜ëŒ€ë¡œ ë‚´ë¦¬ê¸° 250321 CH.PARK */
+                down_tray_motor();   // íŠ¸ë ˆì´ì œì–´ í•¨ìˆ˜ë³€ê²½
                 gu8_uart_ice_tray_continue_step++;
             }
             else
@@ -2085,7 +2085,7 @@ void motor_test_continue(void)
                     if( gu16_uart_ice_tray_continue_timer >= 10 )
                     {
                         gu16_uart_ice_tray_continue_timer = 0;
-                        up_tray_motor();    // ÀÚµ¿°øÁ¤°Ë»ç
+                        up_tray_motor();    // ìë™ê³µì •ê²€ì‚¬
                     }
                     else{}
                 }
@@ -2102,7 +2102,7 @@ void motor_test_continue(void)
             /////if(F_TrayMotorDOWN != SET && gu8IceTrayLEV == ICE_TRAY_POSITION_ICE_THROW)
             if(gu8IceTrayLEV == ICE_TRAY_POSITION_ICE_THROW && sStepMotor.state == STEP_STATE_DEACTIVE )
             {
-                /* Å»ºùÀ§Ä¡·Î ´Ù ³»·Á°¬À¸¸é ´Ù½Ã Ã³À½ºÎÅÍ 250321 CH.PARK */
+                /* íƒˆë¹™ìœ„ì¹˜ë¡œ ë‹¤ ë‚´ë ¤ê°”ìœ¼ë©´ ë‹¤ì‹œ ì²˜ìŒë¶€í„° 250321 CH.PARK */
                 gu8_uart_ice_tray_continue_step = 0;
             }
             else
@@ -2114,7 +2114,7 @@ void motor_test_continue(void)
                     if( gu16_uart_ice_tray_continue_timer >= 10 )
                     {
                         gu16_uart_ice_tray_continue_timer = 0;
-                        down_tray_motor();    // Æ®·¹ÀÌÁ¦¾î ÇÔ¼öº¯°æ
+                        down_tray_motor();    // íŠ¸ë ˆì´ì œì–´ í•¨ìˆ˜ë³€ê²½
                     }
                     else{}
                 }
@@ -2167,43 +2167,43 @@ void initial_all_data(void)
 ***********************************************************************************************************************/
 void manual_test(void)
 {
-    /*..hui [22-8-18¿ÀÀü 10:44:09] ¸Ş´º¾óÅ×½ºÆ® or Åë½Å°Ë»ç Á¾·á ÈÄ FAN Áö¼Ó °¡µ¿..*/
+    /*..hui [22-8-18ì˜¤ì „ 10:44:09] ë©”ë‰´ì–¼í…ŒìŠ¤íŠ¸ or í†µì‹ ê²€ì‚¬ ì¢…ë£Œ í›„ FAN ì§€ì† ê°€ë™..*/
     pDC_FAN = SET;
 
 //////////////////////////////////////////////////////////////////////////////////////////
-    /* -------------¹ëºê °³¹æ-------------------------------- */
-    /*..hui [23-12-8¿ÀÈÄ 4:59:12] ÀÔ¼ö NOS °³¹æ..*/
+    /* -------------ë°¸ë¸Œ ê°œë°©-------------------------------- */
+    /*..hui [23-12-8ì˜¤í›„ 4:59:12] ì…ìˆ˜ NOS ê°œë°©..*/
     pVALVE_NOS = CLEAR;
 
-    /*..hui [25-1-23¿ÀÈÄ 8:38:54] Á¤¼ö ÀÔ¼ö °³¹æ..*/
+    /*..hui [25-1-23ì˜¤í›„ 8:38:54] ì •ìˆ˜ ì…ìˆ˜ ê°œë°©..*/
     pVALVE_ROOM_IN = SET;
 
-    /*..hui [25-1-23¿ÀÈÄ 8:38:58] ³Ã¼ö ÀÔ¼ö °³¹æ..*/
+    /*..hui [25-1-23ì˜¤í›„ 8:38:58] ëƒ‰ìˆ˜ ì…ìˆ˜ ê°œë°©..*/
     pVALVE_COLD_IN = SET;
 
-    /*..hui [25-1-23¿ÀÈÄ 8:39:05] ¿Â¼ö ÀÔ¼ö °³¹æ..*/
+    /*..hui [25-1-23ì˜¤í›„ 8:39:05] ì˜¨ìˆ˜ ì…ìˆ˜ ê°œë°©..*/
     pVALVE_HOT_IN = SET;
 
-    /*..hui [25-1-23¿ÀÈÄ 8:39:22] ¿Â¼ö ¹è¼ö °³¹æ..*/
+    /*..hui [25-1-23ì˜¤í›„ 8:39:22] ì˜¨ìˆ˜ ë°°ìˆ˜ ê°œë°©..*/
     pVALVE_HOT_DRAIN = CLEAR;
 
-    /* -------------¹ëºê Â÷´Ü-------------------------------- */
-    /*..hui [25-1-23¿ÀÈÄ 8:38:03] Æ®·¹ÀÌ ÀÔ¼ö Â÷´Ü..*/
+    /* -------------ë°¸ë¸Œ ì°¨ë‹¨-------------------------------- */
+    /*..hui [25-1-23ì˜¤í›„ 8:38:03] íŠ¸ë ˆì´ ì…ìˆ˜ ì°¨ë‹¨..*/
     pVALVE_ICE_TRAY_IN = CLEAR;
 
-    /*..hui [25-1-23¿ÀÈÄ 8:38:21] ¿Â¼ö¹öÆÛ/³Ã¼ö¿À¹öÇÃ·Î¿ì Â÷´Ü..*/
+    /*..hui [25-1-23ì˜¤í›„ 8:38:21] ì˜¨ìˆ˜ë²„í¼/ëƒ‰ìˆ˜ì˜¤ë²„í”Œë¡œìš° ì°¨ë‹¨..*/
     pVALVE_HOT_COLD_OVERFLOW = SET;
 
-    /*..hui [25-1-23¿ÀÈÄ 8:39:17] ³Ã¼ö ¹è¼ö Â÷´Ü..*/
+    /*..hui [25-1-23ì˜¤í›„ 8:39:17] ëƒ‰ìˆ˜ ë°°ìˆ˜ ì°¨ë‹¨..*/
     pVALVE_COLD_DRAIN = CLEAR;
 
-    /*..hui [25-1-23¿ÀÈÄ 8:38:09] Á¤/³Ã ÃßÃâ Â÷´Ü..*/
+    /*..hui [25-1-23ì˜¤í›„ 8:38:09] ì •/ëƒ‰ ì¶”ì¶œ ì°¨ë‹¨..*/
     pVALVE_ROOM_COLD_EXTRACT = CLEAR;
 
-    /*..hui [25-1-23¿ÀÈÄ 8:38:13] ¿Â¼ö ÃßÃâ Â÷´Ü..*/
+    /*..hui [25-1-23ì˜¤í›„ 8:38:13] ì˜¨ìˆ˜ ì¶”ì¶œ ì°¨ë‹¨..*/
     pVALVE_HOT_OUT = CLEAR;
 
-    /* ¾óÀ½¹° ÃßÃâ¹ëºê Â÷´Ü 250609 CH.PARK */
+    /* ì–¼ìŒë¬¼ ì¶”ì¶œë°¸ë¸Œ ì°¨ë‹¨ 250609 CH.PARK */
     pVALVE_ICE_WATER_EXTRACT = CLEAR;
 }
 
@@ -2241,7 +2241,7 @@ void comp_manual_test(void)
 
     /*initial_ice_tray();*/
 
-    /* [¿ë·®] ¼±ÅÃ */
+    /* [ìš©ëŸ‰] ì„ íƒ */
     if((gu8_uart_amount_test_input == 1)
     && (gu16_manaul_comp_delay_timer >= COMP_START_TIME)
     )
@@ -2320,27 +2320,27 @@ void comp_manual_test(void)
         Bit4_Front_Led_Cold_Select ^= SET;
     }
 
-    /* [¾óÀ½] ¹öÆ° ¼±ÅÃ */
+    /* [ì–¼ìŒ] ë²„íŠ¼ ì„ íƒ */
     if( gu8_uart_ice_test_input == 1 )
     {
-        GasSwitchIce();             /* Á¦ºù ³Ã°¢ */
+        GasSwitchIce();             /* ì œë¹™ ëƒ‰ê° */
         gu8_uart_ice_test_input = 0;
         gu8_uart_cold_test_input = 0;
         gu8_uart_hot_test_input = 0;
     }
     else{}
 
-    /* [³Ã¼ö] ¹öÆ° ¼±ÅÃ */
+    /* [ëƒ‰ìˆ˜] ë²„íŠ¼ ì„ íƒ */
     if( gu8_uart_cold_test_input == 1 )
     {
-        GasSwitchCold();            /* ³Ã¼ö ³Ã°¢ */
+        GasSwitchCold();            /* ëƒ‰ìˆ˜ ëƒ‰ê° */
         gu8_uart_ice_test_input = 0;
         gu8_uart_cold_test_input = 0;
         gu8_uart_hot_test_input = 0;
     }
     else{}
 
-    /* [¿Â¼ö] ¹öÆ° ¼±ÅÃ */
+    /* [ì˜¨ìˆ˜] ë²„íŠ¼ ì„ íƒ */
     if( gu8_uart_hot_test_input == 1 )
     {
         GasSwitchHotGas();

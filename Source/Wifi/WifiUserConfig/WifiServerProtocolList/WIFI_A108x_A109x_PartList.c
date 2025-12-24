@@ -50,16 +50,16 @@ static const WifiNormalList_T WifiPartProtocolList[] =
     {   WIFI_PART_0208_COLD_ROOM_TEMP,           TYPE_UNSIGNED   },
     {   WIFI_PART_020B_COLD_TARGET_TEMP_TIME,    TYPE_UNSIGNED   },
     {   WIFI_PART_020D_COLD_ROOM_TEMP2,          TYPE_UNSIGNED   },
-    {   WIFI_PART_020E_COLD_STOP_ERROR,          TYPE_UNSIGNED   },     // 2kg LPP ÀÌÈÄ Ãß°¡ 250616 CH.PARK
-    {   WIFI_PART_0210_COLD_BLDC_ERROR,          TYPE_UNSIGNED   },     // 2kg LPP ÀÌÈÄ Ãß°¡ 250616 CH.PARK
-    {   WIFI_PART_0211_COLD_DRAIN_CLOSE,         TYPE_UNSIGNED   },     // 2kg LPP ÀÌÈÄ Ãß°¡ 250616 CH.PARK
+    {   WIFI_PART_020E_COLD_STOP_ERROR,          TYPE_UNSIGNED   },     // 2kg LPP ì´í›„ ì¶”ê°€ 250616 CH.PARK
+    {   WIFI_PART_0210_COLD_BLDC_ERROR,          TYPE_UNSIGNED   },     // 2kg LPP ì´í›„ ì¶”ê°€ 250616 CH.PARK
+    {   WIFI_PART_0211_COLD_DRAIN_CLOSE,         TYPE_UNSIGNED   },     // 2kg LPP ì´í›„ ì¶”ê°€ 250616 CH.PARK
 
-    {   WIFI_PART_0214_COLD_BLDC1,              TYPE_UNSIGNED   },     // 2kg LPP ÀÌÈÄ Ãß°¡ 250626 CH.PARK
-    {   WIFI_PART_0215_COLD_BLDC2,              TYPE_UNSIGNED   },     // 2kg LPP ÀÌÈÄ Ãß°¡ 250626 CH.PARK
-    {   WIFI_PART_0216_COLD_BLDC3,              TYPE_UNSIGNED   },     // 2kg LPP ÀÌÈÄ Ãß°¡ 250626 CH.PARK
-    {   WIFI_PART_0217_COLD_BLDC4,              TYPE_UNSIGNED   },     // 2kg LPP ÀÌÈÄ Ãß°¡ 250626 CH.PARK
-    {   WIFI_PART_0218_COLD_BLDC5,              TYPE_UNSIGNED   },     // 2kg LPP ÀÌÈÄ Ãß°¡ 250626 CH.PARK
-    {   WIFI_PART_0219_COLD_BLDC6,              TYPE_UNSIGNED   },     // 2kg LPP ÀÌÈÄ Ãß°¡ 250626 CH.PARK
+    {   WIFI_PART_0214_COLD_BLDC1,              TYPE_UNSIGNED   },     // 2kg LPP ì´í›„ ì¶”ê°€ 250626 CH.PARK
+    {   WIFI_PART_0215_COLD_BLDC2,              TYPE_UNSIGNED   },     // 2kg LPP ì´í›„ ì¶”ê°€ 250626 CH.PARK
+    {   WIFI_PART_0216_COLD_BLDC3,              TYPE_UNSIGNED   },     // 2kg LPP ì´í›„ ì¶”ê°€ 250626 CH.PARK
+    {   WIFI_PART_0217_COLD_BLDC4,              TYPE_UNSIGNED   },     // 2kg LPP ì´í›„ ì¶”ê°€ 250626 CH.PARK
+    {   WIFI_PART_0218_COLD_BLDC5,              TYPE_UNSIGNED   },     // 2kg LPP ì´í›„ ì¶”ê°€ 250626 CH.PARK
+    {   WIFI_PART_0219_COLD_BLDC6,              TYPE_UNSIGNED   },     // 2kg LPP ì´í›„ ì¶”ê°€ 250626 CH.PARK
 
     {   WIFI_PART_0302_HOT_INSTANT_HEATER_1,     TYPE_UNSIGNED   },
     {   WIFI_PART_0303_HOT_INSTANT_HEATER_2,     TYPE_UNSIGNED   },
@@ -88,9 +88,9 @@ static const WifiNormalList_T WifiPartProtocolList[] =
     {   WIFI_PART_0807_ICE_DOOR_STEPMOTOR,      TYPE_UNSIGNED   },
     {   WIFI_PART_0808_ICE_COURSE_CHANGE_VV,    TYPE_UNSIGNED   },
     {   WIFI_PART_080A_ICE_DRAIN_PUMP,          TYPE_UNSIGNED   },
-    {   WIFI_PART_080E_ICE_DRAIN_ERROR_E60,     TYPE_UNSIGNED   },  // LPP ¹è¼öÆßÇÁ µ¿ÀÛÀÌ»ó Ãß°¡ 250611 CH.PARK
-    {   WIFI_PART_0812_ICE_SELECT_DOOR,         TYPE_UNSIGNED   },  // LPP ¾óÀ½¼¿·ºÆ® µµ¾î Ãß°¡ 250611 CH.PARK 
-    {   WIFI_PART_0813_ICE_DOOR_HEATER,         TYPE_UNSIGNED   },  // LPP ¾óÀ½ µµ¾î È÷ÅÍ Ãß°¡ 250611 CH.PARK
+    {   WIFI_PART_080E_ICE_DRAIN_ERROR_E60,     TYPE_UNSIGNED   },  // LPP ë°°ìˆ˜íŒí”„ ë™ì‘ì´ìƒ ì¶”ê°€ 250611 CH.PARK
+    {   WIFI_PART_0812_ICE_SELECT_DOOR,         TYPE_UNSIGNED   },  // LPP ì–¼ìŒì…€ë ‰íŠ¸ ë„ì–´ ì¶”ê°€ 250611 CH.PARK 
+    {   WIFI_PART_0813_ICE_DOOR_HEATER,         TYPE_UNSIGNED   },  // LPP ì–¼ìŒ ë„ì–´ íˆí„° ì¶”ê°€ 250611 CH.PARK
     {   WIFI_PART_0814_ICE_LACK_SENSOR,         TYPE_UNSIGNED   },
 };
 
@@ -126,52 +126,52 @@ U16 GetUserSystemPart ( U16 mu16Part )
     U16 mu16Data = 9999U;
     switch ( mu16Part )
     {
-        case WIFI_PART_0001_VALVE_NOS :         // NOS ¿ø¼ö¹ëºê
+        case WIFI_PART_0001_VALVE_NOS :         // NOS ì›ìˆ˜ë°¸ë¸Œ
             mu16Data = SELF_Test_Result_Data.word[DC_LOAD__NOS_VALVE];
             initial_each_self_data( DC_LOAD__NOS_VALVE );
         break;
 
-        case WIFI_PART_0002_VALVE_HOT_OUT :     // ¿Â¼ö Ãâ¼ö V/V
+        case WIFI_PART_0002_VALVE_HOT_OUT :     // ì˜¨ìˆ˜ ì¶œìˆ˜ V/V
             mu16Data = SELF_Test_Result_Data.word[DC_LOAD__HOT_OUT_VALVE];
             initial_each_self_data( DC_LOAD__HOT_OUT_VALVE );
         break;
 
-        case WIFI_PART_0005_VALVE_CP_OUT :      // ³ÃÁ¤ ÃßÃâ V/V
+        case WIFI_PART_0005_VALVE_CP_OUT :      // ëƒ‰ì • ì¶”ì¶œ V/V
             mu16Data = SELF_Test_Result_Data.word[DC_LOAD__COLD_PURE_OUT_VALVE];
             initial_each_self_data( DC_LOAD__COLD_PURE_OUT_VALVE );
         break;
 
-        case WIFI_PART_0007_VALVE_PURE_IN :     // Á¤¼ö ÀÔ¼ö V/V
+        case WIFI_PART_0007_VALVE_PURE_IN :     // ì •ìˆ˜ ì…ìˆ˜ V/V
             mu16Data = SELF_Test_Result_Data.word[DC_LOAD__PURE_IN_VALVE];
             initial_each_self_data( DC_LOAD__PURE_IN_VALVE );
         break;
 
-        case WIFI_PART_0009_VALVE_HOT_IN :      // ¿Â¼ö ÀÔ¼ö V/V
+        case WIFI_PART_0009_VALVE_HOT_IN :      // ì˜¨ìˆ˜ ì…ìˆ˜ V/V
             mu16Data = SELF_Test_Result_Data.word[DC_LOAD__HOT_IN_VALVE];
             initial_each_self_data( DC_LOAD__HOT_IN_VALVE );
         break;
 
-        case WIFI_PART_000A_VALVE_HOT_DRAIN :   // ¿Â¼ö µå·¹ÀÎ NOS V/V
+        case WIFI_PART_000A_VALVE_HOT_DRAIN :   // ì˜¨ìˆ˜ ë“œë ˆì¸ NOS V/V
             mu16Data = SELF_Test_Result_Data.word[DC_LOAD__HOT_DRAIN_VALVE];
             initial_each_self_data( DC_LOAD__HOT_DRAIN_VALVE );
         break;
 
-        case WIFI_PART_000B_VALVE_COLD_AIR :    // ¿À¹öÇÃ·Î¿ì NOS V/V
+        case WIFI_PART_000B_VALVE_COLD_AIR :    // ì˜¤ë²„í”Œë¡œìš° NOS V/V
             mu16Data = SELF_Test_Result_Data.word[DC_LOAD__OVERFLOW_VALVE];
             initial_each_self_data( DC_LOAD__OVERFLOW_VALVE);
         break;
 
-        case WIFI_PART_000C_VALVE_COLD_IN :     // ³Ã¼ö ÀÔ¼ö V/V
+        case WIFI_PART_000C_VALVE_COLD_IN :     // ëƒ‰ìˆ˜ ì…ìˆ˜ V/V
             mu16Data = SELF_Test_Result_Data.word[DC_LOAD__COLD_IN_VALVE];
             initial_each_self_data( DC_LOAD__COLD_IN_VALVE );
         break;
 
-        case WIFI_PART_000D_VALVE_COLD_DRAIN :  // ³Ã¼ö µå·¹ÀÎ V/V
+        case WIFI_PART_000D_VALVE_COLD_DRAIN :  // ëƒ‰ìˆ˜ ë“œë ˆì¸ V/V
             mu16Data = SELF_Test_Result_Data.word[DC_LOAD__COLD_DRAIN_VALVE];
             initial_each_self_data( DC_LOAD__COLD_DRAIN_VALVE );
         break;
 
-        case WIFI_PART_0015_VALVE_ICE_TRAY_IN : // ¾ÆÀÌ½º Æ®·¹ÀÌ ÀÔ¼ö V/V
+        case WIFI_PART_0015_VALVE_ICE_TRAY_IN : // ì•„ì´ìŠ¤ íŠ¸ë ˆì´ ì…ìˆ˜ V/V
             mu16Data = SELF_Test_Result_Data.word[DC_LOAD__ICETRAY_IN_VALVE];
             initial_each_self_data( DC_LOAD__ICETRAY_IN_VALVE );
         break;
@@ -185,24 +185,24 @@ U16 GetUserSystemPart ( U16 mu16Part )
         case WIFI_PART_010B_LEVEL_DRAIN_HIGH : 
             if( pLEVEL_ICE_DRAIN_HIGH == SET )
             {
-                /*..hui [23-12-21¿ÀÈÄ 8:12:16] °¨Áö..*/
+                /*..hui [23-12-21ì˜¤í›„ 8:12:16] ê°ì§€..*/
                 mu16Data = 1;
             }
             else
             {
-                /*..hui [23-12-21¿ÀÈÄ 8:12:22] ¹Ì°¨Áö..*/
+                /*..hui [23-12-21ì˜¤í›„ 8:12:22] ë¯¸ê°ì§€..*/
                 mu16Data = 0;
             }
         break;
         case WIFI_PART_010D_LEVEL_DRAIN_LOW : 
             if( pLEVEL_ICE_DRAIN_LOW == SET )
             {
-                /*..hui [23-12-21¿ÀÈÄ 8:12:16] °¨Áö..*/
+                /*..hui [23-12-21ì˜¤í›„ 8:12:16] ê°ì§€..*/
                 mu16Data = 1;
             }
             else
             {
-                /*..hui [23-12-21¿ÀÈÄ 8:12:22] ¹Ì°¨Áö..*/
+                /*..hui [23-12-21ì˜¤í›„ 8:12:22] ë¯¸ê°ì§€..*/
                 mu16Data = 0;
             }
         break;
@@ -523,7 +523,7 @@ U16 GetUserSystemPart ( U16 mu16Part )
             initial_each_self_data( DC_LOAD__DRAIN_PUMP);
         break;
 
-        case WIFI_PART_080E_ICE_DRAIN_ERROR_E60 : // LPP ¹è¼öÆßÇÁ µ¿ÀÛÀÌ»ó Ãß°¡ 250611 CH.PARK
+        case WIFI_PART_080E_ICE_DRAIN_ERROR_E60 : // LPP ë°°ìˆ˜íŒí”„ ë™ì‘ì´ìƒ ì¶”ê°€ 250611 CH.PARK
             if(Bit16_Drain_Pump_Error__E60 == SET)
             {
               mu16Data = 1;
@@ -534,12 +534,12 @@ U16 GetUserSystemPart ( U16 mu16Part )
             }
         break;
 
-        case WIFI_PART_0812_ICE_SELECT_DOOR:    // LPP ¾óÀ½¼¿·ºÆ® µµ¾î Ãß°¡ 250611 CH.PARK 
+        case WIFI_PART_0812_ICE_SELECT_DOOR:    // LPP ì–¼ìŒì…€ë ‰íŠ¸ ë„ì–´ ì¶”ê°€ 250611 CH.PARK 
             mu16Data = SELF_Test_Result_Data.word[DC_LOAD__ICE_SELECT_DOOR_MOTOR];
             initial_each_self_data( DC_LOAD__ICE_SELECT_DOOR_MOTOR);
         break;
 
-        case WIFI_PART_0813_ICE_DOOR_HEATER:    // LPP ¾óÀ½ µµ¾î È÷ÅÍ Ãß°¡ 250611 CH.PARK
+        case WIFI_PART_0813_ICE_DOOR_HEATER:    // LPP ì–¼ìŒ ë„ì–´ íˆí„° ì¶”ê°€ 250611 CH.PARK
             mu16Data = SELF_Test_Result_Data.word[DC_LOAD__ICE_DOOR_HEATER];
             initial_each_self_data( DC_LOAD__ICE_DOOR_HEATER);
         break;
@@ -559,7 +559,7 @@ U16 GetUserSystemPart ( U16 mu16Part )
 
 /* [A1091] [Diagnosis Result]  Server -> Product */
 /* SetWifiSendStatus( TX_DATA, WIFI_TX_RQST_INFO_DRR );  A2010.0029 DiagnosisResultRequest  */ 
-void SetUserSystemDiagnosis ( U16 mu16DR, I16 mData ) // [1]: Error ÀÖÀ½, [-100] : ÀÌ»ó1
+void SetUserSystemDiagnosis ( U16 mu16DR, I16 mData ) // [1]: Error ìˆìŒ, [-100] : ì´ìƒ1
 {
 	#define DiagnosisError 	 (1)
 	#define DiagnosisAbnormal1 (-100)

@@ -90,12 +90,12 @@ void bldc_rx_communication(void)
             bit_bldc_tx_request = SET;
             receive_bldc_data( gu8_bldc_rx_buffer );
 
-            /*..hui [23-7-4¿ÀÀü 10:42:52] µ¥ÀÌÅÍ ÇÑ¹øÀÌ¶óµµ ¸Â°Ô µé¾î¿À¸é Ä«¿îÆ® ÃÊ±âÈ­..*/
+            /*..hui [23-7-4ì˜¤ì „ 10:42:52] ë°ì´í„° í•œë²ˆì´ë¼ë„ ë§žê²Œ ë“¤ì–´ì˜¤ë©´ ì¹´ìš´íŠ¸ ì´ˆê¸°í™”..*/
             gu8_comm_error_retry_count = 0;
 
             bit_bldc_rx_pba_test_ok = SET;
 
-            /*..hui [24-11-25¿ÀÀü 10:03:01] Ã¼Å©¼¶±îÁö Á¤»óÀûÀÎ µ¥ÀÌÅÍ µé¾î¿ÔÀ»¶§¸¸ ÃÊ±âÈ­..*/
+            /*..hui [24-11-25ì˜¤ì „ 10:03:01] ì²´í¬ì„¬ê¹Œì§€ ì •ìƒì ì¸ ë°ì´í„° ë“¤ì–´ì™”ì„ë•Œë§Œ ì´ˆê¸°í™”..*/
             /*gu16_bldc_comm_error_timer = 0;*/
         }
         else
@@ -120,7 +120,7 @@ void bldc_rx_communication(void)
                 gu8_comm_error_retry_count++;
 
                 /*if( gu8_comm_error_retry_count >= 3 )*/
-                /*..hui [24-11-18¿ÀÈÄ 1:27:11] Åë½Å¿¡·¯ Àç½Ãµµ È½¼ö 10È¸·Î º¯°æ..*/
+                /*..hui [24-11-18ì˜¤í›„ 1:27:11] í†µì‹ ì—ëŸ¬ ìž¬ì‹œë„ íšŸìˆ˜ 10íšŒë¡œ ë³€ê²½..*/
                 if( gu8_comm_error_retry_count >= 10 )
                 {
                     Bit7_BLDC_Communication_Error__E27 = SET;
@@ -129,7 +129,7 @@ void bldc_rx_communication(void)
             }
             else{}
 
-            /*..hui [24-12-2¿ÀÀü 10:55:43] °øÀå ¶óÀÎ °Ë»ç½Ã¿¡´Â 30ÃÊµ¿¾È Åë½Å ¾ÈµÇ¸é ¹Ù·Î ¿¡·¯..*/
+            /*..hui [24-12-2ì˜¤ì „ 10:55:43] ê³µìž¥ ë¼ì¸ ê²€ì‚¬ì‹œì—ëŠ” 30ì´ˆë™ì•ˆ í†µì‹  ì•ˆë˜ë©´ ë°”ë¡œ ì—ëŸ¬..*/
             if( u8FactoryTestMode > 0 )
             {
                 gu8_uart_bldc_comm_error = SET;
@@ -151,7 +151,7 @@ void receive_bldc_data(U8 *mu8_rx_data)
     gu8_bldc_opration_hz = mu8_rx_data[BLDC_RX_DATA_OPERATION_FREQUENCY];
     //gu8_bldc_temperature = mu8_rx_data[BLDC_RX_DATA_TEMPERATURE];
 
-    /*..hui [24-1-11¿ÀÈÄ 2:09:24] COMP ÄÑ°í 1ºÐ ÈÄºÎÅÍ ¿¡·¯ °Ë»ç.. ÃÖÀÎ½Ä Á¦¾î»ç¾ç¼­..*/
+    /*..hui [24-1-11ì˜¤í›„ 2:09:24] COMP ì¼œê³  1ë¶„ í›„ë¶€í„° ì—ëŸ¬ ê²€ì‚¬.. ìµœì¸ì‹ ì œì–´ì‚¬ì–‘ì„œ..*/
     if( gu16_comp_error_check_timer >= 600 )
     {
         if( gu8_bldc_error_code > 0 )
@@ -241,7 +241,7 @@ void receive_bldc_data(U8 *mu8_rx_data)
                     }
                     else
                     {
-                        /*..hui [24-11-18¿ÀÈÄ 5:01:26] ¸¸¾à ±× ¿ÜÀÇ ¿¡·¯°¡ µé¾î¿À¸é ±×³É E85 Åë½Å¿¡·¯ ¶ç¿ì´Â°É·Î.....*/
+                        /*..hui [24-11-18ì˜¤í›„ 5:01:26] ë§Œì•½ ê·¸ ì™¸ì˜ ì—ëŸ¬ê°€ ë“¤ì–´ì˜¤ë©´ ê·¸ëƒ¥ E85 í†µì‹ ì—ëŸ¬ ë„ìš°ëŠ”ê±¸ë¡œ.....*/
                         gu8_bldc_self_error_e85_samsung_e6_retry_count++;
 
                         if( gu8_bldc_self_error_e85_samsung_e6_retry_count >= BLDC_COMP_ERROR_RETRY_COUNT )
@@ -258,9 +258,9 @@ void receive_bldc_data(U8 *mu8_rx_data)
                     gu8_bldc_self_error_e81_samsung_e2_retry_count++;
 
                     /*if( gu8_bldc_self_error_e81_samsung_e2_retry_count >= 3 )*/
-                    /*..hui [24-1-11¿ÀÈÄ 2:46:10] 5È¸·Î º¯°æ.. ÇÔÀçÁø ÄÚ¾îÇÃ·¯½º »ç¾ç..*/
+                    /*..hui [24-1-11ì˜¤í›„ 2:46:10] 5íšŒë¡œ ë³€ê²½.. í•¨ìž¬ì§„ ì½”ì–´í”ŒëŸ¬ìŠ¤ ì‚¬ì–‘..*/
                     /*if( gu8_bldc_self_error_e81_samsung_e2_retry_count >= 5 )*/
-                    /*..hui [24-11-18¿ÀÈÄ 1:27:37] Àç½Ãµµ È½¼ö 10È¸·Î º¯°æ..*/
+                    /*..hui [24-11-18ì˜¤í›„ 1:27:37] ìž¬ì‹œë„ íšŸìˆ˜ 10íšŒë¡œ ë³€ê²½..*/
                     if( gu8_bldc_self_error_e81_samsung_e2_retry_count >= 10 )
                     {
                         bit_bldc_operation_error_total = SET;
@@ -279,16 +279,16 @@ void receive_bldc_data(U8 *mu8_rx_data)
 
             gu16_bldc_self_release_count++;
 
-            /*..hui [23-7-4¿ÀÀü 11:11:02] ¿¬¼Ó 10¹ø ÀÌ»ó ¿¡·¯ÄÚµå ¾øÀ½ ¹Þ¾ÒÀ»¶§¸¸ ÃÊ±âÈ­..*/
+            /*..hui [23-7-4ì˜¤ì „ 11:11:02] ì—°ì† 10ë²ˆ ì´ìƒ ì—ëŸ¬ì½”ë“œ ì—†ìŒ ë°›ì•˜ì„ë•Œë§Œ ì´ˆê¸°í™”..*/
             /*if( gu16_bldc_self_release_count >= 10 )*/
-            /*..hui [24-1-11¿ÀÈÄ 2:55:16] ÀÎ¹öÅÍ µå¶óÀÌ¹ö ÀÚÃ¼ ¿¡·¯ °¨Áö ½Ã°£ °í·Á..*/
-            /*..hui [24-1-11¿ÀÈÄ 2:55:32] 1ºÐ + 2ºÐ ÃÑ 3ºÐÀ¸·Î º¯°æ.. ÃÖ´ëÇÑ ³Ë³ËÇÏ°Ô..*/
+            /*..hui [24-1-11ì˜¤í›„ 2:55:16] ì¸ë²„í„° ë“œë¼ì´ë²„ ìžì²´ ì—ëŸ¬ ê°ì§€ ì‹œê°„ ê³ ë ¤..*/
+            /*..hui [24-1-11ì˜¤í›„ 2:55:32] 1ë¶„ + 2ë¶„ ì´ 3ë¶„ìœ¼ë¡œ ë³€ê²½.. ìµœëŒ€í•œ ë„‰ë„‰í•˜ê²Œ..*/
             /*if( gu16_bldc_self_release_count >= 60 )*/
             if( gu16_bldc_self_release_count >= 300 )
             {
                 gu16_bldc_self_release_count = 0;
-                /*..hui [23-7-4¿ÀÀü 11:04:40] ¿¡·¯ ¾øÀ½ Á¤»ó ¼ö½Å½Ã Àç½Ãµµ È½¼ö ÃÊ±âÈ­..*/
-                /*..hui [24-11-18¿ÀÈÄ 5:03:28] ºÐ¸®µÈ ¿¡·¯µé È½¼ö ÀüºÎ ÃÊ±âÈ­..*/
+                /*..hui [23-7-4ì˜¤ì „ 11:04:40] ì—ëŸ¬ ì—†ìŒ ì •ìƒ ìˆ˜ì‹ ì‹œ ìž¬ì‹œë„ íšŸìˆ˜ ì´ˆê¸°í™”..*/
+                /*..hui [24-11-18ì˜¤í›„ 5:03:28] ë¶„ë¦¬ëœ ì—ëŸ¬ë“¤ íšŸìˆ˜ ì „ë¶€ ì´ˆê¸°í™”..*/
                 gu8_bldc_self_error_e81_samsung_e2_retry_count = 0;
                 gu8_bldc_self_error_e82_samsung_e1_retry_count = 0;
                 gu8_bldc_self_error_e83_samsung_e3_retry_count = 0;
@@ -403,7 +403,7 @@ void bldc_transmit_error_check(void)
             bit_bldc_tx_request = SET;
             R_UART2_Start();
 
-            /*..hui [24-11-25¿ÀÀü 11:23:22] RX ¹öÆÛ ÃÊ±âÈ­ Ãß°¡..*/
+            /*..hui [24-11-25ì˜¤ì „ 11:23:22] RX ë²„í¼ ì´ˆê¸°í™” ì¶”ê°€..*/
             gu8_bldc_rx_receive_cnt = 0;
         }
         else{}
@@ -530,7 +530,7 @@ void bldc_comm_error_check(void)
 {
     gu16_comp_error_check_timer++;
 
-    /*..hui [24-1-11¿ÀÈÄ 2:09:24] COMP ÄÑ°í 1ºÐ ÈÄºÎÅÍ ¿¡·¯ °Ë»ç.. ÃÖÀÎ½Ä Á¦¾î»ç¾ç¼­..*/
+    /*..hui [24-1-11ì˜¤í›„ 2:09:24] COMP ì¼œê³  1ë¶„ í›„ë¶€í„° ì—ëŸ¬ ê²€ì‚¬.. ìµœì¸ì‹ ì œì–´ì‚¬ì–‘ì„œ..*/
     if( gu16_comp_error_check_timer >= 600 )
     {
         gu16_comp_error_check_timer = 600;

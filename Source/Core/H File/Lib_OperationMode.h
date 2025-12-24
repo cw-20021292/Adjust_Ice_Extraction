@@ -1,7 +1,7 @@
 /// @file   Lib_OperationMode.h
 /// @date
 /// @author Jaejin Ham
-/// @brief  µ¿ÀÛ ¸ğµå ÁÖ°ü Çì´õ ÆÄÀÏ
+/// @brief  ë™ì‘ ëª¨ë“œ ì£¼ê´€ í—¤ë” íŒŒì¼
 
 #ifndef __LIB_OPERATION_MODE_H__
 #define __LIB_OPERATION_MODE_H__

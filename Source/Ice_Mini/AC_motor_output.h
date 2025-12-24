@@ -119,8 +119,8 @@ extern bit F_TrayMotorDOWN;
 extern bit F_TrayMotorUP;
 extern ICE_STEP gu8IceStep;
 
-extern bit F_Low_IR;                        // Àúºù °Ë»ç
-extern bit F_IR;                            // ¸¸ºù °Ë»ç
+extern bit F_Low_IR;                        // ì €ë¹™ ê²€ì‚¬
+extern bit F_IR;                            // ë§Œë¹™ ê²€ì‚¬
 extern bit F_IceOut;
 extern bit F_IceFull;
 extern bit F_IceBreak;
@@ -132,18 +132,18 @@ extern U16 gu16_ice_out_timer;
 extern bit F_IceSelectClose;
 
 
-/*#define ICETRAY_CW_TIME 500*/                     // Ice Tray CW 25ÃÊ -> 50ÃÊ
-/*#define ICETRAY_CCW_TIME 500*/                    // Ice Tray CCW 25ÃÊ -> 50ÃÊ
+/*#define ICETRAY_CW_TIME 500*/                     // Ice Tray CW 25ì´ˆ -> 50ì´ˆ
+/*#define ICETRAY_CCW_TIME 500*/                    // Ice Tray CCW 25ì´ˆ -> 50ì´ˆ
 
 
-#define ICETRAY_CW_TIME 400                     // Ice Tray CW 25ÃÊ -> 50ÃÊ
-#define ICETRAY_CCW_TIME 500                    // Ice Tray CCW 25ÃÊ -> 50ÃÊ
+#define ICETRAY_CW_TIME 400                     // Ice Tray CW 25ì´ˆ -> 50ì´ˆ
+#define ICETRAY_CCW_TIME 500                    // Ice Tray CCW 25ì´ˆ -> 50ì´ˆ
 
 
 
-// 20161101 ¾ÆÀÌ½ºÆ®·¹ÀÌ ¸¶ÀÌÅ©·Î ½ºÀ§Ä¡ °¨Áö °³¼±
-#define ICETRAY_RE_DELAY       220                                              //20161012 ¸¶ÀÌÅ©·Î½ºÀ§Ä¡ ÇØÁö ¾ÈµÉ ½Ã Ice Tray Á¤/¿ª µô·¹ÀÌ 5ÃÊ
-#define ICETRAY_RE_DELAY1       220                                              //20161012 ¸¶ÀÌÅ©·Î½ºÀ§Ä¡ ÇØÁö ¾ÈµÉ ½Ã Ice Tray Á¤/¿ª µô·¹ÀÌ 5ÃÊ
+// 20161101 ì•„ì´ìŠ¤íŠ¸ë ˆì´ ë§ˆì´í¬ë¡œ ìŠ¤ìœ„ì¹˜ ê°ì§€ ê°œì„ 
+#define ICETRAY_RE_DELAY       220                                              //20161012 ë§ˆì´í¬ë¡œìŠ¤ìœ„ì¹˜ í•´ì§€ ì•ˆë  ì‹œ Ice Tray ì •/ì—­ ë”œë ˆì´ 5ì´ˆ
+#define ICETRAY_RE_DELAY1       220                                              //20161012 ë§ˆì´í¬ë¡œìŠ¤ìœ„ì¹˜ í•´ì§€ ì•ˆë  ì‹œ Ice Tray ì •/ì—­ ë”œë ˆì´ 5ì´ˆ
 
 
 #define TRAY_MOTOR_STOP            0
@@ -157,12 +157,12 @@ extern bit F_IceSelectClose;
 
 /*#define TRAY_UP_RESET_DELAY_TIME    12000*/
 
-/*..hui [23-9-21¿ÀÈÄ 3:53:57] Á¦ºù ¹æÇâ ´ë±â½Ã°£ 90ºÐÀ¸·Î º¯°æ.. ¾ÆÀÌÄÜ ¾ÆÀÌ½º »ç¾ç..*/
+/*..hui [23-9-21ì˜¤í›„ 3:53:57] ì œë¹™ ë°©í–¥ ëŒ€ê¸°ì‹œê°„ 90ë¶„ìœ¼ë¡œ ë³€ê²½.. ì•„ì´ì½˜ ì•„ì´ìŠ¤ ì‚¬ì–‘..*/
 #define TRAY_UP_RESET_DELAY_TIME    54000
 
 
 /*#define TRAY_UP_RETRY_COUNT         10*/
-/*..hui [23-9-22¿ÀÀü 9:38:15] Æ®·¹ÀÌ Á¦ºù ¹æÇâ ÀÌµ¿ Àç½Ãµµ È½¼ö 5È¸.. ±è±ÔÅÂ °úÀå°ú ÇùÀÇ. 10È¸´Â ³Ê¹« °úÇÔ..*/
+/*..hui [23-9-22ì˜¤ì „ 9:38:15] íŠ¸ë ˆì´ ì œë¹™ ë°©í–¥ ì´ë™ ìž¬ì‹œë„ íšŸìˆ˜ 5íšŒ.. ê¹€ê·œíƒœ ê³¼ìž¥ê³¼ í˜‘ì˜. 10íšŒëŠ” ë„ˆë¬´ ê³¼í•¨..*/
 #define TRAY_UP_RETRY_COUNT         9 // 5
 
 #define TRAY_UP_ICE_STUCK_COUNT         5

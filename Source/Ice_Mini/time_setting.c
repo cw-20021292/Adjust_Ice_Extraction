@@ -85,7 +85,7 @@ void time_setting(void)
     }
     else{}
 
-    /*..hui [23-8-1¿ÀÈÄ 3:44:49] ·ÕÅ° ÀÔ·Â½Ã Á¡Á¡ »¡¶óÁö°Ô....*/
+    /*..hui [23-8-1ì˜¤í›„ 3:44:49] ë¡±í‚¤ ì…ë ¥ì‹œ ì ì  ë¹¨ë¼ì§€ê²Œ....*/
     // check_continue_direction();
 
     if( Bit0_Ice_Water_Minus_Indicator == SET )
@@ -94,7 +94,7 @@ void time_setting(void)
         /*time_setting_up();*/
 		time_setting_down();
 #if 0
-        /*..hui [23-8-1¿ÀÈÄ 3:05:27] ¿Â¼ö°¡ °¨¼ÒÀÓ.. ¹İ´ë·Î µÅÀÖ¾úÀ½..*/
+        /*..hui [23-8-1ì˜¤í›„ 3:05:27] ì˜¨ìˆ˜ê°€ ê°ì†Œì„.. ë°˜ëŒ€ë¡œ ë¼ìˆì—ˆìŒ..*/
         if( gu8_time_setting_mode == CLEAN_RESERVE_TIME_SETTING_MODE )
         {
             reserve_time_setting_down();
@@ -117,7 +117,7 @@ void time_setting(void)
         time_setting_up();
 #if 0
         /*time_setting_down();*/
-        /*..hui [23-8-1¿ÀÈÄ 3:05:39] ³Ã¼ö°¡ Áõ°¡..*/
+        /*..hui [23-8-1ì˜¤í›„ 3:05:39] ëƒ‰ìˆ˜ê°€ ì¦ê°€..*/
         if( gu8_time_setting_mode == CLEAN_RESERVE_TIME_SETTING_MODE )
         {
             reserve_time_setting_up();
@@ -197,7 +197,7 @@ void time_setting_up(void)
             }
             else
             {
-                /*..hui [19-10-16¿ÀÈÄ 5:30:44] 59ºĞÀÌ¸é 0ºĞÀ¸·Î..*/
+                /*..hui [19-10-16ì˜¤í›„ 5:30:44] 59ë¶„ì´ë©´ 0ë¶„ìœ¼ë¡œ..*/
                 gu8_temporary_Min = 0;
             }
 
@@ -212,7 +212,7 @@ void time_setting_up(void)
     }
 
 #if 0
-		/*..hui [23-8-1¿ÀÈÄ 3:47:56] ¿¬¼ÓÀ¸·Î ´©¸¦¶§´Â ºÎÀúÀ½ ¾È³ª°Ô..*/
+		/*..hui [23-8-1ì˜¤í›„ 3:47:56] ì—°ì†ìœ¼ë¡œ ëˆ„ë¥¼ë•ŒëŠ” ë¶€ì €ìŒ ì•ˆë‚˜ê²Œ..*/
 		if( Bit0_Ice_Water_Continue == CLEAR )
 		{
 			play_melody_select_196();
@@ -253,7 +253,7 @@ void time_setting_down(void)
             }
             else
             {
-                /*..hui [19-10-16¿ÀÈÄ 5:21:51] 0ºĞÀÌ¸é 59ºĞÀ¸·Î..*/
+                /*..hui [19-10-16ì˜¤í›„ 5:21:51] 0ë¶„ì´ë©´ 59ë¶„ìœ¼ë¡œ..*/
                 gu8_temporary_Min = 59;
             }
 
@@ -268,7 +268,7 @@ void time_setting_down(void)
     }
 
 #if 0
-    /*..hui [23-8-1¿ÀÈÄ 3:47:56] ¿¬¼ÓÀ¸·Î ´©¸¦¶§´Â ºÎÀúÀ½ ¾È³ª°Ô..*/
+    /*..hui [23-8-1ì˜¤í›„ 3:47:56] ì—°ì†ìœ¼ë¡œ ëˆ„ë¥¼ë•ŒëŠ” ë¶€ì €ìŒ ì•ˆë‚˜ê²Œ..*/
     if( Bit0_Ice_Water_Continue == CLEAR )
     {
         play_melody_select_196();
@@ -279,7 +279,7 @@ void time_setting_down(void)
 
 /***********************************************************************************************************************
 * Function Name: System_ini
-* Description  : ÀåÅ°ÀÔ·Â ½Ã +6½Ã / +10ºĞ // PCH JJANG
+* Description  : ì¥í‚¤ì…ë ¥ ì‹œ +6ì‹œ / +10ë¶„ // PCH JJANG
 ***********************************************************************************************************************/
 void time_setting_keep_up(void)
 {
@@ -316,7 +316,7 @@ void time_setting_keep_up(void)
     else {  }
     
 #if 0
-		/*..hui [23-8-1¿ÀÈÄ 3:47:56] ¿¬¼ÓÀ¸·Î ´©¸¦¶§´Â ºÎÀúÀ½ ¾È³ª°Ô..*/
+		/*..hui [23-8-1ì˜¤í›„ 3:47:56] ì—°ì†ìœ¼ë¡œ ëˆ„ë¥¼ë•ŒëŠ” ë¶€ì €ìŒ ì•ˆë‚˜ê²Œ..*/
 		if( Bit0_Ice_Water_Continue == CLEAR )
 		{
 			play_melody_select_196();
@@ -409,7 +409,7 @@ void switch_time_setting(void)
 ***********************************************************************************************************************/
 void start_time_setting_mode( U8 mu8_mode )
 {
-    /* ¿ÍÀÌÆÄÀÌ ¿¬°áµÇ¾î ÀÖÀ¸¸é ½Ã°£¼³Á¤ ¾ÈµÊ 250630 CH.PARK */
+    /* ì™€ì´íŒŒì´ ì—°ê²°ë˜ì–´ ìˆìœ¼ë©´ ì‹œê°„ì„¤ì • ì•ˆë¨ 250630 CH.PARK */
     if( gu8_Wifi_Connect_State == WIFI_CONNECT )
     {
         play_melody_warning_197();
@@ -437,7 +437,7 @@ void start_time_setting_mode( U8 mu8_mode )
 ***********************************************************************************************************************/
 void finish_time_setting_mode(void)
 {
-    /* 00:00ÀÏ ¶§´Â ½Ã°è ±â´É OFF */
+    /* 00:00ì¼ ë•ŒëŠ” ì‹œê³„ ê¸°ëŠ¥ OFF */
     if(gu8_temporary_Hour == 0 && gu8_temporary_Min == 0)
     {
         bit_time_setting_finish = CLEAR;
@@ -472,10 +472,10 @@ void change_rtc_time(void)
     {
         bit_time_setting_finish = CLEAR;
 
-        /*..hui [23-6-29¿ÀÈÄ 2:42:14] ÃÖÃÊ ½Ã°£ ¼³Á¤ ¿Ï·á..*/
+        /*..hui [23-6-29ì˜¤í›„ 2:42:14] ìµœì´ˆ ì‹œê°„ ì„¤ì • ì™„ë£Œ..*/
         bit_first_time_setting = SET;
 
-        /*..hui [20-3-12¿ÀÈÄ 2:10:12] ¿©±âµµ ÇÊÅÍ¸µ Ãß°¡.. ¾ÈÀü»ç¾ç..*/
+        /*..hui [20-3-12ì˜¤í›„ 2:10:12] ì—¬ê¸°ë„ í•„í„°ë§ ì¶”ê°€.. ì•ˆì „ì‚¬ì–‘..*/
         if( ( gu8_temporary_Year >= SETTING_MIN_YEAR && gu8_temporary_Year <= SETTING_MAX_YEAR )
             && ( gu8_temporary_Month >= 1 && gu8_temporary_Month <= 12 )
             && ( gu8_temporary_Date  >= 1 && gu8_temporary_Date  <= 31 )
@@ -512,7 +512,7 @@ void change_reserve_time(void)
 
         if( gu8_temporary_Hour  <= 23 && gu8_temporary_Min   <= 59 )
         {
-    		/*..sean [24-10-04] wifi ¾ÆÁ÷ ¹ÌÀû¿ëÀ¸·Î ÁÖ¼®Ã³¸®  .. */
+    		/*..sean [24-10-04] wifi ì•„ì§ ë¯¸ì ìš©ìœ¼ë¡œ ì£¼ì„ì²˜ë¦¬  .. */
             //gu8_wifi_period_ster_hour = gu8_temporary_Hour;
             //gu8_wifi_period_ster_minute = gu8_temporary_Min;
         }
@@ -529,7 +529,7 @@ void check_continue_direction(void)
 {
     U8 mu8_speed = 10;
 
-    if( gu8_direction_continue_max >= 60 )      // 1ºĞ
+    if( gu8_direction_continue_max >= 60 )      // 1ë¶„
     {
         gu8_direction_continue_max = 0;
         u8TimeSettingLongKey = 0;
@@ -592,15 +592,15 @@ void time_setting_mode_timeout_check(void)
 {
     if( bit_time_setting_start == SET )
     {
-        /*..hui [23-8-2¿ÀÀü 9:45:42] ÇÊÅÍ ¿­¸² °¨Áö½Ã °­Á¦ Á¾·á..*/
-        /*..hui [25-3-19¿ÀÈÄ 6:49:36] ³ªÁß¿¡´Ù½Ã..*/
+        /*..hui [23-8-2ì˜¤ì „ 9:45:42] í•„í„° ì—´ë¦¼ ê°ì§€ì‹œ ê°•ì œ ì¢…ë£Œ..*/
+        /*..hui [25-3-19ì˜¤í›„ 6:49:36] ë‚˜ì¤‘ì—ë‹¤ì‹œ..*/
         if( bit_filter_all == CLEAR )
         {
             break_time_setting_mode();
         }
         else{}
         
-    	/*..sean [24-10-04] rtc ¾ÆÁ÷ ¹ÌÀû¿ëÀ¸·Î ÁÖ¼®Ã³¸®  .. */
+    	/*..sean [24-10-04] rtc ì•„ì§ ë¯¸ì ìš©ìœ¼ë¡œ ì£¼ì„ì²˜ë¦¬  .. */
 #if 1
         if( gu8_Wifi_Connect_State == WIFI_CONNECT )
         {
@@ -613,7 +613,7 @@ void time_setting_mode_timeout_check(void)
         gu8_time_setting_return_time++;		
         if( gu8_time_setting_return_time >= 200 )
         {
-            // 20ÃÊ Å¸ÀÓ¾Æ¿ô ½Ã º¯°æ°ª Àû¿ë¾ÈÇÔ
+            // 20ì´ˆ íƒ€ì„ì•„ì›ƒ ì‹œ ë³€ê²½ê°’ ì ìš©ì•ˆí•¨
             gu8_time_setting_return_time = 0;
             break_time_setting_mode();
             play_melody_warning_197();
@@ -633,7 +633,7 @@ void time_setting_mode_timeout_check(void)
 void break_time_setting_mode(void)
 {
     bit_time_setting_start = CLEAR;
-    /*..hui [23-8-2¿ÀÀü 9:34:48] °ª Àû¿ë ¾ÈÇÔ..*/
+    /*..hui [23-8-2ì˜¤ì „ 9:34:48] ê°’ ì ìš© ì•ˆí•¨..*/
     bit_time_setting_finish = CLEAR;
 
     gu8_time_setting_step = SETTING_TIME_HOUR;
@@ -669,15 +669,15 @@ void reserve_time_setting_up(void)
 
         case SETTING_TIME_MIN :
 
-            /*..hui [24-3-25¿ÀÈÄ 12:57:49] ¼¼Ã´ ¿¹¾à ½Ã°£µµ 1ºĞ´ÜÀ§·Î ¼³Á¤ °¡´ÉÇÏµµ·Ï..*/
-            /*..hui [24-3-25¿ÀÈÄ 12:57:55] »óÇ°±âÈ¹ÆÀ, PM ¿äÃ»..*/
+            /*..hui [24-3-25ì˜¤í›„ 12:57:49] ì„¸ì²™ ì˜ˆì•½ ì‹œê°„ë„ 1ë¶„ë‹¨ìœ„ë¡œ ì„¤ì • ê°€ëŠ¥í•˜ë„ë¡..*/
+            /*..hui [24-3-25ì˜¤í›„ 12:57:55] ìƒí’ˆê¸°íšíŒ€, PM ìš”ì²­..*/
             if(gu8_temporary_Min < 59)
             {
                 gu8_temporary_Min++;
             }
             else
             {
-                /*..hui [19-10-16¿ÀÈÄ 5:30:44] 59ºĞÀÌ¸é 0ºĞÀ¸·Î..*/
+                /*..hui [19-10-16ì˜¤í›„ 5:30:44] 59ë¶„ì´ë©´ 0ë¶„ìœ¼ë¡œ..*/
                 gu8_temporary_Min = 0;
             }
 
@@ -691,7 +691,7 @@ void reserve_time_setting_up(void)
         break;
     }
 #if 0
-    /*..hui [23-8-1¿ÀÈÄ 3:47:56] ¿¬¼ÓÀ¸·Î ´©¸¦¶§´Â ºÎÀúÀ½ ¾È³ª°Ô..*/
+    /*..hui [23-8-1ì˜¤í›„ 3:47:56] ì—°ì†ìœ¼ë¡œ ëˆ„ë¥¼ë•ŒëŠ” ë¶€ì €ìŒ ì•ˆë‚˜ê²Œ..*/
     if( Bit1_Ice_Continue == CLEAR )
     {
         play_melody_select_196();
@@ -727,7 +727,7 @@ void reserve_time_setting_down(void)
         case SETTING_TIME_MIN :
 
             #if 0
-            /*..hui [23-9-14¿ÀÈÄ 3:29:15] »ì±Õ½Ã°£Àº 30ºĞ ´ÜÀ§·Î ¼±ÅÃ °¡´É..*/
+            /*..hui [23-9-14ì˜¤í›„ 3:29:15] ì‚´ê· ì‹œê°„ì€ 30ë¶„ ë‹¨ìœ„ë¡œ ì„ íƒ ê°€ëŠ¥..*/
             if( gu8_temporary_Min == 0 )
             {
                 gu8_temporary_Min = 30;
@@ -742,15 +742,15 @@ void reserve_time_setting_down(void)
             }
             #endif
 
-            /*..hui [24-3-25¿ÀÈÄ 12:57:49] ¼¼Ã´ ¿¹¾à ½Ã°£µµ 1ºĞ´ÜÀ§·Î ¼³Á¤ °¡´ÉÇÏµµ·Ï..*/
-            /*..hui [24-3-25¿ÀÈÄ 12:57:55] »óÇ°±âÈ¹ÆÀ, PM ¿äÃ»..*/
+            /*..hui [24-3-25ì˜¤í›„ 12:57:49] ì„¸ì²™ ì˜ˆì•½ ì‹œê°„ë„ 1ë¶„ë‹¨ìœ„ë¡œ ì„¤ì • ê°€ëŠ¥í•˜ë„ë¡..*/
+            /*..hui [24-3-25ì˜¤í›„ 12:57:55] ìƒí’ˆê¸°íšíŒ€, PM ìš”ì²­..*/
             if(gu8_temporary_Min > 0)
             {
                 gu8_temporary_Min--;
             }
             else
             {
-                /*..hui [19-10-16¿ÀÈÄ 5:21:51] 0ºĞÀÌ¸é 59ºĞÀ¸·Î..*/
+                /*..hui [19-10-16ì˜¤í›„ 5:21:51] 0ë¶„ì´ë©´ 59ë¶„ìœ¼ë¡œ..*/
                 gu8_temporary_Min = 59;
             }
 
@@ -765,7 +765,7 @@ void reserve_time_setting_down(void)
     }
 
 #if 0
-    /*..hui [23-8-1¿ÀÈÄ 3:47:56] ¿¬¼ÓÀ¸·Î ´©¸¦¶§´Â ºÎÀúÀ½ ¾È³ª°Ô..*/
+    /*..hui [23-8-1ì˜¤í›„ 3:47:56] ì—°ì†ìœ¼ë¡œ ëˆ„ë¥¼ë•ŒëŠ” ë¶€ì €ìŒ ì•ˆë‚˜ê²Œ..*/
     if( Bit0_Ice_Water_Continue == CLEAR )
     {
         play_melody_select_196();

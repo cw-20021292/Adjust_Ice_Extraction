@@ -1,7 +1,7 @@
 /// @file   Type_define.h
 /// @date   2013/01/18
 /// @author Jaejin Ham
-/// @brief  ±âº»ÀûÀ¸·Î »ç¿ëÇÏ´Â µ¥ÀÌÅÍÇüµéÀÇ Define Çì´õÆÄÀÏ
+/// @brief  ê¸°ë³¸ì ìœ¼ë¡œ ì‚¬ìš©í•˜ëŠ” ë°ì´í„°í˜•ë“¤ì˜ Define í—¤ë”íŒŒì¼
 
 #ifndef __TYPE_DEFINE_H__
 #define __TYPE_DEFINE_H__

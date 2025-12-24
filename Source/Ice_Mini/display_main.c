@@ -33,7 +33,7 @@ void led_display(void)
     gu8_animation_time = BREATH_ANIMATION_TIME;
     gu8_animation_duty = BREATH_ANIMATION_DUTY;
 
-    /*..hui [23-5-25¿ÀÈÄ 3:18:14] µğ¹Ö ¾Ö´Ï¸ŞÀÌ¼Ç..*/
+    /*..hui [23-5-25ì˜¤í›„ 3:18:14] ë””ë° ì• ë‹ˆë©”ì´ì…˜..*/
     breath_control();
 
     /*welcome_led_output();*/
@@ -55,7 +55,7 @@ void led_display(void)
 
             break;
 
-        case LED_Display__ICE_WATER_EXTRACT:                    /* ¾óÀ½¹° ÃßÃâ */
+        case LED_Display__ICE_WATER_EXTRACT:                    /* ì–¼ìŒë¬¼ ì¶”ì¶œ */
 
             if( before_display != LED_Display__ICE_WATER_EXTRACT )
             {
@@ -84,7 +84,7 @@ void led_display(void)
 
             break;
 
-        case LED_Display__MY_WATER_EXTRACT:                      /* MY¿öÅÍ ÃßÃâ */
+        case LED_Display__MY_WATER_EXTRACT:                      /* MYì›Œí„° ì¶”ì¶œ */
 
             if( before_display != LED_Display__MY_WATER_EXTRACT )
             {
@@ -486,7 +486,7 @@ void get_popup(void)
                  && gu16_AD_Result_UV_Water_Tank_1_2_Current_Feed > UV_COUPLE__ERROR_CHECK_UNDER_AD
                  && bit_uv_fault_test_start == CLEAR )
         {
-            /*..hui [24-11-28¿ÀÀü 10:03:48] Àü¿øÀÎ°¡ÈÄ UV Å×½ºÆ®ÇÏ´Â µ¿¾È¿¡´Â Ç¥½Ã ¾ÈÇÔ Ãß°¡..*/
+            /*..hui [24-11-28ì˜¤ì „ 10:03:48] ì „ì›ì¸ê°€í›„ UV í…ŒìŠ¤íŠ¸í•˜ëŠ” ë™ì•ˆì—ëŠ” í‘œì‹œ ì•ˆí•¨ ì¶”ê°€..*/
             gu8_uv_popup_enable = SET;
         }
         else if( ( bit_uv_ice_tray_out == SET && bit_ice_tray_making_enable == CLEAR )
@@ -506,7 +506,7 @@ void get_popup(void)
         else{}
         #endif
 
-        /*..hui [24-4-5¿ÀÀü 9:11:09] ¾óÀ½ÅÊÅ© ¾ÕUV´Â ¾ÆÀÌ½ºÆ®·¹ÀÌ¶û ¿¬µ¿µÇ±â ‹š¹®¿¡ Ç¥½Ã ¾ÈÇÔ..*/
+        /*..hui [24-4-5ì˜¤ì „ 9:11:09] ì–¼ìŒíƒ±í¬ ì•UVëŠ” ì•„ì´ìŠ¤íŠ¸ë ˆì´ë‘ ì—°ë™ë˜ê¸° ë–„ë¬¸ì— í‘œì‹œ ì•ˆí•¨..*/
         #if 0
         else if( bit_uv_ice_tank_front_out == SET
                  && gu16_AD_Result_UV_Ice_Tank_Front_Current < UV_SOLO__ERROR_CHECK_OVER_AD
@@ -520,7 +520,7 @@ void get_popup(void)
         #if 1
         if( gu16_wifi_pairing_30min_timer >= WIFI_PAIRING_START_30_MIN )
         {
-            /*..hui [24-8-6¿ÀÀü 10:52:13] 30ºĞ °æ°úÈÄºÎÅÍ ÃßÃâ Á¾·áÈÄ 5ÃÊ µ¿¾È Ç¥½Ã..*/
+            /*..hui [24-8-6ì˜¤ì „ 10:52:13] 30ë¶„ ê²½ê³¼í›„ë¶€í„° ì¶”ì¶œ ì¢…ë£Œí›„ 5ì´ˆ ë™ì•ˆ í‘œì‹œ..*/
             bit_pairing_5s_display_start = SET;
         }
         else{}
@@ -572,7 +572,7 @@ void init_ice_extract_display(void)
 ***********************************************************************************************************************/
 void ice_disp_key_check(void)
 {
-    /*..hui [23-8-2¿ÀÈÄ 3:35:25] ¾óÀ½ ÃßÃâ -> ¹öÆ° ´©¸§ -> ÀÏ¹İÈ­¸é ÀüÈ¯ -> 7ÃÊÈÄ ¾óÀ½ÃßÃâÈ­¸é ÀüÈ¯..*/
+    /*..hui [23-8-2ì˜¤í›„ 3:35:25] ì–¼ìŒ ì¶”ì¶œ -> ë²„íŠ¼ ëˆ„ë¦„ -> ì¼ë°˜í™”ë©´ ì „í™˜ -> 7ì´ˆí›„ ì–¼ìŒì¶”ì¶œí™”ë©´ ì „í™˜..*/
     //if( F_IceOut == SET && gu8_Led_Display_Step == LED_Display__MY_WATER_EXTRACT )
     //{
     //    bit_ice_disp_pause = SET;

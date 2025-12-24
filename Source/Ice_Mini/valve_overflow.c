@@ -46,15 +46,15 @@ void output_valve_overflow_nos4(void)
 {
 	if( F_WaterOut == SET )
     {
-		/* ³Ã¼ö, ¾óÀ½¹° ÃßÃâ ½Ã overflow ¹ëºê Á¦¾î */
+		/* ëƒ‰ìˆ˜, ì–¼ìŒë¬¼ ì¶”ì¶œ ì‹œ overflow ë°¸ë¸Œ ì œì–´ */
 		if(( u8WaterOutState == COLD_WATER_SELECT )
-		|| (u8IceOutState == ICE_SELECT__ICE_WATER )	/* ³Ã¼ö OR ¾óÀ½¹° ÃßÃâ ½Ã OVERFLOW VALVE Á¦¾î */
+		|| (u8IceOutState == ICE_SELECT__ICE_WATER )	/* ëƒ‰ìˆ˜ OR ì–¼ìŒë¬¼ ì¶”ì¶œ ì‹œ OVERFLOW VALVE ì œì–´ */
 		)
         {
             // if( gu8_Water_Out_Step >= STATE_10_WATER_IN_FEED_ON_STATE
 			// && gu8_Water_Out_Step <= STATE_11_COLD_WATER_PRESSURE_PREVENT_STATE )
             // {
-			// 	// ÃßÃâ ÃÊ±â 0.3 ~ 0.4SEC´Â OVERFLOW OPEN
+			// 	// ì¶”ì¶œ ì´ˆê¸° 0.3 ~ 0.4SECëŠ” OVERFLOW OPEN
             //     Bit0_OverFlow_Valve_Extract_On_State = CLEAR;
             // }
             // else
@@ -62,8 +62,8 @@ void output_valve_overflow_nos4(void)
             //     Bit0_OverFlow_Valve_Extract_On_State = SET;
             // }
 
-			/* ³Ã¼ö ÃßÃâ ½Ã OVERFLOW, ³Ã¼öÀÔ¼ö ¹ëºê ´İ°í ½ÃÀÛ ÈÄ 0.3ÃÊ ÀÌÈÄ¿¡ ÃßÃâ¹ëºê 
-			¿­¾î¼­ ¾Ğ·ÂÀÌ¶û °°ÀÌ »©µµ·Ï ¼öÁ¤ (½Ã·áº° Á¤·®ÃßÃâ ÆíÂ÷ Ãà¼Ò) - Water°³¹ßÆÀ ¿äÃ» 250731 CH.PARK */
+			/* ëƒ‰ìˆ˜ ì¶”ì¶œ ì‹œ OVERFLOW, ëƒ‰ìˆ˜ì…ìˆ˜ ë°¸ë¸Œ ë‹«ê³  ì‹œì‘ í›„ 0.3ì´ˆ ì´í›„ì— ì¶”ì¶œë°¸ë¸Œ 
+			ì—´ì–´ì„œ ì••ë ¥ì´ë‘ ê°™ì´ ë¹¼ë„ë¡ ìˆ˜ì • (ì‹œë£Œë³„ ì •ëŸ‰ì¶”ì¶œ í¸ì°¨ ì¶•ì†Œ) - Waterê°œë°œíŒ€ ìš”ì²­ 250731 CH.PARK */
 			if( gu8_Water_Out_Step >= STATE_10_WATER_IN_FEED_ON_STATE
 			&& gu8_Water_Out_Step <= STATE_40_EXTRACT_VALVE_OFF_STATE )
             {
@@ -75,18 +75,18 @@ void output_valve_overflow_nos4(void)
             }
 
         }
-		else if( u8WaterOutState == HOT_WATER_SELECT )				/* ¿Â¼öÃßÃâÇÒ ¶§ overflow¹ëºê Á¦¾î */
+		else if( u8WaterOutState == HOT_WATER_SELECT )				/* ì˜¨ìˆ˜ì¶”ì¶œí•  ë•Œ overflowë°¸ë¸Œ ì œì–´ */
 		{
 			if( gu8_Water_Out_Step == STATE_32_WATER_AIR_VENT_STATE )
 			{
 				Bit2_Air_Vent_State = CLEAR;
 			}
-			// ¡Ú 2025-06-11 Phil
+			// â˜… 2025-06-11 Phil
 			else if( gu8_Water_Out_Step == STATE_21_HOT_PRE_HEATING_BUFFER_DRAIN_STATE )
 			{
 				Bit2_Air_Vent_State = SET;
 			}
-			// ¡Ú 2025-06-11 Phils
+			// â˜… 2025-06-11 Phils
 			else
 			{
 				Bit2_Air_Vent_State = SET;
@@ -138,12 +138,12 @@ void output_valve_overflow_nos4(void)
 		&& (gu8_cold_tank_fill_step <= COLD_TANK_FILL_COLD_CLOSE)
 		)
 		{
-			// OVERFLOW ¹ëºê OPEN
+			// OVERFLOW ë°¸ë¸Œ OPEN
 			Bit1_flushing_Cold_Overflow_ON = CLEAR;
 		}
 		else
 		{
-			// OVERFLOW ¹ëºê CLOSE
+			// OVERFLOW ë°¸ë¸Œ CLOSE
 			Bit1_flushing_Cold_Overflow_ON = SET;
 		}
 	}
@@ -151,29 +151,29 @@ void output_valve_overflow_nos4(void)
 	{
 		if(gu8_cold_tank_flushing_step == COLDTANK_FLUSHING_INIT)
 		{
-			// OVERFLOW ¹ëºê OPEN
+			// OVERFLOW ë°¸ë¸Œ OPEN
 			Bit1_flushing_Cold_Overflow_ON = CLEAR;
 		}
 		else if(gu8_cold_tank_flushing_step == COLDTANK_FLUSHING_5MINUTE)
 		{
-			// OVERFLOW ¹ëºê OPEN
+			// OVERFLOW ë°¸ë¸Œ OPEN
 			Bit1_flushing_Cold_Overflow_ON = CLEAR;
 		}
 		else
 		{
-			// OVERFLOW ¹ëºê CLOSE
+			// OVERFLOW ë°¸ë¸Œ CLOSE
 			Bit1_flushing_Cold_Overflow_ON = SET;
 		}
 	}
 	else
 	{
-		// OVERFLOW ¹ëºê CLOSE !!
+		// OVERFLOW ë°¸ë¸Œ CLOSE !!
 		Bit1_flushing_Cold_Overflow_ON = CLEAR;
 	}
 
 	if(gu8_flushing_mode == FLUSHING_FILL_HOT_TANK_STATE)
 	{
-		/* ¿Â¼öÅÊÅ© Ã¤¿ì±â ÇÏ´Â µ¿¾È¿¡´Â ¹ëºê ´İ¾Æ³õ±â ¿Ï·áµÇ¸é ¿­±â */
+		/* ì˜¨ìˆ˜íƒ±í¬ ì±„ìš°ê¸° í•˜ëŠ” ë™ì•ˆì—ëŠ” ë°¸ë¸Œ ë‹«ì•„ë†“ê¸° ì™„ë£Œë˜ë©´ ì—´ê¸° */
 		if(gu8_Hot_Filling_Step == 6)
 		{
 			Bit6_flushing_hot_fill = CLEAR;
@@ -201,7 +201,7 @@ void output_valve_overflow_nos4(void)
     {
         if( gu8_ice_ster_mode == STER_MODE_HOT_PREHEAT )
         {
-            /*..hui [25-4-8¿ÀÀü 9:54:35] ¿¹¿­Áß..*/
+            /*..hui [25-4-8ì˜¤ì „ 9:54:35] ì˜ˆì—´ì¤‘..*/
             if( gu8_preheat_ster_step >= 1 )
             {
                 Bit7_OFV_Ice_Tray_Ster_State = SET;
@@ -213,7 +213,7 @@ void output_valve_overflow_nos4(void)
         }
         else if( gu8_ice_ster_mode == STER_MODE_HOT_INPUT_STATE )
         {
-            /*..hui [25-4-8¿ÀÀü 9:54:41] ½ÇÁ¦ Æ®·¹ÀÌ ÀÔ¼öÁß..*/
+            /*..hui [25-4-8ì˜¤ì „ 9:54:41] ì‹¤ì œ íŠ¸ë ˆì´ ì…ìˆ˜ì¤‘..*/
             if( gu8_hot_input_ster_step >= 0 && gu8_hot_input_ster_step <= 4 )
             {
                 Bit7_OFV_Ice_Tray_Ster_State = SET;
@@ -225,7 +225,7 @@ void output_valve_overflow_nos4(void)
         }
         else if( gu8_ice_ster_mode == STER_MODE_DRAIN_PREHEAT )
         {
-            /*..hui [25-4-8¿ÀÀü 9:54:35] ¿¹¿­Áß..*/
+            /*..hui [25-4-8ì˜¤ì „ 9:54:35] ì˜ˆì—´ì¤‘..*/
             if( gu8_drain_preheat_ster_step >= 1 )
             {
                 Bit7_OFV_Ice_Tray_Ster_State = SET;
@@ -237,7 +237,7 @@ void output_valve_overflow_nos4(void)
         }
         else if( gu8_ice_ster_mode == STER_MODE_DRAIN_INPUT_STATE )
         {
-            /*..hui [25-7-7¿ÀÈÄ 2:28:44] ½ÇÁ¦ µå·¹ÀÎÅÊÅ© ÀÔ¼öÁß..*/
+            /*..hui [25-7-7ì˜¤í›„ 2:28:44] ì‹¤ì œ ë“œë ˆì¸íƒ±í¬ ì…ìˆ˜ì¤‘..*/
             /*if( gu8_drain_input_ster_step >= 0 && gu8_drain_input_ster_step <= 4 )*/
             if( gu8_drain_input_ster_step >= 6 )
             {
@@ -258,7 +258,7 @@ void output_valve_overflow_nos4(void)
         Bit7_OFV_Ice_Tray_Ster_State = CLEAR;
     }
 
-	/* ¼øÈ¯¹è¼ö µ¿ÀÛÁß : ¿À¹öÇÃ·Î¿ì NOS ¹ëºê Àá±İ */
+	/* ìˆœí™˜ë°°ìˆ˜ ë™ì‘ì¤‘ : ì˜¤ë²„í”Œë¡œìš° NOS ë°¸ë¸Œ ì ê¸ˆ */
 	if( F_Circul_Drain == SET )
     {
         if( F_DrainStatus == SET )
@@ -283,23 +283,23 @@ void output_valve_overflow_nos4(void)
         Bit8_CD_Circul_Drain_Off_State_State = CLEAR;
     }
 
-	/* [ÀÓ½Ã] À¯·Î»ì±Õ¸ğµå ³Ã¼öÃßÃâ ½Ã¿¡¸¸ OVERFLOW ¹ëºê CLOSE 250708 */
+	/* [ì„ì‹œ] ìœ ë¡œì‚´ê· ëª¨ë“œ ëƒ‰ìˆ˜ì¶”ì¶œ ì‹œì—ë§Œ OVERFLOW ë°¸ë¸Œ CLOSE 250708 */
 	if(cody_water_line.gu8_start == SET)
 	{
 		if(cody_water_line.gu8_step == 2)
 		{
-			// OVERLFOW ¹ëºê CLOSE
+			// OVERLFOW ë°¸ë¸Œ CLOSE
 			Bit9_Cody_Water_Line_Clear_State = SET;
 		}
 		else
 		{
-			// OVERLFOW ¹ëºê OPEN
+			// OVERLFOW ë°¸ë¸Œ OPEN
 			Bit9_Cody_Water_Line_Clear_State = CLEAR;
 		}
 	}
 	else
 	{
-		// OVERLFOW ¹ëºê OPEN
+		// OVERLFOW ë°¸ë¸Œ OPEN
 		Bit9_Cody_Water_Line_Clear_State = CLEAR;
 	}
 

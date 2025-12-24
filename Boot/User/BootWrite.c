@@ -60,7 +60,7 @@ __near U8 BOOT_writeProgram(void)
 			}
 			if(gu16BootPacketCnt != mu16IndexValue)
 			{
-				BOOT_UartTxMsg(AT_ICT_OTA_SEND_DATA);	// Index ºÒÀÏÄ¡ ½Ã, ÇØ´ç ÆÐÅ¶ Àç¿äÃ»
+				BOOT_UartTxMsg(AT_ICT_OTA_SEND_DATA);	// Index ë¶ˆì¼ì¹˜ ì‹œ, í•´ë‹¹ íŒ¨í‚· ìž¬ìš”ì²­
 				break;
 			}
 			else{}
@@ -91,7 +91,7 @@ __near U8 BOOT_writeProgram(void)
 				else if((gu16BootPacketCnt > START_SKIP_NEWBOOT_BLOCK) && (gu16BootPacketCnt <= END_SKIP_NEWBOOT_BLOCK)){}
 				else
 				{
-					msWriteBuff.fsl_data_buffer_p_u08 = &gu8BootMsgBuffer[PARAM_DATA_START];		// index Ãß°¡¿¡ µû¸¥ ¼öÁ¤ 23->27
+					msWriteBuff.fsl_data_buffer_p_u08 = &gu8BootMsgBuffer[PARAM_DATA_START];		// index ì¶”ê°€ì— ë”°ë¥¸ ìˆ˜ì • 23->27
 					msWriteBuff.fsl_destination_address_u32 = mu32WriteAddressIndex;
 					msWriteBuff.fsl_word_count_u08 = 0x40;
 					if(FSL_Write(&msWriteBuff) != 0){}
@@ -128,7 +128,7 @@ __near U8 BOOT_writeProgram(void)
 				if(FSL_InvertBootFlag() != 0)
 				{	
 					gu8BootFailCnt--;
-					BOOT_FDLWriteByte(DATAFLASH_ADDR_BOOTFAILCNT, &gu8BootFailCnt, 1);  // boot swap ½ÇÆÐ ½Ã, Reset 
+					BOOT_FDLWriteByte(DATAFLASH_ADDR_BOOTFAILCNT, &gu8BootFailCnt, 1);  // boot swap ì‹¤íŒ¨ ì‹œ, Reset 
 					while(1){}
 				}
 				else
@@ -192,7 +192,7 @@ __near U8 BOOT_UartRxMsg(__near U8* pmu8DataBuffer, __near U8* pmu8Command)
 			{
 				for(mu8index=0; mu8index<ICT_OTA_MAX; mu8index++)
 				{
-					if(pmu8DataBuffer[mu16index-1] == sRxCommand[mu8index].pmu8Command[mu16index-1])	// DAT'A', EN'D' ±¸ºÐÀ» À§ÇÔ
+					if(pmu8DataBuffer[mu16index-1] == sRxCommand[mu8index].pmu8Command[mu16index-1])	// DAT'A', EN'D' êµ¬ë¶„ì„ ìœ„í•¨
 					{
 						mu16RxLength = sRxCommand[mu8index].mu16length;
 						*pmu8Command = sRxCommand[mu8index].mu8num;
@@ -264,7 +264,7 @@ __near void BOOT_UartTxMsg(__near U8 mu8num)
 			
 		case AT_ICT_OTA_SEND_DATA:	 
 			mu16index = gu16BootPacketCnt/10;  
-			mu8index = (U8)(mu16index/100)+0x30; // index 4ÀÚ¸® º¯°æÀ¸·Î ÀÎÇÑ ¼öÁ¤
+			mu8index = (U8)(mu16index/100)+0x30; // index 4ìžë¦¬ ë³€ê²½ìœ¼ë¡œ ì¸í•œ ìˆ˜ì •
 			BOOT_UartTxData(&mu8index);
 			mu8index = (U8)((mu16index/10)%10)+0x30; 
 			BOOT_UartTxData(&mu8index);

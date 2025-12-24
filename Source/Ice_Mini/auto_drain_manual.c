@@ -110,7 +110,7 @@ void stop_manual_drain(void)
 void manual_drain(void)
 {
     //
-    /*..hui [23-8-14¿ÀÈÄ 1:30:31] ¼öµ¿¹è¼ö ÁøÇàÁß ¿¡·¯ ¶Ç´Â ÇÊÅÍ ¿­¸² °¨Áö½Ã Á¤Áö..*/
+    /*..hui [23-8-14ì˜¤í›„ 1:30:31] ìˆ˜ë™ë°°ìˆ˜ ì§„í–‰ì¤‘ ì—ëŸ¬ ë˜ëŠ” í•„í„° ì—´ë¦¼ ê°ì§€ì‹œ ì •ì§€..*/
     if( bit_manual_drain_start == SET )
     {
         if( bit_filter_all == CLEAR
@@ -140,7 +140,7 @@ void manual_drain(void)
     {
         gu16_manual_drain_max_timer++;
 
-        /*..hui [23-8-14¿ÀÀü 11:43:15] ¼öµ¿¹è¼ö ÃÖ´ë µ¿ÀÛ½Ã°£Àº ÃÖ´ë 1½Ã°£..*/
+        /*..hui [23-8-14ì˜¤ì „ 11:43:15] ìˆ˜ë™ë°°ìˆ˜ ìµœëŒ€ ë™ìž‘ì‹œê°„ì€ ìµœëŒ€ 1ì‹œê°„..*/
         /*if(gu16_manual_drain_max_timer >= MANUAL_DRAIN_MAX_TIME)*/
         if(gu16_manual_drain_max_timer >= 3000)
         {
@@ -166,7 +166,7 @@ void manual_drain(void)
         #if 0
         gu16_manual_drain_max_timer++;
 
-        /*..hui [23-8-14¿ÀÀü 11:43:15] ¼öµ¿¹è¼ö ÃÖ´ë µ¿ÀÛ½Ã°£Àº ÃÖ´ë 1½Ã°£..*/
+        /*..hui [23-8-14ì˜¤ì „ 11:43:15] ìˆ˜ë™ë°°ìˆ˜ ìµœëŒ€ ë™ìž‘ì‹œê°„ì€ ìµœëŒ€ 1ì‹œê°„..*/
         /*if(gu16_manual_drain_max_timer >= MANUAL_DRAIN_MAX_TIME)*/
         if(gu16_manual_drain_max_timer >= 6000)
         {
@@ -197,7 +197,7 @@ void manual_drain(void)
 void manual_drain_pump_output(void)
 {
 
-    /*..hui [23-8-14¿ÀÈÄ 4:17:30] µå·¹ÀÎ ½Ã°£ - ¸¸¼öÀ§ºÎÅÍ ½ÃÀÛ..*/
+    /*..hui [23-8-14ì˜¤í›„ 4:17:30] ë“œë ˆì¸ ì‹œê°„ - ë§Œìˆ˜ìœ„ë¶€í„° ì‹œìž‘..*/
     /* 600
        710
        757
@@ -220,7 +220,7 @@ void manual_drain_pump_output(void)
 
 			 gu16_manual_drain_finish_timer++;
 			 
-			 /*..hui [23-8-14¿ÀÈÄ 1:37:19] xºÐµ¿¾È µå·¹ÀÎ¹ëºê ¿­¾ú´Âµ¥ Àú¼öÀ§ ÀÌ»ó °¨Áö ¾ÈµÇ¸é Á¾·á..*/
+			 /*..hui [23-8-14ì˜¤í›„ 1:37:19] xë¶„ë™ì•ˆ ë“œë ˆì¸ë°¸ë¸Œ ì—´ì—ˆëŠ”ë° ì €ìˆ˜ìœ„ ì´ìƒ ê°ì§€ ì•ˆë˜ë©´ ì¢…ë£Œ..*/
 			 if( gu16_manual_drain_finish_timer >= MANUAL_DRAIN_FINISH_CHECK_TIME )
 			 {
 				 gu16_manual_drain_finish_timer = 0;
@@ -229,12 +229,12 @@ void manual_drain_pump_output(void)
 			 else{}
 
              #if 0
-             /*..hui [23-8-14¿ÀÈÄ 2:04:53] ³Ã¼öÅÊÅ© Àú¼öÀ§ ¹Ì°¨Áö ÀÌÇÏ¿¡¼­¸¸ È®ÀÎÇÏµµ·Ï..*/
+             /*..hui [23-8-14ì˜¤í›„ 2:04:53] ëƒ‰ìˆ˜íƒ±í¬ ì €ìˆ˜ìœ„ ë¯¸ê°ì§€ ì´í•˜ì—ì„œë§Œ í™•ì¸í•˜ë„ë¡..*/
              if( gu8_Room_Water_Level == ROOM_LEVEL_LOW )
              {
                  gu16_manual_drain_finish_timer++;
 
-                 /*..hui [23-8-14¿ÀÈÄ 1:37:19] xºÐµ¿¾È µå·¹ÀÎ¹ëºê ¿­¾ú´Âµ¥ Àú¼öÀ§ ÀÌ»ó °¨Áö ¾ÈµÇ¸é Á¾·á..*/
+                 /*..hui [23-8-14ì˜¤í›„ 1:37:19] xë¶„ë™ì•ˆ ë“œë ˆì¸ë°¸ë¸Œ ì—´ì—ˆëŠ”ë° ì €ìˆ˜ìœ„ ì´ìƒ ê°ì§€ ì•ˆë˜ë©´ ì¢…ë£Œ..*/
                  if( gu16_manual_drain_finish_timer >= MANUAL_DRAIN_FINISH_CHECK_TIME )
                  {
                      gu16_manual_drain_finish_timer = 0;
@@ -255,30 +255,30 @@ void manual_drain_pump_output(void)
 
              gu16_manual_drain_finish_timer = 0;
 
-             /*..hui [18-1-14¿ÀÈÄ 6:06:23] ¹°¾ø´Â »óÅÂ¿¡¼­ ³Ã¼ö ¹è¼ö¹ëºê ON »óÅÂ·Î Àú¼öÀ§ ÁøÀÔÇÏ¸é..*/
+             /*..hui [18-1-14ì˜¤í›„ 6:06:23] ë¬¼ì—†ëŠ” ìƒíƒœì—ì„œ ëƒ‰ìˆ˜ ë°°ìˆ˜ë°¸ë¸Œ ON ìƒíƒœë¡œ ì €ìˆ˜ìœ„ ì§„ìž…í•˜ë©´..*/
              if(gu8_before_manual_drain_level == DRAIN_LEVEL_EMPTY)
              {
                  gu16_manual_drain_op_timer++;
 
-                 /*..hui [18-1-14¿ÀÈÄ 6:06:47] 40ÃÊ ÀÌ»ó ³Ã¼ö ¹è¼öÇß´Âµ¥µµ ¸¸¼öÀ§¿¡ µµ´ÞÇÏÁö ¸øÇÏ¸é..*/
-                 /*..hui [18-1-14¿ÀÈÄ 6:07:00] ´Ù½Ã µå·¹ÀÎÆßÇÁ °¡µ¿ÇØ¼­ µå·¹ÀÎ ½ÃÀÛ..*/
-                 /*..hui [18-1-14¿ÀÈÄ 6:11:06] ¼¾¼­ ¿À°¨Áö, À¯·Î¸·ÈûµîÀÇ ÀÌÀ¯·Î.. ¹è¼öÅÊÅ© ³ÑÄ¡Áö ¾Ê°Ô ÇÏ±âÀ§ÇØ..???..*/
+                 /*..hui [18-1-14ì˜¤í›„ 6:06:47] 40ì´ˆ ì´ìƒ ëƒ‰ìˆ˜ ë°°ìˆ˜í–ˆëŠ”ë°ë„ ë§Œìˆ˜ìœ„ì— ë„ë‹¬í•˜ì§€ ëª»í•˜ë©´..*/
+                 /*..hui [18-1-14ì˜¤í›„ 6:07:00] ë‹¤ì‹œ ë“œë ˆì¸íŽŒí”„ ê°€ë™í•´ì„œ ë“œë ˆì¸ ì‹œìž‘..*/
+                 /*..hui [18-1-14ì˜¤í›„ 6:11:06] ì„¼ì„œ ì˜¤ê°ì§€, ìœ ë¡œë§‰íž˜ë“±ì˜ ì´ìœ ë¡œ.. ë°°ìˆ˜íƒ±í¬ ë„˜ì¹˜ì§€ ì•Šê²Œ í•˜ê¸°ìœ„í•´..???..*/
                  if(gu16_manual_drain_op_timer >= DRAIN_VALVE_OPEN_TIME)
                  {
                      bit_manual_drain_pump_output = SET;
                      bit_manual_drain_valve_output = CLEAR;
 
-                     /*..hui [18-1-25¿ÀÈÄ 4:11:59] µå·¹ÀÎÆßÇÁ °¡µ¿À¸·Î ÀüÈ¯ÇÏ°í 3ÃÊÈÄ¿¡ ÇÇµå¹é È®ÀÎ..*/
+                     /*..hui [18-1-25ì˜¤í›„ 4:11:59] ë“œë ˆì¸íŽŒí”„ ê°€ë™ìœ¼ë¡œ ì „í™˜í•˜ê³  3ì´ˆí›„ì— í”¼ë“œë°± í™•ì¸..*/
                      if(gu16_manual_drain_op_timer >= DRAIN_VALVE_OPEN_TIME + 30)
                      {
-                         /*..hui [18-1-25¿ÀÈÄ 4:12:27] ÇÇµå¹é ÀÌÇÏÀÌ¸é ´Ù½Ã ³Ã¼ö ¹ëºê ON..*/
+                         /*..hui [18-1-25ì˜¤í›„ 4:12:27] í”¼ë“œë°± ì´í•˜ì´ë©´ ë‹¤ì‹œ ëƒ‰ìˆ˜ ë°¸ë¸Œ ON..*/
                          if(gu16_AD_Drain_Pump_Current <= DRAIN_COMPLETE_FEEDBACK)
                          {
                              gu16_manual_drain_op_timer = 0;
                          }
                          else
                          {
-                             /*..hui [18-1-25¿ÀÈÄ 4:12:45] ÇÇµå¹é ÃÊ°úÀÌ¸é µå·¹ÀÎÆßÇÁ ON »óÅÂ À¯Áö..*/
+                             /*..hui [18-1-25ì˜¤í›„ 4:12:45] í”¼ë“œë°± ì´ˆê³¼ì´ë©´ ë“œë ˆì¸íŽŒí”„ ON ìƒíƒœ ìœ ì§€..*/
                              gu16_manual_drain_op_timer = DRAIN_VALVE_OPEN_TIME + 30;
                          }
                      }
@@ -293,9 +293,9 @@ void manual_drain_pump_output(void)
              else
              {
                  gu16_manual_drain_op_timer = 0;
-                 /*..hui [18-1-14¿ÀÈÄ 6:15:33] ¸¸¼öÀ§ °¨ÁöµÇ°í µå·¹ÀÎÆßÇÁ °¡µ¿ÇÏ¿© Àú¼öÀ§±îÁö ³»·Á¿ÔÀ»¶§..*/
-                 /*..hui [18-1-14¿ÀÈÄ 6:21:04] ÀÌ°Íµµ ¼¾¼­ ¿À°¨Áö³ª À¯·Î ¿¡¾îµîÀÇ ÀÌÀ¯·Î ¹°¾øÀ½±îÁö Àß ¾È³»·Á°¥¶§..*/
-                 /*..hui [18-1-14¿ÀÈÄ 6:21:55] ´Ù½Ã µå·¹ÀÎÆßÇÁ OFFÇÏ°í ³Ã¼ö ¹ëºê ONÇÏ¿© ¸¸¼öÀ§·Î °¡µµ·Ï....*/
+                 /*..hui [18-1-14ì˜¤í›„ 6:15:33] ë§Œìˆ˜ìœ„ ê°ì§€ë˜ê³  ë“œë ˆì¸íŽŒí”„ ê°€ë™í•˜ì—¬ ì €ìˆ˜ìœ„ê¹Œì§€ ë‚´ë ¤ì™”ì„ë•Œ..*/
+                 /*..hui [18-1-14ì˜¤í›„ 6:21:04] ì´ê²ƒë„ ì„¼ì„œ ì˜¤ê°ì§€ë‚˜ ìœ ë¡œ ì—ì–´ë“±ì˜ ì´ìœ ë¡œ ë¬¼ì—†ìŒê¹Œì§€ ìž˜ ì•ˆë‚´ë ¤ê°ˆë•Œ..*/
+                 /*..hui [18-1-14ì˜¤í›„ 6:21:55] ë‹¤ì‹œ ë“œë ˆì¸íŽŒí”„ OFFí•˜ê³  ëƒ‰ìˆ˜ ë°¸ë¸Œ ONí•˜ì—¬ ë§Œìˆ˜ìœ„ë¡œ ê°€ë„ë¡....*/
                  if(gu16_AD_Drain_Pump_Current <= DRAIN_COMPLETE_FEEDBACK)
                  {
                      gu8_manual_drain_no_water_timer++;

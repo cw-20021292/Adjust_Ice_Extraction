@@ -68,7 +68,7 @@ void* GetWifiErrDataEventList ( void )
     }
     else
     {
-        /* 2KG¥¬ CPI æ¯¿Ω */
+        /* 2KGÎäî CPI ÏóÜÏùå */
     }
 }
 
@@ -80,7 +80,7 @@ U16 GetWifiErrEventListSize ( void )
     }
     else
     {
-        /* 2KG¥¬ CPI æ¯¿Ω */
+        /* 2KGÎäî CPI ÏóÜÏùå */
     }
 
 }
@@ -133,16 +133,16 @@ U16 GetUserSystemError ( U16 mu16Err )
         case WIFI_ERROR_0037_UV_ICE_TRAY:
             mu16Data = Bit28_Ice_Tray_1_2_UV_Error__E76;
         break;
-        case WIFI_ERROR_0038_UV_EXTRACT:        /* LPP √ﬂ∞° 250610 CH.PARK */
+        case WIFI_ERROR_0038_UV_EXTRACT:        /* LPP Ï∂îÍ∞Ä 250610 CH.PARK */
             mu16Data = Bit23_faucet_UV_Error__E77;
         break;
-        case WIFI_ERROR_0039_UV_ICE_EXTRACT:    /* LPP √ﬂ∞° 250610 CH.PARK */
+        case WIFI_ERROR_0039_UV_ICE_EXTRACT:    /* LPP Ï∂îÍ∞Ä 250610 CH.PARK */
             mu16Data = (Bit25_Ice_Faucet_UV_1_Error__E78 | Bit26_Ice_Faucet_UV_2_Error__E78);
         break;
         case WIFI_ERROR_003B_MICRO_SW_MOVE2:
             mu16Data = Bit19_Tray_Micro_SW_Down_Move_Error__E63;
         break;
-        case WIFI_ERROR_003F_AMB_SIDE:          /* LPP √ﬂ∞° 250610 CH.PARK */
+        case WIFI_ERROR_003F_AMB_SIDE:          /* LPP Ï∂îÍ∞Ä 250610 CH.PARK */
             mu16Data = Bit21_Amb_Side_Temp_Open_Short_Error__E53;
         break;
         case WIFI_ERROR_0049_INVERTOR_ERROR1:

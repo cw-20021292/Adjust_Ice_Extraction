@@ -26,14 +26,14 @@ U16 gu16_voice_address;
 U16 gu16_voice_command;
 
 U8 gu8VoiceVolumeLevel;
-U8 gu8Sound_Type;                       // À½¼º¾È³» ¸ğµå (±âÁ¸ gu8VoiceLevel)
+U8 gu8Sound_Type;                       // ìŒì„±ì•ˆë‚´ ëª¨ë“œ (ê¸°ì¡´ gu8VoiceLevel)
 
 U8 gu8_voice_language_type;
 
 
 bit F_OneMoreSound;
 bit F_Beep_Sound;
-bit F_PlayVoice;     /*Sound Level¿¡ µû¸¥ Address ¹ŞÀ¸¸é SET ÇÏ¿© À½¼º Ãâ·Â*/
+bit F_PlayVoice;     /*Sound Levelì— ë”°ë¥¸ Address ë°›ìœ¼ë©´ SET í•˜ì—¬ ìŒì„± ì¶œë ¥*/
 
 
 bit bit_power_on_voice;
@@ -55,13 +55,13 @@ U8 gu8_power_on_timer;
 ***********************************************************************************************************************/
 void Voice_Initialize(void)
 {
-    /*..hui [21-9-8¿ÀÈÄ 3:18:10] Æ÷Å¸ ÁøÇàÁß ºÎÆÃÀ½ ¾È³ª°Ô..*/
+    /*..hui [21-9-8ì˜¤í›„ 3:18:10] í¬íƒ€ ì§„í–‰ì¤‘ ë¶€íŒ…ìŒ ì•ˆë‚˜ê²Œ..*/
     if( gu8_fota_start == SET )
     {
         bit_power_on_voice = SET;
         gu8_fota_start = CLEAR;
 
-        /*..hui [24-1-18¿ÀÈÄ 5:30:03] FOTA ¿Ï·á ÈÄ BLE È°¼ºÈ­..*/
+        /*..hui [24-1-18ì˜¤í›„ 5:30:03] FOTA ì™„ë£Œ í›„ BLE í™œì„±í™”..*/
         WifiKey(WIFI_KEY_BLE);
     }
     else
@@ -91,7 +91,7 @@ void ProcessVoice_Main(void)
     }
     else{}
 
-    gu16_voice_command = 0;   /*..¸ğµÎ Àü¼ÛÇÏ°í ³ª¸é Command ÃÊ±âÈ­..*/
+    gu16_voice_command = 0;   /*..ëª¨ë‘ ì „ì†¡í•˜ê³  ë‚˜ë©´ Command ì´ˆê¸°í™”..*/
 }
 
 /***********************************************************************************************************************
@@ -134,7 +134,7 @@ void Play_Voice(U16 mu16MemoryAddress)
     }
     else if( gu8Sound_Type == SOUND_TYPE_VOICE )
     {
-        /*..hui [24-5-30¿ÀÈÄ 2:19:32] ·Ò»çÀÌÁî ´ÙÀÌ¾îÆ®.. À½¼ºÃâ·ÂÀº ÀüºÎ ´Ù Ãâ·Â..*/
+        /*..hui [24-5-30ì˜¤í›„ 2:19:32] ë¡¬ì‚¬ì´ì¦ˆ ë‹¤ì´ì–´íŠ¸.. ìŒì„±ì¶œë ¥ì€ ì „ë¶€ ë‹¤ ì¶œë ¥..*/
         F_PlayVoice = SET;
     }
     else{}
@@ -144,7 +144,7 @@ void Play_Voice(U16 mu16MemoryAddress)
 
 /***********************************************************************************************************************
 * Function Name: System_ini
-* Description  : À½¼º¾È³»¸¦ [À½¼Ò°Å]·Î ¼³Á¤ÇÑ »óÅÂ¿¡¼­µµ ³ª¿Í¾ß ÇÏ´Â À½¼ºµé Á¤ÀÇ
+* Description  : ìŒì„±ì•ˆë‚´ë¥¼ [ìŒì†Œê±°]ë¡œ ì„¤ì •í•œ ìƒíƒœì—ì„œë„ ë‚˜ì™€ì•¼ í•˜ëŠ” ìŒì„±ë“¤ ì •ì˜
 ***********************************************************************************************************************/
 U8 IsLevel_Mute(U16 addr)
 {
@@ -181,12 +181,12 @@ U8 IsLevel_Mute(U16 addr)
         case VOICE_198_WIFI_SET_ON:
         case VOICE_199_WIFI_SET_OFF:
 
-        /* ¼³Ä¡ ¹× ÇÊÅÍ±³Ã¼ */
+        /* ì„¤ì¹˜ ë° í•„í„°êµì²´ */
         case VOICE_35_INFORM_FLUSHING_START:
         case VOICE_36_INFORM_FLUSHING_FINISH:
         case VOICE_33_INFORM_PROEDUCT_BEFORE_FLUSHING:
 
-        /* À½¼º, È¿°úÀ½ */
+        /* ìŒì„±, íš¨ê³¼ìŒ */
         case VOICE_65_VOICE_MODE:
         case VOICE_66_MELODY_MODE:
         case VOICE_67_MUTE_MODE:
@@ -194,10 +194,10 @@ U8 IsLevel_Mute(U16 addr)
         case VOICE_69_MODE_SET_MELODY:
         case VOICE_70_MODE_SET_MUTE:
 
-        /* ºÎÆÃÀ½ */
+        /* ë¶€íŒ…ìŒ */
         case VOICE_191_MELODY_PLUG_IN_COWAY:
 
-        // [2025-12-04] CH.PARK ¾óÀ½°É¸² À½¼º¾È³»´Â À½¼Ò°Å ÇÏ´õ¶óµµ ³ª¿Í¾ß ÇÔ (»óÇ°±âÈ¹)
+        // [2025-12-04] CH.PARK ì–¼ìŒê±¸ë¦¼ ìŒì„±ì•ˆë‚´ëŠ” ìŒì†Œê±° í•˜ë”ë¼ë„ ë‚˜ì™€ì•¼ í•¨ (ìƒí’ˆê¸°íš)
         case VOICE_1365_ICE_STUCK_DETECTED:
             return TRUE;
 
@@ -211,7 +211,7 @@ U8 IsLevel_Mute(U16 addr)
 
 /***********************************************************************************************************************
 * Function Name: System_ini
-* Description  : À½¼º¾È³»¸¦ [¸á·Îµğ]·Î ¼³Á¤ÇÑ »óÅÂ¿¡¼­µµ ³ª¿Í¾ß ÇÏ´Â À½¼ºµé Á¤ÀÇ
+* Description  : ìŒì„±ì•ˆë‚´ë¥¼ [ë©œë¡œë””]ë¡œ ì„¤ì •í•œ ìƒíƒœì—ì„œë„ ë‚˜ì™€ì•¼ í•˜ëŠ” ìŒì„±ë“¤ ì •ì˜
 ***********************************************************************************************************************/
 U8 IsLevel_Melody(U16 addr)
 {
@@ -267,7 +267,7 @@ U8 IsLevel_Melody(U16 addr)
         case VOICE_198_MELODY_SET_ON:
         case VOICE_199_MELODY_SET_OFF:
 
-        // [2025-12-04] CH.PARK ¾óÀ½°É¸² À½¼º¾È³»´Â À½¼Ò°Å ÇÏ´õ¶óµµ ³ª¿Í¾ß ÇÔ (»óÇ°±âÈ¹)
+        // [2025-12-04] CH.PARK ì–¼ìŒê±¸ë¦¼ ìŒì„±ì•ˆë‚´ëŠ” ìŒì†Œê±° í•˜ë”ë¼ë„ ë‚˜ì™€ì•¼ í•¨ (ìƒí’ˆê¸°íš)
         case VOICE_1365_ICE_STUCK_DETECTED:
             return TRUE;
 

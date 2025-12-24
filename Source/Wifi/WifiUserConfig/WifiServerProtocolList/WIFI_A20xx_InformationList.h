@@ -68,8 +68,8 @@ typedef enum
 
 #if (USER_USE_A2021_SAPINFO == 1)
 /************************************ Json DATA  / Parsing ************************************/
-// SAP ÀÀ´ä CODE
-#define F1000  0U  //SAP001 Æ÷ÇÔ
+// SAP ì‘ë‹µ CODE
+#define F1000  0U  //SAP001 í¬í•¨
 #define S1000  1U
 #define E9000  2U
 

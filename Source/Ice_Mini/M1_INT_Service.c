@@ -6,11 +6,11 @@
  * Copyright    : Coway_Electronics Engineering Team (DH,Kim)
  * Description  :
  ***********************************************************************************************************************/
-/* 250us ¸ŞÀÎ ³»ºÎ ÀÎÅÍ·´Æ® Å¸ÀÌ¸Ó */
+/* 250us ë©”ì¸ ë‚´ë¶€ ì¸í„°ëŸ½íŠ¸ íƒ€ì´ë¨¸ */
 #pragma interrupt INTTM00 INTTM00
-/* È÷ÅÍ */
+/* íˆí„° */
 #pragma interrupt INTTM01 INTTM01
-/* 500us ½ºÅÜ¸ğÅÍ, ³ÃÀüÀüÈ¯¹ëºê, Æ®¶óÀÌ¾Ç Á¦¾î Å¸ÀÌ¸Ó */
+/* 500us ìŠ¤í…ëª¨í„°, ëƒ‰ì „ì „í™˜ë°¸ë¸Œ, íŠ¸ë¼ì´ì•… ì œì–´ íƒ€ì´ë¨¸ */
 #pragma interrupt INTTM02 INTTM02
 
 // #pragma interrupt INTTM13 INTTM13
@@ -20,30 +20,30 @@
 /*#pragma interrupt INTP4 INTP4*/
 /*#pragma interrupt INTP7 INTP7*/
 
-/* À¯·®¼¾¼­ ¿ÜºÎ ÀÎÅÍ·´Æ® */
+/* ìœ ëŸ‰ì„¼ì„œ ì™¸ë¶€ ì¸í„°ëŸ½íŠ¸ */
 #pragma interrupt INTP11 INTP11
 
-/* Main - Front Uart Åë½Å */
+/* Main - Front Uart í†µì‹  */
 #pragma interrupt INTST0 INTST0
 #pragma interrupt INTSR0 INTSR0
 #pragma interrupt INTSRE0 INTSRE0
 
-/* Main - WIFI Uart Åë½Å */
+/* Main - WIFI Uart í†µì‹  */
 #pragma interrupt INTST1 INTST1
 #pragma interrupt INTSR1 INTSR1
 #pragma interrupt INTSRE1 INTSRE1
 
-/* Main - BLDC Comp Uart Åë½Å */
+/* Main - BLDC Comp Uart í†µì‹  */
 #pragma interrupt INTST2 INTST2
 #pragma interrupt INTSR2 INTSR2
 #pragma interrupt INTSRE2 INTSRE2
 
-/* °øÀå ÀÚµ¿È­°Ë»ç Uart Åë½Å */
+/* ê³µì¥ ìë™í™”ê²€ì‚¬ Uart í†µì‹  */
 #pragma interrupt INTST3 INTST3
 #pragma interrupt INTSR3 INTSR3
 #pragma interrupt INTSRE3 INTSRE3
 
-/* RTC, EEPROM Module I2C Åë½Å */
+/* RTC, EEPROM Module I2C í†µì‹  */
 #pragma interrupt INTIICA0 INTIICA0
 /***********************************************************************************************************************/
 #include "Macrodriver.h"
@@ -115,7 +115,7 @@ __interrupt void INTTM02(void) /* 500us */
     {
         /*2ms*/
         u8MotorCnt_2ms = 0;
-        /*..hui [23-9-18¿ÀÈÄ 5:21:46] ³Ã¼ö ¹Í½Ì¸ğÅÍ »èÁ¦..*/
+        /*..hui [23-9-18ì˜¤í›„ 5:21:46] ëƒ‰ìˆ˜ ë¯¹ì‹±ëª¨í„° ì‚­ì œ..*/
         /*HAL_ControlMixMotor();*/
         HAL_ControlFlowMotor(); // 500pps
     }
@@ -126,7 +126,7 @@ __interrupt void INTTM02(void) /* 500us */
         /*3ms*/
         u8MotorCnt_3ms = 0;
 
-        /*..hui [17-11-30¿ÀÀü 11:23:40] Door ½ºÅÜ ¸ğÅÍ..*/
+        /*..hui [17-11-30ì˜¤ì „ 11:23:40] Door ìŠ¤í… ëª¨í„°..*/
         motor_ice_select_output(); // 333ps
         motor_ice_door_output();   // 333ps?
     }
@@ -137,7 +137,7 @@ __interrupt void INTTM02(void) /* 500us */
         /*5ms*/
         u8MotorCnt_5ms = 0;
 
-        /* Æ®·¹ÀÌ Á¦¾î ¼Óµµ º¯°æ mini¿Í µ¿ÀÏÇÏ°Ô 250715 CH.PARK */
+        /* íŠ¸ë ˆì´ ì œì–´ ì†ë„ ë³€ê²½ miniì™€ ë™ì¼í•˜ê²Œ 250715 CH.PARK */
         control_ice_tray_motor();   // 166ps
 
     }
@@ -158,11 +158,11 @@ __interrupt void INTTM02(void) /* 500us */
         /*3ms*/
         u8MotorCnt_30ms = 0;
 
-        /*..hui [19-7-24¿ÀÀü 11:21:59] ³Ã¸ÅÀüÈ¯¹ëºê..*/
+        /*..hui [19-7-24ì˜¤ì „ 11:21:59] ëƒ‰ë§¤ì „í™˜ë°¸ë¸Œ..*/
         StepMotorTimerInterrupt();
 
         #ifdef __DUMMY_PROGRAM__
-        /*..hui [19-7-17¿ÀÈÄ 3:24:58] À¯·®¼¾¼­..*/
+        /*..hui [19-7-17ì˜¤í›„ 3:24:58] ìœ ëŸ‰ì„¼ì„œ..*/
         INTP11_Flow_Sensor_Input();
         #endif
     }
@@ -198,7 +198,7 @@ __interrupt void INTTM13 ( void )
 __interrupt void INTP4 (void)
 {
     //
-    /*..hui [18-8-9¿ÀÈÄ 5:28:35] TDS INPUT..*/
+    /*..hui [18-8-9ì˜¤í›„ 5:28:35] TDS INPUT..*/
     INTP4_TDS_Input();
 }
 #endif
@@ -211,7 +211,7 @@ __interrupt void INTP4 (void)
 __interrupt void INTP7 (void)
 {
     //
-    /*..hui [19-7-17¿ÀÈÄ 3:24:58] ÇÊÅÍ À¯·®¼¾¼­..*/
+    /*..hui [19-7-17ì˜¤í›„ 3:24:58] í•„í„° ìœ ëŸ‰ì„¼ì„œ..*/
     INTP7_Filter_Flow_Sensor_Input();
 }
 #endif
@@ -222,7 +222,7 @@ __interrupt void INTP7 (void)
 __interrupt void INTP11(void)
 {
     #ifndef __DUMMY_PROGRAM__
-    /*..hui [19-7-17¿ÀÈÄ 3:24:58] À¯·®¼¾¼­..*/
+    /*..hui [19-7-17ì˜¤í›„ 3:24:58] ìœ ëŸ‰ì„¼ì„œ..*/
     INTP11_Flow_Sensor_Input();
     #endif
 }

@@ -18,8 +18,8 @@ extern void Play_Voice(U16 mu16MemoryAddress);
 //#define PRE_HEAT_MAX_TIME_LONG     69
 // #define PRE_HEAT_MAX_TIME_LONG     69
 
-#define PRE_HEAT_MAX_TIME_LONG     80					// ¢®U2025-06-02 Phil
-#define PRE_HEAT_MAX_TIME_FIRST_LOW     65					// ¡Ë¢çU2025-06-02 Phil
+#define PRE_HEAT_MAX_TIME_LONG     80					// Â¢Â®U2025-06-02 Phil
+#define PRE_HEAT_MAX_TIME_FIRST_LOW     65					// Â¡Ã‹Â¢Ã§U2025-06-02 Phil
 
 //#define PRE_HEAT_MAX_TIME_SHORT    49
 //#define PRE_HEAT_MAX_TIME_LONG     59
@@ -42,7 +42,7 @@ extern FLOW_VALVE_MODE  gu8_hot_flow_mode;
 extern U8 gu8_hot_filling_max_hz;
 
 extern U16 gu16_moving_pulse;
-extern bit bit_Holding_Flow_Block_Error__E08;   // ¡Ú2025-06-02 Phil
-extern bit F_firstEffluent_hotWaterHeat;        // ¢®U 2025-06-09 Phil  
+extern bit bit_Holding_Flow_Block_Error__E08;   // Â¡Ãš2025-06-02 Phil
+extern bit F_firstEffluent_hotWaterHeat;        // Â¢Â®U 2025-06-09 Phil  
 extern U8 u8Target_Hz_Hot;
 #endif

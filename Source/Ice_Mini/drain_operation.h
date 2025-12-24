@@ -137,7 +137,7 @@ extern U8 gu8_hot_wait_step;
 #define DRAIN_ERROR_PUMP_ON_2_MIN              1200
 #define FORCED_DRAIN_ADDITIONAL_TIME           100
 
-/*..hui [18-7-19©юхд 1:28:38] ╣Е╥╧юнфъга ©║╥╞ ╟╗аЖ 2х╦б╟╨нем Full Duty ╟║╣©..*/
+/*..hui [18-7-19Л≤╓М⌡└ 1:28:38] К⌠°К═┬Л²╦М▌▄М■└ Л≈░К÷╛ Й╟░Л╖─ 2М ▄Л╖╦К╤─М└╟ Full Duty Й╟─К▐≥..*/
 #define DRAIN_PUMP_MAX_OUTPUT_ERROR_COUNT      1
 
 
@@ -149,7 +149,7 @@ extern U8 gu8_hot_wait_step;
 /*#define PUMP_OVER_CURRENT_ADC                        40*/
 
 #if 0
-/*..hui [23-8-21©юхд 1:57:03] ╫га╕ га╥неьф╝ ╟и╦╝╦И ad 50а╓╣╣юс..*/
+/*..hui [23-8-21Л≤╓М⌡└ 1:57:03] Л▀╓Л═° М■└К║°М┘█М┼╦ Й╠╦К╕╛К╘╢ ad 50Л═∙К▐└Л·└..*/
 #define PUMP_OVER_CURRENT_ADC                        70
 #define PUMP_OVER_CURRENT_DETECT_TIME                50
 #define PUMP_OVER_CURRENT_OFF_TIME                   10

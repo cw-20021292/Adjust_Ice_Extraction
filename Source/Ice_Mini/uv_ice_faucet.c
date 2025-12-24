@@ -13,7 +13,7 @@
 /***********************************************************************************************************************/
 
 /***********************************************************************************************************************/
-/* ¾óÀ½ ÆÄ¿ì¼Â 1 UV Ãâ·Â BIT Á¤ÀÇ */
+/* ì–¼ìŒ íŒŒìš°ì…‹ 1 UV ì¶œë ¥ BIT ì •ì˜ */
 TYPE_BYTE          u8IceFaucetUvONB;
 #define            u8IceFaucetUvON                                        u8IceFaucetUvONB.byte
 #define            Bit0_Ice_Faucet_UV_On_State                            u8IceFaucetUvONB.Bit.b0
@@ -25,7 +25,7 @@ TYPE_BYTE          u8IceFaucetUvOFFB;
 #define            Bit2_Ice_Faucet_UV_Retry_3S_Off_State                  u8IceFaucetUvOFFB.Bit.b2
 
 /***********************************************************************************************************************/
-/* ¾óÀ½ ÆÄ¿ì¼Â 2 UV Ãâ·Â BIT Á¤ÀÇ */
+/* ì–¼ìŒ íŒŒìš°ì…‹ 2 UV ì¶œë ¥ BIT ì •ì˜ */
 TYPE_BYTE          u8IceFaucetUv2ONB;
 #define            u8IceFaucetUv2ON                                        u8IceFaucetUv2ONB.byte
 #define            Bit0_Ice_Faucet_UV2_On_State                            u8IceFaucetUv2ONB.Bit.b0
@@ -64,7 +64,7 @@ extern bit bit_self_test_start;
 extern bit bit_uv_tank_input;
 /***********************************************************************************************/
 /**
- * @brief ¾óÀ½ÆÄ¿ì¼Â UV LED Á¦¾î µ¿ÀÛ Á¤ÀÇ
+ * @brief ì–¼ìŒíŒŒìš°ì…‹ UV LED ì œì–´ ë™ìž‘ ì •ì˜
  * 
  */
 void output_ice_faucet_uv(void)
@@ -75,7 +75,7 @@ void output_ice_faucet_uv(void)
     }
     else{}
 
-    /* ¾óÀ½ÆÄ¿ì¼Â : 3½Ã°£ 30ºÐ OFF ¡ê 30ºÐ ON */
+    /* ì–¼ìŒíŒŒìš°ì…‹ : 3ì‹œê°„ 30ë¶„ OFF â†” 30ë¶„ ON */
     Bit0_Ice_Faucet_UV_On_State = uv_ice_faucet_control();
     Bit0_Ice_Faucet_UV2_On_State = Bit0_Ice_Faucet_UV_On_State;
 
@@ -83,11 +83,11 @@ void output_ice_faucet_uv(void)
     Bit2_Ice_Faucet_UV_Retry_3S_Off_State = uvIceFaucet_1.gu8_uv_retry_stop_flag;
     Bit2_Ice_Faucet_UV2_Retry_3S_Off_State = uvIceFaucet_2.gu8_uv_retry_stop_flag;
 
-    /* ÅÊÅ©Ä¿¹ö°¡ ÇÏ³ª¶óµµ ¿­·ÈÀ¸¸é ¹Ù·Î Æ®·¹ÀÌ UV´Â OFF. 250224 CH.PARK */
+    /* íƒ±í¬ì»¤ë²„ê°€ í•˜ë‚˜ë¼ë„ ì—´ë ¸ìœ¼ë©´ ë°”ë¡œ íŠ¸ë ˆì´ UVëŠ” OFF. 250224 CH.PARK */
     Bit0_Faucet_Open_UV_Off_State = (~bit_uv_tank_input);
     Bit0_Faucet_Open_UV2_Off_State = (~bit_uv_tank_input);
 
-    /* ¾óÀ½ ÃßÃâÁßÀÌ¸é UV LED OFFÇÔ 250225 CH.PARK */
+    /* ì–¼ìŒ ì¶”ì¶œì¤‘ì´ë©´ UV LED OFFí•¨ 250225 CH.PARK */
     if(F_IceOut == SET)
     {
         Bit1_Ice_Extract_UV_Off_State = SET;
@@ -99,7 +99,7 @@ void output_ice_faucet_uv(void)
         Bit1_Ice_Extract_UV2_Off_State = CLEAR;
     }
 
-    /* ¾óÀ½ ÆÄ¿ì¼Â UV 1 */
+    /* ì–¼ìŒ íŒŒìš°ì…‹ UV 1 */
     if( u8IceFaucetUvOFF > 0 )
     {
         pUV_LED_ICE_FAUCET_1 = CLEAR;
@@ -119,7 +119,7 @@ void output_ice_faucet_uv(void)
         }
     }
 
-    /* ¾óÀ½ ÆÄ¿ì¼Â UV 2 */
+    /* ì–¼ìŒ íŒŒìš°ì…‹ UV 2 */
     if( u8IceFaucetUv2OFF > 0 )
     {
         pUV_LED_ICE_FAUCET_2 = CLEAR;                  /*off*/
@@ -155,8 +155,8 @@ U8 uv_ice_faucet_control(void)
     {
         case 0 :
 
-            /*..hui [19-10-24???? 8:34:44] 6?©£? ????.*/
-			/*..sean [23-07-14???? 16:00:00] 5?©£? ????.*/
+            /*..hui [19-10-24???? 8:34:44] 6?Ã°? ????.*/
+			/*..sean [23-07-14???? 16:00:00] 5?Ã°? ????.*/
             mu8_finish = uv_ice_faucet_standby_timer();
 
             if(mu8_finish == SET)
@@ -170,7 +170,7 @@ U8 uv_ice_faucet_control(void)
 
         case 1 :
 
-            /*..hui [23-2-10???? 10:55:28] ?¨¨???UV?? 30?¬Ú? ????..*/
+            /*..hui [23-2-10???? 10:55:28] ?Ä¿???UV?? 30?Ð¸? ????..*/
             if(bit_ice_faucet_uv_start == SET)
             {
                 /*..hui [23-2-10???? 10:55:38] ?? ????????? ????..*/
@@ -213,7 +213,7 @@ void uv_ice_faucet_operation_timer(void)
     }
     else{}
 
-	/*.. sean [25-02-17] 3?©£? 30?? ????, 30?? ???????? ???? ????..*/
+	/*.. sean [25-02-17] 3?Ã°? 30?? ????, 30?? ???????? ???? ????..*/
 	if(gu16_ice_faucet_uv_operation_timer_min >= 30)
     {
         bit_ice_faucet_uv_start = CLEAR;

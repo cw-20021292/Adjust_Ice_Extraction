@@ -85,7 +85,7 @@ extern U8 gu8_uart_bldc_comm_error;
 #define BLDC_CHECK_CODE                                     0x55
 
 
-/*..hui [24-11-18¿ÀÈÄ 4:43:52] »ï¼º ÄÄÇÁ·¹¼Å ¿¡·¯ ¹øÈ£..*/
+/*..hui [24-11-18ì˜¤í›„ 4:43:52] ì‚¼ì„± ì»´í”„ë ˆì…” ì—ëŸ¬ ë²ˆí˜¸..*/
 #define SAMSUNG_BLDC_COMP_E81_CURRENT_SENSING_ERROR         2
 #define SAMSUNG_BLDC_COMP_E82_STARTING_FAIL_ERROR           1
 #define SAMSUNG_BLDC_COMP_E83_OVER_CURRENT_ERROR            3
@@ -94,7 +94,7 @@ extern U8 gu8_uart_bldc_comm_error;
 #define SAMSUNG_BLDC_COMP_E86_ABNORMAL_VOLTAGE_ERROR        4
 
 
-/*..hui [24-11-18¿ÀÈÄ 4:48:40] µ¿ÀÛ¿¡·¯ Àç½Ãµµ È½¼ö 10È¸..*/
+/*..hui [24-11-18ì˜¤í›„ 4:48:40] ë™ìž‘ì—ëŸ¬ ìž¬ì‹œë„ íšŸìˆ˜ 10íšŒ..*/
 #define BLDC_COMP_ERROR_RETRY_COUNT                         10
 
 

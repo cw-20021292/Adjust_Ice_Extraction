@@ -41,7 +41,7 @@ I16 cJsonParseJson(const I8 *json_str, JSONObject *json_obj, JSONArray *json_Arr
             }
             json_str++;
             cJsonSkipWhiteSpace(&json_str);
-            if ((*json_str == JSON_OPEN_B) && (json_Arrayobj != JSON_NULL)) { // [ ] Array ¿œ ∞ÊøÏ ∫∞µµ ±∏¡∂√º∑Œ ∆ƒΩÃ
+            if ((*json_str == JSON_OPEN_B) && (json_Arrayobj != JSON_NULL)) { // [ ] Array Ïùº Í≤ΩÏö∞ Î≥ÑÎèÑ Íµ¨Ï°∞Ï≤¥Î°ú ÌååÏã±
                 if (!cJsonParseValue(&json_str, json_Arrayobj->items[json_Arrayobj->count].value, sizeof(json_Arrayobj->items[json_Arrayobj->count].value))) {
                     return 0;
                 }
@@ -132,7 +132,7 @@ U8 GetJsonKeyIndexSearch (I8* mKey, JSONObject *json_obj )
 	U8 i = 0;
 	for (i=0; i < USER_MAX_ITEMS; i++ ) 
 	{
-		if ( _STRNCMP_( (const char __FAR*) json_obj->items[i].key, (const char __FAR*) mKey, sizeof(mKey) ) == N_TRUE ) // Key Index √£±‚
+		if ( _STRNCMP_( (const char __FAR*) json_obj->items[i].key, (const char __FAR*) mKey, sizeof(mKey) ) == N_TRUE ) // Key Index Ï∞æÍ∏∞
 		{  
 			return (U8)i;
 		}
@@ -146,15 +146,15 @@ U8 JsonSAPCodeSuccess ( JSONObject *json_obj )
 	U8 i = 0;
 	for (i=0; i < USER_MAX_ITEMS; i++ ) 
 	{
-		if ( _STRNCMP_( (const char __FAR*) json_obj->items[i].key, (const char __FAR*) JSON_KEY_CODE, sizeof(JSON_KEY_CODE) ) == N_TRUE ) // Key == "Code" ¿œ ∞ÊøÏ
+		if ( _STRNCMP_( (const char __FAR*) json_obj->items[i].key, (const char __FAR*) JSON_KEY_CODE, sizeof(JSON_KEY_CODE) ) == N_TRUE ) // Key == "Code" Ïùº Í≤ΩÏö∞
 		{  
-			if ( _STRNCMP_( (const char __FAR*) json_obj->items[i].value, (const char __FAR*) JSON_CODE_SUCCESS, sizeof(JSON_CODE_SUCCESS)  ) == N_TRUE ) // S1000 ¿œ∞ÊøÏ
+			if ( _STRNCMP_( (const char __FAR*) json_obj->items[i].value, (const char __FAR*) JSON_CODE_SUCCESS, sizeof(JSON_CODE_SUCCESS)  ) == N_TRUE ) // S1000 ÏùºÍ≤ΩÏö∞
 			{
-				return S1000;	// S1000 º∫∞¯.
+				return S1000;	// S1000 ÏÑ±Í≥µ.
 			}
-			else if ( _STRNCMP_( (const char __FAR*) json_obj->items[i].value, (const char __FAR*) JSON_CODE_NO_DATA, sizeof(JSON_CODE_NO_DATA)  ) == N_TRUE ) // E9000 ¿œ∞ÊøÏ
+			else if ( _STRNCMP_( (const char __FAR*) json_obj->items[i].value, (const char __FAR*) JSON_CODE_NO_DATA, sizeof(JSON_CODE_NO_DATA)  ) == N_TRUE ) // E9000 ÏùºÍ≤ΩÏö∞
 			{
-				return E9000;	// E9000 DATA æ¯¿Ω
+				return E9000;	// E9000 DATA ÏóÜÏùå
 			}
 		}
 		
@@ -169,19 +169,19 @@ void GetJsonValue (I16* mData, I8* mKey, JSONObject *json_obj )
 	U8 j = 0;
 	U8 mSize = 0;
 	U8 mu8len = 0;
-	I8 mi8TempBuf[6]; //signed int ¿⁄∏¥ºˆ
+	I8 mi8TempBuf[6]; //signed int ÏûêÎ¶øÏàò
 	_MEMSET_( (void __FAR*) &mi8TempBuf, 0, sizeof(mi8TempBuf) );
 	for (i=0; i < USER_MAX_ITEMS; i++ ) 
 	{
-		if ( _STRNCMP_( (const char __FAR*) json_obj->items[i].key, (const char __FAR*) mKey, sizeof(mKey) ) == N_TRUE ) // Key Index √£±‚
+		if ( _STRNCMP_( (const char __FAR*) json_obj->items[i].key, (const char __FAR*) mKey, sizeof(mKey) ) == N_TRUE ) // Key Index Ï∞æÍ∏∞
 		{  
-			if ((const char __FAR*)json_obj->items[i].value[0] != NULL)  // ∞™¿Ã ¿÷¥¬ ∞ÊøÏ
+			if ((const char __FAR*)json_obj->items[i].value[0] != NULL)  // Í∞íÏù¥ ÏûàÎäî Í≤ΩÏö∞
 			{
 				mSize = (U8)_STRLEN_( (const char __FAR*) json_obj->items[i].value );
 				for (mu8len=0; mu8len < mSize; mu8len++ )
 				{	
 					mi8TempBuf[mu8len] = json_obj->items[i].value[j++];
-					if (json_obj->items[i].value[j] == '.')  // º“ºˆ¡° check
+					if (json_obj->items[i].value[j] == '.')  // ÏÜåÏàòÏ†ê check
 					{
 						j++;
 					}
@@ -206,10 +206,10 @@ void GetJsonDateValue ( U8* mDateData, I8* mKey, JSONObject *json_obj  )
 	U8 mu8mod = 0;
 	for (i=0; i < USER_MAX_ITEMS; i++ ) 
 	{
-		if ( _STRNCMP_( (const char __FAR*) json_obj->items[i].key, (const char __FAR*) mKey, sizeof(mKey) ) == N_TRUE ) // Key (ld or nd) ¿œ ∞ÊøÏ
+		if ( _STRNCMP_( (const char __FAR*) json_obj->items[i].key, (const char __FAR*) mKey, sizeof(mKey) ) == N_TRUE ) // Key (ld or nd) Ïùº Í≤ΩÏö∞
 		{  
 			// YYYY MM DD HH SS  or  YYYY MM DD -> YY MM DD HH SS or YY MM DD
-			if ((const char __FAR*)json_obj->items[i].value[0] != NULL)  // ∞™¿Ã ¿÷¥¬ ∞ÊøÏ
+			if ((const char __FAR*)json_obj->items[i].value[0] != NULL)  // Í∞íÏù¥ ÏûàÎäî Í≤ΩÏö∞
 			{
 				mSize = (U8)_STRLEN_( (const char __FAR*) json_obj->items[i].value );
 				// mSize = (U8)sizeof(mDateData);

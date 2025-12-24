@@ -1,16 +1,16 @@
 
 /*******************************************************************************
 &Description :
-  $)CA&G0?!<- ;g?kGO4B WIFI GT<v File
+  제품에서 사용하는 WIFI 함수 File
   
 &History : 
   ShinHM 2021.07.09 update
   ssg@coway.com 2023.05.30 update
-  - $)CA!@/@NAu C_0!
-  - Fix RAM DATA $)CC38. C_0!
-  - A1014 DATA $)CC38. C_0!
+  - 점유인증 추가
+  - Fix RAM DATA 처리 추가
+  - A1014 DATA 처리 추가
   ssg@coway.com 2024.05.29 update
-  - BLE $)C;s=C ON 1b4I C_0!
+  - BLE 상시 ON 기능 추가
 *******************************************************************************/
 
 
@@ -97,18 +97,18 @@ void WifiControlProcess ( E_WIFI_TIME_T mu8Time )
     {
         WifiDataCheckProcess(mu8Time);
         mu8Counter1s++; 							/*		1s COUNTER +1			*/
-		if (mu8Counter1s >= 10)					    /*		1s $)C0f0zGQ 0f?l			*/
+		if (mu8Counter1s >= 10)					    /*		1s 경과한 경우			*/
 		{
 			mu8Counter1s = 0; 						/*			1s COUNTER CLR		*/
             WifiDataCheckProcess(WIFI_TIME_1SEC);
             SystemFunctionEventCheck();
             mu8Counter1min++; 							/*		1M COUNTER +1			*/
-            if (mu8Counter1min >= 60)					/*		1M $)C0f0zGQ 0f?l			*/
+            if (mu8Counter1min >= 60)					/*		1M 경과한 경우			*/
             {
                 mu8Counter1min = 0;                     
                 WifiDataCheckProcess(WIFI_TIME_1MIN);
 
-                /* $)C;s=CAx4\ AV1b 0h;j */
+                /* 상시진단 주기 계산 */
                 if (GetWifiServerStatus(STATUS_SVR_CONNECT) == SET)
                 {
                     mu16A1080Period = GetWifiRequestValue(WIFI_RQST_PART_PERIOD);	
@@ -353,7 +353,7 @@ U8 GetWifiStatusValue ( E_WIFI_STATUS_T mType )
     }
     else if ( mType == WIFI_STATUS_BLE_CERT ) /* BLE CERT MODE (0:Unauthenticated status, 1: Authenticateable Status, 2:Authentication completion status ) */
     {
-        if (GetWifiApStatus(STATUS_AP_BLE) != CLEAR)  // BLE$)C0! H0<:H- 5G>n @V4B 0f?l
+        if (GetWifiApStatus(STATUS_AP_BLE) != CLEAR)  // BLE가 활성화 되어 있는 경우
         {
             if ( GetWifiApStatus(STATUS_AP_BLE_CERT) == SET )
             {
@@ -373,7 +373,7 @@ U8 GetWifiStatusValue ( E_WIFI_STATUS_T mType )
 
         }
     }
-    else if ( mType == WIFI_STATUS_AP_STEP ) /* $)CFd>n85 =:E\ H.@N (DISPLAY) */
+    else if ( mType == WIFI_STATUS_AP_STEP ) /* 페어링 스텝 확인 (DISPLAY) */
     {
         mValue = GetWifiIndicateStatus(STATUS_PARING);
     }  
@@ -528,7 +528,7 @@ void IniEasyPairing ( void )
             HAL_SetWifiOnOff(ON);
         }
         SetWifiApStatus(STATUS_AP_BLE,WAIT);
-        WifiRx.u8DisplayConnectCount = DONE; // BLE $)C@Z5?H0<:H- (CJ1bFd>n85)
+        WifiRx.u8DisplayConnectCount = DONE; // BLE 자동활성화 (초기페어링)
     }
 }
 
@@ -596,7 +596,7 @@ static void WifiApModekey ( void )
         }
     }
     ClearRxStatus();
-    SetWifiApStatus(STATUS_AP_BLE_ALWAYS,CLEAR); // Soft AP KEY $)C@T7B =C <-9v?,0a =C ;s=CON ;sEB OFF
+    SetWifiApStatus(STATUS_AP_BLE_ALWAYS,CLEAR); // Soft AP KEY 입력 시 서버연결 시 상시ON 상태 OFF
     SetWifiIndicateStatus(STATUS_AP_ERROR,WIFI_DISP_OFF);
     SetWifiBuzzSound(WIFI_BUZZER_AP_START);
 }
@@ -604,20 +604,20 @@ static void WifiApModekey ( void )
 static void WifiApBLEkey ( void )
 {
     
-    if(GetWifiApStatus(STATUS_AP_BLE_CERT) == SET) // $)CA!@/@NAu 0!4I (A6@[ 4k1b) ;sEB@N 0f?l
+    if(GetWifiApStatus(STATUS_AP_BLE_CERT) == SET) // 점유인증 가능 (조작 대기) 상태인 경우
     {
         WifiBleCertKey();
         return;
     }
     else if (GetWifiApStatus(STATUS_AP_BLE_CERT) == DONE) 
     {
-        // return; // $)C;hA&
+        // return; // 삭제
     }
 
     if (GetWifiApStatus(STATUS_AP_BLE) != CLEAR )
     { 
         SetWifiApStatus(STATUS_AP_BLE, CLEAR);
-        SetWifiApStatus(STATUS_AP_BLE_ALWAYS,CLEAR); // BLE OFF KEY $)C@T7B =C <-9v?,0a =C ;s=CON ;sEB OFF
+        SetWifiApStatus(STATUS_AP_BLE_ALWAYS,CLEAR); // BLE OFF KEY 입력 시 서버연결 시 상시ON 상태 OFF
         if ( GetWifiServerStatus(STATUS_SVR_CONNECT) == SET )
         {
             SetWifiSendStatus(TX_ATCMD,WIFI_AT_BLE_OFF);
@@ -651,7 +651,7 @@ static void WifiApBLEkey ( void )
         //SetWifiSendStatus(TX_ATCMD,WIFI_AT_BLE_ADV);
     }
 
-    // BLE ON $)CA6@[ =C WiFi Power ON
+    // BLE ON 조작 시 WiFi Power ON
     if (WifiReadEep(EEPROM_ADDR_WIFI_POWER) != SET)
     { 
         WifiWriteEep( EEPROM_ADDR_WIFI_POWER, SET );
@@ -679,7 +679,7 @@ static void WifiOnOffKey ( void )
 // BLE CERT KEY
 static void WifiBleCertKey ( void )
 {
-    if ((GetWifiStatusValue(WIFI_STATUS_AP_BLE) == SET) && (GetWifiApStatus(STATUS_AP_BLE_CERT) == SET)) // BLE$)CH0<:H- && A!@/@NAu 0!4I;sEB
+    if ((GetWifiStatusValue(WIFI_STATUS_AP_BLE) == SET) && (GetWifiApStatus(STATUS_AP_BLE_CERT) == SET)) // BLE활성화 && 점유인증 가능상태
     {
         // Send Authentication completed
         SetWifiCertID(WIFI_BLE_CERT_0003);
@@ -696,7 +696,7 @@ static void WifiBleCertKey ( void )
 static void WifiBleCertCancelKey ( void )
 {
     // Send cancellation of authentication
-    if ((GetWifiStatusValue(WIFI_STATUS_AP_BLE) == SET) && (GetWifiApStatus(STATUS_AP_BLE_CERT) == SET)) // BLE$)CH0<:H- && A!@/@NAu 0!4I;sEB 
+    if ((GetWifiStatusValue(WIFI_STATUS_AP_BLE) == SET) && (GetWifiApStatus(STATUS_AP_BLE_CERT) == SET)) // BLE활성화 && 점유인증 가능상태 
     {
         // Send Authentication cancel
         SetWifiCertID(WIFI_BLE_CERT_0003);
@@ -763,15 +763,15 @@ static void WifiOffKey ( void )
     }
     // SetWifiBuzzSound(WIFI_BUZZER_CANCEL);
     ClearRxStatus();
-    SetWifiApStatus(STATUS_AP_BLE_ALWAYS,CLEAR); // $)C;s=CON ;sEB OFF
+    SetWifiApStatus(STATUS_AP_BLE_ALWAYS,CLEAR); // 상시ON 상태 OFF
 }
 
 
 void WifiTimerControl(void)
 {
-    // if ( GetWifiApStatus(STATUS_AP_BLE_CERT) != DONE) // $)CA!@/@NAu ?O7a ;sEB
+    // if ( GetWifiApStatus(STATUS_AP_BLE_CERT) != DONE) // 점유인증 완료 상태
     // {
-        // u8_TimerPossibleWifiBleCertCancel = ZT_BleCertCancelTime; // 7$)CCJ E8@L8S <B (4Y?nE8@L8S)
+        // u8_TimerPossibleWifiBleCertCancel = ZT_BleCertCancelTime; // 7초 타이머 셋 (다운타이머)
     // }
 }
 

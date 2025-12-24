@@ -65,27 +65,27 @@ U8 gu8_teeeeeeeeeeeeeeeest;
 ***********************************************************************************************************************/
 void calc_water_usage(void)
 {
-    /*..hui [23-5-10¿ÀÀü 9:58:52] Ã³À½ ¸¸¼öÀ§ µµ´ŞÇÏ°í³ª¼­ ½ÃÀÛ..*/
+    /*..hui [23-5-10ì˜¤ì „ 9:58:52] ì²˜ìŒ ë§Œìˆ˜ìœ„ ë„ë‹¬í•˜ê³ ë‚˜ì„œ ì‹œì‘..*/
     if( F_FW_Version_Display_Mode == CLEAR )
     {
         return;
     }
     else{}
 
-    /*..hui [23-5-10¿ÀÀü 9:54:16] ÃßÃâ À¯·® °è»ê..*/
+    /*..hui [23-5-10ì˜¤ì „ 9:54:16] ì¶”ì¶œ ìœ ëŸ‰ ê³„ì‚°..*/
     clac_effluent_water_acc();
 
-    /*..hui [23-5-10¿ÀÀü 9:54:44] Æ®·¹ÀÌ ÀÔ¼ö À¯·® °è»ê..*/
+    /*..hui [23-5-10ì˜¤ì „ 9:54:44] íŠ¸ë ˆì´ ì…ìˆ˜ ìœ ëŸ‰ ê³„ì‚°..*/
     calc_ice_tray_input_water();
 
-    /*..hui [23-7-28¿ÀÈÄ 2:49:08] ¼øÈ¯¹è¼ö À¯·® °è»ê..*/
+    /*..hui [23-7-28ì˜¤í›„ 2:49:08] ìˆœí™˜ë°°ìˆ˜ ìœ ëŸ‰ ê³„ì‚°..*/
     calc_auto_drain_water();
 
-    /*..hui [23-7-28¿ÀÈÄ 2:54:23] ¾óÀ½ ÅÊÅ© »ì±Õ ½Ã À¯·® °è»ê..*/
+    /*..hui [23-7-28ì˜¤í›„ 2:54:23] ì–¼ìŒ íƒ±í¬ ì‚´ê·  ì‹œ ìœ ëŸ‰ ê³„ì‚°..*/
     /////calc_hot_ster_water();
 
-    /*..hui [23-12-18¿ÀÈÄ 3:34:07] ÇÃ·¯½Ì½Ã À¯·® °è»ê..*/
-    /*..hui [23-12-18¿ÀÈÄ 7:04:34] flushing_finish·Î ÀÌµ¿ Á¾·á ÈÄ ÇÑ¹ø¸¸....*/
+    /*..hui [23-12-18ì˜¤í›„ 3:34:07] í”ŒëŸ¬ì‹±ì‹œ ìœ ëŸ‰ ê³„ì‚°..*/
+    /*..hui [23-12-18ì˜¤í›„ 7:04:34] flushing_finishë¡œ ì´ë™ ì¢…ë£Œ í›„ í•œë²ˆë§Œ....*/
     /*calc_flushing_water();*/
 
     #if 0
@@ -180,14 +180,14 @@ void clac_effluent_water_acc(void)
         {
             u16_user_effluent_time = u16_user_effluent_time + 1;
 
-            /*..hui [23-8-2¿ÀÈÄ 4:43:13] 5ml ´ÜÀ§µµ ÀÖ±â ¶§¹®¿¡ ..*/
+            /*..hui [23-8-2ì˜¤í›„ 4:43:13] 5ml ë‹¨ìœ„ë„ ìˆê¸° ë•Œë¬¸ì— ..*/
             mu16_water_acc =
                 (U16)(((U32)u16_user_effluent_time * (U32)u16_user_effluent_cup_size) / u16_user_effluent_total_time);
 
             /*mu16_water_acc = mu16_water_acc * 10;*/
             acc_user_water( mu16_water_acc );
 
-            /*..hui [21-8-3¿ÀÈÄ 3:53:17] ¿ÍÀÌÆÄÀÌ Àû»ê¿ë ¹°·®..*/
+            /*..hui [21-8-3ì˜¤í›„ 3:53:17] ì™€ì´íŒŒì´ ì ì‚°ìš© ë¬¼ëŸ‰..*/
             gu16_wifi_water_acc = (gu16_extract_display_cnt*10);
 
             u16_user_effluent_time = 0;
@@ -216,7 +216,7 @@ void calc_ice_tray_input_water(void)
         if( bit_tray_water_acc == CLEAR )
         {
             bit_tray_water_acc = SET;
-            /*..hui [23-5-9¿ÀÈÄ 2:45:56] ¾ÆÀÌ½ºÆ®·¹ÀÌ ÀÔ¼ö ¿ë·® 300cc..*/
+            /*..hui [23-5-9ì˜¤í›„ 2:45:56] ì•„ì´ìŠ¤íŠ¸ë ˆì´ ì…ìˆ˜ ìš©ëŸ‰ 300cc..*/
             mu16_water_acc = ICE_TRAY_INPUT_USING_WATER;
             acc_user_water( mu16_water_acc );
         }
@@ -243,7 +243,7 @@ void calc_auto_drain_water(void)
         {
             bit_drain_water_acc = SET;
 
-            /*..hui [23-7-28¿ÀÈÄ 2:50:12] ÀÚµ¿¹è¼ö ¹°·® 500cc.. È®ÀÎÇØºÁ¾ß ÇÔ ..*/
+            /*..hui [23-7-28ì˜¤í›„ 2:50:12] ìë™ë°°ìˆ˜ ë¬¼ëŸ‰ 500cc.. í™•ì¸í•´ë´ì•¼ í•¨ ..*/
             mu16_water_acc = AUTO_DRAIN_USING_WATER;
             acc_user_water( mu16_water_acc );
         }
@@ -382,14 +382,14 @@ void acc_user_water( U16 mu16_water_acc )
 
     gu16_temporary_save_usage += mu16_water_acc;
 
-    /*..hui [23-12-5¿ÀÈÄ 5:22:02] 1¸®ÅÍ¸¶´Ù EEPROM¿¡ ÀúÀå..*/
+    /*..hui [23-12-5ì˜¤í›„ 5:22:02] 1ë¦¬í„°ë§ˆë‹¤ EEPROMì— ì €ì¥..*/
     if( gu16_temporary_save_usage >= 1000 )
     {
         mu16_a = (U16)(gu16_temporary_save_usage / 1000);
 
         gu16_temporary_save_usage = (gu16_temporary_save_usage - (mu16_a * 1000));
 
-        /*..hui [23-12-5¿ÀÈÄ 5:23:39] 1¸®ÅÍ Áõ°¡..*/
+        /*..hui [23-12-5ì˜¤í›„ 5:23:39] 1ë¦¬í„° ì¦ê°€..*/
         /*gu16_water_usage_neo_filter = gu16_water_usage_neo_filter + 1;*/
         gu16_water_usage_neo_filter = gu16_water_usage_neo_filter + mu16_a;
 
@@ -400,7 +400,7 @@ void acc_user_water( U16 mu16_water_acc )
         else{}
 
 
-        /*..hui [23-12-5¿ÀÈÄ 5:23:39] 1¸®ÅÍ Áõ°¡..*/
+        /*..hui [23-12-5ì˜¤í›„ 5:23:39] 1ë¦¬í„° ì¦ê°€..*/
         /*gu16_water_usage_ro_filter = gu16_water_usage_ro_filter + 1;*/
         gu16_water_usage_ro_filter = gu16_water_usage_ro_filter + mu16_a;
 
@@ -410,7 +410,7 @@ void acc_user_water( U16 mu16_water_acc )
         }
         else{}
 
-        /*..hui [23-12-5¿ÀÈÄ 5:23:39] 1¸®ÅÍ Áõ°¡..*/
+        /*..hui [23-12-5ì˜¤í›„ 5:23:39] 1ë¦¬í„° ì¦ê°€..*/
         /*gu16_water_usage_ino_filter = gu16_water_usage_ino_filter + 1;*/
         gu16_water_usage_ino_filter = gu16_water_usage_ino_filter + mu16_a;
 
@@ -435,7 +435,7 @@ void acc_user_water( U16 mu16_water_acc )
 
     gu16_wifi_total_usage_water = (U16)(gu32_total_usage_water_ml / 1000);
 
-    /*..hui [23-6-7¿ÀÈÄ 5:32:58] 1ÀÌ¸é 0.1gal..*/
+    /*..hui [23-6-7ì˜¤í›„ 5:32:58] 1ì´ë©´ 0.1gal..*/
     u16_display_usage_water_gal = (U16)(gu32_total_usage_water_ml / ML_PER_GAL);
 
     if( u16_display_usage_water_gal >= MAX_GAL )
@@ -451,7 +451,7 @@ void acc_user_water( U16 mu16_water_acc )
     }
     else
     {
-        /*..hui [23-6-7¿ÀÈÄ 5:44:26] 1000gal ÀÌ»ó(100gal)Àº 1gal¸¶´Ù ÀúÀå..*/
+        /*..hui [23-6-7ì˜¤í›„ 5:44:26] 1000gal ì´ìƒ(100gal)ì€ 1galë§ˆë‹¤ ì €ì¥..*/
         mu8_diff = 10;
     }
     #endif
@@ -479,7 +479,7 @@ void acc_user_water( U16 mu16_water_acc )
 
 
     #if 0
-    /*..hui [23-6-7¿ÀÈÄ 5:44:03] 99.9gal ÀÌÇÏ´Â 0.1gal¸¶´Ù ÀúÀå..*/
+    /*..hui [23-6-7ì˜¤í›„ 5:44:03] 99.9gal ì´í•˜ëŠ” 0.1galë§ˆë‹¤ ì €ì¥..*/
     /*if( u16_display_usage_water_gal <= 999 )*/
     if( u16_display_usage_water_gal <= 1000 )
     {
@@ -487,7 +487,7 @@ void acc_user_water( U16 mu16_water_acc )
     }
     else
     {
-        /*..hui [23-6-7¿ÀÈÄ 5:44:26] 1000gal ÀÌ»ó(100gal)Àº 1gal¸¶´Ù ÀúÀå..*/
+        /*..hui [23-6-7ì˜¤í›„ 5:44:26] 1000gal ì´ìƒ(100gal)ì€ 1galë§ˆë‹¤ ì €ì¥..*/
         mu8_diff = 10;
     }
 

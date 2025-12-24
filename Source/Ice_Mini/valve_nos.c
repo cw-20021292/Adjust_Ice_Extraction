@@ -41,11 +41,11 @@ void output_valve_nos(void)
     {
         if(gu8_uart_test_mode == NON_UART_TEST)
         {
-            Bit0_Water_Error_NOS_On_State = SET;            // ´©¼öµÇ¸é Àá±İ (nos)        
+            Bit0_Water_Error_NOS_On_State = SET;            // ëˆ„ìˆ˜ë˜ë©´ ì ê¸ˆ (nos)        
         }
         else
         {
-            Bit0_Water_Error_NOS_On_State = CLEAR;          /* °øÁ¤°Ë»ç¸ğµå·Î ÁøÀÔÇÏ¸é ³ë½º Â÷´Ü ÇØÁ¦ 250321 CH.PARK */
+            Bit0_Water_Error_NOS_On_State = CLEAR;          /* ê³µì •ê²€ì‚¬ëª¨ë“œë¡œ ì§„ì…í•˜ë©´ ë…¸ìŠ¤ ì°¨ë‹¨ í•´ì œ 250321 CH.PARK */
         }
     }
     else
@@ -53,10 +53,10 @@ void output_valve_nos(void)
         Bit0_Water_Error_NOS_On_State = CLEAR;
     }
 
-    /* °øÁ¤°Ë»ç ÁøÀÔ ½Ã NOS Â÷´ÜÀ» ÇØÁ¦ÇÔ */
+    /* ê³µì •ê²€ì‚¬ ì§„ì… ì‹œ NOS ì°¨ë‹¨ì„ í•´ì œí•¨ */
     if(gu8_uart_test_mode == NON_UART_TEST)
     {
-        /* ÇÊÅÍ, ÇÊÅÍÄ¿¹ö ÇÏ³ª¶óµµ ¿­¸®¸é ÀÔ¼ö Â÷´Ü 250219 CH.PARK */
+        /* í•„í„°, í•„í„°ì»¤ë²„ í•˜ë‚˜ë¼ë„ ì—´ë¦¬ë©´ ì…ìˆ˜ ì°¨ë‹¨ 250219 CH.PARK */
         Bit1_Filter_Open_NOS_On_State = ~bit_filter_all;
     }
     else

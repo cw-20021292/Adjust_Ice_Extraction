@@ -8,8 +8,8 @@
     2021.12.22 update
 
 &History : ssg@coway.com
-    2023.03.15 DoSend5min Ãß°¡, CheckUartRxÃß°¡
-    2023.03.30 BLE Tx Ã³¸® Ãß°¡
+    2023.03.15 DoSend5min ì¶”ê°€, CheckUartRxì¶”ê°€
+    2023.03.30 BLE Tx ì²˜ë¦¬ ì¶”ê°€
 *******************************************************************************/
 
 
@@ -60,12 +60,12 @@ typedef enum
     CHK_BLE_10MIN,              // BLE 10Min
 
     CHK_FOTA_START,             // Check Fota
-    CHK_WiFi_CONNECT,           // 1m [Wi-Fi ¿¬°á ²÷±è Ç¥½Ã Ã¼Å© 1ºĞ]
+    CHK_WiFi_CONNECT,           // 1m [Wi-Fi ì—°ê²° ëŠê¹€ í‘œì‹œ ì²´í¬ 1ë¶„]
 
-    CHK_CERT_TIME,              // 1m [Á¡À¯ÀÎÁõÁ¶ÀÛ ´ë±â ½Ã°£ 1ºĞ]
+    CHK_CERT_TIME,              // 1m [ì ìœ ì¸ì¦ì¡°ì‘ ëŒ€ê¸° ì‹œê°„ 1ë¶„]
 
-    CHK_BLE2_ACK,               // [BLE STATUS2 ACK È®ÀÎ ÈÄ Àç½Ãµµ ]
-    CHK_BLEUART_RX,             // [BLE STATUS2 Àç½Ãµµ ÈÄ ¸ğµâ¸®¼Â]
+    CHK_BLE2_ACK,               // [BLE STATUS2 ACK í™•ì¸ í›„ ì¬ì‹œë„ ]
+    CHK_BLEUART_RX,             // [BLE STATUS2 ì¬ì‹œë„ í›„ ëª¨ë“ˆë¦¬ì…‹]
 
     CHK_NUM
 } E_WIFI_CHECK_FUN_T;
@@ -160,17 +160,17 @@ static const WifiDataCheckList_T WifiDataCheckList[] =
 
     {   CHK_APMODE_START,   WIFI_TIME_1SEC,     2,      CheckApModeStart,       DoApModeStart   },
     {   CHK_AP_BLE_START,   WIFI_TIME_1SEC,     2,      CheckApBleStart,        DoApBleStart    },
-    {   CHK_APMODE_FAIL,    WIFI_TIME_1SEC,     1800,   CheckApModeFail,        DoApModeFail    }, // Æä¾î¸µ ¸ğµå Ã¼Å© 30ºĞ
+    {   CHK_APMODE_FAIL,    WIFI_TIME_1SEC,     1800,   CheckApModeFail,        DoApModeFail    }, // í˜ì–´ë§ ëª¨ë“œ ì²´í¬ 30ë¶„
 
-    {   CHK_SERVER_CNT,     WIFI_TIME_1SEC,     180,    CheckServerConnect,     ServerCheckReset}, // ¼­¹ö¿¬°á Ã¼Å© 3ºĞ 
+    {   CHK_SERVER_CNT,     WIFI_TIME_1SEC,     180,    CheckServerConnect,     ServerCheckReset}, // ì„œë²„ì—°ê²° ì²´í¬ 3ë¶„ 
     {   CHK_SERVER_DCNT,    WIFI_TIME_100MS,    30,     CheckServerDisconnect,  DoOff           },
 
     {   CHK_FIRST_DATA,     WIFI_TIME_100MS,    10,     CheckFirstData,         DoFirstData     },
     {   CHK_FIRST_FAIL,     WIFI_TIME_1SEC,     60,     CheckFirstFail,         DoFirstFail     },
 
-    {   CHK_UART_RX,        WIFI_TIME_1SEC,     480,    CheckUartRx,            DoReset         }, // UART Ã¼Å© 8ºĞ
-    {   CHK_SEND_DATA,      WIFI_TIME_100MS,    2,      CheckSendData,          DoSendData      }, // DataCheck¸¦ 100ms -> 200ms·Î º¯°æ
-    {   CHK_SEND_ACK,       WIFI_TIME_1SEC,     480,    CheckSendAck,           DoReset         }, // IND CHECK 480ÃÊ Àü¿¡ ¿¬°á²÷±è ÈÄ [CHK_SERVER_CNT] Ä«¿îÆ® ½ÃÀÛ
+    {   CHK_UART_RX,        WIFI_TIME_1SEC,     480,    CheckUartRx,            DoReset         }, // UART ì²´í¬ 8ë¶„
+    {   CHK_SEND_DATA,      WIFI_TIME_100MS,    2,      CheckSendData,          DoSendData      }, // DataCheckë¥¼ 100ms -> 200msë¡œ ë³€ê²½
+    {   CHK_SEND_ACK,       WIFI_TIME_1SEC,     480,    CheckSendAck,           DoReset         }, // IND CHECK 480ì´ˆ ì „ì— ì—°ê²°ëŠê¹€ í›„ [CHK_SERVER_CNT] ì¹´ìš´íŠ¸ ì‹œì‘
 
     {   CHK_SEND_1MIN,      WIFI_TIME_1SEC,     60,     CheckSendAck,           DoSend1min      },
     {   CHK_SEND_5MIN,      WIFI_TIME_1SEC,     300,    CheckConnect,           DoSend5min      },
@@ -179,10 +179,10 @@ static const WifiDataCheckList_T WifiDataCheckList[] =
     {   CHK_BLE_10MIN,      WIFI_TIME_1SEC,     600,    CheckBleData,           BleTxOFF        },
 
     {   CHK_FOTA_START,     WIFI_TIME_100MS,    10,     CheckFotaStart,         DoFotaStart     },
-    {   CHK_WiFi_CONNECT,   WIFI_TIME_1SEC,     60,     CheckWiFiConnect,       DoWifiIndicator }, // ¼­¹ö¿¬°á ²÷±è ÈÄ Ç¥½Ã Á¶°Ç 1ºĞ
+    {   CHK_WiFi_CONNECT,   WIFI_TIME_1SEC,     60,     CheckWiFiConnect,       DoWifiIndicator }, // ì„œë²„ì—°ê²° ëŠê¹€ í›„ í‘œì‹œ ì¡°ê±´ 1ë¶„
     {   CHK_CERT_TIME,      WIFI_TIME_1SEC,     60,     CheckCertTime,          DoCertCancel    },  
-    {   CHK_BLE2_ACK,       WIFI_TIME_1SEC,     10,     CheckBleStatus2,        BleStatus2Retry }, // BLEÈ°¼ºÈ­(STATUS2) Retry 10ÃÊ°£°İÀ¸·Î Retry 
-    {   CHK_BLEUART_RX,     WIFI_TIME_1SEC,     60,     CheckBleUart,           DoReset         }  // BLEÈ°¼ºÈ­ Uart CMD ¼ö½Å ¾ÈµÊ ½Ã ¸®¼Â (1ºĞ Àç½Ãµµ ÈÄ)
+    {   CHK_BLE2_ACK,       WIFI_TIME_1SEC,     10,     CheckBleStatus2,        BleStatus2Retry }, // BLEí™œì„±í™”(STATUS2) Retry 10ì´ˆê°„ê²©ìœ¼ë¡œ Retry 
+    {   CHK_BLEUART_RX,     WIFI_TIME_1SEC,     60,     CheckBleUart,           DoReset         }  // BLEí™œì„±í™” Uart CMD ìˆ˜ì‹  ì•ˆë¨ ì‹œ ë¦¬ì…‹ (1ë¶„ ì¬ì‹œë„ í›„)
 };
 
 #define SZ_CK_LIST  ( sizeof(WifiDataCheckList) / sizeof(WifiDataCheckList_T) )
@@ -346,7 +346,7 @@ static U8 CheckApBleStart ( void )
 static U8 CheckApModeFail ( void )
 {
     static U8 mu8BleStatus3Check = 0U;
-    if ((GetWifiApStatus(STATUS_AP_BLE_CON) == SET) // BLE Á¢¼Ó ½Ã 30ºĞ Àç½ÃÀÛ
+    if ((GetWifiApStatus(STATUS_AP_BLE_CON) == SET) // BLE ì ‘ì† ì‹œ 30ë¶„ ì¬ì‹œì‘
         && (mu8BleStatus3Check == CLEAR))
     {
         mu8BleStatus3Check = SET;
@@ -365,8 +365,8 @@ static U8 CheckServerConnect ( void )
 {
     if ( ( GetWifiControlStatus( STATUS_CON_READY ) == ON )
         && ( GetWifiApStatus( STATUS_AP_WIFI ) == CLEAR )
-        // && ( GetWifiApStatus( STATUS_AP_BLE ) == CLEAR )  // »ó½Ã ON ½Ã ¼­¹ö¿¬°á Ã¼Å© ÈÄ ¸®¼Â (¸®¼Â ÈÄ BLE ´Ù½Ã ÀçÈ°¼ºÈ­)
-        && ( GetWifiApStatus( STATUS_AP_BLE_CON ) == CLEAR )  // »ó½Ã ON ½Ã Module <-> APP BLE ¿¬°á¿Ï·á µÇÁö ¾ÊÀº °æ¿ì
+        // && ( GetWifiApStatus( STATUS_AP_BLE ) == CLEAR )  // ìƒì‹œ ON ì‹œ ì„œë²„ì—°ê²° ì²´í¬ í›„ ë¦¬ì…‹ (ë¦¬ì…‹ í›„ BLE ë‹¤ì‹œ ì¬í™œì„±í™”)
+        && ( GetWifiApStatus( STATUS_AP_BLE_CON ) == CLEAR )  // ìƒì‹œ ON ì‹œ Module <-> APP BLE ì—°ê²°ì™„ë£Œ ë˜ì§€ ì•Šì€ ê²½ìš°
         && ( GetWifiServerStatus( STATUS_SVR_CONNECT ) == CLEAR ) )
     {
         return TRUE;
@@ -509,12 +509,12 @@ static U8 CheckWiFiConnect ( void )
 }
 static U8 CheckCertTime ( void )
 {
-    if(GetWifiApStatus(STATUS_AP_BLE) != CLEAR) // BLE È°¼ºÈ­°¡ ¾Æ´Ñ °æ¿ì
+    if(GetWifiApStatus(STATUS_AP_BLE) != CLEAR) // BLE í™œì„±í™”ê°€ ì•„ë‹Œ ê²½ìš°
     {
-        if ( GetWifiApStatus(STATUS_AP_BLE_CERT) == SET) //Á¡À¯ÀÎÁõ Á¶ÀÛ °¡´É»óÅÂ¿¡¼­ Á¦ÇÑ½Ã°£(1ºĞ) Ã¼Å©
+        if ( GetWifiApStatus(STATUS_AP_BLE_CERT) == SET) //ì ìœ ì¸ì¦ ì¡°ì‘ ê°€ëŠ¥ìƒíƒœì—ì„œ ì œí•œì‹œê°„(1ë¶„) ì²´í¬
         {
             #ifdef BLE_CERT_PASS
-            WifiKey(WIFI_KEY_BLE_CERT); // TEST¿ë
+            WifiKey(WIFI_KEY_BLE_CERT); // TESTìš©
             #endif
             return TRUE;
         }
@@ -551,7 +551,7 @@ static void DoReset ( void )
 
 static void ServerCheckReset ( void )
 {
-    if(GetWifiApStatus(STATUS_AP_BLE_ALWAYS) != DONE) // ALWAYS SET Ã³¸® (BLE»ó½ÃON)
+    if(GetWifiApStatus(STATUS_AP_BLE_ALWAYS) != DONE) // ALWAYS SET ì²˜ë¦¬ (BLEìƒì‹œON)
     {
         SetWifiApStatus(STATUS_AP_BLE_ALWAYS,SET);
     }
@@ -594,7 +594,7 @@ static void DoApBleStart ( void )
 {
     if ( GetWifiApStatus( STATUS_AP_BLE ) == WAIT )
     {
-        if(GetWifiApStatus(STATUS_AP_BLE_ALWAYS) != DONE) // Àç È°¼ºÈ­ Á¶°ÇÀÎ °æ¿ì BLE STATUS2 CMD ¼ö½Å ½Ã ALWAYS SET Ã³¸®
+        if(GetWifiApStatus(STATUS_AP_BLE_ALWAYS) != DONE) // ì¬ í™œì„±í™” ì¡°ê±´ì¸ ê²½ìš° BLE STATUS2 CMD ìˆ˜ì‹  ì‹œ ALWAYS SET ì²˜ë¦¬
         {
             SetWifiApStatus(STATUS_AP_BLE_ALWAYS,SET);
         }
@@ -609,7 +609,7 @@ static void DoApModeFail ( void )
 {
 #ifndef BLE_ALWAYS
     #if ( TEST_BLE_FCC == 0 )
-    SetWifiApStatus(STATUS_AP_BLE_ALWAYS,CLEAR); // BLE »ó½Ã È°¼ºÈ­ ÁßÁö
+    SetWifiApStatus(STATUS_AP_BLE_ALWAYS,CLEAR); // BLE ìƒì‹œ í™œì„±í™” ì¤‘ì§€
 
     if ( GetWifiServerStatus( STATUS_SVR_CONNECT ) == SET )
     {
@@ -618,7 +618,7 @@ static void DoApModeFail ( void )
         SetWifiBuzzSound( WIFI_BUZZER_BLE_OFF );
     }
 
-    else if(WifiRx.u8DisplayConnectCount == DONE)  // BLE °­Á¦ È°¼ºÈ­ ÈÄ 30ºĞ Á¾·á ½Ã
+    else if(WifiRx.u8DisplayConnectCount == DONE)  // BLE ê°•ì œ í™œì„±í™” í›„ 30ë¶„ ì¢…ë£Œ ì‹œ
     {
         SetWifiSendStatus( TX_ATCMD, WIFI_AT_BLE_OFF );
         SetWifiIndicateStatus( STATUS_PARING, WIFI_AP_STEP_CLEAR );
@@ -634,23 +634,23 @@ static void DoApModeFail ( void )
 #endif
 
 #ifdef BLE_ALWAYS
-    if (GetWifiApStatus( STATUS_AP_WIFI ) != CLEAR ) // Wi-Fi Æä¾î¸µ¸ğµå(Soft AP) ÀÎ °æ¿ì OFF
+    if (GetWifiApStatus( STATUS_AP_WIFI ) != CLEAR ) // Wi-Fi í˜ì–´ë§ëª¨ë“œ(Soft AP) ì¸ ê²½ìš° OFF
     {
-        HAL_SetWifiOnOff( RESET ); // Soft AP 30ºĞ °æ°ú ½Ã BLE ÀÚµ¿ È°¼ºÈ­
+        HAL_SetWifiOnOff( RESET ); // Soft AP 30ë¶„ ê²½ê³¼ ì‹œ BLE ìë™ í™œì„±í™”
         // HAL_SetWifiOnOff( OFF );
         // SetWifiBuzzSound( WIFI_BUZZER_AP_FAIL );
-        SetWifiApStatus(STATUS_AP_BLE_ALWAYS,DONE); // BLE È°¼ºÈ­ ¿Ï·á (»ó½ÃON) CMDÀç¼Û½Å ½Ã ºÎÀúÃâ·Â X
-        SetWifiApStatus(STATUS_AP_BLE,WAIT); // BLE È°¼ºÈ­ (»ó½ÃON) --> OFFµÇ¾îµµ ´Ù½Ã ON 
-        WifiRx.u8DisplayConnectCount = DONE; // Soft AP¸ğµå 30ºĞ °æ°ú ÈÄ BLEÈ°¼ºÈ­ ½Ã ¼­¹ö ¿¬°á ÈÄ BLE OFF ÇÏ±â À§ÇØ (¼­¹ö¿¬°á ½Ã Clear)
+        SetWifiApStatus(STATUS_AP_BLE_ALWAYS,DONE); // BLE í™œì„±í™” ì™„ë£Œ (ìƒì‹œON) CMDì¬ì†¡ì‹  ì‹œ ë¶€ì €ì¶œë ¥ X
+        SetWifiApStatus(STATUS_AP_BLE,WAIT); // BLE í™œì„±í™” (ìƒì‹œON) --> OFFë˜ì–´ë„ ë‹¤ì‹œ ON 
+        WifiRx.u8DisplayConnectCount = DONE; // Soft APëª¨ë“œ 30ë¶„ ê²½ê³¼ í›„ BLEí™œì„±í™” ì‹œ ì„œë²„ ì—°ê²° í›„ BLE OFF í•˜ê¸° ìœ„í•´ (ì„œë²„ì—°ê²° ì‹œ Clear)
     }
     else if (( GetWifiServerStatus( STATUS_SVR_CONNECT ) == CLEAR ) 
-        && (GetWifiApStatus( STATUS_AP_BLE_CON ) == CLEAR ) )// BLE Æä¾î¸µ ¸ğµå Áß 30ºĞ °æ°ú ½Ã && ¼­¹ö ¹Ì¿¬°á ½Ã && BLE STATUS 3 (¿¬°á Áß)ÀÌ ¾Æ´Ñ °æ¿ì
+        && (GetWifiApStatus( STATUS_AP_BLE_CON ) == CLEAR ) )// BLE í˜ì–´ë§ ëª¨ë“œ ì¤‘ 30ë¶„ ê²½ê³¼ ì‹œ && ì„œë²„ ë¯¸ì—°ê²° ì‹œ && BLE STATUS 3 (ì—°ê²° ì¤‘)ì´ ì•„ë‹Œ ê²½ìš°
     {
-        SetWifiApStatus(STATUS_AP_BLE_ALWAYS,DONE); // BLE È°¼ºÈ­ ¿Ï·á (»ó½ÃON) CMDÀç¼Û½Å ½Ã ºÎÀúÃâ·Â X
-        SetWifiApStatus(STATUS_AP_BLE,WAIT); // BLE È°¼ºÈ­ (»ó½ÃON) --> OFFµÇ¾îµµ ´Ù½Ã ON
-        WifiRx.u8DisplayConnectCount = DONE; // ¼öµ¿ È°¼ºÈ­ & 30ºĞ °æ°ú ÈÄ & ¼­¹ö ¿¬°á ÈÄ =  BLE OFF ÇÏ±â À§ÇØ (¼­¹ö¿¬°á ½Ã Clear)
+        SetWifiApStatus(STATUS_AP_BLE_ALWAYS,DONE); // BLE í™œì„±í™” ì™„ë£Œ (ìƒì‹œON) CMDì¬ì†¡ì‹  ì‹œ ë¶€ì €ì¶œë ¥ X
+        SetWifiApStatus(STATUS_AP_BLE,WAIT); // BLE í™œì„±í™” (ìƒì‹œON) --> OFFë˜ì–´ë„ ë‹¤ì‹œ ON
+        WifiRx.u8DisplayConnectCount = DONE; // ìˆ˜ë™ í™œì„±í™” & 30ë¶„ ê²½ê³¼ í›„ & ì„œë²„ ì—°ê²° í›„ =  BLE OFF í•˜ê¸° ìœ„í•´ (ì„œë²„ì—°ê²° ì‹œ Clear)
 
-        if ( GetWifiFotaStatus( STATUS_FOTA_MCU ) == SET ) // BLE FOTA EEPROM ÃÊ±âÈ­ 
+        if ( GetWifiFotaStatus( STATUS_FOTA_MCU ) == SET ) // BLE FOTA EEPROM ì´ˆê¸°í™” 
         {
             SetWifiFotaStatus( STATUS_FOTA_MCU, CLEAR );
             WifiWriteEep( EEPROM_ADDR_FOTA_MCU, CLEAR );
@@ -659,17 +659,17 @@ static void DoApModeFail ( void )
     #if ( TEST_BLE_FCC == 0 )
     else if((WifiRx.u8DisplayConnectCount == CLEAR ) 
         && (GetWifiServerStatus( STATUS_SVR_CONNECT ) == SET ) 
-        && (GetWifiApStatus( STATUS_AP_BLE_CON ) == CLEAR ) )  // BLE ¼öµ¿ È°¼ºÈ­ ÈÄ 30ºĞ Á¾·á ½Ã && ¼­¹ö ¿¬°á ½Ã && Module <-> APP ¿¬°á ¾øÀ½ ½Ã 
+        && (GetWifiApStatus( STATUS_AP_BLE_CON ) == CLEAR ) )  // BLE ìˆ˜ë™ í™œì„±í™” í›„ 30ë¶„ ì¢…ë£Œ ì‹œ && ì„œë²„ ì—°ê²° ì‹œ && Module <-> APP ì—°ê²° ì—†ìŒ ì‹œ 
     {
-        SetWifiApStatus(STATUS_AP_BLE_ALWAYS,CLEAR); // »ó½ÃON »óÅÂ OFF
+        SetWifiApStatus(STATUS_AP_BLE_ALWAYS,CLEAR); // ìƒì‹œON ìƒíƒœ OFF
         SetWifiSendStatus( TX_ATCMD, WIFI_AT_BLE_OFF ); // BLE OFF CMD
-        SetWifiIndicateStatus( STATUS_PARING, WIFI_AP_STEP_CLEAR ); // BLE Ç¥½Ã CLEAR
-        SetWifiBuzzSound( WIFI_BUZZER_BLE_OFF ); // BLE OFF ºÎÀúÀ½ Ãâ·Â
+        SetWifiIndicateStatus( STATUS_PARING, WIFI_AP_STEP_CLEAR ); // BLE í‘œì‹œ CLEAR
+        SetWifiBuzzSound( WIFI_BUZZER_BLE_OFF ); // BLE OFF ë¶€ì €ìŒ ì¶œë ¥
     }
     #endif
     else if(GetWifiApStatus( STATUS_AP_BLE_CON ) == SET) 
     {
-        SetWifiApStatus(STATUS_AP_BLE_CON,CLEAR);        // BLE STATUS 3 (¿¬°á Áß)»óÅÂ·Î 30ºĞ °æ°ú(30ºĞ Å¸ÀÌ¸Ó Àç°»½Å) µÉ °æ¿ì CLEAR , ÀÌÈÄ ¿¬°á ²÷±è Check ¿¡ ÀÇÇØ 3ºĞ ÈÄ Reset
+        SetWifiApStatus(STATUS_AP_BLE_CON,CLEAR);        // BLE STATUS 3 (ì—°ê²° ì¤‘)ìƒíƒœë¡œ 30ë¶„ ê²½ê³¼(30ë¶„ íƒ€ì´ë¨¸ ì¬ê°±ì‹ ) ë  ê²½ìš° CLEAR , ì´í›„ ì—°ê²° ëŠê¹€ Check ì— ì˜í•´ 3ë¶„ í›„ Reset
     }
 #endif
 
@@ -699,7 +699,7 @@ static void DoSend5min ( void )
 {
     SetWifiSendStatus( TX_DATA, WIFI_TX_SEND_SENSOR );
     // SetWifiTxStatus( STATUS_TX_SENSOR_STATE, SET );
-    if ((GetWifiSapStatus(STATUS_SVR_SAP_0030_UV_DATE) == FALSE) // F1000 / SAP001 ÀÏ °æ¿ì 5ºĞ ¸¶´Ù Retry
+    if ((GetWifiSapStatus(STATUS_SVR_SAP_0030_UV_DATE) == FALSE) // F1000 / SAP001 ì¼ ê²½ìš° 5ë¶„ ë§ˆë‹¤ Retry
         && (GetWifiSapStatus(STATUS_SVR_SAP_0031_SUPPLIES) == FALSE)
         && (GetWifiSapStatus(STATUS_SVR_SAP_0032_ENVIRONMENT) == FALSE))
         {
@@ -746,11 +746,11 @@ static void DoFotaStart ( void )
 
 static void DoWifiIndicator ( void )
 {
-    SetWifiIndicateStatus( STATUS_DISPLAY, WIFI_DISP_AP1 ); // ¼­¹ö¿¬°á²÷±è Ç¥½Ã
-    SetWifiApStatus(STATUS_AP_BLE,WAIT); // BLE Æä¾î¸µ ¸ğµå ÁøÀÔ
-    WifiRx.u8DisplayConnectCount = DONE; // ¼­¹ö¿¬°á²÷±è 1ºĞ Ä«¿îÆ® Å¬¸®¾î (Æä¾î¸µ¸ğµå ÁøÀÔ ¿Ï·á)
+    SetWifiIndicateStatus( STATUS_DISPLAY, WIFI_DISP_AP1 ); // ì„œë²„ì—°ê²°ëŠê¹€ í‘œì‹œ
+    SetWifiApStatus(STATUS_AP_BLE,WAIT); // BLE í˜ì–´ë§ ëª¨ë“œ ì§„ì…
+    WifiRx.u8DisplayConnectCount = DONE; // ì„œë²„ì—°ê²°ëŠê¹€ 1ë¶„ ì¹´ìš´íŠ¸ í´ë¦¬ì–´ (í˜ì–´ë§ëª¨ë“œ ì§„ì… ì™„ë£Œ)
 
-    if ( GetWifiFotaStatus( STATUS_FOTA_MCU ) == SET ) // BLE FOTA EEPROM ÃÊ±âÈ­ 
+    if ( GetWifiFotaStatus( STATUS_FOTA_MCU ) == SET ) // BLE FOTA EEPROM ì´ˆê¸°í™” 
         {
             SetWifiFotaStatus( STATUS_FOTA_MCU, CLEAR );
             WifiWriteEep( EEPROM_ADDR_FOTA_MCU, CLEAR );
@@ -761,13 +761,13 @@ static void DoCertCancel ( void )
     SetWifiCertID(WIFI_BLE_CERT_0003);
     SetWifiCertResult(RESULT_CERT_TIME_OUT);
     SetWifiSendStatus(TX_DATA,WIFI_TX_SEND_BLE_CERT);
-    SetWifiApStatus(STATUS_AP_BLE_CERT,CLEAR);      // Á¡À¯ÀÎÁõ Á¶ÀÛ ºÒ°¡ »óÅÂ·Î º¯°æ
+    SetWifiApStatus(STATUS_AP_BLE_CERT,CLEAR);      // ì ìœ ì¸ì¦ ì¡°ì‘ ë¶ˆê°€ ìƒíƒœë¡œ ë³€ê²½
 
 }
-static void BleStatus2Retry ( void ) // 10ÃÊ °£°İ Retry (BLE ON CMD ÀÀ´ä ¾øÀ½ ½Ã)
+static void BleStatus2Retry ( void ) // 10ì´ˆ ê°„ê²© Retry (BLE ON CMD ì‘ë‹µ ì—†ìŒ ì‹œ)
 {
-    SetWifiApStatus(STATUS_AP_BLE_ALWAYS,DONE); // BLE È°¼ºÈ­ ¿Ï·á (»ó½ÃON) CMDÀç¼Û½Å ½Ã ºÎÀúÃâ·Â X
-    SetWifiApStatus(STATUS_AP_BLE,WAIT); // BLE Æä¾î¸µ ¸ğµå ÁøÀÔ
+    SetWifiApStatus(STATUS_AP_BLE_ALWAYS,DONE); // BLE í™œì„±í™” ì™„ë£Œ (ìƒì‹œON) CMDì¬ì†¡ì‹  ì‹œ ë¶€ì €ì¶œë ¥ X
+    SetWifiApStatus(STATUS_AP_BLE,WAIT); // BLE í˜ì–´ë§ ëª¨ë“œ ì§„ì…
 }
 
 

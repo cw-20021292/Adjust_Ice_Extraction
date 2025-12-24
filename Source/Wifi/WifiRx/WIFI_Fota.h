@@ -11,7 +11,7 @@ PARAMETERS: X
 
 RETURN VALUE: X
 
-NOTES: �ʱ� 1ȸ ( Control )
+NOTES: √ ±‚ 1»∏ ( Control )
 *******************************************************************************/
 void InitializeWifiFota ( void );
 

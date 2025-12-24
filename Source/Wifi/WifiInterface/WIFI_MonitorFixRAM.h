@@ -44,14 +44,14 @@ typedef struct
 #define     A_AF01_COLD_STATUS                  (0xFC0C)
 #define     A_FF_HOT_STATUS                     (0xFC0D)
 #define     A_FF_OPERATION                      (0xFC0E)
-#define     A_U16_A709_EVA_TEMP                 (0xFC17)      // Áõ¹ß±â¿Âµµ¼¾¼­
-#define     A_U16_AC02_ICE_FULL_SENSOR          (0xFC19)      // ¸¸ºù°¨Áö
-#define     A_U8_B001_ICEMAKE_STATUS            (0xFC1B)      // Á¦ºù»óÅÂ
-#define     A_U16_A707_PURE_WATER_TEMP          (0xFC1C)      // Á¤¼ö¿Âµµ¼¾¼­
-#define     A_U16_FF_MIX_OUT_TEMP               (0xFC1E)      // ÃßÃâ¿Âµµ¼¾¼­
-#define     A_U16_FF_TRAY_IN_TEMP               (0xFC20)      // Æ®·¹ÀÌÀÔ¼ö¿Âµµ¼¾¼­
-#define     A_U16_FF_OUT2_TEMP                  (0xFC22)      // ¿Ü±â¿Âµµ¼¾¼­2
-#define     A_U8_FF_SMART_SAMRT_SAVING_STATE    (0xFC24)      // ½º¸¶Æ®ÀıÀü»óÅÂ
+#define     A_U16_A709_EVA_TEMP                 (0xFC17)      // ì¦ë°œê¸°ì˜¨ë„ì„¼ì„œ
+#define     A_U16_AC02_ICE_FULL_SENSOR          (0xFC19)      // ë§Œë¹™ê°ì§€
+#define     A_U8_B001_ICEMAKE_STATUS            (0xFC1B)      // ì œë¹™ìƒíƒœ
+#define     A_U16_A707_PURE_WATER_TEMP          (0xFC1C)      // ì •ìˆ˜ì˜¨ë„ì„¼ì„œ
+#define     A_U16_FF_MIX_OUT_TEMP               (0xFC1E)      // ì¶”ì¶œì˜¨ë„ì„¼ì„œ
+#define     A_U16_FF_TRAY_IN_TEMP               (0xFC20)      // íŠ¸ë ˆì´ì…ìˆ˜ì˜¨ë„ì„¼ì„œ
+#define     A_U16_FF_OUT2_TEMP                  (0xFC22)      // ì™¸ê¸°ì˜¨ë„ì„¼ì„œ2
+#define     A_U8_FF_SMART_SAMRT_SAVING_STATE    (0xFC24)      // ìŠ¤ë§ˆíŠ¸ì ˆì „ìƒíƒœ
 
 /***** Directmap *****************************************************************/ 
  
@@ -64,23 +64,23 @@ __directmap     U16    gu16_A701_COLD_TEMP              = {A_FAR_RANGE | A_U16_A
 __directmap     U16    gu16_A705_HOT_TEMP               = {A_FAR_RANGE | A_U16_A705_HOT_TEMP                };
 __directmap     U16    gu16_A708_OUT_TEMP               = {A_FAR_RANGE | A_U16_A708_OUT_TEMP                };
 __directmap     U8     gu8_AA01_FAN_STATUS              = {A_FAR_RANGE | A_U8_AA01_FAN_STATUS               };
-__directmap     U8     gu8_AF01_COLD_STATUS             = {A_FAR_RANGE | A_AF01_COLD_STATUS                 };  // ³Ã°¢¿îÀü»óÅÂ
-__directmap     U8     gu8_FF_HOT_STATUS                = {A_FAR_RANGE | A_FF_HOT_STATUS                    };  // ¿Â¼ö¿îÀü»óÅÂ
-__directmap     U8     gu8_FF_OPERATION                 = {A_FAR_RANGE | A_FF_OPERATION                     };  // ¿îÀü»óÅÂ
+__directmap     U8     gu8_AF01_COLD_STATUS             = {A_FAR_RANGE | A_AF01_COLD_STATUS                 };  // ëƒ‰ê°ìš´ì „ìƒíƒœ
+__directmap     U8     gu8_FF_HOT_STATUS                = {A_FAR_RANGE | A_FF_HOT_STATUS                    };  // ì˜¨ìˆ˜ìš´ì „ìƒíƒœ
+__directmap     U8     gu8_FF_OPERATION                 = {A_FAR_RANGE | A_FF_OPERATION                     };  // ìš´ì „ìƒíƒœ
 __directmap     U8     gu8_AF04_COMP_OPERATION_STATUS   = {A_FAR_RANGE | A_U8_AF04_COMP_OPERATION_STATUS    };
 __directmap     U8     gu8_B201_HOT_OPERATION_STATUS    = {A_FAR_RANGE | A_U8_B201_HOT_OPERATION_STATUS     };
-__directmap     U8     gu8_A901_ERROR_CODE              = {A_FAR_RANGE | A_U8_A901_ERROR_CODE               };  // ¿¡·¯ÄÚµå
-__directmap     U8     gu8_FF_HOT_Heater_ControlNum     = {A_FAR_RANGE | A_FF_HOT_Heater_ControlNum         };  // °íµµ¸ğµå
-__directmap     U16    gu16_FF_HOT_AddOperation         = {A_FAR_RANGE | A_FF_HOT_AddOperation              };  // ¿Â¼öÃß°¡½Ã°£
-__directmap     U16    gu16_FF_COLD_AddOperation        = {A_FAR_RANGE | A_FF_COLD_AddOperation             };  // ³Ã°¢Ãß°¡½Ã°£
-__directmap     U16    gu16_A709_EVA_TEMP               = {A_FAR_RANGE | A_U16_A709_EVA_TEMP                };  // Áõ¹ß±â¿Âµµ¼¾¼­
-__directmap     U16    gu16_AC02_ICE_FULL_SENSOR        = {A_FAR_RANGE | A_U16_AC02_ICE_FULL_SENSOR         };  // ¸¸ºù°¨Áö
-__directmap     U8     gu8_B001_ICEMAKE_STATUS          = {A_FAR_RANGE | A_U8_B001_ICEMAKE_STATUS           };  // Á¦ºù»óÅÂ
-__directmap     U16    gu16_A707_PURE_WATER_TEMP        = {A_FAR_RANGE | A_U16_A707_PURE_WATER_TEMP         };  // Á¤¼ö¿Âµµ¼¾¼­
-__directmap     U16    gu16_FF_MIX_OUT_TEMP             = {A_FAR_RANGE | A_U16_FF_MIX_OUT_TEMP              };  // ÃßÃâ¿Âµµ¼¾¼­
-__directmap     U16    gu16_FF_TRAY_IN_TEMP             = {A_FAR_RANGE | A_U16_FF_TRAY_IN_TEMP              };  // Æ®·¹ÀÌÀÔ¼ö¿Âµµ¼¾¼­
-__directmap     U16    gu16_FF_OUT2_TEMP                = {A_FAR_RANGE | A_U16_FF_OUT2_TEMP                 };  // ¿Ü±â¿Âµµ¼¾¼­2
-__directmap     U8     gu8_FF_SMART_SAMRT_SAVING_STATE  = {A_FAR_RANGE | A_U8_FF_SMART_SAMRT_SAVING_STATE   };  // ½º¸¶Æ®ÀıÀü»óÅÂ
+__directmap     U8     gu8_A901_ERROR_CODE              = {A_FAR_RANGE | A_U8_A901_ERROR_CODE               };  // ì—ëŸ¬ì½”ë“œ
+__directmap     U8     gu8_FF_HOT_Heater_ControlNum     = {A_FAR_RANGE | A_FF_HOT_Heater_ControlNum         };  // ê³ ë„ëª¨ë“œ
+__directmap     U16    gu16_FF_HOT_AddOperation         = {A_FAR_RANGE | A_FF_HOT_AddOperation              };  // ì˜¨ìˆ˜ì¶”ê°€ì‹œê°„
+__directmap     U16    gu16_FF_COLD_AddOperation        = {A_FAR_RANGE | A_FF_COLD_AddOperation             };  // ëƒ‰ê°ì¶”ê°€ì‹œê°„
+__directmap     U16    gu16_A709_EVA_TEMP               = {A_FAR_RANGE | A_U16_A709_EVA_TEMP                };  // ì¦ë°œê¸°ì˜¨ë„ì„¼ì„œ
+__directmap     U16    gu16_AC02_ICE_FULL_SENSOR        = {A_FAR_RANGE | A_U16_AC02_ICE_FULL_SENSOR         };  // ë§Œë¹™ê°ì§€
+__directmap     U8     gu8_B001_ICEMAKE_STATUS          = {A_FAR_RANGE | A_U8_B001_ICEMAKE_STATUS           };  // ì œë¹™ìƒíƒœ
+__directmap     U16    gu16_A707_PURE_WATER_TEMP        = {A_FAR_RANGE | A_U16_A707_PURE_WATER_TEMP         };  // ì •ìˆ˜ì˜¨ë„ì„¼ì„œ
+__directmap     U16    gu16_FF_MIX_OUT_TEMP             = {A_FAR_RANGE | A_U16_FF_MIX_OUT_TEMP              };  // ì¶”ì¶œì˜¨ë„ì„¼ì„œ
+__directmap     U16    gu16_FF_TRAY_IN_TEMP             = {A_FAR_RANGE | A_U16_FF_TRAY_IN_TEMP              };  // íŠ¸ë ˆì´ì…ìˆ˜ì˜¨ë„ì„¼ì„œ
+__directmap     U16    gu16_FF_OUT2_TEMP                = {A_FAR_RANGE | A_U16_FF_OUT2_TEMP                 };  // ì™¸ê¸°ì˜¨ë„ì„¼ì„œ2
+__directmap     U8     gu8_FF_SMART_SAMRT_SAVING_STATE  = {A_FAR_RANGE | A_U8_FF_SMART_SAMRT_SAVING_STATE   };  // ìŠ¤ë§ˆíŠ¸ì ˆì „ìƒíƒœ
 
 
 #endif

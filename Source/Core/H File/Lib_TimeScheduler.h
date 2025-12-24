@@ -1,53 +1,53 @@
 /// @file   Lib_TimeScheduler.h
 /// @date   
 /// @author Jaejin Ham
-/// @brief  ¶óÀÌºê·¯¸® Å¸ÀÓ ½ºÄÉÁì·¯
+/// @brief  ë¼ì´ë¸ŒëŸ¬ë¦¬ íƒ€ì„ ìŠ¤ì¼€ì¥´ëŸ¬
 #ifndef __LIB_TIMESCHEDULER_H__
 #define __LIB_TIMESCHEDULER_H__
 
 
 /*
-»ç¿ë ¹æ¹ı ¿¹½Ã>
+ì‚¬ìš© ë°©ë²• ì˜ˆì‹œ>
 
 void main(void)
 {
-  SetupTimeScheduler(exFunction, 100, ACT_COUNT_INFINITE);                      // 100ms ¸¶´Ù exFunction ÇÔ¼ö°¡ È£ÃâµÇ´Â ½º·¹µå ½Å±Ô µî·Ï
+  SetupTimeScheduler(exFunction, 100, ACT_COUNT_INFINITE);                      // 100ms ë§ˆë‹¤ exFunction í•¨ìˆ˜ê°€ í˜¸ì¶œë˜ëŠ” ìŠ¤ë ˆë“œ ì‹ ê·œ ë“±ë¡
 
-  StopTimeScheduler(exFunction);                                                // µî·ÏµÈ ½º·¹µå µ¿ÀÛ Á¤Áö
-  StartTimeScheduler(exFunction, 200, ACT_COUNT_1_TIME);                        // 200ms ÈÄ 1È¸ ¼öÇà ÇÔ¼ö°¡ È£ÃâµÇ°í Á¤ÁöµÊ
+  StopTimeScheduler(exFunction);                                                // ë“±ë¡ëœ ìŠ¤ë ˆë“œ ë™ì‘ ì •ì§€
+  StartTimeScheduler(exFunction, 200, ACT_COUNT_1_TIME);                        // 200ms í›„ 1íšŒ ìˆ˜í–‰ í•¨ìˆ˜ê°€ í˜¸ì¶œë˜ê³  ì •ì§€ë¨
 
-  Setup1msTimeInterruptScheduler(exFunction2, 100, ACT_COUNT_INFINITE);         // ½Ã°£ÀÌ ¹Ğ¸®Áö   ¾Êµµ·Ï Interrupt ·çµò ¾È¿¡¼­ 100ms ¸¶´Ù exFunction2 ÇÔ¼ö°¡ È£ÃâµÇ´Â ½º·¹µå ½Å±Ô µî·Ï
+  Setup1msTimeInterruptScheduler(exFunction2, 100, ACT_COUNT_INFINITE);         // ì‹œê°„ì´ ë°€ë¦¬ì§€   ì•Šë„ë¡ Interrupt ë£¨ë”˜ ì•ˆì—ì„œ 100ms ë§ˆë‹¤ exFunction2 í•¨ìˆ˜ê°€ í˜¸ì¶œë˜ëŠ” ìŠ¤ë ˆë“œ ì‹ ê·œ ë“±ë¡
 
   while(1)
   {
-    GoTimeScheduler();          // Main ÇÔ¼ö¿¡¼­ ½ÇÁ¦ ÇÔ¼ö¸¦ ½Ã°£¿¡ ¸Â°Ô È£ÃâÇØ ÁÖ´Â ÇÔ¼ö
+    GoTimeScheduler();          // Main í•¨ìˆ˜ì—ì„œ ì‹¤ì œ í•¨ìˆ˜ë¥¼ ì‹œê°„ì— ë§ê²Œ í˜¸ì¶œí•´ ì£¼ëŠ” í•¨ìˆ˜
   }
 }
 
 
-interrupt timer_1ms(void)       // 1ms Å¸ÀÌ¸Ó ÀÎÅÍ·´Æ®
+interrupt timer_1ms(void)       // 1ms íƒ€ì´ë¨¸ ì¸í„°ëŸ½íŠ¸
 {
-  CounterTimeScheduler();       // Å¸ÀÌ¸Ó ÀÎÅÍ·´Æ®¿¡ ³Ö¾îÁà¾ß ÇÔ
+  CounterTimeScheduler();       // íƒ€ì´ë¨¸ ì¸í„°ëŸ½íŠ¸ì— ë„£ì–´ì¤˜ì•¼ í•¨
 }
 
 */
 
 
-#define ACT_COUNT_INFINITE                  0           // °è¼Ó ¼öÇà
-#define ACT_COUNT_1_TIME                    1           // 1È¸¸¸ ¼öÇàµÇ°í ¼öÇà Á¤Áö
-#define ACT_COUNT_2_TIME                    2           // 2È¸¸¸ ¼öÇàµÇ°í ¼öÇà Á¤Áö
+#define ACT_COUNT_INFINITE                  0           // ê³„ì† ìˆ˜í–‰
+#define ACT_COUNT_1_TIME                    1           // 1íšŒë§Œ ìˆ˜í–‰ë˜ê³  ìˆ˜í–‰ ì •ì§€
+#define ACT_COUNT_2_TIME                    2           // 2íšŒë§Œ ìˆ˜í–‰ë˜ê³  ìˆ˜í–‰ ì •ì§€
 
 
 void CounterTimeScheduler(void);
 void InitializeTimeScheduler(void);
 
-// While ¹® ¾È¿¡¼­ Ã³¸®µÇ´Â Scheduler ***************************************************
+// While ë¬¸ ì•ˆì—ì„œ ì²˜ë¦¬ë˜ëŠ” Scheduler ***************************************************
 void GoTimeScheduler(void);
 void SetupTimeScheduler(void (*tFuction)(void), U16 mu16Timer, U8 mu8ActionCount);
 void StartTimeScheduler(void (*tFuction)(void), U16 mu16Timer, U8 mu8ActionCount);
 void StopTimeScheduler(void (*tFuction)(void));
 
-// 1ms Timer Interrput ¾È¿¡¼­ Á÷Á¢ Ã³¸®µÇ´Â Scheduler ***********************************
+// 1ms Timer Interrput ì•ˆì—ì„œ ì§ì ‘ ì²˜ë¦¬ë˜ëŠ” Scheduler ***********************************
 void Go1msTimeInterrputScheduler(void);
 void Setup1msTimeInterruptScheduler(void (*tFuction)(void), U16 mu16Timer, U8 mu8ActionCount);
 void Start1msTimeInterruptScheduler(void (*tFuction)(void), U16 mu16Timer, U8 mu8ActionCount);

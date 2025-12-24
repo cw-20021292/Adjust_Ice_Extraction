@@ -18,32 +18,32 @@ Global functions
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************/
-/* Å×½ºÆ®¸ðµå Á¤ÀÇ */
+/* í…ŒìŠ¤íŠ¸ëª¨ë“œ ì •ì˜ */
 // #define _TEST_MODE_
 #ifdef _TEST_MODE_
-// #define __ERROR_CLEAR__                  /* ¿¡·¯ °¨Áö ¾ø¾Ù ¶§ (¾ç»ê½Ã »èÁ¦) */
-// #define __UART_TEST_MODE__               /* ÀÚµ¿°øÁ¤°Ë»ç ÀÚÃ¼°ËÁõ¿ë (¾ç»ê½Ã »èÁ¦) */
-// #define _DISPLAY_FCT_SUB_LINE_           /* ÇÁ·ÐÆ® °Ë»ç SUB-LINE¿ë */
-// #define __DUMMY_PROGRAM__                /* ´õ¹Ì ÇÁ·Î±×·¥ */
-// #define FEEDER_SCREW_DIRECTION_BEFORE    /* ÇÇ´õ½ºÅ©·ù ¹æÇâ (³»²¨) (ÀÌ°Å Áö¿ì´Â°Ô ÃÖÁ¾¹æÇâ) */
-// #define __COLD_OPERATION_LPP__              /* LPP °³¹ß»ùÇÃ Àü¿ë ³Ã°¢Å×ÀÌºí Àû¿ë (¾ç»ê½Ã »èÁ¦) */
+// #define __ERROR_CLEAR__                  /* ì—ëŸ¬ ê°ì§€ ì—†ì•¨ ë•Œ (ì–‘ì‚°ì‹œ ì‚­ì œ) */
+// #define __UART_TEST_MODE__               /* ìžë™ê³µì •ê²€ì‚¬ ìžì²´ê²€ì¦ìš© (ì–‘ì‚°ì‹œ ì‚­ì œ) */
+// #define _DISPLAY_FCT_SUB_LINE_           /* í”„ë¡ íŠ¸ ê²€ì‚¬ SUB-LINEìš© */
+// #define __DUMMY_PROGRAM__                /* ë”ë¯¸ í”„ë¡œê·¸ëž¨ */
+// #define FEEDER_SCREW_DIRECTION_BEFORE    /* í”¼ë”ìŠ¤í¬ë¥˜ ë°©í–¥ (ë‚´êº¼) (ì´ê±° ì§€ìš°ëŠ”ê²Œ ìµœì¢…ë°©í–¥) */
+// #define __COLD_OPERATION_LPP__              /* LPP ê°œë°œìƒ˜í”Œ ì „ìš© ëƒ‰ê°í…Œì´ë¸” ì ìš© (ì–‘ì‚°ì‹œ ì‚­ì œ) */
 
-/* Å×½ºÆ®¸ðµå µÑÁß ÇÏ³ª¸¸ »ç¿ë */
+/* í…ŒìŠ¤íŠ¸ëª¨ë“œ ë‘˜ì¤‘ í•˜ë‚˜ë§Œ ì‚¬ìš© */
 // #define __AGING_TEST__
 // #define __AC_MOTOR_TEST_MODE__
 
-/* ³Ý Áß ÇÏ³ª¸¸ »ç¿ë */
+/* ë„· ì¤‘ í•˜ë‚˜ë§Œ ì‚¬ìš© */
 #ifdef __AGING_TEST__
-// #define __HOT_WATER_ENDURANCE__             /* ³»±¸¼ºÇÁ·Î±×·¥ : ¿Â¼öÃßÃâ ³»±¸¼º */
-// #define __ICE_OUT_ENDURANCE__               /* ³»±¸¼ºÇÁ·Î±×·¥ : ¾óÀ½ÃßÃâ ³»±¸¼º */
-// #define __TRAY_STER_ENDURANCE__             /* ³»±¸¼ºÇÁ·Î±×·¥ : Æ®·¹ÀÌ °í¿Â»ì±Õ ³»±¸¼º */
-// #define __GYULRO_TEST_ENDURANCE__           /* ³»±¸¼ºÇÁ·Î±×·¥ : °á·ÎÅ×½ºÆ® ÇÁ·Î±×·¥ */
+// #define __HOT_WATER_ENDURANCE__             /* ë‚´êµ¬ì„±í”„ë¡œê·¸ëž¨ : ì˜¨ìˆ˜ì¶”ì¶œ ë‚´êµ¬ì„± */
+// #define __ICE_OUT_ENDURANCE__               /* ë‚´êµ¬ì„±í”„ë¡œê·¸ëž¨ : ì–¼ìŒì¶”ì¶œ ë‚´êµ¬ì„± */
+// #define __TRAY_STER_ENDURANCE__             /* ë‚´êµ¬ì„±í”„ë¡œê·¸ëž¨ : íŠ¸ë ˆì´ ê³ ì˜¨ì‚´ê·  ë‚´êµ¬ì„± */
+// #define __GYULRO_TEST_ENDURANCE__           /* ë‚´êµ¬ì„±í”„ë¡œê·¸ëž¨ : ê²°ë¡œí…ŒìŠ¤íŠ¸ í”„ë¡œê·¸ëž¨ */
 #endif
 
-/* µÑÁß ÇÏ³ª¸¸ »ç¿ë */
+/* ë‘˜ì¤‘ í•˜ë‚˜ë§Œ ì‚¬ìš© */
 #ifdef __AC_MOTOR_TEST_MODE__
-// #define __SCREW_ACC_ENDURANCE__          /* ³»±¸¼ºÇÁ·Î±×·¥ : ½ºÅ©·ù ¿ªÈ¸Àü ³»±¸¼º */
-// #define __SCREW_AC_ENDURANCE__           /* ³»±¸¼ºÇÁ·Î±×·¥ : ½ºÅ©·ù Á¤È¸Àü ³»±¸¼º */
+// #define __SCREW_ACC_ENDURANCE__          /* ë‚´êµ¬ì„±í”„ë¡œê·¸ëž¨ : ìŠ¤í¬ë¥˜ ì—­íšŒì „ ë‚´êµ¬ì„± */
+// #define __SCREW_AC_ENDURANCE__           /* ë‚´êµ¬ì„±í”„ë¡œê·¸ëž¨ : ìŠ¤í¬ë¥˜ ì •íšŒì „ ë‚´êµ¬ì„± */
 #endif
 
 #endif
@@ -65,13 +65,13 @@ typedef enum
     LED_Display__VERSION = 0,
     LED_Display__FILTER_COVER_OPEN,
     LED_Display__SLEEP,
-    LED_Display__ICE_WATER_EXTRACT,             // ¾óÀ½¹° ÃßÃâÇ¥½Ã
-    LED_Display__MY_WATER_EXTRACT,               // my¿öÅÍ ÃßÃâÇ¥½Ã
+    LED_Display__ICE_WATER_EXTRACT,             // ì–¼ìŒë¬¼ ì¶”ì¶œí‘œì‹œ
+    LED_Display__MY_WATER_EXTRACT,               // myì›Œí„° ì¶”ì¶œí‘œì‹œ
     LED_Display__WATER_EXTRACT,
     LED_Display__ICE_EXTRACT,
     LED_Display__FLUSHING,
     LED_Display__ERROR,
-    LED_Display__MAIN,                      // ÀÏ¹Ý»óÅÂ
+    LED_Display__MAIN,                      // ì¼ë°˜ìƒíƒœ
     LED_Display__SETTING,
     LED_Display__TIME_SETTING,
     LED_Display__TRAY_CLEAN,
@@ -81,7 +81,7 @@ typedef enum
     LED_Display__VOLUME_SETTING,
     LED_Display__MEMENTO,               /* Memento Here! */
     LED_Display__BUTTON_SET,
-    LED_Display__MANUAL_DRAIN,          /* ¼öµ¿µå·¹ÀÎ */
+    LED_Display__MANUAL_DRAIN,          /* ìˆ˜ë™ë“œë ˆì¸ */
     LED_Display__SELF_TEST,
     LED_Display__CODY_WATER_LINE_CLEAN, /* Cody Water Line Clean Service */
     LED_Display__INSTRUCTION,
@@ -92,7 +92,7 @@ typedef enum
 {
     DISPLAY_TEST_NONE = 0,
     DISPLAY_TEST_START,
-    DISPLAY_TEST_BTN1,            // ice Å¬¸¯
+    DISPLAY_TEST_BTN1,            // ice í´ë¦­
     DISPLAY_TEST_BTN2,            // icewater
     DISPLAY_TEST_BTN3,            // hot
     DISPLAY_TEST_BTN4,            // pure
@@ -108,8 +108,8 @@ typedef enum
     DISPLAY_TEST_BTN13,           // ice lock
     DISPLAY_TEST_BTN14,           // all lock
     DISPLAY_TEST_BTN15,           // cold off
-    DISPLAY_TEST_BTN_ICE_EXTRACT, // ¾óÀ½ ÃßÃâ
-    DISPLAY_TEST_BTN_EXTRACT,     // ¹° ÃßÃâ
+    DISPLAY_TEST_BTN_ICE_EXTRACT, // ì–¼ìŒ ì¶”ì¶œ
+    DISPLAY_TEST_BTN_EXTRACT,     // ë¬¼ ì¶”ì¶œ
     DISPLAY_TEST_FINISH,
 } DISPLAY_TEST_STEP;
 
@@ -167,21 +167,21 @@ typedef enum
 {
     STATE_0_STANDBY_STATE = 0,
 
-    STATE_10_WATER_IN_FEED_ON_STATE = 10,                      // ÀÔ¼ö¹ëºê ON + OVERFLOW OPEN
+    STATE_10_WATER_IN_FEED_ON_STATE = 10,                      // ìž…ìˆ˜ë°¸ë¸Œ ON + OVERFLOW OPEN
 
-    STATE_11_COLD_WATER_PRESSURE_PREVENT_STATE = 11,           // (³Ã¼ö »ç¿ë ½Ã) OVERFLOW VALVE CLOSE
+    STATE_11_COLD_WATER_PRESSURE_PREVENT_STATE = 11,           // (ëƒ‰ìˆ˜ ì‚¬ìš© ì‹œ) OVERFLOW VALVE CLOSE
     STATE_19_HOT_PRE_HEATING_FLOW_ON_STATE = 19,
 
-    STATE_20_HOT_PRE_HEATING_STATE = 20,                       // (¿Â¼ö»ç¿ë ½Ã¿¡¸¸ ÁøÀÔ) ¿Â¼ö ¿¹¿­
-    STATE_21_HOT_PRE_HEATING_BUFFER_DRAIN_STATE = 21,          // (¿Â¼ö»ç¿ë ½Ã¿¡¸¸ ÁøÀÔ) ¿Â¼ö µå·¹ÀÎ
-    STATE_22_HOT_PRE_HEATING_BUFFER_DRAIN_COMPLETE_STATE = 22, // (¿Â¼ö»ç¿ë ½Ã¿¡¸¸ ÁøÀÔ) ¿Â¼ö µå·¹ÀÎ¿Ï·á
+    STATE_20_HOT_PRE_HEATING_STATE = 20,                       // (ì˜¨ìˆ˜ì‚¬ìš© ì‹œì—ë§Œ ì§„ìž…) ì˜¨ìˆ˜ ì˜ˆì—´
+    STATE_21_HOT_PRE_HEATING_BUFFER_DRAIN_STATE = 21,          // (ì˜¨ìˆ˜ì‚¬ìš© ì‹œì—ë§Œ ì§„ìž…) ì˜¨ìˆ˜ ë“œë ˆì¸
+    STATE_22_HOT_PRE_HEATING_BUFFER_DRAIN_COMPLETE_STATE = 22, // (ì˜¨ìˆ˜ì‚¬ìš© ì‹œì—ë§Œ ì§„ìž…) ì˜¨ìˆ˜ ë“œë ˆì¸ì™„ë£Œ
     STATE_23_HOT_PRE_HEATING_PRESS_DOWN_STATE = 23,
 
-    STATE_30_EXTRACT_VALVE_ON_STATE = 30, // ÃßÃâ¹ëºê ON
-    STATE_31_WATER_EXTRACT_STATE = 31,    // À¯·®¿Ï·á Ã¼Å©
-    STATE_32_WATER_AIR_VENT_STATE = 32,   // (¿Â¼ö »ç¿ë ½Ã¿¡¸¸ ÁøÀÔ) À¯·Î ¿¡¾î»©±â
+    STATE_30_EXTRACT_VALVE_ON_STATE = 30, // ì¶”ì¶œë°¸ë¸Œ ON
+    STATE_31_WATER_EXTRACT_STATE = 31,    // ìœ ëŸ‰ì™„ë£Œ ì²´í¬
+    STATE_32_WATER_AIR_VENT_STATE = 32,   // (ì˜¨ìˆ˜ ì‚¬ìš© ì‹œì—ë§Œ ì§„ìž…) ìœ ë¡œ ì—ì–´ë¹¼ê¸°
     STATE_33_REMOVE_AIR_STATE = 33,       //
-    STATE_40_EXTRACT_VALVE_OFF_STATE = 40, // ÃßÃâ¹ëºê OFF
+    STATE_40_EXTRACT_VALVE_OFF_STATE = 40, // ì¶”ì¶œë°¸ë¸Œ OFF
 
     STATE_50_FIRST_STANDBY_STATE = 50,
     STATE_51_SECOND_STANDBY_STATE = 51,
@@ -239,22 +239,22 @@ typedef enum
 
 typedef enum
 {
-    COLD_TANK_FILL_HZ_SET = 0,      // ³Ã¼öÅÊÅ© Ã¤¿ì±â À¯·® È®Á¤
-    COLD_TANK_FILL_DRAIN,           // ¹è¼öÅÊÅ© ¹Ì¸® ¿ÏÀüÈ÷ ºñ¿ì±â
-    COLD_TANK_FILL_OVERFLOW_OPEN,   // ¿À¹öÇÃ·Î¿ì OPEN
-    COLD_TANK_FILL_COLD_OPEN,       // ³Ã¼ö ÀÔ¼ö OPEN
-    COLD_TANK_FILL_COLD_CLOSE,      // ³Ã¼ö ÀÔ¼ö CLOSE
-    COLD_TANK_FILL_OVERFLOW_CLOSE,  // ¿À¹öÇÃ·Î¿ì CLOSE
+    COLD_TANK_FILL_HZ_SET = 0,      // ëƒ‰ìˆ˜íƒ±í¬ ì±„ìš°ê¸° ìœ ëŸ‰ í™•ì •
+    COLD_TANK_FILL_DRAIN,           // ë°°ìˆ˜íƒ±í¬ ë¯¸ë¦¬ ì™„ì „ížˆ ë¹„ìš°ê¸°
+    COLD_TANK_FILL_OVERFLOW_OPEN,   // ì˜¤ë²„í”Œë¡œìš° OPEN
+    COLD_TANK_FILL_COLD_OPEN,       // ëƒ‰ìˆ˜ ìž…ìˆ˜ OPEN
+    COLD_TANK_FILL_COLD_CLOSE,      // ëƒ‰ìˆ˜ ìž…ìˆ˜ CLOSE
+    COLD_TANK_FILL_OVERFLOW_CLOSE,  // ì˜¤ë²„í”Œë¡œìš° CLOSE
 } COLD_TANK_FILL_STEP;
 
 typedef enum
 {
-    COLDTANK_FLUSHING_NONE = 0,     // ³Ã¼öÅÊÅ© ÇÃ·¯½Ì ½ÃÀÛ
-    COLDTANK_FLUSHING_INIT,         // ³Ã¼öÅÊÅ© ÇÃ·¯½ÌÀ» À§ÇÑ À¯·® È®Á¤
-    COLDTANK_FLUSHING_5MINUTE,      // ³Ã¼öÅÊÅ© ÀÌ¹°Áú ¹Ð¾î³»±â
-    COLDTANK_FLUSHING_DRAIN_READY,  // ¹è¼öÅÊÅ© ºñ¿ì±â Á÷Àü ÀÔ¼ö Àá±Ý
-    COLDTANK_FLUSHING_DRAIN,        // ¹è¼öÅÊÅ© ºñ¿ì±â (ÆßÇÁ on (¹è¼ö), ÀÔ¼ö Àá±Ý)
-    COLDTANK_FLUSHING_FINISH,       // ³Ã¼öÅÊÅ© ÇÃ·¯½Ì ¿Ï·á
+    COLDTANK_FLUSHING_NONE = 0,     // ëƒ‰ìˆ˜íƒ±í¬ í”ŒëŸ¬ì‹± ì‹œìž‘
+    COLDTANK_FLUSHING_INIT,         // ëƒ‰ìˆ˜íƒ±í¬ í”ŒëŸ¬ì‹±ì„ ìœ„í•œ ìœ ëŸ‰ í™•ì •
+    COLDTANK_FLUSHING_5MINUTE,      // ëƒ‰ìˆ˜íƒ±í¬ ì´ë¬¼ì§ˆ ë°€ì–´ë‚´ê¸°
+    COLDTANK_FLUSHING_DRAIN_READY,  // ë°°ìˆ˜íƒ±í¬ ë¹„ìš°ê¸° ì§ì „ ìž…ìˆ˜ ìž ê¸ˆ
+    COLDTANK_FLUSHING_DRAIN,        // ë°°ìˆ˜íƒ±í¬ ë¹„ìš°ê¸° (íŽŒí”„ on (ë°°ìˆ˜), ìž…ìˆ˜ ìž ê¸ˆ)
+    COLDTANK_FLUSHING_FINISH,       // ëƒ‰ìˆ˜íƒ±í¬ í”ŒëŸ¬ì‹± ì™„ë£Œ
 } COLDTANK_FLUSHING_STEP;
 
 typedef enum
@@ -404,7 +404,7 @@ typedef enum
     DIMMING__PERCENT_SETTING_ICE_FIRST,
     DIMMING__PERCENT_SETTING_COLD_TEMP,
 
-    DIMMING__PERCENT_COLD_OFF,              // [³Ã¼öOFF] 2KG Ãß°¡ 250211 CH.PARK
+    DIMMING__PERCENT_COLD_OFF,              // [ëƒ‰ìˆ˜OFF] 2KG ì¶”ê°€ 250211 CH.PARK
 
     DIMMING__PERCENT_SETTING_SLEEP_MODE,
     DIMMING__PERCENT_SETTING_ICE_LOCK,
@@ -412,32 +412,32 @@ typedef enum
     DIMMING__PERCENT_SETTING_ALL_LOCK,
     DIMMING__PERCENT_SETTING_HOT_LOCK,
 
-    DIMMING__PERCENT_ICE_FULL_TEXT,         // [¾óÀ½°¡µæ] 2KG Ãß°¡ 250211 CH.PARK
-    DIMMING__PERCENT_ICE_SHORTAGE_TEXT,     // [¾óÀ½ºÎÁ·] 2KG Ãß°¡ 250211 CH.PARK
-    DIMMING__PERCENT_UV_STER_TEXT,          // [UV»ì±Õ] 2KG Ãß°¡ 250211 CH.PARK
+    DIMMING__PERCENT_ICE_FULL_TEXT,         // [ì–¼ìŒê°€ë“] 2KG ì¶”ê°€ 250211 CH.PARK
+    DIMMING__PERCENT_ICE_SHORTAGE_TEXT,     // [ì–¼ìŒë¶€ì¡±] 2KG ì¶”ê°€ 250211 CH.PARK
+    DIMMING__PERCENT_UV_STER_TEXT,          // [UVì‚´ê· ] 2KG ì¶”ê°€ 250211 CH.PARK
 
-    DIMMING__PERCENT_HOT_STER_TEXT,         // [°í¿Â»ì±Õ] 2KG Ãß°¡ 250211 CH.PARK
-    DIMMING__PERCENT_SLEEP_ICON,            // [ÃëÄ§¸ðµå] 2KG Ãß°¡ 250211 CH.PARK
+    DIMMING__PERCENT_HOT_STER_TEXT,         // [ê³ ì˜¨ì‚´ê· ] 2KG ì¶”ê°€ 250211 CH.PARK
+    DIMMING__PERCENT_SLEEP_ICON,            // [ì·¨ì¹¨ëª¨ë“œ] 2KG ì¶”ê°€ 250211 CH.PARK
 
-    DIMMING__PERCENT_EXT_FAUCET_TEXT,       // [Ãâ¼öÆÄ¿ì¼Â] 2KG Ãß°¡ 250211 CH.PARK
-    DIMMING__PERCENT_ICE_FAUCET_TEXT,       // [¾óÀ½ÆÄ¿ì¼Â] 2KG Ãß°¡ 250211 CH.PARK
-    DIMMING__PERCENT_ICE_TRAY_TEXT,         // [¾óÀ½Æ®·¹ÀÌ] 2KG Ãß°¡ 250211 CH.PARK
-    DIMMING__PERCENT_ICE_STORAGE_BOX_TEXT,  // [¾óÀ½ÀúÀå°í] 2KG Ãß°¡ 250211 CH.PARK
+    DIMMING__PERCENT_EXT_FAUCET_TEXT,       // [ì¶œìˆ˜íŒŒìš°ì…‹] 2KG ì¶”ê°€ 250211 CH.PARK
+    DIMMING__PERCENT_ICE_FAUCET_TEXT,       // [ì–¼ìŒíŒŒìš°ì…‹] 2KG ì¶”ê°€ 250211 CH.PARK
+    DIMMING__PERCENT_ICE_TRAY_TEXT,         // [ì–¼ìŒíŠ¸ë ˆì´] 2KG ì¶”ê°€ 250211 CH.PARK
+    DIMMING__PERCENT_ICE_STORAGE_BOX_TEXT,  // [ì–¼ìŒì €ìž¥ê³ ] 2KG ì¶”ê°€ 250211 CH.PARK
 
     DIMMING__PERCENT_STEP_TEXT,
     DIMMING__PERCENT_CLOCK_COLON_ICON,
 
-    DIMMING__PERCENT_oC_ICON,               // ['C] 2KG Ãß°¡ 250211 CH.PARK
+    DIMMING__PERCENT_oC_ICON,               // ['C] 2KG ì¶”ê°€ 250211 CH.PARK
 
-    DIMMING__PERCENT_FILTER_CLEAN,          // [ÇÊÅÍ ¼¼Ã´] 2KG Ãß°¡ 250211 CH.PARK
+    DIMMING__PERCENT_FILTER_CLEAN,          // [í•„í„° ì„¸ì²™] 2KG ì¶”ê°€ 250211 CH.PARK
 
     DIMMING__PERCENT_WIFI_WHITE_ICON,
     DIMMING__PERCENT_MY_SELECT,
 
-    DIMMING__PERCENT_SUNNY_ICON,            // [¸¼À½] 2KG Ãß°¡ 250211 CH.PARK
-    DIMMING__PERCENT_CLOUD_ICON,            // [Èå¸²] 2KG Ãß°¡ 250211 CH.PARK
+    DIMMING__PERCENT_SUNNY_ICON,            // [ë§‘ìŒ] 2KG ì¶”ê°€ 250211 CH.PARK
+    DIMMING__PERCENT_CLOUD_ICON,            // [íë¦¼] 2KG ì¶”ê°€ 250211 CH.PARK
 
-    DIMMING__PERCENT_RAIN_ICON,             // [ºñ] 2KG Ãß°¡ 250211 CH.PARK
+    DIMMING__PERCENT_RAIN_ICON,             // [ë¹„] 2KG ì¶”ê°€ 250211 CH.PARK
     DIMMING__PERCENT_PERCENT_ICON,
 
     DIMMING__PERCENT_LITER_TEXT,
@@ -448,22 +448,22 @@ typedef enum
 
     DIMMING__PERCENT_TEMP_BAR_1_3,
     DIMMING__PERCENT_TEMP_BAR_1_4,
-    DIMMING__PERCENT_TEMP_BAR_1_5,          // [ÁÂÃø ¸¶Áö¸· ¹Ù] 2KG Ãß°¡ 250211 CH.PARK
+    DIMMING__PERCENT_TEMP_BAR_1_5,          // [ì¢Œì¸¡ ë§ˆì§€ë§‰ ë°”] 2KG ì¶”ê°€ 250211 CH.PARK
 
     DIMMING__PERCENT_AMOUNT_BAR_2_1,
     DIMMING__PERCENT_AMOUNT_BAR_2_2,
 
     DIMMING__PERCENT_AMOUNT_BAR_2_3,
-    DIMMING__PERCENT_AMOUNT_BAR_2_4,        // [¿ìÃø ³×¹øÂ° ¹Ù] 2KG Ãß°¡ 250211 CH.PARK
+    DIMMING__PERCENT_AMOUNT_BAR_2_4,        // [ìš°ì¸¡ ë„¤ë²ˆì§¸ ë°”] 2KG ì¶”ê°€ 250211 CH.PARK
     DIMMING__PERCENT_AMOUNT_BAR_CONTINUE,
 
     DIMMING__PERCENT_RAMEN_TEXT,
-    DIMMING__PERCENT_TEA_TEXT,              // [Â÷] 2KG Ãß°¡ 250211 CH.PARK
+    DIMMING__PERCENT_TEA_TEXT,              // [ì°¨] 2KG ì¶”ê°€ 250211 CH.PARK
     DIMMING__PERCENT_DRIP_COFFEE_TEXT,
 
     DIMMING__PERCENT_MY_1_TEXT,
     DIMMING__PERCENT_MY_2_TEXT,
-    DIMMING__PERCENT_MY_3_TEXT,             // [MY3] 2KG Ãß°¡ 250211 CH.PARK
+    DIMMING__PERCENT_MY_3_TEXT,             // [MY3] 2KG ì¶”ê°€ 250211 CH.PARK
 
     DIMMING__PERCENT_ICE_LARGE_TEXT,
     DIMMING__PERCENT_ICE_CENTER_BAR,
@@ -489,8 +489,8 @@ typedef enum
     DIMMING__PERCENT_WELCOME_LED,
     DIMMING__PERCENT_WELCOME_LED_2,
 
-    DIMMING__PERCENT_ICE_NORMAL,        // [ÀÏ¹Ý] 2KG Ãß°¡ 250211 CH.PARK
-    DIMMING__PERCENT_ICE_PIECE,         // [Á¶°¢] 2KG Ãß°¡ 250211 CH.PARK
+    DIMMING__PERCENT_ICE_NORMAL,        // [ì¼ë°˜] 2KG ì¶”ê°€ 250211 CH.PARK
+    DIMMING__PERCENT_ICE_PIECE,         // [ì¡°ê°] 2KG ì¶”ê°€ 250211 CH.PARK
 
     DIMMING__PERCENT_ICE_EXTRACT_INNER,
 
@@ -620,7 +620,7 @@ typedef enum
 #define WATER_EXTRACT__DIMMING__60_PERCETN      6
 
 #define FUNCTION_ICON__DIMMING__70_PERCENT      8
-/*..hui [24-3-27¿ÀÈÄ 6:01:33] µðÀÚÀÎ.. ¿ÍÀÌÆÄÀÌ LED È­ÀÌÆ® 10%, ºí·ç 10%·Î Àû¿ë ¿äÃ»..*/
+/*..hui [24-3-27ì˜¤í›„ 6:01:33] ë””ìžì¸.. ì™€ì´íŒŒì´ LED í™”ì´íŠ¸ 10%, ë¸”ë£¨ 10%ë¡œ ì ìš© ìš”ì²­..*/
 #define WIFI_WHITE_LED_70_PERCENT 7
 #define WIFI_BLUE_LED_100_PERCENT 10
 #define WIFI_BLUE_WITH_WHITE_LED_10_PERCENT 1
@@ -642,30 +642,30 @@ typedef enum
 // #define BREATH_ANIMATION_DUTY         40
 // #define BREATH_ANIMATION_TIME         150
 
-/*..hui [23-5-24¿ÀÈÄ 2:08:22] 1ÃÊÁÖ±â ±¦ÂúÀº°Å..*/
+/*..hui [23-5-24ì˜¤í›„ 2:08:22] 1ì´ˆì£¼ê¸° ê´œì°®ì€ê±°..*/
 // #define BREATH_ANIMATION_DUTY         50
 // #define BREATH_ANIMATION_TIME         80
 
-/*..hui [23-5-24¿ÀÈÄ 2:14:41] 1ÃÊ ÁÖ±â..*/
+/*..hui [23-5-24ì˜¤í›„ 2:14:41] 1ì´ˆ ì£¼ê¸°..*/
 // #define BREATH_ANIMATION_DUTY         40
 // #define BREATH_ANIMATION_TIME         100
 
-/*..hui [23-5-24¿ÀÈÄ 2:09:49] 0.5ÃÊ ÁÖ±â ±¦ÂúÀº°Å..*/
+/*..hui [23-5-24ì˜¤í›„ 2:09:49] 0.5ì´ˆ ì£¼ê¸° ê´œì°®ì€ê±°..*/
 // #define BREATH_ANIMATION_DUTY         50
 // #define BREATH_ANIMATION_TIME         40
 
-/*..hui [23-5-24¿ÀÈÄ 2:14:01] 0.5ÃÊ ÁÖ±â..*/
+/*..hui [23-5-24ì˜¤í›„ 2:14:01] 0.5ì´ˆ ì£¼ê¸°..*/
 // #define BREATH_ANIMATION_DUTY         40
 // #define BREATH_ANIMATION_TIME         50
 
-/*..hui [23-5-31¿ÀÀü 9:24:07] 0.75ÃÊ ÁÖ±â..*/
+/*..hui [23-5-31ì˜¤ì „ 9:24:07] 0.75ì´ˆ ì£¼ê¸°..*/
 #define BREATH_ANIMATION_DUTY 50
 #define BREATH_ANIMATION_TIME 60
 
-/*..hui [23-5-31¿ÀÀü 9:36:09] 6È¸.. = 0.75 * 6 = 4.5ÃÊ....*/
+/*..hui [23-5-31ì˜¤ì „ 9:36:09] 6íšŒ.. = 0.75 * 6 = 4.5ì´ˆ....*/
 //////#define BREATH_FLICKER_COUNT          45
 
-/*..hui [23-5-31¿ÀÀü 9:36:09] 4È¸.. = 0.75 * 4 = 3ÃÊ....*/
+/*..hui [23-5-31ì˜¤ì „ 9:36:09] 4íšŒ.. = 0.75 * 4 = 3ì´ˆ....*/
 #define BREATH_FLICKER_COUNT 29
 
 #define LED_SLEEP_ENTER_TIME 6000
@@ -765,7 +765,7 @@ typedef enum
     STER_MODE_HOT_INPUT_STATE,
     STER_MODE_HOT_WAIT_STATE,
 
-    /* µå·¹ÀÎÅÊÅ© »ì±Õ ±â´É Ãß°¡ [V1.0.0.5] 250903 CH.PARK */
+    /* ë“œë ˆì¸íƒ±í¬ ì‚´ê·  ê¸°ëŠ¥ ì¶”ê°€ [V1.0.0.5] 250903 CH.PARK */
     STER_MODE_DRAIN_PREHEAT,
     STER_MODE_DRAIN_INPUT_STATE,
     STER_MODE_DRAIN_WAIT_STATE,
@@ -938,17 +938,17 @@ typedef struct {
 /***************************************************************************************************************/
 #define UV_BOOTING_WAIT_INTERVAL_100MS            (216000)
 /***************************************************************************************************************/
-#define UV_CARE_WATER_FAUCET_INTERVAL_100MS       (216000)    /* 6½Ã°£ * 60ºÐ * 60ÃÊ * 10 (100MS) */
-#define UV_CARE_ICE_FAUCET_INTERVAL_100MS         (216000)    /* 6½Ã°£ * 60ºÐ * 60ÃÊ * 10 (100MS) */
-#define UV_CARE_ICE_TANK_1_2_INTERVAL_100MS       (216000)    /* 6½Ã°£ * 60ºÐ * 60ÃÊ * 10 (100MS) */
-#define UV_CARE_ICE_TANK_3_INTERVAL_100MS         (216000)    /* 6½Ã°£ * 60ºÐ * 60ÃÊ * 10 (100MS) */
-#define UV_CARE_ICE_TRAY_INTERVAL_100MS           (108000)    /* 3½Ã°£ * 60ºÐ * 60ÃÊ * 10 (100MS) */
+#define UV_CARE_WATER_FAUCET_INTERVAL_100MS       (216000)    /* 6ì‹œê°„ * 60ë¶„ * 60ì´ˆ * 10 (100MS) */
+#define UV_CARE_ICE_FAUCET_INTERVAL_100MS         (216000)    /* 6ì‹œê°„ * 60ë¶„ * 60ì´ˆ * 10 (100MS) */
+#define UV_CARE_ICE_TANK_1_2_INTERVAL_100MS       (216000)    /* 6ì‹œê°„ * 60ë¶„ * 60ì´ˆ * 10 (100MS) */
+#define UV_CARE_ICE_TANK_3_INTERVAL_100MS         (216000)    /* 6ì‹œê°„ * 60ë¶„ * 60ì´ˆ * 10 (100MS) */
+#define UV_CARE_ICE_TRAY_INTERVAL_100MS           (108000)    /* 3ì‹œê°„ * 60ë¶„ * 60ì´ˆ * 10 (100MS) */
 /***************************************************************************************************************/
-#define UV_ON_WATER_FAUCET_TIMER_100MS            (18000)        /* 30ºÐ * 60ÃÊ * 10 (100MS) */
-#define UV_ON_ICE_FAUCET_TIMER_100MS              (18000)        /* 30ºÐ * 60ÃÊ * 10 (100MS) */
-#define UV_ON_ICE_TANK_1_2_TIMER_100MS            (72000)    /* 2½Ã°£ * 60ºÐ * 60ÃÊ * 10 (100MS) */
-#define UV_ON_ICE_TANK_3_TIMER_100MS              (18000)        /* 30ºÐ * 60ÃÊ * 10 (100MS) */
-#define UV_ON_ICE_TRAY_TIMER_100MS                (36000)        /* 30ºÐ * 60ÃÊ * 10 (100MS) */
+#define UV_ON_WATER_FAUCET_TIMER_100MS            (18000)        /* 30ë¶„ * 60ì´ˆ * 10 (100MS) */
+#define UV_ON_ICE_FAUCET_TIMER_100MS              (18000)        /* 30ë¶„ * 60ì´ˆ * 10 (100MS) */
+#define UV_ON_ICE_TANK_1_2_TIMER_100MS            (72000)    /* 2ì‹œê°„ * 60ë¶„ * 60ì´ˆ * 10 (100MS) */
+#define UV_ON_ICE_TANK_3_TIMER_100MS              (18000)        /* 30ë¶„ * 60ì´ˆ * 10 (100MS) */
+#define UV_ON_ICE_TRAY_TIMER_100MS                (36000)        /* 30ë¶„ * 60ì´ˆ * 10 (100MS) */
 /***************************************************************************************************************/
 
 #if 0
@@ -983,17 +983,17 @@ typedef struct {
 #define C_07_LPM 40
 #endif
 
-/*..hui [20-10-14¿ÀÈÄ 4:14:19] À¯·®¼¾¼­ º¯°æ¿¡ µû¶ó º¯°æ..*/
+/*..hui [20-10-14ì˜¤í›„ 4:14:19] ìœ ëŸ‰ì„¼ì„œ ë³€ê²½ì— ë”°ë¼ ë³€ê²½..*/
 // #define C_ICE_TRAY_FILL_200CC          1010
 /*#define C_ICE_TRAY_FILL_200CC            2500*/
-/*..hui [24-4-11¿ÀÀü 9:18:41] Æ®·¹ÀÌ Çü»ó º¯°æ. ¾à 10cc Á¤µµ Ãß°¡ ÀÔ¼öÇØ¾ßÇÔ..*/
+/*..hui [24-4-11ì˜¤ì „ 9:18:41] íŠ¸ë ˆì´ í˜•ìƒ ë³€ê²½. ì•½ 10cc ì •ë„ ì¶”ê°€ ìž…ìˆ˜í•´ì•¼í•¨..*/
 // #define C_ICE_TRAY_FILL_200CC            2680
-/*..hui [24-4-11¿ÀÀü 9:18:41] Æ®·¹ÀÌ Çü»ó º¯°æ. ¾à 10cc Á¤µµ Ãß°¡ ÀÔ¼öÇØ¾ßÇÔ..*/
+/*..hui [24-4-11ì˜¤ì „ 9:18:41] íŠ¸ë ˆì´ í˜•ìƒ ë³€ê²½. ì•½ 10cc ì •ë„ ì¶”ê°€ ìž…ìˆ˜í•´ì•¼í•¨..*/
 // #define C_ICE_TRAY_FILL_200CC            1020
-// #define C_ICE_TRAY_FILL_200CC 1080 /* Æ®·¹ÀÌ ÀÔ¼ö ¹°·® +60 250224 CH.PARK */
-#define C_ICE_TRAY_FILL_200CC 980 /* Æ®·¹ÀÌ ÀÔ¼ö ¹°·® ±âÁ¸´ëºñ -10%·Î ÀçÁ¤ÀÇ 950 250414 CH.PARK */
+// #define C_ICE_TRAY_FILL_200CC 1080 /* íŠ¸ë ˆì´ ìž…ìˆ˜ ë¬¼ëŸ‰ +60 250224 CH.PARK */
+#define C_ICE_TRAY_FILL_200CC 980 /* íŠ¸ë ˆì´ ìž…ìˆ˜ ë¬¼ëŸ‰ ê¸°ì¡´ëŒ€ë¹„ -10%ë¡œ ìž¬ì •ì˜ 950 250414 CH.PARK */
 
-#define ICE_MAKE_TIME 899 /* ¿Ü±â 25'C, ½Ã¼ö ¿Âµµ 25'C ±âÁØ */
+#define ICE_MAKE_TIME 899 /* ì™¸ê¸° 25'C, ì‹œìˆ˜ ì˜¨ë„ 25'C ê¸°ì¤€ */
 #define PREHEAT_AMB_TEMP 25
 
 #define HOT_GAS_NOISE_REDUCE_TIME 300
@@ -1012,9 +1012,9 @@ typedef struct {
 /*#define HOT_GAS_TIME_24_UNDER_30S           300*/
 /*#define HOT_GAS_TIME_29_UNDER_20S           200*/
 // #define HOT_GAS_TIME_24_UNDER_30S 350
-#define HOT_GAS_TIME_24_UNDER_30S 450       /* V1.0.0.4 Å»ºù½Ã°£ 10ÃÊ Áõ°¡ (20~24µµ 35ÃÊ -> 45ÃÊ) 250825 CH.PARK */
+#define HOT_GAS_TIME_24_UNDER_30S 450       /* V1.0.0.4 íƒˆë¹™ì‹œê°„ 10ì´ˆ ì¦ê°€ (20~24ë„ 35ì´ˆ -> 45ì´ˆ) 250825 CH.PARK */
 // #define HOT_GAS_TIME_29_UNDER_20S 250
-#define HOT_GAS_TIME_29_UNDER_20S 350       /* V1.0.0.4 Å»ºù½Ã°£ 10ÃÊ Áõ°¡ (25~29µµ 25ÃÊ -> 35ÃÊ) 250825 CH.PARK */
+#define HOT_GAS_TIME_29_UNDER_20S 350       /* V1.0.0.4 íƒˆë¹™ì‹œê°„ 10ì´ˆ ì¦ê°€ (25~29ë„ 25ì´ˆ -> 35ì´ˆ) 250825 CH.PARK */
 #define HOT_GAS_TIME_30_OVER_15S 150
 
 #define PREHEAT_TIME_14_UNDER_600S 6000
@@ -1044,11 +1044,11 @@ typedef struct {
 #define BUZZER_AP_CONNECT 13
 #define BUZZER_SERVER_CONNECT 14
 #define BUZZER_MUTE 15
-#define BUZZER_MEMENTO_1 16 /* ¸Þ¸àÅä 1 */
-#define BUZZER_MEMENTO_2 17 /* ¸Þ¸àÅä 2 */
-#define BUZZER_MEMENTO_3 18 /* ¸Þ¸àÅä 3 */
-#define BUZZER_MEMENTO_4 19 /* ¸Þ¸àÅä 4 */
-#define BUZZER_MEMENTO_5 20 /* ¸Þ¸àÅä 5 */
+#define BUZZER_MEMENTO_1 16 /* ë©”ë©˜í†  1 */
+#define BUZZER_MEMENTO_2 17 /* ë©”ë©˜í†  2 */
+#define BUZZER_MEMENTO_3 18 /* ë©”ë©˜í†  3 */
+#define BUZZER_MEMENTO_4 19 /* ë©”ë©˜í†  4 */
+#define BUZZER_MEMENTO_5 20 /* ë©”ë©˜í†  5 */
 #define BUZZER_SETUP_MUTE 30
 #define BUZZER_CANCEL_MUTE 31
 #define BUZZER_MEMENTO_1_MUTE 32
@@ -1075,7 +1075,7 @@ typedef struct {
 /*#define SLEEP_MODE_HEATER_OFF_TEMP                          80*/
 /*#define SLEEP_MODE_HEATER_ON_TEMP                           43*/
 
-/*..hui [24-11-15¿ÀÈÄ 4:46:18] ÃëÄ§¸ðµå/¹Ì»ç¿ëÀýÀü¸ðµå °íµµ¸ðµå¿¡µû¸¥ ºÐ¸®..*/
+/*..hui [24-11-15ì˜¤í›„ 4:46:18] ì·¨ì¹¨ëª¨ë“œ/ë¯¸ì‚¬ìš©ì ˆì „ëª¨ë“œ ê³ ë„ëª¨ë“œì—ë”°ë¥¸ ë¶„ë¦¬..*/
 #define SLEEP_MODE_HEATER_OFF_TEMP__ALTITUDE_1 89
 #define SLEEP_MODE_HEATER_ON_TEMP__ALTITUDE_1 60
 
@@ -1094,7 +1094,7 @@ typedef struct {
 #define ALTITUDE_1_MODE_HEATER_OFF_TEMP_AMB_30_UNDER 96
 #define ALTITUDE_1_MODE_HEATER_ON_TEMP_AMB_30_UNDER 90
 
-/*..hui [24-11-15¿ÀÈÄ 4:44:06] °íµµ¸ðµå º¯°æ.. ³Ãµ¿ÆÀ..*/
+/*..hui [24-11-15ì˜¤í›„ 4:44:06] ê³ ë„ëª¨ë“œ ë³€ê²½.. ëƒ‰ë™íŒ€..*/
 #define ALTITUDE_2_MODE_HEATER_OFF_TEMP 91
 #define ALTITUDE_2_MODE_HEATER_ON_TEMP 85
 
@@ -1123,7 +1123,7 @@ typedef struct {
 /***********************************************************************************************************************/
 #define EEPROM_ADDR_CHECK_START 0x0040
 /***********************************************************************************************************************/
-/* ½ºÆä¼È¼³Á¤ °ü·Ã EEPROM ÀúÀåµ¥ÀÌÅÍ */
+/* ìŠ¤íŽ˜ì…œì„¤ì • ê´€ë ¨ EEPROM ì €ìž¥ë°ì´í„° */
 #define SPECIAL_SETTING_START_ADDR 0x0050
 #define SPECIAL_SETTING_LENGTH 16
 /***********************************************************************************************************************/
@@ -1152,8 +1152,8 @@ typedef struct {
 #define EEPROM_ADDR2_ICE_MAKE_PRIORITY 0x0062
 #define EEPROM_ADDR2_RECOVER_FAST_ICE 0x0063
 #define EEPROM_ADDR2_ACID_CLEAN 0x0064
-#define EEPROM_ADD2_ICE_SIZE 0x0065  /* ¾óÀ½ Å©±â Ãß°¡ (´ë/¼Ò) 250224 CH.PARK */
-#define EEPROM_ADDR2_ICE_TYPE 0x0066 /* ¾óÀ½ Å¸ÀÔ [ÀÏ¹Ý],[Á¶°¢] Ãß°¡ 250317 CH.PARK */
+#define EEPROM_ADD2_ICE_SIZE 0x0065  /* ì–¼ìŒ í¬ê¸° ì¶”ê°€ (ëŒ€/ì†Œ) 250224 CH.PARK */
+#define EEPROM_ADDR2_ICE_TYPE 0x0066 /* ì–¼ìŒ íƒ€ìž… [ì¼ë°˜],[ì¡°ê°] ì¶”ê°€ 250317 CH.PARK */
 /***********************************************************************************************************************/
 
 /////////////////////////////////////////////////////////////////////////////
@@ -1287,48 +1287,48 @@ typedef struct {
 #define WIFI_DATA_ADDR 0x00E0
 #define WIFI_DATA_LENGTH 4
 /***********************************************************************************************************************/
-/* Å° ÀÔ·Â µ¥ÀÌÅÍ Á¤ÀÇ */
-#define KEY_MY_SELECT                       0x00040000     // MY Å°
-#define KEY_COLD_WATER_OFF                  0x00020000     // ³Ã¼ö OFF Å°
-#define KEY_ICE_EX                          0x00010000     // ¾óÀ½¹° ÃßÃâÅ°
-#define KEY_ICE_SELECT                      0x00008000     // ¾óÀ½ Å°
-#define KEY_ICE_WATER_SELECT                0x00004000     // ¾óÀ½¹° Å°
-#define KEY_HOT_SELECT                      0x00002000     // ¿Â¼ö Å°
-#define KEY_AMBIENT_SELECT                  0x00001000     // Á¤¼ö Å°
-#define KEY_COLD_SELECT                     0x00000800     // ³Ã¼ö Å°
-#define KEY_AMOUNT_SELECT                   0x00000400     // ¿ë·® Å°
-#define KEY_SETTING_ICE_SIZE                0x00000200     // ¾óÀ½ ´ë¼Ò Å°
-#define KEY_SETTING_ICE_OFF                 0x00000100     // ¾óÀ½OFF Å°
-#define KEY_SETTING_HOT_LOCK                0x00000080     // ¿Â¼ö Àá±Ý Å°
-#define KEY_SETTING_ICE_FIRST               0x00000040     // ºü¸¥ Á¦ºù Å°
-#define KEY_SETTING_COLD_TEMP               0x00000020     // ³Ã¼ö °­¾à Å°
-#define KEY_SETTING_SLEEP_MODE              0x00000010     // ÃëÄ§¸ðµå Å°
-#define KEY_SETTING_ICE_LOCK                0x00000008     // ¾óÀ½ Àá±Ý Å°
-#define KEY_SETTING_ALL_LOCK                0x00000004     // ÀüÃ¼ Àá±Ý Å°
+/* í‚¤ ìž…ë ¥ ë°ì´í„° ì •ì˜ */
+#define KEY_MY_SELECT                       0x00040000     // MY í‚¤
+#define KEY_COLD_WATER_OFF                  0x00020000     // ëƒ‰ìˆ˜ OFF í‚¤
+#define KEY_ICE_EX                          0x00010000     // ì–¼ìŒë¬¼ ì¶”ì¶œí‚¤
+#define KEY_ICE_SELECT                      0x00008000     // ì–¼ìŒ í‚¤
+#define KEY_ICE_WATER_SELECT                0x00004000     // ì–¼ìŒë¬¼ í‚¤
+#define KEY_HOT_SELECT                      0x00002000     // ì˜¨ìˆ˜ í‚¤
+#define KEY_AMBIENT_SELECT                  0x00001000     // ì •ìˆ˜ í‚¤
+#define KEY_COLD_SELECT                     0x00000800     // ëƒ‰ìˆ˜ í‚¤
+#define KEY_AMOUNT_SELECT                   0x00000400     // ìš©ëŸ‰ í‚¤
+#define KEY_SETTING_ICE_SIZE                0x00000200     // ì–¼ìŒ ëŒ€ì†Œ í‚¤
+#define KEY_SETTING_ICE_OFF                 0x00000100     // ì–¼ìŒOFF í‚¤
+#define KEY_SETTING_HOT_LOCK                0x00000080     // ì˜¨ìˆ˜ ìž ê¸ˆ í‚¤
+#define KEY_SETTING_ICE_FIRST               0x00000040     // ë¹ ë¥¸ ì œë¹™ í‚¤
+#define KEY_SETTING_COLD_TEMP               0x00000020     // ëƒ‰ìˆ˜ ê°•ì•½ í‚¤
+#define KEY_SETTING_SLEEP_MODE              0x00000010     // ì·¨ì¹¨ëª¨ë“œ í‚¤
+#define KEY_SETTING_ICE_LOCK                0x00000008     // ì–¼ìŒ ìž ê¸ˆ í‚¤
+#define KEY_SETTING_ALL_LOCK                0x00000004     // ì „ì²´ ìž ê¸ˆ í‚¤
 /***********************************************************************************************************************/
-#define LONG_KEY_PCB_TEST_MODE                  (KEY_ICE_SELECT + KEY_HOT_SELECT + KEY_AMBIENT_SELECT + KEY_AMOUNT_SELECT)      /* PBA Å×½ºÆ®¸ðµå : ¾óÀ½+¿Â¼ö+Á¤¼ö+¿ë·® (¼³°èÇ¥ÁØ ¾øÀ½) */
-#define LONG_KEY_VOLUME_2S                      (KEY_AMBIENT_SELECT + KEY_AMOUNT_SELECT)                                        /* ¼Ò¸® ¼³Á¤ : Á¤¼ö+¿ë·® (¼³°èÇ¥ÁØ ¾øÀ½) */
-#define LONG_KEY_TIME_SETTING                   (KEY_ICE_SELECT + KEY_ICE_WATER_SELECT)                                         /* ½Ã°è¼³Á¤¸ðµå : ¾óÀ½¹°+¾óÀ½ (¼³°èÇ¥ÁØ ¾øÀ½) */
+#define LONG_KEY_PCB_TEST_MODE                  (KEY_ICE_SELECT + KEY_HOT_SELECT + KEY_AMBIENT_SELECT + KEY_AMOUNT_SELECT)      /* PBA í…ŒìŠ¤íŠ¸ëª¨ë“œ : ì–¼ìŒ+ì˜¨ìˆ˜+ì •ìˆ˜+ìš©ëŸ‰ (ì„¤ê³„í‘œì¤€ ì—†ìŒ) */
+#define LONG_KEY_VOLUME_2S                      (KEY_AMBIENT_SELECT + KEY_AMOUNT_SELECT)                                        /* ì†Œë¦¬ ì„¤ì • : ì •ìˆ˜+ìš©ëŸ‰ (ì„¤ê³„í‘œì¤€ ì—†ìŒ) */
+#define LONG_KEY_TIME_SETTING                   (KEY_ICE_SELECT + KEY_ICE_WATER_SELECT)                                         /* ì‹œê³„ì„¤ì •ëª¨ë“œ : ì–¼ìŒë¬¼+ì–¼ìŒ (ì„¤ê³„í‘œì¤€ ì—†ìŒ) */
 
-#define LONG_KEY_MANUAL_FACTORY_TEST            (KEY_ICE_WATER_SELECT + KEY_HOT_SELECT + KEY_AMOUNT_SELECT)                     /* ¼öµ¿ ±â¹Ð³Ã°¢¸ðµå : ¾óÀ½¹°+¿Â¼ö+¿ë·® */
-#define LONG_KEY_FLUSHING_SKIP                  (KEY_ICE_SELECT + KEY_ICE_WATER_SELECT + KEY_AMOUNT_SELECT + KEY_MY_SELECT)     /* ÇÃ·¯½Ì ½ºÅµÅ° : ¾óÀ½+¾óÀ½¹°+¿ë·®+MY (¼³°èÇ¥ÁØ ¾øÀ½) */
-#define LONG_KEY_DISPLAY_TEST_MODE_CHPI         (KEY_ICE_SELECT + KEY_COLD_SELECT)                                              /* °øÀå ÇÁ·ÐÆ® °Ë»ç (¸ÞÀÎ¶óÀÎ/¼­ºê¶óÀÎ °Ë»ç) : ¾óÀ½+³Ã¼ö (¼³°èÇ¥ÁØ ¾øÀ½) */
+#define LONG_KEY_MANUAL_FACTORY_TEST            (KEY_ICE_WATER_SELECT + KEY_HOT_SELECT + KEY_AMOUNT_SELECT)                     /* ìˆ˜ë™ ê¸°ë°€ëƒ‰ê°ëª¨ë“œ : ì–¼ìŒë¬¼+ì˜¨ìˆ˜+ìš©ëŸ‰ */
+#define LONG_KEY_FLUSHING_SKIP                  (KEY_ICE_SELECT + KEY_ICE_WATER_SELECT + KEY_AMOUNT_SELECT + KEY_MY_SELECT)     /* í”ŒëŸ¬ì‹± ìŠ¤í‚µí‚¤ : ì–¼ìŒ+ì–¼ìŒë¬¼+ìš©ëŸ‰+MY (ì„¤ê³„í‘œì¤€ ì—†ìŒ) */
+#define LONG_KEY_DISPLAY_TEST_MODE_CHPI         (KEY_ICE_SELECT + KEY_COLD_SELECT)                                              /* ê³µìž¥ í”„ë¡ íŠ¸ ê²€ì‚¬ (ë©”ì¸ë¼ì¸/ì„œë¸Œë¼ì¸ ê²€ì‚¬) : ì–¼ìŒ+ëƒ‰ìˆ˜ (ì„¤ê³„í‘œì¤€ ì—†ìŒ) */
 
-/* 3ÃÊ ÀÌ»ó ½ºÆä¼È Å°Á¶ÇÕ */
-#define LONG_KEY_3S_BLE_FAIRING                 (KEY_AMBIENT_SELECT)                                                            /* BLE Æä¾î¸µ : Á¤¼ö 3ÃÊ (¼³°èÇ¥ÁØ Àû¿ë) */
-#define LONG_KEY_3S_WIFI_FAIRING                (KEY_AMBIENT_SELECT + KEY_COLD_SELECT)                                          /* wifi Æä¾î¸µ : Á¤¼ö+³Ã¼ö 3ÃÊ (¼³°èÇ¥ÁØ Àû¿ë) */
-#define LONG_KEY_3S_WIFI_ONOFF                  (KEY_COLD_SELECT + KEY_AMOUNT_SELECT)                                           /* wifi on/off : ³Ã¼ö+¿ë·® 3ÃÊ (¼³°èÇ¥ÁØ Àû¿ë) */
-#define LONG_KEY_3S_MANUAL_DRAIN                (KEY_COLD_SELECT + KEY_HOT_SELECT)                                              /* ¼öµ¿ µå·¹ÀÎ : ³Ã¼ö+¿Â¼ö 3ÃÊ (¼³°èÇ¥ÁØ ¾øÀ½) */
-#define LONG_KEY_3S_TESTPROGRAM                 (KEY_ICE_SELECT + KEY_AMBIENT_SELECT + KEY_AMOUNT_SELECT)                       /* ³»±¸¼ºÅ×½ºÆ® : ¾óÀ½+Á¤¼ö+¿ë·® 3ÃÊ (¼³°èÇ¥ÁØ ¾øÀ½) */
-#define LONG_KEY_3S_HOT_STER                    (KEY_AMOUNT_SELECT + KEY_ICE_WATER_SELECT)                                      /* ¼öµ¿ °í¿Â»ì±Õ : ¾óÀ½¹°+¿ë·® (¼³°èÇ¥ÁØ ¾øÀ½) */
-#define LONG_KEY_3S_MEMENTO                     (KEY_COLD_SELECT + KEY_HOT_SELECT + KEY_AMBIENT_SELECT)                         /* ¸Þ¸àÅä¸ðµå : ³Ã¼ö + Á¤¼ö + ¿Â¼ö (¼³°èÇ¥ÁØ Àû¿ë) */
-#define LONG_KEY_3S_CODY_WATER_LINE             (KEY_HOT_SELECT + KEY_AMBIENT_SELECT + KEY_AMOUNT_SELECT)                       /* ÄÚµð À¯·Î»ì±Õ¸ðµå : ¿Â¼ö + Á¤¼ö + ¿ë·® (¾ÆÀÌÄÜ¾ÆÀÌ½º) */
-#define LONG_KEY_3S_ICE_TRAY_TEST               (KEY_ICE_SELECT + KEY_AMBIENT_SELECT)                                           /* ÄÚµð Æ®·¹ÀÌ Å×½ºÆ®¸ðµå : ¾óÀ½ + Á¤¼ö */
-#define LONG_KEY_3S_TAKEOFF_ICE                 (KEY_ICE_SELECT + KEY_HOT_SELECT)                                               /* ÄÚµð °­Á¦Å»ºù¸ðµå : ¾óÀ½ + ¿Â¼ö */
-#define LONG_KEY_3S_MANAGER_INSTRUCTION_MODE    (KEY_ICE_WATER_SELECT + KEY_COLD_SELECT)                                        /* ´ÚÅÍ ¼³¸í¸ðµå : ³Ã¼ö+¾óÀ½¹° */
-#define LONG_KEY_3S_HOT_DRAIN_COLD              (KEY_ICE_WATER_SELECT + KEY_HOT_SELECT)                                         /* ¿Â¼ö Å×½ºÆ®¿ë (È÷ÅÍ ½ÄÈ÷±â) : ¾óÀ½¹° + ¿Â¼ö */
+/* 3ì´ˆ ì´ìƒ ìŠ¤íŽ˜ì…œ í‚¤ì¡°í•© */
+#define LONG_KEY_3S_BLE_FAIRING                 (KEY_AMBIENT_SELECT)                                                            /* BLE íŽ˜ì–´ë§ : ì •ìˆ˜ 3ì´ˆ (ì„¤ê³„í‘œì¤€ ì ìš©) */
+#define LONG_KEY_3S_WIFI_FAIRING                (KEY_AMBIENT_SELECT + KEY_COLD_SELECT)                                          /* wifi íŽ˜ì–´ë§ : ì •ìˆ˜+ëƒ‰ìˆ˜ 3ì´ˆ (ì„¤ê³„í‘œì¤€ ì ìš©) */
+#define LONG_KEY_3S_WIFI_ONOFF                  (KEY_COLD_SELECT + KEY_AMOUNT_SELECT)                                           /* wifi on/off : ëƒ‰ìˆ˜+ìš©ëŸ‰ 3ì´ˆ (ì„¤ê³„í‘œì¤€ ì ìš©) */
+#define LONG_KEY_3S_MANUAL_DRAIN                (KEY_COLD_SELECT + KEY_HOT_SELECT)                                              /* ìˆ˜ë™ ë“œë ˆì¸ : ëƒ‰ìˆ˜+ì˜¨ìˆ˜ 3ì´ˆ (ì„¤ê³„í‘œì¤€ ì—†ìŒ) */
+#define LONG_KEY_3S_TESTPROGRAM                 (KEY_ICE_SELECT + KEY_AMBIENT_SELECT + KEY_AMOUNT_SELECT)                       /* ë‚´êµ¬ì„±í…ŒìŠ¤íŠ¸ : ì–¼ìŒ+ì •ìˆ˜+ìš©ëŸ‰ 3ì´ˆ (ì„¤ê³„í‘œì¤€ ì—†ìŒ) */
+#define LONG_KEY_3S_HOT_STER                    (KEY_AMOUNT_SELECT + KEY_ICE_WATER_SELECT)                                      /* ìˆ˜ë™ ê³ ì˜¨ì‚´ê·  : ì–¼ìŒë¬¼+ìš©ëŸ‰ (ì„¤ê³„í‘œì¤€ ì—†ìŒ) */
+#define LONG_KEY_3S_MEMENTO                     (KEY_COLD_SELECT + KEY_HOT_SELECT + KEY_AMBIENT_SELECT)                         /* ë©”ë©˜í† ëª¨ë“œ : ëƒ‰ìˆ˜ + ì •ìˆ˜ + ì˜¨ìˆ˜ (ì„¤ê³„í‘œì¤€ ì ìš©) */
+#define LONG_KEY_3S_CODY_WATER_LINE             (KEY_HOT_SELECT + KEY_AMBIENT_SELECT + KEY_AMOUNT_SELECT)                       /* ì½”ë”” ìœ ë¡œì‚´ê· ëª¨ë“œ : ì˜¨ìˆ˜ + ì •ìˆ˜ + ìš©ëŸ‰ (ì•„ì´ì½˜ì•„ì´ìŠ¤) */
+#define LONG_KEY_3S_ICE_TRAY_TEST               (KEY_ICE_SELECT + KEY_AMBIENT_SELECT)                                           /* ì½”ë”” íŠ¸ë ˆì´ í…ŒìŠ¤íŠ¸ëª¨ë“œ : ì–¼ìŒ + ì •ìˆ˜ */
+#define LONG_KEY_3S_TAKEOFF_ICE                 (KEY_ICE_SELECT + KEY_HOT_SELECT)                                               /* ì½”ë”” ê°•ì œíƒˆë¹™ëª¨ë“œ : ì–¼ìŒ + ì˜¨ìˆ˜ */
+#define LONG_KEY_3S_MANAGER_INSTRUCTION_MODE    (KEY_ICE_WATER_SELECT + KEY_COLD_SELECT)                                        /* ë‹¥í„° ì„¤ëª…ëª¨ë“œ : ëƒ‰ìˆ˜+ì–¼ìŒë¬¼ */
+#define LONG_KEY_3S_HOT_DRAIN_COLD              (KEY_ICE_WATER_SELECT + KEY_HOT_SELECT)                                         /* ì˜¨ìˆ˜ í…ŒìŠ¤íŠ¸ìš© (ížˆí„° ì‹ížˆê¸°) : ì–¼ìŒë¬¼ + ì˜¨ìˆ˜ */
 // #define LONG_KEY_3S_BRIGHT_TEST                 (KEY_ICE_WATER_SELECT + KEY_ICE_SELECT + KEY_MY_SELECT)
-#define LONG_KEY_3S_CANCEL_COMP_DELAY           (KEY_ICE_SELECT + KEY_AMOUNT_SELECT)                                            /* ÄÞÇÁ ´ë±â½Ã°£ »èÁ¦(°³¹ßÀÚ¿ë) : ¾óÀ½ + ¿ë·® */
+#define LONG_KEY_3S_CANCEL_COMP_DELAY           (KEY_ICE_SELECT + KEY_AMOUNT_SELECT)                                            /* ì½¤í”„ ëŒ€ê¸°ì‹œê°„ ì‚­ì œ(ê°œë°œìžìš©) : ì–¼ìŒ + ìš©ëŸ‰ */
 /***********************************************************************************************************************/
 #define ICE_WATER_KEY_CONTINUE 1
 #define ICE_KEY_CONTINUE 2
@@ -1343,16 +1343,16 @@ typedef struct {
 #define UWater_Extract_Long_Key 0x02
 #define UIce_Extract_Long_Key 0x01
 
-/*..hui [18-1-30¿ÀÈÄ 5:04:07] µå·¹ÀÎÆßÇÁ Ãâ·Â Àü¾Ð º¯°æ¿¡ µû¶ó ½Ã°£ °¨¼Ò..*/
-/*..hui [19-12-2¿ÀÈÄ 2:59:15] 4ºÐ 30ÃÊ..*/
+/*..hui [18-1-30ì˜¤í›„ 5:04:07] ë“œë ˆì¸íŽŒí”„ ì¶œë ¥ ì „ì•• ë³€ê²½ì— ë”°ë¼ ì‹œê°„ ê°ì†Œ..*/
+/*..hui [19-12-2ì˜¤í›„ 2:59:15] 4ë¶„ 30ì´ˆ..*/
 /*#define COLD_DRAIN_TIME    2700*/
 
-/*..hui [19-12-2¿ÀÈÄ 3:49:41] ÅÊÅ©°¡ Å©´Ï±î 5ºÐ 30ÃÊ·Î.....*/
+/*..hui [19-12-2ì˜¤í›„ 3:49:41] íƒ±í¬ê°€ í¬ë‹ˆê¹Œ 5ë¶„ 30ì´ˆë¡œ.....*/
 /*#define COLD_DRAIN_TIME    3300*/
 #define COLD_DRAIN_TIME 1200
 
-#define NOW_USE_PHOTO 6000 // ¹Ì»ç¿ë ÀýÀü ¹ã³· È®Á¤ ½Ã°£ 10(600)->1ºÐ(60)
-#define NoWaterOutTime 360 // ¹Ì»ç¿ë ÀýÀü 6½Ã°£ 6 x 60(360)->30ºÐ(30)
+#define NOW_USE_PHOTO 6000 // ë¯¸ì‚¬ìš© ì ˆì „ ë°¤ë‚® í™•ì • ì‹œê°„ 10(600)->1ë¶„(60)
+#define NoWaterOutTime 360 // ë¯¸ì‚¬ìš© ì ˆì „ 6ì‹œê°„ 6 x 60(360)->30ë¶„(30)
 
 #define TEMPERATURE_SENSOR_OPEN 1000
 #define TEMPERATURE_SENSOR_SHORT 20
@@ -1364,9 +1364,9 @@ typedef struct {
 
 #define ICE_FEDDER_MIX_MAX_TIME 20
 #if 0
-#define PUMP_PWM_Free 1699 // Sterilization.h ¿¡µµ Á¤ÀÇ, ±âµ¿ ÃÊ±â 20V
-#define PUMP_PWM 1499      // 16V(1300)->18V(1500) µ¿ÀÛ DUTY
-#define PUMP_PWM_MAX 1999  // 16V(1300)->18V(1500) µ¿ÀÛ DUTY
+#define PUMP_PWM_Free 1699 // Sterilization.h ì—ë„ ì •ì˜, ê¸°ë™ ì´ˆê¸° 20V
+#define PUMP_PWM 1499      // 16V(1300)->18V(1500) ë™ìž‘ DUTY
+#define PUMP_PWM_MAX 1999  // 16V(1300)->18V(1500) ë™ìž‘ DUTY
 #endif
 
 #if 0
@@ -1379,39 +1379,39 @@ typedef struct {
 
 #define DRAIN_CURRENT 83 // 0.4V(82)
 
-#define ICE_TRAY_POSITION_ICE_MAKING 0 /*..¾óÀ½¹ÞÀ½..*/
-#define ICE_TRAY_POSITION_ICE_THROW 1  /*..¾óÀ½¹ö¸²..*/
-#define ICE_TRAY_POSITION_MOVING 2     /*..ÀÌµ¿Áß..*/
-#define ICE_TRAY_POSITION_ERROR 3      /*..¿¡·¯..*/
+#define ICE_TRAY_POSITION_ICE_MAKING 0 /*..ì–¼ìŒë°›ìŒ..*/
+#define ICE_TRAY_POSITION_ICE_THROW 1  /*..ì–¼ìŒë²„ë¦¼..*/
+#define ICE_TRAY_POSITION_MOVING 2     /*..ì´ë™ì¤‘..*/
+#define ICE_TRAY_POSITION_ERROR 3      /*..ì—ëŸ¬..*/
 
 #define CUP_SELECT_LED_OFF_TIME 70
 
 #define STEP_ANGLE1 2000 // Select Bar 1200->2000
 
-/*..hui [20-3-26¿ÀÈÄ 7:24:07] ICE Door 1500->1000.. ¾ÆÀÌ½º2.0 »ç¾ç..*/
+/*..hui [20-3-26ì˜¤í›„ 7:24:07] ICE Door 1500->1000.. ì•„ì´ìŠ¤2.0 ì‚¬ì–‘..*/
 /*#define STEP_ANGLE_DOOR 1000*/
 
-/*..hui [20-3-26¿ÀÈÄ 7:24:23] ¾ÆÀÌ½º3.0Àº ÀÌ °ªÀÌ ÀûÁ¤ »ç¾ç..*/
+/*..hui [20-3-26ì˜¤í›„ 7:24:23] ì•„ì´ìŠ¤3.0ì€ ì´ ê°’ì´ ì ì • ì‚¬ì–‘..*/
 /*#define STEP_ANGLE_DOOR 670*/
 
-/*..hui [20-3-26¿ÀÈÄ 7:30:12] 50ÆÞ½º Á¤µµ ´õ ÁÖ´Â°É·Î..*/
+/*..hui [20-3-26ì˜¤í›„ 7:30:12] 50íŽ„ìŠ¤ ì •ë„ ë” ì£¼ëŠ”ê±¸ë¡œ..*/
 #define STEP_ANGLE_DOOR         800 // 750
-#define STEP_ANGLE_TEMP_DOOR    480     // 1È¸ 800±âÁØ 60% ´ÝÀ½ (¹Ì´Ï»ç¾ç)
+#define STEP_ANGLE_TEMP_DOOR    480     // 1íšŒ 800ê¸°ì¤€ 60% ë‹«ìŒ (ë¯¸ë‹ˆì‚¬ì–‘)
 #define STEP_ANGLE_SELECT       1100
 // #define STEP_ANGLE_TEMP_SELECT  600
 #define STEP_ANGLE_TRAY         750
 
-#define ICE_DOOR_CLOSE_TIME_100MS       70    // ¾óÀ½ ÃÖÁ¾µµ¾î ´ÝÈû Áö¿¬ 3ÃÊ -> 7ÃÊ
-#define ICE_SELECT_CLOSE_TIME_100MS     30    // ¾óÀ½ ÀÌ³Êµµ¾î ´ÝÈû Áö¿¬ 3ÃÊ
+#define ICE_DOOR_CLOSE_TIME_100MS       70    // ì–¼ìŒ ìµœì¢…ë„ì–´ ë‹«íž˜ ì§€ì—° 3ì´ˆ -> 7ì´ˆ
+#define ICE_SELECT_CLOSE_TIME_100MS     30    // ì–¼ìŒ ì´ë„ˆë„ì–´ ë‹«íž˜ ì§€ì—° 3ì´ˆ
 
-#define ICE_OUT_BACK_1S_DELAY_TIME      90    // ±âÁ¸ 5ÃÊ -> 9ÃÊ ´ë±â
-#define ICE_OUT_BACK_2S_DELAY_TIME      90    // ±âÁ¸ 5ÃÊ -> 9ÃÊ ´ë±â
+#define ICE_OUT_BACK_1S_DELAY_TIME      90    // ê¸°ì¡´ 5ì´ˆ -> 9ì´ˆ ëŒ€ê¸°
+#define ICE_OUT_BACK_2S_DELAY_TIME      90    // ê¸°ì¡´ 5ì´ˆ -> 9ì´ˆ ëŒ€ê¸°
 
-#define ICE_SHAKE_DELAY_TIME            40    // Á¤·®ÃßÃâ ½Ã ÇÇ´õÁ¤¿ª ´ë±â ½Ã°£
+#define ICE_SHAKE_DELAY_TIME            10    // ì •ëŸ‰ì¶”ì¶œ ì‹œ í”¼ë”ì •ì—­ ëŒ€ê¸° ì‹œê°„
 
-// 1¾È (±âÁ¸)
-#define ICE_OUT_BACK_1S_GO_TIME         10    // 3~5.9ÃÊ ÃßÃâ ½Ã 1ÃÊ ¿ªÈ¸Àü
-#define ICE_OUT_BACK_2S_GO_TIME         30    // 6ÃÊ ÀÌ»ó ÃßÃâ ½Ã 2ÃÊ -> 3ÃÊ ¿ªÈ¸Àü
+// 1ì•ˆ (ê¸°ì¡´)
+#define ICE_OUT_BACK_1S_GO_TIME         10    // 3~5.9ì´ˆ ì¶”ì¶œ ì‹œ 1ì´ˆ ì—­íšŒì „
+#define ICE_OUT_BACK_2S_GO_TIME         30    // 6ì´ˆ ì´ìƒ ì¶”ì¶œ ì‹œ 2ì´ˆ -> 3ì´ˆ ì—­íšŒì „
 
 #define TRIP_REST_TIME 84
 #define TOTAL_MAXIMUM_REST_TIME 144
@@ -1428,32 +1428,32 @@ typedef struct {
 #define DIRECT_CONVERT_COUNT 100
 #define ONE_WEEK_INITIAL_HOUR 0xff
 
-#define ICE_DOOR_CLOSE_INTERVAL     9000 // 900ÃÊ (15ºÐ)
+#define ICE_DOOR_CLOSE_INTERVAL     9000 // 900ì´ˆ (15ë¶„)
 
-// 20160530 Sus EVA Ãß°¡ º¯°æ (ÄÞÇÁ Àç±âµ¿ 3ºÐ->8ºÐ)
-// #define COMP_START_TIME 480                     // COMP ±âµ¿ ´ë±â 8ºÐ
-// #define COMP_START_TIME 4800                     // COMP ±âµ¿ ´ë±â 8ºÐ
-/*..hui [19-9-18¿ÀÈÄ 1:15:38] COMP ±âµ¿ ´ë±â 7ºÐÀ¸·Î º¯°æ..*/
+// 20160530 Sus EVA ì¶”ê°€ ë³€ê²½ (ì½¤í”„ ìž¬ê¸°ë™ 3ë¶„->8ë¶„)
+// #define COMP_START_TIME 480                     // COMP ê¸°ë™ ëŒ€ê¸° 8ë¶„
+// #define COMP_START_TIME 4800                     // COMP ê¸°ë™ ëŒ€ê¸° 8ë¶„
+/*..hui [19-9-18ì˜¤í›„ 1:15:38] COMP ê¸°ë™ ëŒ€ê¸° 7ë¶„ìœ¼ë¡œ ë³€ê²½..*/
 /*#define COMP_START_TIME        4200*/
 
-/*..hui [19-11-19¿ÀÈÄ 4:09:12] COMP ±âµ¿ ´ë±â 6ºÐÀ¸·Î º¯°æ..*/
+/*..hui [19-11-19ì˜¤í›„ 4:09:12] COMP ê¸°ë™ ëŒ€ê¸° 6ë¶„ìœ¼ë¡œ ë³€ê²½..*/
 /*#define COMP_START_TIME                      3600*/
-/*..hui [23-4-12¿ÀÈÄ 2:07:00] ¾ÆÀÌÄÜ ¾ÆÀÌ½º´Â ´ë±â½Ã°£ 5ºÐ..*/
+/*..hui [23-4-12ì˜¤í›„ 2:07:00] ì•„ì´ì½˜ ì•„ì´ìŠ¤ëŠ” ëŒ€ê¸°ì‹œê°„ 5ë¶„..*/
 #define COMP_START_TIME 3000
 #define DEVELOPE_COMP_DELAY_CANCEL_TIME 300
 
-#define ICEVV_TIME_INIT 300 // ¾óÀ½¹ÞÀÌ ¹°ÁÖÀÔ ½Ã°£ 30ÃÊ
+#define ICEVV_TIME_INIT 300 // ì–¼ìŒë°›ì´ ë¬¼ì£¼ìž… ì‹œê°„ 30ì´ˆ
 
-#define COLD_TIME 50       // ³Ã¼öÀçÁ¤¼ö ½Ã°£ 5ÃÊ
-#define IceWaterDelay 1440 // ¾óÀ½³ìÀº¹° 24½Ã°£ °­Á¦ ¹è¼ö 24 x 60
+#define COLD_TIME 50       // ëƒ‰ìˆ˜ìž¬ì •ìˆ˜ ì‹œê°„ 5ì´ˆ
+#define IceWaterDelay 1440 // ì–¼ìŒë…¹ì€ë¬¼ 24ì‹œê°„ ê°•ì œ ë°°ìˆ˜ 24 x 60
 
 #define ICE_INIT_ERROR_CANCEL_TIME 72000
 
-#define STANDBY 0    // ¼­ºñ½º´ë±â
-#define WASH 1       // ¼¼Ã´
-#define WASHEND 2    // ¼¼Ã´Á¾·á
-#define NEUTRAL 3    // ÁßÈ­
-#define NEUTRALEND 4 // ÁßÈ­Á¾·á
+#define STANDBY 0    // ì„œë¹„ìŠ¤ëŒ€ê¸°
+#define WASH 1       // ì„¸ì²™
+#define WASHEND 2    // ì„¸ì²™ì¢…ë£Œ
+#define NEUTRAL 3    // ì¤‘í™”
+#define NEUTRALEND 4 // ì¤‘í™”ì¢…ë£Œ
 
 #if 1
 #define CUP_LEVEL_HALF      1
@@ -1486,7 +1486,7 @@ typedef enum
     CUP_LEVEL_2_250ML = 2,  // 250ml
     CUP_LEVEL_3_500ML = 3, // 500ml
     CUP_LEVEL_4_1000ML = 4,         // 1L
-    CUP_LEVEL_CONTINUE = 5,        // ¿¬¼Ó
+    CUP_LEVEL_CONTINUE = 5,        // ì—°ì†
 } CUP_LEVEL;
 
 typedef enum
@@ -1498,10 +1498,10 @@ typedef enum
 } ICE_LEVEL;
 
 #define C_CUP_MY_TEA                          300
-#define C_CUP_MY_COLD                         3.792F    // ³Ã V1
-#define C_CUP_MY_COLD_120ML                   4.2831F    // ³Ã V2
-#define C_CUP_MY_PURE                         3.625F    // Á¤
-#define C_CUP_MY_HOT                          3.291F    // ¿Â
+#define C_CUP_MY_COLD                         3.792F    // ëƒ‰ V1
+#define C_CUP_MY_COLD_120ML                   4.2831F    // ëƒ‰ V2
+#define C_CUP_MY_PURE                         3.625F    // ì •
+#define C_CUP_MY_HOT                          3.291F    // ì˜¨
 
 #define CUP_LEVEL__MAX CUP_LEVEL_CONTINUE
 /******************************************************************************/
@@ -1585,7 +1585,7 @@ typedef enum
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-/*..hui [23-6-26¿ÀÈÄ 12:25:38] µðÆúÆ® ¿ì¼± »õº® 1½Ã..*/
+/*..hui [23-6-26ì˜¤í›„ 12:25:38] ë””í´íŠ¸ ìš°ì„  ìƒˆë²½ 1ì‹œ..*/
 #define WIFI_PERIOD_STER_HOUR_DEFAULT 1
 #define WIFI_PERIOD_STER_MINUTE_DEFAULT 0
 
@@ -1664,20 +1664,20 @@ typedef enum
 #define ICE_TANK_UV_OEPRATION_MAX_TIME                       120 // 120minutes
 
 
-#define ICE_TRAY_UV_MAX_OPERATION_PER_ONE_DAY_THROW          2      // Å»ºùÀ§Ä¡ 2È¸
+#define ICE_TRAY_UV_MAX_OPERATION_PER_ONE_DAY_THROW          2      // íƒˆë¹™ìœ„ì¹˜ 2íšŒ
 #define ICE_TRAY_UV_THROW_MAX_TIME                           60 // 60minutes
 
-#define ICE_TRAY_UV_MAX_OPERATION_PER_ONE_DAY_MAKING         4      // Á¦ºùÀ§Ä¡ 4È¸
+#define ICE_TRAY_UV_MAX_OPERATION_PER_ONE_DAY_MAKING         4      // ì œë¹™ìœ„ì¹˜ 4íšŒ
 #define ICE_TRAY_UV_MAKING_MAX_TIME                          18000 // 30minutes
 
 #define UV_FAULT_TEST_1MIN_30SEC 900
 
 #if 0
-/*..hui [23-6-8¿ÀÀü 9:40:56] ³×¿À ÀÌ³ë´Â 1³â..*/
+/*..hui [23-6-8ì˜¤ì „ 9:40:56] ë„¤ì˜¤ ì´ë…¸ëŠ” 1ë…„..*/
 #define FILTER_RESET_DAY__NEO_INO 365
 #define FILTER_ALARM_BEFORE_30_DAYS__NEO_INO 30
 
-/*..hui [23-6-8¿ÀÀü 9:41:19] RO´Â 2³â 730ÀÏ..*/
+/*..hui [23-6-8ì˜¤ì „ 9:41:19] ROëŠ” 2ë…„ 730ì¼..*/
 #define FILTER_RESET_DEFAULT_24_MONTH_912_DAY_HOUR__RO 730
 #endif
 
@@ -1703,12 +1703,12 @@ typedef enum
 #endif
 
 #if 0
-/*..hui [24-2-23¿ÀÀü 10:04:55] 15°³¿ù/30°³¿ù..*/
+/*..hui [24-2-23ì˜¤ì „ 10:04:55] 15ê°œì›”/30ê°œì›”..*/
 #define FILTER_RESET_DEFAULT_MONTH__NEO 15
 #define FILTER_RESET_DEFAULT_MONTH__RO 30
 #define FILTER_RESET_DEFAULT_MONTH__INO 15
 
-/*..hui [23-12-18¿ÀÈÄ 7:38:25] 1½Ã°£ ´ÜÀ§·Î º¯°æ..*/
+/*..hui [23-12-18ì˜¤í›„ 7:38:25] 1ì‹œê°„ ë‹¨ìœ„ë¡œ ë³€ê²½..*/
 #define FILTER_RESET_DEFAULT_12_MONTH_456_DAY_HOUR__NEO 10944
 #define FILTER_RESET_DEFAULT_24_MONTH_912_DAY_HOUR__RO 21888
 #define FILTER_RESET_DEFAULT_12_MONTH_456_DAY_HOUR__INO 10944
@@ -1720,13 +1720,13 @@ typedef enum
 #define FILTER_ALARM_REMAIN_30_DAYS 720
 #endif
 
-/*..hui [24-2-23¿ÀÀü 10:05:01] 12°³¿ù/24°³¿ù..*/
+/*..hui [24-2-23ì˜¤ì „ 10:05:01] 12ê°œì›”/24ê°œì›”..*/
 #define FILTER_RESET_DEFAULT_MONTH__NEO 12
 #define FILTER_RESET_DEFAULT_MONTH__RO 24
 #define FILTER_RESET_DEFAULT_MONTH__INO 12
 
-/*..hui [23-12-18¿ÀÈÄ 7:38:25] 1½Ã°£ ´ÜÀ§·Î º¯°æ..*/
-/* SSG : 30.4 * 24 * 12 = 8755.2 (¹Ý¿Ã¸²) */
+/*..hui [23-12-18ì˜¤í›„ 7:38:25] 1ì‹œê°„ ë‹¨ìœ„ë¡œ ë³€ê²½..*/
+/* SSG : 30.4 * 24 * 12 = 8755.2 (ë°˜ì˜¬ë¦¼) */
 #define FILTER_RESET_DEFAULT_12_MONTH_456_DAY_HOUR__NEO 8755
 #define FILTER_RESET_DEFAULT_24_MONTH_912_DAY_HOUR__RO 17510
 #define FILTER_RESET_DEFAULT_12_MONTH_456_DAY_HOUR__INO 8755
@@ -1745,9 +1745,9 @@ typedef enum
 
 /*#define ACID_CLEAN_TANK_EMPTY_MAX_TIME               36000*/
 /*#define ACID_CLEAN_TANK_EMPTY_MAX_TIME               18000*/
-/*..hui [24-5-28¿ÀÈÄ 4:34:04] 40ºÐÀ¸·Î º¯°æ..*/
+/*..hui [24-5-28ì˜¤í›„ 4:34:04] 40ë¶„ìœ¼ë¡œ ë³€ê²½..*/
 /*#define ACID_CLEAN_TANK_EMPTY_MAX_TIME               24000*/
-/*..hui [24-7-22¿ÀÈÄ 2:00:27] 1½Ã°£µ¿¾È ¹è¼ö ¾ÈµÇ¸é µå·¹ÀÎÆßÇÁ ¿¡·¯..*/
+/*..hui [24-7-22ì˜¤í›„ 2:00:27] 1ì‹œê°„ë™ì•ˆ ë°°ìˆ˜ ì•ˆë˜ë©´ ë“œë ˆì¸íŽŒí”„ ì—ëŸ¬..*/
 #define ACID_CLEAN_TANK_EMPTY_MAX_TIME 36000
 
 // #define SETTING_MAX_YEAR      35
@@ -1757,7 +1757,7 @@ typedef enum
 #define SETTING_MIN_YEAR 23
 
 #if 0
-/*..hui [20-1-15¿ÀÈÄ 7:42:07] 2020³â 1¿ù1ÀÏ 0½Ã0ºÐ0ÃÊ..*/
+/*..hui [20-1-15ì˜¤í›„ 7:42:07] 2020ë…„ 1ì›”1ì¼ 0ì‹œ0ë¶„0ì´ˆ..*/
 #define RTC_DEFAULT_YEAR 23
 #define RTC_DEFAULT_MONTH 7
 #define RTC_DEFAULT_DATE 1
@@ -1792,7 +1792,7 @@ typedef enum
 /////////////////////////////////////////////////////////////////////////
 
 /*#define HOT_STER_SAFETY_TIME                          6000*/
-/*..hui [24-1-25¿ÀÈÄ 3:30:33] ¾ÈÀü½Ã°£ 15ºÐ.....*/
+/*..hui [24-1-25ì˜¤í›„ 3:30:33] ì•ˆì „ì‹œê°„ 15ë¶„.....*/
 #define HOT_STER_SAFETY_TIME 9000
 #define ICE_TANK_STER_PREHEAT_TEMP        75
 #define ICE_TANK_STER_TARGET_TEMP         75
@@ -1825,11 +1825,11 @@ typedef enum
 /*#define HOT_CIRCULATION_MAX_TIME            1200*/
 
 /*#define HOT_CIRCULATION_MAX_TIME            1800*/
-/*..hui [24-1-31¿ÀÀü 10:10:40] ¿Âµµ ³ôÀÌ±âÀ§ÇØ ¼øÈ¯ ÃÖ¼ÒÈ­..*/
+/*..hui [24-1-31ì˜¤ì „ 10:10:40] ì˜¨ë„ ë†’ì´ê¸°ìœ„í•´ ìˆœí™˜ ìµœì†Œí™”..*/
 /*#define HOT_CIRCULATION_MAX_TIME              100*/
-/*..hui [24-1-31¿ÀÈÄ 2:51:55] ¿Âµµ ³Ê¹« ³ôÀ½.. 20ÃÊ·Î º¯°æ..*/
+/*..hui [24-1-31ì˜¤í›„ 2:51:55] ì˜¨ë„ ë„ˆë¬´ ë†’ìŒ.. 20ì´ˆë¡œ ë³€ê²½..*/
 /*#define HOT_CIRCULATION_MAX_TIME              200*/
-/*..hui [24-2-1¿ÀÈÄ 2:05:26] ´Ù½Ã 10ÃÊ·Î.. ÀÌÁ¤È¯ ºÎÀå´Ô..*/
+/*..hui [24-2-1ì˜¤í›„ 2:05:26] ë‹¤ì‹œ 10ì´ˆë¡œ.. ì´ì •í™˜ ë¶€ìž¥ë‹˜..*/
 #define HOT_CIRCULATION_MAX_TIME 100
 #define MELT_ICE_HOT_CIRCULATION_MAX_TIME 200
 
@@ -1837,8 +1837,8 @@ typedef enum
 /*#define ICE_TRAY_HOT_CIRCULATION_MAX_TIME            1200*/
 
 #if 0
-#define SLEEP_IN 245  //  ÁøÀÔ, 1.2V
-#define SLEEP_OUT 450 //  ÇØÁ¦, 2.2V
+#define SLEEP_IN 245  //  ì§„ìž…, 1.2V
+#define SLEEP_OUT 450 //  í•´ì œ, 2.2V
 #endif
 
 // #define SLEEP_IN    385
@@ -1847,19 +1847,19 @@ typedef enum
 // #define SLEEP_IN    100
 // #define SLEEP_OUT   160
 
-/*..hui [20-1-22¿ÀÈÄ 2:46:18] PCB, ±â±¸¹°¿¡ Æû ºÙ¿©¼­ ´Ù½Ã..*/
+/*..hui [20-1-22ì˜¤í›„ 2:46:18] PCB, ê¸°êµ¬ë¬¼ì— í¼ ë¶™ì—¬ì„œ ë‹¤ì‹œ..*/
 /*#define SLEEP_IN    345*/
 /*#define SLEEP_OUT   634*/
 
-/*..hui [20-2-18¿ÀÈÄ 5:17:51] ±â±¸¹° ¼öÁ¤ ÈÄ ´Ù½Ã ÃøÁ¤..*/
+/*..hui [20-2-18ì˜¤í›„ 5:17:51] ê¸°êµ¬ë¬¼ ìˆ˜ì • í›„ ë‹¤ì‹œ ì¸¡ì •..*/
 /////#define SLEEP_IN    381
 /////#define SLEEP_OUT   754
 
 #define PUMP_NO_LOAD_MINIMUM_OPERATION_TIME 450
 /*#define DRAIN_NO_WATER_FEEDBACK_AD                   190*/
 /*#define DRAIN_NO_WATER_FEEDBACK_AD                   100*/
-/*..hui [24-4-4¿ÀÈÄ 5:59:35] 70%¶û 100%¶û µÑ´Ù µ¿ÀÏ..*/
-/*..hui [24-4-4¿ÀÈÄ 6:00:00] ¹° ¾øÀ»¶§ 120Á¤µµ ³ª¿È.. Á¤»óÀÏ¶§´Â 240~390..*/
+/*..hui [24-4-4ì˜¤í›„ 5:59:35] 70%ëž‘ 100%ëž‘ ë‘˜ë‹¤ ë™ì¼..*/
+/*..hui [24-4-4ì˜¤í›„ 6:00:00] ë¬¼ ì—†ì„ë•Œ 120ì •ë„ ë‚˜ì˜´.. ì •ìƒì¼ë•ŒëŠ” 240~390..*/
 /*#define DRAIN_NO_WATER_FEEDBACK_AD                   170*/
 /*#define DRAIN_NO_WATER_FEEDBACK_AD                   150*/
 #define DRAIN_NO_WATER_FEEDBACK_AD 180
@@ -1870,13 +1870,13 @@ typedef enum
 #define DRAIN_COMPLETE_FEEDBACK 180
 
 /*#define DRAIN_VALVE_OPEN_TIME       450*/
-/*..hui [23-8-14¿ÀÈÄ 3:21:50] Àú¼öÀ§->¸¸¼öÀ§ Â÷´Â½Ã°£ 1ºÐ.. ¿©À¯ÀÖ°Ô 1ºÐ 30ÃÊ·Î..*/
+/*..hui [23-8-14ì˜¤í›„ 3:21:50] ì €ìˆ˜ìœ„->ë§Œìˆ˜ìœ„ ì°¨ëŠ”ì‹œê°„ 1ë¶„.. ì—¬ìœ ìžˆê²Œ 1ë¶„ 30ì´ˆë¡œ..*/
 /*#define DRAIN_VALVE_OPEN_TIME       900*/
 /*#define DRAIN_VALVE_OPEN_TIME       1100*/
 /*#define DRAIN_VALVE_OPEN_TIME       900*/
-/*..hui [24-3-26¿ÀÈÄ 5:25:30] ´Ù½Ã 1ºÐÀ¸·Î º¯°æ.. ÅÊÅ© ¹° ³ÑÄ¥¼öÀÖÀ½..*/
+/*..hui [24-3-26ì˜¤í›„ 5:25:30] ë‹¤ì‹œ 1ë¶„ìœ¼ë¡œ ë³€ê²½.. íƒ±í¬ ë¬¼ ë„˜ì¹ ìˆ˜ìžˆìŒ..*/
 // #define DRAIN_VALVE_OPEN_TIME 600
-/* ICE 2KG MAX´Â 15ÃÊ */
+/* ICE 2KG MAXëŠ” 15ì´ˆ */
 #define DRAIN_VALVE_OPEN_TIME       150
 
 #define MANUAL_DRAIN_MAX_TIME 18000
@@ -1901,24 +1901,24 @@ typedef enum
 #define COLD_MIX_START_TIME 10
 
 /*#define PERIODIC__STER_CYCLE         7*/
-/*..hui [23-11-8¿ÀÈÄ 2:31:08] 28ÀÏ¿¡ ÇÑ¹ø ÇÏ´Â°É·Î º¯°æ..*/
-/* 3ÀÏ¿¡ ÇÑ¹ø¾¿ ¼öÁ¤ */
+/*..hui [23-11-8ì˜¤í›„ 2:31:08] 28ì¼ì— í•œë²ˆ í•˜ëŠ”ê±¸ë¡œ ë³€ê²½..*/
+/* 3ì¼ì— í•œë²ˆì”© ìˆ˜ì • */
 #define PERIODIC__STER_CYCLE                    3
 #define FIRST_POWER_ON_PERIODIC__STER_CYCLE     3
 #define DRAIN_TANK__STER_CYCLE                  9    //10
 
-/*..hui [23-7-13¿ÀÀü 9:55:52] Å×½ºÆ®¿ë..*/
+/*..hui [23-7-13ì˜¤ì „ 9:55:52] í…ŒìŠ¤íŠ¸ìš©..*/
 /////////#define PERIODIC__STER_CYCLE         1
 ///////#define HOT_STER_TEMP_HIGH_MODE         0
 ////////#define HOT_STER_TEMP_LOW_MODE          1
 
-/*..hui [24-4-5¿ÀÀü 9:49:29] ¾óÀ½ÅÊÅ© 3 1°³Â¥¸® ÇÇµå¹é 100..*/
+/*..hui [24-4-5ì˜¤ì „ 9:49:29] ì–¼ìŒíƒ±í¬ 3 1ê°œì§œë¦¬ í”¼ë“œë°± 100..*/
 #define UV_SOLO__ERROR_CHECK_UNDER_AD 41
 #define UV_SOLO__ERROR_CHECK_OVER_AD 205
 
-/*..hui [24-4-5¿ÀÀü 9:49:44] ¾óÀ½ÅÊÅ© 1,2 µÎ°³ 165, 1°³..*/
-/*..hui [24-4-5¿ÀÀü 9:49:55] ¾ÆÀÌ½ºÆ®·¹ÀÌ 1,2 µÎ°³ : 164, 1°³ : 100..*/
-/*..hui [24-4-5¿ÀÀü 9:50:07] ³Ã¼öÅÊÅ© 1,2 µÎ°³ : 182, 1°³ : 100..*/
+/*..hui [24-4-5ì˜¤ì „ 9:49:44] ì–¼ìŒíƒ±í¬ 1,2 ë‘ê°œ 165, 1ê°œ..*/
+/*..hui [24-4-5ì˜¤ì „ 9:49:55] ì•„ì´ìŠ¤íŠ¸ë ˆì´ 1,2 ë‘ê°œ : 164, 1ê°œ : 100..*/
+/*..hui [24-4-5ì˜¤ì „ 9:50:07] ëƒ‰ìˆ˜íƒ±í¬ 1,2 ë‘ê°œ : 182, 1ê°œ : 100..*/
 /*#define UV_COUPLE__ERROR_CHECK_UNDER_AD            82*/
 #define UV_COUPLE__ERROR_CHECK_UNDER_AD         120
 #define UV_COUPLE__ERROR_CHECT_OVER_AD          410
@@ -1929,7 +1929,7 @@ typedef enum
 #define C_CUP_1000CC_ROOM (C_CUP_500CC_ROOM * 2)
 #define C_CUP_2000CC_ROOM (C_CUP_1000CC_ROOM * 2)
 
-/* ³Ã¼ö 120cc ±âÁ¸ ´ëºñ 10% °¨Ãà */
+/* ëƒ‰ìˆ˜ 120cc ê¸°ì¡´ ëŒ€ë¹„ 10% ê°ì¶• */
 #define C_CUP_120CC_COLD 433 // 440 // 350 // 339
 #define C_CUP_250CC_COLD 830 // 774
 #define C_CUP_500CC_COLD 1712
@@ -1978,14 +1978,14 @@ typedef enum
 
 #define DIMMING_SET_DEFAULT 0xef
 
-#define FLOW_VALVE_MAX_OPEN 1800        // ¹Ì´Ï¶û µ¿ÀÏÇÏ°Ô
+#define FLOW_VALVE_MAX_OPEN 1800        // ë¯¸ë‹ˆëž‘ ë™ì¼í•˜ê²Œ
 
-// ¡Ú2025-06-02 Phil
-#define FLOW_VALVE_ADJUST              300  //2025-06-05 21:01:28   cbr     //600	// ¡Ú2025-06-02 Phil
+// â˜…2025-06-02 Phil
+#define FLOW_VALVE_ADJUST              300  //2025-06-05 21:01:28   cbr     //600	// â˜…2025-06-02 Phil
 
 
 /*#define UV_PROGRESS_DISPLAY_TIME            70*/
-/*..hui [24-7-22¿ÀÀü 11:05:39] UI µðÀÚÀÎÆÀ 30ÃÊ·Î º¯°æ ¿äÃ»..*/
+/*..hui [24-7-22ì˜¤ì „ 11:05:39] UI ë””ìžì¸íŒ€ 30ì´ˆë¡œ ë³€ê²½ ìš”ì²­..*/
 #define UV_PROGRESS_DISPLAY_TIME 300
 #define EERROR_DISPLAY_TIME 70
 
@@ -1993,7 +1993,7 @@ typedef enum
 #define GAS_SWITCH_ICE 1
 #define GAS_SWITCH_HOTGAS 2
 
-/*..hui [20-2-24¿ÀÈÄ 7:44:45] ³Ã¼ö ONOFF¶û ¿Âµµ¼³Á¤ ¸Þ´º ºÐ¸®..*/
+/*..hui [20-2-24ì˜¤í›„ 7:44:45] ëƒ‰ìˆ˜ ONOFFëž‘ ì˜¨ë„ì„¤ì • ë©”ë‰´ ë¶„ë¦¬..*/
 #define COLD_TEMP_HIGH 0
 #define COLD_TEMP_LOW 1
 
@@ -2027,7 +2027,7 @@ typedef enum
 #define MAKE_COLD 1
 #define MAKE_ICE 2
 
-/*..hui [19-10-15¿ÀÈÄ 5:50:08] ¹°·® Àû»ê ÃÖ´ë°ªÀº 999.9..*/
+/*..hui [19-10-15ì˜¤í›„ 5:50:08] ë¬¼ëŸ‰ ì ì‚° ìµœëŒ€ê°’ì€ 999.9..*/
 #define USER_WATER_MAX_ACC 99999
 #define DISPLAY_USER_WATER_MAX_ACC 9999
 
@@ -2036,7 +2036,7 @@ typedef enum
 #define SILVER_CARE_TIME_MIN 2880
 
 // #define CODY_CARE_MAX_TIME            65535
-/*..hui [21-3-5¿ÀÀü 10:04:59] ÃÖ´ë 9999ÃÊ.. ¾ÆÀÌÄÜ »ç¾ç..*/
+/*..hui [21-3-5ì˜¤ì „ 10:04:59] ìµœëŒ€ 9999ì´ˆ.. ì•„ì´ì½˜ ì‚¬ì–‘..*/
 #define CODY_CARE_MAX_TIME 9999
 
 #define ROOM_OVER_HEAT_TEMP 50
@@ -2167,11 +2167,11 @@ typedef enum
 #define LANGUAGE_MAX 4
 
 #define SMART_ICON_NONE 0
-/*..hui [25-3-27¿ÀÈÄ 1:53:24] ÇØ ¾ÆÀÌÄÜ..*/
+/*..hui [25-3-27ì˜¤í›„ 1:53:24] í•´ ì•„ì´ì½˜..*/
 #define SMART_ICON_SUNNY 1
-/*..hui [25-3-27¿ÀÈÄ 1:53:28] ±¸¸§ ¾ÆÀÌÄÜ..*/
+/*..hui [25-3-27ì˜¤í›„ 1:53:28] êµ¬ë¦„ ì•„ì´ì½˜..*/
 #define SMART_ICON_CLOUDY 2
-/*..hui [25-3-27¿ÀÈÄ 1:53:31] ¿ì»ê ¾ÆÀÌÄÜ..*/
+/*..hui [25-3-27ì˜¤í›„ 1:53:31] ìš°ì‚° ì•„ì´ì½˜..*/
 #define SMART_ICON_RAINY 3
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2179,129 +2179,129 @@ typedef enum
 /*NXD Address*/
 #define VOICE_START 0x00
 //==============================================================
-#define KR          0            // ÇÑ±¹¾î
-#define US        200            // ¿µ¾î
-#define ES        400            // ½ºÆäÀÎ¾î
-#define CN        600            // Áß±¹¾î
-#define FR        800            // ÇÁ¶û½º¾î
-#define KR_25	  1200			 // 25³â ¾óÀ½
+#define KR          0            // í•œêµ­ì–´
+#define US        200            // ì˜ì–´
+#define ES        400            // ìŠ¤íŽ˜ì¸ì–´
+#define CN        600            // ì¤‘êµ­ì–´
+#define FR        800            // í”„ëž‘ìŠ¤ì–´
+#define KR_25	  1200			 // 25ë…„ ì–¼ìŒ
 
-/* À½¼º ½Å¹öÀü! */
-/* MINI, 1KG, 2KG °øÅëÀ½¼º */
-#define VOICE_1_STOP_ICE_ICETANK_COVER                          1     // ¾óÀ½ÀúÀå°íÀÇ Ä¿¹ö°¡ ¿­·È½À´Ï´Ù. ¾ÈÀüÀ» À§ÇØ ¾óÀ½ »ý¼ºÀ» ÁßÁöÇÕ´Ï´Ù.
-#define VOICE_2_SHUTOFF_WATER_FRONT_COVER                       2     // 'Á¤¸éÀÇ ÇÊÅÍ Ä¿¹ö°¡ ¿­·Á ¹° °ø±ÞÀ» Â÷´ÜÇÕ´Ï´Ù.'
-#define VOICE_3_RESTART_ICE_COVER_OK                            3     // ¾óÀ½ÀúÀå°íÀÇ Ä¿¹ö°¡ ´ÝÇû½À´Ï´Ù. ´Ù½Ã ¾óÀ½ »ý¼ºÀ» ½ÃÀÛÇÕ´Ï´Ù
+/* ìŒì„± ì‹ ë²„ì „! */
+/* MINI, 1KG, 2KG ê³µí†µìŒì„± */
+#define VOICE_1_STOP_ICE_ICETANK_COVER                          1     // ì–¼ìŒì €ìž¥ê³ ì˜ ì»¤ë²„ê°€ ì—´ë ¸ìŠµë‹ˆë‹¤. ì•ˆì „ì„ ìœ„í•´ ì–¼ìŒ ìƒì„±ì„ ì¤‘ì§€í•©ë‹ˆë‹¤.
+#define VOICE_2_SHUTOFF_WATER_FRONT_COVER                       2     // 'ì •ë©´ì˜ í•„í„° ì»¤ë²„ê°€ ì—´ë ¤ ë¬¼ ê³µê¸‰ì„ ì°¨ë‹¨í•©ë‹ˆë‹¤.'
+#define VOICE_3_RESTART_ICE_COVER_OK                            3     // ì–¼ìŒì €ìž¥ê³ ì˜ ì»¤ë²„ê°€ ë‹«í˜”ìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì–¼ìŒ ìƒì„±ì„ ì‹œìž‘í•©ë‹ˆë‹¤
 
-#define VOICE_4_CALL_AS_COLD_WATER_ERROR                        93     // '³Ã¼ö ±â´É¿¡ ÀÌ»óÀÌ °¨ÁöµÇ¾úÀ¸´Ï °í°´¼¾ÅÍ¿¡ ¿¬¶ôÇØÁÖ¼¼¿ä'
-#define VOICE_5_CALL_AS_HOT_WATER_ERROR                         94     // '¿Â¼ö ±â´É¿¡ ÀÌ»óÀÌ °¨ÁöµÇ¾úÀ¸´Ï °í°´¼¾ÅÍ¿¡ ¿¬¶ôÇØÁÖ¼¼¿ä'
-#define VOICE_6_CALL_AS_ICE_ERROR                               95     // '¾óÀ½ ±â´É¿¡ ÀÌ»óÀÌ °¨ÁöµÇ¾úÀ¸´Ï °í°´¼¾ÅÍ¿¡ ¿¬¶ôÇØÁÖ¼¼¿ä'
-#define VOICE_7_CALL_AS_WATER_SUPPLY_ERROR                      96    // '¹° °ø±Þ¿¡ ÀÌ»óÀÌ °¨Áö µÇ¾úÀ¸´Ï, ¿ø¼ö°ø±Þ ¹ëºê¸¦ È®ÀÎÇØÁÖ½Ã°í ¹®Á¦°¡ ¹Ýº¹µÇ¸é °í°´¼¾ÅÍ·Î ¿¬¶ôÇØÁÖ¼¼¿ä.'
-#define VOICE_8_CALL_AS_WATER_LEAKAGE_ERROR                     97     // '"´©¼ö°¡ °¨ÁöµÇ¾úÀ¸´Ï ¿ø¼ö°ø±Þ ¹ëºê¸¦ Àá±ÅÁÖ½Ã°í ¹®Á¦°¡ ¹Ýº¹µÇ¸é °í°´¼¾ÅÍ·Î ¿¬¶ôÇØÁÖ¼¼¿ä."'
-#define VOICE_9_PRESS_YES_OR_NO_AFTER_FILTER		            98     // ÇÊÅÍ¸¦ ±³Ã¼Çß´Ù¸é ¹° ÃßÃâ¹öÆ°À» ´­·¯ÁÖ¼¼¿ä.  ±³Ã¼ÇÏÁö ¾Ê¾Ò´Ù¸é '³Ã¼ö' ¹öÆ°À» ´­·¯ÁÖ¼¼¿ä.
-#define VOICE_10_NO_REPLACE_WITH_COVER							10	   // ÇÊÅÍ°¡ ¿Ã¹Ù¸£°Ô °áÇÕµÇÁö ¾ÊÀº °ÍÀ¸·Î °¨ÁöµÇ¾ú½À´Ï´Ù. Á¦Ç° Ä¿¹ö¸¦ ¿­¾î ´Ù½Ã ÇÑ ¹ø È®ÀÎÇØÁÖ¼¼¿ä.
-#define VOICE_11_START_FILTER_FLUSHING							11 	   // »õ ÇÊÅÍ ÀåÂø ÈÄ ±ú²ýÇÑ ¹°À» Á¦°øÇÏ±â À§ÇØ ÁØºñ Áß¿¡ ÀÖ½À´Ï´Ù. Àá½Ã¸¸ ±â´Ù·ÁÁÖ¼¼¿ä.
-#define VOICE_12_FINISH_FILTER_FLUSHING                         12     // 'ÇÊÅÍ ÇÃ·¯½ÌÀÌ ¿Ï·áµÇ¾î Á¦Ç° »ç¿ëÀÌ °¡´ÉÇÕ´Ï´Ù.'
-#define VOICE_13_CHECK_FILTER_FLUSHING_MANUAL                   99     // '"ÇÊÅÍ ÇÃ·¯½ÌÀÌ ÁøÇàµÇÁö ¾Ê¾Ò½À´Ï´Ù.  ÇÊÅÍ ±³Ã¼¸¦ ÁøÇàÇÏ¼Ì´Ù¸é, ¸Å´º¾óÀ» Âü°íÇÏ¿© ÇÃ·¯½ÌÀ» ´Ù½Ã ÁøÇàÇØÁÖ¼¼¿ä."'
-#define VOICE_14_NO_REPLACE_WITH_COVER							100	   // ÇÊÅÍ°¡ ¿Ã¹Ù¸£°Ô °áÇÕµÇÁö ¾ÊÀº °ÍÀ¸·Î °¨ÁöµÇ¾ú½À´Ï´Ù. Á¦Ç° Ä¿¹ö¸¦ ¿­¾î ´Ù½Ã ÇÑ ¹ø È®ÀÎÇØÁÖ¼¼¿ä. // Áßº¹
-#define VOICE_15_PROHIBIT_DURING_SMART_TESTING_MODE             101     // ÇöÀç IoCare ÇÃ·¯½º ¾Û¿¡¼­ ½º¸¶Æ® Áø´ÜÀ» ½ÇÇà ÁßÀÌ¶ó Á¦Ç°¿¡¼­ ½ÇÇàÇÒ ¼ö ¾ø½À´Ï´Ù. ¾Û¿¡¼­ ½º¸¶Æ® Áø´ÜÀ» ¿Ï·áÇÏ½Å µÚ ´Ù½Ã ½ÃµµÇØÁÖ¼¼¿ä.
-#define VOICE_16_START_SMART_TESTING_MODE                       16     // Á¦Ç° »óÅÂ¸¦ ÆÄ¾ÇÇÏ±â À§ÇØ ½º¸¶Æ® Áø´ÜÀ» ½ÃÀÛÇÕ´Ï´Ù. Àá½Ã¸¸ ±â´Ù·ÁÁÖ¼¼¿ä
-#define VOICE_17_FINISH_SMART_TESTING_MODE_NO_ERROR             102     // '½º¸¶Æ® Áø´ÜÀÌ ¿Ï·á µÇ¾î Á¦Ç°À» »ç¿ëÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù. '
-#define VOICE_18_FINISH_SMART_TESTING_MODE_WITH_ERROR           103     // '½º¸¶Æ® Áø´ÜÀÌ ¿Ï·á µÇ¾ú½À´Ï´Ù. ½º¸¶Æ® Áø´Ü °á°ú ÀÌ»óÀÌ °¨ÁöµÇ¾ú½À´Ï´Ù. ioCare¾ÛÀ» ÅëÇØ »ó¼¼ ³»¿ëÀ» È®ÀÎÇØÁÖ¼¼¿ä.'
-#define VOICE_19_START_BLE_PAIRNG			                    104     // ºí·çÅõ½º¸¦ ÅëÇØ ioCare ¾Û¿¡ ¿¬°áÀ» ½ÃÀÛÇÕ´Ï´Ù.
-#define VOICE_20_INFORM_APP_PAIRING_SUCCESS_WITH_BLE            105     // ºí·çÅõ½º¸¦ ÅëÇØ ioCare ¾Û ¿¬°áÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.
-#define VOICE_21_INFORM_APP_PAIRING_FAIL_WITH_BLE            	106     // ºí·çÅõ½º¸¦ ÅëÇÑ ioCare ¾Û ¿¬°áÀÌ ½ÇÆÐÇÏ¿´½À´Ï´Ù.  ÇÚµåÆù ºí·çÅõ½º°¡ ÄÑÁ®ÀÖ´ÂÁö È®ÀÎÇØÁÖ¼¼¿ä
-#define VOICE_22_START_WIFI_PAIRNG			                    107     // ºí·çÅõ½º¸¦ ÅëÇØ ioCare ¾Û¿¡ ¿¬°áÀ» ½ÃÀÛÇÕ´Ï´Ù.
-#define VOICE_23_INFORM_APP_PAIRING_SUCCESS_WITH_WIFI           108     // ¿ÍÀÌÆÄÀÌ ¿¬°áÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.  ÀÌÁ¦ºÎÅÍ ioCare ¾ÛÀ» ÅëÇØ ½º¸¶Æ®ÇÑ °ü¸®¸¦ ¹ÞÀ¸½Ç ¼ö ÀÖ½À´Ï´Ù.
-#define VOICE_24_INFORM_APP_PAIRING_FAIL_WITH_WIFI            	109     // ¿ÍÀÌÆÄÀÌ ¿¬°á¿¡ ½ÇÆÐÇÏ¿´½À´Ï´Ù.   ÀÎÅÍ³Ý °øÀ¯±â¸¦ È®ÀÎÇØÁÖ½Ã°í,    ¹®Á¦°¡ ¹Ýº¹µÇ¸é ÄÝ¼¾ÅÍ¿¡ ¿¬¶ôÇØÁÖ¼¼¿ä
-#define	VOICE_25_INFORM_WIFI_MODE_DEACTIVATED					110	   // Á¦Ç°ÀÇ Wi-Fi°¡ ²¨Á³½À´Ï´Ù. ´Ù½Ã ¿¬°áÇÏ·Á¸é ³Ã¼ö¿Í ¿ë·® ¹öÆ°À» µ¿½Ã¿¡ 3ÃÊ ´­·¯ÁÖ¼¼¿ä.
-#define	VOICE_26_APPLY_WIFI_AFTER_DEACTIVATING					26	   // Á¦Ç°ÀÇ Wi-Fi°¡ ÄÑÁ³½À´Ï´Ù.
-#define VOICE_27_INFORM_WIFI_ON                                 27     // 'Á¦Ç°ÀÇ Wi-Fi°¡ ÄÑÁ³½À´Ï´Ù.'
-#define VOICE_28_INFORM_WIFI_OFF                                112     // Á¦Ç°ÀÇ Wi-Fi°¡ ²¨Á³½À´Ï´Ù. ´Ù½Ã ¿¬°áÇÏ·Á¸é ³Ã¼ö¿Í ¿ë·® ¹öÆ°À» µ¿½Ã¿¡ 3ÃÊ ´­·¯ÁÖ¼¼¿ä.
-#define	VOICE_29_APPLY_PRODUCT_CERT_OCCUPATION					29	   // Á¦Ç° ÀÎÁõÀ» ÁøÇà ÁßÀÔ´Ï´Ù.    ¾Û¿¡¼­ °¡ÀÌµåÇÏ´Â ¹öÆ°À» ´­·¯ ÁÖ¼¼¿ä.
-#define VOICE_30_INFORM_APP_PAIRING_SUCCESS_WITH_WIFI           113     // ¿ÍÀÌÆÄÀÌ ¿¬°áÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.  ÀÌÁ¦ºÎÅÍ ioCare ¾ÛÀ» ÅëÇØ ½º¸¶Æ®ÇÑ °ü¸®¸¦ ¹ÞÀ¸½Ç ¼ö ÀÖ½À´Ï´Ù.
-#define VOICE_31_INFORM_APP_PAIRING_FAIL_WITH_WIFI            	114     // ¿ÍÀÌÆÄÀÌ ¿¬°á¿¡ ½ÇÆÐÇÏ¿´½À´Ï´Ù.   ÀÎÅÍ³Ý °øÀ¯±â¸¦ È®ÀÎÇØÁÖ½Ã°í,    ¹®Á¦°¡ ¹Ýº¹µÇ¸é ÄÝ¼¾ÅÍ¿¡ ¿¬¶ôÇØÁÖ¼¼¿ä
-#define VOICE_32_INFORM_APP_PAIRING_FAIL_WITH_WIFI            	32     // Á¦Ç°°ú ¾ÛÀÇ ¿¬°áÀÌ ½ÇÆÐÇÏ¿´½À´Ï´Ù.
-#define	VOICE_33_INFORM_PROEDUCT_BEFORE_FLUSHING				116	   // ¾È³çÇÏ¼¼¿ä. °í°´´Ô ÄÚ¿þÀÌ Á¤¼ö±âÀÇ ¼³Ä¡¸¦ µµ¿Íµå¸®°Ú½À´Ï´Ù. ¹° ÃßÃâ¹öÆ°À» ´©¸£½Ã¸é ¼³Ä¡¸¦ ½ÃÀÛÇÏ°Ú½À´Ï´Ù.
-#define	VOICE_34_INFORM_WIFI_BEFORE_FLUSHING					34	   // ¿ÍÀÌÆÄÀÌ ¿¬°áÀ» ½ÃÀÛÇÕ´Ï´Ù.
-#define VOICE_35_INFORM_FLUSHING_START							118		// ±ú²ýÇÑ ¹°À» Á¦°øÇÏ±â À§ÇØ ÁØºñÁßÀÔ´Ï´Ù. ¿Ï·á ÈÄ »ç¿ëÇØÁÖ¼¼¿ä.
-#define VOICE_36_INFORM_FLUSHING_FINISH							119		// ±ú²ýÇÑ ¹°À» Á¦°øÇÏ±â À§ÇÑ ÁØºñ°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.
-#define	VOICE_37_NO_USE_AFTER_WAKE								119		// Àå½Ã°£ ¹Ì»ç¿ë ½Ã Ã¹ ÀÜÀº ºñ¿öÁÖ¼¼¿ä.
-#define	VOICE_38_HOT_WATER_PREHEAT								38		//	¿Â¼ö ¿Âµµ¸¦ ¸ÂÃß°í ÀÖ½À´Ï´Ù. Àá½Ã¸¸ ±â´Ù·ÁÁÖ¼¼¿ä.
-#define VOICE_40_CAUTION_HOT_WATER                              40      // '¹° ¿Âµµ°¡ ¶ß°Å¿ì´Ï, ÁÖÀÇ ÇÏ¼¼¿ä.'
-#define VOICE_41_CAUTION_CONTINUOUS_HOT_WATER                   41      // ¿Â¼ö°¡ ¶ß°Å¿ì´Ï ÁÖÀÇÇÏ¼¼¿ä.       ÃßÃâÀ» ¸ØÃß½Ã·Á¸é ÃßÃâ ¹öÆ°À» ´­·¯ÁÖ¼¼¿ä.
-#define VOICE_42_APPLYING_SETTING_FAIL                          123     // ¼³Á¤ ¹öÆ°À» 3ÃÊ ´©¸£½Ã¸é,   ÄÚ¿þÀÌ Á¤¼ö±âÀÇ ´Ù¾çÇÑ ±â´ÉÀ» ¼³Á¤ÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.
-#define VOICE_43_CLICK_3S_FOR_SETTING_MODE                      133     // ¼³Á¤¸ðµå¸¦ ½ÃÀÛÇÕ´Ï´Ù. Á¤¼ö±âÀÇ ±â´É ¼³Á¤ÀÌ °¡´ÉÇÕ´Ï´Ù.
-#define VOICE_39_HOT_WATER_EXTRACT                              39      // °í¿Â¼ö°¡ ÃßÃâµË´Ï´Ù. ÄÅÀ» ÃßÃâ±¸¿¡ °¡±îÀÌ ÇØÁÖ¼¼¿ä.
+#define VOICE_4_CALL_AS_COLD_WATER_ERROR                        93     // 'ëƒ‰ìˆ˜ ê¸°ëŠ¥ì— ì´ìƒì´ ê°ì§€ë˜ì—ˆìœ¼ë‹ˆ ê³ ê°ì„¼í„°ì— ì—°ë½í•´ì£¼ì„¸ìš”'
+#define VOICE_5_CALL_AS_HOT_WATER_ERROR                         94     // 'ì˜¨ìˆ˜ ê¸°ëŠ¥ì— ì´ìƒì´ ê°ì§€ë˜ì—ˆìœ¼ë‹ˆ ê³ ê°ì„¼í„°ì— ì—°ë½í•´ì£¼ì„¸ìš”'
+#define VOICE_6_CALL_AS_ICE_ERROR                               95     // 'ì–¼ìŒ ê¸°ëŠ¥ì— ì´ìƒì´ ê°ì§€ë˜ì—ˆìœ¼ë‹ˆ ê³ ê°ì„¼í„°ì— ì—°ë½í•´ì£¼ì„¸ìš”'
+#define VOICE_7_CALL_AS_WATER_SUPPLY_ERROR                      96    // 'ë¬¼ ê³µê¸‰ì— ì´ìƒì´ ê°ì§€ ë˜ì—ˆìœ¼ë‹ˆ, ì›ìˆ˜ê³µê¸‰ ë°¸ë¸Œë¥¼ í™•ì¸í•´ì£¼ì‹œê³  ë¬¸ì œê°€ ë°˜ë³µë˜ë©´ ê³ ê°ì„¼í„°ë¡œ ì—°ë½í•´ì£¼ì„¸ìš”.'
+#define VOICE_8_CALL_AS_WATER_LEAKAGE_ERROR                     97     // '"ëˆ„ìˆ˜ê°€ ê°ì§€ë˜ì—ˆìœ¼ë‹ˆ ì›ìˆ˜ê³µê¸‰ ë°¸ë¸Œë¥¼ ìž ê¶ˆì£¼ì‹œê³  ë¬¸ì œê°€ ë°˜ë³µë˜ë©´ ê³ ê°ì„¼í„°ë¡œ ì—°ë½í•´ì£¼ì„¸ìš”."'
+#define VOICE_9_PRESS_YES_OR_NO_AFTER_FILTER		            98     // í•„í„°ë¥¼ êµì²´í–ˆë‹¤ë©´ ë¬¼ ì¶”ì¶œë²„íŠ¼ì„ ëˆŒëŸ¬ì£¼ì„¸ìš”.  êµì²´í•˜ì§€ ì•Šì•˜ë‹¤ë©´ 'ëƒ‰ìˆ˜' ë²„íŠ¼ì„ ëˆŒëŸ¬ì£¼ì„¸ìš”.
+#define VOICE_10_NO_REPLACE_WITH_COVER							10	   // í•„í„°ê°€ ì˜¬ë°”ë¥´ê²Œ ê²°í•©ë˜ì§€ ì•Šì€ ê²ƒìœ¼ë¡œ ê°ì§€ë˜ì—ˆìŠµë‹ˆë‹¤. ì œí’ˆ ì»¤ë²„ë¥¼ ì—´ì–´ ë‹¤ì‹œ í•œ ë²ˆ í™•ì¸í•´ì£¼ì„¸ìš”.
+#define VOICE_11_START_FILTER_FLUSHING							11 	   // ìƒˆ í•„í„° ìž¥ì°© í›„ ê¹¨ë—í•œ ë¬¼ì„ ì œê³µí•˜ê¸° ìœ„í•´ ì¤€ë¹„ ì¤‘ì— ìžˆìŠµë‹ˆë‹¤. ìž ì‹œë§Œ ê¸°ë‹¤ë ¤ì£¼ì„¸ìš”.
+#define VOICE_12_FINISH_FILTER_FLUSHING                         12     // 'í•„í„° í”ŒëŸ¬ì‹±ì´ ì™„ë£Œë˜ì–´ ì œí’ˆ ì‚¬ìš©ì´ ê°€ëŠ¥í•©ë‹ˆë‹¤.'
+#define VOICE_13_CHECK_FILTER_FLUSHING_MANUAL                   99     // '"í•„í„° í”ŒëŸ¬ì‹±ì´ ì§„í–‰ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.  í•„í„° êµì²´ë¥¼ ì§„í–‰í•˜ì…¨ë‹¤ë©´, ë§¤ë‰´ì–¼ì„ ì°¸ê³ í•˜ì—¬ í”ŒëŸ¬ì‹±ì„ ë‹¤ì‹œ ì§„í–‰í•´ì£¼ì„¸ìš”."'
+#define VOICE_14_NO_REPLACE_WITH_COVER							100	   // í•„í„°ê°€ ì˜¬ë°”ë¥´ê²Œ ê²°í•©ë˜ì§€ ì•Šì€ ê²ƒìœ¼ë¡œ ê°ì§€ë˜ì—ˆìŠµë‹ˆë‹¤. ì œí’ˆ ì»¤ë²„ë¥¼ ì—´ì–´ ë‹¤ì‹œ í•œ ë²ˆ í™•ì¸í•´ì£¼ì„¸ìš”. // ì¤‘ë³µ
+#define VOICE_15_PROHIBIT_DURING_SMART_TESTING_MODE             101     // í˜„ìž¬ IoCare í”ŒëŸ¬ìŠ¤ ì•±ì—ì„œ ìŠ¤ë§ˆíŠ¸ ì§„ë‹¨ì„ ì‹¤í–‰ ì¤‘ì´ë¼ ì œí’ˆì—ì„œ ì‹¤í–‰í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤. ì•±ì—ì„œ ìŠ¤ë§ˆíŠ¸ ì§„ë‹¨ì„ ì™„ë£Œí•˜ì‹  ë’¤ ë‹¤ì‹œ ì‹œë„í•´ì£¼ì„¸ìš”.
+#define VOICE_16_START_SMART_TESTING_MODE                       16     // ì œí’ˆ ìƒíƒœë¥¼ íŒŒì•…í•˜ê¸° ìœ„í•´ ìŠ¤ë§ˆíŠ¸ ì§„ë‹¨ì„ ì‹œìž‘í•©ë‹ˆë‹¤. ìž ì‹œë§Œ ê¸°ë‹¤ë ¤ì£¼ì„¸ìš”
+#define VOICE_17_FINISH_SMART_TESTING_MODE_NO_ERROR             102     // 'ìŠ¤ë§ˆíŠ¸ ì§„ë‹¨ì´ ì™„ë£Œ ë˜ì–´ ì œí’ˆì„ ì‚¬ìš©í•˜ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤. '
+#define VOICE_18_FINISH_SMART_TESTING_MODE_WITH_ERROR           103     // 'ìŠ¤ë§ˆíŠ¸ ì§„ë‹¨ì´ ì™„ë£Œ ë˜ì—ˆìŠµë‹ˆë‹¤. ìŠ¤ë§ˆíŠ¸ ì§„ë‹¨ ê²°ê³¼ ì´ìƒì´ ê°ì§€ë˜ì—ˆìŠµë‹ˆë‹¤. ioCareì•±ì„ í†µí•´ ìƒì„¸ ë‚´ìš©ì„ í™•ì¸í•´ì£¼ì„¸ìš”.'
+#define VOICE_19_START_BLE_PAIRNG			                    104     // ë¸”ë£¨íˆ¬ìŠ¤ë¥¼ í†µí•´ ioCare ì•±ì— ì—°ê²°ì„ ì‹œìž‘í•©ë‹ˆë‹¤.
+#define VOICE_20_INFORM_APP_PAIRING_SUCCESS_WITH_BLE            105     // ë¸”ë£¨íˆ¬ìŠ¤ë¥¼ í†µí•´ ioCare ì•± ì—°ê²°ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.
+#define VOICE_21_INFORM_APP_PAIRING_FAIL_WITH_BLE            	106     // ë¸”ë£¨íˆ¬ìŠ¤ë¥¼ í†µí•œ ioCare ì•± ì—°ê²°ì´ ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.  í•¸ë“œí° ë¸”ë£¨íˆ¬ìŠ¤ê°€ ì¼œì ¸ìžˆëŠ”ì§€ í™•ì¸í•´ì£¼ì„¸ìš”
+#define VOICE_22_START_WIFI_PAIRNG			                    107     // ë¸”ë£¨íˆ¬ìŠ¤ë¥¼ í†µí•´ ioCare ì•±ì— ì—°ê²°ì„ ì‹œìž‘í•©ë‹ˆë‹¤.
+#define VOICE_23_INFORM_APP_PAIRING_SUCCESS_WITH_WIFI           108     // ì™€ì´íŒŒì´ ì—°ê²°ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.  ì´ì œë¶€í„° ioCare ì•±ì„ í†µí•´ ìŠ¤ë§ˆíŠ¸í•œ ê´€ë¦¬ë¥¼ ë°›ìœ¼ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+#define VOICE_24_INFORM_APP_PAIRING_FAIL_WITH_WIFI            	109     // ì™€ì´íŒŒì´ ì—°ê²°ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.   ì¸í„°ë„· ê³µìœ ê¸°ë¥¼ í™•ì¸í•´ì£¼ì‹œê³ ,    ë¬¸ì œê°€ ë°˜ë³µë˜ë©´ ì½œì„¼í„°ì— ì—°ë½í•´ì£¼ì„¸ìš”
+#define	VOICE_25_INFORM_WIFI_MODE_DEACTIVATED					110	   // ì œí’ˆì˜ Wi-Fiê°€ êº¼ì¡ŒìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì—°ê²°í•˜ë ¤ë©´ ëƒ‰ìˆ˜ì™€ ìš©ëŸ‰ ë²„íŠ¼ì„ ë™ì‹œì— 3ì´ˆ ëˆŒëŸ¬ì£¼ì„¸ìš”.
+#define	VOICE_26_APPLY_WIFI_AFTER_DEACTIVATING					26	   // ì œí’ˆì˜ Wi-Fiê°€ ì¼œì¡ŒìŠµë‹ˆë‹¤.
+#define VOICE_27_INFORM_WIFI_ON                                 27     // 'ì œí’ˆì˜ Wi-Fiê°€ ì¼œì¡ŒìŠµë‹ˆë‹¤.'
+#define VOICE_28_INFORM_WIFI_OFF                                112     // ì œí’ˆì˜ Wi-Fiê°€ êº¼ì¡ŒìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì—°ê²°í•˜ë ¤ë©´ ëƒ‰ìˆ˜ì™€ ìš©ëŸ‰ ë²„íŠ¼ì„ ë™ì‹œì— 3ì´ˆ ëˆŒëŸ¬ì£¼ì„¸ìš”.
+#define	VOICE_29_APPLY_PRODUCT_CERT_OCCUPATION					29	   // ì œí’ˆ ì¸ì¦ì„ ì§„í–‰ ì¤‘ìž…ë‹ˆë‹¤.    ì•±ì—ì„œ ê°€ì´ë“œí•˜ëŠ” ë²„íŠ¼ì„ ëˆŒëŸ¬ ì£¼ì„¸ìš”.
+#define VOICE_30_INFORM_APP_PAIRING_SUCCESS_WITH_WIFI           113     // ì™€ì´íŒŒì´ ì—°ê²°ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.  ì´ì œë¶€í„° ioCare ì•±ì„ í†µí•´ ìŠ¤ë§ˆíŠ¸í•œ ê´€ë¦¬ë¥¼ ë°›ìœ¼ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+#define VOICE_31_INFORM_APP_PAIRING_FAIL_WITH_WIFI            	114     // ì™€ì´íŒŒì´ ì—°ê²°ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.   ì¸í„°ë„· ê³µìœ ê¸°ë¥¼ í™•ì¸í•´ì£¼ì‹œê³ ,    ë¬¸ì œê°€ ë°˜ë³µë˜ë©´ ì½œì„¼í„°ì— ì—°ë½í•´ì£¼ì„¸ìš”
+#define VOICE_32_INFORM_APP_PAIRING_FAIL_WITH_WIFI            	32     // ì œí’ˆê³¼ ì•±ì˜ ì—°ê²°ì´ ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.
+#define	VOICE_33_INFORM_PROEDUCT_BEFORE_FLUSHING				116	   // ì•ˆë…•í•˜ì„¸ìš”. ê³ ê°ë‹˜ ì½”ì›¨ì´ ì •ìˆ˜ê¸°ì˜ ì„¤ì¹˜ë¥¼ ë„ì™€ë“œë¦¬ê² ìŠµë‹ˆë‹¤. ë¬¼ ì¶”ì¶œë²„íŠ¼ì„ ëˆ„ë¥´ì‹œë©´ ì„¤ì¹˜ë¥¼ ì‹œìž‘í•˜ê² ìŠµë‹ˆë‹¤.
+#define	VOICE_34_INFORM_WIFI_BEFORE_FLUSHING					34	   // ì™€ì´íŒŒì´ ì—°ê²°ì„ ì‹œìž‘í•©ë‹ˆë‹¤.
+#define VOICE_35_INFORM_FLUSHING_START							118		// ê¹¨ë—í•œ ë¬¼ì„ ì œê³µí•˜ê¸° ìœ„í•´ ì¤€ë¹„ì¤‘ìž…ë‹ˆë‹¤. ì™„ë£Œ í›„ ì‚¬ìš©í•´ì£¼ì„¸ìš”.
+#define VOICE_36_INFORM_FLUSHING_FINISH							119		// ê¹¨ë—í•œ ë¬¼ì„ ì œê³µí•˜ê¸° ìœ„í•œ ì¤€ë¹„ê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.
+#define	VOICE_37_NO_USE_AFTER_WAKE								119		// ìž¥ì‹œê°„ ë¯¸ì‚¬ìš© ì‹œ ì²« ìž”ì€ ë¹„ì›Œì£¼ì„¸ìš”.
+#define	VOICE_38_HOT_WATER_PREHEAT								38		//	ì˜¨ìˆ˜ ì˜¨ë„ë¥¼ ë§žì¶”ê³  ìžˆìŠµë‹ˆë‹¤. ìž ì‹œë§Œ ê¸°ë‹¤ë ¤ì£¼ì„¸ìš”.
+#define VOICE_40_CAUTION_HOT_WATER                              40      // 'ë¬¼ ì˜¨ë„ê°€ ëœ¨ê±°ìš°ë‹ˆ, ì£¼ì˜ í•˜ì„¸ìš”.'
+#define VOICE_41_CAUTION_CONTINUOUS_HOT_WATER                   41      // ì˜¨ìˆ˜ê°€ ëœ¨ê±°ìš°ë‹ˆ ì£¼ì˜í•˜ì„¸ìš”.       ì¶”ì¶œì„ ë©ˆì¶”ì‹œë ¤ë©´ ì¶”ì¶œ ë²„íŠ¼ì„ ëˆŒëŸ¬ì£¼ì„¸ìš”.
+#define VOICE_42_APPLYING_SETTING_FAIL                          123     // ì„¤ì • ë²„íŠ¼ì„ 3ì´ˆ ëˆ„ë¥´ì‹œë©´,   ì½”ì›¨ì´ ì •ìˆ˜ê¸°ì˜ ë‹¤ì–‘í•œ ê¸°ëŠ¥ì„ ì„¤ì •í•˜ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+#define VOICE_43_CLICK_3S_FOR_SETTING_MODE                      133     // ì„¤ì •ëª¨ë“œë¥¼ ì‹œìž‘í•©ë‹ˆë‹¤. ì •ìˆ˜ê¸°ì˜ ê¸°ëŠ¥ ì„¤ì •ì´ ê°€ëŠ¥í•©ë‹ˆë‹¤.
+#define VOICE_39_HOT_WATER_EXTRACT                              39      // ê³ ì˜¨ìˆ˜ê°€ ì¶”ì¶œë©ë‹ˆë‹¤. ì»µì„ ì¶”ì¶œêµ¬ì— ê°€ê¹Œì´ í•´ì£¼ì„¸ìš”.
 /****************************************************************************************************************************************************/
 /**
- * ÀÌ ¾Æ·¡·Î´Â È®ÀÎ ¿Ï·á!
+ * ì´ ì•„ëž˜ë¡œëŠ” í™•ì¸ ì™„ë£Œ!
  */
 
- /* °øÅë À½¼º */
-#define VOICE_44_INFORM_WATER_OPEN_FILER                      	124     // ÇÊÅÍ Ä¿¹ö°¡ ¿­·È½À´Ï´Ù. ÇÊÅÍ Ä¿¹ö¸¦ ´Ý¾ÆÁÖ¼¼¿ä.
-#define VOICE_45_INFORM_HOT_LOCK_ON                             125     // ¿Â¼ö ±â´ÉÀÌ Àá°å½À´Ï´Ù. ¿Â¼ö Àá±ÝÀ» ÇØÁ¦ÇÏ·Á¸é, ¼³Á¤¿¡¼­ ¿Â¼ö Àá±Ý ¹öÆ°À» ´­·¯ÁÖ¼¼¿ä
-#define VOICE_49_INFORM_ICE_LOCK_ON                             128     // ¾óÀ½ ±â´ÉÀÌ Àá°å½À´Ï´Ù. ¾óÀ½ Àá±ÝÀ» ÇØÁ¦ÇÏ·Á¸é, ¼³Á¤¿¡¼­ ¾óÀ½Àá±Ý ¹öÆ°À» ´­·¯ÁÖ¼¼¿ä.
-#define VOICE_50_PRESS_BUTTON_ICE_FUNCTION_ON                   129     // '¾óÀ½ »ý¼º ±â´ÉÀÌ ²¨Á®ÀÖÀ¸´Ï, ¾óÀ½ ¹öÆ°À» 3ÃÊ ´­·¯ ONÀ¸·Î ¼³Á¤ÇØÁÖ¼¼¿ä.
-#define VOICE_51_SET_CLOCK_ECO_MODE                 		    130     // ÃëÄ§¸ðµå »ç¿ëÀ» À§ÇØ wifi¸¦ ¿¬°áÇÏ°Å³ª ÇöÀç ½Ã°£À» ¼³Á¤ÇØÁÖ¼¼¿ä.
-#define VOICE_52_NO_GUARANTEE_ICE_ECO_MODE                      131    // ÃëÄ§¸ðµå°¡ ¼³Á¤µÇ¾î, ¾óÀ½ »ý¼ºÀ» ÁßÁöÇß½À´Ï´Ù. ¾óÀ½ÀÌ ´õ ÇÊ¿äÇÏ¸é, ¼³Á¤¿¡¼­ ÃëÄ§¸ðµå¸¦ ÇØÁ¦ÇØÁÖ¼¼¿ä.
-#define VOICE_53_PRESS_SETTING_MODE_ALL_LOCK_OFF                132    // ¸ðµç ¹öÆ°ÀÌ Àá°ÜÀÖ½À´Ï´Ù. ÀüÃ¼ Àá±Ý ¹öÆ°À» 3ÃÊ ÀÌ»ó ´©¸£¸é ¸ðµç ±â´ÉÀ» ´Ù½Ã »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.
-#define VOICE_133_SETTING_MODE_START                            133     // ¼³Á¤¸ðµå¸¦ ½ÃÀÛÇÕ´Ï´Ù. Á¤¼ö±âÀÇ ±â´É ¼³Á¤ÀÌ °¡´ÉÇÕ´Ï´Ù.
-#define VOICE_134_SETTING_MODE_START_1KG_CP                     134     // ¼³Á¤¸ðµå¸¦ ½ÃÀÛÇÕ´Ï´Ù. Á¤¼ö±âÀÇ ±â´É ¼³Á¤ÀÌ °¡´ÉÇÕ´Ï´Ù.
-#define VOICE_54_ACTIVATE_SETTING_HOT_LOCK		                54     // ¿Â¼ö ¹öÆ°ÀÌ Àá°å½À´Ï´Ù.
-#define VOICE_55_DEACTIVATE_SETTING_HOT_LOCK		            135     // ¿Â¼ö¸¦ »ç¿ëÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.
-#define VOICE_59_ACTIVATE_SETTING_COLD			                59     // ³Ã¼ö ±â´ÉÀÌ ÄÑÁ³½À´Ï´Ù.    ¼³Á¤ÇÏ½Å ¿Âµµ±îÁö ½Ã°£ÀÌ ´Ù¼Ò ¼Ò¿äµË´Ï´Ù.
-#define VOICE_60_DEACTIVATE_SETTING_COLD			            136     // ³Ã¼ö ±â´ÉÀÌ ²¨Á³½À´Ï´Ù.    ³Ã¼ö¸¦ »ç¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.
-#define VOICE_63_INFORM_ALL_LOCK_ON                             63     // '¸ðµç ¹öÆ°ÀÌ Àá°å½À´Ï´Ù.
-#define VOICE_64_INFORM_ALL_LOCK_OFF                            137     // 'ÀüÃ¼ ¹öÆ° Àá±ÝÀÌ ÇØÁ¦µÇ¾ú½À´Ï´Ù.
-#define VOICE_65_VOICE_MODE                                   	65     // À½¼º¾È³» ¸ðµåÀÔ´Ï´Ù.
-#define VOICE_66_MELODY_MODE                                  	66     // È¿°úÀ½ ¸ðµåÀÔ´Ï´Ù.
-#define VOICE_67_MUTE_MODE                                  	67     // ¹«À½ ¸ðµåÀÔ´Ï´Ù.
-#define VOICE_68_MODE_SET_VOICE                                 68     // À½¼º¾È³» ¸ðµå°¡ ¼³Á¤µÇ¾ú½À´Ï´Ù.
-#define VOICE_69_MODE_SET_MELODY                                69     // È¿°úÀ½ ¸ðµå°¡ ¼³Á¤µÇ¾ú½À´Ï´Ù.
-#define VOICE_70_MODE_SET_MUTE                                  70     // ¹«À½ ¸ðµå°¡ ¼³Á¤µÇ¾ú½À´Ï´Ù.
-#define VOICE_71_INFORM_COLD_FUNCTION_OFF                       138     // '"³Ã¼ö ±â´ÉÀÌ ²¨Á³½À´Ï´Ù. ³Ã¼ö¸¦ »ç¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù."
-#define VOICE_72_INFORM_COLD_FUNCTION_ON                        72     // '"³Ã¼ö ±â´ÉÀÌ ÄÑÁ³½À´Ï´Ù. ¼³Á¤ÇÏ½Å ¿Âµµ±îÁö ½Ã°£ÀÌ ´Ù¼Ò ¼Ò¿äµË´Ï´Ù."
-#define VOICE_139_TRANSFER_STRONG_TO_WEAK                       139     // ³Ã¼ö ¿Âµµ ¼³Á¤ÀÌ ¾àÀ¸·Î º¯°æµÇ¾ú½À´Ï´Ù.  ¼³Á¤ÇÏ½Å ¿Âµµ±îÁö ½Ã°£ÀÌ ´Ù¼Ò ¼Ò¿äµË´Ï´Ù.
-#define VOICE_140_TRANSFER_WEAK_TO_STRONG                       140     // ³Ã¼ö ¿Âµµ ¼³Á¤ÀÌ °­À¸·Î º¯°æµÇ¾ú½À´Ï´Ù. ¼³Á¤ÇÏ½Å ¿Âµµ±îÁö ½Ã°£ÀÌ ´Ù¼Ò ¼Ò¿äµË´Ï´Ù.
-#define VOICE_75_SETTING_MODE_CLOCK                           	75     // '½Ã°£ ¼³Á¤ ¸ðµåÀÔ´Ï´Ù '
-#define VOICE_76_MODE_SET_CLOCK                               	76     // ½Ã°£ÀÌ ¼³Á¤µÇ¾ú½À´Ï´Ù.
-#define VOICE_77_FINISH_SETTING_MODE                      		77     // ¼³Á¤¸ðµå¸¦ Á¾·áÇÕ´Ï´Ù.
-#define VOICE_78_INFORM_ICE_LOCK_ON                             141     // ¾óÀ½°ú ¾óÀ½¹° ÃßÃâ ¹öÆ°ÀÌ Àá°å½À´Ï´Ù.
-#define VOICE_79_INFORM_ICE_LOCK_OFF                            142     // ¾óÀ½°ú ¾óÀ½¹° ÃßÃâ ¹öÆ°À» »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.
-#define VOICE_143_TRANSFER_BIG_TO_SAMLL		                    143     // ¾óÀ½ ¼³Á¤ÀÌ ÀÛÀº ¾óÀ½À¸·Î º¯°æµÇ¾ú½À´Ï´Ù. ¼³Á¤ÇÏ½Å ¾óÀ½Å©±â·Î ÃßÃâµÇ±â±îÁö´Â ½Ã°£ÀÌ ´Ù¼Ò ¼Ò¿äµË´Ï´Ù
-#define VOICE_144_TRANSFER_SMALL_TO_BIG                         144     // ¾óÀ½ ¼³Á¤ÀÌ Å« ¾óÀ½À¸·Î º¯°æµÇ¾ú½À´Ï´Ù.  ¼³Á¤ÇÏ½Å ¾óÀ½Å©±â·Î ÃßÃâµÇ±â±îÁö´Â ½Ã°£ÀÌ ´Ù¼Ò ¼Ò¿äµË´Ï´Ù.
-#define VOICE_80_INFORM_ICE_FUNCTION_ON                         80     // '¾óÀ½ ±â´ÉÀÌ ÄÑÁ³½À´Ï´Ù. ¾óÀ½À» ¸¸µå´Âµ¥ ½Ã°£ÀÌ ´Ù¼Ò ¼Ò¿äµË´Ï´Ù'
-#define VOICE_81_INFORM_ICE_FUNCTION_OFF                      	81     //  ¾óÀ½ ±â´ÉÀÌ ²¨Á³½À´Ï´Ù. ¾óÀ½ ±â´ÉÀ» »ç¿ëÇÏ·Á¸é ¼³Á¤¿¡¼­ ¾óÀ½OFF ¹öÆ°À» ´­·¯ÁÖ¼¼¿ä.
-#define VOICE_145_ACTIVATE_ECO_MODE            			        145    // ÃëÄ§¸ðµå°¡ ¼³Á¤µÇ¾ú½À´Ï´Ù.   ¼³Á¤µÈ ÃëÄ§½Ã°£¿¡´Â ¾óÀ½ »ý¼ºÀ» ÁßÁöÇÕ´Ï´Ù.
-#define VOICE_146_DEACTIVAT_ECO_MODE				            146    // ÃëÄ§¸ðµå°¡ ÇØÁ¦µÇ¾ú½À´Ï´Ù.
-#define VOICE_147_INFORM_RAMYEON_RECIPE			                147     // ¶ó¸é ·¹½ÃÇÇ¿¡ ÃÖÀûÈ­ µÈ ¿Â¼ö ¿ë·®ÀÌ ÃßÃâµË´Ï´Ù.
-#define VOICE_148_INFORM_RAMYEON_DRIP_COFFEE	                148     // µå¸³Ä¿ÇÇ ·¹½ÃÇÇ¿¡ ÃÖÀûÈ­ µÈ ¿Â¼ö ¿ë·®ÀÌ 3Â÷·Ê ³ª´©¾î¼­ ÃßÃâµË´Ï´Ù.  ¿Â¼ö ÃßÃâÀÌ ¿Ï·áµÉ ¶§±îÁö ÁÖÀÇÇØÁÖ¼¼¿ä.
-#define VOICE_149_INFORM_TEA_RECIPE                             149     // Â÷ ·¹½ÃÇÇ¿¡ ÃÖÀûÈ­ µÈ ¿Â¼ö ¿ë·®ÀÌ ÃßÃâµË´Ï´Ù.
-#define VOICE_150_INFORM_MY1_RECIPE				                150     // MY1¿¡ ¼³Á¤µÈ ¹°ÀÌ ÃßÃâµË´Ï´Ù.
-#define VOICE_151_INFORM_MY2_RECIPE				                1351     // MY2¿¡ ¼³Á¤µÈ ¹°ÀÌ ÃßÃâµË´Ï´Ù.
-#define VOICE_152_INFORM_MY3_RECIPE                             152     // MY3¿¡ ¼³Á¤µÈ ¹°ÀÌ ÃßÃâµË´Ï´Ù.
-#define VOICE_153_INFORM_SET_MY1_RECIPE			                153     // °í°´´ÔÀÇ ¿ë·®°ú ¿Âµµ°¡ my1¿¡ ¼³Á¤ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.
-#define VOICE_154_INFORM_SET_MY2_RECIPE			                154     // °í°´´ÔÀÇ ¿ë·®°ú ¿Âµµ°¡ my2¿¡ ¼³Á¤ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.
-#define VOICE_155_INFORM_SET_MY3_RECIPE                         155     // °í°´´ÔÀÇ ¿ë·®°ú ¿Âµµ°¡ my3¿¡ ¼³Á¤ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.
-#define VOICE_85_INFORM_ICE_TRAY_STER	                        85     // ¾óÀ½ Æ®·¹ÀÌ¸¦ °í¿Â¼ö·Î ¼¼Ã´ ÁßÀÔ´Ï´Ù.  ¼¼Ã´ÀÌ ¿Ï·áµÇ¸é ´Ù½Ã ¼±ÅÃÇØ ÁÖ¼¼¿ä.
-#define VOICE_86_INFORM_ICE_TRAY_STER_NO_ICE                    86     // ¾óÀ½ Æ®·¹ÀÌ¸¦ °í¿Â¼ö·Î ¼¼Ã´ ÁßÀÔ´Ï´Ù.  ¼¼Ã´ÀÌ ¿Ï·áµÇ¸é ´Ù½Ã ¼±ÅÃÇØ ÁÖ¼¼¿ä.
-#define VOICE_87_INFORM_COMPLETE_ICE_TRAY_STER	                87     // ¾óÀ½ Æ®·¹ÀÌ °í¿Â¼ö ¼¼Ã´ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. ¾óÀ½À» ´Ù½Ã »ý¼ºÇÕ´Ï´Ù.
-#define VOICE_91_INFORM_ICE_FULL            			        91     // ¾óÀ½ÀÌ °¡µæÃ¡½À´Ï´Ù.
-#define VOICE_92_INFORM_CLICK_ICE_WATER			                92     // ¾óÀ½°ú ¹°ÀÌ ÃßÃâµË´Ï´Ù.  ±âÁ¸¿¡ »ç¿ëÇÏ´Â ÄÅº¸´Ù Å« ÄÅÀ» »ç¿ëÇØ ÁÖ¼¼¿ä.
+ /* ê³µí†µ ìŒì„± */
+#define VOICE_44_INFORM_WATER_OPEN_FILER                      	124     // í•„í„° ì»¤ë²„ê°€ ì—´ë ¸ìŠµë‹ˆë‹¤. í•„í„° ì»¤ë²„ë¥¼ ë‹«ì•„ì£¼ì„¸ìš”.
+#define VOICE_45_INFORM_HOT_LOCK_ON                             125     // ì˜¨ìˆ˜ ê¸°ëŠ¥ì´ ìž ê²¼ìŠµë‹ˆë‹¤. ì˜¨ìˆ˜ ìž ê¸ˆì„ í•´ì œí•˜ë ¤ë©´, ì„¤ì •ì—ì„œ ì˜¨ìˆ˜ ìž ê¸ˆ ë²„íŠ¼ì„ ëˆŒëŸ¬ì£¼ì„¸ìš”
+#define VOICE_49_INFORM_ICE_LOCK_ON                             128     // ì–¼ìŒ ê¸°ëŠ¥ì´ ìž ê²¼ìŠµë‹ˆë‹¤. ì–¼ìŒ ìž ê¸ˆì„ í•´ì œí•˜ë ¤ë©´, ì„¤ì •ì—ì„œ ì–¼ìŒìž ê¸ˆ ë²„íŠ¼ì„ ëˆŒëŸ¬ì£¼ì„¸ìš”.
+#define VOICE_50_PRESS_BUTTON_ICE_FUNCTION_ON                   129     // 'ì–¼ìŒ ìƒì„± ê¸°ëŠ¥ì´ êº¼ì ¸ìžˆìœ¼ë‹ˆ, ì–¼ìŒ ë²„íŠ¼ì„ 3ì´ˆ ëˆŒëŸ¬ ONìœ¼ë¡œ ì„¤ì •í•´ì£¼ì„¸ìš”.
+#define VOICE_51_SET_CLOCK_ECO_MODE                 		    130     // ì·¨ì¹¨ëª¨ë“œ ì‚¬ìš©ì„ ìœ„í•´ wifië¥¼ ì—°ê²°í•˜ê±°ë‚˜ í˜„ìž¬ ì‹œê°„ì„ ì„¤ì •í•´ì£¼ì„¸ìš”.
+#define VOICE_52_NO_GUARANTEE_ICE_ECO_MODE                      131    // ì·¨ì¹¨ëª¨ë“œê°€ ì„¤ì •ë˜ì–´, ì–¼ìŒ ìƒì„±ì„ ì¤‘ì§€í–ˆìŠµë‹ˆë‹¤. ì–¼ìŒì´ ë” í•„ìš”í•˜ë©´, ì„¤ì •ì—ì„œ ì·¨ì¹¨ëª¨ë“œë¥¼ í•´ì œí•´ì£¼ì„¸ìš”.
+#define VOICE_53_PRESS_SETTING_MODE_ALL_LOCK_OFF                132    // ëª¨ë“  ë²„íŠ¼ì´ ìž ê²¨ìžˆìŠµë‹ˆë‹¤. ì „ì²´ ìž ê¸ˆ ë²„íŠ¼ì„ 3ì´ˆ ì´ìƒ ëˆ„ë¥´ë©´ ëª¨ë“  ê¸°ëŠ¥ì„ ë‹¤ì‹œ ì‚¬ìš©í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+#define VOICE_133_SETTING_MODE_START                            133     // ì„¤ì •ëª¨ë“œë¥¼ ì‹œìž‘í•©ë‹ˆë‹¤. ì •ìˆ˜ê¸°ì˜ ê¸°ëŠ¥ ì„¤ì •ì´ ê°€ëŠ¥í•©ë‹ˆë‹¤.
+#define VOICE_134_SETTING_MODE_START_1KG_CP                     134     // ì„¤ì •ëª¨ë“œë¥¼ ì‹œìž‘í•©ë‹ˆë‹¤. ì •ìˆ˜ê¸°ì˜ ê¸°ëŠ¥ ì„¤ì •ì´ ê°€ëŠ¥í•©ë‹ˆë‹¤.
+#define VOICE_54_ACTIVATE_SETTING_HOT_LOCK		                54     // ì˜¨ìˆ˜ ë²„íŠ¼ì´ ìž ê²¼ìŠµë‹ˆë‹¤.
+#define VOICE_55_DEACTIVATE_SETTING_HOT_LOCK		            135     // ì˜¨ìˆ˜ë¥¼ ì‚¬ìš©í•˜ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+#define VOICE_59_ACTIVATE_SETTING_COLD			                59     // ëƒ‰ìˆ˜ ê¸°ëŠ¥ì´ ì¼œì¡ŒìŠµë‹ˆë‹¤.    ì„¤ì •í•˜ì‹  ì˜¨ë„ê¹Œì§€ ì‹œê°„ì´ ë‹¤ì†Œ ì†Œìš”ë©ë‹ˆë‹¤.
+#define VOICE_60_DEACTIVATE_SETTING_COLD			            136     // ëƒ‰ìˆ˜ ê¸°ëŠ¥ì´ êº¼ì¡ŒìŠµë‹ˆë‹¤.    ëƒ‰ìˆ˜ë¥¼ ì‚¬ìš©í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.
+#define VOICE_63_INFORM_ALL_LOCK_ON                             63     // 'ëª¨ë“  ë²„íŠ¼ì´ ìž ê²¼ìŠµë‹ˆë‹¤.
+#define VOICE_64_INFORM_ALL_LOCK_OFF                            137     // 'ì „ì²´ ë²„íŠ¼ ìž ê¸ˆì´ í•´ì œë˜ì—ˆìŠµë‹ˆë‹¤.
+#define VOICE_65_VOICE_MODE                                   	65     // ìŒì„±ì•ˆë‚´ ëª¨ë“œìž…ë‹ˆë‹¤.
+#define VOICE_66_MELODY_MODE                                  	66     // íš¨ê³¼ìŒ ëª¨ë“œìž…ë‹ˆë‹¤.
+#define VOICE_67_MUTE_MODE                                  	67     // ë¬´ìŒ ëª¨ë“œìž…ë‹ˆë‹¤.
+#define VOICE_68_MODE_SET_VOICE                                 68     // ìŒì„±ì•ˆë‚´ ëª¨ë“œê°€ ì„¤ì •ë˜ì—ˆìŠµë‹ˆë‹¤.
+#define VOICE_69_MODE_SET_MELODY                                69     // íš¨ê³¼ìŒ ëª¨ë“œê°€ ì„¤ì •ë˜ì—ˆìŠµë‹ˆë‹¤.
+#define VOICE_70_MODE_SET_MUTE                                  70     // ë¬´ìŒ ëª¨ë“œê°€ ì„¤ì •ë˜ì—ˆìŠµë‹ˆë‹¤.
+#define VOICE_71_INFORM_COLD_FUNCTION_OFF                       138     // '"ëƒ‰ìˆ˜ ê¸°ëŠ¥ì´ êº¼ì¡ŒìŠµë‹ˆë‹¤. ëƒ‰ìˆ˜ë¥¼ ì‚¬ìš©í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤."
+#define VOICE_72_INFORM_COLD_FUNCTION_ON                        72     // '"ëƒ‰ìˆ˜ ê¸°ëŠ¥ì´ ì¼œì¡ŒìŠµë‹ˆë‹¤. ì„¤ì •í•˜ì‹  ì˜¨ë„ê¹Œì§€ ì‹œê°„ì´ ë‹¤ì†Œ ì†Œìš”ë©ë‹ˆë‹¤."
+#define VOICE_139_TRANSFER_STRONG_TO_WEAK                       139     // ëƒ‰ìˆ˜ ì˜¨ë„ ì„¤ì •ì´ ì•½ìœ¼ë¡œ ë³€ê²½ë˜ì—ˆìŠµë‹ˆë‹¤.  ì„¤ì •í•˜ì‹  ì˜¨ë„ê¹Œì§€ ì‹œê°„ì´ ë‹¤ì†Œ ì†Œìš”ë©ë‹ˆë‹¤.
+#define VOICE_140_TRANSFER_WEAK_TO_STRONG                       140     // ëƒ‰ìˆ˜ ì˜¨ë„ ì„¤ì •ì´ ê°•ìœ¼ë¡œ ë³€ê²½ë˜ì—ˆìŠµë‹ˆë‹¤. ì„¤ì •í•˜ì‹  ì˜¨ë„ê¹Œì§€ ì‹œê°„ì´ ë‹¤ì†Œ ì†Œìš”ë©ë‹ˆë‹¤.
+#define VOICE_75_SETTING_MODE_CLOCK                           	75     // 'ì‹œê°„ ì„¤ì • ëª¨ë“œìž…ë‹ˆë‹¤ '
+#define VOICE_76_MODE_SET_CLOCK                               	76     // ì‹œê°„ì´ ì„¤ì •ë˜ì—ˆìŠµë‹ˆë‹¤.
+#define VOICE_77_FINISH_SETTING_MODE                      		77     // ì„¤ì •ëª¨ë“œë¥¼ ì¢…ë£Œí•©ë‹ˆë‹¤.
+#define VOICE_78_INFORM_ICE_LOCK_ON                             141     // ì–¼ìŒê³¼ ì–¼ìŒë¬¼ ì¶”ì¶œ ë²„íŠ¼ì´ ìž ê²¼ìŠµë‹ˆë‹¤.
+#define VOICE_79_INFORM_ICE_LOCK_OFF                            142     // ì–¼ìŒê³¼ ì–¼ìŒë¬¼ ì¶”ì¶œ ë²„íŠ¼ì„ ì‚¬ìš©í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+#define VOICE_143_TRANSFER_BIG_TO_SAMLL		                    143     // ì–¼ìŒ ì„¤ì •ì´ ìž‘ì€ ì–¼ìŒìœ¼ë¡œ ë³€ê²½ë˜ì—ˆìŠµë‹ˆë‹¤. ì„¤ì •í•˜ì‹  ì–¼ìŒí¬ê¸°ë¡œ ì¶”ì¶œë˜ê¸°ê¹Œì§€ëŠ” ì‹œê°„ì´ ë‹¤ì†Œ ì†Œìš”ë©ë‹ˆë‹¤
+#define VOICE_144_TRANSFER_SMALL_TO_BIG                         144     // ì–¼ìŒ ì„¤ì •ì´ í° ì–¼ìŒìœ¼ë¡œ ë³€ê²½ë˜ì—ˆìŠµë‹ˆë‹¤.  ì„¤ì •í•˜ì‹  ì–¼ìŒí¬ê¸°ë¡œ ì¶”ì¶œë˜ê¸°ê¹Œì§€ëŠ” ì‹œê°„ì´ ë‹¤ì†Œ ì†Œìš”ë©ë‹ˆë‹¤.
+#define VOICE_80_INFORM_ICE_FUNCTION_ON                         80     // 'ì–¼ìŒ ê¸°ëŠ¥ì´ ì¼œì¡ŒìŠµë‹ˆë‹¤. ì–¼ìŒì„ ë§Œë“œëŠ”ë° ì‹œê°„ì´ ë‹¤ì†Œ ì†Œìš”ë©ë‹ˆë‹¤'
+#define VOICE_81_INFORM_ICE_FUNCTION_OFF                      	81     //  ì–¼ìŒ ê¸°ëŠ¥ì´ êº¼ì¡ŒìŠµë‹ˆë‹¤. ì–¼ìŒ ê¸°ëŠ¥ì„ ì‚¬ìš©í•˜ë ¤ë©´ ì„¤ì •ì—ì„œ ì–¼ìŒOFF ë²„íŠ¼ì„ ëˆŒëŸ¬ì£¼ì„¸ìš”.
+#define VOICE_145_ACTIVATE_ECO_MODE            			        145    // ì·¨ì¹¨ëª¨ë“œê°€ ì„¤ì •ë˜ì—ˆìŠµë‹ˆë‹¤.   ì„¤ì •ëœ ì·¨ì¹¨ì‹œê°„ì—ëŠ” ì–¼ìŒ ìƒì„±ì„ ì¤‘ì§€í•©ë‹ˆë‹¤.
+#define VOICE_146_DEACTIVAT_ECO_MODE				            146    // ì·¨ì¹¨ëª¨ë“œê°€ í•´ì œë˜ì—ˆìŠµë‹ˆë‹¤.
+#define VOICE_147_INFORM_RAMYEON_RECIPE			                147     // ë¼ë©´ ë ˆì‹œí”¼ì— ìµœì í™” ëœ ì˜¨ìˆ˜ ìš©ëŸ‰ì´ ì¶”ì¶œë©ë‹ˆë‹¤.
+#define VOICE_148_INFORM_RAMYEON_DRIP_COFFEE	                148     // ë“œë¦½ì»¤í”¼ ë ˆì‹œí”¼ì— ìµœì í™” ëœ ì˜¨ìˆ˜ ìš©ëŸ‰ì´ 3ì°¨ë¡€ ë‚˜ëˆ„ì–´ì„œ ì¶”ì¶œë©ë‹ˆë‹¤.  ì˜¨ìˆ˜ ì¶”ì¶œì´ ì™„ë£Œë  ë•Œê¹Œì§€ ì£¼ì˜í•´ì£¼ì„¸ìš”.
+#define VOICE_149_INFORM_TEA_RECIPE                             149     // ì°¨ ë ˆì‹œí”¼ì— ìµœì í™” ëœ ì˜¨ìˆ˜ ìš©ëŸ‰ì´ ì¶”ì¶œë©ë‹ˆë‹¤.
+#define VOICE_150_INFORM_MY1_RECIPE				                150     // MY1ì— ì„¤ì •ëœ ë¬¼ì´ ì¶”ì¶œë©ë‹ˆë‹¤.
+#define VOICE_151_INFORM_MY2_RECIPE				                1351     // MY2ì— ì„¤ì •ëœ ë¬¼ì´ ì¶”ì¶œë©ë‹ˆë‹¤.
+#define VOICE_152_INFORM_MY3_RECIPE                             152     // MY3ì— ì„¤ì •ëœ ë¬¼ì´ ì¶”ì¶œë©ë‹ˆë‹¤.
+#define VOICE_153_INFORM_SET_MY1_RECIPE			                153     // ê³ ê°ë‹˜ì˜ ìš©ëŸ‰ê³¼ ì˜¨ë„ê°€ my1ì— ì„¤ì •ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.
+#define VOICE_154_INFORM_SET_MY2_RECIPE			                154     // ê³ ê°ë‹˜ì˜ ìš©ëŸ‰ê³¼ ì˜¨ë„ê°€ my2ì— ì„¤ì •ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.
+#define VOICE_155_INFORM_SET_MY3_RECIPE                         155     // ê³ ê°ë‹˜ì˜ ìš©ëŸ‰ê³¼ ì˜¨ë„ê°€ my3ì— ì„¤ì •ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.
+#define VOICE_85_INFORM_ICE_TRAY_STER	                        85     // ì–¼ìŒ íŠ¸ë ˆì´ë¥¼ ê³ ì˜¨ìˆ˜ë¡œ ì„¸ì²™ ì¤‘ìž…ë‹ˆë‹¤.  ì„¸ì²™ì´ ì™„ë£Œë˜ë©´ ë‹¤ì‹œ ì„ íƒí•´ ì£¼ì„¸ìš”.
+#define VOICE_86_INFORM_ICE_TRAY_STER_NO_ICE                    86     // ì–¼ìŒ íŠ¸ë ˆì´ë¥¼ ê³ ì˜¨ìˆ˜ë¡œ ì„¸ì²™ ì¤‘ìž…ë‹ˆë‹¤.  ì„¸ì²™ì´ ì™„ë£Œë˜ë©´ ë‹¤ì‹œ ì„ íƒí•´ ì£¼ì„¸ìš”.
+#define VOICE_87_INFORM_COMPLETE_ICE_TRAY_STER	                87     // ì–¼ìŒ íŠ¸ë ˆì´ ê³ ì˜¨ìˆ˜ ì„¸ì²™ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ì–¼ìŒì„ ë‹¤ì‹œ ìƒì„±í•©ë‹ˆë‹¤.
+#define VOICE_91_INFORM_ICE_FULL            			        91     // ì–¼ìŒì´ ê°€ë“ì°¼ìŠµë‹ˆë‹¤.
+#define VOICE_92_INFORM_CLICK_ICE_WATER			                92     // ì–¼ìŒê³¼ ë¬¼ì´ ì¶”ì¶œë©ë‹ˆë‹¤.  ê¸°ì¡´ì— ì‚¬ìš©í•˜ëŠ” ì»µë³´ë‹¤ í° ì»µì„ ì‚¬ìš©í•´ ì£¼ì„¸ìš”.
 
 /* 1KG,2KG ONLY! */
-#define VOICE_126_INFORM_COLD_FUNCTION_OFF_1_2KG                126     // ³Ã¼ö ±â´ÉÀÌ ²¨Á®ÀÖ½À´Ï´Ù. ³Ã¼ö ±â´ÉÀ» »ç¿ëÇÏ·Á¸é, ¼³Á¤¿¡¼­ ³Ã¼öOFF ¹öÆ°À» ´­·¯ÁÖ¼¼¿ä
-#define VOICE_156_ICE_30_PERCENT_UNDER                          156     // "¾óÀ½ÀúÀå°í ³» ¾óÀ½·®ÀÌ Àû½À´Ï´Ù. ºü¸¥ Á¦ºùÀ¸·Î ¾óÀ½ »ý¼º ¿ì¼±¼øÀ§¸¦ ³ôÀÏ ¼ö ÀÖ½À´Ï´Ù."
+#define VOICE_126_INFORM_COLD_FUNCTION_OFF_1_2KG                126     // ëƒ‰ìˆ˜ ê¸°ëŠ¥ì´ êº¼ì ¸ìžˆìŠµë‹ˆë‹¤. ëƒ‰ìˆ˜ ê¸°ëŠ¥ì„ ì‚¬ìš©í•˜ë ¤ë©´, ì„¤ì •ì—ì„œ ëƒ‰ìˆ˜OFF ë²„íŠ¼ì„ ëˆŒëŸ¬ì£¼ì„¸ìš”
+#define VOICE_156_ICE_30_PERCENT_UNDER                          156     // "ì–¼ìŒì €ìž¥ê³  ë‚´ ì–¼ìŒëŸ‰ì´ ì ìŠµë‹ˆë‹¤. ë¹ ë¥¸ ì œë¹™ìœ¼ë¡œ ì–¼ìŒ ìƒì„± ìš°ì„ ìˆœìœ„ë¥¼ ë†’ì¼ ìˆ˜ ìžˆìŠµë‹ˆë‹¤."
 
 /* MINI ONLY! */
-#define VOICE_47_INFORM_COLD_FUNCTION_OFF                       127     // ³Ã¼ö ±â´ÉÀÌ ²¨Á®ÀÖ½À´Ï´Ù. ³Ã¼ö ±â´ÉÀ» »ç¿ëÇÏ·Á¸é, ³Ã¼ö ¹öÆ°À» 3ÃÊ ÀÌ»ó ´­·¯ÁÖ¼¼¿ä
+#define VOICE_47_INFORM_COLD_FUNCTION_OFF                       127     // ëƒ‰ìˆ˜ ê¸°ëŠ¥ì´ êº¼ì ¸ìžˆìŠµë‹ˆë‹¤. ëƒ‰ìˆ˜ ê¸°ëŠ¥ì„ ì‚¬ìš©í•˜ë ¤ë©´, ëƒ‰ìˆ˜ ë²„íŠ¼ì„ 3ì´ˆ ì´ìƒ ëˆŒëŸ¬ì£¼ì„¸ìš”
 
 /* 2KG ONLY! */
 #define VOICE_152_MY3_WATER_EXTRACT                             152
-#define VOICE_157_BREAK_ICE_SELECTED                            157     // "Á¶°¢¾óÀ½ÀÌ ¼±ÅÃµÇ¾ú½À´Ï´Ù."
+#define VOICE_157_BREAK_ICE_SELECTED                            157     // "ì¡°ê°ì–¼ìŒì´ ì„ íƒë˜ì—ˆìŠµë‹ˆë‹¤."
 
 /* MELODY (ICE MINI, 1KG, 2KG REVISION) */
-#define VOICE_151_SPECIAL_FUNCTION                             	151     // 'Æ¯¼ö¸ðµåÀÔ´Ï´Ù.' (°³¹ß/»ý»ê¿ë)
+#define VOICE_151_SPECIAL_FUNCTION                             	151     // 'íŠ¹ìˆ˜ëª¨ë“œìž…ë‹ˆë‹¤.' (ê°œë°œ/ìƒì‚°ìš©)
 
 #define VOICE_191_MELODY_PLUG_IN_COWAY                         44
 #define VOICE_192_MELODY_DISPENSE_CONTINUOUS                   45
@@ -2319,7 +2319,7 @@ typedef enum
 #define VOICE_199_WIFI_SET_OFF                               399
 
 /* ICE MINI, MAX ONLY! */
-#define VOICE_1365_ICE_STUCK_DETECTED                           165     // "¾óÀ½ ÅäÃâ±¸¿¡ ¾óÀ½ÀÌ °É·Á ÀÖ½À´Ï´Ù. ÃßÃâ ¹öÆ°À» ÇÑ¹ø ´õ ´­·¯ °É¸° ¾óÀ½À» Á¦°ÅÇØ ÁÖ¼¼¿ä."
+#define VOICE_1365_ICE_STUCK_DETECTED                           165     // "ì–¼ìŒ í† ì¶œêµ¬ì— ì–¼ìŒì´ ê±¸ë ¤ ìžˆìŠµë‹ˆë‹¤. ì¶”ì¶œ ë²„íŠ¼ì„ í•œë²ˆ ë” ëˆŒëŸ¬ ê±¸ë¦° ì–¼ìŒì„ ì œê±°í•´ ì£¼ì„¸ìš”."
 
 
 typedef enum
@@ -2356,17 +2356,17 @@ typedef enum
 #define AT_UART_CMD_SETTINGS 0x3000           // Settings
 #define AT_UART_CMD_WIFI 0x3010               // WIFI
 #define AT_UART_CMD_UV_ICE_FAUCET_1 0x3011    // ICE FAUCET UV 1
-#define AT_UART_CMD_SENSOR_FLOW_FILTER 0x3012 // Filter À¯·® ¼¾¼­
-#define AT_UART_CMD_CURRENT_CALC 0x3013       // DC Àü·ù
+#define AT_UART_CMD_SENSOR_FLOW_FILTER 0x3012 // Filter ìœ ëŸ‰ ì„¼ì„œ
+#define AT_UART_CMD_CURRENT_CALC 0x3013       // DC ì „ë¥˜
 
 #define AT_UART_CMD_UV_ICE_FAUCET_2 0x3014 // ICE FAUCET UV 2
 #define AT_UART_CMD_UV_WATER_FAUCET 0x3015 // WATER FAUCET UV
 #define AT_UART_CMD_DC_FAN 0x3016          // fan
 #define AT_UART_CMD_DRAIN_PUMP 0x3017      // drain pump
 
-#define AT_UART_CMD_TDS_IN 0x3018 // TDS IN ¼¾¼­
+#define AT_UART_CMD_TDS_IN 0x3018 // TDS IN ì„¼ì„œ
 #define AT_UART_CMD_UV_TANK_3 0x3019
-// #define AT_UART_CMD_TDS_OUT                    0x3019              // TDS OUT ¼¾¼­
+// #define AT_UART_CMD_TDS_OUT                    0x3019              // TDS OUT ì„¼ì„œ
 #define AT_UART_CMD_ICE_LACK_SENSOR 0x301A
 #define AT_UART_CMD_UV_ICE_TANK_1_2 0x301B // uv ice tank 1,2
 #define AT_UART_CMD_UV_ICE_TRAY_1_2 0x301C // uv ice tray 1,2
@@ -2377,19 +2377,19 @@ typedef enum
 // #define AT_UART_CMD_TRAY_PUMP                  0x301F              // tray pump
 #define AT_UART_CMD_ICE_DOOR_HEATER 0x301F
 
-#define AT_UART_CMD_SENSOR_TH 0x3020 // ¿Âµµ ¼¾¼­
+#define AT_UART_CMD_SENSOR_TH 0x3020 // ì˜¨ë„ ì„¼ì„œ
 
-#define AT_UART_CMD_SENSOR_WATER_LEVEL 0x3030 // ¼öÀ§ ¼¾¼­
+#define AT_UART_CMD_SENSOR_WATER_LEVEL 0x3030 // ìˆ˜ìœ„ ì„¼ì„œ
 
-#define AT_UART_CMD_SENSOR_ICE 0x3040 // Á¦ºù °ü·Ã ¼¾¼­
-#define AT_UART_CMD_HEATER 0x3050     // ¿Â¼ö È÷ÅÍ
+#define AT_UART_CMD_SENSOR_ICE 0x3040 // ì œë¹™ ê´€ë ¨ ì„¼ì„œ
+#define AT_UART_CMD_HEATER 0x3050     // ì˜¨ìˆ˜ ížˆí„°
 
-#define AT_UART_CMD_NO_LOAD 0x5000        // ÀüÃ¼ ºÎÇÏ OFF
-#define AT_UART_CMD_HOT_HEATER_ON 0x5010  // ¿Â¼ö È÷ÅÍ ON
-#define AT_UART_CMD_HOT_HEATER_OFF 0x5011 // ¿Â¼ö È÷ÅÍ OFF
+#define AT_UART_CMD_NO_LOAD 0x5000        // ì „ì²´ ë¶€í•˜ OFF
+#define AT_UART_CMD_HOT_HEATER_ON 0x5010  // ì˜¨ìˆ˜ ížˆí„° ON
+#define AT_UART_CMD_HOT_HEATER_OFF 0x5011 // ì˜¨ìˆ˜ ížˆí„° OFF
 
-#define AT_UART_CMD_ICE_HEATER_ON 0x5012  // Å»ºù È÷ÅÍ ON
-#define AT_UART_CMD_ICE_HEATER_OFF 0x5013 // Å»ºù È÷ÅÍ OFF
+#define AT_UART_CMD_ICE_HEATER_ON 0x5012  // íƒˆë¹™ ížˆí„° ON
+#define AT_UART_CMD_ICE_HEATER_OFF 0x5013 // íƒˆë¹™ ížˆí„° OFF
 
 #define AT_UART_CMD_ROOM_IN_VALVE_ON 0x5100
 #define AT_UART_CMD_ROOM_IN_VALVE_OFF 0x5101
@@ -2408,7 +2408,7 @@ typedef enum
 #define AT_UART_CMD_HOT_VALVE_ON 0x510A
 #define AT_UART_CMD_HOT_VALVE_OFF 0x510B
 
-/* ¾óÀ½¹° ÃßÃâ ¹ëºê Á¤ÀÇ 250311 CH.PARK */
+/* ì–¼ìŒë¬¼ ì¶”ì¶œ ë°¸ë¸Œ ì •ì˜ 250311 CH.PARK */
 #define AT_UART_CMD_ICE_WATER_VALVE_ON 0x510C
 #define AT_UART_CMD_ICE_WATER_VALVE_OFF 0x510D
 
@@ -2462,7 +2462,7 @@ typedef enum
 #define AT_UART_CMD_ICE_EXTRACT_MOTOR_CCW_ON 0x520C
 #define AT_UART_CMD_ICE_EXTRACY_MOTOR_CCW_OFF 0x520D
 
-/* ¾ÆÀÌ½º ¼¿·ºÆ®¸ðÅÍ °Ë»ç Á¤ÀÇ 250311 CH.PARK */
+/* ì•„ì´ìŠ¤ ì…€ë ‰íŠ¸ëª¨í„° ê²€ì‚¬ ì •ì˜ 250311 CH.PARK */
 #define AT_UART_CMD_ICE_SELECT_MOTOR_ON 0x520E
 #define AT_UART_CMD_ICE_SELECT_MOTOR_OFF 0x520F
 
@@ -2475,7 +2475,7 @@ typedef enum
 #define AT_UART_CMD_FLOW_MOTOR_CONTINUE 0x5214
 #define AT_UART_CMD_FLOW_MOTOR_INIT 0x5215
 
-/* ¾óÀ½ ºÐ¼â¸ðÅÍ Á¤ÀÇ 250311 CH.PARK */
+/* ì–¼ìŒ ë¶„ì‡„ëª¨í„° ì •ì˜ 250311 CH.PARK */
 #define AT_UART_CMD_ICE_BREAK_MOTOR_ON 0x5216
 #define AT_UART_CMD_ICE_BREAK_MOTOR_OFF 0x5217
 
@@ -2495,7 +2495,7 @@ typedef enum
 
 #define AT_UART_CMD_BLDC_COMP_ERROR 0x9910
 
-#define AT_UART_CMD_SYSTEM_COMPLETE 0xFF00 // (°Ë»çÁ¾·á)Á¦Ç°ÀÏ¹Ý¸ðµå·Î ÀüÈ¯
+#define AT_UART_CMD_SYSTEM_COMPLETE 0xFF00 // (ê²€ì‚¬ì¢…ë£Œ)ì œí’ˆì¼ë°˜ëª¨ë“œë¡œ ì „í™˜
 
 #define NON_UART_TEST 0x00
 #define NOT_INCLUDE_FRONT_UART_TEST 0x01
@@ -2505,24 +2505,24 @@ typedef enum
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //*************\\
- /* mini Ãß°¡ */
+ /* mini ì¶”ê°€ */
 //*************//
 
 // #define HEATER_POWER_HIGH 3000
 // #define HEATER_POWER_LOW 2450
 
 //#define HEATER_POWER_HIGH           3000
-#define HEATER_POWER_HIGH           3200//3150// ¡Ú2025-06-02 Phil  //2025-07-14 cbr_test
+#define HEATER_POWER_HIGH           3200//3150// â˜…2025-06-02 Phil  //2025-07-14 cbr_test
 //#define HEATER_POWER_LOW            2450
-#define HEATER_POWER_LOW            2700//2650// ¡Ú2025-06-02 Phil  //2025-07-14 cbr_test
+#define HEATER_POWER_LOW            2700//2650// â˜…2025-06-02 Phil  //2025-07-14 cbr_test
 
-// 12´Ü°è·Î º¯°æÇÏ¸é¼­ ¼öÁ¤ ¿¹Á¤
+// 12ë‹¨ê³„ë¡œ ë³€ê²½í•˜ë©´ì„œ ìˆ˜ì • ì˜ˆì •
 #define HOT_SET_TEMP_4__MAX__100_oC 0
 #define HOT_SET_TEMP_3__COFFEE__85_oC 1
 #define HOT_SET_TEMP_2__TEA__70_oC 2
 #define HOT_SET_TEMP_1__MILK__43_oC 3
 
-// ¿Â¼ö LPM
+// ì˜¨ìˆ˜ LPM
 #define C_02_LPM    10
 #define C_025_LPM   13
 #define C_03_LPM    16
@@ -2549,8 +2549,8 @@ typedef enum {
 } FLOW_VALVE_MODE;
 
 #define Heater_Efficiency       0.95
-// #define C_Flow_Min_Q            350 // ÃÖ¼Ò À¯·®Àº 0.35LPM (ÀÌÇÏ¿¡¼­ ½ºÆÀ)
-#define C_Flow_Min_Q            300 // ÃÖ¼Ò À¯·®Àº 0.30LPM
+// #define C_Flow_Min_Q            350 // ìµœì†Œ ìœ ëŸ‰ì€ 0.35LPM (ì´í•˜ì—ì„œ ìŠ¤íŒ€)
+#define C_Flow_Min_Q            300 // ìµœì†Œ ìœ ëŸ‰ì€ 0.30LPM
 
 // #define HOT_TRIAC_OFF_TEMP                    99
 #define HOT_TRIAC_OFF_TEMP 101
@@ -2561,15 +2561,15 @@ typedef enum {
 #define HOT_RELAY_TRIAC_OFF_RETURN_TEMP 97
 
 #define C_Heater_Power 2720
-#define C_Heater_Max_Power 3650 // max °ªÀÌ ³ª¿Â ÀÌÀ¯ È®ÀÎ 242 * 242 / 16.1(È÷ÅÍ ÇÏÇÑÄ¡)
-#define C_Heater_Min_Power 1900 // min °ªÀÌ ³ª¿Â ÀÌÀ¯ È®ÀÎ 198 * 198 / 19.71(È÷ÅÍ »óÇÑÄ¡)
+#define C_Heater_Max_Power 3650 // max ê°’ì´ ë‚˜ì˜¨ ì´ìœ  í™•ì¸ 242 * 242 / 16.1(ížˆí„° í•˜í•œì¹˜)
+#define C_Heater_Min_Power 1900 // min ê°’ì´ ë‚˜ì˜¨ ì´ìœ  í™•ì¸ 198 * 198 / 19.71(ížˆí„° ìƒí•œì¹˜)
 
-// #define STEP_TRIAC                    50        // Æ®¶óÀÌ¾Ç ÃÑ Á¦¾î ´Ü°è (80´Ü°è·Î ¼³Á¤)
-// #define STEP_TRIAC                    86        // Æ®¶óÀÌ¾Ç ÃÑ Á¦¾î ´Ü°è (80´Ü°è·Î ¼³Á¤)
-// #define STEP_TRIAC                    114        // Æ®¶óÀÌ¾Ç ÃÑ Á¦¾î ´Ü°è (80´Ü°è·Î ¼³Á¤)
-#define STEP_TRIAC 110 // Æ®¶óÀÌ¾Ç ÃÑ Á¦¾î ´Ü°è (80´Ü°è·Î ¼³Á¤)
+// #define STEP_TRIAC                    50        // íŠ¸ë¼ì´ì•… ì´ ì œì–´ ë‹¨ê³„ (80ë‹¨ê³„ë¡œ ì„¤ì •)
+// #define STEP_TRIAC                    86        // íŠ¸ë¼ì´ì•… ì´ ì œì–´ ë‹¨ê³„ (80ë‹¨ê³„ë¡œ ì„¤ì •)
+// #define STEP_TRIAC                    114        // íŠ¸ë¼ì´ì•… ì´ ì œì–´ ë‹¨ê³„ (80ë‹¨ê³„ë¡œ ì„¤ì •)
+#define STEP_TRIAC 110 // íŠ¸ë¼ì´ì•… ì´ ì œì–´ ë‹¨ê³„ (80ë‹¨ê³„ë¡œ ì„¤ì •)
 
-/* MY ¼¼ÆÃ µ¥ÀÌÅÍ */
+/* MY ì„¸íŒ… ë°ì´í„° */
 #define CUP_TYPE_RAMEN 0
 #define CUP_TYPE_COFFEE 1
 #define CUP_TYPE_TEA 2
@@ -2580,7 +2580,7 @@ typedef enum {
 #define SERVER_DISCONNECT 0
 #define SERVER_CONNECT 1
 
-/* ¾óÀ½ ¸¸ºù ÈÄ Ãß°¡ Á¦ºù È½¼ö Ãß°¡ : 1È¸ (250414) */
+/* ì–¼ìŒ ë§Œë¹™ í›„ ì¶”ê°€ ì œë¹™ íšŸìˆ˜ ì¶”ê°€ : 1íšŒ (250414) */
 #define ICE_FULL_ADD_COUNT      1
 
 #define FILTER_RESET_456_DAY    10944
@@ -2591,21 +2591,21 @@ typedef enum {
 
 #define HOT_TEMP_SELECT_DEFAULT_45_70_85_100       0x0921
 
-/* °øÁ¤°Ë»ç */
+/* ê³µì •ê²€ì‚¬ */
 #define FCT_FLOW_OKAY_VALUE         (0x32)
 
-/* ÄÅ ¼³Á¤ ±â´É °ü·Ã º¯¼ö */
+/* ì»µ ì„¤ì • ê¸°ëŠ¥ ê´€ë ¨ ë³€ìˆ˜ */
 #define DEFAULT_HALF_CUP_AMOUNT  120
 #define	DEFAULT_ONE_CUP_AMOUNT   250
 #define	DEFAULT_TWO_CUP_AMOUNT   500
 #define	DEFAULT_FOUR_CUP_AMOUNT   1000
 
-/* WELCOME LED °ü·Ã Å¸ÀÌ¸Ó */
-#define WELCOME_LED_ON_TIME        600      // 60ÃÊ
-#define WELCOME_LED_WIFI_ON_TIME   70       // 7ÃÊ
+/* WELCOME LED ê´€ë ¨ íƒ€ì´ë¨¸ */
+#define WELCOME_LED_ON_TIME        600      // 60ì´ˆ
+#define WELCOME_LED_WIFI_ON_TIME   70       // 7ì´ˆ
 
-// 2025-09-04 CH.PARK [V1.0.0.5] Å»ºù ÈÄ ¹°¹ö¸± ¶§ ´Ü°èº° ÆÞ½º ¼ö ±âÁ¸ (1~8´Ü°è 70, 9´Ü°è 600ÆÞ½º)
-/* 2025-09-04 CH.PARK [V1.0.0.5] Å»ºù ÈÄ ¹°¹ö¸± ¶§ ´Ü°èº° ÆÞ½º ¼ö º¯°æ (1´Ü°è 210, ³ª¸ÓÁö 50, 9´Ü°è 600ÆÞ½º) */
+// 2025-09-04 CH.PARK [V1.0.0.5] íƒˆë¹™ í›„ ë¬¼ë²„ë¦´ ë•Œ ë‹¨ê³„ë³„ íŽ„ìŠ¤ ìˆ˜ ê¸°ì¡´ (1~8ë‹¨ê³„ 70, 9ë‹¨ê³„ 600íŽ„ìŠ¤)
+/* 2025-09-04 CH.PARK [V1.0.0.5] íƒˆë¹™ í›„ ë¬¼ë²„ë¦´ ë•Œ ë‹¨ê³„ë³„ íŽ„ìŠ¤ ìˆ˜ ë³€ê²½ (1ë‹¨ê³„ 210, ë‚˜ë¨¸ì§€ 50, 9ë‹¨ê³„ 600íŽ„ìŠ¤) */
 #define ICE_TRAY_DOWN_PULSE_STEP_1         210
 #define ICE_TRAY_DOWN_PULSE_STEP_2         50
 #define ICE_TRAY_DOWN_PULSE_STEP_3         50
@@ -2616,7 +2616,7 @@ typedef enum {
 #define ICE_TRAY_DOWN_PULSE_STEP_8         50
 #define ICE_TRAY_DOWN_PULSE_STEP_9         600
 
-/* 2025-09-04 CH.PARK [V1.0.0.5] Å»ºù ÈÄ ¹°¹ö¸± ¶§ ´Ü°èº° µô·¹ÀÌ ½Ã°£ 5ÃÊ·Î È®Á¤ (ÃÖÁø¿ì´Ô)  */
+/* 2025-09-04 CH.PARK [V1.0.0.5] íƒˆë¹™ í›„ ë¬¼ë²„ë¦´ ë•Œ ë‹¨ê³„ë³„ ë”œë ˆì´ ì‹œê°„ 5ì´ˆë¡œ í™•ì • (ìµœì§„ìš°ë‹˜)  */
 #define ICE_TRAY_DOWN_DELAY_TIME           50 // 18
 
 #define DIMMING_FND_LEFT_NORMAL_STATE               3
@@ -2645,65 +2645,65 @@ typedef enum {
 #define PAIRING_DISPLAY_DELAY_TIME_100MS            5
 
 #ifdef __COLD_OPERATION_LPP__
-/* LPP »ùÇÃ ÇÑÁ¤ */
-/* ³Ã¼öÅ×ÀÌºí Àû¿ë (¿Ü±â¿Âµµ 10µµ ÀÌÇÏ) */
-#define COLD_ON_TEMP_10DE_UNDER             90      // V10 9µµ
-#define COLD_OFF_TEMP_10DE_UNDER            80      // V10 6µµ
-#define COLD_DELAY_TIME_10DE_UNDER          0       // V10 0ºÐ
+/* LPP ìƒ˜í”Œ í•œì • */
+/* ëƒ‰ìˆ˜í…Œì´ë¸” ì ìš© (ì™¸ê¸°ì˜¨ë„ 10ë„ ì´í•˜) */
+#define COLD_ON_TEMP_10DE_UNDER             90      // V10 9ë„
+#define COLD_OFF_TEMP_10DE_UNDER            80      // V10 6ë„
+#define COLD_DELAY_TIME_10DE_UNDER          0       // V10 0ë¶„
 
-/* ³Ã¼öÅ×ÀÌºí Àû¿ë (10 ~ 20µµ) */
-#define COLD_ON_TEMP_10_20DE                90      // V10 9µµ
+/* ëƒ‰ìˆ˜í…Œì´ë¸” ì ìš© (10 ~ 20ë„) */
+#define COLD_ON_TEMP_10_20DE                90      // V10 9ë„
 #define COLD_OFF_TEMP_10_20DE_FIRST         80      //
-#define COLD_OFF_TEMP_10_20DE               80      // V10 8µµ
-#define COLD_DELAY_TIME_10_20DE_FIRST       0       // V10 0ÃÊ (ÃÊ±â±âµ¿)
-#define COLD_DELAY_TIME_10_20DE             0       // V10 0ºÐ
+#define COLD_OFF_TEMP_10_20DE               80      // V10 8ë„
+#define COLD_DELAY_TIME_10_20DE_FIRST       0       // V10 0ì´ˆ (ì´ˆê¸°ê¸°ë™)
+#define COLD_DELAY_TIME_10_20DE             0       // V10 0ë¶„
 
-/* ³Ã¼öÅ×ÀÌºí Àû¿ë (20 ~ 30µµ) */
-#define COLD_ON_TEMP_20_30DE                90     // V10 9µµ
-#define COLD_OFF_TEMP_20_30DE               80     // V10 8µµ
-#define COLD_DELAY_TIME_20_30DE_FIRST       0      // V10 0ÃÊ (ÃÊ±â±âµ¿)
-#define COLD_DELAY_TIME_20_30DE             0      // V10 0ÃÊ
+/* ëƒ‰ìˆ˜í…Œì´ë¸” ì ìš© (20 ~ 30ë„) */
+#define COLD_ON_TEMP_20_30DE                90     // V10 9ë„
+#define COLD_OFF_TEMP_20_30DE               80     // V10 8ë„
+#define COLD_DELAY_TIME_20_30DE_FIRST       0      // V10 0ì´ˆ (ì´ˆê¸°ê¸°ë™)
+#define COLD_DELAY_TIME_20_30DE             0      // V10 0ì´ˆ
 
-/* ³Ã¼öÅ×ÀÌºí Àû¿ë (30µµ ÀÌ»ó) */
-#define COLD_ON_TEMP_30DE_UPDER             90      // V10 9µµ
-#define COLD_OFF_TEMP_30DE_UPDER            80      // V10 8µµ
-#define COLD_DELAY_TIME_30DE_UPDER_FIRST    0       // V10 0ºÐ (ÃÊ±â±âµ¿)
-#define COLD_DELAY_TIME_30DE_UPDER          0       // V10 0ºÐ
+/* ëƒ‰ìˆ˜í…Œì´ë¸” ì ìš© (30ë„ ì´ìƒ) */
+#define COLD_ON_TEMP_30DE_UPDER             90      // V10 9ë„
+#define COLD_OFF_TEMP_30DE_UPDER            80      // V10 8ë„
+#define COLD_DELAY_TIME_30DE_UPDER_FIRST    0       // V10 0ë¶„ (ì´ˆê¸°ê¸°ë™)
+#define COLD_DELAY_TIME_30DE_UPDER          0       // V10 0ë¶„
 
 #else
 
-/* ¾ç»êÇ° */
-#define COLD_ON_TEMP_10DE_UNDER             75      // V18 7.5µµ
-#define COLD_OFF_TEMP_10DE_UNDER            60      // V18 6µµ
-#define COLD_DELAY_TIME_10DE_UNDER          0       // V18 0ºÐ
+/* ì–‘ì‚°í’ˆ */
+#define COLD_ON_TEMP_10DE_UNDER             75      // V18 7.5ë„
+#define COLD_OFF_TEMP_10DE_UNDER            60      // V18 6ë„
+#define COLD_DELAY_TIME_10DE_UNDER          0       // V18 0ë¶„
 
-/* ³Ã¼öÅ×ÀÌºí Àû¿ë (10 ~ 20µµ) */
-#define COLD_ON_TEMP_10_20DE                75      // V18 7.5µµ
-#define COLD_OFF_TEMP_10_20DE_FIRST         55      // V19 5.5µµ (ÃÊ±â±âµ¿)
-#define COLD_OFF_TEMP_10_20DE               58      // V18 5.8µµ
-#define COLD_DELAY_TIME_10_20DE_FIRST       0       // V18 0ºÐ (ÃÊ±â±âµ¿)
-#define COLD_DELAY_TIME_10_20DE             0       // V18 0ºÐ
+/* ëƒ‰ìˆ˜í…Œì´ë¸” ì ìš© (10 ~ 20ë„) */
+#define COLD_ON_TEMP_10_20DE                75      // V18 7.5ë„
+#define COLD_OFF_TEMP_10_20DE_FIRST         55      // V19 5.5ë„ (ì´ˆê¸°ê¸°ë™)
+#define COLD_OFF_TEMP_10_20DE               58      // V18 5.8ë„
+#define COLD_DELAY_TIME_10_20DE_FIRST       0       // V18 0ë¶„ (ì´ˆê¸°ê¸°ë™)
+#define COLD_DELAY_TIME_10_20DE             0       // V18 0ë¶„
 
-/* ³Ã¼öÅ×ÀÌºí Àû¿ë (20 ~ 30µµ) */
-#define COLD_ON_TEMP_20_30DE                75     // V18 7.5µµ
-#define COLD_OFF_TEMP_20_30DE               58     // V18 5.8µµ
-#define COLD_DELAY_TIME_20_30DE_FIRST       600   // V19 1ºÐ (ÃÊ±â±âµ¿)
-#define COLD_DELAY_TIME_20_30DE             600   // V19 1ºÐ
+/* ëƒ‰ìˆ˜í…Œì´ë¸” ì ìš© (20 ~ 30ë„) */
+#define COLD_ON_TEMP_20_30DE                75     // V18 7.5ë„
+#define COLD_OFF_TEMP_20_30DE               58     // V18 5.8ë„
+#define COLD_DELAY_TIME_20_30DE_FIRST       600   // V19 1ë¶„ (ì´ˆê¸°ê¸°ë™)
+#define COLD_DELAY_TIME_20_30DE             600   // V19 1ë¶„
 
-/* ³Ã¼öÅ×ÀÌºí Àû¿ë (30µµ ÀÌ»ó) */
-#define COLD_ON_TEMP_30DE_UPDER             75      // V18 7.5µµ
-#define COLD_OFF_TEMP_30DE_UPDER            58      // V18 5.8µµ
-#define COLD_DELAY_TIME_30DE_UPDER_FIRST    1800    // V18 3ºÐ (ÃÊ±â±âµ¿)
-#define COLD_DELAY_TIME_30DE_UPDER          3000    // V18 5ºÐ
+/* ëƒ‰ìˆ˜í…Œì´ë¸” ì ìš© (30ë„ ì´ìƒ) */
+#define COLD_ON_TEMP_30DE_UPDER             75      // V18 7.5ë„
+#define COLD_OFF_TEMP_30DE_UPDER            58      // V18 5.8ë„
+#define COLD_DELAY_TIME_30DE_UPDER_FIRST    1800    // V18 3ë¶„ (ì´ˆê¸°ê¸°ë™)
+#define COLD_DELAY_TIME_30DE_UPDER          3000    // V18 5ë¶„
 
 #endif
 
-#define FEEDER_MOTOR_DELAY_TIME             10      // 1ÃÊ
+#define FEEDER_MOTOR_DELAY_TIME             10      // 1ì´ˆ
 
-/* ³Ã°¢¿Ï·á ½Ã Ç¥½ÃÀÇ ±âÁØ¿Âµµ 5'C !! 250729 CH.PARK */
+/* ëƒ‰ê°ì™„ë£Œ ì‹œ í‘œì‹œì˜ ê¸°ì¤€ì˜¨ë„ 5'C !! 250729 CH.PARK */
 #define COLD_COMPLETE_DISPLAY_TEMPERATURE   5
 
-/* MY WATER ÆÄ¶ó¹ÌÅÍ Á¤ÀÇ */
+/* MY WATER íŒŒë¼ë¯¸í„° ì •ì˜ */
 typedef struct
 {
 	U8 use;
@@ -2723,15 +2723,15 @@ typedef enum
 }MY_INDEX;
 
 typedef struct {
-    U8 gu8_start;           // ±â´É »ç¿ë¿ì¹Â
-    U8 gu8_step;            // ±â´É »ç¿ë½Ã µ¿ÀÛ ½ºÅÜ
-    U16 gu16_timer;         // ±â´É »ç¿ë½Ã ½ºÅÜ ±¸°£º° Å¸ÀÌ¸Ó (100ms)
+    U8 gu8_start;           // ê¸°ëŠ¥ ì‚¬ìš©ìš°ë®¤
+    U8 gu8_step;            // ê¸°ëŠ¥ ì‚¬ìš©ì‹œ ë™ìž‘ ìŠ¤í…
+    U16 gu16_timer;         // ê¸°ëŠ¥ ì‚¬ìš©ì‹œ ìŠ¤í… êµ¬ê°„ë³„ íƒ€ì´ë¨¸ (100ms)
 } special_func;
 
 typedef struct
 {
-    U8 U8_iceSelect;        // ¹° ÃßÃâÁß ¾óÀ½ ¼±ÅÃ
-    U8 U8_waterSelect;      // ¾óÀ½ ÃßÃâÁß ¹° ¼±ÅÃ
+    U8 U8_iceSelect;        // ë¬¼ ì¶”ì¶œì¤‘ ì–¼ìŒ ì„ íƒ
+    U8 U8_waterSelect;      // ì–¼ìŒ ì¶”ì¶œì¤‘ ë¬¼ ì„ íƒ
 } DISPLAY_STACK;
 
 typedef enum
@@ -2752,44 +2752,44 @@ typedef enum
 
 typedef enum
 {
-    PROCESS_ICE_JAM_INIT,                   // ´ë±â
-    PROCESS_ICE_JAM_DOOR_OPEN,              // µµ¾î ¿­±â
-    PROCESS_ICE_JAM_FEEDER_BACK,            // ÇÇ´õ 2ÃÊ ÈÄÁø
-    PROCESS_ICE_JAM_FEEDER_CHECK,           // ÇÇ´õ ÈÄÁø ¿Ï·áÃ¼Å©
-    PROCESS_ICE_JAM_DOOR_CLOSE,             // ÀÌ³Êµµ¾î ´Ý±â
-    PROCESS_ICE_JAM_DOOR_CLOSE_CHECK,       // ÀÌ³Êµµ¾î ´Ý±â Á¤»ó Ã¼Å©
-    PROCESS_ICE_JAM_DONE,                   // ÀÌ³Êµµ¾î°¡ Á¤»óÀûÀ¸·Î ´ÝÇûÀ» ¶§
-    PROCESS_ICE_JAM_ERROR,                  // ÀÌ³Êµµ¾î°¡ Á¤»óÀûÀ¸·Î ´ÝÈ÷Áö ¾Ê¾ÒÀ» ¶§
-    PROCESS_ICE_JAM_VOICE_INFO_PLAY,        // ´ÝÈ÷Áö ¾ÊÀ½À» À½¼ºÀ¸·Î ¾Ë¸²
+    PROCESS_ICE_JAM_INIT,                   // ëŒ€ê¸°
+    PROCESS_ICE_JAM_DOOR_OPEN,              // ë„ì–´ ì—´ê¸°
+    PROCESS_ICE_JAM_FEEDER_BACK,            // í”¼ë” 2ì´ˆ í›„ì§„
+    PROCESS_ICE_JAM_FEEDER_CHECK,           // í”¼ë” í›„ì§„ ì™„ë£Œì²´í¬
+    PROCESS_ICE_JAM_DOOR_CLOSE,             // ì´ë„ˆë„ì–´ ë‹«ê¸°
+    PROCESS_ICE_JAM_DOOR_CLOSE_CHECK,       // ì´ë„ˆë„ì–´ ë‹«ê¸° ì •ìƒ ì²´í¬
+    PROCESS_ICE_JAM_DONE,                   // ì´ë„ˆë„ì–´ê°€ ì •ìƒì ìœ¼ë¡œ ë‹«í˜”ì„ ë•Œ
+    PROCESS_ICE_JAM_ERROR,                  // ì´ë„ˆë„ì–´ê°€ ì •ìƒì ìœ¼ë¡œ ë‹«ížˆì§€ ì•Šì•˜ì„ ë•Œ
+    PROCESS_ICE_JAM_VOICE_INFO_PLAY,        // ë‹«ížˆì§€ ì•ŠìŒì„ ìŒì„±ìœ¼ë¡œ ì•Œë¦¼
 } ICE_JAM_RESV_STEP;
 
 typedef struct _modeling_
 {
-    MODEL_DATA u8model;             // ¸ðµ¨ (¸®µå ¹Ì»ç¿ë / ¸®µå »ç¿ë)
-    U8    u8IsModelChecked;         // ¸ðµ¨ ÆÇÁ¤¿©ºÎ (True : ¿Ï·á, False : ¹Ì¿Ï·á)
-    U8    u8ModelCheckTimer;        // ¸ðµ¨ ÆÇÁ¤½Ã°£
+    MODEL_DATA u8model;             // ëª¨ë¸ (ë¦¬ë“œ ë¯¸ì‚¬ìš© / ë¦¬ë“œ ì‚¬ìš©)
+    U8    u8IsModelChecked;         // ëª¨ë¸ íŒì •ì—¬ë¶€ (True : ì™„ë£Œ, False : ë¯¸ì™„ë£Œ)
+    U8    u8ModelCheckTimer;        // ëª¨ë¸ íŒì •ì‹œê°„
 } MODEL;
 
 typedef struct _icestuck_
 {
-    U8  u8IceJamCheck;                      // ¾óÀ½°É¸² È®ÀÎ ÇÃ·¡±×
-    U8  u8IceJamProcessTimer;               // ¾óÀ½°É¸² µ¿ÀÛ ½Ã°£
-    U8  u8IceJamProcessCount;               // ¾óÀ½°É¸² µ¿ÀÛ È½¼ö
-    ICE_JAM_RESV_STEP  u8IceJamResolveStep; // ¾óÀ½°É¸² µ¿ÀÛ ½ÃÄö½º
-    U8  u8IceJamVoicePlayCount;              // ¾óÀ½°É¸² ÇØÁ¦ ¾È³»À½¼º ¾È³» È½¼ö (ÃÖ´ë 2È¸)
+    U8  u8IceJamCheck;                      // ì–¼ìŒê±¸ë¦¼ í™•ì¸ í”Œëž˜ê·¸
+    U8  u8IceJamProcessTimer;               // ì–¼ìŒê±¸ë¦¼ ë™ìž‘ ì‹œê°„
+    U8  u8IceJamProcessCount;               // ì–¼ìŒê±¸ë¦¼ ë™ìž‘ íšŸìˆ˜
+    ICE_JAM_RESV_STEP  u8IceJamResolveStep; // ì–¼ìŒê±¸ë¦¼ ë™ìž‘ ì‹œí€€ìŠ¤
+    U8  u8IceJamVoicePlayCount;              // ì–¼ìŒê±¸ë¦¼ í•´ì œ ì•ˆë‚´ìŒì„± ì•ˆë‚´ íšŸìˆ˜ (ìµœëŒ€ 2íšŒ)
 } ICE_STUCK_1;
 
 typedef struct _ice_door_reed_
 {
-    U8  u8IceDoorInputTimer;       // ¾ÆÀÌ½ºµµ¾î ¸®µå ÆÇ´Ü¿Ï·á ½Ã°£
-    U8  u8IceDoorPreStatus;       // ¾ÆÀÌ½ºµµ¾î ¸®µå ÀÌÀü »óÅÂ
-    U8  u8IceDoorCurStatus;       // ¾ÆÀÌ½ºµµ¾î ¸®µå ÇöÀç »óÅÂ
-    REED_INFO  u8IceDoorStatus;          // ¾ÆÀÌ½ºµµ¾î ¸®µå ÃÖÁ¾ »óÅÂ
+    U8  u8IceDoorInputTimer;       // ì•„ì´ìŠ¤ë„ì–´ ë¦¬ë“œ íŒë‹¨ì™„ë£Œ ì‹œê°„
+    U8  u8IceDoorPreStatus;       // ì•„ì´ìŠ¤ë„ì–´ ë¦¬ë“œ ì´ì „ ìƒíƒœ
+    U8  u8IceDoorCurStatus;       // ì•„ì´ìŠ¤ë„ì–´ ë¦¬ë“œ í˜„ìž¬ ìƒíƒœ
+    REED_INFO  u8IceDoorStatus;          // ì•„ì´ìŠ¤ë„ì–´ ë¦¬ë“œ ìµœì¢… ìƒíƒœ
 } ICE_DOOR_REED;
 
-#define ICE_JAM_PROCESS_TIME_MAX                10     // 1ÃÊ
-#define ICE_DOOR_REED_INPUT_TIME_MAX            10     // 1ÃÊ
-#define ICE_JAM_VOICE_INFO_PLAY_COUNT_MAX       2      // ¾óÀ½°É¸² ÇØÁ¦ ¾È³»À½¼º ¾È³» ÃÖ´ë È½¼ö (ÃÖ´ë 2È¸)
+#define ICE_JAM_PROCESS_TIME_MAX                10     // 1ì´ˆ
+#define ICE_DOOR_REED_INPUT_TIME_MAX            10     // 1ì´ˆ
+#define ICE_JAM_VOICE_INFO_PLAY_COUNT_MAX       2      // ì–¼ìŒê±¸ë¦¼ í•´ì œ ì•ˆë‚´ìŒì„± ì•ˆë‚´ ìµœëŒ€ íšŸìˆ˜ (ìµœëŒ€ 2íšŒ)
 
 #define ICE_JAM_RESV_COUNT_MAX              1
 

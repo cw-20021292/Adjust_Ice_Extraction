@@ -93,9 +93,9 @@ extern bit F_SpecialSettingModeAutoDrain;
 
 
 extern U8 u8Memento_Buff[];
-extern bit F_SpecialSettingModeEW;        /*..ÀÚµ¿¹è¼ö ¼³Á¤..*/
+extern bit F_SpecialSettingModeEW;        /*..ìë™ë°°ìˆ˜ ì„¤ì •..*/
 
-extern bit F_FirstTwistMoveCheck;  /*..Àü¿øÀÎ°¡ ÈÄ ¿øÁ¡Á¦¾î¸¦ ÇÒ °ÍÀÎÁö¸¦ È®ÀÎÇÏ´Â ÇÃ·¡±×..*/
+extern bit F_FirstTwistMoveCheck;  /*..ì „ì›ì¸ê°€ í›„ ì›ì ì œì–´ë¥¼ í•  ê²ƒì¸ì§€ë¥¼ í™•ì¸í•˜ëŠ” í”Œë˜ê·¸..*/
 extern bit F_First_Turn_On_Check;
 extern bit F_First_Turn_On_Load_Value;
 

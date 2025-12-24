@@ -82,7 +82,7 @@ U8 gu8_ice_tray_status;
 //U8 gu8_22222222;
 U8 gu8_ro_drain_status;
 
-bit F_DoorCW_A;                    // »ì±Õ ÈÄ ICE Door Reset
+bit F_DoorCW_A;                    // ì‚´ê·  í›„ ICE Door Reset
 U16 gu16StepMotor2_A;
 U8 gu8_E62_dummy_iceheat_flag;
 bit Bit_E63_Error;
@@ -252,7 +252,7 @@ U8 up_ice_tray( void )
             }
             #endif
 
-            /*..hui [25-3-17¿ÀÈÄ 2:24:09] ÃÖ´ë ÆŞ½º¸¸Å­ À§·Î ¿Ã¸²..*/
+            /*..hui [25-3-17ì˜¤í›„ 2:24:09] ìµœëŒ€ í„ìŠ¤ë§Œí¼ ìœ„ë¡œ ì˜¬ë¦¼..*/
             gu16_ice_tray_target = ICE_TRAY_UP_PULSE;
             gu16_ice_tray_current = 0;
 
@@ -306,7 +306,7 @@ U8 down_ice_tray( void )
 
             /*gu16_ice_tray_target = gu16_ice_tray_target + gu16_ice_tray_moving_pulse;*/
             gu16_ice_tray_target = 0;
-            /*..hui [25-3-17¿ÀÈÄ 2:24:27] ³»¸±¶§µµ ¾îµğÀÖµç ÃÖ´ë ¤²ÆŞ½º¸¸Å­ ³»¸°´Ù..*/
+            /*..hui [25-3-17ì˜¤í›„ 2:24:27] ë‚´ë¦´ë•Œë„ ì–´ë””ìˆë“  ìµœëŒ€ ã…‚í„ìŠ¤ë§Œí¼ ë‚´ë¦°ë‹¤..*/
             gu16_ice_tray_current = ICE_TRAY_DOWN_PULSE_STEP_1;
             gu8_ice_tray_down_timer = 0;
 
@@ -335,7 +335,7 @@ U8 down_ice_tray( void )
         case 2:
 
             gu16_ice_tray_target = 0;
-            /*..hui [25-3-17¿ÀÈÄ 2:24:27] ³»¸±¶§µµ ¾îµğÀÖµç ÃÖ´ë ¤²ÆŞ½º¸¸Å­ ³»¸°´Ù..*/
+            /*..hui [25-3-17ì˜¤í›„ 2:24:27] ë‚´ë¦´ë•Œë„ ì–´ë””ìˆë“  ìµœëŒ€ ã…‚í„ìŠ¤ë§Œí¼ ë‚´ë¦°ë‹¤..*/
             gu16_ice_tray_current = ICE_TRAY_DOWN_PULSE_STEP_2;
             gu8_ice_tray_down_timer = 0;
 
@@ -364,7 +364,7 @@ U8 down_ice_tray( void )
         case 4:
 
             gu16_ice_tray_target = 0;
-            /*..hui [25-3-17¿ÀÈÄ 2:24:27] ³»¸±¶§µµ ¾îµğÀÖµç ÃÖ´ë ¤²ÆŞ½º¸¸Å­ ³»¸°´Ù..*/
+            /*..hui [25-3-17ì˜¤í›„ 2:24:27] ë‚´ë¦´ë•Œë„ ì–´ë””ìˆë“  ìµœëŒ€ ã…‚í„ìŠ¤ë§Œí¼ ë‚´ë¦°ë‹¤..*/
             gu16_ice_tray_current = ICE_TRAY_DOWN_PULSE_STEP_3;
             gu8_ice_tray_down_timer = 0;
 
@@ -393,7 +393,7 @@ U8 down_ice_tray( void )
         case 6:
 
             gu16_ice_tray_target = 0;
-            /*..hui [25-3-17¿ÀÈÄ 2:24:27] ³»¸±¶§µµ ¾îµğÀÖµç ÃÖ´ë ¤²ÆŞ½º¸¸Å­ ³»¸°´Ù..*/
+            /*..hui [25-3-17ì˜¤í›„ 2:24:27] ë‚´ë¦´ë•Œë„ ì–´ë””ìˆë“  ìµœëŒ€ ã…‚í„ìŠ¤ë§Œí¼ ë‚´ë¦°ë‹¤..*/
             gu16_ice_tray_current = ICE_TRAY_DOWN_PULSE_STEP_4;
             gu8_ice_tray_down_timer = 0;
 
@@ -422,7 +422,7 @@ U8 down_ice_tray( void )
         case 8:
 
             gu16_ice_tray_target = 0;
-            /*..hui [25-3-17¿ÀÈÄ 2:24:27] ³»¸±¶§µµ ¾îµğÀÖµç ÃÖ´ë ¤²ÆŞ½º¸¸Å­ ³»¸°´Ù..*/
+            /*..hui [25-3-17ì˜¤í›„ 2:24:27] ë‚´ë¦´ë•Œë„ ì–´ë””ìˆë“  ìµœëŒ€ ã…‚í„ìŠ¤ë§Œí¼ ë‚´ë¦°ë‹¤..*/
             gu16_ice_tray_current = ICE_TRAY_DOWN_PULSE_STEP_5;
             gu8_ice_tray_down_timer = 0;
 
@@ -451,7 +451,7 @@ U8 down_ice_tray( void )
         case 10:
 
             gu16_ice_tray_target = 0;
-            /*..hui [25-3-17¿ÀÈÄ 2:24:27] ³»¸±¶§µµ ¾îµğÀÖµç ÃÖ´ë ¤²ÆŞ½º¸¸Å­ ³»¸°´Ù..*/
+            /*..hui [25-3-17ì˜¤í›„ 2:24:27] ë‚´ë¦´ë•Œë„ ì–´ë””ìˆë“  ìµœëŒ€ ã…‚í„ìŠ¤ë§Œí¼ ë‚´ë¦°ë‹¤..*/
             gu16_ice_tray_current = ICE_TRAY_DOWN_PULSE_STEP_6;
             gu8_ice_tray_down_timer = 0;
 
@@ -480,7 +480,7 @@ U8 down_ice_tray( void )
         case 12:
 
             gu16_ice_tray_target = 0;
-            /*..hui [25-3-17¿ÀÈÄ 2:24:27] ³»¸±¶§µµ ¾îµğÀÖµç ÃÖ´ë ¤²ÆŞ½º¸¸Å­ ³»¸°´Ù..*/
+            /*..hui [25-3-17ì˜¤í›„ 2:24:27] ë‚´ë¦´ë•Œë„ ì–´ë””ìˆë“  ìµœëŒ€ ã…‚í„ìŠ¤ë§Œí¼ ë‚´ë¦°ë‹¤..*/
             gu16_ice_tray_current = ICE_TRAY_DOWN_PULSE_STEP_7;
             gu8_ice_tray_down_timer = 0;
 
@@ -509,7 +509,7 @@ U8 down_ice_tray( void )
         case 14:
 
             gu16_ice_tray_target = 0;
-            /*..hui [25-3-17¿ÀÈÄ 2:24:27] ³»¸±¶§µµ ¾îµğÀÖµç ÃÖ´ë ¤²ÆŞ½º¸¸Å­ ³»¸°´Ù..*/
+            /*..hui [25-3-17ì˜¤í›„ 2:24:27] ë‚´ë¦´ë•Œë„ ì–´ë””ìˆë“  ìµœëŒ€ ã…‚í„ìŠ¤ë§Œí¼ ë‚´ë¦°ë‹¤..*/
             gu16_ice_tray_current = ICE_TRAY_DOWN_PULSE_STEP_8;
             gu8_ice_tray_down_timer = 0;
 
@@ -538,7 +538,7 @@ U8 down_ice_tray( void )
         case 16:
 
             gu16_ice_tray_target = 0;
-            /*..hui [25-3-17¿ÀÈÄ 2:24:27] ³»¸±¶§µµ ¾îµğÀÖµç ÃÖ´ë ¤²ÆŞ½º¸¸Å­ ³»¸°´Ù..*/
+            /*..hui [25-3-17ì˜¤í›„ 2:24:27] ë‚´ë¦´ë•Œë„ ì–´ë””ìˆë“  ìµœëŒ€ ã…‚í„ìŠ¤ë§Œí¼ ë‚´ë¦°ë‹¤..*/
             gu16_ice_tray_current = ICE_TRAY_DOWN_PULSE_STEP_9;
 
             gu8_ice_tray_down_step++;
@@ -610,7 +610,7 @@ void ice_tray_motor_movestep( void )
     else if( gu16_ice_tray_current < gu16_ice_tray_target )
     {
         /* OPEN */
-        /*..hui [21-6-24¿ÀÈÄ 2:24:48] ÀÌÂÊÀÌ À¯·® ÁÙÀÌ±â·Î..*/
+        /*..hui [21-6-24ì˜¤í›„ 2:24:48] ì´ìª½ì´ ìœ ëŸ‰ ì¤„ì´ê¸°ë¡œ..*/
         gu16_ice_tray_current++;
 
         #if 0

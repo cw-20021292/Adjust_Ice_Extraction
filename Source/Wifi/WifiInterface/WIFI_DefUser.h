@@ -57,8 +57,8 @@ typedef enum
     WIFI_STATUS_AP_STEP,
     WIFI_STATUS_AP_ERROR,
     WIFI_STATUS_SERVER_CON,
-    WIFI_STATUS_PAIRING,     //0: OFF, 1: BLE �� ���, 2: Wi-Fi: �� ���
-    WIFI_STATUS_LOCATION,    //0: ��ġ���� �̼���, 1: ��ġ���� ���� 
+    WIFI_STATUS_PAIRING,     //0: OFF, 1: BLE 페어링 모드, 2: Wi-Fi: 페어링 모드
+    WIFI_STATUS_LOCATION,    //0: 위치정보 미설정, 1: 위치정보 설정 
     WIFI_STATUS_SAP_CODE_0030_UV_DATE,
     WIFI_STATUS_SAP_CODE_0031_SUPPLIES,
     WIFI_STATUS_SAP_CODE_0032_ENVIRONMENT,
@@ -153,17 +153,17 @@ typedef enum
 /*==============================================================================
  Timer Decrease
  ==============================================================================*/
-#define	TDEC_100ms_WiFi()		{	/*	100ms Ÿ�̸� ����		*/	\
+#define	TDEC_100ms_WiFi()		{	/*	100ms 타이머 감산		*/	\
 								}
-#define	TDEC_1s_WiFi()			{	/*	1s Ÿ�̸� ����			*/	\
+#define	TDEC_1s_WiFi()			{	/*	1s 타이머 감산			*/	\
 								}
-#define	TDEC_10s_WiFi()			{	/*	10s Ÿ�̸� ����			*/	\
+#define	TDEC_10s_WiFi()			{	/*	10s 타이머 감산			*/	\
 								}
-#define	TDEC_1min_WiFi()		{	/*	1min Ÿ�̸� ����		*/	\
+#define	TDEC_1min_WiFi()		{	/*	1min 타이머 감산		*/	\
 								}
-#define	TDEC_10min_WiFi()		{	/*	10min Ÿ�̸� ����		*/	\
+#define	TDEC_10min_WiFi()		{	/*	10min 타이머 감산		*/	\
 								}
-#define	TDEC_1h_WiFi()			{	/*	1h Ÿ�̸� ����			*/	\
+#define	TDEC_1h_WiFi()			{	/*	1h 타이머 감산			*/	\
                                 }
 
 #endif

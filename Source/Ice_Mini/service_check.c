@@ -51,7 +51,7 @@ void service_check(void)
     #if 0
     if(F_FW_Version_Display_Mode == SET)
     {
-        /*..hui [19-11-4¿ÀÈÄ 10:17:53] ¼­ºñ½º Á¡°Ë Ç¥½Ã »èÁ¦..*/
+        /*..hui [19-11-4ì˜¤í›„ 10:17:53] ì„œë¹„ìŠ¤ ì ê²€ í‘œì‹œ ì‚­ì œ..*/
         /*service_check_timer();*/
         /*service_clear_check();*/
     }
@@ -131,7 +131,7 @@ void service_reed_sw_input(void)
 
         if( gu8_service_reed_on_decision_cnt >= SERVICE_REED_ON_DETECT_TIME )
         {
-            /*..hui [19-1-29¿ÀÈÄ 3:51:34] ÅÊÅ© Ä¿¹ö ´İÈû..*/
+            /*..hui [19-1-29ì˜¤í›„ 3:51:34] íƒ±í¬ ì»¤ë²„ ë‹«í˜..*/
             gu8_service_reed_on_decision_cnt = SERVICE_REED_ON_DETECT_TIME;
             F_Tank_Cover_Input = SET;
 
@@ -146,7 +146,7 @@ void service_reed_sw_input(void)
 
         if( gu8_service_reed_off_decision_cnt >= SERVICE_REED_OFF_DETECT_TIME )
         {
-            /*..hui [19-1-29¿ÀÈÄ 3:51:38] ÅÊÅ© Ä¿¹ö ¿­¸²..*/
+            /*..hui [19-1-29ì˜¤í›„ 3:51:38] íƒ±í¬ ì»¤ë²„ ì—´ë¦¼..*/
             gu8_service_reed_off_decision_cnt = SERVICE_REED_OFF_DETECT_TIME;
             F_Tank_Cover_Input = CLEAR;
 

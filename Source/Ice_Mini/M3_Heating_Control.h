@@ -84,7 +84,7 @@ extern MY_RECEIPE my_setting[MY_INDEX_MAX];
 extern MY_INDEX my_recipe_select;
 
 extern bit F_firstEffluent_hotWater;
-extern bit bit_Hot_InLowTemp_SetHighTemp;											// ¢®U2025-06-11 Phil after PM
+extern bit bit_Hot_InLowTemp_SetHighTemp;											// Â¢Â®U2025-06-11 Phil after PM
 
 extern U8 gu8_hot_drain_cold;
 

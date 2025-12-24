@@ -78,7 +78,7 @@ void send_periodic_self_test(void)
     }
     else{}
 
-    /*..hui [21-9-10¿ÀÀü 9:33:28] Á¤¹ĞÁø´Ü ÁßÀÎ°æ¿ì ÀÏ´Ü »ó½ÃÁø´Ü ½Ã°£ ÃÊ±âÈ­..*/
+    /*..hui [21-9-10ì˜¤ì „ 9:33:28] ì •ë°€ì§„ë‹¨ ì¤‘ì¸ê²½ìš° ì¼ë‹¨ ìƒì‹œì§„ë‹¨ ì‹œê°„ ì´ˆê¸°í™”..*/
     if( bit_self_test_start == SET )
     {
         gu16_periodic_self_timer_min = 0;
@@ -87,7 +87,7 @@ void send_periodic_self_test(void)
     }
     else{}
 
-    /*..hui [21-9-9¿ÀÈÄ 7:48:11] 0ÀÌ¸é »ó½ÃÁø´Ü ¾ÈÇÔ..*/
+    /*..hui [21-9-9ì˜¤í›„ 7:48:11] 0ì´ë©´ ìƒì‹œì§„ë‹¨ ì•ˆí•¨..*/
     if( gu16_periodic_update_time == 0 )
     {
         gu16_periodic_self_timer_min = 0;
@@ -109,7 +109,7 @@ void send_periodic_self_test(void)
     {
         /*gu16_periodic_self_timer_min = 0;*/
         /*gu16_periodic_self_timer_hour = 0;*/
-        /*..hui [21-9-10¿ÀÀü 9:22:29] ¾÷µ¥ÀÌÆ®ÇÏ°í º¯¼ö ÃÊ±âÈ­..*/
+        /*..hui [21-9-10ì˜¤ì „ 9:22:29] ì—…ë°ì´íŠ¸í•˜ê³  ë³€ìˆ˜ ì´ˆê¸°í™”..*/
         init_self_test_auto();
         send_wifi_self_test_function();
     }
@@ -271,7 +271,7 @@ void check_cold_target_time(void)
     }
     else{}
 
-    /*..hui [24-1-17¿ÀÈÄ 2:07:43] ¿Â¼öÈ÷ÅÍ ¹Ì °¡µ¿ Á¶°Ç¿¡¼­µµ ±×¸¸..*/
+    /*..hui [24-1-17ì˜¤í›„ 2:07:43] ì˜¨ìˆ˜íˆí„° ë¯¸ ê°€ë™ ì¡°ê±´ì—ì„œë„ ê·¸ë§Œ..*/
     if( Bit0_Cold_Operation_Disable_State == SET )
     {
         init_cold_target();
@@ -279,7 +279,7 @@ void check_cold_target_time(void)
     }
     else{}
 
-    /*..hui [24-2-21¿ÀÈÄ 1:52:58] ¿Â¼ö OFFÇßÀ» °æ¿ì¿¡µµ..*/
+    /*..hui [24-2-21ì˜¤í›„ 1:52:58] ì˜¨ìˆ˜ OFFí–ˆì„ ê²½ìš°ì—ë„..*/
     if( F_Cold_Enable == CLEAR )
     {
         init_cold_target();
@@ -339,7 +339,7 @@ void check_cold_target_time(void)
     }
     else
     {
-        /*..hui [23-12-22¿ÀÈÄ 2:39:14] ¸ğµç°Ô Á¤»óÀÎ »óÅÂ¿¡¼­ È÷ÅÍ OFF »óÅÂ¿¡¼­ ONÀ¸·Î º¯È­µÉ¶§¸¸ ÃøÁ¤..*/
+        /*..hui [23-12-22ì˜¤í›„ 2:39:14] ëª¨ë“ ê²Œ ì •ìƒì¸ ìƒíƒœì—ì„œ íˆí„° OFF ìƒíƒœì—ì„œ ONìœ¼ë¡œ ë³€í™”ë ë•Œë§Œ ì¸¡ì •..*/
         //gu8_hot_first_temp = gu8_Hot_Tank_Temperature_One_Degree;
         //bit_hot_first_on_check = CLEAR;
         init_cold_target();

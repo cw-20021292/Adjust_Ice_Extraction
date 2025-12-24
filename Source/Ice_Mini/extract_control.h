@@ -9,14 +9,18 @@
 #ifndef _RXTRACT_CONTROL_H_
 #define _RXTRACT_CONTROL_H_
 
+#define ICE_FRONT_DETECT_TIME          40    // 4ì´ˆ
+#define ICE_LEAVE_TIME                 (U16)(3 * 60 * 600)    // 3 hour
 typedef struct
 {
-    F32 f32IceFrontPercent;       // (¾È½ò¸²) 0 ~ 1.0 (¿ÏÀü ½ò¸²)
-    U16 u16BeforeIceOutTime;      // ÀÌÀü ÃÑ ¾óÀ½ÃßÃâ ½Ã°£
-    U8  u8IceOutStatus;           // ¾óÀ½ÃßÃâ »óÅÂ (0:¹ÌÃßÃâ, 1:ÃßÃâÁß)
-    U8  u8IceOutStatusOld;        // ÀÌÀü ¾óÀ½ÃßÃâ »óÅÂ
-    U8  u8IceFrontCheck;          // ¾óÀ½À§Ä¡ »óÅÂ (0:¹ÌÃ¼Å©, 1:Ã¼Å©)
-    U8  u8IceStirStatus;          // ¾óÀ½¼¯±â »óÅÂ (0:¹Ì¼¯±â, 1:¼¯±â)
+    F32 f32IceFrontPercent;       // (ì•ˆì ë¦¼) 0 ~ 1.0 (ì™„ì „ ì ë¦¼)
+    U16 u16BeforeIceOutTime;      // ì´ì „ ì´ ì–¼ìŒì¶”ì¶œ ì‹œê°„
+    U8  u8LeaveCheck;             // ì–¼ìŒ ë¯¸ì¶”ì¶œ ë°©ì§€ ì²´í¬ (0:ë¯¸ì²´í¬, 1:ì²´í¬)
+    U16 u16LeaveTime;             // ì–¼ìŒ ë¯¸ì¶”ì¶œ ë°©ì§€ ì‹œê°„ (3 hour)
+    U8  u8IceOutStatus;           // ì–¼ìŒì¶”ì¶œ ìƒíƒœ (0:ë¯¸ì¶”ì¶œ, 1:ì¶”ì¶œì¤‘)
+    U8  u8IceOutStatusOld;        // ì´ì „ ì–¼ìŒì¶”ì¶œ ìƒíƒœ
+    U8  u8IceFrontCheck;          // ì–¼ìŒìœ„ì¹˜ ìƒíƒœ (0:ë¯¸ì²´í¬, 1:ì²´í¬)
+    U8  u8IceStirStatus;          // ì–¼ìŒì„ê¸° ìƒíƒœ (0:ë¯¸ì„ê¸°, 1:ì„ê¸°)
 } IcePosition_t;
 
 extern void BuzStep(U8 mu8Step);
@@ -168,14 +172,14 @@ extern DISPLAY_STACK Extract_Stack;
 
 #define USER_LOW_WATER_MAX_COUNT       15
 
-//heater ¨ùO¨ùO ¢¬¡¤¡¾a A¡×C¨ª ©öe¨¬e ¨öA¡Æ¡Ì ¢¥A¢¬©÷
+//heater Â¼OÂ¼O Â¸Â·Â±a AÂ§CÃ˜ Â¹eÂºe Â½AÂ°ï¿¡ Â´AÂ¸Â²
 #define VALVE_CONTROL_TIME_FOR_DEBUG            1
 #define VALVE_PRESSURE_PREVENT_TIME             3   // 300ms
 #define VALVE_ICE_WATER_OUT_TIME                30  // 3S
 //#define VALVE_CONTROL_TIME_FOR_DEBUG             10
 
 
-#define ICE_EXTRACT_TIME__10_EA        70 // 25 // ³Ê¹« ÂªÀ½
+#define ICE_EXTRACT_TIME__10_EA        70 // 25 // ë„ˆë¬´ ì§§ìŒ
 
 // #define BUFFER_DRAIN_TIME			30
 #define BUFFER_AIR_VENT_TIME		5
@@ -183,11 +187,11 @@ extern DISPLAY_STACK Extract_Stack;
 
 #define BUFFER_REMOVE_AIR_TIME  10
 
-#define BUFFER_DRAIN_TIME					10			// ¡Ú2025-06-02 Phil
-#define BUFFER_DRAIN_TIME_FOR_HIGH_TEMP 	30			// ¡ÚU2025-06-11 Phil
-extern U8 gu8_hot_filling_max_hz;							// ¢®U 2025-06-10 Phil
-extern U8 u8Target_Hz_Hot; 									// ¢®U 2025-06-10 Phil
-extern bit bit_Hot_InLowTemp_SetHighTemp;					// ¢®U2025-06-11 Phil
+#define BUFFER_DRAIN_TIME					10			// â˜…2025-06-02 Phil
+#define BUFFER_DRAIN_TIME_FOR_HIGH_TEMP 	30			// â˜…U2025-06-11 Phil
+extern U8 gu8_hot_filling_max_hz;							// Â¡U 2025-06-10 Phil
+extern U8 u8Target_Hz_Hot; 									// Â¡U 2025-06-10 Phil
+extern bit bit_Hot_InLowTemp_SetHighTemp;					// Â¡U2025-06-11 Phil
 extern U8 gu8Pre_hot_setting_temperature;
 extern U16 gu16Effluent_Hz;
 extern bit bit_Hot_InLowTemp_SetHighTemp;
@@ -197,7 +201,7 @@ extern bit bit_cooling_complete_5degree;
 extern bit bit_normal_ice_out_start;
 extern bit bit_ice_out_back_1s_state;
 extern U16 gu16_ice_extract_timer_100ms;
-extern U8 gu8_ice_feeder_shake;
 extern U8 gu8IceOutCCWInterval;
 extern bit F_IceSelectClose;
+extern U8 gu8_ice_feeder_shake;
 #endif

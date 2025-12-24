@@ -168,9 +168,9 @@ U16 gu16_WaterQuantity_four_old;
 
 U8 gu8_drain_tank_ster_count_old;
 
-bit bit_ice_size_old;       /* ¾óÀ½»çÀÌÁî ´ë/¼Ò EEPROM µ¥ÀÌÅÍ Ãß°¡ 250224 CH.PARK */
+bit bit_ice_size_old;       /* ì–¼ìŒì‚¬ì´ì¦ˆ ëŒ€/ì†Œ EEPROM ë°ì´í„° ì¶”ê°€ 250224 CH.PARK */
 bit bit_IceBreak_old;
-/*..hui [24-12-17¿ÀÈÄ 3:33:50] ÀÓ½Ã ÄÄÆÄÀÏ ¿¡·¯ ÇØÁ¦¿ë eeprom °ü·Ã ³ªÁß¿¡ Á¤¸®..*/
+/*..hui [24-12-17ì˜¤í›„ 3:33:50] ì„ì‹œ ì»´íŒŒì¼ ì—ëŸ¬ í•´ì œìš© eeprom ê´€ë ¨ ë‚˜ì¤‘ì— ì •ë¦¬..*/
 U8 gu8_ct_forced_flushing_start;
 bit bit_tray_pump_output;
 U8 gu8_return_acid_step;
@@ -367,7 +367,7 @@ void save_ice_setting(void)
 {
     U8 mu8_enable = 0;
 
-    /*..hui [20-3-31¿ÀÈÄ 4:32:27] ¾óÀ½»ı¼ºÀÌ¶û ¾óÀ½¿ì¼±ÀÌ ¾óÀ½¼³Á¤ ÇÏ³ª·Î ÅëÇÕµÊ.. ²¨Áü,¾óÀ½,³Ã¼ö ¼ø....*/
+    /*..hui [20-3-31ì˜¤í›„ 4:32:27] ì–¼ìŒìƒì„±ì´ë‘ ì–¼ìŒìš°ì„ ì´ ì–¼ìŒì„¤ì • í•˜ë‚˜ë¡œ í†µí•©ë¨.. êº¼ì§,ì–¼ìŒ,ëƒ‰ìˆ˜ ìˆœ....*/
     if((F_Ice_Lock_Old != F_Ice_Lock)
     || (F_IceOn_Old != F_IceOn)
     || (bit_fast_ice_make_old != bit_fast_ice_make)
@@ -489,7 +489,7 @@ void save_etc_setting(void)
 ***********************************************************************************************************************/
 void water_select_state_save(void)
 {
-    /*..hui [18-1-10¿ÀÀü 11:15:29] ¿Â¼ö ¼±ÅÃ»óÅÂÀÌ°Å³ª ¼±ÅÃ ÈÄ º¹±Í ÀÌÀüÀÌ¸é ÀúÀå¾ÈÇÔ..*/
+    /*..hui [18-1-10ì˜¤ì „ 11:15:29] ì˜¨ìˆ˜ ì„ íƒìƒíƒœì´ê±°ë‚˜ ì„ íƒ í›„ ë³µê·€ ì´ì „ì´ë©´ ì €ì¥ì•ˆí•¨..*/
     if(u8WaterOutState == HOT_WATER_SELECT || F_WaterOut_Change_State == SET)
     {
         return;
@@ -886,7 +886,7 @@ void apply_before_ice_setting(void)
     bit_fast_ice_make_old = bit_fast_ice_make;
     gu8_recover_org_fast_ice_old = gu8_recover_org_fast_ice;
     gu8_return_acid_step_old = gu8_return_acid_step;
-    /* EEPROM µ¥ÀÌÅÍ Ãß°¡ÇÏ¸é ¿©±âµµ Ãß°¡ ÇØ¾ßµÊ 250228 CH.PARK */
+    /* EEPROM ë°ì´í„° ì¶”ê°€í•˜ë©´ ì—¬ê¸°ë„ ì¶”ê°€ í•´ì•¼ë¨ 250228 CH.PARK */
     bit_ice_size_old = bit_ice_size;
     bit_IceBreak_old = F_IceBreak;
 }

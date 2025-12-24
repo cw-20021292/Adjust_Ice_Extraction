@@ -10,7 +10,7 @@
 &history : SSG
     2023.05.24 update (Rx Protocol Update)
     SSG 2024.05.29 update
-    - BLE »ó½Ã ON ±â´É Ãß°¡
+    - BLE ìƒì‹œ ON ê¸°ëŠ¥ ì¶”ê°€
 
 *******************************************************************************/
 
@@ -36,10 +36,10 @@ WifiRx_T WifiRx;
 
 
 // I8 ai8WifiRxData[LENGTH_WIFI_ALL_MAX_N]; // ALL RX DATA Buffer (AT CMD + STX ~ ETX)
-// I8 ai8WifiRxBuff[LENGTH_WIFI_ALL_MAX_N]; // Ã³¸®µÇ±â Àü¿¡ µ¥ÀÌÅÍ°¡ µé¾î¿À´Â°æ¿ì ¹öÆÛ
+// I8 ai8WifiRxBuff[LENGTH_WIFI_ALL_MAX_N]; // ì²˜ë¦¬ë˜ê¸° ì „ì— ë°ì´í„°ê°€ ë“¤ì–´ì˜¤ëŠ”ê²½ìš° ë²„í¼
 
 I8 ai8WifiRxData[LENGTH_WIFI_ALL_RX_MAX]; // ALL RX DATA Buffer (AT CMD + STX ~ ETX)
-I8 ai8WifiRxBuff[LENGTH_WIFI_ALL_RX_MAX]; // Ã³¸®µÇ±â Àü¿¡ µ¥ÀÌÅÍ°¡ µé¾î¿À´Â°æ¿ì ¹öÆÛ
+I8 ai8WifiRxBuff[LENGTH_WIFI_ALL_RX_MAX]; // ì²˜ë¦¬ë˜ê¸° ì „ì— ë°ì´í„°ê°€ ë“¤ì–´ì˜¤ëŠ”ê²½ìš° ë²„í¼
 
 
 /***** Constant ***************************************************************/
@@ -298,12 +298,12 @@ static void RunRxData ( WifiRxAtList_T *pList, U8 mSoundSet )
             if ((WifiRx.u8DisplayConnectCount == CLEAR)
             && (( GetWifiApStatus(STATUS_AP_WIFI) == CLEAR ) && (GetWifiApStatus(STATUS_AP_BLE) == CLEAR )))
             {
-                WifiRx.u8DisplayConnectCount = SET; // ¿¬°á²÷±è ÈÄ 1ºĞ Ä«¿îÆ® ½ÃÀÛ
+                WifiRx.u8DisplayConnectCount = SET; // ì—°ê²°ëŠê¹€ í›„ 1ë¶„ ì¹´ìš´íŠ¸ ì‹œì‘
             }
         }
         else
         {
-            SetWifiIndicateStatus( STATUS_DISPLAY, pList->Disp ); // Wi-Fi Ç¥½Ã
+            SetWifiIndicateStatus( STATUS_DISPLAY, pList->Disp ); // Wi-Fi í‘œì‹œ
         }
     }
     if ( pList->Err != WIFI_NULL )
@@ -393,7 +393,7 @@ static U8 RxReady ( void )
     /* MCU FOTA booting check */
     if ( GetWifiFotaStatus( STATUS_FOTA_MCU ) == SET )
     {
-        SetWifiApStatus(STATUS_AP_BLE,WAIT); // BLE È°¼ºÈ­
+        SetWifiApStatus(STATUS_AP_BLE,WAIT); // BLE í™œì„±í™”
     }
     /* AT Cmd : Autocon On & Version */
     if ( GetUserInterface( USER_FACTORY_STATUS ) == SET )
@@ -407,9 +407,9 @@ static U8 RxReady ( void )
 
     if (( GetWifiApStatus( STATUS_AP_BLE_ALWAYS ) != CLEAR ) && ( GetUserInterface( USER_FACTORY_STATUS ) != SET )) 
     {
-        SetWifiApStatus(STATUS_AP_BLE_ALWAYS,DONE); // BLE È°¼ºÈ­ ¿Ï·á (»ó½ÃON)
+        SetWifiApStatus(STATUS_AP_BLE_ALWAYS,DONE); // BLE í™œì„±í™” ì™„ë£Œ (ìƒì‹œON)
         WifiRx.u8DisplayConnectCount = DONE;
-        SetWifiApStatus(STATUS_AP_BLE,WAIT); // BLE È°¼ºÈ­ (»ó½ÃON) --> OFFµÇ¾îµµ ´Ù½Ã ON
+        SetWifiApStatus(STATUS_AP_BLE,WAIT); // BLE í™œì„±í™” (ìƒì‹œON) --> OFFë˜ì–´ë„ ë‹¤ì‹œ ON
     }
 
     SetWifiSendStatus( TX_ATCMD, WIFI_AT_MAC );
@@ -472,35 +472,35 @@ static U8 RxApErrClear ( void )
 
     if (GetWifiApStatus(STATUS_AP_BLE) != CLEAR) 
     {
-        SetWifiApStatus(STATUS_AP_BLE_STATUS2_RESPONSE,SET); // CMD ¼ö½Å¿Ï·á.
+        SetWifiApStatus(STATUS_AP_BLE_STATUS2_RESPONSE,SET); // CMD ìˆ˜ì‹ ì™„ë£Œ.
     }
 
-    if((GetWifiApStatus(STATUS_AP_BLE_ALWAYS) == DONE))// BLE »ó½Ã ON ¹İº¹ È°¼ºÈ­ ½Ã ºÎÀúÃâ·Â X
+    if((GetWifiApStatus(STATUS_AP_BLE_ALWAYS) == DONE))// BLE ìƒì‹œ ON ë°˜ë³µ í™œì„±í™” ì‹œ ë¶€ì €ì¶œë ¥ X
     {
-        SetWifiApStatus(STATUS_AP_BLE_ALWAYS,SET); // »ó½ÃON Áß
+        SetWifiApStatus(STATUS_AP_BLE_ALWAYS,SET); // ìƒì‹œON ì¤‘
         // if (mu8EepData != TRUE)
         // {
-        //     return TRUE;   // »ç¿îµå Ãâ·Â O
+        //     return TRUE;   // ì‚¬ìš´ë“œ ì¶œë ¥ O
         // }
-        return FALSE;   // »ç¿îµå Ãâ·Â X
+        return FALSE;   // ì‚¬ìš´ë“œ ì¶œë ¥ X
     }
     
-    if((WifiRx.u8DisplayConnectCount == DONE) ) // ÀÚµ¿È°¼ºÈ­ ÀÏ °æ¿ì BLEÈ°¼ºÈ­ ºÎÀú(À½¼º)Ãâ·Â X
+    if((WifiRx.u8DisplayConnectCount == DONE) ) // ìë™í™œì„±í™” ì¼ ê²½ìš° BLEí™œì„±í™” ë¶€ì €(ìŒì„±)ì¶œë ¥ X
     {
         if (mu8EepData == SET)
         {
-            return FALSE;   // »ç¿îµå Ãâ·Â X
+            return FALSE;   // ì‚¬ìš´ë“œ ì¶œë ¥ X
         }
         else 
         {
             if (mu8FirstVoice != SET)
             {
                 mu8FirstVoice = SET;
-                return TRUE;   // »ç¿îµå Ãâ·Â O
+                return TRUE;   // ì‚¬ìš´ë“œ ì¶œë ¥ O
             }
             else
             {
-                return FALSE;   // »ç¿îµå Ãâ·Â X
+                return FALSE;   // ì‚¬ìš´ë“œ ì¶œë ¥ X
             }
         }
     }
@@ -508,7 +508,7 @@ static U8 RxApErrClear ( void )
 }
 static U8 RxBleCon ( void )
 {
-    SetWifiApStatus(STATUS_AP_BLE_CON, SET); // Wi-Fi Module <-> APP BLE ¿¬°á ¿Ï·á
+    SetWifiApStatus(STATUS_AP_BLE_CON, SET); // Wi-Fi Module <-> APP BLE ì—°ê²° ì™„ë£Œ
     return FALSE;
 }
 static U8 RxBleOff ( void )
@@ -516,22 +516,22 @@ static U8 RxBleOff ( void )
 
     if (( WifiRx.u8DisplayConnectCount == CLEAR) 
         && ( GetWifiApStatus( STATUS_AP_BLE_CON ) != CLEAR )
-        && ( GetWifiServerStatus( STATUS_SVR_CONNECT ) == SET )) // ÀÚµ¿ È°¼ºÈ­ Áß Á¾·á && APP ¿¬°á ÈÄ ²÷±è && ¼­¹ö ¿¬°á Áß
+        && ( GetWifiServerStatus( STATUS_SVR_CONNECT ) == SET )) // ìë™ í™œì„±í™” ì¤‘ ì¢…ë£Œ && APP ì—°ê²° í›„ ëŠê¹€ && ì„œë²„ ì—°ê²° ì¤‘
     {
         SetWifiIndicateStatus( STATUS_PARING, WIFI_AP_STEP_CLEAR );
-        SetWifiApStatus(STATUS_AP_BLE_ALWAYS,CLEAR); // »ó½ÃON »óÅÂ OFF
+        SetWifiApStatus(STATUS_AP_BLE_ALWAYS,CLEAR); // ìƒì‹œON ìƒíƒœ OFF
     }
-    else if (( GetWifiIndicateStatus( STATUS_PARING ) == WIFI_AP_STEP_ROOTCA )) // Æä¾î¸µ ÁøÇà ÁßÀÏ °æ¿ì 
+    else if (( GetWifiIndicateStatus( STATUS_PARING ) == WIFI_AP_STEP_ROOTCA )) // í˜ì–´ë§ ì§„í–‰ ì¤‘ì¼ ê²½ìš° 
     {
-        SetWifiApStatus(STATUS_AP_BLE_ALWAYS,CLEAR); // »ó½ÃON »óÅÂ OFF
+        SetWifiApStatus(STATUS_AP_BLE_ALWAYS,CLEAR); // ìƒì‹œON ìƒíƒœ OFF
     }
-    else if (( GetWifiApStatus( STATUS_AP_BLE_ALWAYS ) != CLEAR )) // ÃÊ±â Æä¾î¸µÀÏ °æ¿ì »ó½Ã ON X
+    else if (( GetWifiApStatus( STATUS_AP_BLE_ALWAYS ) != CLEAR )) // ì´ˆê¸° í˜ì–´ë§ì¼ ê²½ìš° ìƒì‹œ ON X
     {
-        SetWifiApStatus(STATUS_AP_BLE_ALWAYS,DONE); // BLE OFF ÈÄ ¹İº¹ È°¼ºÈ­ Áö½Ã (»ó½ÃON)
-        SetWifiApStatus(STATUS_AP_BLE,WAIT); // BLE È°¼ºÈ­ (»ó½ÃON) --> OFFµÇ¾îµµ ´Ù½Ã ON
+        SetWifiApStatus(STATUS_AP_BLE_ALWAYS,DONE); // BLE OFF í›„ ë°˜ë³µ í™œì„±í™” ì§€ì‹œ (ìƒì‹œON)
+        SetWifiApStatus(STATUS_AP_BLE,WAIT); // BLE í™œì„±í™” (ìƒì‹œON) --> OFFë˜ì–´ë„ ë‹¤ì‹œ ON
     }
 
-    SetWifiApStatus(STATUS_AP_BLE_CON, CLEAR); // Wi-Fi Module <-> APP BLE ¿¬°á ÇØÁ¦
+    SetWifiApStatus(STATUS_AP_BLE_CON, CLEAR); // Wi-Fi Module <-> APP BLE ì—°ê²° í•´ì œ
 
     return FALSE;
 }
@@ -608,19 +608,19 @@ static U8 RxCnt(void)
         return FALSE;
     }
 
-    // if (GetWifiIndicateStatus(STATUS_DISPLAY_COUNT) == DONE) // BLE ÀÚµ¿È°¼ºÈ­ ÁßÀÎ °æ¿ì 
-    if (WifiRx.u8DisplayConnectCount == DONE) // BLE ÀÚµ¿È°¼ºÈ­ ÁßÀÎ °æ¿ì 
+    // if (GetWifiIndicateStatus(STATUS_DISPLAY_COUNT) == DONE) // BLE ìë™í™œì„±í™” ì¤‘ì¸ ê²½ìš° 
+    if (WifiRx.u8DisplayConnectCount == DONE) // BLE ìë™í™œì„±í™” ì¤‘ì¸ ê²½ìš° 
     {
-        if (GetWifiApStatus(STATUS_AP_BLE_CON) == CLEAR) // BLE Á¢¼Ó Áß ÀÌ ¾Æ´Ñ °æ¿ì ÀÚµ¿È°¼ºÈ­ Áß BLE ±â´ÉÀ» Áï½Ã OFFÇÏÁö ¾Ê°í, ÀÌÈÄ APP°ú ¿¬°áÇØÁ¦ ½Ã BLE±â´É OFF
+        if (GetWifiApStatus(STATUS_AP_BLE_CON) == CLEAR) // BLE ì ‘ì† ì¤‘ ì´ ì•„ë‹Œ ê²½ìš° ìë™í™œì„±í™” ì¤‘ BLE ê¸°ëŠ¥ì„ ì¦‰ì‹œ OFFí•˜ì§€ ì•Šê³ , ì´í›„ APPê³¼ ì—°ê²°í•´ì œ ì‹œ BLEê¸°ëŠ¥ OFF
         {
-            SetWifiSendStatus( TX_ATCMD, WIFI_AT_BLE_OFF ); // BLE Æä¾î¸µ¸ğµå OFF
-            SetWifiApStatus(STATUS_AP_BLE_ALWAYS,CLEAR); // ¿¬°á²÷±è ÈÄ BLEÀÚµ¿ È°¼ºÈ­ ÈÄ ¼­¹ö¿¬°á ½Ã »ó½ÃON »óÅÂ OFF 
+            SetWifiSendStatus( TX_ATCMD, WIFI_AT_BLE_OFF ); // BLE í˜ì–´ë§ëª¨ë“œ OFF
+            SetWifiApStatus(STATUS_AP_BLE_ALWAYS,CLEAR); // ì—°ê²°ëŠê¹€ í›„ BLEìë™ í™œì„±í™” í›„ ì„œë²„ì—°ê²° ì‹œ ìƒì‹œON ìƒíƒœ OFF 
             SetWifiIndicateStatus( STATUS_PARING, WIFI_AP_STEP_CLEAR );
         }
     }
 
-    WifiRx.u8DisplayConnectCount = CLEAR; // ¼­¹ö¿¬°á²÷±è 1ºĞ Ä«¿îÆ® Å¬¸®¾î (¼­¹ö¿¬°á¿Ï·á)
-    SetWifiBLESendStatus(TX_BLE_WIFI, WIFIDATA); // DATAÀü¼ÛÀ» WiFI·Î ÀüÈ¯
+    WifiRx.u8DisplayConnectCount = CLEAR; // ì„œë²„ì—°ê²°ëŠê¹€ 1ë¶„ ì¹´ìš´íŠ¸ í´ë¦¬ì–´ (ì„œë²„ì—°ê²°ì™„ë£Œ)
+    SetWifiBLESendStatus(TX_BLE_WIFI, WIFIDATA); // DATAì „ì†¡ì„ WiFIë¡œ ì „í™˜
 
     if (WifiReadEep(EEPROM_ADDR_WIFI_POWER) != SET)
     { // AWS Connect after BLE pairing mode
@@ -637,8 +637,8 @@ static U8 RxCnt(void)
         SetWifiIndicateStatus( STATUS_PARING, WIFI_AP_STEP_CLEAR );
         SetWifiApStatus( STATUS_AP_BLE, CLEAR );
         SetWifiApStatus( STATUS_AP_WIFI, CLEAR );
-        SetWifiApStatus(STATUS_AP_BLE_ALWAYS,CLEAR); // Æä¾î¸µ ¿Ï·á ½Ã ¼­¹ö¿¬°á ½Ã »ó½ÃON »óÅÂ OFF
-        // SetWifiSendStatus( TX_ATCMD, WIFI_AT_BLE_OFF ); // BLE Æä¾î¸µ¸ğµå OFF
+        SetWifiApStatus(STATUS_AP_BLE_ALWAYS,CLEAR); // í˜ì–´ë§ ì™„ë£Œ ì‹œ ì„œë²„ì—°ê²° ì‹œ ìƒì‹œON ìƒíƒœ OFF
+        // SetWifiSendStatus( TX_ATCMD, WIFI_AT_BLE_OFF ); // BLE í˜ì–´ë§ëª¨ë“œ OFF
 
         WifiRx.u8CheckServer = CLEAR;
         mu8ApCheck = SET;
@@ -652,8 +652,8 @@ static U8 RxCnt(void)
             SetWifiFotaStatus( STATUS_FOTA_MCU, CLEAR );
             WifiWriteEep( EEPROM_ADDR_FOTA_MCU, CLEAR );
 
-            // SetWifiSendStatus( TX_ATCMD, WIFI_AT_BLE_OFF ); // FOTAÀÌÈÄ ¼­¹ö ¿¬°á ½Ã BLE Æä¾î¸µ¸ğµå OFF
-            SetWifiApStatus(STATUS_AP_BLE_ALWAYS,CLEAR); // ¿¬°á²÷±è ÈÄ BLEÀÚµ¿ È°¼ºÈ­ ÈÄ ¼­¹ö¿¬°á ½Ã »ó½ÃON »óÅÂ OFF 
+            // SetWifiSendStatus( TX_ATCMD, WIFI_AT_BLE_OFF ); // FOTAì´í›„ ì„œë²„ ì—°ê²° ì‹œ BLE í˜ì–´ë§ëª¨ë“œ OFF
+            SetWifiApStatus(STATUS_AP_BLE_ALWAYS,CLEAR); // ì—°ê²°ëŠê¹€ í›„ BLEìë™ í™œì„±í™” í›„ ì„œë²„ì—°ê²° ì‹œ ìƒì‹œON ìƒíƒœ OFF 
             SetWifiIndicateStatus( STATUS_PARING, WIFI_AP_STEP_CLEAR );
         }
         else

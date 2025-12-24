@@ -91,7 +91,7 @@ void output_cold_drain_valve_feed6(void)
         Bit1_CD_Circul_Drain_On_State = CLEAR;
     }
 
-    /*..hui [23-8-25¿ÀÈÄ 1:21:54] ¼öµ¿ ¹è¼ö µ¿ÀÛ Áß..*/
+    /*..hui [23-8-25ì˜¤í›„ 1:21:54] ìˆ˜ë™ ë°°ìˆ˜ ë™ì‘ ì¤‘..*/
     if( bit_manual_drain_start == SET )
     {
         if(bit_manual_drain_valve_output == SET)

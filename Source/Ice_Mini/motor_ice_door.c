@@ -11,29 +11,29 @@
 #include    "Port_Define.h"
 #include    "motor_ice_select.h"
 /***********************************************************************************************************************/
-bit F_DoorCW;                    // »ì±Õ ÈÄ ICE Door Reset
-bit F_IceDoor2Close;        /* ¾ÆÀÌ½º µµ¾î ´ÝÈû */
+bit F_DoorCW;                    // ì‚´ê·  í›„ ICE Door Reset
+bit F_IceDoor2Close;        /* ì•„ì´ìŠ¤ ë„ì–´ ë‹«íž˜ */
 bit bit_ice_off_door_close;
 /***********************************************************************************************************************/
 U16 gu16_Ice_Door_StepMotor;
 U16 gu16IceDoorCloseTimer_Min = 0; /* 60s x 60min x 24h = 86400 24Hour */
 U16 gu16IceDoorCloseTimer_Hour = 0; /* 60s x 60min x 24h = 86400 24Hour */
 U16 gu16IceDoorCloseResetTimer = 0;
-bit F_IceDoorClose;        /* ¾ÆÀÌ½º µµ¾î ´ÝÈû */
+bit F_IceDoorClose;        /* ì•„ì´ìŠ¤ ë„ì–´ ë‹«íž˜ */
 /***********************************************************************************************************************/
-/* 15ºÐ¸¶´Ù ¿­°í ´Ý´Â »ç¾ç - 1¾È */
-// bit F_close;                /* ¾óÀ½ÃßÃâ ÀÌÈÄ ÇÃ·¡±× */
-// U8  u8_count;               /* ¾óÀ½ÃßÃâ ÀÌÈÄ 2È¸ Ä«¿îÆ® */
-// U16 u16_close_min;          /* ¾óÀ½ÃßÃâ ÀÌÈÄ Ä«¿îÆ®°ª */
-// U8  u8_close_step;          /* ¾óÀ½ÃßÃâ full open / full close ½ºÅÜ */
-// U8  u8_step_timer_100ms;    /* ¾óÀ½ÃßÃâ µ¿ÀÛ °ü·Ã ½ºÅÜÅ¸ÀÌ¸Ó */
+/* 15ë¶„ë§ˆë‹¤ ì—´ê³  ë‹«ëŠ” ì‚¬ì–‘ - 1ì•ˆ */
+// bit F_close;                /* ì–¼ìŒì¶”ì¶œ ì´í›„ í”Œëž˜ê·¸ */
+// U8  u8_count;               /* ì–¼ìŒì¶”ì¶œ ì´í›„ 2íšŒ ì¹´ìš´íŠ¸ */
+// U16 u16_close_min;          /* ì–¼ìŒì¶”ì¶œ ì´í›„ ì¹´ìš´íŠ¸ê°’ */
+// U8  u8_close_step;          /* ì–¼ìŒì¶”ì¶œ full open / full close ìŠ¤í… */
+// U8  u8_step_timer_100ms;    /* ì–¼ìŒì¶”ì¶œ ë™ìž‘ ê´€ë ¨ ìŠ¤í…íƒ€ì´ë¨¸ */
 /***********************************************************************************************************************/
-/* 20ºÐ °­Á¦ ´Ý±â¿ë º¯¼öµé */
-U16 gu16IceDoor10MinTimer = 0;      /* 10ºÐ(600ÃÊ) Å¸ÀÌ¸Ó */
-bit F_IceDoor10MinClose;            /* 10ºÐ °­Á¦ ´Ý±â ÇÃ·¡±× */
+/* 20ë¶„ ê°•ì œ ë‹«ê¸°ìš© ë³€ìˆ˜ë“¤ */
+U16 gu16IceDoor10MinTimer = 0;      /* 10ë¶„(600ì´ˆ) íƒ€ì´ë¨¸ */
+bit F_IceDoor10MinClose;            /* 10ë¶„ ê°•ì œ ë‹«ê¸° í”Œëž˜ê·¸ */
 U16 gu16ShortIceDoorCloseResetTimer = 0;
 
-/* ÃßÃâ ½Ã¿¡¸¸ setµÇ´Â º¯¼ö*/
+/* ì¶”ì¶œ ì‹œì—ë§Œ setë˜ëŠ” ë³€ìˆ˜*/
 bit bit_ice_door_open_after_close;
 bit bit_ice_off_door_close;
 /***********************************************************************************************************************/
@@ -45,12 +45,12 @@ extern MODEL model;
 extern ICE_STUCK_1 IceStuck;
 /***********************************************************************************************************************/
 /**
- * @brief ÃÖÁ¾ DOOR STEP¸ðÅÍ Á¦¾î
+ * @brief ìµœì¢… DOOR STEPëª¨í„° ì œì–´
  *
  */
 void motor_ice_door_output(void)
 {
-    if(F_IceOpen == SET)                                       // ¿­¸²
+    if(F_IceOpen == SET)                                       // ì—´ë¦¼
     {
         if(F_DoorCW != SET)
         {
@@ -71,17 +71,17 @@ void motor_ice_door_output(void)
             pSTEP_MOTOR_ICE_DOOR_3 = 0;
             pSTEP_MOTOR_ICE_DOOR_4 = 0;
 
-            /* ¾óÀ½ ÃßÃâÁßÀÌ ¾Æ´Ï°í ¾óÀ½ °É¸² Á¦¾îµµ ¾ÈÇÏ°í ÀÖÀ» ¶§¿¡¸¸ Å¬¸®¾î */
+            /* ì–¼ìŒ ì¶”ì¶œì¤‘ì´ ì•„ë‹ˆê³  ì–¼ìŒ ê±¸ë¦¼ ì œì–´ë„ ì•ˆí•˜ê³  ìžˆì„ ë•Œì—ë§Œ í´ë¦¬ì–´ */
             if((F_IceOut == CLEAR)
             && (IceStuck.u8IceJamResolveStep == PROCESS_ICE_JAM_INIT)
             )
             {
-                F_IceOpen = CLEAR;              // Door ¿­¸² ¿Ï·á ÈÄ Off
+                F_IceOpen = CLEAR;              // Door ì—´ë¦¼ ì™„ë£Œ í›„ Off
             }
             else{}
         }
     }
-    else                                                  // ´ÝÈû
+    else                                                  // ë‹«íž˜
     {
         if(F_DoorCW == SET)
         {
@@ -92,7 +92,7 @@ void motor_ice_door_output(void)
 
         if(gu16_Ice_Door_StepMotor > 0)
         {
-            /* ÃÖÁ¾ µµ¾î´Â 3ÃÊ Áö¿¬ ÈÄ Close */
+            /* ìµœì¢… ë„ì–´ëŠ” 3ì´ˆ ì§€ì—° í›„ Close */
             if(gu8IceClose == 0)
             {
                 gu16_Ice_Door_StepMotor--;
@@ -211,21 +211,21 @@ void ice_door_close_24_hour(void)
     U8 mu8_return = 0;
 
     //====================================================
-    /* ¾ÆÀÌ½º µµ¾î ÁÖ±âÀûÀ¸·Î ´Ý´Â ·ÎÁ÷( 24½Ã°£ ±âÁØÀ¸·Î ¹Ýº¹ )
-     * ¾ÆÀÌ½º µµ¾î°¡ °­Á¦·Î ¿­¸° °æ¿ì¸¦ °¡Á¤ÇØ¼­ 24½Ã°£ ±âÁØÀ¸·Î ´Ý¾Æ ÁØ´Ù.*/
+    /* ì•„ì´ìŠ¤ ë„ì–´ ì£¼ê¸°ì ìœ¼ë¡œ ë‹«ëŠ” ë¡œì§( 24ì‹œê°„ ê¸°ì¤€ìœ¼ë¡œ ë°˜ë³µ )
+     * ì•„ì´ìŠ¤ ë„ì–´ê°€ ê°•ì œë¡œ ì—´ë¦° ê²½ìš°ë¥¼ ê°€ì •í•´ì„œ 24ì‹œê°„ ê¸°ì¤€ìœ¼ë¡œ ë‹«ì•„ ì¤€ë‹¤.*/
 
     if( F_LineTest == SET )
     {
-        /*..hui [18-1-23¿ÀÈÄ 2:29:46] Å×½ºÆ® ¸ðµå½Ã 60ÃÊ..*/
+        /*..hui [18-1-23ì˜¤í›„ 2:29:46] í…ŒìŠ¤íŠ¸ ëª¨ë“œì‹œ 60ì´ˆ..*/
         mu16_forced_close_time_min = 600;
-        /*..hui [18-1-23¿ÀÈÄ 2:29:52] Å×½ºÆ® ¸ðµå½Ã 1ºÐ..*/
+        /*..hui [18-1-23ì˜¤í›„ 2:29:52] í…ŒìŠ¤íŠ¸ ëª¨ë“œì‹œ 1ë¶„..*/
         mu16_forced_close_time_hour = 5;
     }
     else
     {
-        /*..hui [18-1-23¿ÀÈÄ 2:29:03] ÀÏ¹Ý ¸ðµå½Ã 60ºÐ..*/
+        /*..hui [18-1-23ì˜¤í›„ 2:29:03] ì¼ë°˜ ëª¨ë“œì‹œ 60ë¶„..*/
         mu16_forced_close_time_min = 36000;
-        /*..hui [18-1-23¿ÀÈÄ 2:29:09] ÀÏ¹Ý ¸ðµå½Ã 24½Ã°£..*/
+        /*..hui [18-1-23ì˜¤í›„ 2:29:09] ì¼ë°˜ ëª¨ë“œì‹œ 24ì‹œê°„..*/
         mu16_forced_close_time_hour = 24;
     }
 
@@ -244,7 +244,7 @@ void ice_door_close_24_hour(void)
     }
     else{}
 
-    /*..hui [18-1-23¿ÀÈÄ 2:12:10] 60ºÐ Å¸ÀÌ¸Ó..*/
+    /*..hui [18-1-23ì˜¤í›„ 2:12:10] 60ë¶„ íƒ€ì´ë¨¸..*/
     gu16IceDoorCloseTimer_Min++;
 
     if(gu16IceDoorCloseTimer_Min >= mu16_forced_close_time_min)
@@ -254,7 +254,7 @@ void ice_door_close_24_hour(void)
     }
     else{}
 
-    /*..hui [18-1-23¿ÀÈÄ 2:12:15] 24½Ã°£ Å¸ÀÌ¸Ó..*/
+    /*..hui [18-1-23ì˜¤í›„ 2:12:15] 24ì‹œê°„ íƒ€ì´ë¨¸..*/
     if(gu16IceDoorCloseTimer_Hour >= mu16_forced_close_time_hour)
     {
         F_IceDoorClose = SET;
@@ -274,7 +274,7 @@ void ice_door_close_24_hour(void)
     }
     else{}
 
-    /*..hui [18-1-23¿ÀÈÄ 2:44:04] ¾ÆÀÌ½ºµµ¾î °­Á¦ CLOSEÁß¿¡ ¾óÀ½ ÃßÃâÇÒ°æ¿ì FULL OPEN..*/
+    /*..hui [18-1-23ì˜¤í›„ 2:44:04] ì•„ì´ìŠ¤ë„ì–´ ê°•ì œ CLOSEì¤‘ì— ì–¼ìŒ ì¶”ì¶œí• ê²½ìš° FULL OPEN..*/
     if(gu16IceDoorCloseResetTimer > 0)
     {
         gu16IceDoorCloseResetTimer--;
@@ -283,12 +283,12 @@ void ice_door_close_24_hour(void)
 }
 
 /**
- * @brief ÃßÃâ ÀÌÈÄ 2È¸ °­Á¦ µµ¾î´Ý´Â »ç¾ç Ãß°¡
+ * @brief ì¶”ì¶œ ì´í›„ 2íšŒ ê°•ì œ ë„ì–´ë‹«ëŠ” ì‚¬ì–‘ ì¶”ê°€
  *
  */
 // void ice_door_extract_close(void)
 // {
-    // /* ÃßÃâ ÈÄ CLOSE°¡ È°¼ºÈ­ ¾ÈµÇ¾î ÀÖÀ¸¸é °ü·Ã µ¥ÀÌÅÍ ÃÊ±âÈ­ */
+    // /* ì¶”ì¶œ í›„ CLOSEê°€ í™œì„±í™” ì•ˆë˜ì–´ ìžˆìœ¼ë©´ ê´€ë ¨ ë°ì´í„° ì´ˆê¸°í™” */
     // if(F_close == CLEAR)
     // {
     //     u8_count = 0;
@@ -317,7 +317,7 @@ void ice_door_close_24_hour(void)
     //     {
     //         switch (u8_close_step)
     //         {
-    //             case 0:             // ÁØºñ (200ms ´ë±â)
+    //             case 0:             // ì¤€ë¹„ (200ms ëŒ€ê¸°)
     //                 u8_step_timer_100ms++;
     //                 if(u8_step_timer_100ms >= 2)
     //                 {
@@ -329,7 +329,7 @@ void ice_door_close_24_hour(void)
 
     //             case 1:             // full open
     //                 F_IceOpen = SET;
-    //                 /* µµ¾î¿­°í ¿ÏÀüÈ÷ ´Ù ¿­·ÈÀ¸¸é ´ÙÀ½À¸·Î */
+    //                 /* ë„ì–´ì—´ê³  ì™„ì „ížˆ ë‹¤ ì—´ë ¸ìœ¼ë©´ ë‹¤ìŒìœ¼ë¡œ */
     //                 if(gu16_Ice_Door_StepMotor >= STEP_ANGLE_DOOR)
     //                 {
     //                     u8_close_step++;
@@ -337,7 +337,7 @@ void ice_door_close_24_hour(void)
     //                 else {  }
     //                 break;
 
-    //             case 2:             // 1ÃÊ ´ë±â
+    //             case 2:             // 1ì´ˆ ëŒ€ê¸°
     //                 u8_step_timer_100ms++;
     //                 if(u8_step_timer_100ms >= 10)
     //                 {
@@ -349,7 +349,7 @@ void ice_door_close_24_hour(void)
 
     //             case 3:             // full close
     //                 F_IceOpen = CLEAR;
-    //                 /* µµ¾î´Ý°í ¿ÏÀüÈ÷ ´Ù ´ÝÇûÀ¸¸é ´ÙÀ½À¸·Î */
+    //                 /* ë„ì–´ë‹«ê³  ì™„ì „ížˆ ë‹¤ ë‹«í˜”ìœ¼ë©´ ë‹¤ìŒìœ¼ë¡œ */
     //                 if(gu16_Ice_Door_StepMotor == 0)
     //                 {
     //                     u8_close_step++;
@@ -357,7 +357,7 @@ void ice_door_close_24_hour(void)
     //                 else {  }
     //                 break;
 
-    //             case 4:             // ¿Ï·á (Ä«¿îÆ® Áõ°¡)
+    //             case 4:             // ì™„ë£Œ (ì¹´ìš´íŠ¸ ì¦ê°€)
     //                 u8_close_step = 0;
     //                 u16_close_min = 0;
     //                 u8_count++;
@@ -382,7 +382,7 @@ void ice_door_close_24_hour(void)
 
 /***********************************************************************************************************************
 * Function Name: ice_door_close_20_min
-* Description  : 2025-08-27 CH.PARK [V1.0.0.5] ¾ÆÀÌ½º ÃßÃâ ¿Ï·á ÈÄ 20ºÐ µÚ¿¡ ¾ÆÀÌ½º µµ¾î¸¦ °­Á¦·Î ´Ý´Â ÇÔ¼ö
+* Description  : 2025-08-27 CH.PARK [V1.0.0.5] ì•„ì´ìŠ¤ ì¶”ì¶œ ì™„ë£Œ í›„ 20ë¶„ ë’¤ì— ì•„ì´ìŠ¤ ë„ì–´ë¥¼ ê°•ì œë¡œ ë‹«ëŠ” í•¨ìˆ˜
 ***********************************************************************************************************************/
 void ice_door_close_20_min(void)
 {
@@ -390,7 +390,7 @@ void ice_door_close_20_min(void)
     U16 mu16_forced_close_time_hour = 0;
     U8 mu8_return = 0;
 
-    /*..hui [18-1-23¿ÀÈÄ 2:29:03] ÀÏ¹Ý ¸ðµå½Ã 20ºÐ..*/
+    /*..hui [18-1-23ì˜¤í›„ 2:29:03] ì¼ë°˜ ëª¨ë“œì‹œ 20ë¶„..*/
     mu16_forced_close_time_min = 12000;
 
 	if(bit_ice_door_open_after_close == CLEAR)
@@ -405,7 +405,7 @@ void ice_door_close_20_min(void)
     }
     else{}
 
-    /*..hui [18-1-23¿ÀÈÄ 2:12:10] 10ºÐ Å¸ÀÌ¸Ó..*/
+    /*..hui [18-1-23ì˜¤í›„ 2:12:10] 10ë¶„ íƒ€ì´ë¨¸..*/
     gu16IceDoor10MinTimer++;
 
     if(gu16IceDoor10MinTimer >= mu16_forced_close_time_min)
@@ -428,7 +428,7 @@ void ice_door_close_20_min(void)
     }
     else{}
 
-    /*..hui [18-1-23¿ÀÈÄ 2:44:04] ¾ÆÀÌ½ºµµ¾î °­Á¦ CLOSEÁß¿¡ ¾óÀ½ ÃßÃâÇÒ°æ¿ì FULL OPEN..*/
+    /*..hui [18-1-23ì˜¤í›„ 2:44:04] ì•„ì´ìŠ¤ë„ì–´ ê°•ì œ CLOSEì¤‘ì— ì–¼ìŒ ì¶”ì¶œí• ê²½ìš° FULL OPEN..*/
     if(gu16ShortIceDoorCloseResetTimer > 0)
     {
         gu16ShortIceDoorCloseResetTimer--;

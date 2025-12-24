@@ -170,7 +170,7 @@ extern bit F_IceVV;
 extern U16 gu16CompOffDelay;
 extern bit F_IceHeater;
 extern U16 gu16IceVVTime;
-extern bit F_IceDoorClose;        /* ¾ÆÀÌ½º µµ¾î ´İÈû */
+extern bit F_IceDoorClose;        /* Â¾Ã†Ã€ÃŒÂ½Âº ÂµÂµÂ¾Ã® Â´ÃÃˆÃ» */
 
 extern bit F_FW_Version_Display_Mode;
 extern U8 gu8_led_version_step;

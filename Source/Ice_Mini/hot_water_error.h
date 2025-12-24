@@ -87,9 +87,9 @@ extern U8 gu8_preheat_ster_step;
 extern U8 gu8_hot_input_ster_step;
 extern FLUSHING_STEP gu8_flushing_mode;
 
-extern bit bit_Holding_Flow_Block_Error__E08;// ¢®U2025-06-02 Phil
-extern bit F_firstEffluent_hotWater;// ¢®U 2025-06-10 Phil
-extern U16 gu16_firstEffluent_hotwater_timer;// ¢®U 2025-06-10 Phil
+extern bit bit_Holding_Flow_Block_Error__E08;// Â¢Â®U2025-06-02 Phil
+extern bit F_firstEffluent_hotWater;// Â¢Â®U 2025-06-10 Phil
+extern U16 gu16_firstEffluent_hotwater_timer;// Â¢Â®U 2025-06-10 Phil
 extern bit F_firstEffluent_hotWaterHeat;
 extern U8 gu8_drain_preheat_ster_step;
 extern U8 gu8_drain_input_ster_step;

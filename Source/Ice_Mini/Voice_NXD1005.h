@@ -19,7 +19,7 @@ extern U8 IsCriticalVoice(U16 addr);
 
 
 //------
-// ªÛºˆ
+// ÏÉÅÏàò
 //------
 
 #define VOICE_VOLUME_LEVEL_MAXIUM              4
@@ -45,7 +45,7 @@ extern U8 IsCriticalVoice(U16 addr);
 
 
 #if 0
-// ¿Ωº∫æ»≥ª
+// ÏùåÏÑ±ÏïàÎÇ¥
 //#define VOICE_COMMAND_VOLUME_5  0x001E  /* -6 dB */
 #define VOICE_COMMAND_VOLUME_5                 0x001F  /* -7 dB */
 #define VOICE_COMMAND_VOLUME_4                 0x0021  /* -9 dB */
@@ -53,7 +53,7 @@ extern U8 IsCriticalVoice(U16 addr);
 #define VOICE_COMMAND_VOLUME_2                 0x0027  /* -15 dB */
 #define VOICE_COMMAND_VOLUME_1                 0x002A  /* -18 dB */
 
-// »ø∞˙¿Ω
+// Ìö®Í≥ºÏùå
 //#define BEEP_COMMAND_VOLUME_5  0x001E  /* -6 dB */
 #define BEEP_COMMAND_VOLUME_5                  0x001F  /* -7 dB */
 #define BEEP_COMMAND_VOLUME_4                  0x0024  /* -12 dB */
@@ -75,14 +75,14 @@ extern U8 IsCriticalVoice(U16 addr);
 #endif
 
 #if 0
-// ¿Ωº∫æ»≥ª
+// ÏùåÏÑ±ÏïàÎÇ¥
 #define VOICE_COMMAND_VOLUME_5                 0x0024  /* 36 - volume 7 */
 #define VOICE_COMMAND_VOLUME_4                 0x0027  /* 39 - volume 6 */
 #define VOICE_COMMAND_VOLUME_3                 0x002A  /* 42 - volume 5 */
 #define VOICE_COMMAND_VOLUME_2                 0x0030  /* 48 - volume 4 */
 #define VOICE_COMMAND_VOLUME_1                 0x0036  /* 54 - volume 3 */
 
-// »ø∞˙¿Ω
+// Ìö®Í≥ºÏùå
 #define BEEP_COMMAND_VOLUME_5                  0x0024  /* 36 - volume 7 */
 #define BEEP_COMMAND_VOLUME_4                  0x0027  /* 39 - volume 6 */
 #define BEEP_COMMAND_VOLUME_3                  0x002A  /* 42 - volume 5 */
@@ -96,7 +96,7 @@ extern U8 IsCriticalVoice(U16 addr);
 #define VOICE_COMMAND_VOLUME_2                 0x002A  /* 42 - volume 5 */
 #define VOICE_COMMAND_VOLUME_1                 0x0030  /* 48 - volume 4 */
 
-// »ø∞˙¿Ω
+// Ìö®Í≥ºÏùå
 #define BEEP_COMMAND_VOLUME_5                  0x0021  /* 33 - volume 8 */
 #define BEEP_COMMAND_VOLUME_4                  0x0024  /* 36 - volume 7 */
 #define BEEP_COMMAND_VOLUME_3                  0x0027  /* 39 - volume 6 */
@@ -108,7 +108,7 @@ extern U8 IsCriticalVoice(U16 addr);
 
 
 #if 0
-// ¿Ωº∫æ»≥ª
+// ÏùåÏÑ±ÏïàÎÇ¥
 //#define VOICE_COMMAND_VOLUME_5  0x001E  /* -6 dB */
 #define VOICE_COMMAND_VOLUME_5                 0x000F
 #define VOICE_COMMAND_VOLUME_4                 0x0019
@@ -116,7 +116,7 @@ extern U8 IsCriticalVoice(U16 addr);
 #define VOICE_COMMAND_VOLUME_2                 0x002D
 #define VOICE_COMMAND_VOLUME_1                 0x0037
 
-// »ø∞˙¿Ω
+// Ìö®Í≥ºÏùå
 //#define BEEP_COMMAND_VOLUME_5  0x001E  /* -6 dB */
 #define BEEP_COMMAND_VOLUME_5                  0x0019
 #define BEEP_COMMAND_VOLUME_4                  0x0023
@@ -135,11 +135,11 @@ extern U8 IsCriticalVoice(U16 addr);
                                                        /*Repeat: 1 time play*/
 #define VOICE_COMMAND_STOP                     0xE210
 
-#define VOICE_COMMAND_CONTROL3                 0xE305 //..Disable, ∫Òµø±‚, 18bit, disable..//
+#define VOICE_COMMAND_CONTROL3                 0xE305 //..Disable, ÎπÑÎèôÍ∏∞, 18bit, disable..//
 #define VOICE_COMMAND_ADDRESS_256              0xE400
 #define VOICE_COMMAND_ADDRESS_512              0xE401
 //+++++++++++++++++++++++++++++++++++++++
-// √ﬂ∞° (»Æ¿Â)
+// Ï∂îÍ∞Ä (ÌôïÏû•)
 #define VOICE_COMMAND_ADDRESS_768              0xE402
 #define VOICE_COMMAND_ADDRESS_1024             0xE403
 #define VOICE_COMMAND_ADDRESS_1280             0xE404

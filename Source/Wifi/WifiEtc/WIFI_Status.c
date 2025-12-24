@@ -3,7 +3,7 @@
 
 &History : ssg@coway.com
     SSG 2024.05.29 update
-    - BLE »ó½Ã ON ±â´É Ãß°¡
+    - BLE ìƒì‹œ ON ê¸°ëŠ¥ ì¶”ê°€
 
 *******************************************************************************/
 
@@ -67,11 +67,11 @@ void HAL_SetWifiOnOff ( U8 mu8State )
 #endif
         ClearWifiAllStatus();
         SetWifiControlStatus(STATUS_CON_POWER,ON);
-        if (GetWifiApStatus(STATUS_AP_BLE_ALWAYS) == CLEAR)  // BLE »ó½Ã ONÀÌ ¾Æ´Ò °æ¿ì Reset ½Ã
+        if (GetWifiApStatus(STATUS_AP_BLE_ALWAYS) == CLEAR)  // BLE ìƒì‹œ ONì´ ì•„ë‹ ê²½ìš° Reset ì‹œ
         {
             SetWifiIndicateStatus(STATUS_DISPLAY,WIFI_DISP_TRY);
         }
-        else // BLE »ó½Ã ONÀÎ °æ¿ì Reset ½Ã
+        else // BLE ìƒì‹œ ONì¸ ê²½ìš° Reset ì‹œ
         {
             SetWifiApStatus(STATUS_AP_BLE, SET);
         }

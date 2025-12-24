@@ -43,10 +43,10 @@ ICE_STEP gu8IceStep;
 bit F_IceVV;
 
 //----------------------------------------------------// ICE Heater
-U16 gu16IceHeaterTime;                                // Å»ºù Heater µ¿ÀÛ ½Ã°£
+U16 gu16IceHeaterTime;                                // íƒˆë¹™ Heater ë™ì‘ ì‹œê°„
 bit F_ColdWaterInit;
-bit F_WaterInit;                      // ÃÖÃÊ Á¤¼ö¿Ï·á
-/*bit F_HotWaterInit;*/                   // ÃÖÃÊ Á¤¼ö¿Ï·á - ¿Â¼ö
+bit F_WaterInit;                      // ìµœì´ˆ ì •ìˆ˜ì™„ë£Œ
+/*bit F_HotWaterInit;*/                   // ìµœì´ˆ ì •ìˆ˜ì™„ë£Œ - ì˜¨ìˆ˜
 bit F_WaterInitSet;
 bit F_ColdVV;
 
@@ -56,7 +56,7 @@ bit F_TrayMotorDOWN;
 bit F_TrayMotorPreDOWN;
 
 //bit F_ColdIn;
-//bit F_ColdDIR;               // ³Ã¼öÂÊ ¾óÀ½ÁÖÀÔ
+//bit F_ColdDIR;               // ëƒ‰ìˆ˜ìª½ ì–¼ìŒì£¼ì…
 bit F_IceOpen;
 bit F_IceTray;
 U8 gu8IceOut;
@@ -66,7 +66,7 @@ U16 gu16IceOutTest;
 //U16 gu16StepMotor1;
 U8 gu8IceClose;
 U8 gu8IceInnerClose;
-U8 gu8SBTest;                // SB Error °ü·Ã
+U8 gu8SBTest;                // SB Error ê´€ë ¨
 bit F_NoColdBar;
 bit F_NoIceBar;
 //U16 gu16CompOffDelay;
@@ -82,15 +82,15 @@ U16 gu16IceVVTime;
 U8 gu8ICETrayRoomDelay;
 //U8 Tray_Comp_Delay;
 
-/*..hui [18-3-8¿ÀÀü 11:23:33] Á¦ºù Áß 50ÃÊ ´©Àû ÃßÃâ ½Ã ³Ã¼ö Å»ºù µ¿ÀÛ..*/
+/*..hui [18-3-8ì˜¤ì „ 11:23:33] ì œë¹™ ì¤‘ 50ì´ˆ ëˆ„ì  ì¶”ì¶œ ì‹œ ëƒ‰ìˆ˜ íƒˆë¹™ ë™ì‘..*/
 bit F_Ext_cold;
 
 U8 gu8AmbTemp;
 U8 gu8RoomTemp;
 
-bit F_CompOn;                     // ³Ã¼ö ÄŞÇÁ µ¿ÀÛ
-bit F_IceCompOn;                  // ¾óÀ½ ÄŞÇÁ µ¿ÀÛ
-bit F_CompHeater;                 // ÄŞÇÁ,È÷ÅÍ µ¿½Ã±âµ¿¹æÁö
+bit F_CompOn;                     // ëƒ‰ìˆ˜ ì½¤í”„ ë™ì‘
+bit F_IceCompOn;                  // ì–¼ìŒ ì½¤í”„ ë™ì‘
+bit F_CompHeater;                 // ì½¤í”„,íˆí„° ë™ì‹œê¸°ë™ë°©ì§€
 
 
 U8 gu8_ice_make_1sec_timer;
@@ -125,16 +125,16 @@ U8 gu8_ice_take_off_op_time = CLEAR;
 ***********************************************************************************************************************/
 void Ice_Make_Process(void)
 {
-    /*..hui [17-12-26¿ÀÀü 9:51:20] ¹öÀü Ç¥½Ã ¿Ï·á ÈÄ ½ÃÀÛ..*/
+    /*..hui [17-12-26ì˜¤ì „ 9:51:20] ë²„ì „ í‘œì‹œ ì™„ë£Œ í›„ ì‹œì‘..*/
     if(F_FW_Version_Display_Mode != SET)
     {
         return;
     }
     else{}
 
-    /*..hui [17-12-19¿ÀÈÄ 7:07:33] ´©¼öÀÏ¶§ Á¦ºù ¹× ÄÄÇÁ Á¤Áö Ãß°¡....*/
-    /*..hui [17-12-19¿ÀÈÄ 7:07:54] ³ªÁß¿¡ ³Ã¼ö ÀÔ¼ö¹ëºê OFF½ÃÅ°´Â°Íµµ Ãß°¡ÇØ¾ßÇÔ....*/
-    /* À¯·Î»ì±Õ ÁøÇà ½Ã Á¦ºù ÁßÁö ¹× Á¦ºù ºÒ°¡ 250721 CH.PARK */
+    /*..hui [17-12-19ì˜¤í›„ 7:07:33] ëˆ„ìˆ˜ì¼ë•Œ ì œë¹™ ë° ì»´í”„ ì •ì§€ ì¶”ê°€....*/
+    /*..hui [17-12-19ì˜¤í›„ 7:07:54] ë‚˜ì¤‘ì— ëƒ‰ìˆ˜ ì…ìˆ˜ë°¸ë¸Œ OFFì‹œí‚¤ëŠ”ê²ƒë„ ì¶”ê°€í•´ì•¼í•¨....*/
+    /* ìœ ë¡œì‚´ê·  ì§„í–‰ ì‹œ ì œë¹™ ì¤‘ì§€ ë° ì œë¹™ ë¶ˆê°€ 250721 CH.PARK */
     if( Bit2_Ice_Operation_Disable_State == SET
     || F_Safety_Routine == SET
     || F_ErrTrayMotor_DualInital == SET
@@ -147,7 +147,7 @@ void Ice_Make_Process(void)
     }
     else{}
 
-    //=======================================================//Á¦ºùÀ¯´Ö ÃÊ±âÈ­
+    //=======================================================//ì œë¹™ìœ ë‹› ì´ˆê¸°í™”
     if(F_IceInit == SET)
     {
         ice_init_operation();
@@ -158,7 +158,7 @@ void Ice_Make_Process(void)
         gu8InitStep = 0;
     }
 
-    //======================================================// Á¦ºùÁ¾·á½Ã
+    //======================================================// ì œë¹™ì¢…ë£Œì‹œ
     if(Bit1_Ice_Make_Go != SET)
     {
         gu8IceStep = STATE_0_STANDBY;
@@ -167,10 +167,10 @@ void Ice_Make_Process(void)
     }
     else{}
 
-    //=======================================================// Á¦ºù ½ÃÄı½º
+    //=======================================================// ì œë¹™ ì‹œí€¸ìŠ¤
     ice_make_operation();
 
-    /*..hui [23-9-19¿ÀÈÄ 3:37:57] Æ®·¹ÀÌ ÀÔ¼ö¿Âµµ Æò±Õ°ª È®ÀÎ..*/
+    /*..hui [23-9-19ì˜¤í›„ 3:37:57] íŠ¸ë ˆì´ ì…ìˆ˜ì˜¨ë„ í‰ê· ê°’ í™•ì¸..*/
     /*get_average_tray_temp();*/
 
 }
@@ -184,23 +184,23 @@ void ice_make_operation(void)
     U8 mu8_return_value = 0;
     U8 mu8_comp_rps = 0;
 
-    //=======================================================// Á¦ºù ½ÃÄı½º
+    //=======================================================// ì œë¹™ ì‹œí€¸ìŠ¤
     switch(gu8IceStep)
     {
-        //----------------------------------------------// ¾óÀ½¹ŞÀÌ Á¦ºùÈ¸Àü
+        //----------------------------------------------// ì–¼ìŒë°›ì´ ì œë¹™íšŒì „
         case STATE_0_STANDBY :
             if( (gu16CompOffDelay == 0)
             || (F_Comp_Output == SET)
             )
             {
-                /*..hui [19-10-23¿ÀÈÄ 12:47:20] ¾óÀ½ ÃßÃâÁß¿¡´Â Æ®·¹ÀÌ ¿Ã¸®Áö ¾Êµµ·Ï..*/
-                /*..hui [19-10-23¿ÀÈÄ 12:47:34] ÃßÃâÁß¿¡ ¾óÀ½ÀÌ ¹Ğ·Á¼­ Æ®·¹ÀÌ°¡ °É¸°´Ù..*/
-                /*..hui [19-10-23¿ÀÈÄ 12:47:46] ±â±¸ÀûÀ¸·Î ¼öÁ¤ÀÌ ÇÊŸG¸¶..*/
+                /*..hui [19-10-23ì˜¤í›„ 12:47:20] ì–¼ìŒ ì¶”ì¶œì¤‘ì—ëŠ” íŠ¸ë ˆì´ ì˜¬ë¦¬ì§€ ì•Šë„ë¡..*/
+                /*..hui [19-10-23ì˜¤í›„ 12:47:34] ì¶”ì¶œì¤‘ì— ì–¼ìŒì´ ë°€ë ¤ì„œ íŠ¸ë ˆì´ê°€ ê±¸ë¦°ë‹¤..*/
+                /*..hui [19-10-23ì˜¤í›„ 12:47:46] ê¸°êµ¬ì ìœ¼ë¡œ ìˆ˜ì •ì´ í•„ìš¯ë§ˆ..*/
                 if( F_IceOut == CLEAR && bit_tray_in_error_temporary == CLEAR )
                 {
                     /*if( bit_start_preheat == SET )*/
 
-                    /* ¿Ü±â ¿Âµµ 25µµ ¹Ì¸¸ÀÎ »óÅÂ¿¡¼­ ¾ĞÃà±â ÈŞÁö ½Ã°£ÀÌ 30ºĞ ÃÊ°úÇÑ °æ¿ì */
+                    /* ì™¸ê¸° ì˜¨ë„ 25ë„ ë¯¸ë§Œì¸ ìƒíƒœì—ì„œ ì••ì¶•ê¸° íœ´ì§€ ì‹œê°„ì´ 30ë¶„ ì´ˆê³¼í•œ ê²½ìš° */
                     if( bit_start_preheat == SET && gu8_Amb_Temperature_One_Degree < PREHEAT_AMB_TEMP )
                     {
                         gu8IceStep = STATE_5_PREHEAT_HOTGAS_MOVE;
@@ -218,7 +218,7 @@ void ice_make_operation(void)
 
         case STATE_5_PREHEAT_HOTGAS_MOVE :
 
-            /*..hui [23-4-7¿ÀÈÄ 5:10:11] ³Ã¸ÅÀüÈ¯¹ëºê ÇÖ°¡½º ÀÌµ¿..*/
+            /*..hui [23-4-7ì˜¤í›„ 5:10:11] ëƒ‰ë§¤ì „í™˜ë°¸ë¸Œ í•«ê°€ìŠ¤ ì´ë™..*/
             GasSwitchHotGas();
             gu8IceStep = STATE_6_CALC_PREHEAT_TIME;
 
@@ -228,7 +228,7 @@ void ice_make_operation(void)
 
             if( gu8_GasSwitch_Status == GAS_SWITCH_HOTGAS )
             {
-                /*..hui [23-4-7¿ÀÈÄ 5:10:03] ³Ã¸ÅÀüÈ¯¹ëºê ÇÖ°¡½º ÀÌµ¿ ¿Ï·á ÈÄ, COMP °¡µ¿, 60HZ..*/
+                /*..hui [23-4-7ì˜¤í›„ 5:10:03] ëƒ‰ë§¤ì „í™˜ë°¸ë¸Œ í•«ê°€ìŠ¤ ì´ë™ ì™„ë£Œ í›„, COMP ê°€ë™, 60HZ..*/
                 mu8_comp_rps = get_preheat_mode_comp_rps();
                 set_comp_rps( mu8_comp_rps );
 
@@ -260,11 +260,11 @@ void ice_make_operation(void)
 
             break;
 
-        //----------------------------------------------// ¾óÀ½¹ŞÀÌ Á¦ºùÈ¸Àü
+        //----------------------------------------------// ì–¼ìŒë°›ì´ ì œë¹™íšŒì „
         case STATE_10_ICE_TRAY_MOVE_UP :
             if(F_TrayMotorDOWN != SET)
             {
-                up_tray_motor();    // Á¦ºù½ÃÀÛ ½Ã »ó½Â
+                up_tray_motor();    // ì œë¹™ì‹œì‘ ì‹œ ìƒìŠ¹
                 gu8IceStep = STATE_11_WAIT_ROOM_WATER_FULL;
 
                 F_CristalIce = SET;
@@ -273,7 +273,7 @@ void ice_make_operation(void)
 
             break;
 
-        //----------------------------------------------// Á¦ºùÈ¸ÀüÈÄ ¹°¹ŞÀÌVV ON
+        //----------------------------------------------// ì œë¹™íšŒì „í›„ ë¬¼ë°›ì´VV ON
         case STATE_11_WAIT_ROOM_WATER_FULL :
 
             //if( /*F_TrayMotorUP != SET && */gu8IceTrayLEV == ICE_TRAY_POSITION_ICE_MAKING )
@@ -289,9 +289,9 @@ void ice_make_operation(void)
                 tray_abnormal_E62_step = 0;
                 abnormal_2_repeat_cnt = 0;
 
-                /*..hui [23-4-7¿ÀÈÄ 5:52:57] ¿¬¼Ó Á¦ºù Á¶°ÇÀÏ°æ¿ì..*/
-                /*..hui [23-8-14¿ÀÈÄ 1:56:47] ¼öÀ§ È®ÀÎÀº Æ®·¹ÀÌ ÀÔ¼öÂÊ¿¡¼­.. ..*/
-                /*..hui [23-8-14¿ÀÈÄ 1:57:10] ¿©±â±îÁö ¿À´Â »çÀÌ¿¡ ¹° ´Ù »©¹ö¸®¸é COMP ÄÑÁø»óÅÂ·Î ÀÌÂÊ¿¡¼­ ´ë±âÇÏ°ÔµÊ..*/
+                /*..hui [23-4-7ì˜¤í›„ 5:52:57] ì—°ì† ì œë¹™ ì¡°ê±´ì¼ê²½ìš°..*/
+                /*..hui [23-8-14ì˜¤í›„ 1:56:47] ìˆ˜ìœ„ í™•ì¸ì€ íŠ¸ë ˆì´ ì…ìˆ˜ìª½ì—ì„œ.. ..*/
+                /*..hui [23-8-14ì˜¤í›„ 1:57:10] ì—¬ê¸°ê¹Œì§€ ì˜¤ëŠ” ì‚¬ì´ì— ë¬¼ ë‹¤ ë¹¼ë²„ë¦¬ë©´ COMP ì¼œì§„ìƒíƒœë¡œ ì´ìª½ì—ì„œ ëŒ€ê¸°í•˜ê²Œë¨..*/
                 if( F_Comp_Output == SET )
                 {
                     gu8IceStep = STATE_12_CONT_ICE_SWITCH_MOVE;
@@ -303,7 +303,7 @@ void ice_make_operation(void)
             }
             else
             {
-                /*..hui [18-3-20¿ÀÈÄ 7:21:54] Á¤¼öÅÊÅ© ¸¸¼öÀ§ Ã¤¿ì´ÂÁß¿¡ Æ®·¹ÀÌ ÃÄÁö¸é Á¦ºù Á¤ÁöµÊ..*/
+                /*..hui [18-3-20ì˜¤í›„ 7:21:54] ì •ìˆ˜íƒ±í¬ ë§Œìˆ˜ìœ„ ì±„ìš°ëŠ”ì¤‘ì— íŠ¸ë ˆì´ ì³ì§€ë©´ ì œë¹™ ì •ì§€ë¨..*/
                 if(F_TrayMotorUP != SET)
                 {
                     gu8IceStep = STATE_10_ICE_TRAY_MOVE_UP;
@@ -323,7 +323,7 @@ void ice_make_operation(void)
 
         case STATE_13_CONT_RPS_SETTING :
 
-            /*..hui [19-7-24¿ÀÈÄ 4:35:37] ³Ã¸ÅÀüÈ¯¹ëºê ÀÌµ¿ ¿Ï·á ÈÄ..*/
+            /*..hui [19-7-24ì˜¤í›„ 4:35:37] ëƒ‰ë§¤ì „í™˜ë°¸ë¸Œ ì´ë™ ì™„ë£Œ í›„..*/
             if(gu8_GasSwitch_Status == GAS_SWITCH_ICE)
             {
                 mu8_comp_rps = get_ice_mode_comp_rps();
@@ -338,17 +338,17 @@ void ice_make_operation(void)
 
             break;
 
-        //----------------------------------------------// Á¦ºùÈ¸ÀüÈÄ ¹°¹ŞÀÌVV ON
+        //----------------------------------------------// ì œë¹™íšŒì „í›„ ë¬¼ë°›ì´VV ON
         case STATE_14_CHECK_ICE_TRAY_HZ :
 
-            /*..hui [19-7-23¿ÀÈÄ 2:08:21] Æ®·¹ÀÌÀÔ¼ö ¼ö¹è°ü º¯°æ¿¡ µû¸¥ »ç¾ç º¯°æ(À¯·®¼¾¼­ ÈÄ´Ü)..*/
-            /*..hui [19-7-23¿ÀÈÄ 2:08:26] ¿Â¼ö »ç¿ëÁß¿¡´Â Æ®·¹ÀÌ ÀÔ¼ö ±İÁö..*/
+            /*..hui [19-7-23ì˜¤í›„ 2:08:21] íŠ¸ë ˆì´ì…ìˆ˜ ìˆ˜ë°°ê´€ ë³€ê²½ì— ë”°ë¥¸ ì‚¬ì–‘ ë³€ê²½(ìœ ëŸ‰ì„¼ì„œ í›„ë‹¨)..*/
+            /*..hui [19-7-23ì˜¤í›„ 2:08:26] ì˜¨ìˆ˜ ì‚¬ìš©ì¤‘ì—ëŠ” íŠ¸ë ˆì´ ì…ìˆ˜ ê¸ˆì§€..*/
             /*if(u8WaterOutState == HOT_WATER_SELECT && F_WaterOut == SET)*/
-            /*..hui [19-8-28¿ÀÀü 9:54:48] ¿Â¼ö »Ó¸¸¾Æ´Ï¶ó ¹° ÃßÃâÁß¿¡µµ Æ®·¹ÀÌ ÀÔ¼ö ´ë±â..*/
+            /*..hui [19-8-28ì˜¤ì „ 9:54:48] ì˜¨ìˆ˜ ë¿ë§Œì•„ë‹ˆë¼ ë¬¼ ì¶”ì¶œì¤‘ì—ë„ íŠ¸ë ˆì´ ì…ìˆ˜ ëŒ€ê¸°..*/
             #if 1
             if(F_WaterOut == SET)
             {
-                /* Æ®·¹ÀÌ ÀÔ¼ö ÇÏ·Á´Âµ¥ ³Ã¿ÂÁ¤ »ó°ü¾øÀÌ ÃßÃâÇÏ¸é ´ë±âÇØ¾ß µÊ */
+                /* íŠ¸ë ˆì´ ì…ìˆ˜ í•˜ë ¤ëŠ”ë° ëƒ‰ì˜¨ì • ìƒê´€ì—†ì´ ì¶”ì¶œí•˜ë©´ ëŒ€ê¸°í•´ì•¼ ë¨ */
             }
             else
             {
@@ -359,7 +359,7 @@ void ice_make_operation(void)
 
             break;
 
-        //-----------------------------------------------// ¹°¹ŞÀÌVV Off
+        //-----------------------------------------------// ë¬¼ë°›ì´VV Off
         case STATE_20_WATER_IN_ICE_TRAY :
 
             if( gu16_Ice_Tray_Fill_Hz <= 0 )
@@ -367,17 +367,17 @@ void ice_make_operation(void)
                 gu8IceStep = STATE_21_ICE_SWITCH_MOVE;
 
                 gu16_wifi_tray_in_flow = 260;
-                /*..hui [24-11-13¿ÀÈÄ 2:57:55] TDS »èÁ¦..*/
+                /*..hui [24-11-13ì˜¤í›„ 2:57:55] TDS ì‚­ì œ..*/
                 /*gu16_tds_water_acc = gu16_tds_water_acc + 200;*/
             }
             else
             {
                 gu16_wifi_tray_in_time++;
-                /* Æ®·¹ÀÌ ÀÔ¼öÁßÀÎµ¥ Æ®·¹ÀÌ ÀÔ¼ö¿¡ ¹®Á¦°¡ »ı±â¸é
-                Áï½Ã Æ®·¹ÀÌ ³»¸®°í Å»ºù ÈÄ ³ªÁß¿¡ ´Ù½Ã ½Ãµµ 250423 CH.PARK */
+                /* íŠ¸ë ˆì´ ì…ìˆ˜ì¤‘ì¸ë° íŠ¸ë ˆì´ ì…ìˆ˜ì— ë¬¸ì œê°€ ìƒê¸°ë©´
+                ì¦‰ì‹œ íŠ¸ë ˆì´ ë‚´ë¦¬ê³  íƒˆë¹™ í›„ ë‚˜ì¤‘ì— ë‹¤ì‹œ ì‹œë„ 250423 CH.PARK */
                 if( bit_tray_in_error_temporary == SET )
                 {
-                    down_tray_motor();      // Æ®·¹ÀÌ ÀÔ¼öÁß ¿¡·¯
+                    down_tray_motor();      // íŠ¸ë ˆì´ ì…ìˆ˜ì¤‘ ì—ëŸ¬
                     if( F_Comp_Output == SET )
                     {
                         gu8IceStep = STATE_40_ICE_TRAY_MOVE_DOWN;
@@ -392,7 +392,7 @@ void ice_make_operation(void)
 
             break;
 
-        //-----------------------------------------------// ¹°¹ŞÀÌVV Off
+        //-----------------------------------------------// ë¬¼ë°›ì´VV Off
         case STATE_21_ICE_SWITCH_MOVE :
 
             GasSwitchIce();
@@ -401,34 +401,34 @@ void ice_make_operation(void)
 
             break;
 
-        //-----------------------------------------------// Á¦ºù ½ÃÀÛ
+        //-----------------------------------------------// ì œë¹™ ì‹œì‘
         case STATE_30_CALC_ICE_MAKING_TIME :
 
-            /*..hui [19-7-24¿ÀÈÄ 4:35:37] ³Ã¸ÅÀüÈ¯¹ëºê ÀÌµ¿ ¿Ï·á ÈÄ..*/
+            /*..hui [19-7-24ì˜¤í›„ 4:35:37] ëƒ‰ë§¤ì „í™˜ë°¸ë¸Œ ì´ë™ ì™„ë£Œ í›„..*/
             if(gu8_GasSwitch_Status == GAS_SWITCH_ICE)
             {
                 if(gu16CompOffDelay == 0 ||  F_Comp_Output == SET)
                 {
-                    /* ¾óÀ½»çÀÌÁî [´ë/¼Ò]´Â ³Ãµ¿¿¡¼­ Å×ÀÌºí ÁÖ¸é ±×¿¡ ¸Â°Ô ¼³Á¤ÇÏ¸é µÊ 250224 CH.PARK */
+                    /* ì–¼ìŒì‚¬ì´ì¦ˆ [ëŒ€/ì†Œ]ëŠ” ëƒ‰ë™ì—ì„œ í…Œì´ë¸” ì£¼ë©´ ê·¸ì— ë§ê²Œ ì„¤ì •í•˜ë©´ ë¨ 250224 CH.PARK */
                     gu16IceMakeTime
                         = (U16)calc_ice_make_time( gu8_Amb_Front_Temperature_One_Degree, gu8_Room_Temperature_One_Degree);
 
                     /*gu16IceMakeTime
                         = (U16)calc_ice_make_time( gu8_Amb_Temperature_One_Degree, gu8_average_tray_temp);*/
 
-                    /*..hui [19-7-5¿ÀÈÄ 2:08:13] 100ms Ä«¿îÆ® Á¶°Ç º¯°æ..*/
+                    /*..hui [19-7-5ì˜¤í›„ 2:08:13] 100ms ì¹´ìš´íŠ¸ ì¡°ê±´ ë³€ê²½..*/
                     gu16IceMakeTime = (U16)(gu16IceMakeTime  * 10);
 
-                    /*..hui [25-3-27¿ÀÈÄ 1:34:22] ¾óÀ½ ´ë¼Ò ±â´É Ãß°¡..*/
+                    /*..hui [25-3-27ì˜¤í›„ 1:34:22] ì–¼ìŒ ëŒ€ì†Œ ê¸°ëŠ¥ ì¶”ê°€..*/
                     if( bit_ice_size == ICE_SIZE_SMALL )
                     {
-                        gu16IceMakeTime = (U16)((F32)gu16IceMakeTime * 0.9f);   // ³Ãµ¿¿äÃ» 80% -> 90%
+                        gu16IceMakeTime = (U16)((F32)gu16IceMakeTime * 0.9f);   // ëƒ‰ë™ìš”ì²­ 80% -> 90%
                     }
                     else{}
 
                     gu16_cody_ice_make_time  = gu16IceMakeTime;
 
-                    /*..hui [24-2-14¿ÀÈÄ 4:28:53] UV ³²Àº½Ã°£ °è»ê¿ë..*/
+                    /*..hui [24-2-14ì˜¤í›„ 4:28:53] UV ë‚¨ì€ì‹œê°„ ê³„ì‚°ìš©..*/
                     gu16_uv_ice_make_time = gu16IceMakeTime;
 
                     mu8_comp_rps = get_ice_mode_comp_rps();
@@ -445,12 +445,12 @@ void ice_make_operation(void)
             }
 
             break;
-        //-----------------------------------------------// Á¦ºù¿Ï·áÈÄ ¸ğÅÍÈ¸Àü
+        //-----------------------------------------------// ì œë¹™ì™„ë£Œí›„ ëª¨í„°íšŒì „
         case STATE_31_MAIN_ICE_MAKING :
 
             if(gu16IceMakeTime > 0 && pCOMP == SET)
             {
-                gu16IceMakeTime--;    // Á¦ºù 13ºĞ
+                gu16IceMakeTime--;    // ì œë¹™ 13ë¶„
 
                 gu32_wifi_ice_make_time++;
             }
@@ -459,7 +459,7 @@ void ice_make_operation(void)
             if(gu16IceMakeTime == 0)
             {
                 /*gu16IceHeaterTime = calc_ice_heater_time();*/
-                down_tray_motor();      // Á¦ºù¿Ï·á ¡æ Å»ºù
+                down_tray_motor();      // ì œë¹™ì™„ë£Œ â†’ íƒˆë¹™
 
                 gu8IceStep = STATE_40_ICE_TRAY_MOVE_DOWN;
                 gu8_ice_take_off_tray_delay = CLEAR;
@@ -468,7 +468,7 @@ void ice_make_operation(void)
             }
             else
             {
-                /* Á¦ºùÁßÀÎµ¥ Æ®·¹ÀÌ°¡ ¾Æ·¡·Î ÃÄÁú ¶§ º¹¿ø */
+                /* ì œë¹™ì¤‘ì¸ë° íŠ¸ë ˆì´ê°€ ì•„ë˜ë¡œ ì³ì§ˆ ë•Œ ë³µì› */
                 recovery_ice_tray();
 
                 if( gu16IceMakeTime <= HOT_GAS_NOISE_REDUCE_TIME )
@@ -480,7 +480,7 @@ void ice_make_operation(void)
 
             break;
 
-        //-----------------------------------------------// ¸ğÅÍÈ¸Àü¿Ï·á
+        //-----------------------------------------------// ëª¨í„°íšŒì „ì™„ë£Œ
         case STATE_40_ICE_TRAY_MOVE_DOWN :
 			if(F_TrayMotorDOWN != SET && gu8IceTrayLEV == ICE_TRAY_POSITION_ICE_THROW)
             {
@@ -522,12 +522,12 @@ void ice_make_operation(void)
 
             if(mu8_return_value == SET)
             {
-                F_IR = SET;              // ¸¸ºù¼¾¼­ µ¿ÀÛ
+                F_IR = SET;              // ë§Œë¹™ì„¼ì„œ ë™ì‘
                 F_Low_IR = SET;
                 F_IceHeater = CLEAR;
                 gu8_ice_mix_timer = 0;
                 gu8IceStep = STATE_44_FEEDER_OPERATION;
-                bit_ice_mix_back_state = SET;       // Á¦ºù¿Ï·á ÈÄ 2ÃÊ Á¤¿ª
+                bit_ice_mix_back_state = SET;       // ì œë¹™ì™„ë£Œ í›„ 2ì´ˆ ì •ì—­
             }
             else{}
 
@@ -539,14 +539,14 @@ void ice_make_operation(void)
             if( gu8_ice_mix_timer >= ICE_FEDDER_MIX_MAX_TIME )
             {
                 gu8_ice_mix_timer = 0;
-                F_IR = SET;              // ¢¬¢¬¨¬u¨ù¨ú¨ù¡© ¥ì¢¯AU
+                F_IR = SET;              // Â¸Â¸ÂºuÂ¼Â¾Â¼Â­ Î¼Â¿AU
                 F_Low_IR = SET;
                 gu8IceStep = STATE_50_ICE_FULL_IR_CHECK;
             }
             else{}
 
             break;
-        //-------------------------------------------------// SB ³Ã¼ö È¸Àü¿Ï·á
+        //-------------------------------------------------// SB ëƒ‰ìˆ˜ íšŒì „ì™„ë£Œ
         case STATE_50_ICE_FULL_IR_CHECK :
 
             if(F_IR != SET)
@@ -560,7 +560,7 @@ void ice_make_operation(void)
         case STATE_51_FINISH_ICE_MAKE :
             // gu8IceStep = STATE_52_TRAY_UP_POSITION;
             gu8IceStep = STATE_0_STANDBY;
-            /*..hui [23-7-21¿ÀÈÄ 4:52:04] Ãß°¡..*/
+            /*..hui [23-7-21ì˜¤í›„ 4:52:04] ì¶”ê°€..*/
             F_CristalIce = CLEAR;
             break;
 
@@ -638,11 +638,11 @@ U8 hot_gas_operation(void)
 ***********************************************************************************************************************/
 void recovery_ice_tray(void)
 {
-    /*..hui [18-3-22¿ÀÀü 9:39:58] ±â±¸ÀûÀÎ ¹®Á¦·Î Á¦ºùÁß ¾Æ¿¡½ºÆ®·¹ÀÌ°¡ ÃÄÁö´Â Çö»ó ¹ß»ıÇÒ¼öÀÖÀ½..*/
-    /*..hui [18-3-22¿ÀÀü 9:40:16] ¾ÆÀÌ½ºÆ®·¹ÀÌ°¡ ÃÄÁö¸é 10ÃÊ¿¡ ÇÑ¹ø¾¿ ´Ù½Ã ¿Ã·ÁÁØ´Ù..*/
+    /*..hui [18-3-22ì˜¤ì „ 9:39:58] ê¸°êµ¬ì ì¸ ë¬¸ì œë¡œ ì œë¹™ì¤‘ ì•„ì—ìŠ¤íŠ¸ë ˆì´ê°€ ì³ì§€ëŠ” í˜„ìƒ ë°œìƒí• ìˆ˜ìˆìŒ..*/
+    /*..hui [18-3-22ì˜¤ì „ 9:40:16] ì•„ì´ìŠ¤íŠ¸ë ˆì´ê°€ ì³ì§€ë©´ 10ì´ˆì— í•œë²ˆì”© ë‹¤ì‹œ ì˜¬ë ¤ì¤€ë‹¤..*/
     if(gu8IceTrayLEV != ICE_TRAY_POSITION_ICE_MAKING)
     {
-        /*..hui [18-3-22¿ÀÀü 10:00:09] Æ®·¹ÀÌ Àç½Ãµµ±â´É Áß¿¡´Â µ¿ÀÛ¾ÈÇÔ..*/
+        /*..hui [18-3-22ì˜¤ì „ 10:00:09] íŠ¸ë ˆì´ ì¬ì‹œë„ê¸°ëŠ¥ ì¤‘ì—ëŠ” ë™ì‘ì•ˆí•¨..*/
         if(F_Safety_Routine != SET)
         {
             gu8_ice_tray_reovery_time++;
@@ -655,7 +655,7 @@ void recovery_ice_tray(void)
         if(gu8_ice_tray_reovery_time >= 200)
         {
             gu8_ice_tray_reovery_time = 0;
-            up_tray_motor();    // Á¦ºùÁß Æ®·¹ÀÌ Ã³Áü ½Ã »ó½Â
+            up_tray_motor();    // ì œë¹™ì¤‘ íŠ¸ë ˆì´ ì²˜ì§ ì‹œ ìƒìŠ¹
         }
         else{}
     }
@@ -685,30 +685,30 @@ U8 get_ice_mode_comp_rps(void)
 {
     U8 mu8_return = 0;
 
-	/*.. sean [25-02-04] gu8_Amb_Temperature_One_DegreeÀ¸·Î Ã³¸®µÇ¾î front·Î º¯°æ..*/
+	/*.. sean [25-02-04] gu8_Amb_Temperature_One_Degreeìœ¼ë¡œ ì²˜ë¦¬ë˜ì–´ frontë¡œ ë³€ê²½..*/
     if( gu8_Amb_Front_Temperature_One_Degree <= 10 )
     {
-        /*..hui [23-4-7¿ÀÀü 11:15:58] 10µµ ÀÌÇÏ..*/
+        /*..hui [23-4-7ì˜¤ì „ 11:15:58] 10ë„ ì´í•˜..*/
         mu8_return = BLDC_COMP_65Hz;
     }
     else if( gu8_Amb_Front_Temperature_One_Degree <= 20 )
     {
-        /*..hui [23-4-7¿ÀÀü 11:16:02] 20µµ ÀÌÇÏ..*/
+        /*..hui [23-4-7ì˜¤ì „ 11:16:02] 20ë„ ì´í•˜..*/
         mu8_return = BLDC_COMP_66Hz;
     }
     else if( gu8_Amb_Front_Temperature_One_Degree <= 25 )
     {
-        /*..hui [23-4-7¿ÀÀü 11:16:06] 25µµ ÀÌÇÏ..*/
+        /*..hui [23-4-7ì˜¤ì „ 11:16:06] 25ë„ ì´í•˜..*/
         mu8_return = BLDC_COMP_66Hz;
     }
     else if( gu8_Amb_Front_Temperature_One_Degree <= 30 )
     {
-        /*..hui [23-4-7¿ÀÀü 11:16:10] 30µµ ÀÌÇÏ..*/
+        /*..hui [23-4-7ì˜¤ì „ 11:16:10] 30ë„ ì´í•˜..*/
         mu8_return = BLDC_COMP_66Hz;
     }
     else
     {
-        /*..hui [23-4-7¿ÀÀü 11:16:14] 30µµ ÃÊ°ú..*/
+        /*..hui [23-4-7ì˜¤ì „ 11:16:14] 30ë„ ì´ˆê³¼..*/
         mu8_return = BLDC_COMP_65Hz;
     }
 
@@ -725,34 +725,34 @@ U8 get_hotgas_mode_comp_rps(void)
 
     if( gu8_Amb_Temperature_One_Degree < HOT_GAS_AMB_TEMP_9_DIGREE )
     {
-        /*..hui [23-4-7¿ÀÈÄ 1:17:04] 9µµ ¹Ì¸¸..*/
+        /*..hui [23-4-7ì˜¤í›„ 1:17:04] 9ë„ ë¯¸ë§Œ..*/
         mu8_return = BLDC_COMP_50Hz;
     }
     else if( gu8_Amb_Temperature_One_Degree <= HOT_GAS_AMB_TEMP_13_DIGREE )
     {
-        /*..hui [23-4-7¿ÀÈÄ 1:23:42] 9µµ ~ 13µµ..*/
+        /*..hui [23-4-7ì˜¤í›„ 1:23:42] 9ë„ ~ 13ë„..*/
         mu8_return = BLDC_COMP_50Hz;
     }
     else if( gu8_Amb_Temperature_One_Degree <= HOT_GAS_AMB_TEMP_19_DIGREE )
     {
-        /*..hui [23-4-7¿ÀÈÄ 1:23:55] 14µµ ~ 19µµ..*/
+        /*..hui [23-4-7ì˜¤í›„ 1:23:55] 14ë„ ~ 19ë„..*/
         mu8_return = BLDC_COMP_50Hz;
     }
     else if( gu8_Amb_Temperature_One_Degree <= HOT_GAS_AMB_TEMP_24_DIGREE )
     {
-        /*..hui [23-4-7¿ÀÈÄ 1:24:08] 20µµ ~ 24µµ..*/
+        /*..hui [23-4-7ì˜¤í›„ 1:24:08] 20ë„ ~ 24ë„..*/
         mu8_return = BLDC_COMP_47Hz;
     }
     else if( gu8_Amb_Temperature_One_Degree <= HOT_GAS_AMB_TEMP_29_DIGREE )
     {
-        /*..hui [23-4-7¿ÀÈÄ 1:24:18] 25µµ ~ 29µµ..*/
+        /*..hui [23-4-7ì˜¤í›„ 1:24:18] 25ë„ ~ 29ë„..*/
         mu8_return = BLDC_COMP_47Hz;
     }
     else
     {
-        /*..hui [23-4-7¿ÀÈÄ 1:24:23] 30µµ ÀÌ»ó..*/
+        /*..hui [23-4-7ì˜¤í›„ 1:24:23] 30ë„ ì´ìƒ..*/
         /*mu8_return = BLDC_COMP_43Hz;*/
-        /*..hui [23-5-24¿ÀÀü 10:59:56] Ã»·¡ º¯°æ..*/
+        /*..hui [23-5-24ì˜¤ì „ 10:59:56] ì²­ë˜ ë³€ê²½..*/
         /*mu8_return = BLDC_COMP_51Hz;*/
         mu8_return = BLDC_COMP_43Hz;
     }
@@ -766,7 +766,7 @@ U8 get_hotgas_mode_comp_rps(void)
 ***********************************************************************************************************************/
 U8 get_preheat_mode_comp_rps(void)
 {
-    /*..hui [23-4-7¿ÀÈÄ 5:00:06] ¿¹¿­ ¸ğµå RPS 60HZ..*/
+    /*..hui [23-4-7ì˜¤í›„ 5:00:06] ì˜ˆì—´ ëª¨ë“œ RPS 60HZ..*/
     return BLDC_COMP_60Hz;
 }
 
@@ -779,35 +779,35 @@ U16 get_hotgas_time(void)
 {
     U16 mu16_return = 0;
 
-	/*.. sean [25-02-04] gu8_Amb_Temperature_One_DegreeÀ¸·Î Ã³¸®µÇ¾î front·Î º¯°æ..*/
+	/*.. sean [25-02-04] gu8_Amb_Temperature_One_Degreeìœ¼ë¡œ ì²˜ë¦¬ë˜ì–´ frontë¡œ ë³€ê²½..*/
     if( gu8_Amb_Front_Temperature_One_Degree < HOT_GAS_AMB_TEMP_9_DIGREE )
     {
-        /*..hui [23-4-7¿ÀÈÄ 1:17:04] 9µµ ¹Ì¸¸..*/
+        /*..hui [23-4-7ì˜¤í›„ 1:17:04] 9ë„ ë¯¸ë§Œ..*/
         mu16_return = HOT_GAS_TIME_9_UNDER_765S;
     }
     else if( gu8_Amb_Front_Temperature_One_Degree <= HOT_GAS_AMB_TEMP_13_DIGREE )
     {
-        /*..hui [23-4-7¿ÀÈÄ 1:23:42] 9µµ ~ 13µµ..*/
+        /*..hui [23-4-7ì˜¤í›„ 1:23:42] 9ë„ ~ 13ë„..*/
         mu16_return = HOT_GAS_TIME_13_UNDER_600S;
     }
     else if( gu8_Amb_Front_Temperature_One_Degree <= HOT_GAS_AMB_TEMP_19_DIGREE )
     {
-        /*..hui [23-4-7¿ÀÈÄ 1:23:55] 14µµ ~ 19µµ..*/
+        /*..hui [23-4-7ì˜¤í›„ 1:23:55] 14ë„ ~ 19ë„..*/
         mu16_return = HOT_GAS_TIME_19_UNDER_180S;
     }
     else if( gu8_Amb_Front_Temperature_One_Degree <= HOT_GAS_AMB_TEMP_24_DIGREE )
     {
-        /*..hui [23-4-7¿ÀÈÄ 1:24:08] 20µµ ~ 24µµ..*/
+        /*..hui [23-4-7ì˜¤í›„ 1:24:08] 20ë„ ~ 24ë„..*/
         mu16_return = HOT_GAS_TIME_24_UNDER_30S;
     }
     else if( gu8_Amb_Front_Temperature_One_Degree <= HOT_GAS_AMB_TEMP_29_DIGREE )
     {
-        /*..hui [23-4-7¿ÀÈÄ 1:24:18] 25µµ ~ 29µµ..*/
+        /*..hui [23-4-7ì˜¤í›„ 1:24:18] 25ë„ ~ 29ë„..*/
         mu16_return = HOT_GAS_TIME_29_UNDER_20S;
     }
     else
     {
-        /*..hui [23-4-7¿ÀÈÄ 1:24:23] 30µµ ÀÌ»ó..*/
+        /*..hui [23-4-7ì˜¤í›„ 1:24:23] 30ë„ ì´ìƒ..*/
         mu16_return = HOT_GAS_TIME_30_OVER_15S;
     }
 
@@ -825,17 +825,17 @@ U16 get_preheat_time(void)
 
     if( gu8_Amb_Temperature_One_Degree < 14 )
     {
-        /*..hui [23-4-7¿ÀÈÄ 5:05:22] 14µµ ¹Ì¸¸..*/
+        /*..hui [23-4-7ì˜¤í›„ 5:05:22] 14ë„ ë¯¸ë§Œ..*/
         mu16_return = PREHEAT_TIME_14_UNDER_600S;
     }
     else if( gu8_Amb_Temperature_One_Degree < 20 )
     {
-        /*..hui [23-4-7¿ÀÈÄ 5:05:35] 14µµ ~ 19µµ..*/
+        /*..hui [23-4-7ì˜¤í›„ 5:05:35] 14ë„ ~ 19ë„..*/
         mu16_return = PREHEAT_TIME_20_UNDER_360S;
     }
     else
     {
-        /*..hui [23-4-7¿ÀÈÄ 5:05:45] 20µµ ~ 24µµ..*/
+        /*..hui [23-4-7ì˜¤í›„ 5:05:45] 20ë„ ~ 24ë„..*/
         mu16_return = PREHEAT_TIME_25_UNDER_360S;
     }
 
@@ -857,7 +857,7 @@ void get_average_tray_temp(void)
         gu8_average_temp_max = 0;
         gu8_averge_temp_min = 100;
 
-        /*..hui [23-9-19¿ÀÈÄ 3:35:54] Æ®·¹ÀÌ ÀÔ¼ö¼¾¼­ ¿¡·¯½Ã Á¤¼ö¿Âµµ·Î..*/
+        /*..hui [23-9-19ì˜¤í›„ 3:35:54] íŠ¸ë ˆì´ ì…ìˆ˜ì„¼ì„œ ì—ëŸ¬ì‹œ ì •ìˆ˜ì˜¨ë„ë¡œ..*/
         gu8_average_tray_temp = gu8_Room_Temperature_One_Degree;
 
         return;
@@ -868,7 +868,7 @@ void get_average_tray_temp(void)
     {
         gu8_average_timer++;
 
-        /*..hui [23-9-19¿ÀÈÄ 3:29:56] 1ÃÊ ´ÜÀ§ Àû»ê..*/
+        /*..hui [23-9-19ì˜¤í›„ 3:29:56] 1ì´ˆ ë‹¨ìœ„ ì ì‚°..*/
         if( gu8_average_timer >= 10 )
         {
             gu8_average_timer = 0;
@@ -878,8 +878,8 @@ void get_average_tray_temp(void)
             return;
         }
 
-        /*..hui [23-9-19¿ÀÈÄ 1:28:26] Æ®·¹ÀÌ ÀÔ¼ö 50hz Àü±îÁö¸¸ Æò±Õ..*/
-        /*..hui [23-9-19¿ÀÈÄ 1:31:21] Æ®·¹ÀÌ ÆßÇÁ °¡µ¿Áß¿¡¸¸ Àû»ê..*/
+        /*..hui [23-9-19ì˜¤í›„ 1:28:26] íŠ¸ë ˆì´ ì…ìˆ˜ 50hz ì „ê¹Œì§€ë§Œ í‰ê· ..*/
+        /*..hui [23-9-19ì˜¤í›„ 1:31:21] íŠ¸ë ˆì´ íŒí”„ ê°€ë™ì¤‘ì—ë§Œ ì ì‚°..*/
         if( bit_tray_pump_output == CLEAR )
         {
             return;

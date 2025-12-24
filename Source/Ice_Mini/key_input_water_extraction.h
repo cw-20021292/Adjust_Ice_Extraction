@@ -107,13 +107,13 @@ extern TYPE_BYTE          U8IceOutStateB;
 
 
 
-/*..hui [20-2-3¿ÀÀü 10:57:20] ÆÛ¼¾Æ® °è»êÀ» À§ÇØ 300ms Á¤µµ ¿©À¯Áà¾ßÇÔ..*/
+/*..hui [20-2-3ì˜¤ì „ 10:57:20] í¼ì„¼íŠ¸ ê³„ì‚°ì„ ìœ„í•´ 300ms ì •ë„ ì—¬ìœ ì¤˜ì•¼í•¨..*/
 #define EXTRACT_TIME_CONTINUE                        1800 // 903
 #define EXTRACT_TIME_CONTINUE_LINE_TEST              6000
 
 
 
-/*..hui [20-5-11¿ÀÈÄ 4:00:55] 5ºĞÀ¸·Î º¯°æ..*/
+/*..hui [20-5-11ì˜¤í›„ 4:00:55] 5ë¶„ìœ¼ë¡œ ë³€ê²½..*/
 #define EXTRACT_TIME_COLD_DRAIN                      3003
 
 
@@ -238,6 +238,4 @@ extern U16 gu16_filter_flushing_timer;
 extern U16 gu16_filter_flushing_timer_saved;
 extern bit bit_wifi_pairing_start;
 extern LED_STEP gu8_Led_Display_Step;
-extern U8 gu8_ice_feeder_shake;
-extern U8 gu8_ice_feeder_shake_time;
 #endif

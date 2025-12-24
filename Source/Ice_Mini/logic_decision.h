@@ -57,7 +57,7 @@ extern bit bit_ct_filter_type_start;
 extern FLUSHING_STEP gu8_flushing_mode;
 extern bit F_IceOut;
 
-extern U8 gu8_passive_hot_ster_key_input_count;    // Æ®·¹ÀÌ °í¿Â»ì±Õ ÀÔ·Â¿ë Ä«¿îÆ® º¯¼ö
+extern U8 gu8_passive_hot_ster_key_input_count;    // íŠ¸ë ˆì´ ê³ ì˜¨ì‚´ê·  ì…ë ¥ìš© ì¹´ìš´íŠ¸ ë³€ìˆ˜
 extern bit bit_myWater_setting_start;
 extern bit bit_volume_setting_start;
 

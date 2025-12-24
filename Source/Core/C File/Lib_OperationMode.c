@@ -1,16 +1,16 @@
 /// @file   Lib_OperationMode.c
 /// @date
 /// @author Jaejin Ham
-/// @brief  µ¿ÀÛ ¸ğµå ÁÖ°ü Çì´õ ÆÄÀÏ
+/// @brief  ë™ì‘ ëª¨ë“œ ì£¼ê´€ í—¤ë” íŒŒì¼
 
 #include "Global_header.h"
 
 
-U8 gu8OperaionMode = 0;                 // ÇöÀç µ¿ÀÛ ÁßÀÎ ¸ğµå
-U8 gu8ChangeOperaionMode = 0;           // º¯°æÇÒ µ¿ÀÛ ¸ğµå
+U8 gu8OperaionMode = 0;                 // í˜„ì¬ ë™ì‘ ì¤‘ì¸ ëª¨ë“œ
+U8 gu8ChangeOperaionMode = 0;           // ë³€ê²½í•  ë™ì‘ ëª¨ë“œ
 
 
-/// @brief  ¸ŞÀÎ µ¿ÀÛ ¸ğµå ÃÊ±âÈ­ ÇÔ¼ö
+/// @brief  ë©”ì¸ ë™ì‘ ëª¨ë“œ ì´ˆê¸°í™” í•¨ìˆ˜
 /// @param  void
 /// @return void
 void InitializeOperationMode(void)
@@ -19,7 +19,7 @@ void InitializeOperationMode(void)
 }
 
 
-/// @brief  µ¿ÀÛ ¸ğµå º¯°æ ÇÔ¼ö
+/// @brief  ë™ì‘ ëª¨ë“œ ë³€ê²½ í•¨ìˆ˜
 /// @param  void
 /// @return void
 void ChangeOperationMode(U8 mu8OperationMode)
@@ -28,7 +28,7 @@ void ChangeOperationMode(U8 mu8OperationMode)
 }
 
 
-/// @brief  ¸ŞÀÎ µ¿ÀÛ Á¦¾î ¼¼ÆÃ ÇÔ¼ö
+/// @brief  ë©”ì¸ ë™ì‘ ì œì–´ ì„¸íŒ… í•¨ìˆ˜
 /// @param  void
 /// @return void
 void OperationModeSetup(void)
@@ -39,11 +39,11 @@ void OperationModeSetup(void)
             if (gu8OperaionMode != OPERATION_MODE_NORMAL)
             {
                 gu8OperaionMode = OPERATION_MODE_NORMAL;
-                InitializeTimeScheduler();                  // ½ºÄÉÁì·¯ ÃÊ±âÈ­
+                InitializeTimeScheduler();                  // ìŠ¤ì¼€ì¥´ëŸ¬ ì´ˆê¸°í™”
 
-                SetupTimeScheduler(AD_Convert_Control, 1, ACT_COUNT_INFINITE);      // AD Convert 1ms ·çÆ¾ µ¿ÀÛ
-// ¿¹)           SetupTimeScheduler(exFunction, 100, ACT_COUNT_INFINITE);            // »õ·Î¿î µ¿ÀÛ ÇÔ¼ö ½ºÄÉÁì ¼¼ÆÃ
-                SetupTimeScheduler(WifiControlProcess100ms, 100, ACT_COUNT_INFINITE);   // Wi-Fi 100ms Scheduler µ¿ÀÛ
+                SetupTimeScheduler(AD_Convert_Control, 1, ACT_COUNT_INFINITE);      // AD Convert 1ms ë£¨í‹´ ë™ì‘
+// ì˜ˆ)           SetupTimeScheduler(exFunction, 100, ACT_COUNT_INFINITE);            // ìƒˆë¡œìš´ ë™ì‘ í•¨ìˆ˜ ìŠ¤ì¼€ì¥´ ì„¸íŒ…
+                SetupTimeScheduler(WifiControlProcess100ms, 100, ACT_COUNT_INFINITE);   // Wi-Fi 100ms Scheduler ë™ì‘
             }
             break;
 
@@ -53,7 +53,7 @@ void OperationModeSetup(void)
                 gu8OperaionMode = OPERATION_MODE_PCB_TEST;
                 InitializeTimeScheduler();
 
-                SetupTimeScheduler(AD_Convert_Control, 1, ACT_COUNT_INFINITE);      // AD Convert 1ms ·çÆ¾ µ¿ÀÛ
+                SetupTimeScheduler(AD_Convert_Control, 1, ACT_COUNT_INFINITE);      // AD Convert 1ms ë£¨í‹´ ë™ì‘
             }
             break;
 
@@ -63,7 +63,7 @@ void OperationModeSetup(void)
                 gu8OperaionMode = OPERATION_MODE_FRONT_TEST;
                 InitializeTimeScheduler();
 
-                SetupTimeScheduler(AD_Convert_Control, 1, ACT_COUNT_INFINITE);      // AD Convert 1ms ·çÆ¾ µ¿ÀÛ
+                SetupTimeScheduler(AD_Convert_Control, 1, ACT_COUNT_INFINITE);      // AD Convert 1ms ë£¨í‹´ ë™ì‘
             }
             break;
 
@@ -73,7 +73,7 @@ void OperationModeSetup(void)
                 gu8OperaionMode = OPERATION_MODE_PTA_TEST_1;
                 InitializeTimeScheduler();
 
-                SetupTimeScheduler(AD_Convert_Control, 1, ACT_COUNT_INFINITE);      // AD Convert 1ms ·çÆ¾ µ¿ÀÛ
+                SetupTimeScheduler(AD_Convert_Control, 1, ACT_COUNT_INFINITE);      // AD Convert 1ms ë£¨í‹´ ë™ì‘
             }
             break;
 
@@ -83,7 +83,7 @@ void OperationModeSetup(void)
                 gu8OperaionMode = OPERATION_MODE_PTA_TEST_2;
                 InitializeTimeScheduler();
 
-                SetupTimeScheduler(AD_Convert_Control, 1, ACT_COUNT_INFINITE);      // AD Convert 1ms ·çÆ¾ µ¿ÀÛ
+                SetupTimeScheduler(AD_Convert_Control, 1, ACT_COUNT_INFINITE);      // AD Convert 1ms ë£¨í‹´ ë™ì‘
             }
             break;
 

@@ -145,7 +145,7 @@ void fnd_wifi_set(void)
     }
     else
     {
-        /* 0.5ÃÊ ÈÄ Æä¾î¸µ ÁøÇàµµ Ç¥½Ã */
+        /* 0.5ì´ˆ í›„ íŽ˜ì–´ë§ ì§„í–‰ë„ í‘œì‹œ */
         gu8_pairing_delay_timer++;
         if(gu8_pairing_delay_timer >= PAIRING_DISPLAY_DELAY_TIME_100MS)
         {
@@ -197,7 +197,7 @@ void fnd_wifi_set(void)
 ***********************************************************************************************************************/
 void display__wifi_pairing(void)
 {
-    /*..hui [21-3-15¿ÀÈÄ 7:56:08] Æä¾î¸µ ÁøÇà Áß Àü¿øON/OFF·Î Àü¿ø OFF½Ã Á¾·á..*/
+    /*..hui [21-3-15ì˜¤í›„ 7:56:08] íŽ˜ì–´ë§ ì§„í–‰ ì¤‘ ì „ì›ON/OFFë¡œ ì „ì› OFFì‹œ ì¢…ë£Œ..*/
     if( gu8_Wifi_Connect_State == WIFI_OFF )
     {
         finish_pairing_screen();
@@ -230,10 +230,10 @@ void display__wifi_pairing(void)
         if( bit_display_last_error == SET )
         {
             gu8_pairing_finish_timer++;
-            if( gu8_pairing_finish_timer >= 50 )        // 5ÃÊ
+            if( gu8_pairing_finish_timer >= 50 )        // 5ì´ˆ
             {
-                /*..hui [23-12-20¿ÀÈÄ 1:27:13] ÃÖÃÊ 3ÃÊ ´©¸£°í ¿¡·¯ÀÖÀ»°æ¿ì ¿¡·¯¸¸ 5ÃÊ Ç¥½ÃÈÄ È­¸é Á¾·á..*/
-                /*..hui [23-12-20¿ÀÈÄ 1:27:21] ÀÌÈÄ Á¡À¯ÀÎÁõÇÏ¸é ´Ù½Ã %È­¸éÀ¸·Î Ç¥½ÃÇØ¾ßÇÔ..*/
+                /*..hui [23-12-20ì˜¤í›„ 1:27:13] ìµœì´ˆ 3ì´ˆ ëˆ„ë¥´ê³  ì—ëŸ¬ìžˆì„ê²½ìš° ì—ëŸ¬ë§Œ 5ì´ˆ í‘œì‹œí›„ í™”ë©´ ì¢…ë£Œ..*/
+                /*..hui [23-12-20ì˜¤í›„ 1:27:21] ì´í›„ ì ìœ ì¸ì¦í•˜ë©´ ë‹¤ì‹œ %í™”ë©´ìœ¼ë¡œ í‘œì‹œí•´ì•¼í•¨..*/
                 finish_pairing_screen();
 
                 bit_display_last_error = CLEAR;

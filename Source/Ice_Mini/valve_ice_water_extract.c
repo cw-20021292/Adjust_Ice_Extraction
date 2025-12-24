@@ -28,18 +28,18 @@ extern FLUSHING_STEP gu8_Ice_Out_Step;
 
 /***********************************************************************************************************************/
 /**
- * @brief ¾óÀ½¹° ÃßÃâ¹ëºê Á¦¾î ÇÔ¼ö
+ * @brief ì–¼ìŒë¬¼ ì¶”ì¶œë°¸ë¸Œ ì œì–´ í•¨ìˆ˜
  * 
  */
 void    OUTPUT_VALVE_ICE_WATER_OUT_FEED6(void)
 {
-    /* ¾óÀ½ ÃßÃâ °ü·ÃµÈ ÇÃ·¡±× SET ½Ã */
+    /* ì–¼ìŒ ì¶”ì¶œ ê´€ë ¨ëœ í”Œëž˜ê·¸ SET ì‹œ */
     // if(F_IceOut == SET)
 	if(F_WaterOut == SET)
 	{
         if( u8IceOutState == ICE_SELECT__ICE_WATER )
         {
-            /* ¾óÀ½¹° ÃßÃâ STATE ½ÃÀÛ */
+            /* ì–¼ìŒë¬¼ ì¶”ì¶œ STATE ì‹œìž‘ */
             if((gu8_Water_Out_Step >= STATE_30_EXTRACT_VALVE_ON_STATE)
             && (gu8_Water_Out_Step < STATE_40_EXTRACT_VALVE_OFF_STATE)
             )
@@ -61,7 +61,7 @@ void    OUTPUT_VALVE_ICE_WATER_OUT_FEED6(void)
 		Bit0_Ice_Water_Extract_State = CLEAR;
 	}
 
-    /* ÃÖÁ¾ ¹ëºê Á¦¾î */
+    /* ìµœì¢… ë°¸ë¸Œ ì œì–´ */
     if (u8IceWaterOutOFF > 0)
     {
         pVALVE_ICE_WATER_EXTRACT = CLEAR;      /*off*/

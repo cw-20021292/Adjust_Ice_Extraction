@@ -14,7 +14,7 @@
 void output_valve_hot_in_feed9(void);
 
 /***********************************************************************************************************************/
-/*..hui [21-5-21ø¿»ƒ 3:53:52] ø¬ºˆ ¿‘ºˆ πÎ∫Í = FEED9..*/
+/*..hui [21-5-21Ïò§ÌõÑ 3:53:52] Ïò®Ïàò ÏûÖÏàò Î∞∏Î∏å = FEED9..*/
 TYPE_WORD          U16HotInFeed9ValveONB;
 #define            u16HotInFeed9ValveONs                        U16HotInFeed9ValveONB.word
 #define            u8HotInFeed9ValveONs_L                       U16HotInFeed9ValveONB.byte[0]
@@ -30,7 +30,7 @@ TYPE_BYTE          U8HotInFeed9ValveOFFB;
 
 bit bit_hot_in_valve_output;
 
-bit bit_Holding_Flow_Block_Error__E08;// °⁄2025-06-02 Phil
+bit bit_Holding_Flow_Block_Error__E08;// ‚òÖ2025-06-02 Phil
 
 /***********************************************************************************************************************/
 extern FLUSHING_STEP gu8_flushing_mode;
@@ -82,14 +82,14 @@ void output_valve_hot_in_feed9(void)
                 && gu8_Preheat_Step >= STATE_1_PREHEAT_CHECK_OUTAGE_STATE
                 && gu8_Preheat_Step <= STATE_2_PREHEAT_DRAIN_STATE )
             {
-                /*..hui [21-9-1ø¿»ƒ 4:35:31] √ ±‚ ¿Ø∑Æ¡∂¿˝πÎ∫Í ø¯¡° ¿ÃµøΩ√ø°¥¬ πÎ∫Í OFFªÛ≈¬ ¿Ø¡ˆ..*/
-                /*..hui [21-5-21ø¿»ƒ 8:11:32] √ ±‚ ¿Ø∑Æ »Æ¿ŒøÎ..*/
+                /*..hui [21-9-1Ïò§ÌõÑ 4:35:31] Ï¥àÍ∏∞ Ïú†ÎüâÏ°∞Ï†àÎ∞∏Î∏å ÏõêÏ†ê Ïù¥ÎèôÏãúÏóêÎäî Î∞∏Î∏å OFFÏÉÅÌÉú Ïú†ÏßÄ..*/
+                /*..hui [21-5-21Ïò§ÌõÑ 8:11:32] Ï¥àÍ∏∞ Ïú†Îüâ ÌôïÏù∏Ïö©..*/
                 Bit1_HIF9_Hot_Out_State = F_WaterOut;
 
-    // °⁄2025-06-02 Phil
+    // ‚òÖ2025-06-02 Phil
                 if(gu8_Preheat_Step == STATE_2_PREHEAT_DRAIN_STATE)
                 {
-                    // 2025-06-05 20:23:04  cbr 30µµ ¡∂∞« ∞°µ÷º≠ øπø≠ Ω√ Ω∫∆¿
+                    // 2025-06-05 20:23:04  cbr 30ÎèÑ Ï°∞Í±¥ Í∞ÄÎë¨ÏÑú ÏòàÏó¥ Ïãú Ïä§ÌåÄ
                     if(gu8_Hot_In_Temperature_One_Degree <= 25)
                     {
                         if(u16Heater_Power_Save <= HEATER_POWER_LOW)
@@ -105,11 +105,11 @@ void output_valve_hot_in_feed9(void)
                                 }
                                 else
                                 {
-                                    Bit1_HIF9_Hot_Out_State = CLEAR;            // ¿·±Ò ∞°µ÷øπø≠«ÿ∫∏¿⁄
+                                    Bit1_HIF9_Hot_Out_State = CLEAR;            // Ïû†Íπê Í∞ÄÎë¨ÏòàÏó¥Ìï¥Î≥¥Ïûê
                                     bit_Holding_Flow_Block_Error__E08 = 1;
                                 }
                             }
-                            //2025-07-22 cbr 10µµ ¿˙¿¸æ– √π¿‹ full∑Œ«ÿµµ πÃ¥ﬁ
+                            //2025-07-22 cbr 10ÎèÑ Ï†ÄÏ†ÑÏïï Ï≤´Ïûî fullÎ°úÌï¥ÎèÑ ÎØ∏Îã¨
                             else if ( (( gu8_hot_setting_temperature == HOT_SET_TEMP____85oC )
                                     || ( gu8_hot_setting_temperature == HOT_SET_TEMP____80oC ))
                                     && (gu8_Hot_In_Temperature_One_Degree <= 15) )
@@ -121,7 +121,7 @@ void output_valve_hot_in_feed9(void)
                                 }
                                 else
                                 {
-                                    Bit1_HIF9_Hot_Out_State = CLEAR;            // ¿·±Ò ∞°µ÷øπø≠«ÿ∫∏¿⁄
+                                    Bit1_HIF9_Hot_Out_State = CLEAR;            // Ïû†Íπê Í∞ÄÎë¨ÏòàÏó¥Ìï¥Î≥¥Ïûê
                                     bit_Holding_Flow_Block_Error__E08 = 1;
                                 }
                             }
@@ -134,7 +134,7 @@ void output_valve_hot_in_feed9(void)
                                 }
                                 else
                                 {
-                                    Bit1_HIF9_Hot_Out_State = CLEAR;            // ¿·±Ò ∞°µ÷øπø≠«ÿ∫∏¿⁄
+                                    Bit1_HIF9_Hot_Out_State = CLEAR;            // Ïû†Íπê Í∞ÄÎë¨ÏòàÏó¥Ìï¥Î≥¥Ïûê
                                     bit_Holding_Flow_Block_Error__E08 = 1;
                                 }
                             }
@@ -152,13 +152,13 @@ void output_valve_hot_in_feed9(void)
                                 }
                                 else
                                 {
-                                    Bit1_HIF9_Hot_Out_State = CLEAR;            // ¿·±Ò ∞°µ÷øπø≠«ÿ∫∏¿⁄
+                                    Bit1_HIF9_Hot_Out_State = CLEAR;            // Ïû†Íπê Í∞ÄÎë¨ÏòàÏó¥Ìï¥Î≥¥Ïûê
                                     bit_Holding_Flow_Block_Error__E08 = 1;
                                 }
                             }
                             else if ( ( gu8_hot_setting_temperature == HOT_SET_TEMP____85oC ) 
                                         || ( gu8_hot_setting_temperature == HOT_SET_TEMP____80oC ) )
-                            {           //2025-07-15 cbr  1kg µø¿œ  20µµ ∞Ì¿¸æ– ¿˙¿Ø∑Æ ≤˜±Ë
+                            {           //2025-07-15 cbr  1kg ÎèôÏùº  20ÎèÑ Í≥†Ï†ÑÏïï Ï†ÄÏú†Îüâ ÎÅäÍπÄ
                                 if((u8Target_Hz_Hot > gu8_hot_filling_max_hz)&&(u16Heater_Power_Save >= HEATER_POWER_HIGH))
                                 {
                                     if(gu8_preheat_Closed_max_timer > 30 || gu8_Hot_Heater_Temperature_One_Degree >= gu8_Hot_Preheat_Temp - 5)
@@ -168,7 +168,7 @@ void output_valve_hot_in_feed9(void)
                                     }
                                     else
                                     {
-                                        Bit1_HIF9_Hot_Out_State = CLEAR;            // ¿·±Ò ∞°µ÷øπø≠«ÿ∫∏¿⁄              
+                                        Bit1_HIF9_Hot_Out_State = CLEAR;            // Ïû†Íπê Í∞ÄÎë¨ÏòàÏó¥Ìï¥Î≥¥Ïûê              
                                         bit_Holding_Flow_Block_Error__E08 = 1;      
                                     }      
                                 }
@@ -181,12 +181,12 @@ void output_valve_hot_in_feed9(void)
                                     }
                                     else
                                     {
-                                        Bit1_HIF9_Hot_Out_State = CLEAR;            // ¿·±Ò ∞°µ÷øπø≠«ÿ∫∏¿⁄              
+                                        Bit1_HIF9_Hot_Out_State = CLEAR;            // Ïû†Íπê Í∞ÄÎë¨ÏòàÏó¥Ìï¥Î≥¥Ïûê              
                                         bit_Holding_Flow_Block_Error__E08 = 1;      
                                     }     
                                 }           	                
                             }
-                            //2025-07-16 cbr   //¿‘ºˆ20 ¡§∞›,∞Ì¿¸æ– ¡∂∞« ∞°µ÷º≠ øπø≠ Ω√ ∞˙ø≠
+                            //2025-07-16 cbr   //ÏûÖÏàò20 Ï†ïÍ≤©,Í≥†Ï†ÑÏïï Ï°∞Í±¥ Í∞ÄÎë¨ÏÑú ÏòàÏó¥ Ïãú Í≥ºÏó¥
                             else if ( ( gu8_hot_setting_temperature == HOT_SET_TEMP____45oC )
                                     && (gu8_Hot_In_Temperature_One_Degree > 15))
                             {
@@ -197,7 +197,7 @@ void output_valve_hot_in_feed9(void)
                                 }
                                 else
                                 {
-                                    Bit1_HIF9_Hot_Out_State = CLEAR;            // ¿·±Ò ∞°µ÷øπø≠«ÿ∫∏¿⁄
+                                    Bit1_HIF9_Hot_Out_State = CLEAR;            // Ïû†Íπê Í∞ÄÎë¨ÏòàÏó¥Ìï¥Î≥¥Ïûê
                                     bit_Holding_Flow_Block_Error__E08 = 1;
                                 }
                             }
@@ -210,13 +210,13 @@ void output_valve_hot_in_feed9(void)
                                 }
                                 else
                                 {
-                                    Bit1_HIF9_Hot_Out_State = CLEAR;            // ¿·±Ò ∞°µ÷øπø≠«ÿ∫∏¿⁄
+                                    Bit1_HIF9_Hot_Out_State = CLEAR;            // Ïû†Íπê Í∞ÄÎë¨ÏòàÏó¥Ìï¥Î≥¥Ïûê
                                     bit_Holding_Flow_Block_Error__E08 = 1;
                                 }
                             }
                         }
                     }
-                    else       // 2025-06-05 20:23:04  cbr 30µµ ¡∂∞« ∞°µ÷º≠ øπø≠ Ω√ Ω∫∆¿
+                    else       // 2025-06-05 20:23:04  cbr 30ÎèÑ Ï°∞Í±¥ Í∞ÄÎë¨ÏÑú ÏòàÏó¥ Ïãú Ïä§ÌåÄ
                     {
                         if(u16Heater_Power_Save <= HEATER_POWER_LOW)
                         {
@@ -231,10 +231,10 @@ void output_valve_hot_in_feed9(void)
                                 }
                                 else
                                 {
-                                    Bit1_HIF9_Hot_Out_State = CLEAR;            // ¿·±Ò ∞°µ÷øπø≠«ÿ∫∏¿⁄
+                                    Bit1_HIF9_Hot_Out_State = CLEAR;            // Ïû†Íπê Í∞ÄÎë¨ÏòàÏó¥Ìï¥Î≥¥Ïûê
                                     bit_Holding_Flow_Block_Error__E08 = 1;
                                 }
-                            }   //2025-06-05 17:58:36 cbr   //¿‘ºˆ30 ¡∂∞« ∞°µ÷º≠ øπø≠ Ω√ ∞˙ø≠
+                            }   //2025-06-05 17:58:36 cbr   //ÏûÖÏàò30 Ï°∞Í±¥ Í∞ÄÎë¨ÏÑú ÏòàÏó¥ Ïãú Í≥ºÏó¥
                             else if ( ( gu8_hot_setting_temperature == HOT_SET_TEMP____45oC ) )
                             {
                                 if(gu8_preheat_Closed_max_timer > 10 || gu8_Hot_Heater_Temperature_One_Degree >= gu8_Hot_Preheat_Temp - 5)
@@ -244,7 +244,7 @@ void output_valve_hot_in_feed9(void)
                                 }
                                 else
                                 {
-                                    Bit1_HIF9_Hot_Out_State = CLEAR;            // ¿·±Ò ∞°µ÷øπø≠«ÿ∫∏¿⁄
+                                    Bit1_HIF9_Hot_Out_State = CLEAR;            // Ïû†Íπê Í∞ÄÎë¨ÏòàÏó¥Ìï¥Î≥¥Ïûê
                                     bit_Holding_Flow_Block_Error__E08 = 1;
                                 }
                             }
@@ -257,7 +257,7 @@ void output_valve_hot_in_feed9(void)
                                 }
                                 else
                                 {
-                                    Bit1_HIF9_Hot_Out_State = CLEAR;            // ¿·±Ò ∞°µ÷øπø≠«ÿ∫∏¿⁄
+                                    Bit1_HIF9_Hot_Out_State = CLEAR;            // Ïû†Íπê Í∞ÄÎë¨ÏòàÏó¥Ìï¥Î≥¥Ïûê
                                     bit_Holding_Flow_Block_Error__E08 = 1;
                                 }
                             }
@@ -270,13 +270,13 @@ void output_valve_hot_in_feed9(void)
                                             // || ( gu8_hot_setting_temperature == HOT_SET_TEMP____85oC ) )
                             {
                                 if(gu8_preheat_Closed_max_timer > 10 || gu8_Hot_Heater_Temperature_One_Degree >= gu8_Hot_Preheat_Temp - 5)
-                                {       //2025-07-23 cbr_test 30µµ ∞Ì¿¸æ– ∞˙ø≠ ø°æÓ π∞≤˜±Ë(¡§∞›∂ß ¿Á»Æ¿Œ »ƒ ¿¸æ– ±∏∫–« ø‰)
+                                {       //2025-07-23 cbr_test 30ÎèÑ Í≥†Ï†ÑÏïï Í≥ºÏó¥ ÏóêÏñ¥ Î¨ºÎÅäÍπÄ(Ï†ïÍ≤©Îïå Ïû¨ÌôïÏù∏ ÌõÑ Ï†ÑÏïï Íµ¨Î∂ÑÌïÑÏöî)
                                     Bit1_HIF9_Hot_Out_State = F_WaterOut;
                                     bit_Holding_Flow_Block_Error__E08 = 0;
                                 }
                                 else
                                 {
-                                    Bit1_HIF9_Hot_Out_State = CLEAR;            // ¿·±Ò ∞°µ÷øπø≠«ÿ∫∏¿⁄
+                                    Bit1_HIF9_Hot_Out_State = CLEAR;            // Ïû†Íπê Í∞ÄÎë¨ÏòàÏó¥Ìï¥Î≥¥Ïûê
                                     bit_Holding_Flow_Block_Error__E08 = 1;
                                 }
                             }
@@ -289,11 +289,11 @@ void output_valve_hot_in_feed9(void)
                                 }
                                 else
                                 {
-                                    Bit1_HIF9_Hot_Out_State = CLEAR;            // ¿·±Ò ∞°µ÷øπø≠«ÿ∫∏¿⁄
+                                    Bit1_HIF9_Hot_Out_State = CLEAR;            // Ïû†Íπê Í∞ÄÎë¨ÏòàÏó¥Ìï¥Î≥¥Ïûê
                                     bit_Holding_Flow_Block_Error__E08 = 1;
                                 }
                             }
-                            //2025-06-05 17:58:36 cbr   //¿‘ºˆ30 ¡∂∞« ∞°µ÷º≠ øπø≠ Ω√ ∞˙ø≠
+                            //2025-06-05 17:58:36 cbr   //ÏûÖÏàò30 Ï°∞Í±¥ Í∞ÄÎë¨ÏÑú ÏòàÏó¥ Ïãú Í≥ºÏó¥
                             // else if ( ( gu8_hot_setting_temperature == HOT_SET_TEMP____45oC ) )
                             else if ( ( gu8_hot_setting_temperature == HOT_SET_TEMP____45oC )
                                     || ( gu8_hot_setting_temperature == HOT_SET_TEMP____50oC )
@@ -306,7 +306,7 @@ void output_valve_hot_in_feed9(void)
                                 }
                                 else
                                 {
-                                    Bit1_HIF9_Hot_Out_State = CLEAR;            // ¿·±Ò ∞°µ÷øπø≠«ÿ∫∏¿⁄
+                                    Bit1_HIF9_Hot_Out_State = CLEAR;            // Ïû†Íπê Í∞ÄÎë¨ÏòàÏó¥Ìï¥Î≥¥Ïûê
                                     bit_Holding_Flow_Block_Error__E08 = 1;
                                 }
                             }
@@ -319,7 +319,7 @@ void output_valve_hot_in_feed9(void)
                                 }
                                 else
                                 {
-                                    Bit1_HIF9_Hot_Out_State = CLEAR;            // ¿·±Ò ∞°µ÷øπø≠«ÿ∫∏¿⁄
+                                    Bit1_HIF9_Hot_Out_State = CLEAR;            // Ïû†Íπê Í∞ÄÎë¨ÏòàÏó¥Ìï¥Î≥¥Ïûê
                                     bit_Holding_Flow_Block_Error__E08 = 1;
                                 }
                             }
@@ -330,12 +330,12 @@ void output_valve_hot_in_feed9(void)
                 {
                         Bit1_HIF9_Hot_Out_State = F_WaterOut;
                 }
-    // °⁄2025-06-02 Phil
+    // ‚òÖ2025-06-02 Phil
             }
             else if( gu8_Water_Out_Step == STATE_20_HOT_PRE_HEATING_STATE
                     && gu8_Preheat_Step == STATE_4_PREHEAT_OPERATE_STATE )
             {
-                /*..hui [21-5-21ø¿»ƒ 8:11:43] øπø≠ ≥°≥™∞Ì Ω∫∆¿ ª©¡÷±‚«“∂ß..*/
+                /*..hui [21-5-21Ïò§ÌõÑ 8:11:43] ÏòàÏó¥ ÎÅùÎÇòÍ≥† Ïä§ÌåÄ ÎπºÏ£ºÍ∏∞Ìï†Îïå..*/
                 Bit1_HIF9_Hot_Out_State = F_WaterOut;
             }
             else if ( gu8_Water_Out_Step == STATE_21_HOT_PRE_HEATING_BUFFER_DRAIN_STATE )
@@ -345,7 +345,7 @@ void output_valve_hot_in_feed9(void)
             else if( gu8_Water_Out_Step >= STATE_30_EXTRACT_VALVE_ON_STATE
                     && gu8_Water_Out_Step <= STATE_40_EXTRACT_VALVE_OFF_STATE )
             {
-                /*..hui [21-5-21ø¿»ƒ 8:11:49] Ω«¡¶ √ﬂ√‚«“∂ß..*/
+                /*..hui [21-5-21Ïò§ÌõÑ 8:11:49] Ïã§Ï†ú Ï∂îÏ∂úÌï†Îïå..*/
                 Bit1_HIF9_Hot_Out_State = SET;
             }
             else
@@ -367,7 +367,7 @@ void output_valve_hot_in_feed9(void)
     {
         if( gu8_ice_ster_mode == STER_MODE_HOT_PREHEAT )
         {
-            /*..hui [25-4-8ø¿¿¸ 9:54:35] øπø≠¡ﬂ..*/
+            /*..hui [25-4-8Ïò§Ï†Ñ 9:54:35] ÏòàÏó¥Ï§ë..*/
             if( gu8_preheat_ster_step >= 2 )
             {
                 Bit2_HIF9_Ice_Tray_Ster_State = SET;
@@ -379,7 +379,7 @@ void output_valve_hot_in_feed9(void)
         }
         else if( gu8_ice_ster_mode == STER_MODE_HOT_INPUT_STATE )
         {
-            /*..hui [25-4-8ø¿¿¸ 9:54:41] Ω«¡¶ ∆Æ∑π¿Ã ¿‘ºˆ¡ﬂ..*/
+            /*..hui [25-4-8Ïò§Ï†Ñ 9:54:41] Ïã§Ï†ú Ìä∏Î†àÏù¥ ÏûÖÏàòÏ§ë..*/
             if( gu8_hot_input_ster_step >= 0 && gu8_hot_input_ster_step <= 4 )
             {
                 Bit2_HIF9_Ice_Tray_Ster_State = SET;
@@ -391,7 +391,7 @@ void output_valve_hot_in_feed9(void)
         }
         else if( gu8_ice_ster_mode == STER_MODE_DRAIN_PREHEAT )
         {
-            /*..hui [25-4-8ø¿¿¸ 9:54:35] øπø≠¡ﬂ..*/
+            /*..hui [25-4-8Ïò§Ï†Ñ 9:54:35] ÏòàÏó¥Ï§ë..*/
             if( gu8_drain_preheat_ster_step >= 2 )
             {
                 Bit2_HIF9_Ice_Tray_Ster_State = SET;
@@ -403,7 +403,7 @@ void output_valve_hot_in_feed9(void)
         }
         else if( gu8_ice_ster_mode == STER_MODE_DRAIN_INPUT_STATE )
         {
-            /*..hui [25-7-7ø¿»ƒ 2:28:44] Ω«¡¶ µÂ∑π¿Œ≈ ≈© ¿‘ºˆ¡ﬂ..*/
+            /*..hui [25-7-7Ïò§ÌõÑ 2:28:44] Ïã§Ï†ú ÎìúÎ†àÏù∏ÌÉ±ÌÅ¨ ÏûÖÏàòÏ§ë..*/
             if( gu8_drain_input_ster_step >= 0 && gu8_drain_input_ster_step <= 4 )
             {
                 Bit2_HIF9_Ice_Tray_Ster_State = SET;

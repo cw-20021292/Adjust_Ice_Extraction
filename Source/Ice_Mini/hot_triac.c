@@ -58,11 +58,11 @@ TYPE_BYTE          U8HeaterMaxLimitB;
 
 
 
-bit Bit_Relay_Off_Holding;					// ¡Ú 2025-06-09 Phil 
+bit Bit_Relay_Off_Holding;					// â˜… 2025-06-09 Phil 
 
 U8 gu8CntTriacDuty;
 
-U8  gu8TriacLevelMax;           // ÇöÀç À¯·®¿¡ ¸Â°Ô °è»êµÈ Æ®¶óÀÌ¾Ç Á¦¾î ´Ü°è (°è»ê)
+U8  gu8TriacLevelMax;           // í˜„ì¬ ìœ ëŸ‰ì— ë§ê²Œ ê³„ì‚°ëœ íŠ¸ë¼ì´ì•… ì œì–´ ë‹¨ê³„ (ê³„ì‚°)
 bit Bit_Triac_Output;
 bit Bit_Relay_Output;
 U8  u8Delta_Power_Level;
@@ -166,7 +166,7 @@ void output_triac(void)
         Bit2_First_Heating_Check_State = CLEAR;
     }
 
-    /*..hui [25-4-9¿ÀÈÄ 7:29:25] ¾ÆÀÌ½ºÆ®·¹ÀÌ ¼¼Ã´½Ã..*/
+    /*..hui [25-4-9ì˜¤í›„ 7:29:25] ì•„ì´ìŠ¤íŠ¸ë ˆì´ ì„¸ì²™ì‹œ..*/
     Bit3_Tray_Ster_Heating_State = tray_ster_temp_control();
 
     /*****************************************************************************************************************/
@@ -212,12 +212,12 @@ void output_triac(void)
         Bit2_Hot_Water_Select_Off_State = CLEAR;
     }
 
-    /*..hui [19-11-28¿ÀÀü 10:19:58] Ãâ¼ö¿Âµµ¶û È÷ÅÍ¿Âµµ 15µµ Â÷ÀÌ³¯°æ¿ì È÷ÅÍ °¡µ¿ Á¾·á..*/
-    /*..hui [20-9-22¿ÀÈÄ 8:17:57] ÆÇÇüÀ¸·Î º¯°æµÇ¸é¼­ ±â´É »èÁ¦..*/
+    /*..hui [19-11-28ì˜¤ì „ 10:19:58] ì¶œìˆ˜ì˜¨ë„ë‘ íˆí„°ì˜¨ë„ 15ë„ ì°¨ì´ë‚ ê²½ìš° íˆí„° ê°€ë™ ì¢…ë£Œ..*/
+    /*..hui [20-9-22ì˜¤í›„ 8:17:57] íŒí˜•ìœ¼ë¡œ ë³€ê²½ë˜ë©´ì„œ ê¸°ëŠ¥ ì‚­ì œ..*/
     /*Bit3_Hot_Temp_Much_Difference_Off_State = F_Hot_Temp_Much_Difference_State;*/
 
 
-    /*..hui [20-4-22¿ÀÈÄ 1:05:10] È÷ÅÍ ¼Ò¼Õ °ü·Ã.. 1500W ÀÌÇÏ °¨Áö ½Ã È÷ÅÍÁ¤Áö.. 5È¸ ¿¬¼Ó °¨Áö ½Ã ¿µ±¸Á¤Áö..*/
+    /*..hui [20-4-22ì˜¤í›„ 1:05:10] íˆí„° ì†Œì† ê´€ë ¨.. 1500W ì´í•˜ ê°ì§€ ì‹œ íˆí„°ì •ì§€.. 5íšŒ ì—°ì† ê°ì§€ ì‹œ ì˜êµ¬ì •ì§€..*/
     /*Bit5_Damaged_Heater_Off_State = (bit_damaged_heater_error_once | bit_damaged_heater_error_fixed);*/
 
     Bit6_Heater_Make_Cool_State = (bit)gu8_hot_drain_cold;
@@ -311,55 +311,55 @@ U8 preheating_temp_control(void)
     {
         return mu8_return;
     }
-// ¡Ú2025-06-08 Phil
+// â˜…2025-06-08 Phil
     else if(gu8_Hot_Heater_Temperature_One_Degree > gu8_Hot_Preheat_Temp + 10)  
 		{
         return mu8_return;
 		}
-// ¡Ú2025-06-08 Phil
+// â˜…2025-06-08 Phil
     else{}
 
     //if(gu8_Preheat_Step < 3)STATE_2_PREHEAT_DRAIN_STATE
-    // ´Ü¼öÃ¼Å© ºÎÅÍ ¿¹¿­ÇÏµµ·Ï ÇØ¾ßÇÔ
+    // ë‹¨ìˆ˜ì²´í¬ ë¶€í„° ì˜ˆì—´í•˜ë„ë¡ í•´ì•¼í•¨
 //    //if( gu8_Preheat_Step < STATE_1_PREHEAT_CHECK_OUTAGE_STATE )
 //    if( gu8_Preheat_Step < STATE_2_PREHEAT_DRAIN_STATE )
-		//if( gu8_Preheat_Step < STATE_1_PREHEAT_CHECK_OUTAGE_STATE )		// ¡Ú 2025-06-11 Phil 
-	if( gu8_Preheat_Step < STATE_2_PREHEAT_DRAIN_STATE ) 	// ¡Ú 2025-07-07 sean 
+		//if( gu8_Preheat_Step < STATE_1_PREHEAT_CHECK_OUTAGE_STATE )		// â˜… 2025-06-11 Phil 
+	if( gu8_Preheat_Step < STATE_2_PREHEAT_DRAIN_STATE ) 	// â˜… 2025-07-07 sean 
     {
         return mu8_return;
     }
     else{}
-	// [25-5-12] sean, Noble Ro »ç¾çÀ¸·Î Çö »ç¾çÀ¸·Î ÁøÇàÇÒ°æ¿ì ¿¹¿­½Ã°£ÀÌ ¿À·¡°É¸®¸ç ¸ÂÃâ ¼ö ¾øÀ½ 
+	// [25-5-12] sean, Noble Ro ì‚¬ì–‘ìœ¼ë¡œ í˜„ ì‚¬ì–‘ìœ¼ë¡œ ì§„í–‰í• ê²½ìš° ì˜ˆì—´ì‹œê°„ì´ ì˜¤ë˜ê±¸ë¦¬ë©° ë§ì¶œ ìˆ˜ ì—†ìŒ 
 #if 0
     if( gu8_hot_setting_temperature == HOT_SET_TEMP_1__MILK__43_oC
         && gu8_Preheat_Step < STATE_3_PREHEAT_CHECK_TIME)
     {
-        /*..hui [21-2-19¿ÀÈÄ 5:37:23] Â÷/ºĞÀ¯´Â ¿Âµµ°¡ ³ôÀº »óÅÂ¿¡¼­ ½ÃÀÛÇÒ ¼ö ÀÖ°¡ ¶§¹®¿¡..*/
-        /*..hui [21-2-19¿ÀÈÄ 5:37:38] ¹° Èê·Á¼­ ¿Âµµ ³»·ÁÁÖ°í °¡¿­ ±¸°£¿¡¼­¸¸ °¡¿­..*/
+        /*..hui [21-2-19ì˜¤í›„ 5:37:23] ì°¨/ë¶„ìœ ëŠ” ì˜¨ë„ê°€ ë†’ì€ ìƒíƒœì—ì„œ ì‹œì‘í•  ìˆ˜ ìˆê°€ ë•Œë¬¸ì—..*/
+        /*..hui [21-2-19ì˜¤í›„ 5:37:38] ë¬¼ í˜ë ¤ì„œ ì˜¨ë„ ë‚´ë ¤ì£¼ê³  ê°€ì—´ êµ¬ê°„ì—ì„œë§Œ ê°€ì—´..*/
         return mu8_return;
     }
     else 
 #endif
-	// [25-5-14] sean, 70µµ ÀÌ»ó ±¸°£À¸·Î º°µµ Á¦¾î, preheat¿¡¼­ ¿Âµµ ¸ø¿Ã¸®µµ·Ï ¸·ÇôÀÖÀ½
+	// [25-5-14] sean, 70ë„ ì´ìƒ êµ¬ê°„ìœ¼ë¡œ ë³„ë„ ì œì–´, preheatì—ì„œ ì˜¨ë„ ëª»ì˜¬ë¦¬ë„ë¡ ë§‰í˜€ìˆìŒ
 #if 0
 	if( gu8_hot_setting_temperature == HOT_SET_TEMP____70oC
         && gu8_Preheat_Step < STATE_3_PREHEAT_CHECK_TIME
         && gu8_Hot_Heater_Temperature_One_Degree >= gu8_Hot_Preheat_Temp)
     {
-        // [25-02-24 10:44:48] yspark, 70µµ¿¡¼­ ÇöÀç È÷ÅÍ ¿Âµµ°¡ ¿¹¿­ ¿Âµµº¸´Ù ³ôÀ¸¸é È÷ÆÃ ¹Ì½Ç½Ã
+        // [25-02-24 10:44:48] yspark, 70ë„ì—ì„œ í˜„ì¬ íˆí„° ì˜¨ë„ê°€ ì˜ˆì—´ ì˜¨ë„ë³´ë‹¤ ë†’ìœ¼ë©´ íˆíŒ… ë¯¸ì‹¤ì‹œ
         return mu8_return;
     }
     else if( gu8_hot_setting_temperature == HOT_SET_TEMP____70oC
         && gu8_Preheat_Step < STATE_3_PREHEAT_CHECK_TIME
         && gu8_Hot_Heater_Temperature_One_Degree >= gu8_Hot_Preheat_Temp)
     {
-        // [25-02-24 10:44:48] yspark, 70µµ¿¡¼­ ÇöÀç È÷ÅÍ ¿Âµµ°¡ ¿¹¿­ ¿Âµµº¸´Ù ³ôÀ¸¸é È÷ÆÃ ¹Ì½Ç½Ã
+        // [25-02-24 10:44:48] yspark, 70ë„ì—ì„œ í˜„ì¬ íˆí„° ì˜¨ë„ê°€ ì˜ˆì—´ ì˜¨ë„ë³´ë‹¤ ë†’ìœ¼ë©´ íˆíŒ… ë¯¸ì‹¤ì‹œ
         return mu8_return;
     }
     else{}
 #endif
 
-    /*..hui [19-11-7ï¿½ï¿½ï¿½ï¿½ 9:25:34] ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿? ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿? ï¿½ï¿½ï¿½ï¿½..*/
+    /*..hui [19-11-7å ì™ì˜™å ì™ì˜™ 9:25:34] å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ? å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ? å ì™ì˜™å ì™ì˜™..*/
     if( Bit1_Hot_Operation_Disable_State == SET )
     {
         mu8_return = CLEAR;
@@ -408,9 +408,9 @@ U8 mainheating_temp_control(void)
         return mu8_return;
     }
     #endif
-    // [25-05-23 16:54:54]  yspark ¹öÆÛ ÅÊÅ© ¹°Ã¤¿ì´Â ½Ã°£ Heating ºö -> ¸ŞÀÎÈ÷ÆÃ¿¡ Ãß°¡ 
+    // [25-05-23 16:54:54]  yspark ë²„í¼ íƒ±í¬ ë¬¼ì±„ìš°ëŠ” ì‹œê°„ Heating ë¹” -> ë©”ì¸íˆíŒ…ì— ì¶”ê°€ 
     if( gu8_Water_Out_Step == STATE_21_HOT_PRE_HEATING_BUFFER_DRAIN_STATE
-    		|| gu8_Water_Out_Step == STATE_22_HOT_PRE_HEATING_BUFFER_DRAIN_COMPLETE_STATE  // ¡Ú2025-06-08 Phil 
+    		|| gu8_Water_Out_Step == STATE_22_HOT_PRE_HEATING_BUFFER_DRAIN_COMPLETE_STATE  // â˜…2025-06-08 Phil 
         || gu8_Water_Out_Step == STATE_30_EXTRACT_VALVE_ON_STATE
         || gu8_Water_Out_Step == STATE_31_WATER_EXTRACT_STATE
         || gu8_Water_Out_Step == STATE_32_WATER_AIR_VENT_STATE
@@ -423,64 +423,64 @@ U8 mainheating_temp_control(void)
         return mu8_return;
     }
 
-	/*..sean [25-05-12] »çÀÌ ¿Âµµ ±¸°£ º¯°æ..*/
+	/*..sean [25-05-12] ì‚¬ì´ ì˜¨ë„ êµ¬ê°„ ë³€ê²½..*/
     switch( gu8_hot_setting_temperature )
     {
         case HOT_SET_TEMP____45oC:
 
-            /*..hui [19-2-22¿ÀÈÄ 8:05:08] ºĞÀ¯ 45µµ..*/
+            /*..hui [19-2-22ì˜¤í›„ 8:05:08] ë¶„ìœ  45ë„..*/
             //mu8_diff = 12;
-            mu8_diff = 30;// ¡Ú2025-06-02 Phil   
+            mu8_diff = 30;// â˜…2025-06-02 Phil   
 
             break;
         case HOT_SET_TEMP____50oC:
 
-            /*..sean [25-05-12] Ãß°¡ ¿Âµµ 50µµ..*/
+            /*..sean [25-05-12] ì¶”ê°€ ì˜¨ë„ 50ë„..*/
             //mu8_diff = 12;
-            mu8_diff = 30;// ¡Ú2025-06-02 Phil  
+            mu8_diff = 30;// â˜…2025-06-02 Phil  
             break;
 		
         case HOT_SET_TEMP____55oC:
 
-            /*..sean [25-05-12] Ãß°¡ ¿Âµµ 55µµ..*/
+            /*..sean [25-05-12] ì¶”ê°€ ì˜¨ë„ 55ë„..*/
             //mu8_diff = 12;
-            mu8_diff = 30;// ¡Ú2025-06-02 Phil  
+            mu8_diff = 30;// â˜…2025-06-02 Phil  
             break;
 		
         case HOT_SET_TEMP____60oC:
 
-            /*..sean [25-05-12] Ãß°¡ ¿Âµµ 60µµ..*/
+            /*..sean [25-05-12] ì¶”ê°€ ì˜¨ë„ 60ë„..*/
             //mu8_diff = 15;
-            mu8_diff = 30;// ¡Ú2025-06-02 Phil  
+            mu8_diff = 30;// â˜…2025-06-02 Phil  
 
             break;
 		
         case HOT_SET_TEMP____65oC:
 
-            /*..sean [25-05-12] Ãß°¡ ¿Âµµ 65µµ..*/
+            /*..sean [25-05-12] ì¶”ê°€ ì˜¨ë„ 65ë„..*/
             //mu8_diff = 15;
-            mu8_diff = 30;// ¡Ú2025-06-02 Phil  
+            mu8_diff = 30;// â˜…2025-06-02 Phil  
             break;
 
         case HOT_SET_TEMP____70oC:
 
-            /*..hui [19-2-22¿ÀÈÄ 8:05:13] Â÷ 70µµ..*/
+            /*..hui [19-2-22ì˜¤í›„ 8:05:13] ì°¨ 70ë„..*/
             //mu8_diff = 15;
-            mu8_diff = 30;// ¡Ú2025-06-02 Phil  
+            mu8_diff = 30;// â˜…2025-06-02 Phil  
 
             break;
 		
         case HOT_SET_TEMP____75oC:
 
-            /*..sean [25-05-12] Ãß°¡ ¿Âµµ 75µµ..*/
+            /*..sean [25-05-12] ì¶”ê°€ ì˜¨ë„ 75ë„..*/
 
             //mu8_diff = 15;
-            mu8_diff = 30;// ¡Ú2025-06-02 Phil  
+            mu8_diff = 30;// â˜…2025-06-02 Phil  
             break;
 		
         case HOT_SET_TEMP____80oC:
 
-            /*..sean [25-05-12] Ãß°¡ ¿Âµµ 80µµ..*/
+            /*..sean [25-05-12] ì¶”ê°€ ì˜¨ë„ 80ë„..*/
             mu8_diff = 12;
 
             break;
@@ -488,7 +488,7 @@ U8 mainheating_temp_control(void)
 
         case HOT_SET_TEMP____85oC:
 
-            /*..hui [19-2-22¿ÀÈÄ 8:05:21] Ä¿ÇÇ 85µµ..*/
+            /*..hui [19-2-22ì˜¤í›„ 8:05:21] ì»¤í”¼ 85ë„..*/
             mu8_diff = 12;
 
             break;
@@ -496,7 +496,7 @@ U8 mainheating_temp_control(void)
 		
         case HOT_SET_TEMP____90oC:
 
-            /*..sean [25-05-12] Ãß°¡ ¿Âµµ 90µµ..*/
+            /*..sean [25-05-12] ì¶”ê°€ ì˜¨ë„ 90ë„..*/
             mu8_diff = 9;
 
             break;
@@ -504,7 +504,7 @@ U8 mainheating_temp_control(void)
 		
         case HOT_SET_TEMP____95oC:
 
-            /*..sean [25-05-12] Ãß°¡ ¿Âµµ 95µµ..*/
+            /*..sean [25-05-12] ì¶”ê°€ ì˜¨ë„ 95ë„..*/
             mu8_diff = 9;
 
             break;
@@ -512,7 +512,7 @@ U8 mainheating_temp_control(void)
 
         case HOT_SET_TEMP____100oC:
 
-            /*..hui [19-2-22¿ÀÈÄ 8:05:21] ²ú´Â ¹° 100µµ..*/
+            /*..hui [19-2-22ì˜¤í›„ 8:05:21] ë“ëŠ” ë¬¼ 100ë„..*/
             mu8_diff = 9;
 
             break;
@@ -524,8 +524,8 @@ U8 mainheating_temp_control(void)
             break;
     }
 
-	// È÷ÆÃ Á¶°ÇÀ» 85µµ / 100µµ Ãß°¡½ÃÅ´ 
-    /*..sean [25-05-12] 90/95µµ ÇØ´ç Á¦¾î µ¿ÀÏÇÏ°Ô Àû¿ë..*/
+	// íˆíŒ… ì¡°ê±´ì„ 85ë„ / 100ë„ ì¶”ê°€ì‹œí‚´ 
+    /*..sean [25-05-12] 90/95ë„ í•´ë‹¹ ì œì–´ ë™ì¼í•˜ê²Œ ì ìš©..*/
     if( (gu8_hot_setting_temperature == HOT_SET_TEMP____75oC) 
 		|| ( gu8_hot_setting_temperature == HOT_SET_TEMP____80oC ) 
 		|| ( gu8_hot_setting_temperature == HOT_SET_TEMP____85oC ) 
@@ -639,7 +639,7 @@ void triac_control(void)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /*..hui [20-9-23¿ÀÈÄ 1:19:12] Æ®¶óÀÌ¾Ç ÇÑÆÇ OFF..*/
+    /*..hui [20-9-23ì˜¤í›„ 1:19:12] íŠ¸ë¼ì´ì•… í•œíŒ OFF..*/
     mu8_overheat = HOT_TRIAC_OFF_TEMP;
     mu8_overheat_clear = HOT_TRIAC_OFF_RETURN_TEMP;
 
@@ -704,19 +704,19 @@ void triac_control(void)
 
 /////////////////////////////////////////////////////////////////////////////////
     if(u16Heater_Power_Save >= HEATER_POWER_HIGH)
-    {  // °íÀü·Â ½Ã
-        // [25-05-23 18:13:08] yspark, °è¼Ó Ç®È÷ÆÃÀ» ÇÏ°í ÀÖ¾î È÷ÅÍ Á¦¾î º¯°æÇÏ¿© ¿Âµµ ¸ÂÃß±â
-        // [25-05-26 11:21:14] yspark, Triac¸¸ È÷ÆÃ 
+    {  // ê³ ì „ë ¥ ì‹œ
+        // [25-05-23 18:13:08] yspark, ê³„ì† í’€íˆíŒ…ì„ í•˜ê³  ìˆì–´ íˆí„° ì œì–´ ë³€ê²½í•˜ì—¬ ì˜¨ë„ ë§ì¶”ê¸°
+        // [25-05-26 11:21:14] yspark, Triacë§Œ íˆíŒ… 
         if (gu8_Hot_In_Temperature_One_Degree <= 15)
         {
-            // [25-05-23 18:13:08] yspark, °è¼Ó Ç®È÷ÆÃÀ» ÇÏ°í ÀÖ¾î È÷ÅÍ Á¦¾î º¯°æÇÏ¿© ¿Âµµ ¸ÂÃß±â 
+            // [25-05-23 18:13:08] yspark, ê³„ì† í’€íˆíŒ…ì„ í•˜ê³  ìˆì–´ íˆí„° ì œì–´ ë³€ê²½í•˜ì—¬ ì˜¨ë„ ë§ì¶”ê¸° 
             if(((gu8_hot_setting_temperature == HOT_SET_TEMP____75oC)
                     || (gu8_hot_setting_temperature == HOT_SET_TEMP____70oC)
                     || (gu8_hot_setting_temperature == HOT_SET_TEMP____65oC)
                     || (gu8_hot_setting_temperature == HOT_SET_TEMP____60oC)
                     || (gu8_hot_setting_temperature == HOT_SET_TEMP____55oC)
-                    //|| (gu8_hot_setting_temperature == HOT_SET_TEMP____50oC)// ¡Ú2025-06-02 Phil
-                    //|| (gu8_hot_setting_temperature == HOT_SET_TEMP____45oC)// ¡Ú2025-06-02 Phil
+                    //|| (gu8_hot_setting_temperature == HOT_SET_TEMP____50oC)// â˜…2025-06-02 Phil
+                    //|| (gu8_hot_setting_temperature == HOT_SET_TEMP____45oC)// â˜…2025-06-02 Phil
                     )
                 && Bit1_Main_Heating_State == SET )
             {
@@ -781,7 +781,7 @@ void triac_control(void)
                     gu8TriacLevelMax = STEP_TRIAC;
                 }
             }
-// ¡Ú2025-06-02 Phil
+// â˜…2025-06-02 Phil
             else if(((gu8_hot_setting_temperature == HOT_SET_TEMP____50oC)
                     || (gu8_hot_setting_temperature == HOT_SET_TEMP____45oC)
                     )
@@ -853,7 +853,7 @@ void triac_control(void)
                     gu8TriacLevelMax = STEP_TRIAC;
                 }
             }
-// ¡Ú2025-06-02 Phil
+// â˜…2025-06-02 Phil
             else
             {
                 Bit_Relay_Output = SET;
@@ -925,16 +925,16 @@ void triac_control(void)
                     Bit_Relay_Output = CLEAR;
                     gu8TriacLevelMax = 100;
                 }
-                // ¡Ú2025-06-02 Phil  
+                // â˜…2025-06-02 Phil  
                 else if ((gu8_Hot_Out_Temperature_One_Degree <= gu8_Hot_Target_Temp - 5))
                 {
                     Bit_Relay_Output = SET;
                     gu8TriacLevelMax = 100;
                 }
-                // ¡Ú2025-06-02 Phil  
+                // â˜…2025-06-02 Phil  
                 else
                 {
-                    //Bit_Relay_Output = CLEAR;// ¡Ú2025-06-02 Phil  (ÀÌÀü Ãâ·Â À¯Áö)
+                    //Bit_Relay_Output = CLEAR;// â˜…2025-06-02 Phil  (ì´ì „ ì¶œë ¥ ìœ ì§€)
                     gu8TriacLevelMax = STEP_TRIAC;
                 }
             } 
@@ -958,13 +958,13 @@ void triac_control(void)
                     Bit_Relay_Output = SET;
                     gu8TriacLevelMax = 0;
                 }
-                // ¡Ú2025-06-02 Phil  
+                // â˜…2025-06-02 Phil  
                 else if ((gu8_Hot_Out_Temperature_One_Degree <= gu8_Hot_Target_Temp - 5))
                 {
                     Bit_Relay_Output = SET;
                     gu8TriacLevelMax = 100;
                 }
-                // ¡Ú2025-06-02 Phil  
+                // â˜…2025-06-02 Phil  
                 else
                 {
                     Bit_Relay_Output = SET;
@@ -973,7 +973,7 @@ void triac_control(void)
             } 
 
 //----------------
-            // [25-05-23 18:13:08] yspark, °è¼Ó Ç®È÷ÆÃÀ» ÇÏ°í ÀÖ¾î È÷ÅÍ Á¦¾î º¯°æÇÏ¿© ¿Âµµ ¸ÂÃß±â 
+            // [25-05-23 18:13:08] yspark, ê³„ì† í’€íˆíŒ…ì„ í•˜ê³  ìˆì–´ íˆí„° ì œì–´ ë³€ê²½í•˜ì—¬ ì˜¨ë„ ë§ì¶”ê¸° 
             else if( ((gu8_hot_setting_temperature == HOT_SET_TEMP____75oC)
                         || (gu8_hot_setting_temperature == HOT_SET_TEMP____70oC)
                         )
@@ -982,8 +982,8 @@ void triac_control(void)
                 if ((gu8_Hot_Out_Temperature_One_Degree >= gu8_Hot_Target_Temp + 10))
                 {
                     //Bit_Relay_Output = SET;
-                    // Bit_Relay_Output = CLEAR;// ¡Ú2025-06-08 Phil  (ÀÌÀü Ãâ·Â À¯Áö)
-                    Bit_Relay_Output = SET;     //2025-07-16 cbr 70µµ Ã¹ÀÜ ¹Ì´Ş
+                    // Bit_Relay_Output = CLEAR;// â˜…2025-06-08 Phil  (ì´ì „ ì¶œë ¥ ìœ ì§€)
+                    Bit_Relay_Output = SET;     //2025-07-16 cbr 70ë„ ì²«ì” ë¯¸ë‹¬
                     gu8TriacLevelMax = 0;
                 }
                 else if ((gu8_Hot_Out_Temperature_One_Degree >= gu8_Hot_Target_Temp + 9))
@@ -1058,17 +1058,17 @@ void triac_control(void)
         }
     }
     else if (u16Heater_Power_Save <= HEATER_POWER_LOW)
-    {  // ÀúÀü·Â ½Ã
+    {  // ì €ì „ë ¥ ì‹œ
         if (gu8_Hot_In_Temperature_One_Degree <= 15)
         {
-            // [25-05-23 18:13:08] yspark, °è¼Ó Ç®È÷ÆÃÀ» ÇÏ°í ÀÖ¾î È÷ÅÍ Á¦¾î º¯°æÇÏ¿© ¿Âµµ ¸ÂÃß±â 
+            // [25-05-23 18:13:08] yspark, ê³„ì† í’€íˆíŒ…ì„ í•˜ê³  ìˆì–´ íˆí„° ì œì–´ ë³€ê²½í•˜ì—¬ ì˜¨ë„ ë§ì¶”ê¸° 
             if(((gu8_hot_setting_temperature == HOT_SET_TEMP____75oC)
                     || (gu8_hot_setting_temperature == HOT_SET_TEMP____70oC)
                     || (gu8_hot_setting_temperature == HOT_SET_TEMP____65oC)
                     || (gu8_hot_setting_temperature == HOT_SET_TEMP____60oC)
                     || (gu8_hot_setting_temperature == HOT_SET_TEMP____55oC)
-                    //|| (gu8_hot_setting_temperature == HOT_SET_TEMP____50oC)// ¡Ú2025-06-02 Phil
-                    //|| (gu8_hot_setting_temperature == HOT_SET_TEMP____45oC)// ¡Ú2025-06-02 Phil
+                    //|| (gu8_hot_setting_temperature == HOT_SET_TEMP____50oC)// â˜…2025-06-02 Phil
+                    //|| (gu8_hot_setting_temperature == HOT_SET_TEMP____45oC)// â˜…2025-06-02 Phil
                     )
                 && Bit1_Main_Heating_State == SET )
             {
@@ -1133,7 +1133,7 @@ void triac_control(void)
                     gu8TriacLevelMax = STEP_TRIAC;
                 }
             }
-// ¡Ú2025-06-02 Phil
+// â˜…2025-06-02 Phil
             else if( ((gu8_hot_setting_temperature == HOT_SET_TEMP____50oC)
                 || (gu8_hot_setting_temperature == HOT_SET_TEMP____45oC)
                 )
@@ -1194,20 +1194,20 @@ void triac_control(void)
                     Bit_Relay_Output = CLEAR;
                     gu8TriacLevelMax = 100;
                 }
-                // ¡Ú2025-06-02 Phil  
+                // â˜…2025-06-02 Phil  
                 else if ((gu8_Hot_Out_Temperature_One_Degree <= gu8_Hot_Target_Temp - 5))
                 {
                     Bit_Relay_Output = SET;
                     gu8TriacLevelMax = 100;
                 }
-                // ¡Ú2025-06-02 Phil  
+                // â˜…2025-06-02 Phil  
                 else
                 {
-                    //Bit_Relay_Output = CLEAR;// ¡Ú2025-06-02 Phil  (ÀÌÀü Ãâ·Â À¯Áö)
+                    //Bit_Relay_Output = CLEAR;// â˜…2025-06-02 Phil  (ì´ì „ ì¶œë ¥ ìœ ì§€)
                     gu8TriacLevelMax = STEP_TRIAC;
                 }
             }
-// ¡Ú2025-06-02 Phil
+// â˜…2025-06-02 Phil
             else
             {
                 Bit_Relay_Output = SET;
@@ -1274,20 +1274,20 @@ void triac_control(void)
                     Bit_Relay_Output = CLEAR;
                     gu8TriacLevelMax = 100;
                 }
-                // ¡Ú2025-06-02 Phil  
+                // â˜…2025-06-02 Phil  
                 else if ((gu8_Hot_Out_Temperature_One_Degree <= gu8_Hot_Target_Temp - 5))
                 {
                     Bit_Relay_Output = SET;
                     gu8TriacLevelMax = 100;
                 }
-                // ¡Ú2025-06-02 Phil  
+                // â˜…2025-06-02 Phil  
                 else
                 {
-                    //Bit_Relay_Output = CLEAR;// ¡Ú2025-06-02 Phil  (ÀÌÀü Ãâ·Â À¯Áö)
+                    //Bit_Relay_Output = CLEAR;// â˜…2025-06-02 Phil  (ì´ì „ ì¶œë ¥ ìœ ì§€)
                     gu8TriacLevelMax = STEP_TRIAC;
                 }
             } 
-            // [25-05-23 18:13:08] yspark, °è¼Ó Ç®È÷ÆÃÀ» ÇÏ°í ÀÖ¾î È÷ÅÍ Á¦¾î º¯°æÇÏ¿© ¿Âµµ ¸ÂÃß±â 
+            // [25-05-23 18:13:08] yspark, ê³„ì† í’€íˆíŒ…ì„ í•˜ê³  ìˆì–´ íˆí„° ì œì–´ ë³€ê²½í•˜ì—¬ ì˜¨ë„ ë§ì¶”ê¸° 
             else if(((gu8_hot_setting_temperature == HOT_SET_TEMP____75oC)
                     || (gu8_hot_setting_temperature == HOT_SET_TEMP____70oC)
                     || (gu8_hot_setting_temperature == HOT_SET_TEMP____65oC)
@@ -1426,20 +1426,20 @@ void triac_control(void)
                     Bit_Relay_Output = CLEAR;
                     gu8TriacLevelMax = 100;
                 }
-                // ¡Ú2025-06-02 Phil  
+                // â˜…2025-06-02 Phil  
                 else if ((gu8_Hot_Out_Temperature_One_Degree <= gu8_Hot_Target_Temp - 5))
                 {
                     Bit_Relay_Output = SET;
                     gu8TriacLevelMax = 100;
                 }
-                // ¡Ú2025-06-02 Phil  
+                // â˜…2025-06-02 Phil  
                 else
                 {
-                    //Bit_Relay_Output = CLEAR;// ¡Ú2025-06-02 Phil  (ÀÌÀü Ãâ·Â À¯Áö)
+                    //Bit_Relay_Output = CLEAR;// â˜…2025-06-02 Phil  (ì´ì „ ì¶œë ¥ ìœ ì§€)
                     gu8TriacLevelMax = STEP_TRIAC;
                 }
             } 
-            // [25-05-23 18:13:08] yspark, °è¼Ó Ç®È÷ÆÃÀ» ÇÏ°í ÀÖ¾î È÷ÅÍ Á¦¾î º¯°æÇÏ¿© ¿Âµµ ¸ÂÃß±â 
+            // [25-05-23 18:13:08] yspark, ê³„ì† í’€íˆíŒ…ì„ í•˜ê³  ìˆì–´ íˆí„° ì œì–´ ë³€ê²½í•˜ì—¬ ì˜¨ë„ ë§ì¶”ê¸° 
             else if(((gu8_hot_setting_temperature == HOT_SET_TEMP____75oC)
                     || (gu8_hot_setting_temperature == HOT_SET_TEMP____70oC)
                     || (gu8_hot_setting_temperature == HOT_SET_TEMP____65oC)
@@ -1517,17 +1517,17 @@ void triac_control(void)
         }
     }
     else
-    {  // »ó½Ã Àü·Â
+    {  // ìƒì‹œ ì „ë ¥
         if (gu8_Hot_In_Temperature_One_Degree <= 15)
         {
-            // [25-05-23 18:13:08] yspark, °è¼Ó Ç®È÷ÆÃÀ» ÇÏ°í ÀÖ¾î È÷ÅÍ Á¦¾î º¯°æÇÏ¿© ¿Âµµ ¸ÂÃß±â 
+            // [25-05-23 18:13:08] yspark, ê³„ì† í’€íˆíŒ…ì„ í•˜ê³  ìˆì–´ íˆí„° ì œì–´ ë³€ê²½í•˜ì—¬ ì˜¨ë„ ë§ì¶”ê¸° 
             if(((gu8_hot_setting_temperature == HOT_SET_TEMP____75oC)
                     || (gu8_hot_setting_temperature == HOT_SET_TEMP____70oC)
                     || (gu8_hot_setting_temperature == HOT_SET_TEMP____65oC)
                     || (gu8_hot_setting_temperature == HOT_SET_TEMP____60oC)
                     || (gu8_hot_setting_temperature == HOT_SET_TEMP____55oC)
-                    //|| (gu8_hot_setting_temperature == HOT_SET_TEMP____50oC)// ¡Ú2025-06-02 Phil
-                    //|| (gu8_hot_setting_temperature == HOT_SET_TEMP____45oC)// ¡Ú2025-06-02 Phil
+                    //|| (gu8_hot_setting_temperature == HOT_SET_TEMP____50oC)// â˜…2025-06-02 Phil
+                    //|| (gu8_hot_setting_temperature == HOT_SET_TEMP____45oC)// â˜…2025-06-02 Phil
                     )
                 && Bit1_Main_Heating_State == SET )
             {
@@ -1592,7 +1592,7 @@ void triac_control(void)
                     gu8TriacLevelMax = STEP_TRIAC;
                 }
             }
-// ¡Ú2025-06-02 Phil
+// â˜…2025-06-02 Phil
             else if( ((gu8_hot_setting_temperature == HOT_SET_TEMP____50oC)
                 || (gu8_hot_setting_temperature == HOT_SET_TEMP____45oC)
                 )
@@ -1653,27 +1653,27 @@ void triac_control(void)
                     Bit_Relay_Output = CLEAR;
                     gu8TriacLevelMax = 100;
                 }
-                // ¡Ú2025-06-02 Phil  
+                // â˜…2025-06-02 Phil  
                 else if ((gu8_Hot_Out_Temperature_One_Degree <= gu8_Hot_Target_Temp - 5))
                 {
                     Bit_Relay_Output = SET;
                     gu8TriacLevelMax = 100;
                 }
-                // ¡Ú2025-06-02 Phil  
+                // â˜…2025-06-02 Phil  
                 else
                 {
-                    //Bit_Relay_Output = CLEAR;// ¡Ú2025-06-02 Phil  (ÀÌÀü Ãâ·Â À¯Áö)
+                    //Bit_Relay_Output = CLEAR;// â˜…2025-06-02 Phil  (ì´ì „ ì¶œë ¥ ìœ ì§€)
                     gu8TriacLevelMax = STEP_TRIAC;
                 }
             }
-// ¡Ú2025-06-02 Phil
+// â˜…2025-06-02 Phil
             else
             {
                 Bit_Relay_Output = SET;
                 gu8TriacLevelMax = (U8)((u8Delta_Power_Level - 45)*2);
             }
         }
-        else if(gu8_Hot_In_Temperature_One_Degree <= 25)        //2025-07-29 cbr 20µµ,30µµ ±¸ºĞ
+        else if(gu8_Hot_In_Temperature_One_Degree <= 25)        //2025-07-29 cbr 20ë„,30ë„ êµ¬ë¶„
         {
             if( (  (gu8_hot_setting_temperature == HOT_SET_TEMP____55oC)
                 || (gu8_hot_setting_temperature == HOT_SET_TEMP____50oC)
@@ -1736,16 +1736,16 @@ void triac_control(void)
                     Bit_Relay_Output = CLEAR;
                     gu8TriacLevelMax = 100;
                 }
-                // ¡Ú2025-06-02 Phil  
+                // â˜…2025-06-02 Phil  
                 else if ((gu8_Hot_Out_Temperature_One_Degree <= gu8_Hot_Target_Temp - 5))
                 {
                     Bit_Relay_Output = SET;
                     gu8TriacLevelMax = 100;
                 }
-                // ¡Ú2025-06-02 Phil  
+                // â˜…2025-06-02 Phil  
                 else
                 {
-                    //Bit_Relay_Output = CLEAR;// ¡Ú2025-06-02 Phil  (ÀÌÀü Ãâ·Â À¯Áö)
+                    //Bit_Relay_Output = CLEAR;// â˜…2025-06-02 Phil  (ì´ì „ ì¶œë ¥ ìœ ì§€)
                     gu8TriacLevelMax = STEP_TRIAC;
                 }
             }
@@ -1822,26 +1822,26 @@ void triac_control(void)
             {
                 if ((gu8_Hot_Out_Temperature_One_Degree >= gu8_Hot_Target_Temp + 10))
                 {
-                    //Bit_Relay_Output = SET;		// ¡Ú2025-06-08 Phil
+                    //Bit_Relay_Output = SET;		// â˜…2025-06-08 Phil
                     if(u16Heater_Power_Save <= HEATER_POWER_LOW)    
                     {                
-                    	Bit_Relay_Output = SET;		// ¡Ú2025-06-08 Phil
-                    	gu8TriacLevelMax = 0;// ¡Ú2025-06-09 Phil 
+                    	Bit_Relay_Output = SET;		// â˜…2025-06-08 Phil
+                    	gu8TriacLevelMax = 0;// â˜…2025-06-09 Phil 
                     }
                     else
                     {
-                      Bit_Relay_Output = CLEAR;		// ¡Ú2025-06-08 Phil     
-                      gu8TriacLevelMax = STEP_TRIAC;// ¡Ú2025-06-09 Phil  
-                      Bit_Relay_Off_Holding = SET;  // ¡Ú2025-06-09 Phil              
+                      Bit_Relay_Output = CLEAR;		// â˜…2025-06-08 Phil     
+                      gu8TriacLevelMax = STEP_TRIAC;// â˜…2025-06-09 Phil  
+                      Bit_Relay_Off_Holding = SET;  // â˜…2025-06-09 Phil              
                     }
-                    //gu8TriacLevelMax = 0;// ¡Ú2025-06-09 Phil 
+                    //gu8TriacLevelMax = 0;// â˜…2025-06-09 Phil 
                 }
                 else if ((gu8_Hot_Out_Temperature_One_Degree >= gu8_Hot_Target_Temp + 9))
                 {
 //                    Bit_Relay_Output = SET;
-//                    //Bit_Relay_Output = CLEAR;		// ¡Ú2025-06-09 Phil  
+//                    //Bit_Relay_Output = CLEAR;		// â˜…2025-06-09 Phil  
 //                    gu8TriacLevelMax = 10;
-// ¡Ú2025-06-09 Phil                     
+// â˜…2025-06-09 Phil                     
                     if(Bit_Relay_Off_Holding)
                     {
                       Bit_Relay_Output = CLEAR; 
@@ -1852,14 +1852,14 @@ void triac_control(void)
                       Bit_Relay_Output = SET;
                       gu8TriacLevelMax = 10;                    
                     }
-// ¡Ú2025-06-09 Phil 
+// â˜…2025-06-09 Phil 
                 }
                 else if ((gu8_Hot_Out_Temperature_One_Degree >= gu8_Hot_Target_Temp + 8))
                 {
 //                    Bit_Relay_Output = SET;
-//                    //Bit_Relay_Output = CLEAR;		// ¡Ú2025-06-09 Phil  
+//                    //Bit_Relay_Output = CLEAR;		// â˜…2025-06-09 Phil  
 //                    gu8TriacLevelMax = 20;
-// ¡Ú2025-06-09 Phil                     
+// â˜…2025-06-09 Phil                     
                     if(Bit_Relay_Off_Holding)
                     {
                       Bit_Relay_Output = CLEAR; 
@@ -1870,14 +1870,14 @@ void triac_control(void)
                       Bit_Relay_Output = SET;
                       gu8TriacLevelMax = 20;                    
                     }
-// ¡Ú2025-06-09 Phil 
+// â˜…2025-06-09 Phil 
                 }
                 else if ((gu8_Hot_Out_Temperature_One_Degree >= gu8_Hot_Target_Temp + 7))
                 {
 //                    Bit_Relay_Output = SET;
-//                    //Bit_Relay_Output = CLEAR;		// ¡Ú2025-06-09 Phil  
+//                    //Bit_Relay_Output = CLEAR;		// â˜…2025-06-09 Phil  
 //                    gu8TriacLevelMax = 30;
-// ¡Ú2025-06-09 Phil                     
+// â˜…2025-06-09 Phil                     
                     if(Bit_Relay_Off_Holding)
                     {
                       Bit_Relay_Output = CLEAR; 
@@ -1888,14 +1888,14 @@ void triac_control(void)
                       Bit_Relay_Output = SET;
                       gu8TriacLevelMax = 30;                    
                     }
-// ¡Ú2025-06-09 Phil 
+// â˜…2025-06-09 Phil 
                 }
                 else if ((gu8_Hot_Out_Temperature_One_Degree >= gu8_Hot_Target_Temp + 6))
                 {
 //                    Bit_Relay_Output = SET;
-//                    //Bit_Relay_Output = CLEAR;		// ¡Ú2025-06-09 Phil  
+//                    //Bit_Relay_Output = CLEAR;		// â˜…2025-06-09 Phil  
 //                    gu8TriacLevelMax = 40;
-// ¡Ú2025-06-09 Phil                     
+// â˜…2025-06-09 Phil                     
                     if(Bit_Relay_Off_Holding)
                     {
                       Bit_Relay_Output = CLEAR; 
@@ -1906,14 +1906,14 @@ void triac_control(void)
                       Bit_Relay_Output = SET;
                       gu8TriacLevelMax = 40;                    
                     }
-// ¡Ú2025-06-09 Phil 
+// â˜…2025-06-09 Phil 
                 }
                 else if ((gu8_Hot_Out_Temperature_One_Degree >= gu8_Hot_Target_Temp + 5))
                 {
 //                    //Bit_Relay_Output = SET;
-//                    Bit_Relay_Output = CLEAR;		// ¡Ú2025-06-09 Phil  
+//                    Bit_Relay_Output = CLEAR;		// â˜…2025-06-09 Phil  
 //                    gu8TriacLevelMax = 50;
-// ¡Ú2025-06-09 Phil                     
+// â˜…2025-06-09 Phil                     
                     if(Bit_Relay_Off_Holding)
                     {
                       Bit_Relay_Output = CLEAR; 
@@ -1924,14 +1924,14 @@ void triac_control(void)
                       Bit_Relay_Output = SET;
                       gu8TriacLevelMax = 50;                    
                     }
-// ¡Ú2025-06-09 Phil 
+// â˜…2025-06-09 Phil 
                 }
                 else if ((gu8_Hot_Out_Temperature_One_Degree >= gu8_Hot_Target_Temp + 4))
                 {
 //                    Bit_Relay_Output = SET;
-//                    //Bit_Relay_Output = CLEAR;		// ¡Ú2025-06-09 Phil  
+//                    //Bit_Relay_Output = CLEAR;		// â˜…2025-06-09 Phil  
 //                    gu8TriacLevelMax = 60;
-// ¡Ú2025-06-09 Phil                     
+// â˜…2025-06-09 Phil                     
                     if(Bit_Relay_Off_Holding)
                     {
                       Bit_Relay_Output = CLEAR; 
@@ -1942,14 +1942,14 @@ void triac_control(void)
                       Bit_Relay_Output = SET;
                       gu8TriacLevelMax = 60;                    
                     }
-// ¡Ú2025-06-09 Phil 
+// â˜…2025-06-09 Phil 
                 }
                 else if ((gu8_Hot_Out_Temperature_One_Degree >= gu8_Hot_Target_Temp + 3))
                 {
 //                    Bit_Relay_Output = SET;
-//                    //Bit_Relay_Output = CLEAR;		// ¡Ú2025-06-09 Phil  
+//                    //Bit_Relay_Output = CLEAR;		// â˜…2025-06-09 Phil  
 //                    gu8TriacLevelMax = 70;
-// ¡Ú2025-06-09 Phil                     
+// â˜…2025-06-09 Phil                     
                     if(Bit_Relay_Off_Holding)
                     {
                       Bit_Relay_Output = CLEAR; 
@@ -1960,14 +1960,14 @@ void triac_control(void)
                       Bit_Relay_Output = SET;
                       gu8TriacLevelMax = 70;                    
                     }
-// ¡Ú2025-06-09 Phil 
+// â˜…2025-06-09 Phil 
                 }
                 else if ((gu8_Hot_Out_Temperature_One_Degree >= gu8_Hot_Target_Temp + 2))
                 {
 //                    Bit_Relay_Output = SET;
-//                    //Bit_Relay_Output = CLEAR;		// ¡Ú2025-06-09 Phil  
+//                    //Bit_Relay_Output = CLEAR;		// â˜…2025-06-09 Phil  
 //                    gu8TriacLevelMax = 80;
-// ¡Ú2025-06-09 Phil                     
+// â˜…2025-06-09 Phil                     
                     if(Bit_Relay_Off_Holding)
                     {
                       Bit_Relay_Output = CLEAR; 
@@ -1978,14 +1978,14 @@ void triac_control(void)
                       Bit_Relay_Output = SET;
                       gu8TriacLevelMax = 80;                    
                     }
-// ¡Ú2025-06-09 Phil 
+// â˜…2025-06-09 Phil 
                 }
                 else if ((gu8_Hot_Out_Temperature_One_Degree >= gu8_Hot_Target_Temp + 1))
                 {
 //                    Bit_Relay_Output = SET;
-//                    //Bit_Relay_Output = CLEAR;		// ¡Ú2025-06-09 Phil  
+//                    //Bit_Relay_Output = CLEAR;		// â˜…2025-06-09 Phil  
 //                    gu8TriacLevelMax = 90;
-// ¡Ú2025-06-09 Phil                     
+// â˜…2025-06-09 Phil                     
                     if(Bit_Relay_Off_Holding)
                     {
                       Bit_Relay_Output = CLEAR; 
@@ -1996,14 +1996,14 @@ void triac_control(void)
                       Bit_Relay_Output = SET;
                       gu8TriacLevelMax = 90;                    
                     }
-// ¡Ú2025-06-09 Phil 
+// â˜…2025-06-09 Phil 
                 }
                 else if ((gu8_Hot_Out_Temperature_One_Degree >= gu8_Hot_Target_Temp))
                 {
 //                    Bit_Relay_Output = SET;
-//                    //Bit_Relay_Output = CLEAR;		// ¡Ú2025-06-09 Phil  
+//                    //Bit_Relay_Output = CLEAR;		// â˜…2025-06-09 Phil  
 //                    gu8TriacLevelMax = 100;
-// ¡Ú2025-06-09 Phil                     
+// â˜…2025-06-09 Phil                     
                     if(Bit_Relay_Off_Holding)
                     {
                       Bit_Relay_Output = CLEAR; 
@@ -2014,20 +2014,20 @@ void triac_control(void)
                       Bit_Relay_Output = SET;
                       gu8TriacLevelMax = 100;                    
                     }
-// ¡Ú2025-06-09 Phil 
+// â˜…2025-06-09 Phil 
                 }
-//                // ¡Ú2025-06-09 Phil  
+//                // â˜…2025-06-09 Phil  
 //                else if ((gu8_Hot_Out_Temperature_One_Degree <= gu8_Hot_Target_Temp - 5))
 //                {
 //                    Bit_Relay_Output = SET;
 //                    gu8TriacLevelMax = 100;
 //                }
-//                // ¡Ú2025-06-09 Phil 
+//                // â˜…2025-06-09 Phil 
                 else
                 {
                     Bit_Relay_Output = SET;
                     gu8TriacLevelMax = STEP_TRIAC;
-                    Bit_Relay_Off_Holding = CLEAR;  // ¡Ú2025-06-09 Phil      
+                    Bit_Relay_Off_Holding = CLEAR;  // â˜…2025-06-09 Phil      
                 }
             }
             else
@@ -2109,20 +2109,20 @@ void triac_control(void)
                     Bit_Relay_Output = CLEAR;
                     gu8TriacLevelMax = 100;
                 }
-                // ¡Ú2025-06-02 Phil  
+                // â˜…2025-06-02 Phil  
                 else if ((gu8_Hot_Out_Temperature_One_Degree <= gu8_Hot_Target_Temp - 5))
                 {
                     Bit_Relay_Output = SET;
                     gu8TriacLevelMax = 100;
                 }
-                // ¡Ú2025-06-02 Phil  
+                // â˜…2025-06-02 Phil  
                 else
                 {
-                    //Bit_Relay_Output = CLEAR;// ¡Ú2025-06-02 Phil  (ÀÌÀü Ãâ·Â À¯Áö)
+                    //Bit_Relay_Output = CLEAR;// â˜…2025-06-02 Phil  (ì´ì „ ì¶œë ¥ ìœ ì§€)
                     gu8TriacLevelMax = STEP_TRIAC;
                 }
             } 
-            // [25-05-23 18:13:08] yspark, °è¼Ó Ç®È÷ÆÃÀ» ÇÏ°í ÀÖ¾î È÷ÅÍ Á¦¾î º¯°æÇÏ¿© ¿Âµµ ¸ÂÃß±â 
+            // [25-05-23 18:13:08] yspark, ê³„ì† í’€íˆíŒ…ì„ í•˜ê³  ìˆì–´ íˆí„° ì œì–´ ë³€ê²½í•˜ì—¬ ì˜¨ë„ ë§ì¶”ê¸° 
             else if(((gu8_hot_setting_temperature == HOT_SET_TEMP____75oC)
                     || (gu8_hot_setting_temperature == HOT_SET_TEMP____70oC)
                     )
@@ -2130,26 +2130,26 @@ void triac_control(void)
             {
                 if ((gu8_Hot_Out_Temperature_One_Degree >= gu8_Hot_Target_Temp + 10))
                 {
-                    //Bit_Relay_Output = SET;		// ¡Ú2025-06-08 Phil
+                    //Bit_Relay_Output = SET;		// â˜…2025-06-08 Phil
                     if(u16Heater_Power_Save <= HEATER_POWER_LOW)    
                     {                
-                    	Bit_Relay_Output = SET;		// ¡Ú2025-06-08 Phil
-                    	gu8TriacLevelMax = 0;// ¡Ú2025-06-09 Phil 
+                    	Bit_Relay_Output = SET;		// â˜…2025-06-08 Phil
+                    	gu8TriacLevelMax = 0;// â˜…2025-06-09 Phil 
                     }
                     else
                     {
-                      Bit_Relay_Output = CLEAR;		// ¡Ú2025-06-08 Phil     
-                      gu8TriacLevelMax = STEP_TRIAC;// ¡Ú2025-06-09 Phil  
-                      Bit_Relay_Off_Holding = SET;  // ¡Ú2025-06-09 Phil              
+                      Bit_Relay_Output = CLEAR;		// â˜…2025-06-08 Phil     
+                      gu8TriacLevelMax = STEP_TRIAC;// â˜…2025-06-09 Phil  
+                      Bit_Relay_Off_Holding = SET;  // â˜…2025-06-09 Phil              
                     }
-                    //gu8TriacLevelMax = 0;// ¡Ú2025-06-09 Phil 
+                    //gu8TriacLevelMax = 0;// â˜…2025-06-09 Phil 
                 }
                 else if ((gu8_Hot_Out_Temperature_One_Degree >= gu8_Hot_Target_Temp + 9))
                 {
 //                    Bit_Relay_Output = SET;
-//                    //Bit_Relay_Output = CLEAR;		// ¡Ú2025-06-09 Phil  
+//                    //Bit_Relay_Output = CLEAR;		// â˜…2025-06-09 Phil  
 //                    gu8TriacLevelMax = 10;
-// ¡Ú2025-06-09 Phil                     
+// â˜…2025-06-09 Phil                     
                     if(Bit_Relay_Off_Holding)
                     {
                       Bit_Relay_Output = CLEAR; 
@@ -2160,14 +2160,14 @@ void triac_control(void)
                       Bit_Relay_Output = SET;
                       gu8TriacLevelMax = 10;                    
                     }
-// ¡Ú2025-06-09 Phil 
+// â˜…2025-06-09 Phil 
                 }
                 else if ((gu8_Hot_Out_Temperature_One_Degree >= gu8_Hot_Target_Temp + 8))
                 {
 //                    Bit_Relay_Output = SET;
-//                    //Bit_Relay_Output = CLEAR;		// ¡Ú2025-06-09 Phil  
+//                    //Bit_Relay_Output = CLEAR;		// â˜…2025-06-09 Phil  
 //                    gu8TriacLevelMax = 20;
-// ¡Ú2025-06-09 Phil                     
+// â˜…2025-06-09 Phil                     
                     if(Bit_Relay_Off_Holding)
                     {
                       Bit_Relay_Output = CLEAR; 
@@ -2178,14 +2178,14 @@ void triac_control(void)
                       Bit_Relay_Output = SET;
                       gu8TriacLevelMax = 20;                    
                     }
-// ¡Ú2025-06-09 Phil 
+// â˜…2025-06-09 Phil 
                 }
                 else if ((gu8_Hot_Out_Temperature_One_Degree >= gu8_Hot_Target_Temp + 7))
                 {
 //                    Bit_Relay_Output = SET;
-//                    //Bit_Relay_Output = CLEAR;		// ¡Ú2025-06-09 Phil  
+//                    //Bit_Relay_Output = CLEAR;		// â˜…2025-06-09 Phil  
 //                    gu8TriacLevelMax = 30;
-// ¡Ú2025-06-09 Phil                     
+// â˜…2025-06-09 Phil                     
                     if(Bit_Relay_Off_Holding)
                     {
                       Bit_Relay_Output = CLEAR; 
@@ -2196,14 +2196,14 @@ void triac_control(void)
                       Bit_Relay_Output = SET;
                       gu8TriacLevelMax = 30;                    
                     }
-// ¡Ú2025-06-09 Phil 
+// â˜…2025-06-09 Phil 
                 }
                 else if ((gu8_Hot_Out_Temperature_One_Degree >= gu8_Hot_Target_Temp + 6))
                 {
 //                    Bit_Relay_Output = SET;
-//                    //Bit_Relay_Output = CLEAR;		// ¡Ú2025-06-09 Phil  
+//                    //Bit_Relay_Output = CLEAR;		// â˜…2025-06-09 Phil  
 //                    gu8TriacLevelMax = 40;
-// ¡Ú2025-06-09 Phil                     
+// â˜…2025-06-09 Phil                     
                     if(Bit_Relay_Off_Holding)
                     {
                       Bit_Relay_Output = CLEAR; 
@@ -2214,14 +2214,14 @@ void triac_control(void)
                       Bit_Relay_Output = SET;
                       gu8TriacLevelMax = 40;                    
                     }
-// ¡Ú2025-06-09 Phil 
+// â˜…2025-06-09 Phil 
                 }
                 else if ((gu8_Hot_Out_Temperature_One_Degree >= gu8_Hot_Target_Temp + 5))
                 {
 //                    //Bit_Relay_Output = SET;
-//                    Bit_Relay_Output = CLEAR;		// ¡Ú2025-06-09 Phil  
+//                    Bit_Relay_Output = CLEAR;		// â˜…2025-06-09 Phil  
 //                    gu8TriacLevelMax = 50;
-// ¡Ú2025-06-09 Phil                     
+// â˜…2025-06-09 Phil                     
                     if(Bit_Relay_Off_Holding)
                     {
                       Bit_Relay_Output = CLEAR; 
@@ -2232,14 +2232,14 @@ void triac_control(void)
                       Bit_Relay_Output = SET;
                       gu8TriacLevelMax = 50;                    
                     }
-// ¡Ú2025-06-09 Phil 
+// â˜…2025-06-09 Phil 
                 }
                 else if ((gu8_Hot_Out_Temperature_One_Degree >= gu8_Hot_Target_Temp + 4))
                 {
 //                    Bit_Relay_Output = SET;
-//                    //Bit_Relay_Output = CLEAR;		// ¡Ú2025-06-09 Phil  
+//                    //Bit_Relay_Output = CLEAR;		// â˜…2025-06-09 Phil  
 //                    gu8TriacLevelMax = 60;
-// ¡Ú2025-06-09 Phil                     
+// â˜…2025-06-09 Phil                     
                     if(Bit_Relay_Off_Holding)
                     {
                       Bit_Relay_Output = CLEAR; 
@@ -2250,14 +2250,14 @@ void triac_control(void)
                       Bit_Relay_Output = SET;
                       gu8TriacLevelMax = 60;                    
                     }
-// ¡Ú2025-06-09 Phil 
+// â˜…2025-06-09 Phil 
                 }
                 else if ((gu8_Hot_Out_Temperature_One_Degree >= gu8_Hot_Target_Temp + 3))
                 {
 //                    Bit_Relay_Output = SET;
-//                    //Bit_Relay_Output = CLEAR;		// ¡Ú2025-06-09 Phil  
+//                    //Bit_Relay_Output = CLEAR;		// â˜…2025-06-09 Phil  
 //                    gu8TriacLevelMax = 70;
-// ¡Ú2025-06-09 Phil                     
+// â˜…2025-06-09 Phil                     
                     if(Bit_Relay_Off_Holding)
                     {
                       Bit_Relay_Output = CLEAR; 
@@ -2268,14 +2268,14 @@ void triac_control(void)
                       Bit_Relay_Output = SET;
                       gu8TriacLevelMax = 70;                    
                     }
-// ¡Ú2025-06-09 Phil 
+// â˜…2025-06-09 Phil 
                 }
                 else if ((gu8_Hot_Out_Temperature_One_Degree >= gu8_Hot_Target_Temp + 2))
                 {
 //                    Bit_Relay_Output = SET;
-//                    //Bit_Relay_Output = CLEAR;		// ¡Ú2025-06-09 Phil  
+//                    //Bit_Relay_Output = CLEAR;		// â˜…2025-06-09 Phil  
 //                    gu8TriacLevelMax = 80;
-// ¡Ú2025-06-09 Phil                     
+// â˜…2025-06-09 Phil                     
                     if(Bit_Relay_Off_Holding)
                     {
                       Bit_Relay_Output = CLEAR; 
@@ -2286,14 +2286,14 @@ void triac_control(void)
                       Bit_Relay_Output = SET;
                       gu8TriacLevelMax = 80;                    
                     }
-// ¡Ú2025-06-09 Phil 
+// â˜…2025-06-09 Phil 
                 }
                 else if ((gu8_Hot_Out_Temperature_One_Degree >= gu8_Hot_Target_Temp + 1))
                 {
 //                    Bit_Relay_Output = SET;
-//                    //Bit_Relay_Output = CLEAR;		// ¡Ú2025-06-09 Phil  
+//                    //Bit_Relay_Output = CLEAR;		// â˜…2025-06-09 Phil  
 //                    gu8TriacLevelMax = 90;
-// ¡Ú2025-06-09 Phil                     
+// â˜…2025-06-09 Phil                     
                     if(Bit_Relay_Off_Holding)
                     {
                       Bit_Relay_Output = CLEAR; 
@@ -2304,14 +2304,14 @@ void triac_control(void)
                       Bit_Relay_Output = SET;
                       gu8TriacLevelMax = 90;                    
                     }
-// ¡Ú2025-06-09 Phil 
+// â˜…2025-06-09 Phil 
                 }
                 else if ((gu8_Hot_Out_Temperature_One_Degree >= gu8_Hot_Target_Temp))
                 {
 //                    Bit_Relay_Output = SET;
-//                    //Bit_Relay_Output = CLEAR;		// ¡Ú2025-06-09 Phil  
+//                    //Bit_Relay_Output = CLEAR;		// â˜…2025-06-09 Phil  
 //                    gu8TriacLevelMax = 100;
-// ¡Ú2025-06-09 Phil                     
+// â˜…2025-06-09 Phil                     
                     if(Bit_Relay_Off_Holding)
                     {
                       Bit_Relay_Output = CLEAR; 
@@ -2322,23 +2322,23 @@ void triac_control(void)
                       Bit_Relay_Output = SET;
                       gu8TriacLevelMax = 100;                    
                     }
-// ¡Ú2025-06-09 Phil 
+// â˜…2025-06-09 Phil 
                 }
-//                // ¡Ú2025-06-09 Phil  
+//                // â˜…2025-06-09 Phil  
 //                else if ((gu8_Hot_Out_Temperature_One_Degree <= gu8_Hot_Target_Temp - 5))
 //                {
 //                    Bit_Relay_Output = SET;
 //                    gu8TriacLevelMax = 100;
 //                }
-//                // ¡Ú2025-06-09 Phil 
+//                // â˜…2025-06-09 Phil 
                 else
                 {
                     Bit_Relay_Output = SET;
                     gu8TriacLevelMax = STEP_TRIAC;
-                    Bit_Relay_Off_Holding = CLEAR;  // ¡Ú2025-06-09 Phil      
+                    Bit_Relay_Off_Holding = CLEAR;  // â˜…2025-06-09 Phil      
                 }
             }
-            //2025-07-24 cbr 30µµ Á¤°İ 85µµ ÀúÀ¯·® °ú¿­
+            //2025-07-24 cbr 30ë„ ì •ê²© 85ë„ ì €ìœ ëŸ‰ ê³¼ì—´
             else if( ( (gu8_hot_setting_temperature == HOT_SET_TEMP____85oC)
                     || (gu8_hot_setting_temperature == HOT_SET_TEMP____80oC) )
                 // && (gu8_Hot_In_Temperature_One_Degree > 25)
@@ -2354,13 +2354,13 @@ void triac_control(void)
                     Bit_Relay_Output = SET;
                     gu8TriacLevelMax = 50;
                 }
-                // ¡Ú2025-06-02 Phil  
+                // â˜…2025-06-02 Phil  
                 else if ((gu8_Hot_Out_Temperature_One_Degree <= gu8_Hot_Target_Temp - 5))
                 {
                     Bit_Relay_Output = SET;
                     gu8TriacLevelMax = 100;
                 }
-                // ¡Ú2025-06-02 Phil  
+                // â˜…2025-06-02 Phil  
                 else
                 {
                     Bit_Relay_Output = SET;
@@ -2410,7 +2410,7 @@ U8 check_over_heat(void)
 
         if( bit_overheat == SET )
         {
-            /*..hui [20-9-23ï¿½ï¿½ï¿½ï¿½ 1:17:39] ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿?..*/
+            /*..hui [20-9-23å ì™ì˜™å ì™ì˜™ 1:17:39] å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ?..*/
             if( gu8_Hot_Out_Temperature_One_Degree <= HOT_RELAY_TRIAC_OFF_RETURN_TEMP
                 && gu8_Hot_Heater_Temperature_One_Degree <= HOT_RELAY_TRIAC_OFF_RETURN_TEMP )
             {

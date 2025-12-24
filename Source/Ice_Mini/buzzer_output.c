@@ -201,7 +201,7 @@ void BuzControl(void)
 
             case BUZZER_EFFLUENT:
 
-               // √ﬂ√‚Ω√¿€¿Ω **************************************************************
+               // Ï∂îÏ∂úÏãúÏûëÏùå **************************************************************
                if ((gu8Buzzer_Order == 1) && (gu16Buzzer_Time == 0))
                {
                    Buz_Start((U16)Re6);
@@ -239,7 +239,7 @@ void BuzControl(void)
 
             case BUZZER_EFFLUENT_END:
 
-               // √ﬂ√‚¡æ∑·¿Ω **********************************************************
+               // Ï∂îÏ∂úÏ¢ÖÎ£åÏùå **********************************************************
                if ((gu8Buzzer_Order == 1) && (gu16Buzzer_Time == 0))
                {
                    Buz_Start((U16)La5);  //buzzer start
@@ -290,7 +290,7 @@ void BuzControl(void)
 
             case BUZZER_COOL_SETUP:
 
-               // ≥√∞¢ ON¿Ω **************************************************************
+               // ÎÉâÍ∞Å ONÏùå **************************************************************
                if ((gu8Buzzer_Order == 1) && (gu16Buzzer_Time == 0))
                {
                    Buz_Start((U16)Pas6);  //buzzer start
@@ -328,7 +328,7 @@ void BuzControl(void)
 
             case BUZZER_COOL_CANCEL:
 
-               // ≥√∞¢ OFF¿Ω **********************************************************
+               // ÎÉâÍ∞Å OFFÏùå **********************************************************
                if ((gu8Buzzer_Order == 1) && (gu16Buzzer_Time == 0))
                {
                    Buz_Start((U16)Sols5);  //buzzer start
@@ -379,7 +379,7 @@ void BuzControl(void)
 
             case BUZZER_SELECT:
 
-               // º±≈√¿Ω **************************************************************
+               // ÏÑ†ÌÉùÏùå **************************************************************
                if ((gu8Buzzer_Order == 1) && (gu16Buzzer_Time == 0))
                {
                    Buz_Start((U16)La6);  //buzzer start
@@ -404,7 +404,7 @@ void BuzControl(void)
 
             case BUZZER_ERROR:
 
-               // ø°∑Ø(∞Ê∞Ì)¿Ω **********************************************************
+               // ÏóêÎü¨(Í≤ΩÍ≥†)Ïùå **********************************************************
                if ((gu8Buzzer_Order == 1) && (gu16Buzzer_Time == 0))
                {
                    Buz_Start((U16)Re6);  //buzzer start
@@ -469,7 +469,7 @@ void BuzControl(void)
             case BUZZER_MUTE:
             case BUZZER_SETUP:
 
-               // º≥¡§¿Ω **************************************************************
+               // ÏÑ§Ï†ïÏùå **************************************************************
                if ((gu8Buzzer_Order == 1) && (gu16Buzzer_Time == 0))
                {
                    Buz_Start((U16)Sol6);  //buzzer start
@@ -507,7 +507,7 @@ void BuzControl(void)
 
             case BUZZER_CANCEL:
 
-               // «ÿ¡¶¿Ω **************************************************************
+               // Ìï¥Ï†úÏùå **************************************************************
                if ((gu8Buzzer_Order == 1) && (gu16Buzzer_Time == 0))
                {
                    Buz_Start((U16)Re7);  //buzzer start
@@ -545,7 +545,7 @@ void BuzControl(void)
 
             case BUZZER_EFFLUENT_CONTINUE:
 
-               // ø¨º”√ﬂ√‚¿Ω **************************************************************
+               // Ïó∞ÏÜçÏ∂îÏ∂úÏùå **************************************************************
                if ((gu8Buzzer_Order == 1) && (gu16Buzzer_Time == 0))
                {
                    Buz_Start((U16)Re6);
@@ -661,7 +661,7 @@ void BuzControl(void)
 
             case BUZZER_STERILIZE_START:
 
-               // ªÏ±’Ω√¿€¿Ω **********************************************************
+               // ÏÇ¥Í∑†ÏãúÏûëÏùå **********************************************************
                if ((gu8Buzzer_Order == 1) && (gu16Buzzer_Time == 0))
                {
                    Buz_Start((U16)Mi6);  //buzzer start
@@ -712,7 +712,7 @@ void BuzControl(void)
 
             case BUZZER_STERILIZE_END:
 
-               // ªÏ±’¡æ∑·¿Ω **********************************************************
+               // ÏÇ¥Í∑†Ï¢ÖÎ£åÏùå **********************************************************
                if ((gu8Buzzer_Order == 1) && (gu16Buzzer_Time == 0))
                {
                    Buz_Start((U16)La6);  //buzzer start
@@ -789,7 +789,7 @@ void BuzControl(void)
 
             case BUZZER_AP_CONNECT:
 
-               // AP ¡¢º” º∫∞¯¿Ω **********************************************************
+               // AP Ï†ëÏÜç ÏÑ±Í≥µÏùå **********************************************************
                if ((gu8Buzzer_Order == 1) && (gu16Buzzer_Time == 0))
                {
                    Buz_Start((U16)Do6);  //buzzer start
@@ -840,7 +840,7 @@ void BuzControl(void)
 
             case BUZZER_SERVER_CONNECT:
 
-               // º≠πˆ ¡¢º” º∫∞¯¿Ω **********************************************************
+               // ÏÑúÎ≤Ñ Ï†ëÏÜç ÏÑ±Í≥µÏùå **********************************************************
                if ((gu8Buzzer_Order == 1) && (gu16Buzzer_Time == 0))
                {
                    Buz_Start((U16)Do7);  //buzzer start
@@ -1205,13 +1205,13 @@ void BuzControl(void)
                break;
         }
     }
-    else    // ¿Ωº“∞≈∏µÂ µø¿€
+    else    // ÏùåÏÜåÍ±∞Î™®Îìú ÎèôÏûë
     {
         switch(gu8Buzzer_Mode)
         {
             case BUZZER_MUTE:
 
-               // º≥¡§¿Ω **************************************************************
+               // ÏÑ§Ï†ïÏùå **************************************************************
                if ((gu8Buzzer_Order == 1) && (gu16Buzzer_Time == 0))
                {
                    Buz_Start((U16)Sol6);  //buzzer start
@@ -1249,7 +1249,7 @@ void BuzControl(void)
 
             case BUZZER_SETUP_MUTE:
 
-               // º≥¡§¿Ω **************************************************************
+               // ÏÑ§Ï†ïÏùå **************************************************************
                if ((gu8Buzzer_Order == 1) && (gu16Buzzer_Time == 0))
                {
                    Buz_Start((U16)Sol6);  //buzzer start
@@ -1287,7 +1287,7 @@ void BuzControl(void)
 
             case BUZZER_CANCEL_MUTE:
 
-               // «ÿ¡¶¿Ω **************************************************************
+               // Ìï¥Ï†úÏùå **************************************************************
                if ((gu8Buzzer_Order == 1) && (gu16Buzzer_Time == 0))
                {
                    Buz_Start((U16)Re7);  //buzzer start
@@ -1419,7 +1419,7 @@ void BuzControl(void)
 
             case BUZZER_AP_CONNECT:
 
-               // AP ¡¢º” º∫∞¯¿Ω **********************************************************
+               // AP Ï†ëÏÜç ÏÑ±Í≥µÏùå **********************************************************
                if ((gu8Buzzer_Order == 1) && (gu16Buzzer_Time == 0))
                {
                    Buz_Start((U16)Do6);  //buzzer start
@@ -1470,7 +1470,7 @@ void BuzControl(void)
 
             case BUZZER_SERVER_CONNECT:
 
-               // º≠πˆ ¡¢º” º∫∞¯¿Ω **********************************************************
+               // ÏÑúÎ≤Ñ Ï†ëÏÜç ÏÑ±Í≥µÏùå **********************************************************
                if ((gu8Buzzer_Order == 1) && (gu16Buzzer_Time == 0))
                {
                    Buz_Start((U16)Do7);  //buzzer start

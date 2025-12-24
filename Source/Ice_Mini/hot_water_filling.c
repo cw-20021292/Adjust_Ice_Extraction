@@ -67,14 +67,14 @@ extern U8 gu8_flushing_operation_timer_min;
 ***********************************************************************************************************************/
 void hot_water_filling_control(void)
 {
-    /*..hui [20-3-6¿ÀÀü 9:42:05] ¸ğµ¨ ¼±ÅÃ ¿Ï·áµÇ±â Àü±îÁö ¸®ÅÏ..*/
+    /*..hui [20-3-6ì˜¤ì „ 9:42:05] ëª¨ë¸ ì„ íƒ ì™„ë£Œë˜ê¸° ì „ê¹Œì§€ ë¦¬í„´..*/
     if( F_FW_Version_Display_Mode == CLEAR )
     {
         return;
     }
     else{}
 
-	//flow ÂÊ¿¡ Ãß°¡ ÈÄ ¼öÁ¤ ¿¹Á¤ ****
+	//flow ìª½ì— ì¶”ê°€ í›„ ìˆ˜ì • ì˜ˆì • ****
 	if(1)
 	//if( bit_first_full_water == SET )
     {
@@ -103,7 +103,7 @@ void hot_water_filling_control(void)
         Bit4_Hot_Filling_Delay_State = CLEAR;
     }
 
-	// flushing »ğÀÔ ÈÄ º¯°æ ¿¹Á¤  ****
+	// flushing ì‚½ì… í›„ ë³€ê²½ ì˜ˆì •  ****
     if( gu8_flushing_mode == FLUSHING_FILL_HOT_TANK_STATE )
     {
         Bit5_Hot_Filling_Flushing_State = SET;//~bit_install_flushing_state;
@@ -153,7 +153,7 @@ void hot_water_filling_control(void)
     }
 
     /***********************************************************************************************************************/
-    /*..hui [21-6-28¿ÀÈÄ 3:56:56] ÀüºÎ ´Ù SET ÀÏ °æ¿ì..*/
+    /*..hui [21-6-28ì˜¤í›„ 3:56:56] ì „ë¶€ ë‹¤ SET ì¼ ê²½ìš°..*/
     if( u8HotFillingState == HOT_FILLING_START_STATE )
     {
         start_hot_water_filling();
@@ -185,14 +185,14 @@ void start_hot_water_filling(void)
         {
             bit_hot_filling_start = SET;
             Bit0_HIF9_Water_Filling_State = SET;
-            /*..hui [20-3-6¿ÀÀü 9:22:33] ¿Â¼ö ÃßÃâ°ú Çò°¥¸®Áö ¾Ê°Ô ºĞ¸®..*/
-			// flushing »ğÀÔ ÈÄ º¯°æ ¿¹Á¤  ****
+            /*..hui [20-3-6ì˜¤ì „ 9:22:33] ì˜¨ìˆ˜ ì¶”ì¶œê³¼ í—·ê°ˆë¦¬ì§€ ì•Šê²Œ ë¶„ë¦¬..*/
+			// flushing ì‚½ì… í›„ ë³€ê²½ ì˜ˆì •  ****
             // gu16_Filling_Hz = C_CUP_120CC_ROOM; //100cc
             // gu16_Filling_Hz = C_CUP_120CC_ROOM; //100cc
-            gu16_Filling_Hz = C_CUP_500CC_ROOM;      //2025-07-10 cbr 1kg ÃÖÁ¾»ç¾ç
+            gu16_Filling_Hz = C_CUP_500CC_ROOM;      //2025-07-10 cbr 1kg ìµœì¢…ì‚¬ì–‘
 
             /*Bit1_Prepare_Hot_Water_Popup_State = SET;*/
-			// flushing »ğÀÔ ÈÄ º¯°æ ¿¹Á¤  ****
+			// flushing ì‚½ì… í›„ ë³€ê²½ ì˜ˆì •  ****
             //gu8_flushing_mode = FLUSHING_FILL_HOT_TANK_STATE;
 
         }
@@ -210,8 +210,8 @@ void start_hot_water_filling(void)
 ***********************************************************************************************************************/
 void operation_hot_water_filling(void)
 {
-    /*..hui [19-11-7¿ÀÀü 9:21:24] ÃÊ±â ¿Â¼ö µå·¹ÀÎÁß¿¡µµ Àú¼öÀ§ °¨ÁöµÇ¸é Áï½Ã Á¤Áö..*/
-    /*..hui [20-3-17¿ÀÀü 11:24:32] ¿Â¼ö °ü·Ã ¿¡·¯ ¹ß»ı½Ã¿¡µµ Á¤Áö Ãß°¡..*/
+    /*..hui [19-11-7ì˜¤ì „ 9:21:24] ì´ˆê¸° ì˜¨ìˆ˜ ë“œë ˆì¸ì¤‘ì—ë„ ì €ìˆ˜ìœ„ ê°ì§€ë˜ë©´ ì¦‰ì‹œ ì •ì§€..*/
+    /*..hui [20-3-17ì˜¤ì „ 11:24:32] ì˜¨ìˆ˜ ê´€ë ¨ ì—ëŸ¬ ë°œìƒì‹œì—ë„ ì •ì§€ ì¶”ê°€..*/
     if( Bit1_Hot_Operation_Disable_State == SET )
         /*|| gu8_Tank_Water_Level == ROOM_LEVEL_ERROR )*/
     {
@@ -223,8 +223,8 @@ void operation_hot_water_filling(void)
         gu8_flushing_mode = FLUSHING_STANDBY_STATE;
         bit_flushing_halt = SET;
 
-        /*..hui [20-3-17¿ÀÈÄ 1:40:03] µå·¹ÀÎÁß ¿Â¼ö ÃßÃâ ºÒ°¡ ¿¡·¯ ¹ß»ı½Ã¿¡¸¸ ¼öµ¿µå·¹ÀÎÀ¸·Î ÀüÈ¯..*/
-        /*..hui [20-3-17¿ÀÈÄ 1:40:13] Àú¼öÀ§ ¹ß»ı½Ã¿¡´Â ´Ù½Ã ¸¸¼öÀ§±îÁö Ã¤¿ì°í ÀÚµ¿À¸·Î ½ÃÀÛ..*/
+        /*..hui [20-3-17ì˜¤í›„ 1:40:03] ë“œë ˆì¸ì¤‘ ì˜¨ìˆ˜ ì¶”ì¶œ ë¶ˆê°€ ì—ëŸ¬ ë°œìƒì‹œì—ë§Œ ìˆ˜ë™ë“œë ˆì¸ìœ¼ë¡œ ì „í™˜..*/
+        /*..hui [20-3-17ì˜¤í›„ 1:40:13] ì €ìˆ˜ìœ„ ë°œìƒì‹œì—ëŠ” ë‹¤ì‹œ ë§Œìˆ˜ìœ„ê¹Œì§€ ì±„ìš°ê³  ìë™ìœ¼ë¡œ ì‹œì‘..*/
         //if( Bit1_Hot_Operation_Disable_State == SET )
         //{
             bit_hot_filling_manual = SET;
@@ -236,7 +236,7 @@ void operation_hot_water_filling(void)
     else{}
 
     /*if( bit_filter_reed == CLEAR )*/
-    /*..hui [21-11-10¿ÀÈÄ 4:34:16] °íÀåÁø´Ü½Ã Á¤Áö Ãß°¡..*/
+    /*..hui [21-11-10ì˜¤í›„ 4:34:16] ê³ ì¥ì§„ë‹¨ì‹œ ì •ì§€ ì¶”ê°€..*/
     if( bit_filter_all == CLEAR
     || bit_self_test_start == SET )
     {
@@ -255,7 +255,7 @@ void operation_hot_water_filling(void)
     {
         gu16_hot_filling_max_timer++;
 
-        if(gu16_hot_filling_max_timer >= 2400)      // 3ºĞ -> 4ºĞ (¿Â¼ö ÃÖÁ¾»ç¾ç)
+        if(gu16_hot_filling_max_timer >= 2400)      // 3ë¶„ -> 4ë¶„ (ì˜¨ìˆ˜ ìµœì¢…ì‚¬ì–‘)
         {
             gu16_hot_filling_max_timer = 2400;
             bit_hot_filling_start = CLEAR;
@@ -265,7 +265,7 @@ void operation_hot_water_filling(void)
             gu8_flushing_mode = FLUSHING_STANDBY_STATE;
             bit_flushing_halt = SET;
 
-            /*..hui [20-3-17¿ÀÈÄ 1:03:04] ÀÚµ¿À¸·Î µå·¹ÀÎÇÏ´Ù°¡ ¿¡·¯ °É·ÈÀ»¶§µµ Á¤»ó ¿¡·¯ Ç¥½ÃÇÏµµ·Ï..*/
+            /*..hui [20-3-17ì˜¤í›„ 1:03:04] ìë™ìœ¼ë¡œ ë“œë ˆì¸í•˜ë‹¤ê°€ ì—ëŸ¬ ê±¸ë ¸ì„ë•Œë„ ì •ìƒ ì—ëŸ¬ í‘œì‹œí•˜ë„ë¡..*/
             bit_hot_filling_manual = SET;
             Bit0_Hot_Water_Flow_Block_Error__E08 = SET;
             return;
@@ -294,7 +294,7 @@ void operation_hot_water_filling(void)
             gu16_hot_filling_max_timer = 0;
             F_Hot_Filling_Finish = CLEAR;
 
-			// flushing »ğÀÔ ÈÄ º¯°æ ¿¹Á¤  ****
+			// flushing ì‚½ì… í›„ ë³€ê²½ ì˜ˆì •  ****
             //gu8_flushing_mode = FLUSHING_FILL_HOT_TANK_STATE;
 
             break;
@@ -303,12 +303,12 @@ void operation_hot_water_filling(void)
 
             gu16_hot_filling_control_timer++;
 
-            /*..hui [21-6-22¿ÀÈÄ 12:37:28] FEED9 ON..*/
+            /*..hui [21-6-22ì˜¤í›„ 12:37:28] FEED9 ON..*/
             if(gu16_hot_filling_control_timer >= 3)
             {
                 gu8_Hot_Filling_Step++;
                 gu16_hot_filling_control_timer = 0;
-                gu8_flow_motor_check_step = 0;          /* À¯·®Á¶Àı¹ëºê ¿¡ÀÌÂ¡ Àû¿ë 250730 CH.PARK */
+                gu8_flow_motor_check_step = 0;          /* ìœ ëŸ‰ì¡°ì ˆë°¸ë¸Œ ì—ì´ì§• ì ìš© 250730 CH.PARK */
             }
             else{}
 
@@ -318,10 +318,10 @@ void operation_hot_water_filling(void)
 
             gu16_hot_filling_control_timer++;
 
-            /* ¼³Ä¡ÇÃ·¯½ÌÀÏ ¶§¿¡¸¸ 1ºĞ °£ À¯·®Á¶Àı¹ëºê OPEN/CLOSE ¿¡ÀÌÂ¡ Á¦¾î 250730 CH.PARK */
+            /* ì„¤ì¹˜í”ŒëŸ¬ì‹±ì¼ ë•Œì—ë§Œ 1ë¶„ ê°„ ìœ ëŸ‰ì¡°ì ˆë°¸ë¸Œ OPEN/CLOSE ì—ì´ì§• ì œì–´ 250730 CH.PARK */
             if(bit_install_flushing_state == SET)
             {
-                if(gu16_hot_filling_control_timer >= 600) // 1ºĞ µ¿¾È À¯·®Á¶Àı¹ëºê ¿¡ÀÌÂ¡
+                if(gu16_hot_filling_control_timer >= 600) // 1ë¶„ ë™ì•ˆ ìœ ëŸ‰ì¡°ì ˆë°¸ë¸Œ ì—ì´ì§•
 	            {
 	                gu8_Hot_Filling_Step++;
 	                gu16_hot_filling_control_timer = 0;
@@ -408,8 +408,8 @@ void operation_hot_water_filling(void)
             }
             else
             {
-                /*..hui [21-2-8¿ÀÈÄ 9:33:33] FEED3 ON..*/
-                /*..hui [21-6-22¿ÀÈÄ 5:01:46] À¯·® ¾ÈÁ¤È­µÉ¶§±îÁö 1ÃÊ ´ë±â..*/
+                /*..hui [21-2-8ì˜¤í›„ 9:33:33] FEED3 ON..*/
+                /*..hui [21-6-22ì˜¤í›„ 5:01:46] ìœ ëŸ‰ ì•ˆì •í™”ë ë•Œê¹Œì§€ 1ì´ˆ ëŒ€ê¸°..*/
                 if(gu16_hot_filling_control_timer >= 10)
                 {
                     gu8_Hot_Filling_Step++;
@@ -421,11 +421,11 @@ void operation_hot_water_filling(void)
 
         case 3:
 
-            /*..hui [19-7-22¿ÀÈÄ 1:54:25] 3ÃÊ °æ°ú ÈÄ À¯·® ¼¾¼­ È®ÀÎ..*/
+            /*..hui [19-7-22ì˜¤í›„ 1:54:25] 3ì´ˆ ê²½ê³¼ í›„ ìœ ëŸ‰ ì„¼ì„œ í™•ì¸..*/
             /*if(gu8_Flow_1sec > HOT_BLOCKED_FLOW_HZ)*/
-            /*..hui [20-2-13¿ÀÈÄ 1:46:12] Ã¹ÀÜ µå·¹ÀÎÀº ÆßÇÁ Full °¡µ¿ÀÌ¹Ç·Î 15Hz·Î º¯°æ..*/
-            /*..hui [20-2-13¿ÀÈÄ 1:46:42] µå·¹ÀÎ ¸·ÇôÀÖ´Âµ¥ ¾ÈÀüº¯À¸·Î ºüÁ®¼­ ¹è¼ö¸·Èû¿¡·¯°¡ ¾Æ´Ñ °ú¿­¿¡·¯°¡ ¶ã¼öÀÖÀ½..*/
-            /*..hui [20-2-13¿ÀÈÄ 1:50:51] 15Hz ¾à 0.2¸®ÅÍ ÀÌ»ó..*/
+            /*..hui [20-2-13ì˜¤í›„ 1:46:12] ì²«ì” ë“œë ˆì¸ì€ íŒí”„ Full ê°€ë™ì´ë¯€ë¡œ 15Hzë¡œ ë³€ê²½..*/
+            /*..hui [20-2-13ì˜¤í›„ 1:46:42] ë“œë ˆì¸ ë§‰í˜€ìˆëŠ”ë° ì•ˆì „ë³€ìœ¼ë¡œ ë¹ ì ¸ì„œ ë°°ìˆ˜ë§‰í˜ì—ëŸ¬ê°€ ì•„ë‹Œ ê³¼ì—´ì—ëŸ¬ê°€ ëœ°ìˆ˜ìˆìŒ..*/
+            /*..hui [20-2-13ì˜¤í›„ 1:50:51] 15Hz ì•½ 0.2ë¦¬í„° ì´ìƒ..*/
             if(gu8_Flow_1sec > HOT_FIRST_BLOCKED_FLOW_HZ)
             {
                 gu16_hot_filling_control_timer++;
@@ -446,17 +446,17 @@ void operation_hot_water_filling(void)
 
         case 4:
 
-            /*..hui [20-2-13¿ÀÈÄ 2:08:23] 250CCÀÇ Àı¹İ 125CC µé¾î°¡¸é È÷ÅÍ Àü·ÂÃ¼Å©½ÃÀÛ..*/
+            /*..hui [20-2-13ì˜¤í›„ 2:08:23] 250CCì˜ ì ˆë°˜ 125CC ë“¤ì–´ê°€ë©´ íˆí„° ì „ë ¥ì²´í¬ì‹œì‘..*/
             /*if( gu16Effluent_Hz <= (U16)(C_CUP_250CC_HOT / 2) )*/
-			// flushing »ğÀÔ ÈÄ º¯°æ ¿¹Á¤  ****
+			// flushing ì‚½ì… í›„ ë³€ê²½ ì˜ˆì •  ****
 
             // if( gu16_Filling_Hz <= (U16)(C_CUP_120CC_ROOM ) )
-            if( gu16_Filling_Hz <= (U16)(C_CUP_250CC_ROOM ) )       //2025-07-10 cbr 1kg ÃÖÁ¾»ç¾ç
+            if( gu16_Filling_Hz <= (U16)(C_CUP_250CC_ROOM ) )       //2025-07-10 cbr 1kg ìµœì¢…ì‚¬ì–‘
             {
                 gu8_Hot_Filling_Step++;
                 gu16_hot_filling_control_timer = 0;
-                gu8_hot_setting_temperature = HOT_SET_TEMP____85oC;		// ¡Ú2025-06-20 phil    //2025-07-11 cbr
-                u8Target_Hz_Hot = 30;									// ¡Ú2025-06-20 phil    //2025-07-11 cbr
+                gu8_hot_setting_temperature = HOT_SET_TEMP____85oC;		// â˜…2025-06-20 phil    //2025-07-11 cbr
+                u8Target_Hz_Hot = 30;									// â˜…2025-06-20 phil    //2025-07-11 cbr
             }
             else{}
 
@@ -467,7 +467,7 @@ void operation_hot_water_filling(void)
             gu16_hot_filling_control_timer++;
 
 
-            /*..hui [19-1-24¿ÀÈÄ 1:42:56] 1.5ÃÊ µ¿¾È Àü·Â Ã¼Å©ÇÑ´Ù..*/
+            /*..hui [19-1-24ì˜¤í›„ 1:42:56] 1.5ì´ˆ ë™ì•ˆ ì „ë ¥ ì²´í¬í•œë‹¤..*/
             if(gu16_hot_filling_control_timer >= 15)
             {
                 gu16_hot_filling_control_timer = 0;
@@ -475,7 +475,7 @@ void operation_hot_water_filling(void)
             }
             else
             {
-                /*..hui [19-1-24¿ÀÈÄ 2:00:47] Ç® Ãâ·Â ¿Ï·áµÈ ÈÄ °è»ê..*/
+                /*..hui [19-1-24ì˜¤í›„ 2:00:47] í’€ ì¶œë ¥ ì™„ë£Œëœ í›„ ê³„ì‚°..*/
                 if( pHEATER_HOT_H_RELAY == SET
                    && pHEATER_HOT_TRIAC_L == SET
                    && gu8TriacLevelMax == STEP_TRIAC )

@@ -72,11 +72,11 @@ U16 gu16_develop_key_clear_time;
 
 U8 gu8_hot_drain_cold;
 
-// ÇÃ·¯½Ì ½ºÅµ¿ë Ä«¿îÆ® º¯¼ö
+// í”ŒëŸ¬ì‹± ìŠ¤í‚µìš© ì¹´ìš´íŠ¸ ë³€ìˆ˜
 U8 gu8_flushing_finish_input_count;
 U16 gu16_flushing_finish_key_clear_time;
 
-// Æ®·¹ÀÌ °í¿Â»ì±Õ ÀÔ·Â¿ë Ä«¿îÆ® º¯¼ö
+// íŠ¸ë ˆì´ ê³ ì˜¨ì‚´ê·  ì…ë ¥ìš© ì¹´ìš´íŠ¸ ë³€ìˆ˜
 U8 gu8_passive_hot_ster_key_input_count;
 U16 gu16_passive_hot_ster_key_clear_timer;
 
@@ -114,7 +114,7 @@ extern void stop_flushing_test_mode_start(void);
 ***********************************************************************************************************************/
 void Key_Input(void)        // it operates per 1ms
 {
-    /*..hui [19-11-7¿ÀÀü 9:55:18] ÃÊ±â Å° ¸·À½..*/
+    /*..hui [19-11-7ì˜¤ì „ 9:55:18] ì´ˆê¸° í‚¤ ë§‰ìŒ..*/
     if(F_FW_Version_Display_Mode != SET)
     {
         if(u8FactoryTestMode == NONE_TEST_MODE)
@@ -130,10 +130,10 @@ void Key_Input(void)        // it operates per 1ms
     Key_Input_Sampling(gu32_Key_Input);
     Key_Management(gu32_Key_Input);
 
-    key_input_ice_extract();        /* ¾óÀ½ ÃßÃâ¹öÆ° */
-    key_input_water_extract();      /* ³Ã¿ÂÁ¤ ÃßÃâ¹öÆ° */
+    key_input_ice_extract();        /* ì–¼ìŒ ì¶”ì¶œë²„íŠ¼ */
+    key_input_water_extract();      /* ëƒ‰ì˜¨ì • ì¶”ì¶œë²„íŠ¼ */
 
-    /*..hui [25-1-9¿ÀÈÄ 5:15:48] ÃßÃâ ¹öÆ° ÅëÇÕ..*/
+    /*..hui [25-1-9ì˜¤í›„ 5:15:48] ì¶”ì¶œ ë²„íŠ¼ í†µí•©..*/
     // key_input_extract();
 }
 
@@ -196,7 +196,7 @@ void Key_Management(U32 u32key_input_value)
         && (u16Key_Short_Counter < 1000)
         )
         {
-            if(u8FactoryTestMode == NONE_TEST_MODE)     // FCT¾Æ´Ò ¶§ (Æò½Ã)
+            if(u8FactoryTestMode == NONE_TEST_MODE)     // FCTì•„ë‹ ë•Œ (í‰ì‹œ)
             {
                 Key_Short_Input( u32key_input_value );
             }
@@ -220,7 +220,7 @@ void Key_Management(U32 u32key_input_value)
     }
     else
     {
-        /* Áß°£ ·ÕÅ°ÀÔ·Â Ã³¸® (1ÃÊ ÀÌ»ó ~ 2ÃÊ ¹Ì¸¸) */
+        /* ì¤‘ê°„ ë¡±í‚¤ì…ë ¥ ì²˜ë¦¬ (1ì´ˆ ì´ìƒ ~ 2ì´ˆ ë¯¸ë§Œ) */
         if(F_Key_Middle_Push_State == CLEAR)
         {
             if( (u16Key_Long_Counter >= 1000 && u16Key_Long_Counter < 2000) )
@@ -237,7 +237,7 @@ void Key_Management(U32 u32key_input_value)
         }
         else
         {
-            /* 1´Ü°è ·ÕÅ°ÀÔ·Â Ã³¸® (2ÃÊ ÀÌ»ó ~ 3ÃÊ ¹Ì¸¸) */
+            /* 1ë‹¨ê³„ ë¡±í‚¤ì…ë ¥ ì²˜ë¦¬ (2ì´ˆ ì´ìƒ ~ 3ì´ˆ ë¯¸ë§Œ) */
             if(F_Key_Long_Push_State == CLEAR)
             {
                 if( (u16Key_Long_Counter >= 2000 && u16Key_Long_Counter < 3000) )
@@ -254,7 +254,7 @@ void Key_Management(U32 u32key_input_value)
             }
             else
             {
-                /* 2´Ü°è ·ÕÅ°ÀÔ·Â Ã³¸® (3ÃÊ ÀÌ»ó ~ 5ÃÊ ¹Ì¸¸) */
+                /* 2ë‹¨ê³„ ë¡±í‚¤ì…ë ¥ ì²˜ë¦¬ (3ì´ˆ ì´ìƒ ~ 5ì´ˆ ë¯¸ë§Œ) */
                 if(F_Key_Normal_Long_Push_State == CLEAR)
                 {
                     if( (u16Key_Long_Counter >= 3000 && u16Key_Long_Counter < 5000) )
@@ -271,7 +271,7 @@ void Key_Management(U32 u32key_input_value)
                 }
                 else
                 {
-                    /* 3´Ü°è ·ÕÅ°ÀÔ·Â Ã³¸® (7ÃÊ ÀÌ»ó) */
+                    /* 3ë‹¨ê³„ ë¡±í‚¤ì…ë ¥ ì²˜ë¦¬ (7ì´ˆ ì´ìƒ) */
                     if(F_Key_Very_Long_Push_State == CLEAR)
                     {
                         if( u16Key_Long_Counter >= 7000 )
@@ -318,7 +318,7 @@ void Key_Short_Input( U32 u32key_input_value )
     // gu8_clear_hot_block_error = SET;
     gu8_clear_block_error = SET;
 
-    /* ¿¡·¯°¡ ¶á »óÅÂ·Î ÃßÃâÁß ¾î¶² ¹öÆ°À» ´©¸£¸é ¼ø°£ÀûÀ¸·Î È­¸éÀÌ ÀÌ»óÇÏ°Ô ¹Ù²î´Â Çö»ó °³¼±ÇÔ 250704 CH.PARK */
+    /* ì—ëŸ¬ê°€ ëœ¬ ìƒíƒœë¡œ ì¶”ì¶œì¤‘ ì–´ë–¤ ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ ìˆœê°„ì ìœ¼ë¡œ í™”ë©´ì´ ì´ìƒí•˜ê²Œ ë°”ë€ŒëŠ” í˜„ìƒ ê°œì„ í•¨ 250704 CH.PARK */
     if((F_WaterOut == CLEAR)
     && (F_IceOut == CLEAR)
     )
@@ -336,17 +336,17 @@ void Key_Short_Input( U32 u32key_input_value )
     power_saving_init();
     stop_button_set_display();
 
-	/*..sean [25-05-29] µÑ´Ù ¼ôÅ°·Î µ¿ÀÛÇÏµµ·Ï º¯°æ..*/
+	/*..sean [25-05-29] ë‘˜ë‹¤ ìˆí‚¤ë¡œ ë™ì‘í•˜ë„ë¡ ë³€ê²½..*/
     if( gu8_flushing_mode > FLUSHING_NONE_STATE && bit_instruction_mode_start == CLEAR )
     {
     	if( gu8_flushing_mode == FLUSHING_STANDBY_STATE )
         {
-            /*..hui [23-9-15¿ÀÈÄ 2:05:21] ÇÃ·¯½Ì È­¸é¿¡¼­ Æä¾î¸µ ¹öÆ°(Á¤¼ö) ¼ôÅ° ´©¸£¸é ¶ò¼Ò¸®~..*/
+            /*..hui [23-9-15ì˜¤í›„ 2:05:21] í”ŒëŸ¬ì‹± í™”ë©´ì—ì„œ í˜ì–´ë§ ë²„íŠ¼(ì •ìˆ˜) ìˆí‚¤ ëˆ„ë¥´ë©´ ëµì†Œë¦¬~..*/
             if( u32key_input_value == KEY_AMBIENT_SELECT )
             {
                 gu8_flushing_finish_input_count++;
 
-                /* 3È¸ ÀÌ»ó */
+                /* 3íšŒ ì´ìƒ */
                 if(gu8_flushing_finish_input_count >= 3)
                 {
                     gu8_flushing_finish_input_count = 3;
@@ -370,7 +370,7 @@ void Key_Short_Input( U32 u32key_input_value )
     bit_30_min_no_use_start = CLEAR;
     gu32_no_use_30_min_timer = CLEAR;
 
-    /* Æä¾î¸µ Áß »ç¿ëÀÚ°¡ ¾î¶² ¹öÆ°À» ´©¸£¸é ¹Ù·Î Æä¾î¸µÇ¥½Ã´Â Ç®¸°´Ù. 250714 CH.PARK */
+    /* í˜ì–´ë§ ì¤‘ ì‚¬ìš©ìê°€ ì–´ë–¤ ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ ë°”ë¡œ í˜ì–´ë§í‘œì‹œëŠ” í’€ë¦°ë‹¤. 250714 CH.PARK */
     if(( gu8_Led_Display_Step == LED_Display__WIFI_PAIRING )
     // && (gu8_Wifi_Pairing_State == )
     )
@@ -382,8 +382,8 @@ void Key_Short_Input( U32 u32key_input_value )
 
     switch(u32key_input_value)
     {
-        case KEY_ICE_SELECT:                /* ¾óÀ½ ¼±ÅÃ */
-            /*..hui [23-2-9¿ÀÈÄ 6:28:05] ¼¼ÆÃ¸ğµå¿¡¼­´Â ¾È´­¸²..*/
+        case KEY_ICE_SELECT:                /* ì–¼ìŒ ì„ íƒ */
+            /*..hui [23-2-9ì˜¤í›„ 6:28:05] ì„¸íŒ…ëª¨ë“œì—ì„œëŠ” ì•ˆëˆŒë¦¼..*/
             if(special_mode_check_U8() == CLEAR)
             {
                 if( gu8_flushing_mode > FLUSHING_NONE_STATE
@@ -405,8 +405,8 @@ void Key_Short_Input( U32 u32key_input_value )
             else{}
         break;
 
-        case KEY_ICE_WATER_SELECT:          /* ¾óÀ½¹° ¼±ÅÃ */
-            /*..hui [23-2-9¿ÀÈÄ 6:28:05] ¼¼ÆÃ¸ğµå¿¡¼­´Â ¾È´­¸²..*/
+        case KEY_ICE_WATER_SELECT:          /* ì–¼ìŒë¬¼ ì„ íƒ */
+            /*..hui [23-2-9ì˜¤í›„ 6:28:05] ì„¸íŒ…ëª¨ë“œì—ì„œëŠ” ì•ˆëˆŒë¦¼..*/
             if(special_mode_check_U8() == CLEAR)
             {
                 if( gu8_flushing_mode > FLUSHING_NONE_STATE
@@ -429,7 +429,7 @@ void Key_Short_Input( U32 u32key_input_value )
         break;
 
         case KEY_HOT_SELECT:
-            /*..hui [23-2-9¿ÀÈÄ 6:28:05] ¼¼ÆÃ¸ğµå¿¡¼­´Â ¾È´­¸²..*/
+            /*..hui [23-2-9ì˜¤í›„ 6:28:05] ì„¸íŒ…ëª¨ë“œì—ì„œëŠ” ì•ˆëˆŒë¦¼..*/
             if(special_mode_check_U8() == CLEAR)
             {
                 if( gu8_flushing_mode > FLUSHING_NONE_STATE
@@ -446,8 +446,8 @@ void Key_Short_Input( U32 u32key_input_value )
 
         break;
 
-        case KEY_AMBIENT_SELECT:                /* Á¤¼ö */
-            /*..hui [23-2-9¿ÀÈÄ 6:28:05] ¼¼ÆÃ¸ğµå¿¡¼­´Â ¾È´­¸²..*/
+        case KEY_AMBIENT_SELECT:                /* ì •ìˆ˜ */
+            /*..hui [23-2-9ì˜¤í›„ 6:28:05] ì„¸íŒ…ëª¨ë“œì—ì„œëŠ” ì•ˆëˆŒë¦¼..*/
             if(special_mode_check_U8() == CLEAR)
             {
                 if( gu8_flushing_mode > FLUSHING_NONE_STATE
@@ -480,8 +480,8 @@ void Key_Short_Input( U32 u32key_input_value )
             else {  }
         break;
 
-        case KEY_COLD_SELECT:                   /* ³Ã¼ö ´ÜÅ° */
-            /*..hui [23-2-9¿ÀÈÄ 6:28:05] ¼¼ÆÃ¸ğµå¿¡¼­´Â ¾È´­¸²..*/
+        case KEY_COLD_SELECT:                   /* ëƒ‰ìˆ˜ ë‹¨í‚¤ */
+            /*..hui [23-2-9ì˜¤í›„ 6:28:05] ì„¸íŒ…ëª¨ë“œì—ì„œëŠ” ì•ˆëˆŒë¦¼..*/
             if(special_mode_check_U8() == CLEAR)
             {
                 if( gu8_flushing_mode > FLUSHING_NONE_STATE
@@ -497,7 +497,7 @@ void Key_Short_Input( U32 u32key_input_value )
             }
             else if(bit_volume_setting_start == SET)
             {
-                gu16_volume_setting_mode_timer = 0;       /* 7ÃÊ */
+                gu16_volume_setting_mode_timer = 0;       /* 7ì´ˆ */
                 gu8_sound_setting_return_time = 0;
 
                 gu8Sound_Type++;
@@ -507,7 +507,7 @@ void Key_Short_Input( U32 u32key_input_value )
                 }
                 else {  }
 
-                /* À½¼º »óÅÂ¿Í »ó°ü¾øÀÌ ¾Æ·¡ À½¼ºÀº ³»º¸³»¾ß ÇÔ 250617 CH.PARK */
+                /* ìŒì„± ìƒíƒœì™€ ìƒê´€ì—†ì´ ì•„ë˜ ìŒì„±ì€ ë‚´ë³´ë‚´ì•¼ í•¨ 250617 CH.PARK */
                 if(gu8Sound_Type == SOUND_TYPE_MUTE)
                 {
                     Play_Voice(VOICE_70_MODE_SET_MUTE);
@@ -524,7 +524,7 @@ void Key_Short_Input( U32 u32key_input_value )
             }
             else {  }
 
-            /* ¼öµ¿ °í¿Â»ì±ÕÀ» À§ÇÑ ³Ã¼öÅ° 3È¸ ÀÔ·Â */
+            /* ìˆ˜ë™ ê³ ì˜¨ì‚´ê· ì„ ìœ„í•œ ëƒ‰ìˆ˜í‚¤ 3íšŒ ì…ë ¥ */
             gu8_passive_hot_ster_key_input_count++;
             if(gu8_passive_hot_ster_key_input_count >= 3)
             {
@@ -532,9 +532,9 @@ void Key_Short_Input( U32 u32key_input_value )
             }
         break;
 
-        case KEY_AMOUNT_SELECT:                 /* ¿ë·® */
+        case KEY_AMOUNT_SELECT:                 /* ìš©ëŸ‰ */
 
-            /*..hui [23-2-9¿ÀÈÄ 6:28:05] ¼¼ÆÃ¸ğµå¿¡¼­´Â ¾È´­¸²..*/
+            /*..hui [23-2-9ì˜¤í›„ 6:28:05] ì„¸íŒ…ëª¨ë“œì—ì„œëŠ” ì•ˆëˆŒë¦¼..*/
             if(bit_time_setting_start == SET)
             {
                 Bit2_Settings_Switch_Indicator = SET;
@@ -571,7 +571,7 @@ void Key_Short_Input( U32 u32key_input_value )
             }
         break;
 
-        case KEY_MY_SELECT:                            /* MY ¹öÆ° */
+        case KEY_MY_SELECT:                            /* MY ë²„íŠ¼ */
             if(special_mode_check_U8() == CLEAR)
             {
                 if( gu8_flushing_mode > FLUSHING_NONE_STATE
@@ -587,63 +587,63 @@ void Key_Short_Input( U32 u32key_input_value )
             }
         break;
 
-        case KEY_SETTING_ICE_SIZE:              /* ¾óÀ½´ë¼Ò */
+        case KEY_SETTING_ICE_SIZE:              /* ì–¼ìŒëŒ€ì†Œ */
             if(Bit0_Front_Led_Ice_Size == SET)
             {
                 key_setting_ice_size();
             }
             break;
 
-        case KEY_SETTING_ICE_OFF:               /* ¾óÀ½OFF */
+        case KEY_SETTING_ICE_OFF:               /* ì–¼ìŒOFF */
             if(Bit1_Front_Led_Ice_Off == SET)
             {
                 key_setting_ice_off();
             }
             break;
 
-        case KEY_SETTING_HOT_LOCK:              /* ¿Â¼öÀá±İ */
+        case KEY_SETTING_HOT_LOCK:              /* ì˜¨ìˆ˜ì ê¸ˆ */
             if(Bit2_Front_Led_Hot_Lock_Text == SET)
             {
                 key_setting_hot_lock();
             }
             break;
 
-        case KEY_SETTING_ICE_FIRST:             /* ºü¸¥Á¦ºù */
+        case KEY_SETTING_ICE_FIRST:             /* ë¹ ë¥¸ì œë¹™ */
             if(Bit3_Front_Led_Ice_First == SET)
             {
                 key_setting_fast_icemake();
             }
             break;
 
-        case KEY_SETTING_COLD_TEMP:             /* ³Ã¼ö°­¾à */
+        case KEY_SETTING_COLD_TEMP:             /* ëƒ‰ìˆ˜ê°•ì•½ */
             if(Bit4_Front_Led_Cold_Temp == SET)
             {
                 key_setting_cold_power();
             }
             break;
 
-        case KEY_SETTING_SLEEP_MODE:            /* ÃëÄ§¸ğµå */
+        case KEY_SETTING_SLEEP_MODE:            /* ì·¨ì¹¨ëª¨ë“œ */
             if(Bit5_Front_Led_Sleep_Mode_Text == SET)
             {
                 key_setting_sleepmode();
             }
             break;
 
-        case KEY_SETTING_ICE_LOCK:              /* ¾óÀ½Àá±İ */
+        case KEY_SETTING_ICE_LOCK:              /* ì–¼ìŒì ê¸ˆ */
             if(Bit0_Front_Led_Ice_Lock == SET)
             {
                 key_setting_ice_lock();
             }
             break;
 
-        case KEY_SETTING_ALL_LOCK:              /* ÀüÃ¼Àá±İ */
+        case KEY_SETTING_ALL_LOCK:              /* ì „ì²´ì ê¸ˆ */
             if(Bit1_Front_Led_All_Lock == SET)
             {
                 key_setting_all_lock_on();
             }
             break;
 
-        case KEY_COLD_WATER_OFF:                /* ³Ã¼öOFF */
+        case KEY_COLD_WATER_OFF:                /* ëƒ‰ìˆ˜OFF */
             if(F_Cold_Enable == CLEAR)
             {
                 key_setting_cold_off(SET);
@@ -693,7 +693,7 @@ void Key_Middle_Input( U32 u32key_input_value)
     else{}
     #endif
 
-    /* ÇÊÅÍÄ¿¹ö °¨Áö ½Ã ÃßÃâºÒ°¡ */
+    /* í•„í„°ì»¤ë²„ ê°ì§€ ì‹œ ì¶”ì¶œë¶ˆê°€ */
     if(bit_filter_cover == CLEAR)
     {
         return;
@@ -747,14 +747,14 @@ void Key_Long_Input( U32 u32key_input_value)
     else{}
     #endif
 
-    /* ÇÊÅÍÄ¿¹ö °¨Áö ½Ã ÃßÃâºÒ°¡ */
+    /* í•„í„°ì»¤ë²„ ê°ì§€ ì‹œ ì¶”ì¶œë¶ˆê°€ */
     // if(bit_filter_cover == CLEAR)
     // {
     //     play_voice_filter_cover_open_3();
     //     return;
     // }
 
-    /* °í¿Â»ì±Õ Áß¿¡´Â ÀåÅ°ÀÔ·Â ¸·À½ 250721 (1kg¿Í µ¿ÀÏ) 250721 CH.PARK */
+    /* ê³ ì˜¨ì‚´ê·  ì¤‘ì—ëŠ” ì¥í‚¤ì…ë ¥ ë§‰ìŒ 250721 (1kgì™€ ë™ì¼) 250721 CH.PARK */
     if( gu8_fota_start == SET )
     {
         return;
@@ -775,7 +775,7 @@ void Key_Long_Input( U32 u32key_input_value)
     switch(u32key_input_value)
     {
         case LONG_KEY_PCB_TEST_MODE:
-            /* Àü¿øÀÎ°¡ ÈÄ 60ÃÊ ÀÌ³» ÀÔ·Â °¡´É */
+            /* ì „ì›ì¸ê°€ í›„ 60ì´ˆ ì´ë‚´ ì…ë ¥ ê°€ëŠ¥ */
             if( gu8_test_mode_timeout_1s > 0
             && u8FactoryTestMode == 0 )
             {
@@ -784,7 +784,7 @@ void Key_Long_Input( U32 u32key_input_value)
             else{}
         break;
 
-        /* [°øÀå] µğ½ºÇÃ·¹ÀÌ Å×½ºÆ®¸ğµå ºÎÆÃ ÈÄ 60ÃÊ ÀÌ³» */
+        /* [ê³µì¥] ë””ìŠ¤í”Œë ˆì´ í…ŒìŠ¤íŠ¸ëª¨ë“œ ë¶€íŒ… í›„ 60ì´ˆ ì´ë‚´ */
         case LONG_KEY_DISPLAY_TEST_MODE_CHPI:
             //
             if((gu8_test_mode_timeout_1s > 0)
@@ -821,7 +821,7 @@ void Key_Long_Input( U32 u32key_input_value)
             {
                 play_melody_setting_on_198();
                 bit_volume_setting_start = SET;
-                gu16_volume_setting_mode_timer = 0;       /* 7ÃÊ */
+                gu16_volume_setting_mode_timer = 0;       /* 7ì´ˆ */
             }
             else
             {
@@ -846,7 +846,7 @@ void Key_Long_Input( U32 u32key_input_value)
             else{}
         break;
 
-        /* ³»±¸¼ºÅ×½ºÆ®¸ğµå 250403 CH.PARK */
+        /* ë‚´êµ¬ì„±í…ŒìŠ¤íŠ¸ëª¨ë“œ 250403 CH.PARK */
         case LONG_KEY_3S_TESTPROGRAM:
             if( gu8_flushing_mode > FLUSHING_NONE_STATE )
             {
@@ -996,7 +996,7 @@ void Key_Long_Input( U32 u32key_input_value)
         case KEY_AMBIENT_SELECT:
             if(bit_memento_start == SET )
             {
-                /*..hui [23-9-26¿ÀÈÄ 6:25:52] ¸Ş¸àÅä ¸ğµå¿¡¼­´Â ¸Ş¸àÅä ³»¿ª »èÁ¦·Î..*/
+                /*..hui [23-9-26ì˜¤í›„ 6:25:52] ë©”ë©˜í†  ëª¨ë“œì—ì„œëŠ” ë©”ë©˜í†  ë‚´ì—­ ì‚­ì œë¡œ..*/
                 memento_mode_error_clear();     /* Memento Here! */
             }
             else {  }
@@ -1149,7 +1149,7 @@ void Key_Normal_Long_Input( U32 u32key_input_value)
 
     switch(u32key_input_value)
     {
-        /* ¼³Á¤¸ğµå ÁøÀÔ (È÷µç) 250211 CH.PARK */
+        /* ì„¤ì •ëª¨ë“œ ì§„ì… (íˆë“ ) 250211 CH.PARK */
         case KEY_AMOUNT_SELECT:
 
             if( gu8_flushing_mode > FLUSHING_NONE_STATE
@@ -1204,7 +1204,7 @@ void Key_Normal_Long_Input( U32 u32key_input_value)
 
         case KEY_ICE_SELECT:
 
-            /*..hui [23-2-9¿ÀÈÄ 6:28:05] ¼¼ÆÃ¸ğµå¿¡¼­´Â ¾È´­¸²..*/
+            /*..hui [23-2-9ì˜¤í›„ 6:28:05] ì„¸íŒ…ëª¨ë“œì—ì„œëŠ” ì•ˆëˆŒë¦¼..*/
             if( bit_setting_mode_start == CLEAR )
             {
                 ice_on_off_setting_job(SETTING_ENABLE);
@@ -1213,8 +1213,8 @@ void Key_Normal_Long_Input( U32 u32key_input_value)
 
         break;
 
-        case KEY_COLD_SELECT:       /* ³Ã¼ö Áß°£ ÀåÅ° */
-            /*..hui [23-2-9¿ÀÈÄ 6:28:05] ¼¼ÆÃ¸ğµå¿¡¼­´Â ¾È´­¸²..*/
+        case KEY_COLD_SELECT:       /* ëƒ‰ìˆ˜ ì¤‘ê°„ ì¥í‚¤ */
+            /*..hui [23-2-9ì˜¤í›„ 6:28:05] ì„¸íŒ…ëª¨ë“œì—ì„œëŠ” ì•ˆëˆŒë¦¼..*/
             if( bit_setting_mode_start == CLEAR )
             {
                 cold_water_enable_setting_job(SETTING_ENABLE);
@@ -1224,7 +1224,7 @@ void Key_Normal_Long_Input( U32 u32key_input_value)
 
 
         case LONG_KEY_3S_WIFI_ONOFF:
-        // 2025-09-04 CH.PARK [V1.0.0.5] ¿ÍÀÌÆÄÀÌ °ü·ÃµÈ ±â´É Á¶ÇÕÅ°´Â ÀÏ¹İ»óÅÂ¿¡¼­¸¸ °¡´ÉÇÏµµ·Ï °³¼± (ÇÃ·¯½Ì Æ÷ÇÔ)
+        // 2025-09-04 CH.PARK [V1.0.0.5] ì™€ì´íŒŒì´ ê´€ë ¨ëœ ê¸°ëŠ¥ ì¡°í•©í‚¤ëŠ” ì¼ë°˜ìƒíƒœì—ì„œë§Œ ê°€ëŠ¥í•˜ë„ë¡ ê°œì„  (í”ŒëŸ¬ì‹± í¬í•¨)
         if(special_mode_check_U8() == SET)
         {
             return;
@@ -1242,25 +1242,25 @@ void Key_Normal_Long_Input( U32 u32key_input_value)
         break;
 
     case LONG_KEY_3S_BLE_FAIRING:
-        // 2025-09-04 CH.PARK [V1.0.0.5] ¿ÍÀÌÆÄÀÌ °ü·ÃµÈ ±â´É Á¶ÇÕÅ°´Â ÀÏ¹İ»óÅÂ¿¡¼­¸¸ °¡´ÉÇÏµµ·Ï °³¼± (ÇÃ·¯½Ì Æ÷ÇÔ)
+        // 2025-09-04 CH.PARK [V1.0.0.5] ì™€ì´íŒŒì´ ê´€ë ¨ëœ ê¸°ëŠ¥ ì¡°í•©í‚¤ëŠ” ì¼ë°˜ìƒíƒœì—ì„œë§Œ ê°€ëŠ¥í•˜ë„ë¡ ê°œì„  (í”ŒëŸ¬ì‹± í¬í•¨)
         if(special_mode_check_U8() == SET)
         {
             return;
         }
         else {}
 
-        /*..hui [21-7-15¿ÀÈÄ 12:47:23] BLE Æä¾î¸µ - Á¤¼ö 3ÃÊ..*/
+        /*..hui [21-7-15ì˜¤í›„ 12:47:23] BLE í˜ì–´ë§ - ì •ìˆ˜ 3ì´ˆ..*/
         if( F_All_Lock == SET )
         {
-            /*..hui [24-7-18¿ÀÈÄ 2:57:17] ÀüÃ¼ Àá±İÀÌ¾îµµ ÇÃ·¯½ÌÁß¿¡´Â Æä¾î¸µ °¡´É..*/
+            /*..hui [24-7-18ì˜¤í›„ 2:57:17] ì „ì²´ ì ê¸ˆì´ì–´ë„ í”ŒëŸ¬ì‹±ì¤‘ì—ëŠ” í˜ì–´ë§ ê°€ëŠ¥..*/
             if( gu8_flushing_mode > FLUSHING_NONE_STATE )
             {
                 WifiKey(WIFI_KEY_BLE);
             }
             else
             {
-                /*..hui [24-7-18¿ÀÈÄ 2:20:10] ÀüÃ¼Àá±İÁß Á¡À¯ÀÎÁõ½Ã ÀÔ·Â °¡´ÉÇÏµµ·Ï..*/
-                /*..hui [24-7-18¿ÀÈÄ 2:57:34] ÀüÃ¼Àá±İ - ÇÃ·¯½Ì ÀÌ¿Ü Á¶°ÇÀÏ‹š..*/
+                /*..hui [24-7-18ì˜¤í›„ 2:20:10] ì „ì²´ì ê¸ˆì¤‘ ì ìœ ì¸ì¦ì‹œ ì…ë ¥ ê°€ëŠ¥í•˜ë„ë¡..*/
+                /*..hui [24-7-18ì˜¤í›„ 2:57:34] ì „ì²´ì ê¸ˆ - í”ŒëŸ¬ì‹± ì´ì™¸ ì¡°ê±´ì¼ë–„..*/
                 if( gu8_Wifi_Cert_State == WIFI_CERTIFICATE_ON )
                 {
                     WifiKey(WIFI_KEY_BLE);
@@ -1283,7 +1283,7 @@ void Key_Normal_Long_Input( U32 u32key_input_value)
                     else
                     {
                         // bit_wifi_pairing_start = SET;
-                        // /* Æä¾î¸µ ´Ù½Ã ½ÃµµÇÒ ¶§´Â [0%] ºÎÅÍ ½ÃÀÛÇÏµµ·Ï ÇÔ 250714 CH.PARK */
+                        // /* í˜ì–´ë§ ë‹¤ì‹œ ì‹œë„í•  ë•ŒëŠ” [0%] ë¶€í„° ì‹œì‘í•˜ë„ë¡ í•¨ 250714 CH.PARK */
                         // gu8_pairing_progress = PAIRING_PROGRESS_0_PERCENT;
 
                         if( gu8_Wifi_Last_Error != 0 )
@@ -1311,14 +1311,14 @@ void Key_Normal_Long_Input( U32 u32key_input_value)
     break;
 
     case LONG_KEY_3S_WIFI_FAIRING:
-        // 2025-09-04 CH.PARK [V1.0.0.5] ¿ÍÀÌÆÄÀÌ °ü·ÃµÈ ±â´É Á¶ÇÕÅ°´Â ÀÏ¹İ»óÅÂ¿¡¼­¸¸ °¡´ÉÇÏµµ·Ï °³¼± (ÇÃ·¯½Ì Æ÷ÇÔ)
+        // 2025-09-04 CH.PARK [V1.0.0.5] ì™€ì´íŒŒì´ ê´€ë ¨ëœ ê¸°ëŠ¥ ì¡°í•©í‚¤ëŠ” ì¼ë°˜ìƒíƒœì—ì„œë§Œ ê°€ëŠ¥í•˜ë„ë¡ ê°œì„  (í”ŒëŸ¬ì‹± í¬í•¨)
         if(special_mode_check_U8() == SET)
         {
             return;
         }
         else {}
 
-        /*..hui [21-7-15¿ÀÈÄ 12:51:01] WIFI Æä¾î¸µ - Á¤¼ö+³Ã¼ö 3ÃÊ..*/
+        /*..hui [21-7-15ì˜¤í›„ 12:51:01] WIFI í˜ì–´ë§ - ì •ìˆ˜+ëƒ‰ìˆ˜ 3ì´ˆ..*/
         /*if(F_All_Lock == CLEAR)*/
         if( F_All_Lock == SET )
         {
@@ -1340,7 +1340,7 @@ void Key_Normal_Long_Input( U32 u32key_input_value)
                         {
                             // bit_wifi_pairing_start = SET;
 
-                            // /* Æä¾î¸µ ´Ù½Ã ½ÃµµÇÒ ¶§´Â [0%] ºÎÅÍ ½ÃÀÛÇÏµµ·Ï ÇÔ 250714 CH.PARK */
+                            // /* í˜ì–´ë§ ë‹¤ì‹œ ì‹œë„í•  ë•ŒëŠ” [0%] ë¶€í„° ì‹œì‘í•˜ë„ë¡ í•¨ 250714 CH.PARK */
                             // gu8_pairing_progress = PAIRING_PROGRESS_0_PERCENT;
 
                             if( gu8_Wifi_Last_Error != 0 )
@@ -1370,11 +1370,11 @@ void Key_Normal_Long_Input( U32 u32key_input_value)
             key_setting_all_lock_off();
         break;
 
-        case LONG_KEY_3S_MANAGER_INSTRUCTION_MODE:  /* ´ÚÅÍ ¼³¸í¸ğµå */
+        case LONG_KEY_3S_MANAGER_INSTRUCTION_MODE:  /* ë‹¥í„° ì„¤ëª…ëª¨ë“œ */
             start_instruction_mode();
         break;
 
-        /*..hui [24-12-3¿ÀÈÄ 1:51:11] ½Ã°£ ¼³Á¤ ¹Ì½ºÅÍÄ¡ Àû¿ë..*/
+        /*..hui [24-12-3ì˜¤í›„ 1:51:11] ì‹œê°„ ì„¤ì • ë¯¸ìŠ¤í„°ì¹˜ ì ìš©..*/
         case LONG_KEY_TIME_SETTING:
             key_time_setting_job();
         break;
@@ -1449,7 +1449,7 @@ void Key_Very_Long_Input( U32 u32key_input_value)
     {
         case KEY_COLD_SELECT:
 
-            /*..hui [23-2-9¿ÀÈÄ 6:28:05] ¼¼ÆÃ¸ğµå¿¡¼­´Â ¾È´­¸²..*/
+            /*..hui [23-2-9ì˜¤í›„ 6:28:05] ì„¸íŒ…ëª¨ë“œì—ì„œëŠ” ì•ˆëˆŒë¦¼..*/
             if( bit_setting_mode_start == CLEAR )
             {
                 cold_water_enable_setting_job(SETTING_DISABLE);
@@ -1460,7 +1460,7 @@ void Key_Very_Long_Input( U32 u32key_input_value)
 
         case KEY_ICE_SELECT:
 
-            /*..hui [23-2-9¿ÀÈÄ 6:28:05] ¼¼ÆÃ¸ğµå¿¡¼­´Â ¾È´­¸²..*/
+            /*..hui [23-2-9ì˜¤í›„ 6:28:05] ì„¸íŒ…ëª¨ë“œì—ì„œëŠ” ì•ˆëˆŒë¦¼..*/
             if( bit_setting_mode_start == CLEAR )
             {
                 ice_on_off_setting_job(SETTING_DISABLE);
@@ -1471,8 +1471,8 @@ void Key_Very_Long_Input( U32 u32key_input_value)
 
         case KEY_HOT_SELECT:
             //
-            /*..hui [23-2-9¿ÀÈÄ 6:28:05] ¼¼ÆÃ¸ğµå¿¡¼­´Â ¾È´­¸²..*/
-            /*..hui [24-4-2¿ÀÈÄ 5:40:53] ¿Â¼ö OFF´Â ¿Â¼ö+Á¤¼ö+¹°·® Á¶ÇÕÅ°·Î º¯°æ..*/
+            /*..hui [23-2-9ì˜¤í›„ 6:28:05] ì„¸íŒ…ëª¨ë“œì—ì„œëŠ” ì•ˆëˆŒë¦¼..*/
+            /*..hui [24-4-2ì˜¤í›„ 5:40:53] ì˜¨ìˆ˜ OFFëŠ” ì˜¨ìˆ˜+ì •ìˆ˜+ë¬¼ëŸ‰ ì¡°í•©í‚¤ë¡œ ë³€ê²½..*/
             #if 0
             if( bit_setting_mode_start == CLEAR )
             {

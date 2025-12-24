@@ -11,7 +11,7 @@
 #include    "Port_Define.h"
 #include    "uv_extract_faucet.h"
 /***********************************************************************************************************************/
-/* Ãâ¼öÆÄ¿ì¼Â UV Ãâ·Â BIT Á¤ÀÇ */
+/* ì¶œìˆ˜íŒŒìš°ì…‹ UV ì¶œë ¥ BIT ì •ì˜ */
 TYPE_BYTE          u8ExtractFaucetUvONB;
 #define            u8ExtractFaucetUvON                                  u8ExtractFaucetUvONB.byte
 #define            Bit0_Water_Faucet_UV_On_State                        u8ExtractFaucetUvONB.Bit.b0
@@ -50,7 +50,7 @@ extern UV_Check uvWaterFaucet;
 extern bit bit_self_test_start;
 /***********************************************************************************************/
 /**
- * @brief ¾óÀ½ÆÄ¿ì¼Â UV LED Á¦¾î µ¿ÀÛ Á¤ÀÇ
+ * @brief ì–¼ìŒíŒŒìš°ì…‹ UV LED ì œì–´ ë™ìž‘ ì •ì˜
  * 
  */
 void output_extract_faucet_uv(void)
@@ -61,10 +61,10 @@ void output_extract_faucet_uv(void)
     }
     else{}
 
-    /* ¹° ÃßÃâÆÄ¿ì¼Â : 3½Ã°£ 30ºÐ OFF ¡ê 30ºÐ ON */
+    /* ë¬¼ ì¶”ì¶œíŒŒìš°ì…‹ : 3ì‹œê°„ 30ë¶„ OFF â†” 30ë¶„ ON */
     Bit0_Water_Faucet_UV_On_State = uv_faucet_control();
 
-    /* ¹° ÃßÃâÁßÀÌ¸é UV LED OFFÇÔ 250225 CH.PARK */
+    /* ë¬¼ ì¶”ì¶œì¤‘ì´ë©´ UV LED OFFí•¨ 250225 CH.PARK */
     if(F_WaterOut == SET)
     {
         Bit1_Water_Extract_UV_Off_State = SET;
@@ -110,8 +110,8 @@ U8 uv_faucet_control(void)
     {
         case 0 :
 
-            /*..hui [19-10-24???? 8:34:44] 6?©£? ????.*/
-			/*..sean [23-07-14???? 16:00:00] 5?©£? ????.*/
+            /*..hui [19-10-24???? 8:34:44] 6?Ã°? ????.*/
+			/*..sean [23-07-14???? 16:00:00] 5?Ã°? ????.*/
             mu8_finish = uv_faucet_standby_timer();
 
             if(mu8_finish == SET)
@@ -125,7 +125,7 @@ U8 uv_faucet_control(void)
 
         case 1 :
 
-            /*..hui [23-2-10???? 10:55:28] ?¨¨???UV?? 30?¬Ú? ????..*/
+            /*..hui [23-2-10???? 10:55:28] ?Ä¿???UV?? 30?Ð¸? ????..*/
             if(bit_faucet_uv_start == SET)
             {
                 /*..hui [23-2-10???? 10:55:38] ?? ????????? ????..*/
@@ -168,7 +168,7 @@ void uv_faucet_operation_timer(void)
     }
     else{}
 
-	/*.. sean [25-02-17] 3?©£? 30?? ????, 30?? ???????? ???? ????..*/
+	/*.. sean [25-02-17] 3?Ã°? 30?? ????, 30?? ???????? ???? ????..*/
 	if(gu16_faucet_uv_operation_timer_min >= 30)    
     {
         bit_faucet_uv_start = CLEAR;
@@ -201,7 +201,7 @@ U8 uv_faucet_standby_timer(void)
     }
     else{}
 
-    if( gu16_faucet_uv_standby_timer_hour >= 3 && gu16_faucet_uv_standby_timer_min >= 30 )      // 5½Ã°£ 30ºÐ OFF
+    if( gu16_faucet_uv_standby_timer_hour >= 3 && gu16_faucet_uv_standby_timer_min >= 30 )      // 5ì‹œê°„ 30ë¶„ OFF
     {
         initial_faucet_uv_timer();
         mu8_return = SET;

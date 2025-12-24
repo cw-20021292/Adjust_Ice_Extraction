@@ -24,7 +24,7 @@ void uv_ice_tray_24_hour_timer(void);
 U8 ice_tray_uv_making(void);
 
 /**
- * @brief ¾óÀ½Æ®·¹ÀÌ UVµ¿ÀÛ ÇÔ¼ö
+ * @brief ì–¼ìŒíŠ¸ë ˆì´ UVë™ì‘ í•¨ìˆ˜
  */
 void uv_ice_tray_decision(void);
 
@@ -37,10 +37,10 @@ TYPE_BYTE          U8IceTrayUvONB;
 
 TYPE_BYTE          U8IceTrayUvOFFB;
 #define            u8IceTrayUvOFF                                         U8IceTrayUvOFFB.byte
-#define            Bit0_Ice_Tray_UV_Tank_Open_Off_State                   U8IceTrayUvOFFB.Bit.b0        /* ÅÊÅ©Ä¿¹ö°¡ ¿­·ÈÀ» ¶§ */
-#define            Bit1_Ice_Tray_UV_Ice_Off_State                         U8IceTrayUvOFFB.Bit.b1        /* ¾óÀ½ OFF ½Ã */
-#define            Bit2_Ice_Tray_UV_Ice_Extract_State                     U8IceTrayUvOFFB.Bit.b2        /* ¾óÀ½ ÃßÃâ ½Ã */
-#define            Bit3_Ice_Tray_UV_Retry_3S_Off_State                    U8IceTrayUvOFFB.Bit.b3        /* ¿¡·¯»óÅÂ RETRY */
+#define            Bit0_Ice_Tray_UV_Tank_Open_Off_State                   U8IceTrayUvOFFB.Bit.b0        /* íƒ±í¬ì»¤ë²„ê°€ ì—´ë ¸ì„ ë•Œ */
+#define            Bit1_Ice_Tray_UV_Ice_Off_State                         U8IceTrayUvOFFB.Bit.b1        /* ì–¼ìŒ OFF ì‹œ */
+#define            Bit2_Ice_Tray_UV_Ice_Extract_State                     U8IceTrayUvOFFB.Bit.b2        /* ì–¼ìŒ ì¶”ì¶œ ì‹œ */
+#define            Bit3_Ice_Tray_UV_Retry_3S_Off_State                    U8IceTrayUvOFFB.Bit.b3        /* ì—ëŸ¬ìƒíƒœ RETRY */
 /***********************************************************************************************************************/
 bit bit_ice_tray_1_2_uv_start;
 
@@ -96,13 +96,13 @@ void output_ice_tray_uv(void)
     }
     else{}
 
-    /* ¾óÀ½Æ®·¹ÀÌ : ÇÏ·ç ÃÖ´ë ¸¸ºù ÈÄ 3È¸ / Á¦ºùÁß 7È¸ ¡æ 1½Ã°£ ON */
+    /* ì–¼ìŒíŠ¸ë ˆì´ : í•˜ë£¨ ìµœëŒ€ ë§Œë¹™ í›„ 3íšŒ / ì œë¹™ì¤‘ 7íšŒ â†’ 1ì‹œê°„ ON */
     Bit1_Ice_Tray_1_2_UV_Ice_Tray_Clean_On_State = uv_ice_tray_control();
 
-    /* ÅÊÅ©Ä¿¹ö°¡ ÇÏ³ª¶óµµ ¿­·ÈÀ¸¸é ¹Ù·Î Æ®·¹ÀÌ UV´Â OFF. 250224 CH.PARK */
+    /* íƒ±í¬ì»¤ë²„ê°€ í•˜ë‚˜ë¼ë„ ì—´ë ¸ìœ¼ë©´ ë°”ë¡œ íŠ¸ë ˆì´ UVëŠ” OFF. 250224 CH.PARK */
     Bit0_Ice_Tray_UV_Tank_Open_Off_State = (~bit_uv_tank_input);
     
-    /* ¾óÀ½ OFF»óÅÂÀÏ ¶§ UV LED¸¦ ²û. 250224 CH.PARK */
+    /* ì–¼ìŒ OFFìƒíƒœì¼ ë•Œ UV LEDë¥¼ ë”. 250224 CH.PARK */
     if(F_IceOn == CLEAR)
     {
         Bit1_Ice_Tray_UV_Ice_Off_State = SET;
@@ -112,7 +112,7 @@ void output_ice_tray_uv(void)
         Bit1_Ice_Tray_UV_Ice_Off_State = CLEAR;
     }
 
-    /* ¾óÀ½ÃßÃâ ½Ã UV LED OFF. 250224 CH.PARK */
+    /* ì–¼ìŒì¶”ì¶œ ì‹œ UV LED OFF. 250224 CH.PARK */
     if(F_IceOut == SET)
     {
         Bit2_Ice_Tray_UV_Ice_Extract_State = SET;
@@ -166,7 +166,7 @@ U8 uv_ice_tray_control(void)
 
     uv_ice_tray_24_hour_timer();
 
-    /* ¾óÀ½ ±â´É OFF »óÅÂÀÌ°Å³ª ¼³Ä¡ÇÃ·¯½Ì ¿Ï·á ¾ÈµÆÀ¸¸é ÁßÁö */
+    /* ì–¼ìŒ ê¸°ëŠ¥ OFF ìƒíƒœì´ê±°ë‚˜ ì„¤ì¹˜í”ŒëŸ¬ì‹± ì™„ë£Œ ì•ˆëìœ¼ë©´ ì¤‘ì§€ */
     if( F_IceOn == CLEAR || bit_install_flushing_state == SET )
     {
         initial_ice_tray_uv_timer();
@@ -180,7 +180,7 @@ U8 uv_ice_tray_control(void)
     switch( gu8_uv_ice_tray_step )
     {
         case 0 :
-        mu8_finish = ice_tray_uv_standby();     //¸¸ºù ÈÄ
+        mu8_finish = ice_tray_uv_standby();     //ë§Œë¹™ í›„
 
         if(mu8_finish == SET)
         {
@@ -189,19 +189,19 @@ U8 uv_ice_tray_control(void)
         }
         else
         {
-            mu8_return = ice_tray_uv_making();  // Á¦ºù Áß
+            mu8_return = ice_tray_uv_making();  // ì œë¹™ ì¤‘
         }
         break;
 
         case 1 :
-        /*..hui [23-5-31¿ÀÈÄ 4:20:15] ¾ÆÀÌ½ºÆ®·¹ÀÌ »ì±Õ.. 1½Ã°£ µ¿ÀÛ..*/
+        /*..hui [23-5-31ì˜¤í›„ 4:20:15] ì•„ì´ìŠ¤íŠ¸ë ˆì´ ì‚´ê· .. 1ì‹œê°„ ë™ì‘..*/
         if(bit_ice_tray_1_2_uv_start == SET)
         {
             if(( gu8IceTrayLEV != ICE_TRAY_POSITION_ICE_THROW )
-            && ( F_TrayMotorDOWN == CLEAR )                     // ÀÌµ¿ÁßÀÏ ¶§´Â ²ô¸é ¾ÈµÊ
+            && ( F_TrayMotorDOWN == CLEAR )                     // ì´ë™ì¤‘ì¼ ë•ŒëŠ” ë„ë©´ ì•ˆë¨
             )
             {
-                /*..hui [23-5-31¿ÀÈÄ 4:22:58] ¾ÆÀÌ½º Æ®·¹ÀÌ Á¦ºù À§Ä¡·Î ÀÌµ¿ÇÏ¸é Ãë¼Ò..*/
+                /*..hui [23-5-31ì˜¤í›„ 4:22:58] ì•„ì´ìŠ¤ íŠ¸ë ˆì´ ì œë¹™ ìœ„ì¹˜ë¡œ ì´ë™í•˜ë©´ ì·¨ì†Œ..*/
                 finish_ice_tray_uv();
             }
             else if( Bit0_Ice_Tray_UV_Tank_Open_Off_State == CLEAR 
@@ -242,7 +242,7 @@ void ice_tray_uv_operation_timer(void)
     }
     else{}
 
-    /*..hui [23-5-31???? 4:08:05] 1ºĞ..*/
+    /*..hui [23-5-31???? 4:08:05] 1ë¶„..*/
     if(gu8_ice_tray_1_2_uv_operation_timer_min >= ICE_TRAY_UV_THROW_MAX_TIME)
     {
         bit_ice_tray_1_2_uv_start = CLEAR;
@@ -261,7 +261,7 @@ U8 ice_tray_uv_standby(void)
 
     if( F_IceFull == SET )
     {
-        /*..hui [23-5-31¿ÀÈÄ 4:04:19] ¸¸ºù ¾Æ´Ô -> ¸¸ºùÀ¸·Î ÀüÈ¯ ½Ã..*/
+        /*..hui [23-5-31ì˜¤í›„ 4:04:19] ë§Œë¹™ ì•„ë‹˜ -> ë§Œë¹™ìœ¼ë¡œ ì „í™˜ ì‹œ..*/
         if( bit_uv_ice_full_state == CLEAR )
         {
             bit_uv_ice_full_state = SET;
@@ -269,7 +269,7 @@ U8 ice_tray_uv_standby(void)
         }
         else{}
 		
-		/*..hui [23-5-31¿ÀÈÄ 4:04:34] ¸¸ºùµÇ°í³ª¼­ Æ®·¹ÀÌ°¡ Å»ºù À§Ä¡·Î ÀÌµ¿ ¿Ï·áÇÏ¸é..*/
+		/*..hui [23-5-31ì˜¤í›„ 4:04:34] ë§Œë¹™ë˜ê³ ë‚˜ì„œ íŠ¸ë ˆì´ê°€ íƒˆë¹™ ìœ„ì¹˜ë¡œ ì´ë™ ì™„ë£Œí•˜ë©´..*/
         if( gu8IceTrayLEV == ICE_TRAY_POSITION_ICE_THROW )
         {
             bit_ice_tray_uv_op_2 = bit_ice_tray_uv_op_1;
@@ -285,7 +285,7 @@ U8 ice_tray_uv_standby(void)
 
     if( bit_ice_tray_uv_op_1 == SET 
     && bit_ice_tray_uv_op_2 == SET 
-    && gu8_tray_uv_throw_count_one_day < ICE_TRAY_UV_MAX_OPERATION_PER_ONE_DAY_THROW )        // ¸¸ºù ÈÄ ÇÏ·ç UV¸¦ ½î´Â È½¼ö : ÃÖ´ë 2È¸
+    && gu8_tray_uv_throw_count_one_day < ICE_TRAY_UV_MAX_OPERATION_PER_ONE_DAY_THROW )        // ë§Œë¹™ í›„ í•˜ë£¨ UVë¥¼ ì˜ëŠ” íšŸìˆ˜ : ìµœëŒ€ 2íšŒ
     {
         initial_ice_tray_uv_timer();
         bit_ice_tray_uv_op_1 = CLEAR;
@@ -395,14 +395,14 @@ U8 ice_tray_uv_making(void)
 
             gu8_tray_uv_making_count_one_day++;
 
-            if( gu8_tray_uv_making_count_one_day >= ICE_TRAY_UV_MAX_OPERATION_PER_ONE_DAY_MAKING )     // Á¦ºù ½Ã ÇÏ·ç uv¸¦ ½î´Â ÃÖ´ë È½¼ö 7È¸
+            if( gu8_tray_uv_making_count_one_day >= ICE_TRAY_UV_MAX_OPERATION_PER_ONE_DAY_MAKING )     // ì œë¹™ ì‹œ í•˜ë£¨ uvë¥¼ ì˜ëŠ” ìµœëŒ€ íšŸìˆ˜ 7íšŒ
             {
                 gu8_tray_uv_making_count_one_day = ICE_TRAY_UV_MAX_OPERATION_PER_ONE_DAY_MAKING;
                 bit_ice_tray_making_enable = CLEAR;
             }
             else
             {
-                /*..hui [24-2-5???? 10:09:37] ??? ???, ???? ?? 24?©£???? ??? ?????????? ???? ???????? ??????? ???????..*/
+                /*..hui [24-2-5???? 10:09:37] ??? ???, ???? ?? 24?Ã°???? ??? ?????????? ???? ???????? ??????? ???????..*/
                 bit_ice_tray_making_enable = SET;
             }
         }
@@ -415,7 +415,7 @@ U8 ice_tray_uv_making(void)
         && bit_ice_tray_making_enable == SET )
         {
             gu32_ice_tray_up_max_timer++;
-            /*..hui [24-2-5???? 9:59:32] ÃÖ´ë 30ºĞ */
+            /*..hui [24-2-5???? 9:59:32] ìµœëŒ€ 30ë¶„ */
             if( gu32_ice_tray_up_max_timer >= ICE_TRAY_UV_MAKING_MAX_TIME )
             {
                 gu32_ice_tray_up_max_timer = ICE_TRAY_UV_MAKING_MAX_TIME;

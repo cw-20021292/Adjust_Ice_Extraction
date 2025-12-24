@@ -84,12 +84,12 @@ extern bit bit_self_test_start;
 
 
 #if 0
-#define CRISTAL_ON          60                      // ÀüÀÚ¼® ON
-#define CRISTAL_OFF         40                      // ÀüÀÚ¼® OFF
+#define CRISTAL_ON          60                      // ì „ìì„ ON
+#define CRISTAL_OFF         40                      // ì „ìì„ OFF
 #endif
 
-//#define CRISTAL_ON          6                      // ÀüÀÚ¼® ON
-//#define CRISTAL_OFF         4                      // ÀüÀÚ¼® OFF
+//#define CRISTAL_ON          6                      // ì „ìì„ ON
+//#define CRISTAL_OFF         4                      // ì „ìì„ OFF
 
 
 

@@ -136,19 +136,19 @@ void get_wifi_info_data(void)
     }
     else{}
 
-    /*..hui [21-3-12¿ÀÈÄ 2:49:14] ÄÉÀÌ¿þ´õ ¼­¹ö ÀÌ»ó ½Ã ³¯¾¾, ¹Ì¼¼¸ÕÁö, ½Ã°£ °ª 0xFF·Î µé¾î¿È - Çö¹Î..*/
-    /*..hui [21-3-12¿ÀÈÄ 2:49:45] ¿Âµµ´Â 0xff°¡ ¹üÀ§¿¡ Æ÷ÇÔµÇ¹Ç·Î aqi °ªÀ¸·Î ¼­¹ö ÀÌ»ó È®ÀÎ ÈÄ Àû¿ë..*/
-    /*..hui [21-3-12¿ÀÈÄ 2:51:29] ÄÉÀÌ¿þ´õ ¼­¹ö °íÀå½Ã¿¡´Â ÀÌÀü °ª Ç¥½Ã À¯Áö..*/
+    /*..hui [21-3-12ì˜¤í›„ 2:49:14] ì¼€ì´ì›¨ë” ì„œë²„ ì´ìƒ ì‹œ ë‚ ì”¨, ë¯¸ì„¸ë¨¼ì§€, ì‹œê°„ ê°’ 0xFFë¡œ ë“¤ì–´ì˜´ - í˜„ë¯¼..*/
+    /*..hui [21-3-12ì˜¤í›„ 2:49:45] ì˜¨ë„ëŠ” 0xffê°€ ë²”ìœ„ì— í¬í•¨ë˜ë¯€ë¡œ aqi ê°’ìœ¼ë¡œ ì„œë²„ ì´ìƒ í™•ì¸ í›„ ì ìš©..*/
+    /*..hui [21-3-12ì˜¤í›„ 2:51:29] ì¼€ì´ì›¨ë” ì„œë²„ ê³ ìž¥ì‹œì—ëŠ” ì´ì „ ê°’ í‘œì‹œ ìœ ì§€..*/
     /*if( mu8_data != 0xff )*/
 
     #if 0
-    /*..hui [21-3-24¿ÀÈÄ 3:33:20] AQI °ªÀ¸·Î ÇÊÅÍ¸µ..*/
+    /*..hui [21-3-24ì˜¤í›„ 3:33:20] AQI ê°’ìœ¼ë¡œ í•„í„°ë§..*/
     if( mu8_aqi != 99 )
     {
-        /*..hui [24-6-27¿ÀÈÄ 1:33:46] ÇöÀç¿Âµµ..*/
+        /*..hui [24-6-27ì˜¤í›„ 1:33:46] í˜„ìž¬ì˜¨ë„..*/
         mu8_data = (U8)GetWifiRequestValue( WIFI_RQST_CURRENT_TEMP );
 
-        /*..hui [21-3-24¿ÀÈÄ 3:33:25] ¿Âµµ°ªÀ¸·Î ÇÑ¹ø ´õ ÇÊÅÍ¸µ..*/
+        /*..hui [21-3-24ì˜¤í›„ 3:33:25] ì˜¨ë„ê°’ìœ¼ë¡œ í•œë²ˆ ë” í•„í„°ë§..*/
         if( mu8_data != 99 )
         {
             gu8_unsigned_wifi_current_temperature = mu8_data;
@@ -182,10 +182,10 @@ void get_wifi_info_data(void)
 
     if( mu8_aqi != 99 )
     {
-        /*..hui [24-6-27¿ÀÈÄ 1:33:50] ÃÖÀú¿Âµµ..*/
+        /*..hui [24-6-27ì˜¤í›„ 1:33:50] ìµœì €ì˜¨ë„..*/
         mu8_data = (U8)GetWifiRequestValue( WIFI_RQST_LOW_TEMP );
 
-        /*..hui [21-3-24¿ÀÈÄ 3:33:25] ¿Âµµ°ªÀ¸·Î ÇÑ¹ø ´õ ÇÊÅÍ¸µ..*/
+        /*..hui [21-3-24ì˜¤í›„ 3:33:25] ì˜¨ë„ê°’ìœ¼ë¡œ í•œë²ˆ ë” í•„í„°ë§..*/
         if( mu8_data != 99 )
         {
             gu8_unsigned_wifi_low_temperature = mu8_data;
@@ -219,10 +219,10 @@ void get_wifi_info_data(void)
 
     if( mu8_aqi != 99 )
     {
-        /*..hui [24-6-27¿ÀÈÄ 1:33:55] ÃÖ°í¿Âµµ..*/
+        /*..hui [24-6-27ì˜¤í›„ 1:33:55] ìµœê³ ì˜¨ë„..*/
         mu8_data = (U8)GetWifiRequestValue( WIFI_RQST_HIGH_TEMP );
 
-        /*..hui [21-3-24¿ÀÈÄ 3:33:25] ¿Âµµ°ªÀ¸·Î ÇÑ¹ø ´õ ÇÊÅÍ¸µ..*/
+        /*..hui [21-3-24ì˜¤í›„ 3:33:25] ì˜¨ë„ê°’ìœ¼ë¡œ í•œë²ˆ ë” í•„í„°ë§..*/
         if( mu8_data != 99 )
         {
             gu8_unsigned_wifi_high_temperature = mu8_data;
@@ -315,7 +315,7 @@ void get_wifi_pairing(void)
         }
         else if( mu8_pairing_state == WIFI_DISP_AP_STEP1 )
         {
-            /*..hui [23-12-20¿ÀÈÄ 1:22:03] Á¡À¯ÀÎÁõµÇ¸é STEP1ÀÌ ³¯¶ó¿È.. ±×¶§ºÎÅÍ 25%·Î È­¸é Ç¥½Ã ½ÃÀÛ..*/
+            /*..hui [23-12-20ì˜¤í›„ 1:22:03] ì ìœ ì¸ì¦ë˜ë©´ STEP1ì´ ë‚ ë¼ì˜´.. ê·¸ë•Œë¶€í„° 25%ë¡œ í™”ë©´ í‘œì‹œ ì‹œìž‘..*/
             if( gu8_Wifi_Pairing_State != WIFI_PAIRING_STEP1_25_PERCENT )
             {
                 gu8_Wifi_Pairing_State = WIFI_PAIRING_STEP1_25_PERCENT;
@@ -355,7 +355,7 @@ void get_wifi_pairing(void)
         }
         else if( mu8_pairing_state == WIFI_DISP_BLE_STEP1 )
         {
-            /*..hui [23-12-20¿ÀÈÄ 1:22:03] Á¡À¯ÀÎÁõµÇ¸é STEP1ÀÌ ³¯¶ó¿È.. ±×¶§ºÎÅÍ 25%·Î È­¸é Ç¥½Ã ½ÃÀÛ..*/
+            /*..hui [23-12-20ì˜¤í›„ 1:22:03] ì ìœ ì¸ì¦ë˜ë©´ STEP1ì´ ë‚ ë¼ì˜´.. ê·¸ë•Œë¶€í„° 25%ë¡œ í™”ë©´ í‘œì‹œ ì‹œìž‘..*/
             if( gu8_Wifi_Pairing_State != WIFI_PAIRING_STEP1_25_PERCENT )
             {
                 gu8_Wifi_Pairing_State = WIFI_PAIRING_STEP1_25_PERCENT;
@@ -414,8 +414,8 @@ void get_wifi_error(void)
 ***********************************************************************************************************************/
 void get_wifi_power(void)
 {
-    /*..hui [21-8-2¿ÀÈÄ 8:23:11] Àü¿ø »óÅÂ ¹× Ã¹ Æä¾î¸µ »óÅÂ..*/
-    /*..hui [21-8-2¿ÀÈÄ 8:23:24] ¼³Á¤¿¡¼­ Çö¹ÎÀÌ ÂÊ¿¡¼­ °¡Á®´Ù ¾²±âÀ§ÇØ..*/
+    /*..hui [21-8-2ì˜¤í›„ 8:23:11] ì „ì› ìƒíƒœ ë° ì²« íŽ˜ì–´ë§ ìƒíƒœ..*/
+    /*..hui [21-8-2ì˜¤í›„ 8:23:24] ì„¤ì •ì—ì„œ í˜„ë¯¼ì´ ìª½ì—ì„œ ê°€ì ¸ë‹¤ ì“°ê¸°ìœ„í•´..*/
     gu8_wifi_power_temporary = GetWifiStatusValue(WIFI_STATUS_POWER);
 
     gu8_wifi_ap_first_temporary = GetWifiApStatus(STATUS_AP_FIRST);
@@ -431,27 +431,27 @@ U8 change_error_number( U8 mu8_error )
 
     if( mu8_error == WIFI_DISP_AP1 )
     {
-        /*..hui [21-10-5¿ÀÈÄ 2:10:03] AP1 - ¹«¼±°øÀ¯±â ¾ÏÈ£ºÒÀÏÄ¡..*/
+        /*..hui [21-10-5ì˜¤í›„ 2:10:03] AP1 - ë¬´ì„ ê³µìœ ê¸° ì•”í˜¸ë¶ˆì¼ì¹˜..*/
         mu8_return = WIFI_FAIL_PASS__AP1;
     }
     else if( mu8_error == WIFI_DISP_AP2 )
     {
-        /*..hui [21-10-5¿ÀÈÄ 2:10:13] AP2 - ¹«¼±°øÀ¯±â ¹Ì°Ë»ö 1ºÐ..*/
+        /*..hui [21-10-5ì˜¤í›„ 2:10:13] AP2 - ë¬´ì„ ê³µìœ ê¸° ë¯¸ê²€ìƒ‰ 1ë¶„..*/
         mu8_return = WIFI_NO_ACK__AP2;
     }
     else if( mu8_error == WIFI_DISP_AP3 )
     {
-        /*..hui [21-10-5¿ÀÈÄ 2:10:25] AP3 - ¹«¼±°øÀ¯±â Á¢¼Ó°ÅºÎ..*/
+        /*..hui [21-10-5ì˜¤í›„ 2:10:25] AP3 - ë¬´ì„ ê³µìœ ê¸° ì ‘ì†ê±°ë¶€..*/
         mu8_return = WIFI_ERROR_DENY__AP3;
     }
     else if( mu8_error == WIFI_DISP_AP4 )
     {
-        /*..hui [21-10-5¿ÀÈÄ 2:10:33] AP4 - ¹«¼±°øÀ¯±â ÀÀ´ä¾øÀ½..*/
+        /*..hui [21-10-5ì˜¤í›„ 2:10:33] AP4 - ë¬´ì„ ê³µìœ ê¸° ì‘ë‹µì—†ìŒ..*/
         mu8_return = WIFI_NO_AP__AP4;
     }
     else if( mu8_error == WIFI_DISP_AP5 )
     {
-        /*..hui [21-10-5¿ÀÈÄ 2:10:41] AP5 - ¼­¹ö ÀÀ´ä¾øÀ½..*/
+        /*..hui [21-10-5ì˜¤í›„ 2:10:41] AP5 - ì„œë²„ ì‘ë‹µì—†ìŒ..*/
         mu8_return = WIFI_NO_SERVER__AP5;
     }
     else
@@ -474,7 +474,7 @@ void get_wifi_filter_period(void)
     U16 mu16_data = 0;
     U8 mu8_final = 0;
 
-    /*..hui [21-3-9¿ÀÈÄ 1:01:08] ¿¬°áµÆÀ»¶§¸¸..*/
+    /*..hui [21-3-9ì˜¤í›„ 1:01:08] ì—°ê²°ëì„ë•Œë§Œ..*/
     if( gu8_Wifi_Connect_State != WIFI_CONNECT )
     {
         return;
@@ -523,7 +523,7 @@ void change_filter_period(void)
     mf32_month = ((F32)(FILTER_RESET_DEFAULT_MONTH__NEO * (F32)gu8_wifi_filter_cycle_percent) / (F32)100);
     mu16_a = get_round( mf32_month );
 
-    /*..hui [24-2-15¿ÀÈÄ 5:24:35] ÀÏ¼ö·Î º¯È¯..*/
+    /*..hui [24-2-15ì˜¤í›„ 5:24:35] ì¼ìˆ˜ë¡œ ë³€í™˜..*/
     mf32_day = (F32)mu16_a * 30.4f;
     mf32_day = mf32_day * 24;
     mu16_final = get_round( mf32_day );
@@ -536,7 +536,7 @@ void change_filter_period(void)
     mf32_month = ((F32)(FILTER_RESET_DEFAULT_MONTH__RO * (F32)gu8_wifi_filter_cycle_percent) / (F32)100);
     mu16_a = get_round( mf32_month );
 
-    /*..hui [24-2-15¿ÀÈÄ 5:24:35] ÀÏ¼ö·Î º¯È¯..*/
+    /*..hui [24-2-15ì˜¤í›„ 5:24:35] ì¼ìˆ˜ë¡œ ë³€í™˜..*/
     mf32_day = (F32)mu16_a * 30.4f;
     mf32_day = mf32_day * 24;
     mu16_final = get_round( mf32_day );
@@ -565,7 +565,7 @@ void get_smart_image(void)
 {
     U8 mu8_day = 0;
 
-    /*..hui [21-3-8¿ÀÈÄ 6:59:16] ¿ÍÀÌÆÄÀÌ ¿¬°á ¾ÈµÆÀ¸¸é ¿ÍÀÌÆÄÀÌ ¿¬°á ±Ç°í ÀÌ¹ÌÁö..*/
+    /*..hui [21-3-8ì˜¤í›„ 6:59:16] ì™€ì´íŒŒì´ ì—°ê²° ì•ˆëìœ¼ë©´ ì™€ì´íŒŒì´ ì—°ê²° ê¶Œê³  ì´ë¯¸ì§€..*/
     if( gu8_Wifi_Connect_State == WIFI_OFF )
     {
         gu8_smart_image = SMART_ICON_NONE;
@@ -613,7 +613,7 @@ void get_smart_image(void)
 
 
     #if 0
-    /*..hui [21-3-8¿ÀÈÄ 6:59:16] ¿ÍÀÌÆÄÀÌ ¿¬°á ¾ÈµÆÀ¸¸é ¿ÍÀÌÆÄÀÌ ¿¬°á ±Ç°í ÀÌ¹ÌÁö..*/
+    /*..hui [21-3-8ì˜¤í›„ 6:59:16] ì™€ì´íŒŒì´ ì—°ê²° ì•ˆëìœ¼ë©´ ì™€ì´íŒŒì´ ì—°ê²° ê¶Œê³  ì´ë¯¸ì§€..*/
     if( gu8_Wifi_Connect_State == WIFI_OFF )
     {
         gu8_smart_image = SMART_IMAGE_SUNNY;
@@ -634,13 +634,13 @@ void get_smart_image(void)
 
             if( mu8_day == SMART_DAY )
             {
-                /*..hui [21-3-8¿ÀÈÄ 6:55:48] ¸¼À½(´ëÃ¼·Î ¸¼À½)..*/
-                /*..hui [24-8-19¿ÀÈÄ 1:50:13] ³·..*/
+                /*..hui [21-3-8ì˜¤í›„ 6:55:48] ë§‘ìŒ(ëŒ€ì²´ë¡œ ë§‘ìŒ)..*/
+                /*..hui [24-8-19ì˜¤í›„ 1:50:13] ë‚®..*/
                 gu8_smart_image = SMART_IMAGE_SUNNY;
             }
             else
             {
-                /*..hui [24-8-19¿ÀÈÄ 1:50:32] ¹ã..*/
+                /*..hui [24-8-19ì˜¤í›„ 1:50:32] ë°¤..*/
                 gu8_smart_image = SMART_IMAGE_SUNNY_NIGHT;
             }
 
@@ -650,21 +650,21 @@ void get_smart_image(void)
         case WEATHER_LOTS_CLOUD:
         case WEATHER_CLOUDY:
 
-            /*..hui [21-3-8¿ÀÈÄ 6:56:00] ±¸¸§Á¶±Ý/±¸¸§¸¹ÀÌ/Èå¸²..*/
+            /*..hui [21-3-8ì˜¤í›„ 6:56:00] êµ¬ë¦„ì¡°ê¸ˆ/êµ¬ë¦„ë§Žì´/íë¦¼..*/
             gu8_smart_image = SMART_ICON_CLOUDY;
 
         break;
 
         case WEATHER_CLOUDY_AND_RAINY:
 
-            /*..hui [21-3-8¿ÀÈÄ 6:56:05] Èå¸®°íºñ..*/
+            /*..hui [21-3-8ì˜¤í›„ 6:56:05] íë¦¬ê³ ë¹„..*/
             gu8_smart_image = SMART_ICON_RAINY;
 
         break;
 
         case WEATHER_CLOUDY_AND_SNOWY:
 
-            /*..hui [21-3-8¿ÀÈÄ 6:56:26] Èå¸®°í ´«..*/
+            /*..hui [21-3-8ì˜¤í›„ 6:56:26] íë¦¬ê³  ëˆˆ..*/
             gu8_smart_image = SMART_IMAGE_SNOWY;
 
         break;
@@ -673,13 +673,13 @@ void get_smart_image(void)
 
             if( mu8_day == SMART_DAY )
             {
-                /*..hui [21-3-8¿ÀÈÄ 6:56:55] ºñ¿Â ÈÄ °·..*/
-                /*..hui [24-8-19¿ÀÈÄ 1:51:00] Èå¸°µÚ¸¼À½ ³·..*/
+                /*..hui [21-3-8ì˜¤í›„ 6:56:55] ë¹„ì˜¨ í›„ ê°¬..*/
+                /*..hui [24-8-19ì˜¤í›„ 1:51:00] íë¦°ë’¤ë§‘ìŒ ë‚®..*/
                 gu8_smart_image = SMART_IMAGE_SUNNY_AFTER_RAINY;
             }
             else
             {
-                /*..hui [24-8-19¿ÀÈÄ 1:51:40] Èå¸°µÚ¸¼À½ ¹ã..*/
+                /*..hui [24-8-19ì˜¤í›„ 1:51:40] íë¦°ë’¤ë§‘ìŒ ë°¤..*/
                 gu8_smart_image = SMART_IMAGE_SUNNY_AFTER_RAINY_NIGHT;
             }
 
@@ -687,7 +687,7 @@ void get_smart_image(void)
 
         case WEATHER_SHOWER:
 
-            /*..hui [21-3-8¿ÀÈÄ 6:56:15] ¼Ò³ª±â..*/
+            /*..hui [21-3-8ì˜¤í›„ 6:56:15] ì†Œë‚˜ê¸°..*/
             gu8_smart_image = SMART_IMAGE_SHOWER;
 
         break;
@@ -695,21 +695,21 @@ void get_smart_image(void)
         case WEATHER_RAINY_OR_SNOWY:
         case WEATHER_SNOWY_OR_RAINY:
 
-            /*..hui [21-3-8¿ÀÈÄ 6:56:36] ºñ ¶Ç´Â ´«/´« ¶Ç´Â ºñ..*/
+            /*..hui [21-3-8ì˜¤í›„ 6:56:36] ë¹„ ë˜ëŠ” ëˆˆ/ëˆˆ ë˜ëŠ” ë¹„..*/
             gu8_smart_image = SMART_IMAGE_RAINY_OR_SNOWY;
 
         break;
 
         case WEATHER_THUNDER:
 
-            /*..hui [21-3-8¿ÀÈÄ 6:56:45] ÃµµÕ¹ø°³..*/
+            /*..hui [21-3-8ì˜¤í›„ 6:56:45] ì²œë‘¥ë²ˆê°œ..*/
             gu8_smart_image = SMART_IMAGE_THUNDER;
 
         break;
 
         case WEATHER_FOG:
 
-            /*..hui [21-3-8¿ÀÈÄ 6:56:18] ¾È°³..*/
+            /*..hui [21-3-8ì˜¤í›„ 6:56:18] ì•ˆê°œ..*/
             gu8_smart_image = SMART_IMAGE_FOG;
 
         break;
@@ -731,7 +731,7 @@ U8 decision_day_or_night(void)
 {
     U8 mu8_return = 0;
 
-    /*..hui [21-3-8¿ÀÈÄ 6:57:55] ¾ÆÄ§ 5:00 ºÎÅÍ ~ ¿ÀÈÄ 17½Ã 59ºÐ ±îÁö ³·..*/
+    /*..hui [21-3-8ì˜¤í›„ 6:57:55] ì•„ì¹¨ 5:00 ë¶€í„° ~ ì˜¤í›„ 17ì‹œ 59ë¶„ ê¹Œì§€ ë‚®..*/
     if( gu8_rtc_time_Hour >= 5 && gu8_rtc_time_Hour < 18  )
     {
         mu8_return = SMART_DAY;

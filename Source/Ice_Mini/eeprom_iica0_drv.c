@@ -73,7 +73,7 @@ U8 HAL_RTC_ByteWrite( U8 _dev, U16 _addr , U8 _data )
         }
         else
         {
-            /*..hui [25-5-23¿ÀÀü 9:09:53] ¹æ¾îÄÚµå Ãß°¡..*/
+            /*..hui [25-5-23ì˜¤ì „ 9:09:53] ë°©ì–´ì½”ë“œ ì¶”ê°€..*/
             R_IICA0_Stop();
             R_IICA0_Create();
         }
@@ -255,7 +255,7 @@ U8 HAL_RTC_PageWrite( U8 _dev, U16 _addr , U8 *_data, U8 _len )
         }
         else
         {
-            /*..hui [25-5-23¿ÀÀü 9:09:53] ¹æ¾îÄÚµå Ãß°¡..*/
+            /*..hui [25-5-23ì˜¤ì „ 9:09:53] ë°©ì–´ì½”ë“œ ì¶”ê°€..*/
             R_IICA0_Stop();
             R_IICA0_Create();
         }
@@ -357,7 +357,7 @@ U8 HAL_RTC_ByteRead( U8 _dev, U16 _addr , U8 *_data )
         }
         else
         {
-            /*..hui [25-5-23¿ÀÀü 9:09:53] ¹æ¾îÄÚµå Ãß°¡..*/
+            /*..hui [25-5-23ì˜¤ì „ 9:09:53] ë°©ì–´ì½”ë“œ ì¶”ê°€..*/
             R_IICA0_Stop();
             R_IICA0_Create();
         }
@@ -456,7 +456,7 @@ U8 HAL_RTC_SeqRead( U8 _dev, U16 _addr , U8 * _data, U8 _len )
         }
         else
         {
-            /*..hui [25-5-23¿ÀÀü 9:09:53] ¹æ¾îÄÚµå Ãß°¡..*/
+            /*..hui [25-5-23ì˜¤ì „ 9:09:53] ë°©ì–´ì½”ë“œ ì¶”ê°€..*/
             R_IICA0_Stop();
             R_IICA0_Create();
         }
@@ -509,7 +509,7 @@ U8 IICA0_Master_Send(U8 adr, U8 * const tx_buf, U16 tx_num, U8 wait)
             if(wait <= 0)
             {
                 status = MD_ERROR2;
-                /*..hui [25-5-23¿ÀÀü 9:09:53] ¹æ¾îÄÚµå Ãß°¡..*/
+                /*..hui [25-5-23ì˜¤ì „ 9:09:53] ë°©ì–´ì½”ë“œ ì¶”ê°€..*/
                 return (status);
             }
             else{}

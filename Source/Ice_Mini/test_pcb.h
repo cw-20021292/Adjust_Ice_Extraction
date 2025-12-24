@@ -132,7 +132,7 @@ extern TYPE_BYTE          U8FrontAmountOneB;
 extern TYPE_BYTE          U8FrontLeftLEDB;
 #define            gu8_front_left_led                          U8FrontLeftLEDB.byte
 #define            Bit0_Front_Left_Led_Ice_Full_Text           U8FrontLeftLEDB.Bit.b0      // O
-#define            Bit1_Front_Left_Led_Ice_Shortae_Text        U8FrontLeftLEDB.Bit.b1      /* √ﬂ∞° 1 / O */
+#define            Bit1_Front_Left_Led_Ice_Shortae_Text        U8FrontLeftLEDB.Bit.b1      /* Ï∂îÍ∞Ä 1 / O */
 #define            Bit2_Front_Left_Led_UV_Ster_Text            U8FrontLeftLEDB.Bit.b2      // O
 #define            Bit3_Front_Left_Led_Hot_Ster_Text           U8FrontLeftLEDB.Bit.b3      // O
 #define            Bit4_Front_Left_Led_Sleep_Icon              U8FrontLeftLEDB.Bit.b4      // O
@@ -140,15 +140,15 @@ extern TYPE_BYTE          U8FrontLeftLEDB;
 #define            Bit6_Front_Left_Led_Clock_Colon_Icon        U8FrontLeftLEDB.Bit.b6      // O
 #define            Bit7_Front_Left_Led_Celcius_oC_Icon         U8FrontLeftLEDB.Bit.b7      // O
 
-/* LED ¡¶æÓ BIT √ﬂ∞° 250203 CH.PARK */
+/* LED Ï†úÏñ¥ BIT Ï∂îÍ∞Ä 250203 CH.PARK */
 extern TYPE_BYTE          U8FrontTextLEDB;
 #define            gu8_front_left_led_2                         U8FrontTextLEDB.byte
-#define            Bit0_Front_Left_Led_Eff_Faucet_Text          U8FrontTextLEDB.Bit.b0      // O      /* √ﬂ∞° 2 */
-#define            Bit1_Front_Left_Led_Ice_Faucet_Text          U8FrontTextLEDB.Bit.b1      // O      /* √ﬂ∞° 3 */
-#define            Bit2_Front_Left_Led_Ice_Tray_Text            U8FrontTextLEDB.Bit.b2      // O      /* √ﬂ∞° 4 */
-#define            Bit3_Front_Left_Led_Ice_Storage_Box_Text     U8FrontTextLEDB.Bit.b3      // O      /* √ﬂ∞° 5 */
-#define            Bit4_Front_Right_Led_Filter_Clean_Text       U8FrontTextLEDB.Bit.b4      // O      /* √ﬂ∞° 6 */
-#define            Bit5_Front_Right_Seg_Dot_Text                U8FrontTextLEDB.Bit.b5      // O      /* √ﬂ∞° 7 */
+#define            Bit0_Front_Left_Led_Eff_Faucet_Text          U8FrontTextLEDB.Bit.b0      // O      /* Ï∂îÍ∞Ä 2 */
+#define            Bit1_Front_Left_Led_Ice_Faucet_Text          U8FrontTextLEDB.Bit.b1      // O      /* Ï∂îÍ∞Ä 3 */
+#define            Bit2_Front_Left_Led_Ice_Tray_Text            U8FrontTextLEDB.Bit.b2      // O      /* Ï∂îÍ∞Ä 4 */
+#define            Bit3_Front_Left_Led_Ice_Storage_Box_Text     U8FrontTextLEDB.Bit.b3      // O      /* Ï∂îÍ∞Ä 5 */
+#define            Bit4_Front_Right_Led_Filter_Clean_Text       U8FrontTextLEDB.Bit.b4      // O      /* Ï∂îÍ∞Ä 6 */
+#define            Bit5_Front_Right_Seg_Dot_Text                U8FrontTextLEDB.Bit.b5      // O      /* Ï∂îÍ∞Ä 7 */
 
 extern TYPE_BYTE          U8FrontRightLEDB;
 #define            gu8_front_right_led                         U8FrontRightLEDB.byte
@@ -168,24 +168,24 @@ extern TYPE_BYTE          U8FrontTempSettingLEDB;
 #define            Bit1_Front_Led_Temp_Setting_Bar_1_2         U8FrontTempSettingLEDB.Bit.b1    // O
 #define            Bit2_Front_Led_Temp_Setting_Bar_1_3         U8FrontTempSettingLEDB.Bit.b2    // O
 #define            Bit3_Front_Led_Temp_Setting_Bar_1_4         U8FrontTempSettingLEDB.Bit.b3    // O
-#define            Bit4_Front_Led_Temp_Setting_Bar_1_5         U8FrontTempSettingLEDB.Bit.b4    // O// [¡¬√¯ BAR 5 æ∆¿Ãƒ‹] 8 √ﬂ∞°
+#define            Bit4_Front_Led_Temp_Setting_Bar_1_5         U8FrontTempSettingLEDB.Bit.b4    // O// [Ï¢åÏ∏° BAR 5 ÏïÑÏù¥ÏΩò] 8 Ï∂îÍ∞Ä
 
 extern TYPE_BYTE          U8FrontAmountSettingLEDB;
 #define            gu8_front_amount_setting_bar_led            U8FrontAmountSettingLEDB.byte
 #define            Bit0_Front_Led_Amount_Setting_Bar_2_1       U8FrontAmountSettingLEDB.Bit.b0    // O
 #define            Bit1_Front_Led_Amount_Setting_Bar_2_2       U8FrontAmountSettingLEDB.Bit.b1    // O
 #define            Bit2_Front_Led_Amount_Setting_Bar_2_3       U8FrontAmountSettingLEDB.Bit.b2    // O
-#define            Bit3_Front_Led_Amount_Setting_Bar_2_4       U8FrontAmountSettingLEDB.Bit.b3    // O // [¡¬√¯ BAR 4 æ∆¿Ãƒ‹] 9 √ﬂ∞°
+#define            Bit3_Front_Led_Amount_Setting_Bar_2_4       U8FrontAmountSettingLEDB.Bit.b3    // O // [Ï¢åÏ∏° BAR 4 ÏïÑÏù¥ÏΩò] 9 Ï∂îÍ∞Ä
 #define            Bit4_Front_Led_Amount_Setting_Bar_Continue  U8FrontAmountSettingLEDB.Bit.b4    // O
 
 extern TYPE_BYTE          U8FrontCenterRecipeLEDB;
 #define            gu8_front_center_recipe_led                 U8FrontCenterRecipeLEDB.byte
 #define            Bit0_Front_Center_Recipe_Ramen_Text         U8FrontCenterRecipeLEDB.Bit.b0    // O
-#define            Bit1_Front_Center_Tea_Text                  U8FrontCenterRecipeLEDB.Bit.b1    // O   // '¬˜' 10 √ﬂ∞° CH.PARK √ﬂ∞°
+#define            Bit1_Front_Center_Tea_Text                  U8FrontCenterRecipeLEDB.Bit.b1    // O   // 'Ï∞®' 10 Ï∂îÍ∞Ä CH.PARK Ï∂îÍ∞Ä
 #define            Bit2_Front_Center_Recipe_Drip_Coffee_Text   U8FrontCenterRecipeLEDB.Bit.b2    // O
 #define            Bit3_Front_Center_MY_1_Text                 U8FrontCenterRecipeLEDB.Bit.b3    // O
 #define            Bit4_Front_Center_MY_2_Text                 U8FrontCenterRecipeLEDB.Bit.b4    // O
-#define            Bit5_Front_Center_MY_3_Text                 U8FrontCenterRecipeLEDB.Bit.b5    // O   /* √ﬂ∞° 17 */
+#define            Bit5_Front_Center_MY_3_Text                 U8FrontCenterRecipeLEDB.Bit.b5    // O   /* Ï∂îÍ∞Ä 17 */
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -198,7 +198,7 @@ extern TYPE_BYTE          U8FrontSelectLEDB;
 #define            Bit3_Front_Led_Ambient_Select               U8FrontSelectLEDB.Bit.b3    // O
 #define            Bit4_Front_Led_Cold_Select                  U8FrontSelectLEDB.Bit.b4    // O
 #define            Bit5_Front_Led_Amount_Select                U8FrontSelectLEDB.Bit.b5    // O
-#define            Bit6_Front_Led_My_Select                    U8FrontSelectLEDB.Bit.b6    // O    // [MY] 11 ≈Õƒ° º±≈√ æ∆¿Ãƒ‹ √ﬂ∞°
+#define            Bit6_Front_Led_My_Select                    U8FrontSelectLEDB.Bit.b6    // O    // [MY] 11 ÌÑ∞Ïπò ÏÑ†ÌÉù ÏïÑÏù¥ÏΩò Ï∂îÍ∞Ä
 
 extern TYPE_BYTE          U8FrontSettingLEDB;
 #define            gu8_front_setting_led                       U8FrontSettingLEDB.byte
@@ -208,20 +208,20 @@ extern TYPE_BYTE          U8FrontSettingLEDB;
 #define            Bit3_Front_Led_Ice_First                    U8FrontSettingLEDB.Bit.b3    // O
 #define            Bit4_Front_Led_Cold_Temp                    U8FrontSettingLEDB.Bit.b4    // O
 #define            Bit5_Front_Led_Sleep_Mode_Text              U8FrontSettingLEDB.Bit.b5    // O
-#define            Bit6_Front_Led_Cold_Off                     U8FrontSettingLEDB.Bit.b6    // O    // [≥√ºˆOFF] ≈Õƒ° º±≈√ æ∆¿Ãƒ‹ 12 √ﬂ∞°
+#define            Bit6_Front_Led_Cold_Off                     U8FrontSettingLEDB.Bit.b6    // O    // [ÎÉâÏàòOFF] ÌÑ∞Ïπò ÏÑ†ÌÉù ÏïÑÏù¥ÏΩò 12 Ï∂îÍ∞Ä
 
 
 
-/* LED ¡¶æÓ BIT √ﬂ∞° 250203 CH.PARK */
+/* LED Ï†úÏñ¥ BIT Ï∂îÍ∞Ä 250203 CH.PARK */
 extern TYPE_BYTE          U8FrontSettingLEDB_2;
 #define            gu8_front_setting_led_2                     U8FrontSettingLEDB_2.byte
 #define            Bit0_Front_Led_Ice_Lock                     U8FrontSettingLEDB_2.Bit.b0
 #define            Bit1_Front_Led_All_Lock                     U8FrontSettingLEDB_2.Bit.b1
-#define            Bit2_Front_Led_Icon_Led_Ice_Locker          U8FrontSettingLEDB_2.Bit.b2      // [æÛ¿Ω ¿⁄π∞ºË æ∆¿Ãƒ‹]
-#define            Bit3_Front_Led_Icon_Led_Hot_Locker          U8FrontSettingLEDB_2.Bit.b3      // [ø¬ºˆ ¿⁄π∞ºË æ∆¿Ãƒ‹]
-#define            Bit4_Front_Led_Icon_Fast_Ice                U8FrontSettingLEDB_2.Bit.b4      // LPP √ﬂ∞° : ∫¸∏•¡¶∫˘ º≥¡§ æ∆¿Ãƒ‹
-#define            Bit5_Front_Led_Icon_Comp_Blue               U8FrontSettingLEDB_2.Bit.b5      // LPP √ﬂ∞° : COMP ∫Ì∑Á LED
-#define            Bit6_Front_Led_Icon_Comp_White              U8FrontSettingLEDB_2.Bit.b6      // COMP »≠¿Ã∆Æ LED
+#define            Bit2_Front_Led_Icon_Led_Ice_Locker          U8FrontSettingLEDB_2.Bit.b2      // [ÏñºÏùå ÏûêÎ¨ºÏá† ÏïÑÏù¥ÏΩò]
+#define            Bit3_Front_Led_Icon_Led_Hot_Locker          U8FrontSettingLEDB_2.Bit.b3      // [Ïò®Ïàò ÏûêÎ¨ºÏá† ÏïÑÏù¥ÏΩò]
+#define            Bit4_Front_Led_Icon_Fast_Ice                U8FrontSettingLEDB_2.Bit.b4      // LPP Ï∂îÍ∞Ä : Îπ†Î•∏Ï†úÎπô ÏÑ§Ï†ï ÏïÑÏù¥ÏΩò
+#define            Bit5_Front_Led_Icon_Comp_Blue               U8FrontSettingLEDB_2.Bit.b5      // LPP Ï∂îÍ∞Ä : COMP Î∏îÎ£® LED
+#define            Bit6_Front_Led_Icon_Comp_White              U8FrontSettingLEDB_2.Bit.b6      // COMP ÌôîÏù¥Ìä∏ LED
 
 extern TYPE_BYTE          U8FrontUnderTextLEDB;
 #define            gu8_front_under_text_led                    U8FrontUnderTextLEDB.byte
@@ -237,11 +237,11 @@ extern TYPE_BYTE          U8FrontUnderTextLEDB;
 
 extern TYPE_BYTE          U8FrontUnderIconLEDB;
 #define            gu8_front_under_icon_led                         U8FrontUnderIconLEDB.byte
-#define            Bit1_Front_Under_Ice_Inner_Blue_Extract          U8FrontUnderIconLEDB.Bit.b0     // æÛ¿Ω√ﬂ√‚∫Œ æ»¬  ∫Ì∑Á LED
-#define            Bit1_Front_Under_Ice_Inner_White_Extract         U8FrontUnderIconLEDB.Bit.b1     // æÛ¿Ω√ﬂ√‚∫Œ æ»¬  »≠¿Ã∆Æ LED
-#define            Bit2_Front_Under_Ice_Outer_Blue_Extract          U8FrontUnderIconLEDB.Bit.b2     // æÛ¿Ω√ﬂ√‚∫Œ πŸ±˘¬  ∫Ì∑Á LED
-#define            Bit3_Front_Under_Ice_Outer_White_Extract         U8FrontUnderIconLEDB.Bit.b3     // æÛ¿Ω√ﬂ√‚∫Œ πŸ±˘¬  »≠¿Ã∆Æ LED
-#define            Bit4_Front_Under_Water_White_Extract             U8FrontUnderIconLEDB.Bit.b4     // ≥√ø¬¡§√ﬂ√‚∫Œ »≠¿Ã∆Æ LED
+#define            Bit1_Front_Under_Ice_Inner_Blue_Extract          U8FrontUnderIconLEDB.Bit.b0     // ÏñºÏùåÏ∂îÏ∂úÎ∂Ä ÏïàÏ™Ω Î∏îÎ£® LED
+#define            Bit1_Front_Under_Ice_Inner_White_Extract         U8FrontUnderIconLEDB.Bit.b1     // ÏñºÏùåÏ∂îÏ∂úÎ∂Ä ÏïàÏ™Ω ÌôîÏù¥Ìä∏ LED
+#define            Bit2_Front_Under_Ice_Outer_Blue_Extract          U8FrontUnderIconLEDB.Bit.b2     // ÏñºÏùåÏ∂îÏ∂úÎ∂Ä Î∞îÍπ•Ï™Ω Î∏îÎ£® LED
+#define            Bit3_Front_Under_Ice_Outer_White_Extract         U8FrontUnderIconLEDB.Bit.b3     // ÏñºÏùåÏ∂îÏ∂úÎ∂Ä Î∞îÍπ•Ï™Ω ÌôîÏù¥Ìä∏ LED
+#define            Bit4_Front_Under_Water_White_Extract             U8FrontUnderIconLEDB.Bit.b4     // ÎÉâÏò®Ï†ïÏ∂îÏ∂úÎ∂Ä ÌôîÏù¥Ìä∏ LED
 #define            Bit5_Front_Under_Led_Welcome                     U8FrontUnderIconLEDB.Bit.b5     // WELCOME 1 LED
 #define            Bit6_Front_Under_Led_Welcome_2                   U8FrontUnderIconLEDB.Bit.b6     // WELCOME 2 LED CH.PARK ADDED 250204
 
@@ -585,7 +585,7 @@ extern TYPE_BYTE          U8AnimationDimmingSevenB;
 #define            Bit6_Animation_Dimming_Ice_Piece_State                     U8AnimationDimmingSevenB.Bit.b6
 #define            Bit7_Animation_Dimming_Ice_Extract_Inner_State             U8AnimationDimmingSevenB.Bit.b7
 
-/* LPP √ﬂ∞° */
+/* LPP Ï∂îÍ∞Ä */
 extern TYPE_BYTE          U8AnimationDimmingEightB;
 #define            gu8_animation_dimming_eight                                U8AnimationDimmingEightB.byte
 #define            Bit0_Animation_Dimming_Ice_Inner_Blue_state                U8AnimationDimmingEightB.Bit.b0

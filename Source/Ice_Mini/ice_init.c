@@ -43,24 +43,24 @@ void normal_mode_ice_init_operation(void)
     U8 mu8_return = 0;
     U8 mu8_comp_rps = 0;
 
-    // 20120821 DUMMY ทฮฝร ฑโมุ ภ๛ฟ๋.
+    // 20120821 DUMMY ยทรยฝร ยฑรขรร ร€รปยฟรซ.
     switch(gu8InitStep)
     {
         case 0 :
-            if(gu8IceTrayLEV == ICE_TRAY_POSITION_ICE_THROW)        // ลปบ๙ภงฤก ภฬตฟ
+            if(gu8IceTrayLEV == ICE_TRAY_POSITION_ICE_THROW)        // ร…ยปยบรนร€ยงรยก ร€รยตยฟ
             {
                 gu8InitStep = 1;
             }
             else{}
 
-            // ภฬตฟ ม฿/มฆบ๙ ภงฤก -> ลปบ๙ภงฤก
+            // ร€รยตยฟ รร/รยฆยบรน ร€ยงรยก -> ร…ยปยบรนร€ยงรยก
             if((gu8IceTrayLEV == ICE_TRAY_POSITION_ICE_MAKING)
             || (gu8IceTrayLEV == ICE_TRAY_POSITION_MOVING)
             )
             {
                 down_tray_motor();
             }
-            else{}     // มฆบ๙ -> 3บะ ด๕นฬ มฆบ๙
+            else{}     // รยฆยบรน -> 3ยบร ยดรตยนร รยฆยบรน
         break;
 
         case 1 :
@@ -88,7 +88,7 @@ void normal_mode_ice_init_operation(void)
 
             if(gu16CompOffDelay == 0)
             {
-                /*..hui [19-7-25ฟภศฤ 1:36:36] ณรธล ภüศฏน๋บ๊ พ๓ภฝ นๆวโ ภฬตฟ..*/
+                /*..hui [19-7-25ยฟร€รร 1:36:36] ยณรยธร… ร€รผรยฏยนรซยบรช ยพรณร€ยฝ ยนรฆรรข ร€รยตยฟ..*/
                 GasSwitchIce();
                 gu8InitStep = 4;
             }

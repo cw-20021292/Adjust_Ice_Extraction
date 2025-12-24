@@ -10,9 +10,9 @@
     -. Organize
 
 &History : ssg@coway.com 2024.08.24 update
-    - ����͸� CMD �߰�
-    - DATA �̺�Ʈ ó�� �߰�
-    - SDK CMD List �� DATA TYPE �߰�
+    - 모니터링 CMD 추가
+    - DATA 이벤트 처리 추가
+    - SDK CMD List 및 DATA TYPE 추가
 `	*******************************************************************************/
 
 

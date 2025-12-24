@@ -152,7 +152,7 @@ void wifi_all_lock( U16 mu16_setting )
         if( mu16_setting == 0 )
         {
             F_All_Lock = CLEAR;
-            bit_child_lock_enable = CLEAR;      // ÀÚµ¿Àá±Ý °­Á¦ OFF
+            bit_child_lock_enable = CLEAR;      // ìžë™ìž ê¸ˆ ê°•ì œ OFF
             play_voice_all_lock_finish_128();
         }
         else /*if( mu16_setting == 1 )*/
@@ -170,7 +170,7 @@ void wifi_all_lock( U16 mu16_setting )
 
 /***********************************************************************************************************************
 * Function Name: System_ini
-* Description  : ¹Ì»ç¿ë!
+* Description  : ë¯¸ì‚¬ìš©!
 ***********************************************************************************************************************/
 void wifi_child_lock( U16 mu16_setting )
 {
@@ -196,7 +196,7 @@ void wifi_child_lock( U16 mu16_setting )
 
 /***********************************************************************************************************************
 * Function Name: System_ini
-* Description  : ¹Ì»ç¿ë! 
+* Description  : ë¯¸ì‚¬ìš©! 
 ***********************************************************************************************************************/
 void wifi_mute( U16 mu16_setting )
 {
@@ -211,7 +211,7 @@ void wifi_mute( U16 mu16_setting )
         else /*if( mu16_setting == 1 )*/
         {
             F_Mute_Enable = SET;
-            /*..hui [23-7-26¿ÀÈÄ 7:11:02] ¹«À½ ¼³Á¤ÀÌ Ãë¼ÒÀ½.. ¹«À½ ¼³Á¤µÇ´Â°Ô OFFÀÓ.. UI »ç¾ç..*/
+            /*..hui [23-7-26ì˜¤í›„ 7:11:02] ë¬´ìŒ ì„¤ì •ì´ ì·¨ì†ŒìŒ.. ë¬´ìŒ ì„¤ì •ë˜ëŠ”ê²Œ OFFìž„.. UI ì‚¬ì–‘..*/
             /////BuzStep(BUZZER_CANCEL_MUTE);
             play_melody_setting_off_199();
         }
@@ -241,8 +241,8 @@ void wifi_ice_lock( U16 mu16_setting )
             F_Ice_Lock = SET;
             play_voice_setting_ice_lock_on_147();
 
-            /* ¾óÀ¸ ¹× ¾óÀ½¹° ¼±ÅÃ »óÅÂ·Î appÀ» ÅëÇØ ¾óÀ½Àá±Ý ½Ã,
-            ¼±ÅÃ»óÅÂ À¯ÁöµÇ´Â Çö»ó °³¼± 250714 CH.PARK */
+            /* ì–¼ìœ¼ ë° ì–¼ìŒë¬¼ ì„ íƒ ìƒíƒœë¡œ appì„ í†µí•´ ì–¼ìŒìž ê¸ˆ ì‹œ,
+            ì„ íƒìƒíƒœ ìœ ì§€ë˜ëŠ” í˜„ìƒ ê°œì„  250714 CH.PARK */
             if(u8IceOutState != ICE_SELECT__NONE)
             {
                 u8IceOutState = ICE_SELECT__NONE;
@@ -277,7 +277,7 @@ void wifi_cold_temp( U16 mu16_setting )
 
 /***********************************************************************************************************************
 * Function Name: System_ini
-* Description  : ¹Ì»ç¿ë!
+* Description  : ë¯¸ì‚¬ìš©!
 ***********************************************************************************************************************/
 void wifi_hot_enable( U16 mu16_setting )
 {
@@ -288,10 +288,10 @@ void wifi_hot_enable( U16 mu16_setting )
             F_Hot_Enable = CLEAR;
             play_voice_setting_hot_off_122();
 
-            /*..hui [23-7-24¿ÀÈÄ 1:31:41] ÇÁ¸®È÷ÆÃ ÁßÀÌ¾úÀ¸¸é ÇÁ¸®È÷ÆÃ Á¾·á..*/
+            /*..hui [23-7-24ì˜¤í›„ 1:31:41] í”„ë¦¬ížˆíŒ… ì¤‘ì´ì—ˆìœ¼ë©´ í”„ë¦¬ížˆíŒ… ì¢…ë£Œ..*/
             /////stop_hot_preheating();///////
 
-            /*..hui [24-1-19¿ÀÈÄ 2:27:45] ¿Â¼ö ¼±ÅÃ »óÅÂ¿¡¼­ ¿Â¼ö OFF½Ã ÀÌÀü ¼±ÅÃÀ¸·Î..*/
+            /*..hui [24-1-19ì˜¤í›„ 2:27:45] ì˜¨ìˆ˜ ì„ íƒ ìƒíƒœì—ì„œ ì˜¨ìˆ˜ OFFì‹œ ì´ì „ ì„ íƒìœ¼ë¡œ..*/
             if( u8WaterOutState == HOT_WATER_SELECT )
             {
                 water_select_return_timer_control(1);
@@ -312,7 +312,7 @@ void wifi_hot_enable( U16 mu16_setting )
 
 /***********************************************************************************************************************
 * Function Name: System_ini
-* Description  : ¹Ì»ç¿ë!
+* Description  : ë¯¸ì‚¬ìš©!
 ***********************************************************************************************************************/
 void wifi_altitude( U16 mu16_setting )
 {
@@ -340,7 +340,7 @@ void wifi_altitude( U16 mu16_setting )
             play_melody_setting_on_198();
         }
 
-        /*..hui [24-11-26¿ÀÈÄ 4:34:18] °íµµ¸ðµå º¯°æ¿¡µû¸¥ ¿Â¼ö µðÆúÆ® ¿Âµµ º¯°æ..*/
+        /*..hui [24-11-26ì˜¤í›„ 4:34:18] ê³ ë„ëª¨ë“œ ë³€ê²½ì—ë”°ë¥¸ ì˜¨ìˆ˜ ë””í´íŠ¸ ì˜¨ë„ ë³€ê²½..*/
         ///change_hot_default_altitude();
     }
     else
@@ -468,7 +468,7 @@ void wifi_welcome_light( U16 mu16_setting )
 
 /***********************************************************************************************************************
 * Function Name: System_ini
-* Description  : ¹Ì»ç¿ë!
+* Description  : ë¯¸ì‚¬ìš©!
 ***********************************************************************************************************************/
 void wifi_hot_default_temp( U16 mu16_setting )
 {
@@ -495,7 +495,7 @@ void wifi_hot_default_temp( U16 mu16_setting )
 
         if( gu8AltitudeStep == ALTITUDE_3_MODE_LOW )
         {
-            /*..hui [24-11-26¿ÀÈÄ 4:47:48] µ¥ÀÌÅÍ Àß¸øµé¾î¿Â°æ¿ì..3´Ü°èÀÎµ¥ ¿Â¼ö¼³Á¤ 4´Ü°è ¼³Á¤À¸·Î ¿Â°æ¿ì..*/
+            /*..hui [24-11-26ì˜¤í›„ 4:47:48] ë°ì´í„° ìž˜ëª»ë“¤ì–´ì˜¨ê²½ìš°..3ë‹¨ê³„ì¸ë° ì˜¨ìˆ˜ì„¤ì • 4ë‹¨ê³„ ì„¤ì •ìœ¼ë¡œ ì˜¨ê²½ìš°..*/
             if( gu8_hot_default_temp == HOT_SET_TEMP_4__MAX__100_oC )
             {
                 gu8_hot_default_temp = HOT_SET_TEMP_3__COFFEE__85_oC;
@@ -508,7 +508,7 @@ void wifi_hot_default_temp( U16 mu16_setting )
         }
         else if( gu8AltitudeStep == ALTITUDE_4_MODE_VERY_LOW )
         {
-            /*..hui [24-11-26¿ÀÈÄ 4:48:27] 4´Ü°èÀÎµ¥ ¿Â¼ö¼³Á¤ 3´Ü°è or 4´Ü°è ¼³Á¤À¸·Î ¿Â°æ¿ì..*/
+            /*..hui [24-11-26ì˜¤í›„ 4:48:27] 4ë‹¨ê³„ì¸ë° ì˜¨ìˆ˜ì„¤ì • 3ë‹¨ê³„ or 4ë‹¨ê³„ ì„¤ì •ìœ¼ë¡œ ì˜¨ê²½ìš°..*/
             if( gu8_hot_default_temp == HOT_SET_TEMP_4__MAX__100_oC || gu8_hot_default_temp == HOT_SET_TEMP_3__COFFEE__85_oC )
             {
                 gu8_hot_default_temp = HOT_SET_TEMP_2__TEA__70_oC;
@@ -771,7 +771,7 @@ void wifi_sleep_finish_minute( U16 mu16_setting )
 
 /***********************************************************************************************************************
 * Function Name: System_ini
-* Description  : ¹Ì»ç¿ë!
+* Description  : ë¯¸ì‚¬ìš©!
 ***********************************************************************************************************************/
 void wifi_unused_setting_time( U16 mu16_setting )
 {
@@ -818,7 +818,7 @@ void wifi_volume( U16 mu16_setting )
 
 /***********************************************************************************************************************
 * Function Name: System_ini
-* Description  : ¹Ì»ç¿ë!
+* Description  : ë¯¸ì‚¬ìš©!
 ***********************************************************************************************************************/
 void wifi_voice_language( U16 mu16_setting )
 {
@@ -871,7 +871,7 @@ void start_fota(void)
 ***********************************************************************************************************************/
 void wifi_self_test( U16 mu16_setting )
 {
-    /*..hui [21-8-25¿ÀÈÄ 5:47:58] 0ÀÌ¸é ÁßÁö, ÀÏ¹Ýµ¿ÀÛ..*/
+    /*..hui [21-8-25ì˜¤í›„ 5:47:58] 0ì´ë©´ ì¤‘ì§€, ì¼ë°˜ë™ìž‘..*/
     if( mu16_setting == 0 )
     {
         if( bit_self_test_start == SET )
@@ -880,7 +880,7 @@ void wifi_self_test( U16 mu16_setting )
             {
                 bit_self_test_stop = SET;
 
-                /*..hui [21-9-8¿ÀÀü 10:26:04] ½ÃÀÛÇÏ¸é wifiÂÊ¿¡¼­ ÀÚµ¿À¸·Î º¸³»±â¶§¹®¿¡ ÀÌÂÊ¿¡¼­..*/
+                /*..hui [21-9-8ì˜¤ì „ 10:26:04] ì‹œìž‘í•˜ë©´ wifiìª½ì—ì„œ ìžë™ìœ¼ë¡œ ë³´ë‚´ê¸°ë•Œë¬¸ì— ì´ìª½ì—ì„œ..*/
                 gu8_wifi_self_test_state = WIFI_SELF_TEST_STOP;
                 gu8_wifi_self_test_progress = WIFI_SELF_TEST_0_PERCENT;
                 play_melody_setting_off_199();
@@ -891,12 +891,12 @@ void wifi_self_test( U16 mu16_setting )
     }
     else if( mu16_setting == 1 )
     {
-        /*..hui [21-8-25¿ÀÈÄ 5:48:08] 1ÀÌ¸é ½º¸¶Æ® Á¤¹ÐÁø´Ü ½ÃÀÛ..*/
+        /*..hui [21-8-25ì˜¤í›„ 5:48:08] 1ì´ë©´ ìŠ¤ë§ˆíŠ¸ ì •ë°€ì§„ë‹¨ ì‹œìž‘..*/
         if( bit_self_test_start == CLEAR )
         {
             bit_self_test_start = SET;
 
-            /*..hui [21-9-8¿ÀÀü 11:02:26] ÀÌÂÊ¿¡¼­ ÇÑ¹ø ´õ ¸·¾ÆÁÜ..*/
+            /*..hui [21-9-8ì˜¤ì „ 11:02:26] ì´ìª½ì—ì„œ í•œë²ˆ ë” ë§‰ì•„ì¤Œ..*/
             if( gu8_wifi_self_test_state == WIFI_SELF_TEST_NO_OPERATION )
             {
                 start_self_test();
@@ -1063,7 +1063,7 @@ void wifi_set_waterquantity( U16 mu16_waterType, U16 mu16_quantity )
     if(mu16_waterType == CUP_LEVEL_HALF)
     {
         gu16_WaterQuantity_half = mu16_quantity;
-        //quantity conversionÇØ¼­ µé¾î°¡µµ·Ï º¯°æ ÇØ¾ßÇÔ
+        //quantity conversioní•´ì„œ ë“¤ì–´ê°€ë„ë¡ ë³€ê²½ í•´ì•¼í•¨
     }
     else if(mu16_waterType == CUP_LEVEL_ONE)
     {
@@ -1174,7 +1174,7 @@ void wifi_my_default( U16 mu16_setting )
             }
             else
             {
-                // ¹Ì»ç¿ëÇÏ´Â MY1,2,3 Áß ÇÏ³ª¸¦ µðÆúÆ®·Î ¼³Á¤ÇÏ´Â °æ¿ì ¶ó¸éÀ¸·Î ´Ù½Ã ÃÊ±âÈ­ 
+                // ë¯¸ì‚¬ìš©í•˜ëŠ” MY1,2,3 ì¤‘ í•˜ë‚˜ë¥¼ ë””í´íŠ¸ë¡œ ì„¤ì •í•˜ëŠ” ê²½ìš° ë¼ë©´ìœ¼ë¡œ ë‹¤ì‹œ ì´ˆê¸°í™” 
                 my_receipe_default = 0;
             }
         }
@@ -1182,7 +1182,7 @@ void wifi_my_default( U16 mu16_setting )
         {
             my_receipe_default = (U8)(mu16_setting - 1);
             play_melody_setting_on_198();
-            // // ¶ó¸é,µå¸³Ä¿ÇÇ,Â÷´Â ¿ø·¡ ¾²´Â °Å¶ó¼­ ¼¿·ºÆ® À½¼ºÀ» ³½´Ù.
+            // // ë¼ë©´,ë“œë¦½ì»¤í”¼,ì°¨ëŠ” ì›ëž˜ ì“°ëŠ” ê±°ë¼ì„œ ì…€ë ‰íŠ¸ ìŒì„±ì„ ë‚¸ë‹¤.
             // play_melody_select_196();
         }
     }
@@ -1220,11 +1220,11 @@ void wifi_my_default( U16 mu16_setting )
 
 /***********************************************************************************************************************
 * Function Name: System_ini
-* Description  : ¹Ì»ç¿ë
+* Description  : ë¯¸ì‚¬ìš©
 ***********************************************************************************************************************/
 void wifi_set_ice_type(U16 mu16_setting)
 {
-    /* ¹üÀ§Ã¼Å© */
+    /* ë²”ìœ„ì²´í¬ */
     if(mu16_setting > SET)
     {
         play_melody_warning_197();

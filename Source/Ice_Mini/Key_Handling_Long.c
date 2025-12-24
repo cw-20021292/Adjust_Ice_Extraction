@@ -41,10 +41,10 @@ U8 gu8_memento_display_num;
 ***********************************************************************************************************************/
 void calcel_comp_delay(void)
 {
-    /*..hui [19-10-25¿ÀÀü 9:21:25] ¿©±â¼­ ÇÑ¹ø ´õ ÇÊÅÍ¸µ..*/
+    /*..hui [19-10-25ì˜¤ì „ 9:21:25] ì—¬ê¸°ì„œ í•œë²ˆ ë” í•„í„°ë§..*/
     if(F_Comp_Output == CLEAR && gu16CompOffDelay > 0)
     {
-        /*..hui [19-10-25¿ÀÀü 9:22:56] ³Ã¸ÅÀüÈ¯¹ëºê ÃÊ±âÈ­½Ã°£ °í·Á..*/
+        /*..hui [19-10-25ì˜¤ì „ 9:22:56] ëƒ‰ë§¤ì „í™˜ë°¸ë¸Œ ì´ˆê¸°í™”ì‹œê°„ ê³ ë ¤..*/
         gu16CompOffDelay = DEVELOPE_COMP_DELAY_CANCEL_TIME;
         F_IceInit = CLEAR;
         play_melody_setting_on_198();
@@ -75,14 +75,14 @@ void ice_on_off_setting_job( U8 mu8_mode )
     }
     else{}
 
-    /*..hui [17-12-28¿ÀÈÄ 1:03:15] ¾óÀ½ ÃßÃâÁß¿¡´Â º¯°æ¸øÇÏµµ·Ï º¯°æ..*/
+    /*..hui [17-12-28ì˜¤í›„ 1:03:15] ì–¼ìŒ ì¶”ì¶œì¤‘ì—ëŠ” ë³€ê²½ëª»í•˜ë„ë¡ ë³€ê²½..*/
     if( F_IceOut == SET )
     {
         return;
     }
     else{}
 
-    /* ½Ã°£ ¼³Á¤¸ğµå Áß¿¡´Â Ã³¸® ¾ÈµÇµµ·Ï ¸·À½ 250529 CH.PARK */
+    /* ì‹œê°„ ì„¤ì •ëª¨ë“œ ì¤‘ì—ëŠ” ì²˜ë¦¬ ì•ˆë˜ë„ë¡ ë§‰ìŒ 250529 CH.PARK */
     if(bit_time_setting_start == SET)
     {
         return;
@@ -100,7 +100,7 @@ void ice_on_off_setting_job( U8 mu8_mode )
         return;
     }
 
-    // 2025-09-04 CH.PARK [V1.0.0.5] ¼Ò¸®¼³Á¤¸ğµå¿¡¼­ ¾óÀ½ ÀåÅ° ÀÔ·ÂÀ¸·Î ¾óÀ½±â´É ON/OFF ¾ÈµÇµµ·Ï °³¼±
+    // 2025-09-04 CH.PARK [V1.0.0.5] ì†Œë¦¬ì„¤ì •ëª¨ë“œì—ì„œ ì–¼ìŒ ì¥í‚¤ ì…ë ¥ìœ¼ë¡œ ì–¼ìŒê¸°ëŠ¥ ON/OFF ì•ˆë˜ë„ë¡ ê°œì„ 
     if( bit_volume_setting_start == SET )
     {
         return;
@@ -113,8 +113,8 @@ void ice_on_off_setting_job( U8 mu8_mode )
         {
             F_IceOn = SET;
 
-            F_IR = SET;               // ¸¸ºù°¨Áö
-            F_Low_IR = SET;           // Àúºù°¨Áö
+            F_IR = SET;               // ë§Œë¹™ê°ì§€
+            F_Low_IR = SET;           // ì €ë¹™ê°ì§€
 
             play_voice_setting_ice_on_149();
             start_button_set_display( BUTTON_SET_ICE_OFF_DISPLAY );
@@ -167,7 +167,7 @@ void cold_water_enable_setting_job( U8 mu8_mode )
     }
     else{}
 
-    /* ½Ã°£ ¼³Á¤¸ğµå Áß¿¡´Â Ã³¸® ¾ÈµÇµµ·Ï ¸·À½ 250529 CH.PARK */
+    /* ì‹œê°„ ì„¤ì •ëª¨ë“œ ì¤‘ì—ëŠ” ì²˜ë¦¬ ì•ˆë˜ë„ë¡ ë§‰ìŒ 250529 CH.PARK */
     if(bit_time_setting_start == SET)
     {
         return;
@@ -179,7 +179,7 @@ void cold_water_enable_setting_job( U8 mu8_mode )
         return;
     }
 
-    // 2025-09-04 CH.PARK [V1.0.0.5] ¼Ò¸®¼³Á¤¸ğµå¿¡¼­ ³Ã¼öÀåÅ° ÀÔ·ÂÀ¸·Î ³Ã¼ö±â´É ON/OFF ¾ÈµÇµµ·Ï °³¼±
+    // 2025-09-04 CH.PARK [V1.0.0.5] ì†Œë¦¬ì„¤ì •ëª¨ë“œì—ì„œ ëƒ‰ìˆ˜ì¥í‚¤ ì…ë ¥ìœ¼ë¡œ ëƒ‰ìˆ˜ê¸°ëŠ¥ ON/OFF ì•ˆë˜ë„ë¡ ê°œì„ 
     if( bit_volume_setting_start == SET )
     {
         return;
@@ -199,14 +199,14 @@ void cold_water_enable_setting_job( U8 mu8_mode )
             F_Cold_Enable = SET;
             water_select_return_timer_control(0);
 
-            /*..hui [25-2-27¿ÀÈÄ 5:44:09] ÀÓ½Ã..*/
+            /*..hui [25-2-27ì˜¤í›„ 5:44:09] ì„ì‹œ..*/
             play_voice_setting_cold_on_124();
 
-            /*..hui [24-4-24¿ÀÈÄ 5:48:35] ³Ã¼ö ON, OFF ½Ã Ç¥½Ã..*/
+            /*..hui [24-4-24ì˜¤í›„ 5:48:35] ëƒ‰ìˆ˜ ON, OFF ì‹œ í‘œì‹œ..*/
             start_button_set_display( BUTTON_SET_COLD_DISPLAY );
 
-            /*..hui [18-1-31¿ÀÀü 9:43:54] ³Ã¼ö ¹Ì¼³Á¤ »óÅÂ¿¡¼­ ¼³Á¤À¸·Î º¯°æ½Ã 5ÃÊ very longÅ° ¸·À½....*/
-            /*..hui [18-1-31¿ÀÀü 9:44:00] Å° ´©¸£°íÀÖÀ¸¸é ¿¬¼ÓÇØ¼­ ¼³Á¤µÆ´Ù ÇØÁ¦µÇ´Â ¹®Á¦..*/
+            /*..hui [18-1-31ì˜¤ì „ 9:43:54] ëƒ‰ìˆ˜ ë¯¸ì„¤ì • ìƒíƒœì—ì„œ ì„¤ì •ìœ¼ë¡œ ë³€ê²½ì‹œ 5ì´ˆ very longí‚¤ ë§‰ìŒ....*/
+            /*..hui [18-1-31ì˜¤ì „ 9:44:00] í‚¤ ëˆ„ë¥´ê³ ìˆìœ¼ë©´ ì—°ì†í•´ì„œ ì„¤ì •ëë‹¤ í•´ì œë˜ëŠ” ë¬¸ì œ..*/
             bit_cold_setting_double_disable = SET;
         }
         else
@@ -221,14 +221,14 @@ void cold_water_enable_setting_job( U8 mu8_mode )
             F_Cold_Enable = CLEAR;
             water_select_return_timer_control(1);
 
-            /*..hui [20-1-6¿ÀÈÄ 8:06:19] ³Ã¼ö ¹öÆ°À¸·Î ³Ã¼ö ²ô¸é ³Ã¼ö ¼³Á¤µµ OFF·Î º¯°æ..*/
-            /*..hui [20-2-24¿ÀÈÄ 7:44:02] ³Ã¼ö ONOFF¶û ³Ã¼ö¿Âµµ ¼³Á¤ ¸Ş´º ºĞ¸®..*/
+            /*..hui [20-1-6ì˜¤í›„ 8:06:19] ëƒ‰ìˆ˜ ë²„íŠ¼ìœ¼ë¡œ ëƒ‰ìˆ˜ ë„ë©´ ëƒ‰ìˆ˜ ì„¤ì •ë„ OFFë¡œ ë³€ê²½..*/
+            /*..hui [20-2-24ì˜¤í›„ 7:44:02] ëƒ‰ìˆ˜ ONOFFë‘ ëƒ‰ìˆ˜ì˜¨ë„ ì„¤ì • ë©”ë‰´ ë¶„ë¦¬..*/
             /*gu8_cold_setting_level = COLD_TEMP_OFF;*/
 
-            /*..hui [25-2-27¿ÀÈÄ 5:44:05] ÀÓ½Ã..*/
+            /*..hui [25-2-27ì˜¤í›„ 5:44:05] ì„ì‹œ..*/
             play_voice_setting_cold_off_125();
 
-            /*..hui [24-4-24¿ÀÈÄ 5:48:35] ³Ã¼ö ON, OFF ½Ã Ç¥½Ã..*/
+            /*..hui [24-4-24ì˜¤í›„ 5:48:35] ëƒ‰ìˆ˜ ON, OFF ì‹œ í‘œì‹œ..*/
             start_button_set_display( BUTTON_SET_COLD_DISPLAY );
         }
         else
@@ -246,7 +246,7 @@ void cold_water_enable_setting_job( U8 mu8_mode )
 ***********************************************************************************************************************/
 void setting_mode_start(void)
 {
-    /*..hui [17-12-28¿ÀÈÄ 1:03:15] ÃßÃâÁß¿¡´Â º¯°æ¸øÇÏµµ·Ï º¯°æ..*/
+    /*..hui [17-12-28ì˜¤í›„ 1:03:15] ì¶”ì¶œì¤‘ì—ëŠ” ë³€ê²½ëª»í•˜ë„ë¡ ë³€ê²½..*/
     if( F_WaterOut == SET || F_IceOut == SET )
     {
         return;
@@ -297,7 +297,7 @@ void setting_mode_start(void)
 ***********************************************************************************************************************/
 void key_time_setting_job(void)
 {
-    /*..hui [23-6-14¿ÀÀü 10:37:57] ¿ÍÀÌÆÄÀÌ ¿¬°áµÇ¸é ½Ã°£¼³Á¤ ±İÁö..*/
+    /*..hui [23-6-14ì˜¤ì „ 10:37:57] ì™€ì´íŒŒì´ ì—°ê²°ë˜ë©´ ì‹œê°„ì„¤ì • ê¸ˆì§€..*/
     if( gu8_Wifi_Connect_State == WIFI_CONNECT )
     {
         play_melody_warning_197();
@@ -343,7 +343,7 @@ void key_time_setting_job(void)
     ///}
     //else{}
 
-    /*..hui [23-9-14¿ÀÈÄ 3:38:14] ÇöÀç½Ã°£, ¼³Á¤½Ã°£ ¼³Á¤½Ã¿¡´Â ÁøÀÔ¸øÇÏ°Ô..*/
+    /*..hui [23-9-14ì˜¤í›„ 3:38:14] í˜„ì¬ì‹œê°„, ì„¤ì •ì‹œê°„ ì„¤ì •ì‹œì—ëŠ” ì§„ì…ëª»í•˜ê²Œ..*/
     //if( bit_time_setting_start == SET )
     //{
     //    /*play_melody_warning_197();*/
@@ -468,7 +468,7 @@ void key_manual_ice_tank_ster(void)
     }
     else{}
 
-    /*..hui [23-5-22¿ÀÈÄ 7:17:44] ¿ì¼± ¹°ÃßÃâ, ¾óÀ½ÃßÃâÁß¿¡´Â ¸·´Â°É·Î..*/
+    /*..hui [23-5-22ì˜¤í›„ 7:17:44] ìš°ì„  ë¬¼ì¶”ì¶œ, ì–¼ìŒì¶”ì¶œì¤‘ì—ëŠ” ë§‰ëŠ”ê±¸ë¡œ..*/
     if( F_WaterOut == SET || F_IceOut == SET )
     {
         play_melody_warning_197();
@@ -511,7 +511,7 @@ void key_manual_ice_tank_ster(void)
         }
         else{}
 
-        /*..hui [23-7-28¿ÀÈÄ 3:42:30] Áß°£¿¡ »çÀÌµåÄ¿¹ö, RO ÇÊÅÍ ¿­¸² °¨ÁöµÇ¸é Á¤Áö..*/
+        /*..hui [23-7-28ì˜¤í›„ 3:42:30] ì¤‘ê°„ì— ì‚¬ì´ë“œì»¤ë²„, RO í•„í„° ì—´ë¦¼ ê°ì§€ë˜ë©´ ì •ì§€..*/
         if( bit_filter_all == CLEAR )
         {
             play_melody_warning_197();
@@ -519,7 +519,7 @@ void key_manual_ice_tank_ster(void)
         }
         else{}
 
-        /* À¯·Î»ì±Õ ÁøÇàÁß¿¡´Â ¼öµ¿ °í¿Â»ì±Õ ºÒ°¡´É */
+        /* ìœ ë¡œì‚´ê·  ì§„í–‰ì¤‘ì—ëŠ” ìˆ˜ë™ ê³ ì˜¨ì‚´ê·  ë¶ˆê°€ëŠ¥ */
         if(cody_water_line.gu8_start == SET)
         {
             play_melody_warning_197();
@@ -527,7 +527,7 @@ void key_manual_ice_tank_ster(void)
         }
         else {  }
 
-        /* ¼öµ¿µå·¹ÀÎ ÁøÇàÁß¿¡´Â ¼öµ¿ °í¿Â»ì±Õ ºÒ°¡´É */
+        /* ìˆ˜ë™ë“œë ˆì¸ ì§„í–‰ì¤‘ì—ëŠ” ìˆ˜ë™ ê³ ì˜¨ì‚´ê·  ë¶ˆê°€ëŠ¥ */
         if(bit_manual_drain_start == SET)
         {
             play_melody_warning_197();
@@ -535,7 +535,7 @@ void key_manual_ice_tank_ster(void)
         }
         else {  }
 
-        // /* °í¿Â»ì±Õ ³Ã¼ö Å° ÀÔ·Â 3È¸ ¹Ì¸¸ ½Ã ½ÃÀÛ¾ÈµÊ (Ãë¼Ò´Â °¡´É) */
+        // /* ê³ ì˜¨ì‚´ê·  ëƒ‰ìˆ˜ í‚¤ ì…ë ¥ 3íšŒ ë¯¸ë§Œ ì‹œ ì‹œì‘ì•ˆë¨ (ì·¨ì†ŒëŠ” ê°€ëŠ¥) */
         // if(gu8_passive_hot_ster_key_input_count < 3)
         // {
         //     play_melody_warning_197();
@@ -543,7 +543,7 @@ void key_manual_ice_tank_ster(void)
         // }
         // else {  }
 
-        /*..hui [23-10-27¿ÀÀü 11:56:29] ´õ¹ÌÅ»ºùÁßÀÌ¾úÀ¸¸é ´õ¹ÌÅ»ºù Ãë¼Ò..*/
+        /*..hui [23-10-27ì˜¤ì „ 11:56:29] ë”ë¯¸íƒˆë¹™ì¤‘ì´ì—ˆìœ¼ë©´ ë”ë¯¸íƒˆë¹™ ì·¨ì†Œ..*/
         if( F_IceInit == SET )
         {
             F_IceInit = CLEAR;
@@ -555,7 +555,7 @@ void key_manual_ice_tank_ster(void)
 
         play_melody_setting_on_198();
 
-        start_ice_tank_ster();      // ¼öµ¿ °í¿Â»ì±Õ
+        start_ice_tank_ster();      // ìˆ˜ë™ ê³ ì˜¨ì‚´ê· 
     }
     else
     {
@@ -618,7 +618,7 @@ void key_cody_water_line_clean_job(void)
 
     if(cody_water_line.gu8_start == CLEAR)
     {
-        /* ÄÚµğ»ì±Õ¸ğµå E01,E09 ¹ß»ı »óÅÂ¿¡¼­´Â ÁøÀÔ¾ÈµÇ°í °æ°íÀ½ ¹ß»ı 250716 CH.PARK */
+        /* ì½”ë””ì‚´ê· ëª¨ë“œ E01,E09 ë°œìƒ ìƒíƒœì—ì„œëŠ” ì§„ì…ì•ˆë˜ê³  ê²½ê³ ìŒ ë°œìƒ 250716 CH.PARK */
         if((Bit3_Leakage_Sensor_Error__E01 == SET)
         || (Bit6_Main_Water_Flow_Block_Error__E09 == SET)
         )
@@ -657,7 +657,7 @@ void cold_func_onoff_long_key_job(void)
         if(F_Cold_Enable == CLEAR)
         {
             F_Cold_Enable = SET;
-            gu16_cold_off_flick_timer = 0;          /* flick Å¸ÀÌ¸Ó º¯¼ö ÃÊ±âÈ­ÇØ¾ßÁö Ç¥½Ã »ç¾çÀÌ º¯°æµÊ 250318 CH.PARK */
+            gu16_cold_off_flick_timer = 0;          /* flick íƒ€ì´ë¨¸ ë³€ìˆ˜ ì´ˆê¸°í™”í•´ì•¼ì§€ í‘œì‹œ ì‚¬ì–‘ì´ ë³€ê²½ë¨ 250318 CH.PARK */
             Bit2_Cold_Off_Indicator = CLEAR;
             play_voice_setting_cold_on_124();
         }
@@ -679,7 +679,7 @@ void cold_func_onoff_long_key_job(void)
 ***********************************************************************************************************************/
 void cold_long_flushing_cancel_job(void)
 {
-    /* ÇÃ·¯½Ì Ãë¼Ò */
+    /* í”ŒëŸ¬ì‹± ì·¨ì†Œ */
     if( gu8_flushing_mode > FLUSHING_NONE_STATE )
     {
         if( gu8_flushing_mode == FLUSHING_STANDBY_STATE )
@@ -703,7 +703,7 @@ void cold_long_flushing_cancel_job(void)
 ***********************************************************************************************************************/
 void stop_flushing_test_mode_start(void)
 {
-    /* 2KG´Â Á¤¼öÅ° 3È¸ ÀÌ»óÀ¸·Î Àû¿ë */
+    /* 2KGëŠ” ì •ìˆ˜í‚¤ 3íšŒ ì´ìƒìœ¼ë¡œ ì ìš© */
     if( gu8_flushing_finish_input_count >= 3 )
     {
         play_voice_test_mode_151();

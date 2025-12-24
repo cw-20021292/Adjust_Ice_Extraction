@@ -25,7 +25,7 @@ void normal_mode_auto_drain_check_timer(void);
 /*void test_mode_auto_drain_check_timer(void);*/
 
 
-bit F_night;                      // ??©¤????
+bit F_night;                      // ??Ä§????
 U16 gu16_night_timer;
 
 bit F_first_night_check;
@@ -38,10 +38,10 @@ bit F_Auto_drain_time_expired;
 
 bit F_drain_operate;
 
-U16 gu16NormalEffluentTotal = 0;      // 24?©£? ????(?¨ù?) ????
-//U8 gu8ColdEffluentTotal = 0;        // 24?©£? ?u? ????
-U16 gu16ColdEffluentTotal = 0;        // 24?©£? ?u? ????
-U16 gu16EffluentTimeCNT = 0;        // ???? ???? ?©£? ?????
+U16 gu16NormalEffluentTotal = 0;      // 24?Ã°? ????(?Â¼?) ????
+//U8 gu8ColdEffluentTotal = 0;        // 24?Ã°? ?u? ????
+U16 gu16ColdEffluentTotal = 0;        // 24?Ã°? ?u? ????
+U16 gu16EffluentTimeCNT = 0;        // ???? ???? ?Ã°? ?????
 bit F_AutoDrainCheckOK;             // ??? ??? u? ??? Flag
 bit F_DrainStatus;                  // ??? ??? ???? ???? Flag
 
@@ -145,8 +145,8 @@ void auto_drain_output(void)
     }
     else
     {
-        /* 2KG MAX´Â ¼øÈ¯¹è¼ö ½Ã ¼ö¹è°ü Æ¯¼º»ó 1KG, MINI¿Í ´Ù¸£°Ô 
-        ¹è¼öÅÊÅ©¸¦ ¹İµå½Ã Áö³ª°¡¾ß ÇÏ±â ¶§¹®¿¡ ÆßÇÁÁ¦¾î ÇÊ¿ä 250623 CH.PARK */
+        /* 2KG MAXëŠ” ìˆœí™˜ë°°ìˆ˜ ì‹œ ìˆ˜ë°°ê´€ íŠ¹ì„±ìƒ 1KG, MINIì™€ ë‹¤ë¥´ê²Œ 
+        ë°°ìˆ˜íƒ±í¬ë¥¼ ë°˜ë“œì‹œ ì§€ë‚˜ê°€ì•¼ í•˜ê¸° ë•Œë¬¸ì— íŒí”„ì œì–´ í•„ìš” 250623 CH.PARK */
         auto_mode_drain_pump_out();
 #if 0
         gu16ColdDrainTime++;
@@ -175,7 +175,7 @@ void auto_mode_drain_pump_out(void)
     {
         case DRAIN_LEVEL_EMPTY :
              bit_auto_drain_pump_out = CLEAR;
-             F_auto_drain_mode_cold_water_valve_out = SET;          // ³Ã¼öÅÊÅ© µå·¹ÀÎ
+             F_auto_drain_mode_cold_water_valve_out = SET;          // ëƒ‰ìˆ˜íƒ±í¬ ë“œë ˆì¸
 
              gu8_before_drain_water_level = DRAIN_LEVEL_EMPTY;
              gu16_cold_drain_op_timer = 0;
@@ -183,31 +183,31 @@ void auto_mode_drain_pump_out(void)
             break;
 
         case DRAIN_LEVEL_LOW :
-            /*..hui [18-1-14¿ÀÈÄ 6:06:23] ¹°¾ø´Â »óÅÂ¿¡¼­ ³Ã¼ö ¹è¼ö¹ëºê ON »óÅÂ·Î Àú¼öÀ§ ÁøÀÔÇÏ¸é..*/
+            /*..hui [18-1-14ì˜¤í›„ 6:06:23] ë¬¼ì—†ëŠ” ìƒíƒœì—ì„œ ëƒ‰ìˆ˜ ë°°ìˆ˜ë°¸ë¸Œ ON ìƒíƒœë¡œ ì €ìˆ˜ìœ„ ì§„ì…í•˜ë©´..*/
             if(gu8_before_drain_water_level == DRAIN_LEVEL_EMPTY)
             {
                 gu16_cold_drain_op_timer++;
 
-                /*..hui [18-1-14¿ÀÈÄ 6:06:47] 40ÃÊ ÀÌ»ó ³Ã¼ö ¹è¼öÇß´Âµ¥µµ ¸¸¼öÀ§¿¡ µµ´ŞÇÏÁö ¸øÇÏ¸é..*/
-                    /*..hui [18-1-14¿ÀÈÄ 6:07:00] ´Ù½Ã µå·¹ÀÎÆßÇÁ °¡µ¿ÇØ¼­ µå·¹ÀÎ ½ÃÀÛ..*/
-                    /*..hui [18-1-14¿ÀÈÄ 6:11:06] ¼¾¼­ ¿À°¨Áö, À¯·Î¸·ÈûµîÀÇ ÀÌÀ¯·Î.. ¹è¼öÅÊÅ© ³ÑÄ¡Áö ¾Ê°Ô ÇÏ±âÀ§ÇØ..???..*/
+                /*..hui [18-1-14ì˜¤í›„ 6:06:47] 40ì´ˆ ì´ìƒ ëƒ‰ìˆ˜ ë°°ìˆ˜í–ˆëŠ”ë°ë„ ë§Œìˆ˜ìœ„ì— ë„ë‹¬í•˜ì§€ ëª»í•˜ë©´..*/
+                    /*..hui [18-1-14ì˜¤í›„ 6:07:00] ë‹¤ì‹œ ë“œë ˆì¸íŒí”„ ê°€ë™í•´ì„œ ë“œë ˆì¸ ì‹œì‘..*/
+                    /*..hui [18-1-14ì˜¤í›„ 6:11:06] ì„¼ì„œ ì˜¤ê°ì§€, ìœ ë¡œë§‰í˜ë“±ì˜ ì´ìœ ë¡œ.. ë°°ìˆ˜íƒ±í¬ ë„˜ì¹˜ì§€ ì•Šê²Œ í•˜ê¸°ìœ„í•´..???..*/
                 if(gu16_cold_drain_op_timer >= DRAIN_VALVE_OPEN_TIME)
                 {
                     /*gu16_cold_drain_op_timer = DRAIN_VALVE_OPEN_TIME;*/
                     bit_auto_drain_pump_out = SET;
                     F_auto_drain_mode_cold_water_valve_out = CLEAR;
 
-                    /*..hui [18-1-25¿ÀÈÄ 4:11:59] µå·¹ÀÎÆßÇÁ °¡µ¿À¸·Î ÀüÈ¯ÇÏ°í 3ÃÊÈÄ¿¡ ÇÇµå¹é È®ÀÎ..*/
+                    /*..hui [18-1-25ì˜¤í›„ 4:11:59] ë“œë ˆì¸íŒí”„ ê°€ë™ìœ¼ë¡œ ì „í™˜í•˜ê³  3ì´ˆí›„ì— í”¼ë“œë°± í™•ì¸..*/
                     if(gu16_cold_drain_op_timer >= (DRAIN_VALVE_OPEN_TIME + 30))
                     {
-                        /*..hui [18-1-25¿ÀÈÄ 4:12:27] ÇÇµå¹é ÀÌÇÏÀÌ¸é ´Ù½Ã ³Ã¼ö ¹ëºê ON..*/
+                        /*..hui [18-1-25ì˜¤í›„ 4:12:27] í”¼ë“œë°± ì´í•˜ì´ë©´ ë‹¤ì‹œ ëƒ‰ìˆ˜ ë°¸ë¸Œ ON..*/
                         if(gu16_AD_Drain_Pump_Current <= DRAIN_COMPLETE_FEEDBACK)
                         {
                             gu16_cold_drain_op_timer = 0;
                         }
                         else
                         {
-                            /*..hui [18-1-25¿ÀÈÄ 4:12:45] ÇÇµå¹é ÃÊ°úÀÌ¸é µå·¹ÀÎÆßÇÁ ON »óÅÂ À¯Áö..*/
+                            /*..hui [18-1-25ì˜¤í›„ 4:12:45] í”¼ë“œë°± ì´ˆê³¼ì´ë©´ ë“œë ˆì¸íŒí”„ ON ìƒíƒœ ìœ ì§€..*/
                             gu16_cold_drain_op_timer = DRAIN_VALVE_OPEN_TIME + 30;
                         }
                     }
@@ -222,9 +222,9 @@ void auto_mode_drain_pump_out(void)
                 else
                 {
                 gu16_cold_drain_op_timer = 0;
-                /*..hui [18-1-14¿ÀÈÄ 6:15:33] ¸¸¼öÀ§ °¨ÁöµÇ°í µå·¹ÀÎÆßÇÁ °¡µ¿ÇÏ¿© Àú¼öÀ§±îÁö ³»·Á¿ÔÀ»¶§..*/
-                    /*..hui [18-1-14¿ÀÈÄ 6:21:04] ÀÌ°Íµµ ¼¾¼­ ¿À°¨Áö³ª À¯·Î ¿¡¾îµîÀÇ ÀÌÀ¯·Î ¹°¾øÀ½±îÁö Àß ¾È³»·Á°¥¶§..*/
-                    /*..hui [18-1-14¿ÀÈÄ 6:21:55] ´Ù½Ã µå·¹ÀÎÆßÇÁ OFFÇÏ°í ³Ã¼ö ¹ëºê ONÇÏ¿© ¸¸¼öÀ§·Î °¡µµ·Ï....*/
+                /*..hui [18-1-14ì˜¤í›„ 6:15:33] ë§Œìˆ˜ìœ„ ê°ì§€ë˜ê³  ë“œë ˆì¸íŒí”„ ê°€ë™í•˜ì—¬ ì €ìˆ˜ìœ„ê¹Œì§€ ë‚´ë ¤ì™”ì„ë•Œ..*/
+                    /*..hui [18-1-14ì˜¤í›„ 6:21:04] ì´ê²ƒë„ ì„¼ì„œ ì˜¤ê°ì§€ë‚˜ ìœ ë¡œ ì—ì–´ë“±ì˜ ì´ìœ ë¡œ ë¬¼ì—†ìŒê¹Œì§€ ì˜ ì•ˆë‚´ë ¤ê°ˆë•Œ..*/
+                    /*..hui [18-1-14ì˜¤í›„ 6:21:55] ë‹¤ì‹œ ë“œë ˆì¸íŒí”„ OFFí•˜ê³  ëƒ‰ìˆ˜ ë°¸ë¸Œ ONí•˜ì—¬ ë§Œìˆ˜ìœ„ë¡œ ê°€ë„ë¡....*/
                 if(gu16_AD_Drain_Pump_Current <= DRAIN_COMPLETE_FEEDBACK)
                 {
                     gu8_auto_drain_no_water_timer++;
@@ -281,12 +281,12 @@ void auto_drain_operate_check(void)
     {
         gu16_auto_drain_check_period++;
         
-        /* ¼øÈ¯¹è¼ö µ¿ÀÛ ½Ã°£ : 2ºĞ 40ÃÊ */
+        /* ìˆœí™˜ë°°ìˆ˜ ë™ì‘ ì‹œê°„ : 2ë¶„ 40ì´ˆ */
         if(gu16_auto_drain_check_period >= AUTO_DRAIN_OPERATION_TIMER)
         {
             gu16_auto_drain_check_period = 0;
        		
-            /*..sean [25-06-13] 10ºĞ.. ¾ÆÀÌÄÜ ¾ÆÀÌ½º ±âÁØ Á¤¼ö »ç¿ë·® Ã¼Å© ¾ÈÇÔ..*/
+            /*..sean [25-06-13] 10ë¶„.. ì•„ì´ì½˜ ì•„ì´ìŠ¤ ê¸°ì¤€ ì •ìˆ˜ ì‚¬ìš©ëŸ‰ ì²´í¬ ì•ˆí•¨..*/
             gu16NormalEffluentTotal = 0;
             gu16ColdEffluentTotal = 0;
             F_Auto_drain_time_expired = CLEAR;
@@ -294,7 +294,7 @@ void auto_drain_operate_check(void)
         }
         else
         {
-            /* ¿ë·® 500ml ±âÁØ (È®ÀÎ ÇÊ¿ä) 250703 CH.PARK */
+            /* ìš©ëŸ‰ 500ml ê¸°ì¤€ (í™•ì¸ í•„ìš”) 250703 CH.PARK */
             if (gu16ColdEffluentTotal < AUTO_DRAIN_OPERATION_WATER)
             {
                 F_DrainStatus = SET;
@@ -312,9 +312,9 @@ void auto_drain_operate_check(void)
         {
             F_AutoDrainCheckOK = SET;
 
-            /*..hui [23-7-31¿ÀÈÄ 3:11:01] ³Ã¿ÂÁ¤ ÅëÇÕÀ¸·Î È®ÀÎ.. Á¦¾î»ç¾ç¼­¿¡ ³Ã¼ö 1.5L·Î ³ª¿ÍÀÖÀ½..*/
-            /*..hui [23-7-31¿ÀÈÄ 3:11:21] 120cc ±âÁØ 12ÀÜ..*/
-            /*..sean [25-06-13] 2KG´Â ¿ë·® 1L ±âÁØ..*/
+            /*..hui [23-7-31ì˜¤í›„ 3:11:01] ëƒ‰ì˜¨ì • í†µí•©ìœ¼ë¡œ í™•ì¸.. ì œì–´ì‚¬ì–‘ì„œì— ëƒ‰ìˆ˜ 1.5Lë¡œ ë‚˜ì™€ìˆìŒ..*/
+            /*..hui [23-7-31ì˜¤í›„ 3:11:21] 120cc ê¸°ì¤€ 12ì”..*/
+            /*..sean [25-06-13] 2KGëŠ” ìš©ëŸ‰ 1L ê¸°ì¤€..*/
             if (gu16ColdEffluentTotal < AUTO_DRAIN_OPERATION_WATER)
             {
                 F_DrainStatus = SET;
@@ -335,11 +335,11 @@ void auto_drain_operate_check(void)
     }
 
     /*..hui [18-1-14???? 7:35:24] ???? ????? ?????? ????..*/
-    if( (Bit2_Ice_Operation_Disable_State == SET)           // Á¦ºù °ü·Ã ¿¡·¯
-    || (F_Circul_Drain != SET)                              // ¼øÈ¯¹è¼ö »ç¿ë
-    || (F_auto_drain_off_check == SET)                      // ¼øÈ¯¹è¼ö µ¿ÀÛ Ãë¼Ò ÇÃ·¡±×
-    || (F_WaterOut == SET)                                  // ¹° ÃßÃâ ½Ã
-    || (bit_filter_all == CLEAR)                            // ÇÊÅÍ Ä¿¹ö/¸®µå ¿­¸²
+    if( (Bit2_Ice_Operation_Disable_State == SET)           // ì œë¹™ ê´€ë ¨ ì—ëŸ¬
+    || (F_Circul_Drain != SET)                              // ìˆœí™˜ë°°ìˆ˜ ì‚¬ìš©
+    || (F_auto_drain_off_check == SET)                      // ìˆœí™˜ë°°ìˆ˜ ë™ì‘ ì·¨ì†Œ í”Œë˜ê·¸
+    || (F_WaterOut == SET)                                  // ë¬¼ ì¶”ì¶œ ì‹œ
+    || (bit_filter_all == CLEAR)                            // í•„í„° ì»¤ë²„/ë¦¬ë“œ ì—´ë¦¼
     )
     {
         F_Auto_drain_time_expired = CLEAR;
@@ -395,8 +395,8 @@ void normal_mode_auto_drain_check_timer(void)
     }
     else{}
 
-    /*..hui [18-1-14???? 8:53:23] ?????? ????? OFF???? ?©£? ???? ?? ???? ????? ??? ????? ????....*/
-    /*..hui [18-1-14???? 8:53:41] ????? ????? ??? ON??? ????©£????? ????? ???????..*/
+    /*..hui [18-1-14???? 8:53:23] ?????? ????? OFF???? ?Ã°? ???? ?? ???? ????? ??? ????? ????....*/
+    /*..hui [18-1-14???? 8:53:41] ????? ????? ??? ON??? ????Ã°????? ????? ???????..*/
     gu16_auto_drain_start_timer_sec++;
 
     if(gu16_auto_drain_start_timer_sec >= 600)
@@ -414,9 +414,9 @@ void normal_mode_auto_drain_check_timer(void)
     }
     else{}
 
-    /*..hui [18-1-29???? 9:23:04] 24?©£? ??? 2?©£? ???? ?? ??????? ???..*/
+    /*..hui [18-1-29???? 9:23:04] 24?Ã°? ??? 2?Ã°? ???? ?? ??????? ???..*/
     /*if(gu16_auto_drain_start_timer_hour >= 22)*/
-    /*..hui [23-7-31???? 2:58:50] 72?©£???? 2?©£? ??..*/
+    /*..hui [23-7-31???? 2:58:50] 72?Ã°???? 2?Ã°? ??..*/
     /*if(gu16_auto_drain_start_timer_hour >= 70)*/
     if(gu16_auto_drain_start_timer_hour >= 22)
     {
@@ -428,9 +428,9 @@ void normal_mode_auto_drain_check_timer(void)
     }
     else{}
 
-    /*..hui [18-1-14???? 7:02:24] 24?©£???? 1?©£? ???? ?? ??????? ???..*/
+    /*..hui [18-1-14???? 7:02:24] 24?Ã°???? 1?Ã°? ???? ?? ??????? ???..*/
     /*if(gu16_auto_drain_start_timer_hour >= 23)*/
-    /*..hui [23-7-31???? 2:59:10] 72?©£???? 1?©£? ??..*/
+    /*..hui [23-7-31???? 2:59:10] 72?Ã°???? 1?Ã°? ??..*/
     /*if(gu16_auto_drain_start_timer_hour >= 71)*/
     if(gu16_auto_drain_start_timer_hour >= 23)
     {
@@ -443,15 +443,15 @@ void normal_mode_auto_drain_check_timer(void)
     else{}
 
     /*if(gu16_auto_drain_start_timer_hour >= 24)*/
-    /*..hui [23-7-31???? 2:59:28] 72?©£? ??? ???..*/
+    /*..hui [23-7-31???? 2:59:28] 72?Ã°? ??? ???..*/
     /*if(gu16_auto_drain_start_timer_hour >= 72)*/
     if(gu16_auto_drain_start_timer_hour >= 24)
     {
-        /*..hui [18-1-14???? 7:19:19] 24?©£???? ??©£? ???? ???? ???????..*/
-        /*..hui [18-1-14???? 7:19:30] ??©£? ?? ?¨¨? ???? u?..*/
+        /*..hui [18-1-14???? 7:19:19] 24?Ã°???? ??Ã°? ???? ???? ???????..*/
+        /*..hui [18-1-14???? 7:19:30] ??Ã°? ?? ?Ä¿? ???? u?..*/
         if(F_auto_drain_drinking_check_before_1hour == SET)
         {
-            gu8_before_2hour_drinking_count = 0;                // ¼øÈ¯¹è¼ö µ¿ÀÛ½ÃÁ¡ 1½Ã°£ Áõ°¡
+            gu8_before_2hour_drinking_count = 0;                // ìˆœí™˜ë°°ìˆ˜ ë™ì‘ì‹œì  1ì‹œê°„ ì¦ê°€
         }
         else
         {
@@ -463,12 +463,12 @@ void normal_mode_auto_drain_check_timer(void)
             gu16_auto_drain_start_timer_hour = 0;
             F_auto_drain_drinking_check_before_1hour = CLEAR;
 
-            /*..hui [18-1-29???? 9:47:42] 2?©£? ???? ?? ?????? ??????..*/
+            /*..hui [18-1-29???? 9:47:42] 2?Ã°? ???? ?? ?????? ??????..*/
             if(F_auto_drain_drinking_check_before_2hour == CLEAR)
             {
                 gu8_before_2hour_drinking_count++;
 
-                /*..hui [18-1-29???? 9:53:21] 3?? ???? 2?©£? ?????? ?? ?????? ?????? ??u ?©£?  1?©£? ????..*/
+                /*..hui [18-1-29???? 9:53:21] 3?? ???? 2?Ã°? ?????? ?? ?????? ?????? ??u ?Ã°?  1?Ã°? ????..*/
                 if(gu8_before_2hour_drinking_count >= 7)
                 {
                     gu8_before_2hour_drinking_count = 0;
@@ -486,7 +486,7 @@ void normal_mode_auto_drain_check_timer(void)
     else{}
 
     /*if(gu16_auto_drain_start_timer_hour >= 25)*/
-    /*..hui [23-7-31???? 3:00:57] 73?©£? 1?©£? ???? ???..*/
+    /*..hui [23-7-31???? 3:00:57] 73?Ã°? 1?Ã°? ???? ???..*/
     /*if(gu16_auto_drain_start_timer_hour >= 73)*/
     if(gu16_auto_drain_start_timer_hour >= 25)
     {
@@ -526,8 +526,8 @@ void test_mode_auto_drain_check_timer(void)
         /*gu16_auto_drain_start_timer_sec++;*/
     }
 
-    /*..hui [18-1-14???? 8:53:23] ?????? ????? OFF???? ?©£? ???? ?? ???? ????? ??? ????? ????....*/
-    /*..hui [18-1-14???? 8:53:41] ????? ????? ??? ON??? ????©£????? ????? ???????..*/
+    /*..hui [18-1-14???? 8:53:23] ?????? ????? OFF???? ?Ã°? ???? ?? ???? ????? ??? ????? ????....*/
+    /*..hui [18-1-14???? 8:53:41] ????? ????? ??? ON??? ????Ã°????? ????? ???????..*/
     gu16_auto_drain_start_timer_sec++;
 
     if(gu16_auto_drain_start_timer_sec >= 600)
@@ -539,7 +539,7 @@ void test_mode_auto_drain_check_timer(void)
     else{}
 
 
-    /*..hui [18-1-29???? 9:23:04] 24?©£? ??? 2?©£? ???? ?? ??????? ???..*/
+    /*..hui [18-1-29???? 9:23:04] 24?Ã°? ??? 2?Ã°? ???? ?? ??????? ???..*/
     if(gu16_auto_drain_start_timer_hour >= 8)
     {
         if(F_WaterOut == SET)
@@ -551,7 +551,7 @@ void test_mode_auto_drain_check_timer(void)
     else{}
 
 
-    /*..hui [18-1-14???? 7:02:24] 24?©£???? 1?©£? ???? ?? ??????? ???..*/
+    /*..hui [18-1-14???? 7:02:24] 24?Ã°???? 1?Ã°? ???? ?? ??????? ???..*/
     if(gu16_auto_drain_start_timer_hour >= 9)
     {
         if(F_WaterOut == SET)
@@ -564,8 +564,8 @@ void test_mode_auto_drain_check_timer(void)
 
     if(gu16_auto_drain_start_timer_hour >= 10)
     {
-        /*..hui [18-1-14???? 7:19:19] 24?©£???? ??©£? ???? ???? ???????..*/
-        /*..hui [18-1-14???? 7:19:30] ??©£? ?? ?¨¨? ???? u?..*/
+        /*..hui [18-1-14???? 7:19:19] 24?Ã°???? ??Ã°? ???? ???? ???????..*/
+        /*..hui [18-1-14???? 7:19:30] ??Ã°? ?? ?Ä¿? ???? u?..*/
         if(F_auto_drain_drinking_check_before_1hour == SET)
         {
             gu8_before_2hour_drinking_count = 0;
@@ -580,12 +580,12 @@ void test_mode_auto_drain_check_timer(void)
             gu16_auto_drain_start_timer_hour = 0;
             F_auto_drain_drinking_check_before_1hour = CLEAR;
 
-            /*..hui [18-1-29???? 9:47:42] 2?©£? ???? ?? ?????? ??????..*/
+            /*..hui [18-1-29???? 9:47:42] 2?Ã°? ???? ?? ?????? ??????..*/
             if(F_auto_drain_drinking_check_before_2hour == CLEAR)
             {
                 gu8_before_2hour_drinking_count++;
 
-                /*..hui [18-1-29???? 9:53:21] 3?? ???? 2?©£? ?????? ?? ?????? ?????? ??u ?©£?  1?©£? ????..*/
+                /*..hui [18-1-29???? 9:53:21] 3?? ???? 2?Ã°? ?????? ?? ?????? ?????? ??u ?Ã°?  1?Ã°? ????..*/
                 if(gu8_before_2hour_drinking_count >= 3)
                 {
                     gu8_before_2hour_drinking_count = 0;
@@ -652,7 +652,7 @@ void integrate_water_quantity(void)
     else
     {
     	if(bit_WaterOut_extracted_state == SET)
-        // 24?©£? ?? ??? ????
+        // 24?Ã°? ?? ??? ????
     	{
 	        /*UseWater48HoursTotalCount(u8WaterOutState, gu8Cup_level);*/
 	        UseWater24HoursTotalCount(u8WaterOutState, mu16_amount);
@@ -661,7 +661,7 @@ void integrate_water_quantity(void)
     }
 
     /*..hui [18-1-14???? 8:47:29] ??? ??? ??? OFF?? ???? ????..*/
-    /*..hui [18-1-14???? 8:56:16] ??? ??? ??? OFF???? ?©£? ???? ????? ????????? ????..*/
+    /*..hui [18-1-14???? 8:56:16] ??? ??? ??? OFF???? ?Ã°? ???? ????? ????????? ????..*/
     if(F_Circul_Drain != SET)
     {
         gu16EffluentTimeCNT = 0;
@@ -676,7 +676,7 @@ void integrate_water_quantity(void)
 * Description  :
 ***********************************************************************************************************************/
 
-/// @brief    ?????? ????? ???? 24?©£? ?? ??? ???? ???(????? ????)
+/// @brief    ?????? ????? ???? 24?Ã°? ?? ??? ???? ???(????? ????)
 /// @param    mu8Type     : ???? ??????
 ///           mu8Data     : ????
 /// @return   void
@@ -715,7 +715,7 @@ void UseWater48HoursTotalCount(U8 mu8Type, U8 mu8Data)
     }
     else
     {
-        /*..hui [23-7-31???? 5:18:07] ?????? 120??? ???????? ?©£????? ??????..*/
+        /*..hui [23-7-31???? 5:18:07] ?????? 120??? ???????? ?Ã°????? ??????..*/
         /*if(u8Extract_Continue == SET)*/
         if(mu8Data != 255)
         {

@@ -25,7 +25,7 @@
 
 /***** Define ***************************************************************/
 
-/*  KEY : Value ±¸Á¶ Á¤ÀÇ
+/*  KEY : Value êµ¬ì¡° ì •ì˜
     "ABC" : "123"  
 */
 typedef struct 
@@ -35,7 +35,7 @@ typedef struct
 } JSONItem;
 
 
-/*  KEY : Value(Array)±¸Á¶ Á¤ÀÇ
+/*  KEY : Value(Array)êµ¬ì¡° ì •ì˜
     "ABC" : [{}, {}] 
 */
 typedef struct 
@@ -44,7 +44,7 @@ typedef struct
     char value[USER_MAX_VALUE_ARRAY_LEN];
 } JSONArrayItem;
 
-/*  Key - Value ½ÖÀÇ °¹ ¼ö
+/*  Key - Value ìŒì˜ ê°¯ ìˆ˜
     "AAA" : "111" 
     "BBB" : {"BBB1":"111", "BBB2":"222"}
     "CCC" : "111"
@@ -55,7 +55,7 @@ typedef struct
     int count;
 } JSONObject;
 
-/*  Array ÀüÃ¼ Value °ª
+/*  Array ì „ì²´ Value ê°’
     "KEY" : [{ },{ }]
  */
 typedef struct
@@ -65,7 +65,7 @@ typedef struct
 } JSONArray;
 
 
-/*  Array¿¡¼­ object ÃßÃâ
+/*  Arrayì—ì„œ object ì¶”ì¶œ
     [ {}, {} ]  -> { }, { }
 */
 typedef struct

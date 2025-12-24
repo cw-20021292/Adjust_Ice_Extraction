@@ -89,19 +89,19 @@ U16 gu16_comp_on_timer;
 U16 gu16_comp_off_timer;
 bit bit_start_preheat;
 
-U16 gu16ColdDelayTimer = 0;         // ³Ã°¢ µ¿ÀÛ Áö¿¬ ½Ã°£ Timer
-U16 gu16CoolerActTime = 0;          // ³Ã°¢ µ¿ÀÛ ½Ã°£ Å¸ÀÌ¸Ó
-U16 gu16CoolUnderTempDelay = 0;     // 5.5µµ ÀÌÇÏ µµ´Ş½Ã 5ºĞ°£ ´õ ³Ã°¢ °¡µ¿ÇÏµµ·Ï ÇÏ´Â Delay Timer
+U16 gu16ColdDelayTimer = 0;         // ëƒ‰ê° ë™ì‘ ì§€ì—° ì‹œê°„ Timer
+U16 gu16CoolerActTime = 0;          // ëƒ‰ê° ë™ì‘ ì‹œê°„ íƒ€ì´ë¨¸
+U16 gu16CoolUnderTempDelay = 0;     // 5.5ë„ ì´í•˜ ë„ë‹¬ì‹œ 5ë¶„ê°„ ë” ëƒ‰ê° ê°€ë™í•˜ë„ë¡ í•˜ëŠ” Delay Timer
 
-bit F_UART2Ok;                      // UARTÅë½Å OK Flag
-bit F_UART2CommunicationErrorDetect;  // UARTÅë½Å ÀÌ»ó ÆĞÅ¶ ¼ö½Å Flag
+bit F_UART2Ok;                      // UARTí†µì‹  OK Flag
+bit F_UART2CommunicationErrorDetect;  // UARTí†µì‹  ì´ìƒ íŒ¨í‚· ìˆ˜ì‹  Flag
 bit F_UART2CommunicationError;
 U8 gu8UART2CommunicationErrorCounter = 0;
-U16 gu16UART2CommunicationNoiseTimer = 0;   // UARTÅë½Å ³ëÀÌÁî ¼ö½Å Å¸ÀÌ¸Ó
-U8 gu8BLDCCommunicationErrorNum = 0;        // BLDC CompÀÇ Åë½Å ¿¡·¯ ¹ß»ı Ä«¿îÅÍ
-U8 gu8BLDCErrorCounter = 0;         // BLDC CompÀÇ Error Code ¼ö½Å Ä«¿îÅÍ(µ¿ÀÛ ¿¡·¯ °¨Áö Counter)
-U8 gu8BLDCErrorClearCounter = 0;    // BLDC CompÀÇ Error Code ¹Ì¼ö½Å Ä«¿îÅÍ(µ¿ÀÛ ¿¡·¯ ÇØÁ¦ Counter)
-U8 gu8BLDCErrorNum = 0;             // BLDC CompÀÇ Error ¹ß»ı Ä«¿îÅÍ
+U16 gu16UART2CommunicationNoiseTimer = 0;   // UARTí†µì‹  ë…¸ì´ì¦ˆ ìˆ˜ì‹  íƒ€ì´ë¨¸
+U8 gu8BLDCCommunicationErrorNum = 0;        // BLDC Compì˜ í†µì‹  ì—ëŸ¬ ë°œìƒ ì¹´ìš´í„°
+U8 gu8BLDCErrorCounter = 0;         // BLDC Compì˜ Error Code ìˆ˜ì‹  ì¹´ìš´í„°(ë™ì‘ ì—ëŸ¬ ê°ì§€ Counter)
+U8 gu8BLDCErrorClearCounter = 0;    // BLDC Compì˜ Error Code ë¯¸ìˆ˜ì‹  ì¹´ìš´í„°(ë™ì‘ ì—ëŸ¬ í•´ì œ Counter)
+U8 gu8BLDCErrorNum = 0;             // BLDC Compì˜ Error ë°œìƒ ì¹´ìš´í„°
 const U8 gu8BLDC_FrequencyData[36] = {BLDC_40Hz, BLDC_41Hz, BLDC_42Hz, BLDC_43Hz, BLDC_44Hz, BLDC_45Hz,
                                       BLDC_46Hz, BLDC_47Hz, BLDC_48Hz, BLDC_49Hz, BLDC_50Hz,
                                       BLDC_51Hz, BLDC_52Hz, BLDC_53Hz, BLDC_54Hz, BLDC_55Hz,
@@ -118,12 +118,12 @@ U8 gu8UART2_RXD_Sequence = 0;
 U8 gu8RXD2_CheckTimer = 0;
 U8 gu8BLDC_TXDPeroid = 0;
 U8 gu8ColdPumpControlVolt = 0;
-U16 gu16ColdPumpControlTimer = 0;     // ³Ã°¢ ¼øÈ¯ ÆßÇÁ Á¦¾î Å¸ÀÌ¸Ó
-U16 gu16ColdEffluentEndPumpActTimer = 0;  // ³Ã¼ö ÃßÃâ ÈÄ ÆßÇÁ Á¦¾î Å¸ÀÌ¸Ó
+U16 gu16ColdPumpControlTimer = 0;     // ëƒ‰ê° ìˆœí™˜ íŒí”„ ì œì–´ íƒ€ì´ë¨¸
+U16 gu16ColdEffluentEndPumpActTimer = 0;  // ëƒ‰ìˆ˜ ì¶”ì¶œ í›„ íŒí”„ ì œì–´ íƒ€ì´ë¨¸
 
 bit F_UART2ErrorInterrupt;
-bit F_CompActStart;               // ³Ã°¢ µ¿ÀÛ ½ÃÀÛ Flag
-bit F_BLDCCompError;                  // BLDC Comp µ¿ÀÛ ¿¡·¯
+bit F_CompActStart;               // ëƒ‰ê° ë™ì‘ ì‹œì‘ Flag
+bit F_BLDCCompError;                  // BLDC Comp ë™ì‘ ì—ëŸ¬
 
 bit bit_comp_comm_temp_error;
 U8 gu8_comp_1s_timer;
@@ -168,8 +168,8 @@ void output_comp_control(void)
 
     if( Bit1_Ice_Make_Go == SET )
     {
-        /*..hui [23-7-21¿ÀÈÄ 2:13:29] Àú¼öÀ§ »óÅÂ ÈÄ Á¦ºù ´ë±â½Ã ¸¸¼öÀ§±îÁö Ã¤¿î ÈÄ ÁøÇà..*/
-        /*..hui [23-7-21¿ÀÈÄ 2:13:49] ¿¬¼Ó Á¦ºùÁß COMP ²ô°í ´ë±âÇÏµµ·Ï..*/
+        /*..hui [23-7-21ì˜¤í›„ 2:13:29] ì €ìˆ˜ìœ„ ìƒíƒœ í›„ ì œë¹™ ëŒ€ê¸°ì‹œ ë§Œìˆ˜ìœ„ê¹Œì§€ ì±„ìš´ í›„ ì§„í–‰..*/
+        /*..hui [23-7-21ì˜¤í›„ 2:13:49] ì—°ì† ì œë¹™ì¤‘ COMP ë„ê³  ëŒ€ê¸°í•˜ë„ë¡..*/
         if( gu8IceStep == STATE_0_STANDBY )
         {
         	/*
@@ -200,7 +200,7 @@ void output_comp_control(void)
     }
 
 
-    /*..hui [23-4-13¿ÀÀü 11:08:46] ´õ¹ÌÁ¦ºù, ÇÖ°¡½º±îÁö..*/
+    /*..hui [23-4-13ì˜¤ì „ 11:08:46] ë”ë¯¸ì œë¹™, í•«ê°€ìŠ¤ê¹Œì§€..*/
     if( gu8InitStep >= 5 && gu8InitStep <= 7 )
     {
         Bit2_Ice_Init_On_State = F_IceInit;
@@ -223,7 +223,7 @@ void output_comp_control(void)
 
 
     #if 0
-    /*..hui [23-9-4¿ÀÈÄ 2:51:07] Æ®·¹ÀÌ Á¦ºù¹æÇâ Àç½ÃµµÁß ÇØºùÀÛ¾÷ ÇÖ°¡½º °¡µ¿ÇÒ¶§ Á¶°Ç..*/
+    /*..hui [23-9-4ì˜¤í›„ 2:51:07] íŠ¸ë ˆì´ ì œë¹™ë°©í–¥ ì¬ì‹œë„ì¤‘ í•´ë¹™ì‘ì—… í•«ê°€ìŠ¤ ê°€ë™í• ë•Œ ì¡°ê±´..*/
     if( F_Safety_Routine == SET && F_Ice_Tray_Down_Move_Reset == SET )
     {
         if( gu8_over_ice_melt_proc == 5 )
@@ -241,14 +241,14 @@ void output_comp_control(void)
     }
     #endif
 
-    /*..hui [23-9-22¿ÀÀü 9:44:29] ÇØºù µ¿ÀÛ Áß ÇÖ°¡½º µ¿ÀÛ »èÁ¦..*/
+    /*..hui [23-9-22ì˜¤ì „ 9:44:29] í•´ë¹™ ë™ì‘ ì¤‘ í•«ê°€ìŠ¤ ë™ì‘ ì‚­ì œ..*/
     Bit3_Ice_Tray_Melt_On_State = CLEAR;
 
 /***********************************************************************************************************/
 /***********************************************************************************************************/
     /* OFF */
     //===========================================================================//
-    /*..hui [18-10-23¿ÀÈÄ 3:24:08] COMP 150ºĞ ¿¬¼Ó °¡µ¿½Ã °­Á¦ Á¤Áö..*/
+    /*..hui [18-10-23ì˜¤í›„ 3:24:08] COMP 150ë¶„ ì—°ì† ê°€ë™ì‹œ ê°•ì œ ì •ì§€..*/
     if( F_Comp_Output == CLEAR )
     {
         gu32_Comp_max_turn_on_timer = 0;
@@ -261,7 +261,7 @@ void output_comp_control(void)
         {
             gu32_Comp_max_turn_on_timer = COMP_MAX_TURN_ON_150MIN_TIME;
 
-            /*..hui [19-7-26¿ÀÈÄ 8:53:31] ¾ĞÃà±â º¸È£½Ã°£ ÃÊ°ú½Ã ÁøÇàÁßÀÎ Á¦ºù±îÁö ¸¶¹«¸®ÇÏ°í COMP OFF..*/
+            /*..hui [19-7-26ì˜¤í›„ 8:53:31] ì••ì¶•ê¸° ë³´í˜¸ì‹œê°„ ì´ˆê³¼ì‹œ ì§„í–‰ì¤‘ì¸ ì œë¹™ê¹Œì§€ ë§ˆë¬´ë¦¬í•˜ê³  COMP OFF..*/
             if( gu8IceStep == STATE_0_STANDBY )
             {
                 Bit1_Max_90min_CutOff_State = SET;
@@ -275,17 +275,17 @@ void output_comp_control(void)
     }
 
     //===========================================================================//
-    /*..hui [18-10-23¿ÀÈÄ 3:28:54] ÄÄÇÁ °¡µ¿ ÈÄ Á¤Áö ½Ã ÈŞÁö½Ã°£ 5ºĞ ÀÌÈÄ¿¡ Àç ³Ã°¢ Á¶°Ç ¸¸Á·½Ã Àç ³Ã°¢ ½ÃÀÛ..*/
+    /*..hui [18-10-23ì˜¤í›„ 3:28:54] ì»´í”„ ê°€ë™ í›„ ì •ì§€ ì‹œ íœ´ì§€ì‹œê°„ 5ë¶„ ì´í›„ì— ì¬ ëƒ‰ê° ì¡°ê±´ ë§Œì¡±ì‹œ ì¬ ëƒ‰ê° ì‹œì‘..*/
     if(F_Comp_Output == SET)
     {
-        gu16CompOffDelay = COMP_START_TIME;                       // ÄÄÇÁ Àç±âµ¿´ë±â 5ºĞ
+        gu16CompOffDelay = COMP_START_TIME;                       // ì»´í”„ ì¬ê¸°ë™ëŒ€ê¸° 5ë¶„
         Bit0_Restart_5min_Delay_State = CLEAR;
     }
     else
     {
         if(gu16CompOffDelay > 0)
         {
-            gu16CompOffDelay--;                                   // ÄŞÇÁ 5ºĞ Àç±âµ¿´ë±â
+            gu16CompOffDelay--;                                   // ì½¤í”„ 5ë¶„ ì¬ê¸°ë™ëŒ€ê¸°
             Bit0_Restart_5min_Delay_State = SET;
         }
         else
@@ -296,11 +296,11 @@ void output_comp_control(void)
 
 
     //===========================================================================//
-    /*..hui [19-12-18¿ÀÈÄ 7:26:16] ³Ã°¢/¾óÀ½ µÑ ´Ù °íÀåÀÏ‹š..*/
+    /*..hui [19-12-18ì˜¤í›„ 7:26:16] ëƒ‰ê°/ì–¼ìŒ ë‘˜ ë‹¤ ê³ ì¥ì¼ë–„..*/
     Bit3_Ice_Making_Err_State = (Bit2_Ice_Operation_Disable_State & Bit0_Cold_Operation_Disable_State);
 
 
-    /*..hui [23-12-20¿ÀÈÄ 5:12:03] °íÀåÁø´Ü ÁøÇàÁßÀÏ¶§..*/
+    /*..hui [23-12-20ì˜¤í›„ 5:12:03] ê³ ì¥ì§„ë‹¨ ì§„í–‰ì¤‘ì¼ë•Œ..*/
     Bit4_Self_Test_COMP_Off_State = bit_self_test_start;
 
     //===========================================================================//
@@ -346,7 +346,7 @@ void output_comp_control(void)
 void comp_stable_check(void)
 {
     /*if(F_Comp_Output == CLEAR)*/
-    /*..hui [24-2-5¿ÀÈÄ 5:33:14] ½ÇÁ¦ Ãâ·ÂÀ¸·Î º¯°æ..*/
+    /*..hui [24-2-5ì˜¤í›„ 5:33:14] ì‹¤ì œ ì¶œë ¥ìœ¼ë¡œ ë³€ê²½..*/
     if( pCOMP == CLEAR )
     {
         gu8_Comp_Stable_Time = 0;
@@ -370,7 +370,7 @@ void comp_stable_check(void)
 
 /***********************************************************************************************************************
 * Function Name: System_ini
-* Description  : ³Ã°¢ ÃÊ±âµ¿ÀÛ
+* Description  : ëƒ‰ê° ì´ˆê¸°ë™ì‘
 ***********************************************************************************************************************/
 U8 cold_init_operation( U8 mu8_disable )
 {
@@ -434,7 +434,7 @@ U8 cold_init_operation( U8 mu8_disable )
     }
 
     #if 0
-    /*..hui [19-7-26¿ÀÈÄ 4:47:09] ÄÄÇÁ °¡µ¿ÁßÀÌ¶ó¸é Á¤Áö¾øÀÌ Áï½Ã ³Ã¼öÃøÀ¸·Î ÀÌµ¿..*/
+    /*..hui [19-7-26ì˜¤í›„ 4:47:09] ì»´í”„ ê°€ë™ì¤‘ì´ë¼ë©´ ì •ì§€ì—†ì´ ì¦‰ì‹œ ëƒ‰ìˆ˜ì¸¡ìœ¼ë¡œ ì´ë™..*/
     if(F_Comp_Output == SET)
     {
         mu8_return = SET;
@@ -508,8 +508,8 @@ void bldc_comp_off(void)
             }
             else if( bit_temporary_comm_error == SET )
             {
-                /*..hui [23-7-4¿ÀÀü 10:57:55] Åë½Å¿¡·¯ÀÏ¶§.. Åë½ÅÀÌ ¾ÈµÇ¹Ç·Î ¹Ù·Î OFF..*/
-                /*..hui [23-7-4¿ÀÀü 11:13:31] ¿¡·¯ÄÚµå·Î OFFµÉ¶§´Â Á¦¿Ü.. Åë½ÅÀº µÇ¹Ç·Î ±â´Ù¸°´Ù..*/
+                /*..hui [23-7-4ì˜¤ì „ 10:57:55] í†µì‹ ì—ëŸ¬ì¼ë•Œ.. í†µì‹ ì´ ì•ˆë˜ë¯€ë¡œ ë°”ë¡œ OFF..*/
+                /*..hui [23-7-4ì˜¤ì „ 11:13:31] ì—ëŸ¬ì½”ë“œë¡œ OFFë ë•ŒëŠ” ì œì™¸.. í†µì‹ ì€ ë˜ë¯€ë¡œ ê¸°ë‹¤ë¦°ë‹¤..*/
                 gu8_bldc_off_step++;
                 gu16_bldc_off_timer = 0;
             }
@@ -520,7 +520,7 @@ void bldc_comp_off(void)
                 if( gu16_bldc_off_timer >= 300 )
                 {
                     /*gu16_bldc_off_timer = 300;*/
-                    /*..hui [23-5-8¿ÀÈÄ 2:24:33] ¿¡·¯ Ãß°¡ ..*/
+                    /*..hui [23-5-8ì˜¤í›„ 2:24:33] ì—ëŸ¬ ì¶”ê°€ ..*/
                     gu8_bldc_off_step++;
                     gu16_bldc_off_timer = 0;
                 }
@@ -665,7 +665,7 @@ void check_comp_off_time(void)
         gu16_comp_off_timer = 0;
         gu16_comp_on_timer++;
 
-        /*..hui [23-4-12¿ÀÈÄ 2:21:16] 3ºĞ ÀÌ»ó °¡µ¿ÇßÀ» °æ¿ì¿¡¸¸ Å¬¸®¾î..*/
+        /*..hui [23-4-12ì˜¤í›„ 2:21:16] 3ë¶„ ì´ìƒ ê°€ë™í–ˆì„ ê²½ìš°ì—ë§Œ í´ë¦¬ì–´..*/
         if( gu16_comp_on_timer >= PREHEAT_CLEAR_COMP_ON_TIME )
         {
             gu16_comp_on_timer = PREHEAT_CLEAR_COMP_ON_TIME;
@@ -675,8 +675,8 @@ void check_comp_off_time(void)
     }
     else
     {
-        /*..hui [23-4-7¿ÀÈÄ 4:48:23] ¿Ü±â ¿Âµµ 25µµ ¹Ì¸¸ÀÎ »óÅÂ¿¡¼­ ¾ĞÃà±â ÈŞÁö ½Ã°£ÀÌ 30ºĞ ÃÊ°úÇÑ °æ¿ì..*/
-        /*..hui [23-4-7¿ÀÈÄ 4:48:30] Á¦ºù ½ÃÀÛ Àü¿¡ ¿¹¿­ µ¿ÀÛ ÁøÇà..*/
+        /*..hui [23-4-7ì˜¤í›„ 4:48:23] ì™¸ê¸° ì˜¨ë„ 25ë„ ë¯¸ë§Œì¸ ìƒíƒœì—ì„œ ì••ì¶•ê¸° íœ´ì§€ ì‹œê°„ì´ 30ë¶„ ì´ˆê³¼í•œ ê²½ìš°..*/
+        /*..hui [23-4-7ì˜¤í›„ 4:48:30] ì œë¹™ ì‹œì‘ ì „ì— ì˜ˆì—´ ë™ì‘ ì§„í–‰..*/
         gu16_comp_on_timer = 0;
         gu16_comp_off_timer++;
 
@@ -691,7 +691,7 @@ void check_comp_off_time(void)
 
 /***********************************************************************************************************************
 * Function Name: System_ini
-* Description  : ³Ã°¢ ÃÊ±â±âµ¿ (250429) (³Ã°¢Å×ÀÌºí)
+* Description  : ëƒ‰ê° ì´ˆê¸°ê¸°ë™ (250429) (ëƒ‰ê°í…Œì´ë¸”)
 ***********************************************************************************************************************/
 U8 get_cold_mode_comp_rps(void)
 {
@@ -699,26 +699,26 @@ U8 get_cold_mode_comp_rps(void)
 
     if( gu8_Amb_Temperature_One_Degree <= 10 )
     {
-        /*..hui [23-4-7¿ÀÀü 11:15:58] 10µµ ÀÌÇÏ..*/
-        if( bit_cold_first_op == SET )                  /* ÃÊ±â */
+        /*..hui [23-4-7ì˜¤ì „ 11:15:58] 10ë„ ì´í•˜..*/
+        if( bit_cold_first_op == SET )                  /* ì´ˆê¸° */
         {
-            mu8_return = BLDC_COMP_50Hz;                /* V18 ³Ã°¢Å×ÀÌºí */
+            mu8_return = BLDC_COMP_50Hz;                /* V18 ëƒ‰ê°í…Œì´ë¸” */
         }
         else
         {
-            mu8_return = BLDC_COMP_40Hz;                /* V18 ³Ã°¢Å×ÀÌºí */
+            mu8_return = BLDC_COMP_40Hz;                /* V18 ëƒ‰ê°í…Œì´ë¸” */
         }
     }
     else if( gu8_Amb_Temperature_One_Degree <= 20 )
     {
-        /*..hui [23-4-7¿ÀÀü 11:16:02] 20µµ ÀÌÇÏ..*/
+        /*..hui [23-4-7ì˜¤ì „ 11:16:02] 20ë„ ì´í•˜..*/
         if( bit_cold_first_op == SET )
         {
-            mu8_return = BLDC_COMP_50Hz;                /* V18 ³Ã°¢Å×ÀÌºí */
+            mu8_return = BLDC_COMP_50Hz;                /* V18 ëƒ‰ê°í…Œì´ë¸” */
         }
         else
         {
-            /* V11 ³Ã°¢Å×ÀÌºí */
+            /* V11 ëƒ‰ê°í…Œì´ë¸” */
             if( gu16_Cold_Temperature >= 65 )
             {
                 mu8_return = BLDC_COMP_40Hz;
@@ -731,13 +731,13 @@ U8 get_cold_mode_comp_rps(void)
     }
     else if( gu8_Amb_Temperature_One_Degree <= 30 )
     {
-        /*..hui [23-4-7¿ÀÀü 11:16:10] 30µµ ÀÌÇÏ..*/
-        mu8_return = BLDC_COMP_45Hz;                    /* V18 ³Ã°¢Å×ÀÌºí */
+        /*..hui [23-4-7ì˜¤ì „ 11:16:10] 30ë„ ì´í•˜..*/
+        mu8_return = BLDC_COMP_45Hz;                    /* V18 ëƒ‰ê°í…Œì´ë¸” */
     }
     else
     {
-        /*..hui [23-4-7¿ÀÀü 11:16:14] 30µµ ÃÊ°ú..*/
-        mu8_return = BLDC_COMP_45Hz;                    /* V18 ³Ã°¢Å×ÀÌºí */
+        /*..hui [23-4-7ì˜¤ì „ 11:16:14] 30ë„ ì´ˆê³¼..*/
+        mu8_return = BLDC_COMP_45Hz;                    /* V18 ëƒ‰ê°í…Œì´ë¸” */
     }
 
     return mu8_return;

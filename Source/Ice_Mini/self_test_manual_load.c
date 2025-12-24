@@ -41,7 +41,7 @@ U16 gu16_heater_test_timer;
 U16 gu16_diagnos_flow_val;
 /***********************************************************************************************************************/
 /**
- * @brief °íÀåÁø´Ü ºÎÇÏ Á¦¾î
+ * @brief ê³ ì¥ì§„ë‹¨ ë¶€í•˜ ì œì–´
  */
 U8 manual_test_load(void)
 {
@@ -357,7 +357,7 @@ U8 manual_test_load(void)
         break;
 
         case 26:
-            mu8_ok = check_current(DC_LOAD__ICE_WATER_EXTRACT_VALVE);       // 2KG MAX ¾óÀ½¹° ÃßÃâ¹ëºê
+            mu8_ok = check_current(DC_LOAD__ICE_WATER_EXTRACT_VALVE);       // 2KG MAX ì–¼ìŒë¬¼ ì¶”ì¶œë°¸ë¸Œ
 
             if( mu8_ok == SET )
             {
@@ -367,7 +367,7 @@ U8 manual_test_load(void)
         break;
 
         case 27:
-            mu8_ok = check_current(DC_LOAD__ICE_DOOR_HEATER);               // 2KG MAX ¾óÀ½µµ¾î È÷ÅÍ
+            mu8_ok = check_current(DC_LOAD__ICE_DOOR_HEATER);               // 2KG MAX ì–¼ìŒë„ì–´ íˆí„°
 
             if( mu8_ok == SET )
             {
@@ -377,7 +377,7 @@ U8 manual_test_load(void)
         break;
 
         case 28:
-            mu8_ok = check_current(DC_LOAD__ICE_SELECT_DOOR_MOTOR);            // LPP ¾óÀ½¼¿·ºÆ® µµ¾î Ãß°¡ 250611 CH.PARK
+            mu8_ok = check_current(DC_LOAD__ICE_SELECT_DOOR_MOTOR);            // LPP ì–¼ìŒì…€ë ‰íŠ¸ ë„ì–´ ì¶”ê°€ 250611 CH.PARK
 
             if( mu8_ok == SET )
             {
@@ -407,7 +407,7 @@ U8 manual_test_load(void)
 
 /***********************************************************************************************************************/
 /**
- * @brief Àü·ùÇÇµå¹é È®ÀÎ
+ * @brief ì „ë¥˜í”¼ë“œë°± í™•ì¸
  */
 U8 check_current( U8 mu8_load )
 {
@@ -488,7 +488,7 @@ U8 check_current( U8 mu8_load )
 
             gu16_current_check_timer++;
 
-            /*..hui [20-10-28¿ÀÈÄ 3:08:07] Àü·ù ¶³¾îÁú¶§±îÁö 1ÃÊ ´ë±â..*/
+            /*..hui [20-10-28ì˜¤í›„ 3:08:07] ì „ë¥˜ ë–¨ì–´ì§ˆë•Œê¹Œì§€ 1ì´ˆ ëŒ€ê¸°..*/
             if( gu16_current_check_timer >= CURRENT_DELAY_TIME )
             {
                 gu16_current_check_timer = 0;
@@ -510,7 +510,7 @@ U8 check_current( U8 mu8_load )
 
             gu16_current_check_timer++;
 
-            /*..hui [20-10-28¿ÀÈÄ 1:30:44] ºÎÇÏ ÄÑ°í 3ÃÊ ÈÄ Àü·ù Ã¼Å©..*/
+            /*..hui [20-10-28ì˜¤í›„ 1:30:44] ë¶€í•˜ ì¼œê³  3ì´ˆ í›„ ì „ë¥˜ ì²´í¬..*/
             if( gu16_current_check_timer >= mu16_stable_time )
             {
                 gu16_current_check_timer = 0;
@@ -518,7 +518,7 @@ U8 check_current( U8 mu8_load )
                 if( mu8_load == DC_LOAD__COLD_FAN )
                 {
                     mu16_val = calculate_fan_current( gu16_AD_Result_Fan_Current );
-                    /*..hui [20-10-28¿ÀÈÄ 9:26:06] ÃÖÁ¾ °ª ¾÷µ¥ÀÌÆ®..*/
+                    /*..hui [20-10-28ì˜¤í›„ 9:26:06] ìµœì¢… ê°’ ì—…ë°ì´íŠ¸..*/
                     SELF_Test_Result_Data.word[ DC_LOAD__COLD_FAN ] = mu16_val;
                 }
                 else if( mu8_load == DC_LOAD__UV_FAUCET )
@@ -556,26 +556,26 @@ U8 check_current( U8 mu8_load )
                     mu16_val = calculate_fan_current( gu16_AD_Result_DC_Current_12V );
                     //mu16_val = calculate_fan_current( gu16_gas_switch_current_max );
 
-                    /*..hui [24-1-9¿ÀÈÄ 2:40:02] ³Ã¸ÅÀüÈ¯¹ëºê´Â 12V..*/
+                    /*..hui [24-1-9ì˜¤í›„ 2:40:02] ëƒ‰ë§¤ì „í™˜ë°¸ë¸ŒëŠ” 12V..*/
                     SELF_Test_Result_Data.word[ DC_LOAD__GAS_SWITCH_MOTOR ] = mu16_val;
                 }
                 else if( mu8_load == DC_LOAD__DRAIN_PUMP )
                 {
                     mu16_val = calculate_pump_current( gu16_AD_Drain_Pump_Current );
-                    /*..hui [20-10-28¿ÀÈÄ 9:26:06] ÃÖÁ¾ °ª ¾÷µ¥ÀÌÆ®..*/
+                    /*..hui [20-10-28ì˜¤í›„ 9:26:06] ìµœì¢… ê°’ ì—…ë°ì´íŠ¸..*/
                     SELF_Test_Result_Data.word[ DC_LOAD__DRAIN_PUMP ] = mu16_val;
                 }
                 else if( mu8_load == DC_LOAD__ICE_DOOR_HEATER)
                 {
                     mu16_val = gu16_AD_Result_IceDoor_Heater_Current; // calculate_pump_current( gu16_AD_Result_IceDoor_Heater_Current );
-                    /*..hui [20-10-28¿ÀÈÄ 9:26:06] ÃÖÁ¾ °ª ¾÷µ¥ÀÌÆ®..*/
+                    /*..hui [20-10-28ì˜¤í›„ 9:26:06] ìµœì¢… ê°’ ì—…ë°ì´íŠ¸..*/
                     SELF_Test_Result_Data.word[ DC_LOAD__ICE_DOOR_HEATER ] = mu16_val;
                 }
                 else
                 {
-                    // ¾óÀ½ ¼¿·ºÆ® µµ¾î, ¾óÀ½ µµ¾î µîµî
+                    // ì–¼ìŒ ì…€ë ‰íŠ¸ ë„ì–´, ì–¼ìŒ ë„ì–´ ë“±ë“±
                     mu16_val = calculate_dc_current( gu16_AD_Result_DC_Current_24V );
-                    /*..hui [20-10-28¿ÀÈÄ 9:26:06] ÃÖÁ¾ °ª ¾÷µ¥ÀÌÆ®..*/
+                    /*..hui [20-10-28ì˜¤í›„ 9:26:06] ìµœì¢… ê°’ ì—…ë°ì´íŠ¸..*/
                     SELF_Test_Result_Data.word[ mu8_load ] = mu16_val;
                 }
 
@@ -587,7 +587,7 @@ U8 check_current( U8 mu8_load )
             {
                 if( mu8_load == DC_LOAD__GAS_SWITCH_MOTOR )
                 {
-                    /*..hui [24-1-19¿ÀÈÄ 5:43:31] ³Ã¸ÅÀüÈ¯¹ëºê ÃÖ´ë°ªÀ¸·Î ÇÏ±âÀ§ÇØ..*/
+                    /*..hui [24-1-19ì˜¤í›„ 5:43:31] ëƒ‰ë§¤ì „í™˜ë°¸ë¸Œ ìµœëŒ€ê°’ìœ¼ë¡œ í•˜ê¸°ìœ„í•´..*/
                     if( gu16_gas_switch_current_max < gu16_AD_Result_DC_Current_12V )
                     {
                         gu16_gas_switch_current_max  = gu16_AD_Result_DC_Current_12V;
@@ -623,7 +623,7 @@ U8 check_current( U8 mu8_load )
 
 /***********************************************************************************************************************/
 /**
- * @brief °íÀåÁø´Ü ºÎÇÏ Ãâ·Â
+ * @brief ê³ ì¥ì§„ë‹¨ ë¶€í•˜ ì¶œë ¥
  */
 void output_load( U8 mu8_load, U8 mu8_out )
 {
@@ -775,7 +775,7 @@ void output_load( U8 mu8_load, U8 mu8_out )
 
 /***********************************************************************************************************************/
 /**
- * @brief À¯·® °Ë»ç
+ * @brief ìœ ëŸ‰ ê²€ì‚¬
  */
 U8 manual_test_flow(void)
 {
@@ -807,10 +807,10 @@ U8 manual_test_flow(void)
                 gu16_self_flow_test_timer = 0;
                 gu8_self_flow_test_step++;
 
-                /*..hui [23-12-21¿ÀÀü 11:01:02] 47hz === 300cc..*/
-                /*..hui [23-12-21¿ÀÀü 11:01:08] 79hz == 500cc..*/
-                /*..hui [23-12-21¿ÀÀü 11:01:14] 161hz ===1000cc..*/
-                /*..hui [23-12-21¿ÀÀü 11:01:29] hz¿¡ 6 °öÇÏ°í 20 ´õÇØÁÖ¸é ¾óÃß ºñ½ÁÇÏ°Ô ³ª¿È....*/
+                /*..hui [23-12-21ì˜¤ì „ 11:01:02] 47hz === 300cc..*/
+                /*..hui [23-12-21ì˜¤ì „ 11:01:08] 79hz == 500cc..*/
+                /*..hui [23-12-21ì˜¤ì „ 11:01:14] 161hz ===1000cc..*/
+                /*..hui [23-12-21ì˜¤ì „ 11:01:29] hzì— 6 ê³±í•˜ê³  20 ë”í•´ì£¼ë©´ ì–¼ì¶” ë¹„ìŠ·í•˜ê²Œ ë‚˜ì˜´....*/
                 // SELF_Test_Result_Data.word[DC_LOAD__FLOW_SENSOR] = gu16_self_tray_flow_save * 6;
                 // SELF_Test_Result_Data.word[DC_LOAD__FLOW_SENSOR] = SELF_Test_Result_Data.word[DC_LOAD__FLOW_SENSOR] + 20;
 
@@ -830,7 +830,7 @@ U8 manual_test_flow(void)
                 }
                 else{}
 
-                /*..hui [23-12-22¿ÀÀü 9:20:26] ¸¸ºù¼¾¼­ °Ë»çµµ ¿©±â¼­..*/
+                /*..hui [23-12-22ì˜¤ì „ 9:20:26] ë§Œë¹™ì„¼ì„œ ê²€ì‚¬ë„ ì—¬ê¸°ì„œ..*/
                 pIR_POWER = SET;
                 pIR_POWER2 = SET;
             }
@@ -865,10 +865,10 @@ U8 manual_test_flow(void)
                 gu16_self_flow_test_timer = 0;
                 gu8_self_flow_test_step++;
 
-                /*..hui [23-12-21¿ÀÀü 11:01:02] 47hz === 300cc..*/
-                /*..hui [23-12-21¿ÀÀü 11:01:08] 79hz == 500cc..*/
-                /*..hui [23-12-21¿ÀÀü 11:01:14] 161hz ===1000cc..*/
-                /*..hui [23-12-21¿ÀÀü 11:01:29] hz¿¡ 6 °öÇÏ°í 20 ´õÇØÁÖ¸é ¾óÃß ºñ½ÁÇÏ°Ô ³ª¿È....*/
+                /*..hui [23-12-21ì˜¤ì „ 11:01:02] 47hz === 300cc..*/
+                /*..hui [23-12-21ì˜¤ì „ 11:01:08] 79hz == 500cc..*/
+                /*..hui [23-12-21ì˜¤ì „ 11:01:14] 161hz ===1000cc..*/
+                /*..hui [23-12-21ì˜¤ì „ 11:01:29] hzì— 6 ê³±í•˜ê³  20 ë”í•´ì£¼ë©´ ì–¼ì¶” ë¹„ìŠ·í•˜ê²Œ ë‚˜ì˜´....*/
                 SELF_Test_Result_Data.word[DC_LOAD__FLOW_SENSOR] = (gu16_diagnos_flow_val * 6);
                 if(SELF_Test_Result_Data.word[DC_LOAD__FLOW_SENSOR] > 0)
 				{
@@ -927,9 +927,9 @@ U8 manual_test_heater(void)
     {
         case 0 :
 
-            /*..hui [21-9-8¿ÀÀü 11:32:13] È÷ÅÍ ¿Âµµ 90µµ ÀÌ»ó¿¡¼­´Â Å×½ºÆ® ÇÏÁö ¾Ê´Â´Ù..*/
-            /*..hui [21-9-9¿ÀÈÄ 3:38:22] CP ¸ğµ¨ÀÏ¶§µµ ¾ÈÇÑ´Ù..*/
-            /*..hui [21-12-9¿ÀÈÄ 3:12:18] ¿Â¼ö Ã¹ÀÜ ¿Ï·á Àü¿¡ ÁøÇà½Ã¿¡µµ È÷ÅÍ °Ë»ç ¾ÈÇÔ..*/
+            /*..hui [21-9-8ì˜¤ì „ 11:32:13] íˆí„° ì˜¨ë„ 90ë„ ì´ìƒì—ì„œëŠ” í…ŒìŠ¤íŠ¸ í•˜ì§€ ì•ŠëŠ”ë‹¤..*/
+            /*..hui [21-9-9ì˜¤í›„ 3:38:22] CP ëª¨ë¸ì¼ë•Œë„ ì•ˆí•œë‹¤..*/
+            /*..hui [21-12-9ì˜¤í›„ 3:12:18] ì˜¨ìˆ˜ ì²«ì” ì™„ë£Œ ì „ì— ì§„í–‰ì‹œì—ë„ íˆí„° ê²€ì‚¬ ì•ˆí•¨..*/
             if(  gu8_Hot_Heater_Temperature_One_Degree >= HEATER_TEST_PROHIBIT_TEMP
             || F_First_Hot_Effluent == SET )
             {
@@ -963,8 +963,8 @@ U8 manual_test_heater(void)
 
                 /*if( gu16_heater_test_timer >= 10 )*/
 
-                /*..hui [21-12-2¿ÀÈÄ 4:12:21] 50 ¹Ì¸¸ÀÏ °Ü¿ì ¿¡·¯..*/
-                /*..hui [21-12-2¿ÀÈÄ 4:12:39] AD Àü¾Ğ ¿ÏÀü ¶³¾îÁø ÈÄ ´ÙÀ½°Å Ã¼Å©ÇØ¾ß..*/
+                /*..hui [21-12-2ì˜¤í›„ 4:12:21] 50 ë¯¸ë§Œì¼ ê²¨ìš° ì—ëŸ¬..*/
+                /*..hui [21-12-2ì˜¤í›„ 4:12:39] AD ì „ì•• ì™„ì „ ë–¨ì–´ì§„ í›„ ë‹¤ìŒê±° ì²´í¬í•´ì•¼..*/
                 if( gu16_heater_test_timer >= 30 || gu16_AD_Result_Heater_Current_Feed <= 20  )
                 {
                     if( gu16_heater_test_timer >= 10 )

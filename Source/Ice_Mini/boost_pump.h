@@ -71,12 +71,12 @@ extern bit F_Flow_Block_State;
 //extern bit F_Err_OVF_Check;
 extern U8 gu8_Room_Water_Level;
 
-/*..hui [20-11-26¿ÀÈÄ 7:12:31] ÇÇµå ¿­¸®°í 1ÃÊ ÈÄ ÆßÇÁ °¡µ¿..*/
+/*..hui [20-11-26ì˜¤í›„ 7:12:31] í”¼ë“œ ì—´ë¦¬ê³  1ì´ˆ í›„ íŒí”„ ê°€ë™..*/
 #define PUMP_DELAY_TIME         10
 
 /*#define PUMP_ON_40MIN           24000*/
 
-/*..hui [21-4-1¿ÀÀü 11:36:43] Àú¼ÒÀ½ ÆßÇÁ·Î º¯°æµÊ¿¡ µû¶ó ON ½Ã°£ 2½Ã°£À¸·Î ¼öÁ¤..*/
+/*..hui [21-4-1ì˜¤ì „ 11:36:43] ì €ì†ŒìŒ íŒí”„ë¡œ ë³€ê²½ë¨ì— ë”°ë¼ ON ì‹œê°„ 2ì‹œê°„ìœ¼ë¡œ ìˆ˜ì •..*/
 #define PUMP_ON_120MIN          72000
 
 #define PUMP_ON_40MIN           24000

@@ -25,7 +25,7 @@ bit F_AT_Heater_Test_Triac;
 U16 gu16AT_Heater_Data_Triac;
 U8 gu8AT_Heater_Time1_Triac;
 
-/* µµ¾î È÷ÅÍ °øÁ¤°Ë»ç¿ë µ¥ÀÌÅÍ */
+/* ë„ì–´ íˆí„° ê³µì •ê²€ì‚¬ìš© ë°ì´í„° */
 bit F_Door_Heater_Test_Finish;
 bit F_Door_Heater_Test_Check;
 U16 gu16AT_IceDoor_Heater_Data_Relay;
@@ -40,7 +40,7 @@ U8 gu8UARTData[45];
 
 U8 gu8_test_cmd;
 
-U8 gu8AT_Wifi_Connect;                              // (°øÀå¸ğµå) Wifi ¿¬°áÁ¤º¸
+U8 gu8AT_Wifi_Connect;                              // (ê³µì¥ëª¨ë“œ) Wifi ì—°ê²°ì •ë³´
 
 U16 gu16_uart_dc_24v_current;
 U16 gu16_uart_dc_12v_current;
@@ -59,10 +59,10 @@ extern U16 gu16_uart_ice_tank_3_uv_on_ad;
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
-//                    (2) AUTO TEST Ã³¸®
+//                    (2) AUTO TEST ì²˜ë¦¬
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
-// -> ¿©±â¼­ »ı¼ºµÈ µ¥ÀÌÅÍ°¡ AT_UART_Tx_Process
+// -> ì—¬ê¸°ì„œ ìƒì„±ëœ ë°ì´í„°ê°€ AT_UART_Tx_Process
 void UARTest_RUN(void)
 {
     if(u8FactoryTestMode != UART_TEST_MODE)
@@ -71,7 +71,7 @@ void UARTest_RUN(void)
     }
     else{}
 
-    switch(AT_gu16_CMD_Mode)                 // ¸¶½ºÅÍ°¡ ¿äÃ»ÇÑ Ä¿¸Çµå
+    switch(AT_gu16_CMD_Mode)                 // ë§ˆìŠ¤í„°ê°€ ìš”ì²­í•œ ì»¤ë§¨ë“œ
     {
         case AT_UART_No_CMD:
 
@@ -79,7 +79,7 @@ void UARTest_RUN(void)
 
             break;
 
-        // 0x2000 (½ÃÀÛ) O.K!!
+        // 0x2000 (ì‹œì‘) O.K!!
         case AT_UART_CMD_START :
 
             UARTest_NO_LOAD_Set();
@@ -91,12 +91,12 @@ void UARTest_RUN(void)
 
             if( gu8_uart_test_mode == NOT_INCLUDE_FRONT_UART_TEST )
             {
-                /* ÀÚµ¿°Ë»ç ÁøÀÔ¸ğµå (°Ë»ç ÁøÀÔ 2¸ğµå) FRONT ¹ÌÃ¼°á °Ë»ç */
+                /* ìë™ê²€ì‚¬ ì§„ì…ëª¨ë“œ (ê²€ì‚¬ ì§„ì… 2ëª¨ë“œ) FRONT ë¯¸ì²´ê²° ê²€ì‚¬ */
                 gu8UARTData[5]= 0x01;
             }
             else /*if( gu8_uart_test_mode == INCLUDE_FRNOT_UART_TEST )*/
             {
-                /* ÀÚµ¿°Ë»ç ÁøÀÔ Àü ¸ğµå (°Ë»ç ÁøÀÔ 1¸ğµå) FRONT Ã¼°á °Ë»ç */
+                /* ìë™ê²€ì‚¬ ì§„ì… ì „ ëª¨ë“œ (ê²€ì‚¬ ì§„ì… 1ëª¨ë“œ) FRONT ì²´ê²° ê²€ì‚¬ */
                 gu8UARTData[5]= 0x02;
             }
 
@@ -107,7 +107,7 @@ void UARTest_RUN(void)
 
             break;
 
-        // 0x3000 ½Ã½ºÅÛ ¼¼ÆÃ !!O.K!!
+        // 0x3000 ì‹œìŠ¤í…œ ì„¸íŒ… !!O.K!!
         case AT_UART_CMD_SETTINGS :
 
              gu8UARTData[1]= AT_RS232_ACK;
@@ -116,19 +116,19 @@ void UARTest_RUN(void)
 
              if( bit_eeprom_err == CLEAR )
              {
-                gu8UARTData[4]= 0xA5;                                 // EEPROM ÃÊ±â°ª
+                gu8UARTData[4]= 0xA5;                                 // EEPROM ì´ˆê¸°ê°’
              }
              else
              {
                 gu8UARTData[4]= 0x00;
              }
 
-             gu8UARTData[5]= 0x01;                                 // FRONT ¹öÀü
-             gu8UARTData[6]= Main_FW_Version_Sub;                  // MAIN ¹öÀü
+             gu8UARTData[5]= 0x01;                                 // FRONT ë²„ì „
+             gu8UARTData[6]= Main_FW_Version_Sub;                  // MAIN ë²„ì „
 
-             gu8UARTData[7]= gu8AltitudeStep;                      // °íµµ¸ğµå ¼³Á¤°ª(012)
-             gu8UARTData[8]= AT_MODEL_CMD_NATION_KOREA;            // ¸ğµ¨ Á¤º¸ ¼öÃâ(ÇÑ±¹)
-             gu8UARTData[9]= 0x01;                                 // ³Ã¿Â¼ö¸ğµ¨
+             gu8UARTData[7]= gu8AltitudeStep;                      // ê³ ë„ëª¨ë“œ ì„¤ì •ê°’(012)
+             gu8UARTData[8]= AT_MODEL_CMD_NATION_KOREA;            // ëª¨ë¸ ì •ë³´ ìˆ˜ì¶œ(í•œêµ­)
+             gu8UARTData[9]= 0x01;                                 // ëƒ‰ì˜¨ìˆ˜ëª¨ë¸
 
              gu8UART_DataLength = 9;
              AT_F_TxStart = 1;
@@ -136,7 +136,7 @@ void UARTest_RUN(void)
 
              break;
 
-        // 0x3010 Wifi ¿¬°á °Ë»ç  !!O.K!!
+        // 0x3010 Wifi ì—°ê²° ê²€ì‚¬  !!O.K!!
         case AT_UART_CMD_WIFI :
 
              gu8UARTData[1]= AT_RS232_ACK;
@@ -145,11 +145,11 @@ void UARTest_RUN(void)
 
              if(GetWifiStatusValue(WIFI_STATUS_TEST) == SET)
              {
-                gu8UARTData[4] = 1;         //Wifi ¿¬°á Á¤º¸ (0x01 ¿¬°á/ 0x00; ¿¬°á¾ÈµÊ)
+                gu8UARTData[4] = 1;         //Wifi ì—°ê²° ì •ë³´ (0x01 ì—°ê²°/ 0x00; ì—°ê²°ì•ˆë¨)
              }
              else
              {
-                gu8UARTData[4] = 0;         //Wifi ¿¬°á Á¤º¸ (0x01 ¿¬°á/ 0x00; ¿¬°á¾ÈµÊ)
+                gu8UARTData[4] = 0;         //Wifi ì—°ê²° ì •ë³´ (0x01 ì—°ê²°/ 0x00; ì—°ê²°ì•ˆë¨)
              }
 
              gu8UART_DataLength = 4;
@@ -158,7 +158,7 @@ void UARTest_RUN(void)
 
         break;
 
-        // 0x3011 UV ¾óÀ½ÆÄ¿ì¼Â 1,2
+        // 0x3011 UV ì–¼ìŒíŒŒìš°ì…‹ 1,2
         case AT_UART_CMD_UV_ICE_FAUCET_1 :
 
             gu8UARTData[1] = AT_RS232_ACK;
@@ -185,7 +185,7 @@ void UARTest_RUN(void)
 
         break;
 
-        // 0x3012 À¯·®¼¾¼­ µ¿ÀÛ !!O.K!!
+        // 0x3012 ìœ ëŸ‰ì„¼ì„œ ë™ì‘ !!O.K!!
         case AT_UART_CMD_SENSOR_FLOW_FILTER :
 
             gu8UARTData[1] = AT_RS232_ACK;
@@ -204,7 +204,7 @@ void UARTest_RUN(void)
 
         break;
 
-        /*..hui [21-7-19¿ÀÈÄ 9:42:03] 0x3013 Àü·ù ÃøÁ¤..*/
+        /*..hui [21-7-19ì˜¤í›„ 9:42:03] 0x3013 ì „ë¥˜ ì¸¡ì •..*/
         case AT_UART_CMD_CURRENT_CALC :
 
             gu16_uart_dc_12v_current = calculate_dc_current( gu16_AD_Result_DC_Current_12V );
@@ -228,7 +228,7 @@ void UARTest_RUN(void)
 
         break;
 
-        // 0x3014 UV ¾óÀ½ÆÄ¿ì¼Â 3
+        // 0x3014 UV ì–¼ìŒíŒŒìš°ì…‹ 3
         case AT_UART_CMD_UV_ICE_FAUCET_2 :
 
             gu8UARTData[1] = AT_RS232_ACK;
@@ -336,7 +336,7 @@ void UARTest_RUN(void)
 
         break;
 
-        /* [0x3019] ICE TANK3 (¾óÀ½ÅÊÅ© Àü¸éºÎ) UV Ä¿¸Çµå Ãß°¡ 250311 CH.PARK */
+        /* [0x3019] ICE TANK3 (ì–¼ìŒíƒ±í¬ ì „ë©´ë¶€) UV ì»¤ë§¨ë“œ ì¶”ê°€ 250311 CH.PARK */
         case AT_UART_CMD_UV_TANK_3 :
             gu8UARTData[1] = AT_RS232_ACK;
             gu8UARTData[2]= (U8)(AT_UART_CMD_UV_TANK_3 / 256);     // 0x30
@@ -353,7 +353,7 @@ void UARTest_RUN(void)
             AT_gu16_CMD_Mode = AT_UART_No_CMD;
         break;
 
-        // 0x301B UV ¾óÀ½ÅÊÅ© 1,2
+        // 0x301B UV ì–¼ìŒíƒ±í¬ 1,2
         case AT_UART_CMD_UV_ICE_TANK_1_2 :
 
             gu8UARTData[1] = AT_RS232_ACK;
@@ -380,7 +380,7 @@ void UARTest_RUN(void)
 
         break;
 
-        // 0x301C UV ¾ÆÀÌ½º Æ®·¹ÀÌ 1,2
+        // 0x301C UV ì•„ì´ìŠ¤ íŠ¸ë ˆì´ 1,2
         case AT_UART_CMD_UV_ICE_TRAY_1_2 :
 
             gu8UARTData[1] = AT_RS232_ACK;
@@ -431,7 +431,7 @@ void UARTest_RUN(void)
             AT_gu16_CMD_Mode = AT_UART_No_CMD;
         break;
 
-        // 0x301D ice full sensor (¸¸ºù¼¾¼­)
+        // 0x301D ice full sensor (ë§Œë¹™ì„¼ì„œ)
         case AT_UART_CMD_ICE_FULL_SENSOR :
 
             gu8UARTData[1] = AT_RS232_ACK;
@@ -482,18 +482,18 @@ void UARTest_RUN(void)
 
         break;
 
-        /* ¾óÀ½µµ¾î È÷ÅÍ Àû¿ë 250312 CH.PARK */
+        /* ì–¼ìŒë„ì–´ íˆí„° ì ìš© 250312 CH.PARK */
         case AT_UART_CMD_ICE_DOOR_HEATER:
             gu8UARTData[1] = AT_RS232_ACK;
             gu8UARTData[2]= (U8)(AT_UART_CMD_ICE_DOOR_HEATER / 256);     // 0x30
             gu8UARTData[3]= (U8)(AT_UART_CMD_ICE_DOOR_HEATER % 256);     // 0x1F
 
-            // µµ¾îÈ÷ÅÍ ¿Âµµ¼¾¼­
-            gu8UARTData[4] = (U8)((gu16_Door_Heater_IAD_OFF_Data >> 8) & 0x03);      // È÷ÅÍÀü·ùÇÇµå¹é OFF »óÀ§¹ÙÀÌÆ®
-            gu8UARTData[5] = (U8)(gu16_Door_Heater_IAD_OFF_Data & 0xFF);             // È÷ÅÍÀü·ùÇÇµå¹é OFF ÇÏÀ§¹ÙÀÌÆ®
+            // ë„ì–´íˆí„° ì˜¨ë„ì„¼ì„œ
+            gu8UARTData[4] = (U8)((gu16_Door_Heater_IAD_OFF_Data >> 8) & 0x03);      // íˆí„°ì „ë¥˜í”¼ë“œë°± OFF ìƒìœ„ë°”ì´íŠ¸
+            gu8UARTData[5] = (U8)(gu16_Door_Heater_IAD_OFF_Data & 0xFF);             // íˆí„°ì „ë¥˜í”¼ë“œë°± OFF í•˜ìœ„ë°”ì´íŠ¸
 
-            gu8UARTData[6] = (U8)((gu16_Door_Heater_IAD_ON_Data >> 8) & 0x03);      // È÷ÅÍÀü·ùÇÇµå¹é ON »óÀ§¹ÙÀÌÆ®
-            gu8UARTData[7] = (U8)(gu16_Door_Heater_IAD_ON_Data & 0xFF);             // È÷ÅÍÀü·ùÇÇµå¹é ON ÇÏÀ§¹ÙÀÌÆ®
+            gu8UARTData[6] = (U8)((gu16_Door_Heater_IAD_ON_Data >> 8) & 0x03);      // íˆí„°ì „ë¥˜í”¼ë“œë°± ON ìƒìœ„ë°”ì´íŠ¸
+            gu8UARTData[7] = (U8)(gu16_Door_Heater_IAD_ON_Data & 0xFF);             // íˆí„°ì „ë¥˜í”¼ë“œë°± ON í•˜ìœ„ë°”ì´íŠ¸
 
             gu8UART_DataLength = 7;
             AT_F_TxStart = 1;
@@ -507,8 +507,8 @@ void UARTest_RUN(void)
             gu8UARTData[2]= (U8)(AT_UART_CMD_SENSOR_TH / 256);     // 0x30
             gu8UARTData[3]= (U8)(AT_UART_CMD_SENSOR_TH % 256);     // 0x20
 
-            /* ¿ì¼±¼øÀ§¿¡ µû¶ó¼­ Àû¿ë */
-            // ¿Ü±â¿Âµµ¼¾¼­ 1
+            /* ìš°ì„ ìˆœìœ„ì— ë”°ë¼ì„œ ì ìš© */
+            // ì™¸ê¸°ì˜¨ë„ì„¼ì„œ 1
             if( gu16_AD_Result_Amb < 20 || gu16_AD_Result_Amb > 1000 )
             {
                 gu8UARTData[4] = (U8)(99);
@@ -524,7 +524,7 @@ void UARTest_RUN(void)
                 gu8UARTData[7] = (U8)(gu16_AD_Result_Amb & 0xFF);
             }
 
-            /*..hui [23-12-8¿ÀÈÄ 5:15:34] ¿Ü±â ¿Âµµ¼¾¼­ 2..*/
+            /*..hui [23-12-8ì˜¤í›„ 5:15:34] ì™¸ê¸° ì˜¨ë„ì„¼ì„œ 2..*/
             if( gu16_AD_Result_Amb_Side < 20 || gu16_AD_Result_Amb_Side > 1000 )
             {
                 gu8UARTData[8] = (U8)(99);
@@ -541,7 +541,7 @@ void UARTest_RUN(void)
             }
 
 
-            // 3 ³Ã¼ö¿Âµµ¼¾¼­
+            // 3 ëƒ‰ìˆ˜ì˜¨ë„ì„¼ì„œ
             if( gu16_AD_Result_Cold < 20 || gu16_AD_Result_Cold > 1000 )
             {
                 gu8UARTData[12] = (U8)(99);
@@ -557,7 +557,7 @@ void UARTest_RUN(void)
                 gu8UARTData[15] = (U8)(gu16_AD_Result_Cold & 0xFF);
             }
 
-            // 4 ¿Â¼öÀÔ¼ö¼¾¼­
+            // 4 ì˜¨ìˆ˜ì…ìˆ˜ì„¼ì„œ
             if( gu16_AD_Result_Hot_In < 20 || gu16_AD_Result_Hot_In > 1000 )
             {
                 gu8UARTData[16] = (U8)(99);
@@ -573,7 +573,7 @@ void UARTest_RUN(void)
                 gu8UARTData[19] = (U8)(gu16_AD_Result_Hot_In & 0xFF);
             }
 
-            /*..5 hui [25-1-24¿ÀÀü 11:59:44] ¿Â¼ö Ãâ¼ö ¿Âµµ¼¾¼­..*/
+            /*..5 hui [25-1-24ì˜¤ì „ 11:59:44] ì˜¨ìˆ˜ ì¶œìˆ˜ ì˜¨ë„ì„¼ì„œ..*/
             if( gu16_AD_Result_Hot_Out < 20 || gu16_AD_Result_Hot_Out > 1000 )
             {
                 gu8UARTData[20] = (U8)(99);
@@ -589,7 +589,7 @@ void UARTest_RUN(void)
                 gu8UARTData[23] = (U8)(gu16_AD_Result_Hot_Out & 0xFF);
             }
 
-            // 6 EVA COLD ¼¾¼­ (Áõ¹ß±â)
+            // 6 EVA COLD ì„¼ì„œ (ì¦ë°œê¸°)
             if( gu16_AD_Result_Eva_First < 20 || gu16_AD_Result_Eva_First > 1000 )
             {
                 gu8UARTData[24] = (U8)(99);
@@ -605,7 +605,7 @@ void UARTest_RUN(void)
                 gu8UARTData[27] = (U8)(gu16_AD_Result_Eva_First & 0xFF);
             }
 
-            // 7 Á¤¼ö¼¾¼­
+            // 7 ì •ìˆ˜ì„¼ì„œ
             if( gu16_AD_Result_Room < 20 || gu16_AD_Result_Room > 1000 )
             {
                 gu8UARTData[28] = (U8)(99);
@@ -621,7 +621,7 @@ void UARTest_RUN(void)
                 gu8UARTData[31] = (U8)(gu16_AD_Result_Room & 0xFF);
             }
 
-            /*..8 hui [25-1-24¿ÀÈÄ 12:01:51] È÷ÅÍ ¿Âµµ¼¾¼­..*/
+            /*..8 hui [25-1-24ì˜¤í›„ 12:01:51] íˆí„° ì˜¨ë„ì„¼ì„œ..*/
             if( gu16_AD_Result_Hot_Heater < 20 || gu16_AD_Result_Hot_Heater > 1000 )
             {
                 gu8UARTData[32] = (U8)(99);
@@ -645,7 +645,7 @@ void UARTest_RUN(void)
 
             break;
 
-         /*..hui [21-7-19¿ÀÈÄ 4:53:33] 0x3030 = ¼öÀ§¼¾¼­ ¿¬°á °Ë»ç..*/
+         /*..hui [21-7-19ì˜¤í›„ 4:53:33] 0x3030 = ìˆ˜ìœ„ì„¼ì„œ ì—°ê²° ê²€ì‚¬..*/
          case AT_UART_CMD_SENSOR_WATER_LEVEL :
 
              gu8UARTData[1] = AT_RS232_ACK;
@@ -671,8 +671,8 @@ void UARTest_RUN(void)
             gu8UARTData[2]= (U8)(AT_UART_CMD_SENSOR_ICE / 256);     // 0x30
             gu8UARTData[3]= (U8)(AT_UART_CMD_SENSOR_ICE % 256);     // 0x40
 
-            /* ¿ì¼±¼øÀ§¿¡ µû¸¥ Àû¿ë */
-            gu8UARTData[4] = 99;      // ÅÊÅ©Ä¿¹ö ¸®µå½ºÀ§Ä¡1 ¹Ì»ç¿ëÀ¸·Î º¯°æ (LPP)
+            /* ìš°ì„ ìˆœìœ„ì— ë”°ë¥¸ ì ìš© */
+            gu8UARTData[4] = 99;      // íƒ±í¬ì»¤ë²„ ë¦¬ë“œìŠ¤ìœ„ì¹˜1 ë¯¸ì‚¬ìš©ìœ¼ë¡œ ë³€ê²½ (LPP)
 
             if( pREED_TANK_COVER_2 == CLEAR )
             {
@@ -694,27 +694,27 @@ void UARTest_RUN(void)
 
             if( gu8_uart_ice_tray_up == SET && gu8_uart_ice_trray_down == SET )
             {
-                /*..hui [23-3-13¿ÀÈÄ 2:46:58] µÑ´Ù °¨Áö.. Á¤»ó..*/
+                /*..hui [23-3-13ì˜¤í›„ 2:46:58] ë‘˜ë‹¤ ê°ì§€.. ì •ìƒ..*/
                 gu8UARTData[7] = 0x03;
             }
             else if( gu8_uart_ice_tray_up == SET && gu8_uart_ice_trray_down == CLEAR )
             {
-                /*..hui [23-3-13¿ÀÈÄ 2:47:20] Å»ºù¸¸ ¹Ì°¨Áö..*/
+                /*..hui [23-3-13ì˜¤í›„ 2:47:20] íƒˆë¹™ë§Œ ë¯¸ê°ì§€..*/
                 gu8UARTData[7] = 0x01;
             }
             else if( gu8_uart_ice_tray_up == CLEAR && gu8_uart_ice_trray_down == SET )
             {
-                /*..hui [23-3-13¿ÀÈÄ 2:47:36] Á¦ºù¸¸ ¹Ì°¨Áö..*/
+                /*..hui [23-3-13ì˜¤í›„ 2:47:36] ì œë¹™ë§Œ ë¯¸ê°ì§€..*/
                 gu8UARTData[7] = 0x02;
             }
             else
             {
-                /*..hui [23-3-13¿ÀÈÄ 2:47:47] ÀüÃ¼ ¹Ì°¨Áö..*/
+                /*..hui [23-3-13ì˜¤í›„ 2:47:47] ì „ì²´ ë¯¸ê°ì§€..*/
                 gu8UARTData[7] = 0x00;
             }
 
 
-            /* ÇÊÅÍÄ¿¹ö ¸®µå½ºÀ§Ä¡ Ãß°¡ 250311 CH.PARK */
+            /* í•„í„°ì»¤ë²„ ë¦¬ë“œìŠ¤ìœ„ì¹˜ ì¶”ê°€ 250311 CH.PARK */
             if( pREED_FILTER_COVER == CLEAR )
             {
                 gu8UARTData[8] = 1;
@@ -724,15 +724,15 @@ void UARTest_RUN(void)
                 gu8UARTData[8] = 0;
             }
 
-            /* [2025-11-17] CH.PARK ¾ÆÀÌ½ºµµ¾î ¸®µå »óÅÂ Ãß°¡ */
+            /* [2025-11-17] CH.PARK ì•„ì´ìŠ¤ë„ì–´ ë¦¬ë“œ ìƒíƒœ ì¶”ê°€ */
             if( GET_INNER_DOOR_REED_SW() == ACTIVE_LOW_DETECTED )
             {
-                // °¨Áö
+                // ê°ì§€
                 gu8UARTData[9] = 1;
             }
             else
             {
-                // ¹Ì°¨Áö
+                // ë¯¸ê°ì§€
                 gu8UARTData[9] = 0;
             }
 
@@ -742,7 +742,7 @@ void UARTest_RUN(void)
             break;
 
              //
-             // 0x3050 ¿Â¼ö È÷ÅÍ °Ë»ç (0.3ÃÊ¸¸) !!O.K!! ¡Ú¡Ú¡Ú¡Ú¡Ú¡Ú ³ªÁß¿¡ µÎÆÇ -> ÇÑÆÇ¾¿ ÄÑ¼­ ³ª´©¾î º¸³»¾ß ÇÑ´Ù
+             // 0x3050 ì˜¨ìˆ˜ íˆí„° ê²€ì‚¬ (0.3ì´ˆë§Œ) !!O.K!! â˜…â˜…â˜…â˜…â˜…â˜… ë‚˜ì¤‘ì— ë‘íŒ -> í•œíŒì”© ì¼œì„œ ë‚˜ëˆ„ì–´ ë³´ë‚´ì•¼ í•œë‹¤
              case AT_UART_CMD_HEATER :
 
              if( F_Relay_Test_Finish == CLEAR )
@@ -766,7 +766,7 @@ void UARTest_RUN(void)
 
                     if( gu8AT_Heater_Time1_Relay >= 3 )
                     {
-                        UARTest_NO_LOAD_Set();              // È÷ÅÍ´Â ²À ²¨¾ßµÊ
+                        UARTest_NO_LOAD_Set();              // íˆí„°ëŠ” ê¼­ êº¼ì•¼ë¨
                         pHEATER_HOT_H_RELAY = 0;
                         pHEATER_HOT_TRIAC_L = 0;
                         NOP(); NOP(); NOP(); NOP(); NOP();
@@ -817,7 +817,7 @@ void UARTest_RUN(void)
 
                     if( gu8AT_Heater_Time1_Triac >= 3 )
                     {
-                        UARTest_NO_LOAD_Set();              // È÷ÅÍ´Â ²À ²¨¾ßµÊ
+                        UARTest_NO_LOAD_Set();              // íˆí„°ëŠ” ê¼­ êº¼ì•¼ë¨
                         pHEATER_HOT_H_RELAY = 0;
                         pHEATER_HOT_TRIAC_L = 0;
                         NOP(); NOP(); NOP(); NOP(); NOP();
@@ -830,11 +830,11 @@ void UARTest_RUN(void)
                             gu8UARTData[2]= (U8)(AT_UART_CMD_HEATER / 256);     // 0x30
                             gu8UARTData[3]= (U8)(AT_UART_CMD_HEATER % 256);     // 0x50
 
-                            // È÷ÅÍ¿Âµµ¼¾¼­
-                            gu8UARTData[4] = (U8)((gu16AT_Heater_Data_Relay >> 8) & 0x03);      //14 È÷ÅÍ¿Âµµ¼¾¼­ »óÀ§¹ÙÀÌÆ®
-                            gu8UARTData[5] = (U8)(gu16AT_Heater_Data_Relay & 0xFF);             //13 È÷ÅÍ¿Âµµ¼¾¼­ ÇÏÀ§¹ÙÀÌÆ®
-                            gu8UARTData[6] = (U8)((gu16AT_Heater_Data_Triac >> 8) & 0x03);      //14 È÷ÅÍ¿Âµµ¼¾¼­ »óÀ§¹ÙÀÌÆ®
-                            gu8UARTData[7] = (U8)(gu16AT_Heater_Data_Triac & 0xFF);             //13 È÷ÅÍ¿Âµµ¼¾¼­ ÇÏÀ§¹ÙÀÌÆ®
+                            // íˆí„°ì˜¨ë„ì„¼ì„œ
+                            gu8UARTData[4] = (U8)((gu16AT_Heater_Data_Relay >> 8) & 0x03);      //14 íˆí„°ì˜¨ë„ì„¼ì„œ ìƒìœ„ë°”ì´íŠ¸
+                            gu8UARTData[5] = (U8)(gu16AT_Heater_Data_Relay & 0xFF);             //13 íˆí„°ì˜¨ë„ì„¼ì„œ í•˜ìœ„ë°”ì´íŠ¸
+                            gu8UARTData[6] = (U8)((gu16AT_Heater_Data_Triac >> 8) & 0x03);      //14 íˆí„°ì˜¨ë„ì„¼ì„œ ìƒìœ„ë°”ì´íŠ¸
+                            gu8UARTData[7] = (U8)(gu16AT_Heater_Data_Triac & 0xFF);             //13 íˆí„°ì˜¨ë„ì„¼ì„œ í•˜ìœ„ë°”ì´íŠ¸
 
                             gu8UART_DataLength = 7;
                             AT_F_TxStart = 1;
@@ -877,7 +877,7 @@ void UARTest_RUN(void)
 
             break;
 
-         /*..hui [25-1-24¿ÀÈÄ 12:19:36] 0x5100 Á¤¼öÀÔ¼ö¹ëºê on..*/
+         /*..hui [25-1-24ì˜¤í›„ 12:19:36] 0x5100 ì •ìˆ˜ì…ìˆ˜ë°¸ë¸Œ on..*/
          case AT_UART_CMD_ROOM_IN_VALVE_ON :
 
              gu8UARTData[1] = AT_RS232_ACK;
@@ -891,7 +891,7 @@ void UARTest_RUN(void)
 
              break;
 
-         /*..hui [25-1-24¿ÀÈÄ 12:19:36] 0x5101 Á¤¼öÀÔ¼ö¹ëºê off..*/
+         /*..hui [25-1-24ì˜¤í›„ 12:19:36] 0x5101 ì •ìˆ˜ì…ìˆ˜ë°¸ë¸Œ off..*/
          case AT_UART_CMD_ROOM_IN_VALVE_OFF :
 
              gu8UARTData[1] = AT_RS232_ACK;
@@ -905,7 +905,7 @@ void UARTest_RUN(void)
 
              break;
 
-         /*..hui [25-1-24¿ÀÈÄ 12:19:36] 0x5102 ³Ã¼öÀÔ¼ö¹ëºê on..*/
+         /*..hui [25-1-24ì˜¤í›„ 12:19:36] 0x5102 ëƒ‰ìˆ˜ì…ìˆ˜ë°¸ë¸Œ on..*/
          case AT_UART_CMD_COLD_IN_VALVE_ON :
 
              gu8UARTData[1] = AT_RS232_ACK;
@@ -919,7 +919,7 @@ void UARTest_RUN(void)
 
              break;
 
-         /*..hui [25-1-24¿ÀÈÄ 12:19:36] 0x5103 ³Ã¼öÀÔ¼ö¹ëºê off..*/
+         /*..hui [25-1-24ì˜¤í›„ 12:19:36] 0x5103 ëƒ‰ìˆ˜ì…ìˆ˜ë°¸ë¸Œ off..*/
          case AT_UART_CMD_COLD_IN_VALVE_OFF :
 
              gu8UARTData[1] = AT_RS232_ACK;
@@ -933,7 +933,7 @@ void UARTest_RUN(void)
 
              break;
 
-         /*..hui [25-1-24¿ÀÈÄ 12:19:36] 0x5104 ¿Â¼öÀÔ¼ö¹ëºê on..*/
+         /*..hui [25-1-24ì˜¤í›„ 12:19:36] 0x5104 ì˜¨ìˆ˜ì…ìˆ˜ë°¸ë¸Œ on..*/
          case AT_UART_CMD_HOT_IN_VALVE_ON :
 
              gu8UARTData[1] = AT_RS232_ACK;
@@ -947,7 +947,7 @@ void UARTest_RUN(void)
 
              break;
 
-         /*..hui [25-1-24¿ÀÈÄ 12:19:36] 0x5105 ¿Â¼öÀÔ¼ö¹ëºê off..*/
+         /*..hui [25-1-24ì˜¤í›„ 12:19:36] 0x5105 ì˜¨ìˆ˜ì…ìˆ˜ë°¸ë¸Œ off..*/
          case AT_UART_CMD_HOT_IN_VALVE_OFF :
 
              gu8UARTData[1] = AT_RS232_ACK;
@@ -1018,7 +1018,7 @@ void UARTest_RUN(void)
 
              break;
 
-        /* ¾óÀ½¹° ÃßÃâ¹ëºê ON Ä¿¸Çµå Ãß°¡ 250311 CH.PARK */
+        /* ì–¼ìŒë¬¼ ì¶”ì¶œë°¸ë¸Œ ON ì»¤ë§¨ë“œ ì¶”ê°€ 250311 CH.PARK */
         case AT_UART_CMD_ICE_WATER_VALVE_ON:
             gu8UARTData[1] = AT_RS232_ACK;
             gu8UARTData[2]= (U8)(AT_UART_CMD_ICE_WATER_VALVE_ON / 256);     // 0x51
@@ -1031,7 +1031,7 @@ void UARTest_RUN(void)
 
             break;
 
-       /* ¾óÀ½¹° ÃßÃâ¹ëºê OFF Ä¿¸Çµå Ãß°¡ 250311 CH.PARK */
+       /* ì–¼ìŒë¬¼ ì¶”ì¶œë°¸ë¸Œ OFF ì»¤ë§¨ë“œ ì¶”ê°€ 250311 CH.PARK */
        case AT_UART_CMD_ICE_WATER_VALVE_OFF:
             gu8UARTData[1] = AT_RS232_ACK;
             gu8UARTData[2]= (U8)(AT_UART_CMD_ICE_WATER_VALVE_OFF / 256);     // 0x51
@@ -1072,7 +1072,7 @@ void UARTest_RUN(void)
 
              break;
 
-         /*..hui [25-1-24¿ÀÈÄ 12:30:54] 0x5114 ¿Â¼ö¹è¼ö NOS ON..*/
+         /*..hui [25-1-24ì˜¤í›„ 12:30:54] 0x5114 ì˜¨ìˆ˜ë°°ìˆ˜ NOS ON..*/
          case AT_UART_CMD_HOT_DRAIN_VALVE_ON :
 
              gu8UARTData[1] = AT_RS232_ACK;
@@ -1086,7 +1086,7 @@ void UARTest_RUN(void)
 
              break;
 
-         /*..hui [25-1-24¿ÀÈÄ 12:30:54] 0x5115 ¿Â¼ö¹è¼ö NOS OFF..*/
+         /*..hui [25-1-24ì˜¤í›„ 12:30:54] 0x5115 ì˜¨ìˆ˜ë°°ìˆ˜ NOS OFF..*/
          case AT_UART_CMD_HOT_DRAIN_VALVE_OFF :
 
              gu8UARTData[1] = AT_RS232_ACK;
@@ -1287,7 +1287,7 @@ void UARTest_RUN(void)
 
              AT_F_TxStart = 1;
              /////F_IceOpen = 1;
-             bit_ice_door_continue = SET;   /* ICE DOOR (SELECT, OPEN) µÎ°³ µ¿½Ã¿¡ Á¦¾îÇÔ */
+             bit_ice_door_continue = SET;   /* ICE DOOR (SELECT, OPEN) ë‘ê°œ ë™ì‹œì— ì œì–´í•¨ */
 
              AT_gu16_CMD_Mode = AT_UART_No_CMD;
 
@@ -1376,7 +1376,7 @@ void UARTest_RUN(void)
              AT_gu16_CMD_Mode = AT_UART_No_CMD;
 
              break;
-        /* [0x520E] ON ¾ÆÀÌ½º ¼¿·ºÆ® µµ¾î Ãß°¡ 250311 CH.PARK */
+        /* [0x520E] ON ì•„ì´ìŠ¤ ì…€ë ‰íŠ¸ ë„ì–´ ì¶”ê°€ 250311 CH.PARK */
         case AT_UART_CMD_ICE_SELECT_MOTOR_ON:
             gu8UARTData[1] = AT_RS232_ACK;
             gu8UARTData[2]= (U8)(AT_UART_CMD_ICE_SELECT_MOTOR_ON / 256);     // 0x52
@@ -1389,7 +1389,7 @@ void UARTest_RUN(void)
             AT_gu16_CMD_Mode = AT_UART_No_CMD;
             break;
 
-        /* [0x520F] OFF ¾ÆÀÌ½º ¼¿·ºÆ® µµ¾î Ãß°¡ 250311 CH.PARK */
+        /* [0x520F] OFF ì•„ì´ìŠ¤ ì…€ë ‰íŠ¸ ë„ì–´ ì¶”ê°€ 250311 CH.PARK */
         case AT_UART_CMD_ICE_SELECT_MOTOR_OFF:
             gu8UARTData[1] = AT_RS232_ACK;
             gu8UARTData[2]= (U8)(AT_UART_CMD_ICE_SELECT_MOTOR_OFF / 256);     // 0x52
@@ -1435,7 +1435,7 @@ void UARTest_RUN(void)
 
             break;
 
-        // 0x5212 ¿Â¼ö ½ºÅ×ÇÎ ON !!O.K!!
+        // 0x5212 ì˜¨ìˆ˜ ìŠ¤í…Œí•‘ ON !!O.K!!
         case AT_UART_CMD_FLOW_MOTOR_OPEN:
 
               gu8UARTData[1] = AT_RS232_ACK;
@@ -1452,7 +1452,7 @@ void UARTest_RUN(void)
 
         break;
 
-        // 0x5213 ¿Â¼ö ½ºÅ×ÇÎ OFF !!O.K!!
+        // 0x5213 ì˜¨ìˆ˜ ìŠ¤í…Œí•‘ OFF !!O.K!!
         case AT_UART_CMD_FLOW_MOTOR_CLOSE:
 
               gu8UARTData[1] = AT_RS232_ACK;
@@ -1469,7 +1469,7 @@ void UARTest_RUN(void)
 
         break;
 
-        // 0x5214 ¿Â¼ö ½ºÅ×ÇÎ ON !! O.K!!
+        // 0x5214 ì˜¨ìˆ˜ ìŠ¤í…Œí•‘ ON !! O.K!!
         case AT_UART_CMD_FLOW_MOTOR_CONTINUE:
 
               gu8UARTData[1] = AT_RS232_ACK;
@@ -1486,7 +1486,7 @@ void UARTest_RUN(void)
 
         break;
 
-        // 0x5215 ¿Â¼ö ½ºÅ×ÇÎ OFF !!O.K!!
+        // 0x5215 ì˜¨ìˆ˜ ìŠ¤í…Œí•‘ OFF !!O.K!!
         case AT_UART_CMD_FLOW_MOTOR_INIT:
 
               gu8UARTData[1] = AT_RS232_ACK;
@@ -1500,7 +1500,7 @@ void UARTest_RUN(void)
 
               AT_gu16_CMD_Mode = AT_UART_No_CMD;
         break;
-        /* [0x5216] ON ¾óÀ½ ºĞ¼â¸ğÅÍ Á¤ÀÇ 250311 CH.PARK */
+        /* [0x5216] ON ì–¼ìŒ ë¶„ì‡„ëª¨í„° ì •ì˜ 250311 CH.PARK */
         case AT_UART_CMD_ICE_BREAK_MOTOR_ON:
             gu8UARTData[1] = AT_RS232_ACK;
             gu8UARTData[2]= (U8)(AT_UART_CMD_ICE_BREAK_MOTOR_ON / 256);     // 0x52
@@ -1512,7 +1512,7 @@ void UARTest_RUN(void)
             AT_gu16_CMD_Mode = AT_UART_No_CMD;
         break;
 
-        /* [0x5216] OFF ¾óÀ½ ºĞ¼â¸ğÅÍ Á¤ÀÇ 250311 CH.PARK */
+        /* [0x5216] OFF ì–¼ìŒ ë¶„ì‡„ëª¨í„° ì •ì˜ 250311 CH.PARK */
         case AT_UART_CMD_ICE_BREAK_MOTOR_OFF:
             gu8UARTData[1] = AT_RS232_ACK;
             gu8UARTData[2]= (U8)(AT_UART_CMD_ICE_BREAK_MOTOR_OFF / 256);     // 0x52
@@ -1565,7 +1565,7 @@ void UARTest_RUN(void)
 
             AT_F_TxStart = 1;
             /*pCOMP = 1;*/          //
-            /* COMP Á¦¾î´Â test_uart_comm.c¿¡ Á¤ÀÇµÇ¾î ÀÖÀ½ */
+            /* COMP ì œì–´ëŠ” test_uart_comm.cì— ì •ì˜ë˜ì–´ ìˆìŒ */
 
             AT_gu16_CMD_Mode = AT_UART_No_CMD;
 
@@ -1589,7 +1589,7 @@ void UARTest_RUN(void)
 
             break;
 
-        // [0x9902] gas switch ice (Á¦ºù)
+        // [0x9902] gas switch ice (ì œë¹™)
         case AT_UART_CMD_ICE_SWITCH_ICE :
 
             gu8UARTData[1] = AT_RS232_ACK;
@@ -1604,7 +1604,7 @@ void UARTest_RUN(void)
             break;
 
 
-        // [0x9903] gas switch cold (³Ã°¢)
+        // [0x9903] gas switch cold (ëƒ‰ê°)
         case AT_UART_CMD_ICE_SWITCH_COLD :
 
             gu8UARTData[1] = AT_RS232_ACK;
@@ -1618,7 +1618,7 @@ void UARTest_RUN(void)
 
             break;
 
-        // [0x9904] gas switch hotgas (Å»ºù)
+        // [0x9904] gas switch hotgas (íƒˆë¹™)
         case AT_UART_CMD_ICE_SWITCH_HOTGAS :
 
             gu8UARTData[1] = AT_RS232_ACK;
@@ -1639,7 +1639,7 @@ void UARTest_RUN(void)
             gu8UARTData[2]= (U8)(AT_UART_CMD_BLDC_COMP_ERROR / 256);     // 0x99
             gu8UARTData[3]= (U8)(AT_UART_CMD_BLDC_COMP_ERROR % 256);     // 0x10
 
-            /*..hui [24-12-2¿ÀÀü 10:56:50] BLDC ÄÄÇÁ Á¤»óÀÌ¸é 1, ºñÁ¤»óÀÌ¸é 0..*/
+            /*..hui [24-12-2ì˜¤ì „ 10:56:50] BLDC ì»´í”„ ì •ìƒì´ë©´ 1, ë¹„ì •ìƒì´ë©´ 0..*/
             if( gu8_uart_bldc_comm_error == CLEAR )
             {
                 gu8UARTData[4] = 1;
@@ -1704,7 +1704,7 @@ void UARTest_NO_LOAD_Set(void)
     pUV_LED_ICE_TRAY_1_2 = CLEAR;
     pUV_LED_ICE_TANK_3 = CLEAR;
 
-    /*..hui [23-4-4¿ÀÈÄ 3:06:47] Æ®·¹ÀÌ Å×½ºÆ® ¿Ï·á Àü¿¡ Åë½Å Å×½ºÆ® ÁøÀÔÇÒ¼öÀÖÀ½..*/
+    /*..hui [23-4-4ì˜¤í›„ 3:06:47] íŠ¸ë ˆì´ í…ŒìŠ¤íŠ¸ ì™„ë£Œ ì „ì— í†µì‹  í…ŒìŠ¤íŠ¸ ì§„ì…í• ìˆ˜ìˆìŒ..*/
     #if 0
     if( gu8_uart_ice_tray_test_step >= 4 )
     {
@@ -1730,10 +1730,10 @@ void UARTest_NO_LOAD_Set(void)
     pHEATER_HOT_H_RELAY = CLEAR;
     pHEATER_HOT_TRIAC_L = CLEAR;
 
-    /* ¾óÀ½µµ¾î È÷ÅÍ */
+    /* ì–¼ìŒë„ì–´ íˆí„° */
     pHEATER_ICE_DOOR = CLEAR;
 
-    /* ºĞ¼â¸ğÅÍ Ãß°¡ */
+    /* ë¶„ì‡„ëª¨í„° ì¶”ê°€ */
     P_OUT_ICE_CRUSH = CLEAR;
 
     pSWING_BAR = CLEAR;
@@ -1751,7 +1751,7 @@ void UARTest_NO_LOAD_Set(void)
     pVALVE_NOS = CLEAR;
     pVALVE_ROOM_COLD_EXTRACT = CLEAR;
     pVALVE_HOT_COLD_OVERFLOW = CLEAR;
-    pVALVE_ICE_WATER_EXTRACT = CLEAR;   /* ¾óÀ½¹° ÃßÃâ¹ëºê Ãß°¡ */
+    pVALVE_ICE_WATER_EXTRACT = CLEAR;   /* ì–¼ìŒë¬¼ ì¶”ì¶œë°¸ë¸Œ ì¶”ê°€ */
 
     bit_hot_flow_continue = CLEAR;
     bit_ice_door_continue = CLEAR;

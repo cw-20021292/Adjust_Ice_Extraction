@@ -42,17 +42,17 @@ extern U16 gu16_extract_display_cnt;
 
 #define AUTO_DRAIN_USING_WATER                    500
 
-/*..hui [23-12-6¿ÀÀü 11:35:06] ÁØºñ.. 170ml..*/
+/*..hui [23-12-6ì˜¤ì „ 11:35:06] ì¤€ë¹„.. 170ml..*/
 #define PREPARE_STER_USING_WATER                  170
-/*..hui [23-12-6¿ÀÀü 11:35:12] ¿Â¼ö¼¼Ã´.. 225ml..*/
+/*..hui [23-12-6ì˜¤ì „ 11:35:12] ì˜¨ìˆ˜ì„¸ì²™.. 225ml..*/
 #define HOT_SPRAY_USING_WATER                     225
-/*..hui [23-12-6¿ÀÀü 11:35:27] Áß¼ö¼¼Ã´.. 340ml..*/
+/*..hui [23-12-6ì˜¤ì „ 11:35:27] ì¤‘ìˆ˜ì„¸ì²™.. 340ml..*/
 #define LUKEWARM_SPRAY_USING_WATER                340
-/*..hui [23-12-6¿ÀÀü 11:35:34] Á¤¼ö¼¼Ã´.. 530ml..*/
+/*..hui [23-12-6ì˜¤ì „ 11:35:34] ì •ìˆ˜ì„¸ì²™.. 530ml..*/
 #define FINAL_CLEAN_USING_WATER                   530
 
 #define ICE_TRAY_CLEAN_USING_WATER                1050
-/*..hui [23-12-6¿ÀÀü 11:35:40] ÇØºù..1050ml..*/
+/*..hui [23-12-6ì˜¤ì „ 11:35:40] í•´ë¹™..1050ml..*/
 #define MELT_ICE_USING_WATER                      1050
 
 #if 0
@@ -61,11 +61,11 @@ extern U16 gu16_extract_display_cnt;
 #define NEO_RO_INO_FILTER_FLUSHING_USING_WATER    11000
 #endif
 
-/*..hui [23-12-18¿ÀÈÄ 7:02:48] ¼³Ä¡ÇÃ·¯½Ì = RO ÇÃ·¯½Ì 1500 + ³Ã¼öÅÊÅ© 3400 = 4900..*/
+/*..hui [23-12-18ì˜¤í›„ 7:02:48] ì„¤ì¹˜í”ŒëŸ¬ì‹± = RO í”ŒëŸ¬ì‹± 1500 + ëƒ‰ìˆ˜íƒ±í¬ 3400 = 4900..*/
 #define INSTALL_FLUSHING_USING_WATER              4900
-/*..hui [23-12-18¿ÀÈÄ 7:01:44] 0.05LPM ±âÁØ 2ºĞ..*/
+/*..hui [23-12-18ì˜¤í›„ 7:01:44] 0.05LPM ê¸°ì¤€ 2ë¶„..*/
 #define NEO_INO_FILTER_FLUSHING_USING_WATER       100
-/*..hui [23-12-18¿ÀÈÄ 7:02:12] 0.05LPM ±âÁØ 30ºĞ..*/
+/*..hui [23-12-18ì˜¤í›„ 7:02:12] 0.05LPM ê¸°ì¤€ 30ë¶„..*/
 #define NEO_RO_INO_FILTER_FLUSHING_USING_WATER    1500
 
 

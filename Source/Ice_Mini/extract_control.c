@@ -39,7 +39,7 @@ ICE_OUT_STEP gu8_Ice_Out_Step;
 U16 gu16_ice_out_timer;
 U16 gu16_temp_ice_out_timer;
 U8 gu8_Drain_water_timer;
-U8 gu8TestRemoveAirTimer = 10;      //2025-07-17 cbr πÃ¥œµø¿œªÁæÁ
+U8 gu8TestRemoveAirTimer = 10;      //2025-07-17 cbr ÎØ∏ÎãàÎèôÏùºÏÇ¨Ïñë
 /**********************************************************************************************************************/
 U16 drip_timer;
 /**********************************************************************************************************************/
@@ -60,19 +60,207 @@ extern bit bit_filter_cover;
 extern MY_INDEX my_recipe_select;
 extern bit bit_myWater_setting_start;
 extern bit bit_ice_shake_state;
+extern U16 gu16DoorOpenPulse;
 /***********************************************************************************************************************/
-// [25-05-09] √π¿‹/µ—¬∞¿‹ ±∏∫– timer ∫–∑˘
+// [25-05-09] Ï≤´Ïûî/ÎëòÏß∏Ïûî Íµ¨Î∂Ñ timer Î∂ÑÎ•ò
 U16 gu16_firstEffluent_hotwater_timer;
 bit F_firstEffluent_hotWater;
 /***********************************************************************************************************************/
-// [25-07-07] sean √π¿‹/µ—¬∞¿‹ ±∏∫– heating ∫Øºˆ √ﬂ∞°
+// [25-07-07] sean Ï≤´Ïûî/ÎëòÏß∏Ïûî Íµ¨Î∂Ñ heating Î≥ÄÏàò Ï∂îÍ∞Ä
 bit F_firstEffluent_hotWaterHeat;
 U16 gu16_drip_standby_timer;
 bit F_first_Drip_standby;
 bit F_second_Drip_standby;
 
-// ¿˚¿¿«¸ æÛ¿Ω√ﬂ√‚
+/***********************************************************************************************************************/
+void IcePositionManager(void);
+U16 gu16IceExtractTimer;
+// Ï†ÅÏùëÌòï ÏñºÏùåÏ∂îÏ∂ú
 IcePosition_t IcePosition;
+
+typedef enum {
+    ICE_AMOUNT_LOW = 0,
+    ICE_AMOUNT_MID = 1,
+    ICE_AMOUNT_FUL = 2,
+} IceAmount_t;
+
+typedef struct _IceManager_
+{
+    IceAmount_t  u8IceAmount;
+    F32 f32IceFrontP;
+    ICE_LEVEL u8IceExtractStep;
+    U8  u8FeederFrontTime;
+} IceManager;
+
+// ÏñºÏùå Ï∂îÏ∂ú 1Îã®Í≥Ñ Ï∂îÏ∂ú ÌÖåÏù¥Î∏î
+const static IceManager IceExtractTable[] = {
+    // ÏñºÏùå Ï∂îÏ∂ú 1Îã®Í≥Ñ ÌÖåÏù¥Î∏î
+    // ÏñºÏùåÏñë,            Ïè†Î¶ºÏßÄÏàò,     ÏñºÏùåÎã®Í≥Ñ,                 ÌîºÎçî Ï†ïÌöåÏ†Ñ ÏãúÍ∞Ñ
+    {ICE_AMOUNT_LOW, 0.0,         ICE_LEVEL_1_STEP,       40},
+    {ICE_AMOUNT_LOW, 0.1, ICE_LEVEL_1_STEP, 40},
+    {ICE_AMOUNT_LOW, 0.2, ICE_LEVEL_1_STEP, 40},
+    {ICE_AMOUNT_LOW, 0.3, ICE_LEVEL_1_STEP, 40},
+    {ICE_AMOUNT_LOW, 0.4, ICE_LEVEL_1_STEP, 40},
+    {ICE_AMOUNT_LOW, 0.5, ICE_LEVEL_1_STEP, 40},
+    {ICE_AMOUNT_LOW, 0.6, ICE_LEVEL_1_STEP, 40},
+    {ICE_AMOUNT_LOW, 0.7, ICE_LEVEL_1_STEP, 40},
+    {ICE_AMOUNT_LOW, 0.8, ICE_LEVEL_1_STEP, 40},
+    {ICE_AMOUNT_LOW, 0.9, ICE_LEVEL_1_STEP, 40},
+    {ICE_AMOUNT_LOW, 1.0, ICE_LEVEL_1_STEP, 40},
+    {ICE_AMOUNT_FUL, 0.0, ICE_LEVEL_1_STEP, 40},
+    {ICE_AMOUNT_FUL, 0.1, ICE_LEVEL_1_STEP, 40},
+    {ICE_AMOUNT_FUL, 0.2, ICE_LEVEL_1_STEP, 40},
+    {ICE_AMOUNT_FUL, 0.3, ICE_LEVEL_1_STEP, 40},
+    {ICE_AMOUNT_FUL, 0.4, ICE_LEVEL_1_STEP, 40},
+    {ICE_AMOUNT_FUL, 0.5, ICE_LEVEL_1_STEP, 40},
+    {ICE_AMOUNT_FUL, 0.6, ICE_LEVEL_1_STEP, 40},
+    {ICE_AMOUNT_FUL, 0.7, ICE_LEVEL_1_STEP, 40},
+    {ICE_AMOUNT_FUL, 0.8, ICE_LEVEL_1_STEP, 40},
+    {ICE_AMOUNT_FUL, 0.9, ICE_LEVEL_1_STEP, 40},
+    {ICE_AMOUNT_FUL, 1.0, ICE_LEVEL_1_STEP, 40},
+
+    {ICE_AMOUNT_LOW, 0.0, ICE_LEVEL_2_STEP, 50},
+    {ICE_AMOUNT_LOW, 0.1, ICE_LEVEL_2_STEP, 50},
+    {ICE_AMOUNT_LOW, 0.2, ICE_LEVEL_2_STEP, 50},
+    {ICE_AMOUNT_LOW, 0.3, ICE_LEVEL_2_STEP, 50},
+    {ICE_AMOUNT_LOW, 0.4, ICE_LEVEL_2_STEP, 50},
+    {ICE_AMOUNT_LOW, 0.5, ICE_LEVEL_2_STEP, 50},
+    {ICE_AMOUNT_LOW, 0.6, ICE_LEVEL_2_STEP, 50},
+    {ICE_AMOUNT_LOW, 0.7, ICE_LEVEL_2_STEP, 50},
+    {ICE_AMOUNT_LOW, 0.8, ICE_LEVEL_2_STEP, 50},
+    {ICE_AMOUNT_LOW, 0.9, ICE_LEVEL_2_STEP, 50},
+    {ICE_AMOUNT_LOW, 1.0, ICE_LEVEL_2_STEP, 50},
+    {ICE_AMOUNT_FUL, 0.0, ICE_LEVEL_2_STEP, 50},
+    {ICE_AMOUNT_FUL, 0.1, ICE_LEVEL_2_STEP, 50},
+    {ICE_AMOUNT_FUL, 0.2, ICE_LEVEL_2_STEP, 50},
+    {ICE_AMOUNT_FUL, 0.3, ICE_LEVEL_2_STEP, 50},
+    {ICE_AMOUNT_FUL, 0.4, ICE_LEVEL_2_STEP, 50},
+    {ICE_AMOUNT_FUL, 0.5, ICE_LEVEL_2_STEP, 50},
+    {ICE_AMOUNT_FUL, 0.6, ICE_LEVEL_2_STEP, 50},
+    {ICE_AMOUNT_FUL, 0.7, ICE_LEVEL_2_STEP, 50},
+    {ICE_AMOUNT_FUL, 0.8, ICE_LEVEL_2_STEP, 50},
+    {ICE_AMOUNT_FUL, 0.9, ICE_LEVEL_2_STEP, 50},
+    {ICE_AMOUNT_FUL, 1.0, ICE_LEVEL_2_STEP, 50},
+
+    {ICE_AMOUNT_LOW, 0.0, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_LOW, 0.1, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_LOW, 0.2, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_LOW, 0.3, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_LOW, 0.4, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_LOW, 0.5, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_LOW, 0.6, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_LOW, 0.7, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_LOW, 0.8, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_LOW, 0.9, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_LOW, 1.0, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_MID, 0.0, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_MID, 0.1, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_MID, 0.2, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_MID, 0.3, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_MID, 0.4, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_MID, 0.5, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_MID, 0.6, ICE_LEVEL_3_STEP, 80},
+    {ICE_AMOUNT_MID, 0.7, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_MID, 0.8, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_MID, 0.9, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_MID, 1.0, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_FUL, 0.0, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_FUL, 0.1, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_FUL, 0.2, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_FUL, 0.3, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_FUL, 0.4, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_FUL, 0.5, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_FUL, 0.6, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_FUL, 0.7, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_FUL, 0.8, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_FUL, 0.9, ICE_LEVEL_3_STEP, 60},
+    {ICE_AMOUNT_FUL, 1.0, ICE_LEVEL_3_STEP, 60},
+
+    {ICE_AMOUNT_LOW, 0.0, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_LOW, 0.1, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_LOW, 0.2, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_LOW, 0.3, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_LOW, 0.4, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_LOW, 0.5, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_LOW, 0.6, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_LOW, 0.7, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_LOW, 0.8, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_LOW, 0.9, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_LOW, 1.0, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_MID, 0.0, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_MID, 0.1, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_MID, 0.2, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_MID, 0.3, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_MID, 0.4, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_MID, 0.5, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_MID, 0.6, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_MID, 0.7, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_MID, 0.8, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_MID, 0.9, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_MID, 1.0, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_FUL, 0.0, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_FUL, 0.1, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_FUL, 0.2, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_FUL, 0.3, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_FUL, 0.4, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_FUL, 0.5, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_FUL, 0.6, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_FUL, 0.7, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_FUL, 0.8, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_FUL, 0.9, ICE_LEVEL_4_STEP, 70},
+    {ICE_AMOUNT_FUL, 1.0, ICE_LEVEL_4_STEP, 70},
+};
+
+/**
+ * @brief ÌÖåÏù¥Î∏îÏóê Îî∞Î•∏ ÌîºÎçîÏä§ÌÅ¨Î•ò Ï†ïÌöåÏ†Ñ ÏãúÍ∞Ñ ÌôïÏ†ï
+ *
+ * @param u8IceExtractStep ÏñºÏùå Îã®Í≥Ñ
+ * @param f32IceFrontP ÏñºÏùå Ïïû Ïè†Î¶ºÏ†ïÎèÑ
+ * @param u8IceAmount ÏñºÏùåÏñë
+ * @return U8
+ */
+U16 DecisionFeederOnTime(ICE_LEVEL u8IceExtractStep, F32 f32IceFrontP, IceAmount_t u8IceAmount)
+{
+    int i = 0;
+    for(i = 0; i < sizeof(IceExtractTable) / sizeof(IceManager); i++)
+    {
+        if((IceExtractTable[i].u8IceExtractStep == u8IceExtractStep)
+        && (IceExtractTable[i].f32IceFrontP == f32IceFrontP)
+        && (IceExtractTable[i].u8IceAmount == u8IceAmount)
+        )
+        {
+            return IceExtractTable[i].u8FeederFrontTime;
+        }
+    }
+}
+
+/**
+ * @brief ÏñºÏùåÏñë TableÏóê ÎßûÍ≤å Conversion
+ *
+ * @param mu8IceLack ÏñºÏùå Î∂ÄÏ°± IR Í∞êÏßÄ ÏÉÅÌÉú
+ * @param mu8IceFull ÏñºÏùå Í∞ÄÎìù IR Í∞êÏßÄ ÏÉÅÌÉú
+ * @return IceAmount_t
+ */
+IceAmount_t IceAmountConversion(U8 mu8IceLack, U8 mu8IceFull)
+{
+    IceAmount_t Amount = ICE_AMOUNT_LOW;
+
+    if(mu8IceFull == SET)
+    {
+        Amount = ICE_AMOUNT_FUL;
+    }
+    else if(mu8IceLack == CLEAR)
+    {
+        Amount = ICE_AMOUNT_LOW;
+    }
+    else
+    {
+        Amount = ICE_AMOUNT_MID;
+    }
+
+    return Amount;
+}
+
 /***********************************************************************************************************************
 * Function Name: System_ini
 * Description  :
@@ -80,9 +268,9 @@ IcePosition_t IcePosition;
 void water_extract_control(void)
 {
 	if(F_firstEffluent_hotWater == SET)
-	{   // [25-05-27 12:57:14] yspark, √π¿‹ ƒ´øÓ∆Æ ºˆ¡§
+	{   // [25-05-27 12:57:14] yspark, Ï≤´Ïûî Ïπ¥Ïö¥Ìä∏ ÏàòÏ†ï
         if(F_WaterOut == SET && u8WaterOutState == HOT_WATER_SELECT)
-        {  // ø¬ºˆ √ﬂ√‚ ¡ﬂ¿Œ ∞ÊøÏ ≈∏¿Ã∏” √ ±‚»≠
+        {  // Ïò®Ïàò Ï∂îÏ∂ú Ï§ëÏù∏ Í≤ΩÏö∞ ÌÉÄÏù¥Î®∏ Ï¥àÍ∏∞Ìôî
             gu16_firstEffluent_hotwater_timer = 0;
             //2025-07-08 cbr_test
             if((gu8Pre_hot_setting_temperature != gu8_hot_setting_temperature))
@@ -176,14 +364,14 @@ void start_effluent_water(void)
 
             if(u8IceOutState == ICE_SELECT__ICE_WATER )
             {
-                mu8_time = VALVE_ICE_WATER_OUT_TIME;  // 3√  »ƒ √ﬂ√‚ Ω√¿€
+                mu8_time = VALVE_ICE_WATER_OUT_TIME;  // 3Ï¥à ÌõÑ Ï∂îÏ∂ú ÏãúÏûë
             }
             else
             {
                 mu8_time = VALVE_CONTROL_TIME_FOR_DEBUG;
             }
 
-            /*..hui [18-8-27ø¿»ƒ 6:35:25] √ﬂ√‚¥Î±‚..*/
+            /*..hui [18-8-27Ïò§ÌõÑ 6:35:25] Ï∂îÏ∂úÎåÄÍ∏∞..*/
             gu8_effluent_timer++;
 
             if( gu8_effluent_timer >= mu8_time )
@@ -198,13 +386,13 @@ void start_effluent_water(void)
 
         case STATE_10_WATER_IN_FEED_ON_STATE :
 
-            /*..hui [25-1-9ø¿»ƒ 1:43:13] ≥√ºˆ/¡§ºˆ ¿‘ºˆ πÎ∫Í OPEN, ≥√ºˆ π∞≥—ƒß πÎ∫Í CLOSE..*/
-            /*..hui [25-1-9ø¿»ƒ 1:46:49] ø¬ºˆ¥¬ ø©±‚º≠ ø¿πˆ«√∑ŒøÏ NOS πÎ∫Í CLOSE «ÿ≥ı¿Ω..*/
+            /*..hui [25-1-9Ïò§ÌõÑ 1:43:13] ÎÉâÏàò/Ï†ïÏàò ÏûÖÏàò Î∞∏Î∏å OPEN, ÎÉâÏàò Î¨ºÎÑòÏπ® Î∞∏Î∏å CLOSE..*/
+            /*..hui [25-1-9Ïò§ÌõÑ 1:46:49] Ïò®ÏàòÎäî Ïó¨Í∏∞ÏÑú Ïò§Î≤ÑÌîåÎ°úÏö∞ NOS Î∞∏Î∏å CLOSE Ìï¥ÎÜìÏùå..*/
             gu8_effluent_timer++;
 
             if(gu8_effluent_timer >= VALVE_CONTROL_TIME_FOR_DEBUG)
             {
-                /* æÛ¿Ωπ∞¿∫ π›µÂΩ√ ø©±‚∑Œ */
+                /* ÏñºÏùåÎ¨ºÏùÄ Î∞òÎìúÏãú Ïó¨Í∏∞Î°ú */
                 if(u8IceOutState == ICE_SELECT__ICE_WATER )
                 {
                     gu8_Water_Out_Step = STATE_11_COLD_WATER_PRESSURE_PREVENT_STATE;
@@ -234,7 +422,7 @@ void start_effluent_water(void)
 
             break;
 
-        case STATE_11_COLD_WATER_PRESSURE_PREVENT_STATE:        /* ≥√ºˆ¿œ ∂ß∏∏ */
+        case STATE_11_COLD_WATER_PRESSURE_PREVENT_STATE:        /* ÎÉâÏàòÏùº ÎïåÎßå */
             gu8_effluent_timer++;
             if(gu8_effluent_timer >= VALVE_PRESSURE_PREVENT_TIME)
             {
@@ -256,7 +444,7 @@ void start_effluent_water(void)
             	mu8_finish = SET;
 			}
 
-			/*.. sean [25-01-16] øπø≠ »ƒ, ø¬ºˆ Drain¿∏∑Œ π∞πˆ∏≤ ¡¯«‡..*/
+			/*.. sean [25-01-16] ÏòàÏó¥ ÌõÑ, Ïò®Ïàò DrainÏúºÎ°ú Î¨ºÎ≤ÑÎ¶º ÏßÑÌñâ..*/
             if(mu8_finish == SET)
             {
                 gu8_Water_Out_Step = STATE_21_HOT_PRE_HEATING_BUFFER_DRAIN_STATE;
@@ -272,9 +460,9 @@ void start_effluent_water(void)
 
             gu8_effluent_timer++;
 
-            // [25-05-27 14:40:03] yspark, √π¿‹∏∏ πˆ∆€≈ ≈© π∞√§øÚ µø¿€ ºˆ«‡
+            // [25-05-27 14:40:03] yspark, Ï≤´ÏûîÎßå Î≤ÑÌçºÌÉ±ÌÅ¨ Î¨ºÏ±ÑÏõÄ ÎèôÏûë ÏàòÌñâ
             if (F_firstEffluent_hotWater)
-            {  // µ—¬∞ ¿‹ ¿ÃªÛ
+            {  // ÎëòÏß∏ Ïûî Ïù¥ÏÉÅ
                 if(gu8_effluent_timer >= 0)
                 {
                     gu8_Water_Out_Step = STATE_22_HOT_PRE_HEATING_BUFFER_DRAIN_COMPLETE_STATE;
@@ -284,14 +472,14 @@ void start_effluent_water(void)
             }
             else
             {
-                // °⁄2025-06-11 Phil
+                // ‚òÖ2025-06-11 Phil
                 if (( ( gu8_hot_setting_temperature == HOT_SET_TEMP____100oC )
                 || ( gu8_hot_setting_temperature == HOT_SET_TEMP____95oC )
                 || ( gu8_hot_setting_temperature == HOT_SET_TEMP____90oC )
                 //|| ( gu8_hot_setting_temperature == HOT_SET_TEMP____85oC ) )
-                || ( gu8_hot_setting_temperature == HOT_SET_TEMP____85oC )			// °⁄2025-06-11 Phil after PM
+                || ( gu8_hot_setting_temperature == HOT_SET_TEMP____85oC )			// ‚òÖ2025-06-11 Phil after PM
                 || ( gu8_hot_setting_temperature == HOT_SET_TEMP____80oC )			//2025-07-28 cbr
-                || ( gu8_hot_setting_temperature == HOT_SET_TEMP____45oC ) )		// °⁄2025-06-11 Phil after PM
+                || ( gu8_hot_setting_temperature == HOT_SET_TEMP____45oC ) )		// ‚òÖ2025-06-11 Phil after PM
                 && (bit_Hot_InLowTemp_SetHighTemp == 1))
                 {
                     if(gu8_effluent_timer >= BUFFER_DRAIN_TIME_FOR_HIGH_TEMP)
@@ -324,9 +512,9 @@ void start_effluent_water(void)
             break;
         case STATE_22_HOT_PRE_HEATING_BUFFER_DRAIN_COMPLETE_STATE :
 
-            //√ﬂ∞° process√ﬂ∞°«œ±‚ ¿ß«ÿ State Add
-            // [25-02-20 18:10:54] yspark, πÎ∫Í ¡∂¡§
-            // øπø≠ ¬ ¿∏∑Œ ¿Ãµø
+            //Ï∂îÍ∞Ä processÏ∂îÍ∞ÄÌïòÍ∏∞ ÏúÑÌï¥ State Add
+            // [25-02-20 18:10:54] yspark, Î∞∏Î∏å Ï°∞Ï†ï
+            // ÏòàÏó¥ Ï™ΩÏúºÎ°ú Ïù¥Îèô
             /*
             if (gu16_moving_pulse == 0)
             {
@@ -342,8 +530,8 @@ void start_effluent_water(void)
 
         case STATE_30_EXTRACT_VALVE_ON_STATE :
 
-            /*..hui [25-1-9ø¿»ƒ 1:45:20] √÷¡æ √ﬂ√‚ πÎ∫Í ON..*/
-            /*..hui [25-1-9ø¿»ƒ 1:45:28] ø¬ºˆ¥¬ ø¬ºˆ √ﬂ√‚ πÎ∫Í ON..*/
+            /*..hui [25-1-9Ïò§ÌõÑ 1:45:20] ÏµúÏ¢Ö Ï∂îÏ∂ú Î∞∏Î∏å ON..*/
+            /*..hui [25-1-9Ïò§ÌõÑ 1:45:28] Ïò®ÏàòÎäî Ïò®Ïàò Ï∂îÏ∂ú Î∞∏Î∏å ON..*/
             gu8_effluent_timer++;
             if(gu8_effluent_timer >= VALVE_CONTROL_TIME_FOR_DEBUG)
             {
@@ -359,12 +547,12 @@ void start_effluent_water(void)
 /******************************************************************************************/
 
         case STATE_31_WATER_EXTRACT_STATE :
-			/*.. sean [25-01-16].. 100ml∏∂¥Ÿ ø¿πˆ «√∑ŒøÏ πÎ∫Í 500ms ø≠æÓ¡‡º≠ Air ∫¸¡Æ≥™∞°µµ∑œ «‘ */
-            // yspark [25-02-18 18:54:38] ø¿πˆ «√∑ŒøÏ πÎ∫Í Ω√∞£ ¥‹√‡
-            /* æÛ¿Ω µøΩ√√ﬂ√‚ Ω√ πÆ¡¶∞° µ  */
+			/*.. sean [25-01-16].. 100mlÎßàÎã§ Ïò§Î≤Ñ ÌîåÎ°úÏö∞ Î∞∏Î∏å 500ms Ïó¥Ïñ¥Ï§òÏÑú Air Îπ†Ï†∏ÎÇòÍ∞ÄÎèÑÎ°ù Ìï® */
+            // yspark [25-02-18 18:54:38] Ïò§Î≤Ñ ÌîåÎ°úÏö∞ Î∞∏Î∏å ÏãúÍ∞Ñ Îã®Ï∂ï
+            /* ÏñºÏùå ÎèôÏãúÏ∂îÏ∂ú Ïãú Î¨∏Ï†úÍ∞Ä Îê® */
             if( u8WaterOutState == HOT_WATER_SELECT )
             {
-                /* πÃ¥œøÕ µø¿œ«œ∞‘ */
+                /* ÎØ∏ÎãàÏôÄ ÎèôÏùºÌïòÍ≤å */
                 if((gu16Extracted_Hz / 210) == 1)
                 {
                     gu16Extracted_Hz = 0;
@@ -380,11 +568,11 @@ void start_effluent_water(void)
             }
             else {  }
 
-            /*..hui [18-11-14ø¿»ƒ 3:33:23] π∞ √ﬂ√‚ Ω√¿€..*/
-            /* √ﬂ√‚øœ∑· */
+            /*..hui [18-11-14Ïò§ÌõÑ 3:33:23] Î¨º Ï∂îÏ∂ú ÏãúÏûë..*/
+            /* Ï∂îÏ∂úÏôÑÎ£å */
             if(F_Effluent_OK == SET)
             {
-				gu8TestRemoveAirTimer = BUFFER_REMOVE_AIR_TIME;          // ø°æÓ ¡¶∞≈ ∏Ò¿˚ Overflow Valve ¡ˆø¨Ω√∞£ «“¥Á
+				gu8TestRemoveAirTimer = BUFFER_REMOVE_AIR_TIME;          // ÏóêÏñ¥ Ï†úÍ±∞ Î™©Ï†Å Overflow Valve ÏßÄÏó∞ÏãúÍ∞Ñ Ìï†Îãπ
                 F_WaterOut = CLEAR;
                 /*gu8_Water_Out_Step = STATE_40_EXTRACT_VALVE_OFF_STATE;*/
                 gu8_Water_Out_Step = STATE_33_REMOVE_AIR_STATE;
@@ -401,7 +589,7 @@ void start_effluent_water(void)
 
         case STATE_32_WATER_AIR_VENT_STATE :
 			gu8_air_vent_timer--;
-            /*..hui [18-11-14ø¿»ƒ 3:33:23] π∞ √ﬂ√‚ Ω√¿€..*/
+            /*..hui [18-11-14Ïò§ÌõÑ 3:33:23] Î¨º Ï∂îÏ∂ú ÏãúÏûë..*/
             if(gu8_air_vent_timer == 0)
             {
                 gu8_Water_Out_Step = STATE_31_WATER_EXTRACT_STATE;
@@ -440,12 +628,12 @@ void start_effluent_water(void)
 ***********************************************************************************************************************/
 void stop_effluent_water(void)
 {
-	//ø¬ºˆ π∞ √ﬂ√‚ »Æ¿Œ«œ±‚¿ß«ÿº≠ √ﬂ∞°
+	//Ïò®Ïàò Î¨º Ï∂îÏ∂ú ÌôïÏù∏ÌïòÍ∏∞ÏúÑÌï¥ÏÑú Ï∂îÍ∞Ä
     if( ( u8WaterOutState == HOT_WATER_SELECT)
 		&& (gu8_Water_Out_Step >= STATE_30_EXTRACT_VALVE_ON_STATE )
 		&& (gu8Pre_hot_setting_temperature == gu8_hot_setting_temperature ) )
     {
-		// [25-05-09] √π¿‹/µ—¬∞¿‹ ±∏∫– √ ±‚»≠
+		// [25-05-09] Ï≤´Ïûî/ÎëòÏß∏Ïûî Íµ¨Î∂Ñ Ï¥àÍ∏∞Ìôî
 		F_firstEffluent_hotWater = SET;
 		if(gu16Effluent_Hz < 10)
 		{
@@ -455,7 +643,7 @@ void stop_effluent_water(void)
     }
     else {}
 
-    bit_Hot_InLowTemp_SetHighTemp = 0;		// °⁄ 2025-06-11 Phil  // øπø≠Ω√∞£ ±∏∫– √ ±‚
+    bit_Hot_InLowTemp_SetHighTemp = 0;		// ‚òÖ 2025-06-11 Phil  // ÏòàÏó¥ÏãúÍ∞Ñ Íµ¨Î∂Ñ Ï¥àÍ∏∞
 
     switch(gu8_Water_Out_Step)
     {
@@ -512,6 +700,8 @@ void stop_effluent_water(void)
 ***********************************************************************************************************************/
 void ice_extract_control(void)
 {
+    IcePositionManager();
+
     if(F_IceOut == SET)
     {
         start_extract_ice();
@@ -528,19 +718,11 @@ void ice_extract_control(void)
 ***********************************************************************************************************************/
 void start_extract_ice(void)
 {
-    U16 ice_extract_timer;
-    U16 action_time_unit;
-    U16 idle_time_unit;
-    U16 cycle_time_unit;
-    U16 num_cycles;
-    U16 remaining_time_unit;
-    U16 total_action_time_unit;
-
     switch(gu8_Ice_Out_Step)
     {
         case STATE_0_ICE_STANDBY_STATE :
-            /*..hui [25-1-10ø¿¿¸ 9:56:00] æ∆¿ÃΩ∫ √÷¡æ µµæÓ ¥Ÿ ø≠∏Æ∏È..*/
-            /* ««¥ı ø™»∏¿¸ ¡¶æÓ∞° øœ∑·µ«∏È ±◊∂ß∫Œ≈Õ ¡¶¥Î∑Œ √ﬂ√‚ Ω√¿€ [V1.0.0.2] 250818 CH.PARK */
+            /*..hui [25-1-10Ïò§Ï†Ñ 9:56:00] ÏïÑÏù¥Ïä§ ÏµúÏ¢Ö ÎèÑÏñ¥ Îã§ Ïó¥Î¶¨Î©¥..*/
+            /* ÌîºÎçî Ïó≠ÌöåÏ†Ñ Ï†úÏñ¥Í∞Ä ÏôÑÎ£åÎêòÎ©¥ Í∑∏ÎïåÎ∂ÄÌÑ∞ Ï†úÎåÄÎ°ú Ï∂îÏ∂ú ÏãúÏûë [V1.0.0.2] 250818 CH.PARK */
             if((F_IceOpen == SET)
             && (gu16_Ice_Door_StepMotor == STEP_ANGLE_DOOR)
             && (bit_ice_out_back_1s_state != SET)
@@ -558,8 +740,8 @@ void start_extract_ice(void)
                 }
                 else
                 {
-                    /* ¡∂∞¢æÛ¿Ω¿∫ ºˆƒ°ªÛ¿∏∑Œ π›¬Î ¥›«˚¿ª ∂ß∫Œ≈Õ
-                    √ﬂ√‚ Ω√¿€«œµµ∑œ ºˆ¡§ 250825 CH.PARK */
+                    /* Ï°∞Í∞ÅÏñºÏùåÏùÄ ÏàòÏπòÏÉÅÏúºÎ°ú Î∞òÏØ§ Îã´ÌòîÏùÑ ÎïåÎ∂ÄÌÑ∞
+                    Ï∂îÏ∂ú ÏãúÏûëÌïòÎèÑÎ°ù ÏàòÏ†ï 250825 CH.PARK */
                     if(gu16_IceSelect_StepMotor <= 150)
                     {
                         F_IceOutCCW = SET;
@@ -570,7 +752,7 @@ void start_extract_ice(void)
                     else {  }
                 }
 
-                /* 250929 CH.PARK ø™»∏¿¸ ¥Ÿ «œ∞Ì µµæÓ ¥Ÿ ø≠∏Æ∞Ì 1√  »ƒ √ﬂ√‚ µø¿€ Ω√¿€  */
+                /* 250929 CH.PARK Ïó≠ÌöåÏ†Ñ Îã§ ÌïòÍ≥† ÎèÑÏñ¥ Îã§ Ïó¥Î¶¨Í≥† 1Ï¥à ÌõÑ Ï∂îÏ∂ú ÎèôÏûë ÏãúÏûë  */
                 gu8IceOutCCWInterval = FEEDER_MOTOR_DELAY_TIME;
 
                 if(u8IceOutState == ICE_SELECT__ICE_WATER)
@@ -582,96 +764,75 @@ void start_extract_ice(void)
                 else {  }
             }
             else {  }
+
+            gu16DoorOpenPulse = 0;
+            gu16IceExtractTimer = 0;
+
             break;
 
         case STATE_10_ICE_EXTRACT_STATE :
             if( F_IceBreak == CLEAR )
             {
-                /* ¿œπ›æÛ¿Ω */
+                /* ÏùºÎ∞òÏñºÏùå */
                 F_IceBreak_Motor_Out = CLEAR;
 
-                /* 2025-09-18 @CH.PARK ¥‹∞Ë∫∞ æÛ¿Ω √ﬂ√‚ Ω√∞£¿∫
-                Ω«¡¶ ««¥ı ¡§»∏¿¸ Ω√∞£¿∏∑Œ ∆«¥‹«œµµ∑œ ∫Ø∞Ê (√ﬂ√‚Ω√∞£ ø¿¬˜ ∞≥º±) */
+                /* 2025-09-18 @CH.PARK Îã®Í≥ÑÎ≥Ñ ÏñºÏùå Ï∂îÏ∂ú ÏãúÍ∞ÑÏùÄ
+                Ïã§Ï†ú ÌîºÎçî Ï†ïÌöåÏ†Ñ ÏãúÍ∞ÑÏúºÎ°ú ÌåêÎã®ÌïòÎèÑÎ°ù Î≥ÄÍ≤Ω (Ï∂îÏ∂úÏãúÍ∞Ñ Ïò§Ï∞® Í∞úÏÑ†) */
                 if(gu8_ice_out_continue == SET)
                 {
-                    // (¿œπ›æÛ¿Ω) 3√ ON/1√ OFF ¿œ ∂ß Ω«¡¶ µø¿€ Ω√∞£¿∫ 90√ 
-                    ice_extract_timer = 900;
+                    // (ÏùºÎ∞òÏñºÏùå) 3Ï¥àON/1Ï¥àOFF Ïùº Îïå Ïã§Ï†ú ÎèôÏûë ÏãúÍ∞ÑÏùÄ 90Ï¥à
+                    gu16IceExtractTimer = 900;
                 }
                 else
                 {
-                    if(gu8_ice_amount_step == ICE_LEVEL_1_STEP)
+                    if(gu16IceExtractTimer == 0)
                     {
-                        ice_extract_timer = ICE_OUT_1_STEP_TIME;
+                        gu16IceExtractTimer
+                        = DecisionFeederOnTime(gu8_ice_amount_step, IcePosition.f32IceFrontPercent, IceAmountConversion((U8)F_IceLack, (U8)F_IceFull));
                     }
-                    else if(gu8_ice_amount_step == ICE_LEVEL_2_STEP)
-                    {
-                        ice_extract_timer = ICE_OUT_2_STEP_TIME;
-                    }
-                    else if(gu8_ice_amount_step == ICE_LEVEL_3_STEP)
-                    {
-                        ice_extract_timer = ICE_OUT_3_STEP_TIME;
-                    }
-                    else if(gu8_ice_amount_step == ICE_LEVEL_4_STEP)
-                    {
-                        ice_extract_timer = ICE_OUT_4_STEP_TIME;
-                    }
-                    else
-                    {
-                        ice_extract_timer = 30;
-                    }
+                    else {  }
                 }
             }
             else
             {
-                /* ¡∂∞¢æÛ¿Ω */
+                /* Ï°∞Í∞ÅÏñºÏùå */
                 F_IceBreak_Motor_Out = SET;
-
-                /* æÛ¿Ω º≥¡§ø° µ˚∏• √ﬂ√‚ Ω√∞£ ∫Œø© 250317 CH.PARK */
-                if(gu8_ice_amount_step == ICE_LEVEL_1_STEP)
-                {
-                    ice_extract_timer = 250;    /* 25√  */
-                }
-                else if(gu8_ice_amount_step == ICE_LEVEL_2_STEP)
-                {
-                    ice_extract_timer = 390;        /* 39√  */
-                }
-                else if(gu8_ice_amount_step == ICE_LEVEL_3_STEP)
-                {
-                    ice_extract_timer = 530;        /* 53√  */
-                }
-                else if(gu8_ice_amount_step == ICE_LEVEL_4_STEP)
-                {
-                    ice_extract_timer = 760;        /* ¿”√§»Ò¥‘ 4Ω√37∫– ∏ﬁ¿œªÛ ªÁæÁ∫Ø∞Ê ø‰√ªªÁ«◊ ¿˚øÎ : [76√ ] 250730 CH.PARK */
-                }
-                else
-                {
-                    ice_extract_timer = 250;
-                }
-
-                action_time_unit = 20;  // ¡∂∞¢æÛ¿Ω Ω√ ««¥ı µø¿€ Ω√∞£: 20 * 100ms = 2√ 
-                idle_time_unit = 10;    // ¡∂∞¢æÛ¿Ω Ω√ ««¥ı ¡§¡ˆ Ω√∞£: 10 * 100ms = 1√ 
-
-                // ∞ËªÍΩƒ ¿˚øÎ
-                cycle_time_unit = (action_time_unit + idle_time_unit);       // 1ªÁ¿Ã≈¨ 3√ 
-                num_cycles = (ice_extract_timer / cycle_time_unit);          // ¿¸√º ªÁ¿Ã≈¨ »Ωºˆ
-                remaining_time_unit = (ice_extract_timer % cycle_time_unit); // ªÁ¿Ã≈¨¥Á µø¿€Ω√∞£ ≥™∏”¡ˆ
-
-                /* 2025-09-18 CH.PARK ««¥ı µø¿€Ω√∞£ ±‚¡ÿ √÷¡æ ¡∂∞¢æÛ¿Ω √ﬂ√‚Ω√∞£ µµ√‚ (Ω«¡¶ √ﬂ√‚Ω√∞£¿∫ 25√  ±‚¡ÿ) */
+                /* 2025-09-18 CH.PARK ÌîºÎçî ÎèôÏûëÏãúÍ∞Ñ Í∏∞Ï§Ä ÏµúÏ¢Ö Ï°∞Í∞ÅÏñºÏùå Ï∂îÏ∂úÏãúÍ∞Ñ ÎèÑÏ∂ú (Ïã§Ï†ú Ï∂îÏ∂úÏãúÍ∞ÑÏùÄ 25Ï¥à Í∏∞Ï§Ä) */
                 if(gu8_ice_out_continue == SET)
                 {
-                    // (¡∂∞¢æÛ¿Ω) 2√ ON/1√ OFF ¿œ ∂ß Ω«¡¶ µø¿€ Ω√∞£¿∫ 80√ 
-                    ice_extract_timer = 800;
+                    // (Ï°∞Í∞ÅÏñºÏùå) 2Ï¥àON/1Ï¥àOFF Ïùº Îïå Ïã§Ï†ú ÎèôÏûë ÏãúÍ∞ÑÏùÄ 80Ï¥à
+                    gu16IceExtractTimer = 800;
                 }
                 else
                 {
-                    ice_extract_timer = (num_cycles * action_time_unit) + (remaining_time_unit > action_time_unit ? action_time_unit : remaining_time_unit);
+                    /* ÏñºÏùå ÏÑ§Ï†ïÏóê Îî∞Î•∏ Ï∂îÏ∂ú ÏãúÍ∞Ñ Î∂ÄÏó¨ 250317 CH.PARK */
+                    if(gu8_ice_amount_step == ICE_LEVEL_1_STEP)
+                    {
+                        gu16IceExtractTimer = 250;    /* 25Ï¥à */
+                    }
+                    else if(gu8_ice_amount_step == ICE_LEVEL_2_STEP)
+                    {
+                        gu16IceExtractTimer = 390;        /* 39Ï¥à */
+                    }
+                    else if(gu8_ice_amount_step == ICE_LEVEL_3_STEP)
+                    {
+                        gu16IceExtractTimer = 530;        /* 53Ï¥à */
+                    }
+                    else if(gu8_ice_amount_step == ICE_LEVEL_4_STEP)
+                    {
+                        gu16IceExtractTimer = 760;        /* ÏûÑÏ±ÑÌù¨Îãò 4Ïãú37Î∂Ñ Î©îÏùºÏÉÅ ÏÇ¨ÏñëÎ≥ÄÍ≤Ω ÏöîÏ≤≠ÏÇ¨Ìï≠ Ï†ÅÏö© : [76Ï¥à] 250730 CH.PARK */
+                    }
+                    else
+                    {
+                        gu16IceExtractTimer = 250;
+                    }
                 }
             }
 
-            /* 2025-09-18 CH.PARK ««¥ı µø¿€Ω√∞£ ±‚¡ÿ √÷¡æ ¡∂∞¢æÛ¿Ω √ﬂ√‚Ω√∞£ µµ√‚ (Ω«¡¶ √ﬂ√‚Ω√∞£¿∫ 25√  ±‚¡ÿ) */
+            /* 2025-09-18 CH.PARK ÌîºÎçî ÎèôÏûëÏãúÍ∞Ñ Í∏∞Ï§Ä ÏµúÏ¢Ö Ï°∞Í∞ÅÏñºÏùå Ï∂îÏ∂úÏãúÍ∞Ñ ÎèÑÏ∂ú (Ïã§Ï†ú Ï∂îÏ∂úÏãúÍ∞ÑÏùÄ 25Ï¥à Í∏∞Ï§Ä) */
             gu16_ice_out_timer = gu16_ice_extract_timer_100ms;
 
-            if( gu16_ice_out_timer >= ice_extract_timer )
+            if( gu16_ice_out_timer >= gu16IceExtractTimer )
             {
                 gu8_Ice_Out_Step = STATE_50_ICEWATER_EXTRACT_FINISH_STATE;
                 gu16_ice_out_timer = 0;
@@ -679,14 +840,14 @@ void start_extract_ice(void)
             else{}
             break;
 
-        /* æÛ¿Ω≈‰√‚ øœ∑· »ƒ 1√  ∞£ µÙ∑π¿Ã π◊ ¿Ø∑Æ º±∞ËªÍ */
+        /* ÏñºÏùåÌÜ†Ï∂ú ÏôÑÎ£å ÌõÑ 1Ï¥à Í∞Ñ ÎîúÎ†àÏù¥ Î∞è Ïú†Îüâ ÏÑ†Í≥ÑÏÇ∞ */
         case STATE_11_ICE_DELAY_1S_STATE :
             gu16_ice_out_timer++;
             if( gu16_ice_out_timer >= 10 )
             {
                 gu16_ice_out_timer = 0;
                 gu8_Ice_Out_Step = STATE_20_ICEWATER_COLD_FFED_ON_STATE;
-                /*..hui [25-1-10ø¿»ƒ 1:42:45] √ﬂ√‚ π∞∑Æ »Æ¿Œ..*/
+                /*..hui [25-1-10Ïò§ÌõÑ 1:42:45] Ï∂îÏ∂ú Î¨ºÎüâ ÌôïÏù∏..*/
                 cold_effluent_hz();
             }
             else{}
@@ -697,7 +858,7 @@ void start_extract_ice(void)
         case STATE_20_ICEWATER_COLD_FFED_ON_STATE :
             gu16_ice_out_timer++;
 
-            /* ø©±‚º≠ ≥√ºˆ √ﬂ√‚πÎ∫Í ON */
+            /* Ïó¨Í∏∞ÏÑú ÎÉâÏàò Ï∂îÏ∂úÎ∞∏Î∏å ON */
             if( gu16_ice_out_timer >= 10 ) // VALVE_CONTROL_TIME_FOR_DEBUG
             {
                 gu16_ice_out_timer = 0;
@@ -706,12 +867,12 @@ void start_extract_ice(void)
             else{}
             break;
 
-        /* æÛ¿Ωπ∞¿ª ¿ß«— ≥√ºˆ √ﬂ√‚ Ω√¿€ */
+        /* ÏñºÏùåÎ¨ºÏùÑ ÏúÑÌïú ÎÉâÏàò Ï∂îÏ∂ú ÏãúÏûë */
         case STATE_30_ICEWATER_EXTRACT_VALVE_ON_STATE :
             gu16_ice_out_timer++;
 
-            /* ø©±‚º≠ ≥√ºˆ ¿‘ºˆπÎ∫Í ON */
-            /* ±‚¡∏ mini,1kgøÕ ¥Ÿ∏£∞‘ 2kg¥¬ ≥√ºˆ¿¸øÎ æÛ¿Ωπ∞ √ﬂ√‚πÎ∫Í ON¿∏∑Œ ∫Ø∞Ê */
+            /* Ïó¨Í∏∞ÏÑú ÎÉâÏàò ÏûÖÏàòÎ∞∏Î∏å ON */
+            /* Í∏∞Ï°¥ mini,1kgÏôÄ Îã§Î•¥Í≤å 2kgÎäî ÎÉâÏàòÏ†ÑÏö© ÏñºÏùåÎ¨º Ï∂îÏ∂úÎ∞∏Î∏å ONÏúºÎ°ú Î≥ÄÍ≤Ω */
             if( gu16_ice_out_timer >= 10 )
             {
                 gu16_ice_out_timer = 0;
@@ -725,7 +886,7 @@ void start_extract_ice(void)
 /******************************************************************************************/
 /******************************************************************************************/
         case STATE_31_ICEWATER_EXTRACT_STATE :
-            /* √ﬂ√‚øœ∑·!! */
+            /* Ï∂îÏ∂úÏôÑÎ£å!! */
             if( F_Effluent_OK == SET )
             {
                 gu16_ice_out_timer = 0;
@@ -756,7 +917,7 @@ void start_extract_ice(void)
         case STATE_41_ICEWATER_COLD_FEED_OFF_STATE :
             gu16_ice_out_timer++;
 
-            /*..ø©±‚º≠ ≥√ºˆ ¿‘ºˆ πÎ∫Í CLOSE.. (∏¬¿Ω) */
+            /*..Ïó¨Í∏∞ÏÑú ÎÉâÏàò ÏûÖÏàò Î∞∏Î∏å CLOSE.. (ÎßûÏùå) */
             if( gu16_ice_out_timer >= 10 )
             {
                 gu16_ice_out_timer = 0;
@@ -767,7 +928,7 @@ void start_extract_ice(void)
             break;
 
         case STATE_50_ICEWATER_EXTRACT_FINISH_STATE :
-            /* ø©±‚º≠ æÛ¿Ωπ∞ ≥√ºˆ √ﬂ√‚ πÎ∫Í CLOSE */
+            /* Ïó¨Í∏∞ÏÑú ÏñºÏùåÎ¨º ÎÉâÏàò Ï∂îÏ∂ú Î∞∏Î∏å CLOSE */
             ice_extraction_finish();
             gu8_Ice_Out_Step = 0;
             gu16_ice_out_timer = 0;
@@ -802,10 +963,10 @@ void continued_extract_control(void)
             gu16Water_Extract_Timer = 0;
             u16Efluent_Time = 0;
 
-            /*..hui [18-1-11i?¢¥i?? 11:12:11] i?°∆i¢”çi¢“°±i¢“©´ i??i°◊¢Ê..*/
+            /*..hui [18-1-11i?¬§i?? 11:12:11] i?¬∞i‚Ä†Îõ¶¬∂‚Äùi¬∂≈ì i??i¬ß‚Ç¨..*/
             u8Extract_Continue = CLEAR;
 
-            /*..hui [18-3-14i?¢¥i?? 3:50:40] i??e?¢∂i¢“°±i¢“©´ i°À°¶e°Ã®´..*/
+            /*..hui [18-3-14i?¬§i?? 3:50:40] i??e?‚Ä∞i¬∂‚Äùi¬∂≈ì iÔø†‚Ä¶eÔø°≈í..*/
             F_WaterOut_Disable_State = SET;
             gu16_extract_display_hz = 0;
             play_melody_extract_complete_194();
@@ -825,7 +986,7 @@ void start_effluent_coffee_drip(void)
     U8 mu8_finish = 0;
     U8 mu8_time = 0;
 
-	// [25-06-04] MYøˆ≈Õ»ƒ √ﬂ√‚«ﬂ¿ª Ω√ø°, ∏∂¿Ã øˆ≈Õ ≥™ø√ ºˆ ¿÷µµ∑œ ºˆ¡§
+	// [25-06-04] MYÏõåÌÑ∞ÌõÑ Ï∂îÏ∂úÌñàÏùÑ ÏãúÏóê, ÎßàÏù¥ ÏõåÌÑ∞ ÎÇòÏò¨ Ïàò ÏûàÎèÑÎ°ù ÏàòÏ†ï
 	if(bit_myWater_setting_start == SET)
 	{
 		gu16_water_select_return_time = 0;
@@ -836,7 +997,7 @@ void start_effluent_coffee_drip(void)
     {
         case STATE_0_STANDBY_STATE :
 
-            /*..hui [18-8-27ø¿»ƒ 6:35:25] √ﬂ√‚¥Î±‚..*/
+            /*..hui [18-8-27Ïò§ÌõÑ 6:35:25] Ï∂îÏ∂úÎåÄÍ∏∞..*/
             gu8_effluent_timer++;
 
             if( gu8_effluent_timer >= VALVE_CONTROL_TIME_FOR_DEBUG )
@@ -850,8 +1011,8 @@ void start_effluent_coffee_drip(void)
 
         case STATE_10_WATER_IN_FEED_ON_STATE :
 
-            /*..hui [25-1-9ø¿»ƒ 1:43:13] ≥√ºˆ/¡§ºˆ ¿‘ºˆ πÎ∫Í OPEN, ≥√ºˆ π∞≥—ƒß πÎ∫Í CLOSE..*/
-            /*..hui [25-1-9ø¿»ƒ 1:46:49] ø¬ºˆ¥¬ ø©±‚º≠ ø¿πˆ«√∑ŒøÏ NOS πÎ∫Í CLOSE «ÿ≥ı¿Ω..*/
+            /*..hui [25-1-9Ïò§ÌõÑ 1:43:13] ÎÉâÏàò/Ï†ïÏàò ÏûÖÏàò Î∞∏Î∏å OPEN, ÎÉâÏàò Î¨ºÎÑòÏπ® Î∞∏Î∏å CLOSE..*/
+            /*..hui [25-1-9Ïò§ÌõÑ 1:46:49] Ïò®ÏàòÎäî Ïó¨Í∏∞ÏÑú Ïò§Î≤ÑÌîåÎ°úÏö∞ NOS Î∞∏Î∏å CLOSE Ìï¥ÎÜìÏùå..*/
             gu8_effluent_timer++;
 
             if(gu8_effluent_timer >= VALVE_CONTROL_TIME_FOR_DEBUG)
@@ -886,7 +1047,7 @@ void start_effluent_coffee_drip(void)
             	mu8_finish = SET;
 			}
 #endif
-            /*.. sean [25-01-16] øπø≠ »ƒ, ø¬ºˆ Drain¿∏∑Œ π∞πˆ∏≤ ¡¯«‡..*/
+            /*.. sean [25-01-16] ÏòàÏó¥ ÌõÑ, Ïò®Ïàò DrainÏúºÎ°ú Î¨ºÎ≤ÑÎ¶º ÏßÑÌñâ..*/
             if(mu8_finish == SET)
             {
 				if(drip_timer < 120)
@@ -907,9 +1068,9 @@ void start_effluent_coffee_drip(void)
 
             gu8_effluent_timer++;
 
-            // [25-05-27 14:40:03] yspark, √π¿‹∏∏ πˆ∆€≈ ≈© π∞√§øÚ µø¿€ ºˆ«‡
+            // [25-05-27 14:40:03] yspark, Ï≤´ÏûîÎßå Î≤ÑÌçºÌÉ±ÌÅ¨ Î¨ºÏ±ÑÏõÄ ÎèôÏûë ÏàòÌñâ
             if (F_firstEffluent_hotWater)
-            {  // µ—¬∞ ¿‹ ¿ÃªÛ
+            {  // ÎëòÏß∏ Ïûî Ïù¥ÏÉÅ
                 if(gu8_effluent_timer >= 0)
                 {
                     gu8_Water_Out_Step = STATE_22_HOT_PRE_HEATING_BUFFER_DRAIN_COMPLETE_STATE;
@@ -918,10 +1079,10 @@ void start_effluent_coffee_drip(void)
                 else{}
             }
             else
-            {  // √π¿‹
+            {  // Ï≤´Ïûî
             	 if(u8Target_Hz_Hot > gu8_hot_filling_max_hz) {gu8_effluent_timer = 30;}
 
-            	  // °⁄2025-06-11 Phil
+            	  // ‚òÖ2025-06-11 Phil
             	  	if (( ( gu8_hot_setting_temperature == HOT_SET_TEMP____100oC )
 								|| ( gu8_hot_setting_temperature == HOT_SET_TEMP____95oC )
 								|| ( gu8_hot_setting_temperature == HOT_SET_TEMP____90oC )
@@ -956,8 +1117,8 @@ void start_effluent_coffee_drip(void)
 
         case STATE_30_EXTRACT_VALVE_ON_STATE :
 
-            /*..hui [25-1-9ø¿»ƒ 1:45:20] √÷¡æ √ﬂ√‚ πÎ∫Í ON..*/
-            /*..hui [25-1-9ø¿»ƒ 1:45:28] ø¬ºˆ¥¬ ø¬ºˆ √ﬂ√‚ πÎ∫Í ON..*/
+            /*..hui [25-1-9Ïò§ÌõÑ 1:45:20] ÏµúÏ¢Ö Ï∂îÏ∂ú Î∞∏Î∏å ON..*/
+            /*..hui [25-1-9Ïò§ÌõÑ 1:45:28] Ïò®ÏàòÎäî Ïò®Ïàò Ï∂îÏ∂ú Î∞∏Î∏å ON..*/
             gu8_effluent_timer++;
 
             if(gu8_effluent_timer >= VALVE_CONTROL_TIME_FOR_DEBUG)
@@ -973,7 +1134,7 @@ void start_effluent_coffee_drip(void)
 /******************************************************************************************/
 /******************************************************************************************/
         case STATE_31_WATER_EXTRACT_STATE :
-            /*..hui [18-11-14ø¿»ƒ 3:33:23] π∞ √ﬂ√‚ Ω√¿€..*/
+            /*..hui [18-11-14Ïò§ÌõÑ 3:33:23] Î¨º Ï∂îÏ∂ú ÏãúÏûë..*/
             if(F_Effluent_OK == SET)
             {
                 F_WaterOut = CLEAR;
@@ -994,7 +1155,7 @@ void start_effluent_coffee_drip(void)
 			{
                 gu8_Water_Out_Step = STATE_50_FIRST_STANDBY_STATE;
 				F_first_Drip_standby = SET;
-				//sync ∏¬√ﬂ±‚ ¿ß«ÿº≠ timer ºˆ¡§ 20%
+				//sync ÎßûÏ∂îÍ∏∞ ÏúÑÌï¥ÏÑú timer ÏàòÏ†ï 20%
 				if(drip_timer < 240)
 					drip_timer = 240;
 				else{}
@@ -1004,7 +1165,7 @@ void start_effluent_coffee_drip(void)
 			{
                 gu8_Water_Out_Step = STATE_51_SECOND_STANDBY_STATE;
 				F_second_Drip_standby = SET;
-				//sync ∏¬√ﬂ±‚ ¿ß«ÿº≠ timer ºˆ¡§ 60%
+				//sync ÎßûÏ∂îÍ∏∞ ÏúÑÌï¥ÏÑú timer ÏàòÏ†ï 60%
 					if(drip_timer < 720)
 						drip_timer = 720;
 					else {}
@@ -1016,7 +1177,7 @@ void start_effluent_coffee_drip(void)
 
         case STATE_32_WATER_AIR_VENT_STATE :
             gu8_air_vent_timer--;
-            /*..hui [18-11-14ø¿»ƒ 3:33:23] π∞ √ﬂ√‚ Ω√¿€..*/
+            /*..hui [18-11-14Ïò§ÌõÑ 3:33:23] Î¨º Ï∂îÏ∂ú ÏãúÏûë..*/
             if(gu8_air_vent_timer == 0)
             {
                 gu8_Water_Out_Step = STATE_31_WATER_EXTRACT_STATE;
@@ -1038,7 +1199,7 @@ void start_effluent_coffee_drip(void)
             break;
 
         case STATE_50_FIRST_STANDBY_STATE :
-            /*..hui [18-11-14ø¿»ƒ 3:33:23] π∞ √ﬂ√‚ Ω√¿€..*/
+            /*..hui [18-11-14Ïò§ÌõÑ 3:33:23] Î¨º Ï∂îÏ∂ú ÏãúÏûë..*/
             if( gu16_drip_standby_timer > 0 )
             {
             	gu16_drip_standby_timer--;
@@ -1052,14 +1213,14 @@ void start_effluent_coffee_drip(void)
 
 
         case STATE_51_SECOND_STANDBY_STATE :
-            /*..hui [18-11-14ø¿»ƒ 3:33:23] π∞ √ﬂ√‚ Ω√¿€..*/
+            /*..hui [18-11-14Ïò§ÌõÑ 3:33:23] Î¨º Ï∂îÏ∂ú ÏãúÏûë..*/
             if( gu16_drip_standby_timer > 0 )
             {
             	gu16_drip_standby_timer--;
 #if 0
 				if( (F_first_Drip_standby  == SET) && (F_second_Drip_standby  == SET))
 				{
-					//sync ∏¬√ﬂ±‚ ¿ß«ÿº≠ timer ºˆ¡§ 90%
+					//sync ÎßûÏ∂îÍ∏∞ ÏúÑÌï¥ÏÑú timer ÏàòÏ†ï 90%
 					if(drip_timer < 1080)
 						drip_timer = 1080;
 					else {}
@@ -1070,7 +1231,7 @@ void start_effluent_coffee_drip(void)
             {
 				if( (F_first_Drip_standby  == SET) && (F_second_Drip_standby  == SET))
 				{
-					//sync ∏¬√ﬂ±‚ ¿ß«ÿº≠ timer ºˆ¡§ 90%
+					//sync ÎßûÏ∂îÍ∏∞ ÏúÑÌï¥ÏÑú timer ÏàòÏ†ï 90%
 					if(drip_timer < 1080)
 						drip_timer = 1080;
 					else {}
@@ -1100,7 +1261,7 @@ void stop_effluent_dripcoffee(void)
 	}
 	else {}
 
-    /*..sean [25-06-12] √ ±‚»≠ «ÿæﬂ«“ ∞ÊøÏø°¥¬ µÂ∏≥ƒø««µµ π´¡∂∞« √ ±‚»≠..*/
+    /*..sean [25-06-12] Ï¥àÍ∏∞Ìôî Ìï¥ÏïºÌï† Í≤ΩÏö∞ÏóêÎäî ÎìúÎ¶ΩÏª§ÌîºÎèÑ Î¨¥Ï°∞Í±¥ Ï¥àÍ∏∞Ìôî..*/
 	F_first_Drip_standby = CLEAR;
 	F_second_Drip_standby = CLEAR;
 	drip_timer = 0;
@@ -1137,9 +1298,9 @@ void stop_effluent_dripcoffee(void)
 					}
 					else{}
 
-                    /* sean [25-06-06] πˆ∆∞¿ª ¿ÃøÎ«— ¡æ∑·µµ ∏∑¥¬∞Õ¿∏∑Œ */
+                    /* sean [25-06-06] Î≤ÑÌäºÏùÑ Ïù¥Ïö©Ìïú Ï¢ÖÎ£åÎèÑ ÎßâÎäîÍ≤ÉÏúºÎ°ú */
                     F_WaterOut_Disable_State = SET;
-                    /*..sean [25-06-10] drip timerµµ √ ±‚»≠ ..*/
+                    /*..sean [25-06-10] drip timerÎèÑ Ï¥àÍ∏∞Ìôî ..*/
                     drip_timer = 0;
                     gu8_dripcoffee_percent = 0;
 					break;
@@ -1190,9 +1351,9 @@ static void IceFrontPercentIncrease(U8 u8IceOut)
     {
         IcePosition.u8IceOutStatusOld = IcePosition.u8IceOutStatus;
 
-        if(IcePosition.u8IceOutStatus == 1)
+        if(IcePosition.u8IceOutStatus == SET)
         {
-            // √ﬂ√‚¡ﬂ -> √ﬂ√‚øœ∑· Ω√ √— √ﬂ√‚Ω√∞£ πÈæ˜
+            // Ï∂îÏ∂úÏ§ë -> Ï∂îÏ∂úÏôÑÎ£å Ïãú Ï¥ù Ï∂îÏ∂úÏãúÍ∞Ñ Î∞±ÏóÖ
             IcePosition.u8IceFrontCheck = SET;
         }
         else
@@ -1203,26 +1364,45 @@ static void IceFrontPercentIncrease(U8 u8IceOut)
 
     if(IcePosition.u8IceFrontCheck == SET)
     {
-        // æÛ¿Ω¿ßƒ° √º≈©
-        IcePosition.u16BeforeIceOutTime++;
-        if(IcePosition.u16BeforeIceOutTime >= 100)    // 10√  ¿ÃªÛ
+        IcePosition.u16LeaveTime = 0;
+        IcePosition.u8LeaveCheck = CLEAR;
+        if(pMOTOR_ICE_OUT_CCW == SET)
         {
-            IcePosition.u16BeforeIceOutTime = 0;
-            // ¥©¿˚ 10√  ¿ÃªÛ∏∂¥Ÿ front percentage ªÛΩ¬
-            IcePosition.f32IceFrontPercent += 0.10F;  // √ﬂ√‚Ω√∞£ 10%æø ∞®º“
+            // ÏñºÏùåÏúÑÏπò Ï≤¥ÌÅ¨
+            IcePosition.u16BeforeIceOutTime++;
+            if(IcePosition.u16BeforeIceOutTime >= ICE_FRONT_DETECT_TIME)
+            {
+                // ÎàÑÏ†Å 4Ï¥à Ïù¥ÏÉÅÎßàÎã§ front percentage ÏÉÅÏäπ
+                IcePosition.u16BeforeIceOutTime = 0;
+                IcePosition.f32IceFrontPercent += 0.1;  // Ï∂îÏ∂úÏãúÍ∞Ñ 10%Ïî© Í∞êÏÜå
+            }
+        }
+    }
+    else
+    {
+        if(IcePosition.u8LeaveCheck == CLEAR)
+        {
+            IcePosition.u16LeaveTime++;
+            if(IcePosition.u16LeaveTime >= ICE_LEAVE_TIME)
+            {
+                IcePosition.u16LeaveTime = 0;
+                IcePosition.f32IceFrontPercent += 0.5;
+                IcePosition.u8LeaveCheck = SET;
+            }
+
         }
     }
 
-    // ¿˙ Percent ∫Ò¿≤¿ª ∞°¡ˆ∞Ì æ’¿∏∑Œ πÃ¥¬ Ω√∞£¿ª ¡Ÿ¿œ¡ˆ,
-    // µ⁄∑Œ ø™»∏¿¸«œ¥¬ Ω√∞£¿∏∑Œ ¿˚øÎ«œ∞Ì πÃ¥¬ Ω√∞£¿ª ¿˚øÎ«“¡ˆ
-    // ª˝∞¢«ÿ∫¡æﬂµ 
+    // Ï†Ä Percent ÎπÑÏú®ÏùÑ Í∞ÄÏßÄÍ≥† ÏïûÏúºÎ°ú ÎØ∏Îäî ÏãúÍ∞ÑÏùÑ Ï§ÑÏùºÏßÄ,
+    // Îí§Î°ú Ïó≠ÌöåÏ†ÑÌïòÎäî ÏãúÍ∞ÑÏúºÎ°ú Ï†ÅÏö©ÌïòÍ≥† ÎØ∏Îäî ÏãúÍ∞ÑÏùÑ Ï†ÅÏö©Ìï†ÏßÄ
+    // ÏÉùÍ∞ÅÌï¥Î¥êÏïºÎê®
 
-    // IcePosition.f32IceFrontPercent¥¬ ∏∏∫˘¿Ã∞≈≥™, ºØ¥¬ ¡¶æÓ∞° µÈæÓ∞• ∂ß∏∂¥Ÿ ∞®º“Ω√ƒ—¡‡æﬂµ 
+    // IcePosition.f32IceFrontPercentÎäî ÎßåÎπôÏù¥Í±∞ÎÇò, ÏÑûÎäî Ï†úÏñ¥Í∞Ä Îì§Ïñ¥Í∞à ÎïåÎßàÎã§ Í∞êÏÜåÏãúÏºúÏ§òÏïºÎê®
 
-    // ≈¨∑•«Œ ªÛ≈¬ ¡¶«—
-    if(IcePosition.f32IceFrontPercent >= 1.0F)
+    // ÌÅ¥Îû®Ìïë ÏÉÅÌÉú Ï†úÌïú
+    if(IcePosition.f32IceFrontPercent >= 1.0)
     {
-        IcePosition.f32IceFrontPercent = 1.0F;
+        IcePosition.f32IceFrontPercent = 1.0;
     }
 }
 
@@ -1240,20 +1420,19 @@ static void IceFrontPercentDecrease(U8 u8IceStirStatus)
     switch(IcePosition.u8IceStirStatus)
     {
         case 0:
-        // æ¯¿Ω
+        // ÏóÜÏùå
         break;
 
-        case 0x01:    // 3√  ø™»∏¿¸
-        IcePosition.f32IceFrontPercent -= 0.12F;
+        case 0x01:    // 2Ï¥à Ïó≠ÌöåÏ†Ñ
+        IcePosition.f32IceFrontPercent -= 0.2;
         break;
 
-        case 0x02:    // 1√  ø™»∏¿¸
-        IcePosition.f32IceFrontPercent -= 0.06F;
+        case 0x02:    // 1Ï¥à Ïó≠ÌöåÏ†Ñ
+        IcePosition.f32IceFrontPercent -= 0.1;
         break;
 
-        case 0x04:    // ∏∏∫˘ Ω√ ¡÷±‚¿˚ ºØ±‚
-        IcePosition.f32IceFrontPercent -= 0.03F;
-
+        case 0x04:    // ÎßåÎπô Ïãú Ï£ºÍ∏∞Ï†Å ÏÑûÍ∏∞
+        // IcePosition.f32IceFrontPercent -= 0.1;
         break;
 
         case 0x08:
@@ -1281,34 +1460,37 @@ static void IceFrontPercentDecrease(U8 u8IceStirStatus)
         break;
     }
 
-    // «œ«—ƒ° ≈¨∑•«Œ
-    if(IcePosition.f32IceFrontPercent < 0.0F)
+    // ÌïòÌïúÏπò ÌÅ¥Îû®Ìïë
+    if(IcePosition.f32IceFrontPercent < 0)
     {
-        IcePosition.f32IceFrontPercent = 0.0F;
+        IcePosition.f32IceFrontPercent = 0;
+
+        // ÏïûÏúºÎ°ú Ïè†Î¶ºÏ†ïÎèÑÍ∞Ä 0ÏúºÎ°ú Í∞îÏúºÎ©¥ ÎàÑÏ†Å ÏñºÏùå Ï∂îÏ∂úÏãúÍ∞ÑÏùÄ Ï¥àÍ∏∞Ìôî
+        IcePosition.u16BeforeIceOutTime = 0;
     }
 }
 
 /**
- * @brief √ﬂ¡§µ» æÛ¿Ω ¿ßƒ°ø° µ˚∏• æÛ¿Ω √ﬂ√‚ Ω√∞£ ∞ËªÍ π◊ √ﬂ√‚ ¡¶æÓ «‘ºˆ
+ * @brief Ï∂îÏ†ïÎêú ÏñºÏùå ÏúÑÏπòÏóê Îî∞Î•∏ ÏñºÏùå Ï∂îÏ∂ú ÏãúÍ∞Ñ Í≥ÑÏÇ∞ Î∞è Ï∂îÏ∂ú Ï†úÏñ¥ Ìï®Ïàò
  *
  */
 void IcePositionManager(void)
 {
     U8 u8IceStirStatus = 0;
 
-    // 3√  ø™»∏¿¸
+    // 3Ï¥à Ïó≠ÌöåÏ†Ñ
     if(bit_ice_out_back_state == SET)
     {
         u8IceStirStatus |= 0x01;  // bit 0
     }
 
-    // 1√  ø™»∏¿¸
+    // 1Ï¥à Ïó≠ÌöåÏ†Ñ
     if(bit_ice_out_back_1s_state == SET)
     {
         u8IceStirStatus |= 0x02;  // bit 1
     }
 
-    // ∏∏∫˘ Ω√ ¡÷±‚¿˚ ºØ±‚
+    // ÎßåÎπô Ïãú Ï£ºÍ∏∞Ï†Å ÏÑûÍ∏∞
     if(bit_ice_shake_state == SET)
     {
         u8IceStirStatus |= 0x04;  // bit 2

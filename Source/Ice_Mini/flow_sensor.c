@@ -86,7 +86,7 @@ void INTP11_Flow_Sensor_Input(void)
     {
         if( gu8_Water_Out_Step == STATE_31_WATER_EXTRACT_STATE )
         {
-            /*..yspark [25-2-17¿ÀÈÄ 17:00:40] ¿¬¼ÓÃßÃâ ½Ã°£ Á¦¾î Ãß°¡(¸±·¹ÀÌ ¹İº¹ ON/OFF ¹ö±× °³¼±)..*/
+            /*..yspark [25-2-17ì˜¤í›„ 17:00:40] ì—°ì†ì¶”ì¶œ ì‹œê°„ ì œì–´ ì¶”ê°€(ë¦´ë ˆì´ ë°˜ë³µ ON/OFF ë²„ê·¸ ê°œì„ )..*/
             if (u8Extract_Continue == SET)
             {
                 gu16Extracted_Hz++;
@@ -125,12 +125,12 @@ void INTP11_Flow_Sensor_Input(void)
                 if( (gu16Effluent_Hz == 0) && (u8Extract_Continue == CLEAR) )
                 {
                     F_Effluent_OK = SET;
-                    /*..yspark [25-2-17¿ÀÈÄ 17:00:40] ¿¬¼ÓÃßÃâ ½Ã°£ Á¦¾î Ãß°¡(¸±·¹ÀÌ ¹İº¹ ON/OFF ¹ö±× °³¼±)..*/
-					u16Efluent_Time  = 0; // ¿¬¼ÓÃßÃâ ½Ã°£ °æ°ú Àü¿¡ ¸ñÇ¥¿ë·®(3L) ÃßÃâ ½Ã ÃßÃâ Á¾·á
+                    /*..yspark [25-2-17ì˜¤í›„ 17:00:40] ì—°ì†ì¶”ì¶œ ì‹œê°„ ì œì–´ ì¶”ê°€(ë¦´ë ˆì´ ë°˜ë³µ ON/OFF ë²„ê·¸ ê°œì„ )..*/
+					u16Efluent_Time  = 0; // ì—°ì†ì¶”ì¶œ ì‹œê°„ ê²½ê³¼ ì „ì— ëª©í‘œìš©ëŸ‰(3L) ì¶”ì¶œ ì‹œ ì¶”ì¶œ ì¢…ë£Œ
 
 					gu16Extracted_Hz  = 0;
 
-                    /*..hui [18-3-14¿ÀÈÄ 3:50:40] Á¤·®ÃßÃâ Á¾·á..*/
+                    /*..hui [18-3-14ì˜¤í›„ 3:50:40] ì •ëŸ‰ì¶”ì¶œ ì¢…ë£Œ..*/
                     F_WaterOut_Disable_State = SET;
                 }
                 else{}
@@ -168,7 +168,7 @@ void INTP11_Flow_Sensor_Input(void)
                     /*F_Effluent_OK = SET;*/
                     F_Hot_Filling_Finish = SET;
 
-                    /*..hui [18-3-14¿ÀÈÄ 3:50:40] Á¤·®ÃßÃâ Á¾·á..*/
+                    /*..hui [18-3-14ì˜¤í›„ 3:50:40] ì •ëŸ‰ì¶”ì¶œ ì¢…ë£Œ..*/
                     F_WaterOut_Disable_State = SET;
                 }
                 else{}
@@ -222,7 +222,7 @@ void INTP11_Flow_Sensor_Input(void)
         else{}
     }
 	
-	/*.. sean [25-01-21] tray ÀÔ¼ö À¯·®¼¾¼­ È®ÀÎ ÇÏ±â À§ÇØ Ãß°¡..*/
+	/*.. sean [25-01-21] tray ì…ìˆ˜ ìœ ëŸ‰ì„¼ì„œ í™•ì¸ í•˜ê¸° ìœ„í•´ ì¶”ê°€..*/
     if((gu8IceStep == STATE_20_WATER_IN_ICE_TRAY) 
     && ( F_WaterOut == CLEAR )
     )

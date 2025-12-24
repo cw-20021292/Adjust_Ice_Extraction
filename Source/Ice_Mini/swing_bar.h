@@ -30,17 +30,17 @@ extern ICE_STEP gu8IceStep;
 
 
 
-//#define CRISTAL_ON          6                      // ÀüÀÚ¼® ON
-//#define CRISTAL_OFF         4                      // ÀüÀÚ¼® OFF
+//#define CRISTAL_ON          6                      // ì „ìì„ ON
+//#define CRISTAL_OFF         4                      // ì „ìì„ OFF
 
-//#define CRISTAL_ON            4                      // ÀüÀÚ¼® ON
-//#define CRISTAL_OFF           2                      // ÀüÀÚ¼® OFF
+//#define CRISTAL_ON            4                      // ì „ìì„ ON
+//#define CRISTAL_OFF           2                      // ì „ìì„ OFF
 
-//#define CRISTAL_ON            2                      // ÀüÀÚ¼® ON
-//#define CRISTAL_OFF           4                      // ÀüÀÚ¼® OFF
+//#define CRISTAL_ON            2                      // ì „ìì„ ON
+//#define CRISTAL_OFF           4                      // ì „ìì„ OFF
 
-#define CRISTAL_ON            2                      // ÀüÀÚ¼® ON
-#define CRISTAL_OFF           6                      // ÀüÀÚ¼® OFF
+#define CRISTAL_ON            2                      // ì „ìì„ ON
+#define CRISTAL_OFF           6                      // ì „ìì„ OFF
 
 
 

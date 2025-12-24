@@ -1,12 +1,12 @@
 
 /*******************************************************************************
 &Description :
-  Á¦Ç°¿¡¼­ »ç¿ëÇÏ´Â WIFI ÇÔ¼ö File
+  ì œí’ˆì—ì„œ ì‚¬ìš©í•˜ëŠ” WIFI í•¨ìˆ˜ File
   
 &History : 
 
   ssg@coway.com 2024.05.30 update
-  - DATA ÀÌº¥Æ® Ã³¸® Ãß°¡
+  - DATA ì´ë²¤íŠ¸ ì²˜ë¦¬ ì¶”ê°€
 *******************************************************************************/
 
 #include "WIFI_Common.h"
@@ -30,7 +30,7 @@ U16 GetUserSystemRamWriteStatus ( U16 mu16Address )
 	return CLEAR;
 }
 
-/* Event Ã³¸® A1010, A1030, A1014*/
+/* Event ì²˜ë¦¬ A1010, A1030, A1014*/
 void SystemFunctionEventCheck(void)
 {
 	U8 u8EventCheck;
@@ -64,7 +64,7 @@ void SystemFunctionEventCheck(void)
 		{
 			if (u8EventCheck ==  WIFI_EVENT_CHECK_FUNC)
 			{
-				mu16CurVal = GetUserSystemFunction((pList+u16Index)->Id);  /* @2024-07-19 14:10:04 : mu16CurVal »èÁ¦ÇÏ°í Local·Î Ã³¸®...   */ 
+				mu16CurVal = GetUserSystemFunction((pList+u16Index)->Id);  /* @2024-07-19 14:10:04 : mu16CurVal ì‚­ì œí•˜ê³  Localë¡œ ì²˜ë¦¬...   */ 
 			}
 			else if (u8EventCheck ==  WIFI_EVENT_CHECK_ERR)
 			{
@@ -76,7 +76,7 @@ void SystemFunctionEventCheck(void)
 				mu8FuncAck = FALSE;
 			}
 
-			if (((pList+u16Index)->mu16PreVal[u16Index] != mu16CurVal)) 	// ÇöÀç°ª != ÀÌÀü°ª
+			if (((pList+u16Index)->mu16PreVal[u16Index] != mu16CurVal)) 	// í˜„ìž¬ê°’ != ì´ì „ê°’
 			{
 				if ((u8Functionini == TRUE)  )  // initial check 
 				{
@@ -88,7 +88,7 @@ void SystemFunctionEventCheck(void)
 						}
 						else
 						{
-							if (((pList+u16Index)->mu8EventForm == EVENT_ZERO_TO_OTHER) // A1014 DATA & [ZERO_TO_OTHER] DATA°¡ ÀÎ °æ¿ì º¯°æµÈ DATA°¡ [0]ÀÌ ¾Æ´Ò °æ¿ì¸¸ A1014 Àü¼Û
+							if (((pList+u16Index)->mu8EventForm == EVENT_ZERO_TO_OTHER) // A1014 DATA & [ZERO_TO_OTHER] DATAê°€ ì¸ ê²½ìš° ë³€ê²½ëœ DATAê°€ [0]ì´ ì•„ë‹ ê²½ìš°ë§Œ A1014 ì „ì†¡
 								&& ((pList+u16Index)->mu16PreVal[u16Index] != 0) 
 								&& (mu16CurVal == 0 ))
 							{
@@ -125,27 +125,27 @@ void SystemFunctionEventCheck(void)
 						// if (((pList+u16Index)->Id >= 0xFFFF) || ((pList+u16Index)->Id <= 0xFFFF))
 						if ((pList+u16Index)->Id == 0xFFFF) // e.g.
 						{
-							if (mu16CurVal >= 30) // e.g. ÇÊÅÍ±³Ã¼ µµ·¡ÀÏ 30ÀÏ ÀÌÇÏ
+							if (mu16CurVal >= 30) // e.g. í•„í„°êµì²´ ë„ëž˜ì¼ 30ì¼ ì´í•˜
 							{
 								u8IsChangedStatus = TRUE;
 							}
 						}
-						else // DATA°¡ È¦¼ö ÀÏ °æ¿ì Event Àü¼Û  EX) ((pList+u16Index)->Id == WIFI_FUNC_0093_ICEMAKING_STAUTS) Á¦ºù½ºÅÜ µî
+						else // DATAê°€ í™€ìˆ˜ ì¼ ê²½ìš° Event ì „ì†¡  EX) ((pList+u16Index)->Id == WIFI_FUNC_0093_ICEMAKING_STAUTS) ì œë¹™ìŠ¤í… ë“±
 						{
-							if ((((mu16CurVal % 2) == TRUE) && ((pList+u16Index)->mu16PreVal[u16Index] < mu16CurVal)) // 1,3,5,7 .. [½ÃÀÛ] DATA ÀÎ °æ¿ì & ÀÌÀü°ªº¸´Ù ÇöÀç°ªÀÌ ´õ Å¬ °æ¿ì
-								|| (((pList+u16Index)->mu16PreVal[u16Index] != OFF) && (mu16CurVal == OFF)))		  // or ÀÌÀü°ªÀÌ 0ÀÌ ¾Æ´Ñ °ª¿¡¼­ --> ÇöÀçµ¥ÀÌÅÍ°¡ 0À¸·Î º¯°æ ½Ã 
+							if ((((mu16CurVal % 2) == TRUE) && ((pList+u16Index)->mu16PreVal[u16Index] < mu16CurVal)) // 1,3,5,7 .. [ì‹œìž‘] DATA ì¸ ê²½ìš° & ì´ì „ê°’ë³´ë‹¤ í˜„ìž¬ê°’ì´ ë” í´ ê²½ìš°
+								|| (((pList+u16Index)->mu16PreVal[u16Index] != OFF) && (mu16CurVal == OFF)))		  // or ì´ì „ê°’ì´ 0ì´ ì•„ë‹Œ ê°’ì—ì„œ --> í˜„ìž¬ë°ì´í„°ê°€ 0ìœ¼ë¡œ ë³€ê²½ ì‹œ 
 							{
 								u8IsChangedStatus = TRUE;
 							}
 						}
 					}
 				}
-				if (((pList+u16Index)->mu8EventForm == EVENT_ZERO_TO_ONE) 	// Going Ã³¸® (ÇöÀç°ªÀ¸·Î µ¤¾î¾²Áö ¾ÊÀ½)
+				if (((pList+u16Index)->mu8EventForm == EVENT_ZERO_TO_ONE) 	// Going ì²˜ë¦¬ (í˜„ìž¬ê°’ìœ¼ë¡œ ë®ì–´ì“°ì§€ ì•ŠìŒ)
 				&& ((pList+u16Index)->mu16PreVal[u16Index] >= mu16CurVal)
 				&& (mu16CurVal != 0))
 				{
 				}
-				else if (((pList+u16Index)->mu8EventForm == EVENT_SPECIFIC_CONDITION)	// Going Ã³¸® (ÇöÀç°ªÀ¸·Î µ¤¾î¾²Áö ¾ÊÀ½)
+				else if (((pList+u16Index)->mu8EventForm == EVENT_SPECIFIC_CONDITION)	// Going ì²˜ë¦¬ (í˜„ìž¬ê°’ìœ¼ë¡œ ë®ì–´ì“°ì§€ ì•ŠìŒ)
 				&& ((pList+u16Index)->mu16PreVal[u16Index] >= mu16CurVal)
 				&& (mu16CurVal != 0))	
 				{
@@ -155,7 +155,7 @@ void SystemFunctionEventCheck(void)
 					(pList+u16Index)->mu16PreVal[u16Index] = mu16CurVal;
 				}
 			}
-			else	// ÇöÀç°ª == ÀÌÀü°ª
+			else	// í˜„ìž¬ê°’ == ì´ì „ê°’
 			{
 				if (u8Functionini == TRUE)  // initial check
 				{
@@ -173,9 +173,9 @@ void SystemFunctionEventCheck(void)
 						{
 
 						}
-						else // DATA°¡ È¦¼ö ÀÏ °æ¿ì Event Ex) ½ºÅÜ µî
+						else // DATAê°€ í™€ìˆ˜ ì¼ ê²½ìš° Event Ex) ìŠ¤í… ë“±
 						{
-							if(((pList+u16Index)->mu16PreVal[u16Index] % 2) == 1) // È¦¼ö ÀÏ °æ¿ì : + 1 = (Going)
+							if(((pList+u16Index)->mu16PreVal[u16Index] % 2) == 1) // í™€ìˆ˜ ì¼ ê²½ìš° : + 1 = (Going)
 							{
 								(pList+u16Index)->mu16PreVal[u16Index]++;
 							}

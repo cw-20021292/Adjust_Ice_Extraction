@@ -169,7 +169,7 @@ void led_normal_state(void)
 
 void led_flushing_state(void)
 {
-    /* ÇÊÅÍ±³Ã¼ À¯¹« ¼±ÅÃÇ¥½Ã ½Ã ³Ã¼ö¹öÆ° LED On */
+    /* í•„í„°êµì²´ ìœ ë¬´ ì„ íƒí‘œì‹œ ì‹œ ëƒ‰ìˆ˜ë²„íŠ¼ LED On */
     if( gu8_flushing_mode == FLUSHING_STANDBY_STATE )
 	{
 		///////if( gu8_filter_flushing_state == SET && bit_filter_flushing_no_cancel == CLEAR )
@@ -370,7 +370,7 @@ void funcition_led_output(void)
         }
         Bit0_Front_Led_Ice_Select = CLEAR;
 
-        /* ¾óÀ½Àá±İ »óÅÂ¸é ¾óÀ½¹° ¼±ÅÃ LED ²û! 250714 CH.PARK */
+        /* ì–¼ìŒì ê¸ˆ ìƒíƒœë©´ ì–¼ìŒë¬¼ ì„ íƒ LED ë”! 250714 CH.PARK */
         Bit1_Front_Led_Ice_Water_Select = CLEAR;
     }
     else
@@ -443,7 +443,7 @@ void funcition_led_output(void)
         }
     }
 
-    /* ¿Â¼ö ¼±ÅÃ¹öÆ° */
+    /* ì˜¨ìˆ˜ ì„ íƒë²„íŠ¼ */
     if( F_Hot_Lock == SET )
     {
         if(Bit3_Hot_Off_Indicator == SET)
@@ -479,7 +479,7 @@ void funcition_led_output(void)
         }
     }
 
-    /* Á¤¼ö ¼±ÅÃ¹öÆ° */
+    /* ì •ìˆ˜ ì„ íƒë²„íŠ¼ */
     if(u8IceOutState != ICE_SELECT__NONE)
     {
         Bit3_Front_Led_Ambient_Select = CLEAR;
@@ -500,13 +500,13 @@ void funcition_led_output(void)
         }
     }
 
-    /* ³Ã¼ö ¼±ÅÃ¹öÆ° */
+    /* ëƒ‰ìˆ˜ ì„ íƒë²„íŠ¼ */
     if(u8IceOutState != ICE_SELECT__NONE)
     {
         Bit4_Front_Led_Cold_Select = CLEAR;
         
-        /* ¾óÀ½¹°Àº ¾óÀ½OFFÀÏ ¶§µµ, ³Ã¼ö OFFÀÏ ¶§µµ FLICKER Ç¥½Ã¸¦ ÇØ¾ßÇÔ.
-        ´Ü, ¾óÀ½OFF FLICKER°¡ ¿ì¼±ÀÓ 250722 CH.PARK */
+        /* ì–¼ìŒë¬¼ì€ ì–¼ìŒOFFì¼ ë•Œë„, ëƒ‰ìˆ˜ OFFì¼ ë•Œë„ FLICKER í‘œì‹œë¥¼ í•´ì•¼í•¨.
+        ë‹¨, ì–¼ìŒOFF FLICKERê°€ ìš°ì„ ì„ 250722 CH.PARK */
         if( u8IceOutState == ICE_SELECT__ICE_WATER )
         {
             if(Bit2_Cold_Off_Indicator == SET)
@@ -565,7 +565,7 @@ void funcition_led_output(void)
         }
     }
 
-    /* ¿ë·® ¼±ÅÃ¹öÆ° */
+    /* ìš©ëŸ‰ ì„ íƒë²„íŠ¼ */
     if(gu16_ice_lock_flick_timer != 0)
     {
         if( gu8_ice_lock_flick_state == SET )
@@ -625,7 +625,7 @@ void funcition_led_output(void)
     {
         if( gu8_cup_led_select == SET )
         {
-            /*..hui [20-1-7¿ÀÀü 10:01:44] ¹° ÃßÃâÇÏ¸é Áï½Ã OFF..*/
+            /*..hui [20-1-7ì˜¤ì „ 10:01:44] ë¬¼ ì¶”ì¶œí•˜ë©´ ì¦‰ì‹œ OFF..*/
             if( F_WaterOut == SET )
             {
                 gu8_cup_led_select = CLEAR;
@@ -634,7 +634,7 @@ void funcition_led_output(void)
 
             gu8_cup_led_off_time++;
 
-            /*..hui [20-1-7¿ÀÀü 10:01:54] ¼±ÅÃÇÏ°í 7ÃÊ ÈÄ OFF..*/
+            /*..hui [20-1-7ì˜¤ì „ 10:01:54] ì„ íƒí•˜ê³  7ì´ˆ í›„ OFF..*/
             if( gu8_cup_led_off_time < CUP_SELECT_LED_OFF_TIME )
             {
                 Bit5_Front_Led_Amount_Select = SET;
@@ -677,10 +677,10 @@ void cup_level_led_out(void)
 {
     if( F_WaterOut == SET )
     {
-        /*..hui [25-5-30¿ÀÈÄ 2:04:00] ¿¬¼ÓÃßÃâÀÏ¶§´Â ²ô°í, ±× ¿Ü ÃßÃâÀÏ¶§´Â ÇöÀç »óÅÂ À¯Áö.. µğÀÚÀÎ..*/
+        /*..hui [25-5-30ì˜¤í›„ 2:04:00] ì—°ì†ì¶”ì¶œì¼ë•ŒëŠ” ë„ê³ , ê·¸ ì™¸ ì¶”ì¶œì¼ë•ŒëŠ” í˜„ì¬ ìƒíƒœ ìœ ì§€.. ë””ìì¸..*/
         if( u8Extract_Continue == SET )
         {
-            /*..hui [24-2-26¿ÀÈÄ 1:24:30] ´Ù ÄÑÁöÁö¾Ê°í ÀÌÀü »óÅÂ À¯ÁöÇÏµµ·Ï....*/
+            /*..hui [24-2-26ì˜¤í›„ 1:24:30] ë‹¤ ì¼œì§€ì§€ì•Šê³  ì´ì „ ìƒíƒœ ìœ ì§€í•˜ë„ë¡....*/
             cup_level_extract_out();
         }
         else
@@ -690,7 +690,7 @@ void cup_level_led_out(void)
     }
     else if( F_IceOut == SET)
     {
-        /*..hui [25-5-30¿ÀÈÄ 2:06:14] ¾óÀ½ÃßÃâ¶§´Â ²ô°í, ¾óÀ½¹° ÃßÃâ¶§´Â ÇöÀç »óÅÂ À¯Áö.. µğÀÚÀÎ..*/
+        /*..hui [25-5-30ì˜¤í›„ 2:06:14] ì–¼ìŒì¶”ì¶œë•ŒëŠ” ë„ê³ , ì–¼ìŒë¬¼ ì¶”ì¶œë•ŒëŠ” í˜„ì¬ ìƒíƒœ ìœ ì§€.. ë””ìì¸..*/
         if( u8IceOutState == ICE_SELECT__ICE )
         {
             cup_level_extract_out();
@@ -738,7 +738,7 @@ void cup_level_normal_out(void)
 	}
 	else
 	{
-        /* ¾óÀ½¸¸ ¼±ÅÃÇÑ »óÅÂ¸é, ¿ë·® Ç¥½Ã ºÎºĞÀº ¸ğµÎ OFF */
+        /* ì–¼ìŒë§Œ ì„ íƒí•œ ìƒíƒœë©´, ìš©ëŸ‰ í‘œì‹œ ë¶€ë¶„ì€ ëª¨ë‘ OFF */
         if(u8IceOutState == ICE_SELECT__ICE || bit_myWater_setting_start == SET)
         {
             Bit0_Front_Led_Amount_Setting_Bar_2_1 = CLEAR;
@@ -763,7 +763,7 @@ void cup_level_normal_out(void)
             }
             else
             {
-                /* ¾óÀ½¹°ÀÏ ¶§ */
+                /* ì–¼ìŒë¬¼ì¼ ë•Œ */
                 if( u8IceOutState == ICE_SELECT__ICE_WATER )
                 {
                     Bit0_Front_Led_Amount_Setting_Bar_2_1 = SET;
@@ -872,7 +872,7 @@ void cup_level_normal_out(void)
                         Bit3_Front_Led_Amount_Setting_Bar_2_4 = SET;
                         set_duty_percent( DIMMING__PERCENT_AMOUNT_BAR_2_4, DIIMMING__10_PERCENT );
                         
-                        // ¾óÀ½¹° ¼±ÅÃÁßÀÌ¸é ¿¬¼ÓÂÊÀº ²û
+                        // ì–¼ìŒë¬¼ ì„ íƒì¤‘ì´ë©´ ì—°ì†ìª½ì€ ë”
                         if(u8IceOutState == ICE_SELECT__ICE_WATER)
                         {
                             Bit4_Front_Led_Amount_Setting_Bar_Continue = CLEAR;
@@ -904,7 +904,7 @@ void cup_level_normal_out(void)
                         Bit3_Front_Led_Amount_Setting_Bar_2_4 = SET;
                         set_duty_percent( DIMMING__PERCENT_AMOUNT_BAR_2_4, DIIMMING__10_PERCENT );
         
-                        // ¾óÀ½¹° ¼±ÅÃÁßÀÌ¸é ¿¬¼ÓÂÊÀº ²û
+                        // ì–¼ìŒë¬¼ ì„ íƒì¤‘ì´ë©´ ì—°ì†ìª½ì€ ë”
                         if(u8IceOutState == ICE_SELECT__ICE_WATER)
                         {
                             Bit4_Front_Led_Amount_Setting_Bar_Continue = CLEAR;
@@ -936,7 +936,7 @@ void cup_level_normal_out(void)
                         Bit3_Front_Led_Amount_Setting_Bar_2_4 = SET;
                         set_duty_percent( DIMMING__PERCENT_AMOUNT_BAR_2_4, DIIMMING__10_PERCENT );
         
-                        // ¾óÀ½¹° ¼±ÅÃÁßÀÌ¸é ¿¬¼ÓÂÊÀº ²û
+                        // ì–¼ìŒë¬¼ ì„ íƒì¤‘ì´ë©´ ì—°ì†ìª½ì€ ë”
                         if(u8IceOutState == ICE_SELECT__ICE_WATER)
                         {
                             Bit4_Front_Led_Amount_Setting_Bar_Continue = CLEAR;
@@ -968,7 +968,7 @@ void cup_level_normal_out(void)
                             set_duty_percent( DIMMING__PERCENT_AMOUNT_BAR_2_4, bar_led_percent );
                         }
                         
-                        // ¾óÀ½¹° ¼±ÅÃÁßÀÌ¸é ¿¬¼ÓÂÊÀº ²û
+                        // ì–¼ìŒë¬¼ ì„ íƒì¤‘ì´ë©´ ì—°ì†ìª½ì€ ë”
                         if(u8IceOutState == ICE_SELECT__ICE_WATER)
                         {
                             Bit4_Front_Led_Amount_Setting_Bar_Continue = CLEAR;
@@ -1025,10 +1025,10 @@ void cup_level_normal_out(void)
 ***********************************************************************************************************************/
 void hot_level_led_out(void)
 {
-    /*..hui [23-8-18¿ÀÀü 11:28:50] ¾óÀ½ ÃßÃâÁß¿¡´Â ²ö´Ù..*/
+    /*..hui [23-8-18ì˜¤ì „ 11:28:50] ì–¼ìŒ ì¶”ì¶œì¤‘ì—ëŠ” ëˆë‹¤..*/
     /*if( F_IceOut == SET && gu8_Led_Display_Step == LED_Display__MY_WATER_EXTRACT )*/
     
-    /* ÃëÄ§¸ğµå ²¨Áø »óÅÂ¸é Áï½Ã OFF */
+    /* ì·¨ì¹¨ëª¨ë“œ êº¼ì§„ ìƒíƒœë©´ ì¦‰ì‹œ OFF */
     if(bit_display_sleep_start == SET)
     {
         Bit0_Front_Led_Temp_Setting_Bar_1_1 = CLEAR;
@@ -1115,7 +1115,7 @@ void hot_level_led_out(void)
                 }
             }
 
-            /* ¾óÀ½ ¿¬¼ÓÃßÃâ ½Ã ¾óÀ½¿ë·® ÁÂÃø¹Ù´Â OFF */
+            /* ì–¼ìŒ ì—°ì†ì¶”ì¶œ ì‹œ ì–¼ìŒìš©ëŸ‰ ì¢Œì¸¡ë°”ëŠ” OFF */
             if(gu8_ice_out_continue == SET)
             {
                 Bit0_Front_Led_Temp_Setting_Bar_1_1 = CLEAR;
@@ -1134,7 +1134,7 @@ void hot_level_led_out(void)
             }
         }
     }
-    else if(bit_myWater_setting_start == SET)             /* ¶ó¸é,µå¸³Ä¿ÇÇ,Â÷,MY1,MY2,MY3 */
+    else if(bit_myWater_setting_start == SET)             /* ë¼ë©´,ë“œë¦½ì»¤í”¼,ì°¨,MY1,MY2,MY3 */
     {
         Bit0_Front_Led_Temp_Setting_Bar_1_1 = CLEAR;
         Bit1_Front_Led_Temp_Setting_Bar_1_2 = CLEAR;
@@ -1324,7 +1324,7 @@ void setting_led_output(void)
         Bit0_Front_Led_Ice_Lock = SET;
         Bit1_Front_Led_All_Lock = SET;
 
-        /* ºü¸¥Á¦ºù ¼³Á¤»óÅÂ´Â °è¼Ó º¸¿©ÁÜ 250512 CH.PARK */
+        /* ë¹ ë¥¸ì œë¹™ ì„¤ì •ìƒíƒœëŠ” ê³„ì† ë³´ì—¬ì¤Œ 250512 CH.PARK */
         if(bit_fast_ice_make == ICE_FIRST_ICE_MAKE)
         {
             Bit4_Front_Led_Icon_Fast_Ice = SET;
@@ -1342,7 +1342,7 @@ void setting_led_output(void)
         }
         else
         {
-            /* ºü¸¥Á¦ºù ¼³Á¤»óÅÂ´Â °è¼Ó º¸¿©ÁÜ 250512 CH.PARK */
+            /* ë¹ ë¥¸ì œë¹™ ì„¤ì •ìƒíƒœëŠ” ê³„ì† ë³´ì—¬ì¤Œ 250512 CH.PARK */
             if(bit_fast_ice_make == ICE_FIRST_ICE_MAKE && F_IceOn == SET)
             {
                 Bit4_Front_Led_Icon_Fast_Ice = SET;
@@ -1512,7 +1512,7 @@ void extract_led_output(void)
     set_duty_percent( DIMMING__PERCENT_ICE_EXTRACT, ice_extract_outer_led_percent );
     set_duty_percent( DIMMING__PERCENT_ICE_EXTRACT_INNER, ice_extract_inner_led_percent );
 
-    /*..hui [23-6-2¿ÀÈÄ 12:23:06] ÇÃ·¯½Ì ´ë±âÁß Á¡µî..*/
+    /*..hui [23-6-2ì˜¤í›„ 12:23:06] í”ŒëŸ¬ì‹± ëŒ€ê¸°ì¤‘ ì ë“±..*/
     if((gu8_Led_Display_Step == LED_Display__FLUSHING) 
     && (gu8_flushing_mode == FLUSHING_STANDBY_STATE)
     )
@@ -1539,7 +1539,7 @@ void extract_led_output(void)
         return;
     }
 
-    /* ½Ã°¥¼³Á¤¸ğµå */
+    /* ì‹œê°ˆì„¤ì •ëª¨ë“œ */
     if(bit_time_setting_start == SET)
     {
         Bit4_Front_Under_Water_White_Extract = CLEAR;
@@ -1553,7 +1553,7 @@ void extract_led_output(void)
     }
     else {  }
 
-    /* ¼öµ¿µå·¹ÀÎ */
+    /* ìˆ˜ë™ë“œë ˆì¸ */
     if( bit_manual_drain_start == SET )
     {
 		Bit4_Front_Under_Water_White_Extract ^= SET;
@@ -1567,7 +1567,7 @@ void extract_led_output(void)
     }
 	else{}
 
-    /* °í¿Â »ì±Õ ÁøÇà ½Ã ¾çÃø ÃßÃâºÎ LED´Â WHITE·Î. (´Ü, ¾óÀ½ÃßÃâºÎ ¾ÈÂÊÀº OFF) 250725 CH.PARK */
+    /* ê³ ì˜¨ ì‚´ê·  ì§„í–‰ ì‹œ ì–‘ì¸¡ ì¶”ì¶œë¶€ LEDëŠ” WHITEë¡œ. (ë‹¨, ì–¼ìŒì¶”ì¶œë¶€ ì•ˆìª½ì€ OFF) 250725 CH.PARK */
     if(bit_ice_tank_ster_start == SET)
     {
         Bit4_Front_Under_Water_White_Extract = SET;
@@ -1581,7 +1581,7 @@ void extract_led_output(void)
     }
     else {  }
 
-    /* ¼¼ÆÃ¸ğµå¿¡¼­´Â ÃßÃâ ¹öÆ°ºÎ LED ÀüÃ¼ OFF 250218 CH.PARK */
+    /* ì„¸íŒ…ëª¨ë“œì—ì„œëŠ” ì¶”ì¶œ ë²„íŠ¼ë¶€ LED ì „ì²´ OFF 250218 CH.PARK */
     if(special_mode_check_U8() != CLEAR)
     {
         Bit4_Front_Under_Water_White_Extract = CLEAR;
@@ -1593,8 +1593,8 @@ void extract_led_output(void)
     }
     else
     {
-        /* MY¿öÅÍ ¼±ÅÃÁß */
-        if(bit_myWater_setting_start == SET)        /* ¶ó¸é, Ä¿ÇÇ, Æ¼, MY123 ¼±ÅÃ¸ğµå (¼³Á¤°ªÀÌ ¿Â¼ö¿Âµµ ±âÁØÀÌ±â ¶§¹®¿¡ Red Ç¥½Ã) 250218 CH.PARK */
+        /* MYì›Œí„° ì„ íƒì¤‘ */
+        if(bit_myWater_setting_start == SET)        /* ë¼ë©´, ì»¤í”¼, í‹°, MY123 ì„ íƒëª¨ë“œ (ì„¤ì •ê°’ì´ ì˜¨ìˆ˜ì˜¨ë„ ê¸°ì¤€ì´ê¸° ë•Œë¬¸ì— Red í‘œì‹œ) 250218 CH.PARK */
         {
             if(my_setting[my_recipe_select].temp == 6)
             {
@@ -1617,7 +1617,7 @@ void extract_led_output(void)
         }
         else
         {
-            /* ³Ã¿ÂÁ¤ */
+            /* ëƒ‰ì˜¨ì • */
             if( u8WaterOutState == HOT_WATER_SELECT )
             {
                 Bit4_Front_Under_Water_White_Extract = SET;
@@ -1638,11 +1638,11 @@ void extract_led_output(void)
             }
         }
 
-        if(u8IceOutState == ICE_SELECT__ICE_WATER)      /* ¾óÀ½¹° ¼±ÅÃ ½Ã */
+        if(u8IceOutState == ICE_SELECT__ICE_WATER)      /* ì–¼ìŒë¬¼ ì„ íƒ ì‹œ */
         {
             Bit3_Front_Under_Ice_Outer_White_Extract = SET;
 
-            /* ¾óÀ½[Á¶°¢] ¼±ÅÃ ½Ã */
+            /* ì–¼ìŒ[ì¡°ê°] ì„ íƒ ì‹œ */
             if(F_IceBreak == SET)
             {
                 Bit1_Front_Under_Ice_Inner_White_Extract = SET;
@@ -1660,10 +1660,10 @@ void extract_led_output(void)
         }
         else
         {
-            /* ¾óÀ½ ¼±ÅÃ ½Ã or ¾óÀ½ °ü·Ã ¹Ì¼±ÅÃÁßÀÏ ½Ã (Default) 250625 CH.PARK */
+            /* ì–¼ìŒ ì„ íƒ ì‹œ or ì–¼ìŒ ê´€ë ¨ ë¯¸ì„ íƒì¤‘ì¼ ì‹œ (Default) 250625 CH.PARK */
             Bit3_Front_Under_Ice_Outer_White_Extract = SET;
             
-            /* ¾óÀ½[Á¶°¢] ¼±ÅÃ ½Ã */
+            /* ì–¼ìŒ[ì¡°ê°] ì„ íƒ ì‹œ */
             if(F_IceBreak == SET)
             {
                 Bit1_Front_Under_Ice_Inner_White_Extract = SET;
@@ -1688,12 +1688,12 @@ void extract_led_output(void)
 ***********************************************************************************************************************/
 void make_rgb_color( U8 mu8_color )
 {
-    /*..hui [24-1-10¿ÀÈÄ 1:09:30] ÁÖ±â 10ms·Î º¯°æ.. Á¦È£ RO CT ±âÁØ..*/
+    /*..hui [24-1-10ì˜¤í›„ 1:09:30] ì£¼ê¸° 10msë¡œ ë³€ê²½.. ì œí˜¸ RO CT ê¸°ì¤€..*/
     gu8_rgb_pwm_period = 40;
 
     if( mu8_color == RGB_COLOR_HOT )
     {
-        gu8_rgb_r_test_water_extract = 40;      // ¿Â¼ö´Â 40%
+        gu8_rgb_r_test_water_extract = 40;      // ì˜¨ìˆ˜ëŠ” 40%
         gu8_rgb_g_test_water_extract = 0;
         gu8_rgb_b_test_water_extract = 0;
 
@@ -1725,12 +1725,12 @@ void make_rgb_color( U8 mu8_color )
 ***********************************************************************************************************************/
 void make_ice_inner_rgb_color( U8 mu8_color )
 {
-    /*..hui [24-1-10¿ÀÈÄ 1:09:30] ÁÖ±â 10ms·Î º¯°æ.. Á¦È£ RO CT ±âÁØ..*/
+    /*..hui [24-1-10ì˜¤í›„ 1:09:30] ì£¼ê¸° 10msë¡œ ë³€ê²½.. ì œí˜¸ RO CT ê¸°ì¤€..*/
     gu8_rgb_pwm_period = 40;
 
     if( mu8_color == RGB_COLOR_HOT )
     {
-        gu8_rgb_r_test_ice_inner_extract = 40;      // ¿Â¼ö´Â 40%
+        gu8_rgb_r_test_ice_inner_extract = 40;      // ì˜¨ìˆ˜ëŠ” 40%
         gu8_rgb_g_test_ice_inner_extract = 0;
         gu8_rgb_b_test_ice_inner_extract = 0;
 
@@ -1762,12 +1762,12 @@ void make_ice_inner_rgb_color( U8 mu8_color )
 ***********************************************************************************************************************/
 void make_ice_outer_rgb_color( U8 mu8_color )
 {
-    /*..hui [24-1-10¿ÀÈÄ 1:09:30] ÁÖ±â 10ms·Î º¯°æ.. Á¦È£ RO CT ±âÁØ..*/
+    /*..hui [24-1-10ì˜¤í›„ 1:09:30] ì£¼ê¸° 10msë¡œ ë³€ê²½.. ì œí˜¸ RO CT ê¸°ì¤€..*/
     gu8_rgb_pwm_period = 40;
 
     if( mu8_color == RGB_COLOR_HOT )
     {
-        gu8_rgb_r_test_ice_outer_extract = 40;      // ¿Â¼ö´Â 40%
+        gu8_rgb_r_test_ice_outer_extract = 40;      // ì˜¨ìˆ˜ëŠ” 40%
         gu8_rgb_g_test_ice_outer_extract = 0;
         gu8_rgb_b_test_ice_outer_extract = 0;
 
@@ -1800,7 +1800,7 @@ void make_ice_outer_rgb_color( U8 mu8_color )
 ***********************************************************************************************************************/
 void recipe_led_output(void)
 {
-    /* ÃëÄ§¸ğµå ²¨Áø »óÅÂ¸é Áï½Ã OFF */
+    /* ì·¨ì¹¨ëª¨ë“œ êº¼ì§„ ìƒíƒœë©´ ì¦‰ì‹œ OFF */
     if(bit_display_sleep_start == SET)
     {
         Bit0_Front_Center_Recipe_Ramen_Text = CLEAR;
@@ -2014,7 +2014,7 @@ void welcome_led_output(void)
     }
     else {  }
 
-    /* À£ÄÄ LED »ç¿ë ¼³Á¤ */
+    /* ì›°ì»´ LED ì‚¬ìš© ì„¤ì • */
     if( F_Welcome_Led_OnOff == CLEAR )
     {
         Bit5_Front_Under_Led_Welcome = CLEAR;
@@ -2040,7 +2040,7 @@ void welcome_led_output(void)
     }
     else if(bit_welcome_wifi_start == SET)
     {
-        /* ¿ÍÀÌÆÄÀÌ ±â´ÉÀ¸·Î WELCOME »ç¿ë ¼³Á¤ ½Ã 7ÃÊ ON */
+        /* ì™€ì´íŒŒì´ ê¸°ëŠ¥ìœ¼ë¡œ WELCOME ì‚¬ìš© ì„¤ì • ì‹œ 7ì´ˆ ON */
         bit_welcome_wifi_start = CLEAR;
         
         bit_welcome_on_flag = SET;
@@ -2061,7 +2061,7 @@ void welcome_led_output(void)
             }
             else
             {
-                /* count up->down ¹æ½ÄÀ¸·Î ¼öÁ¤ */
+                /* count up->down ë°©ì‹ìœ¼ë¡œ ìˆ˜ì • */
                 if(gu16_welcome_timer > 0)
                 {
                     gu16_welcome_timer--;
@@ -2069,7 +2069,7 @@ void welcome_led_output(void)
                 else { /* nothing */ }
             }
 
-            if(gu16_welcome_timer == CLEAR)     /* ÃßÃâ ¹Ì»ç¿ë ÈÄ 1ºĞ °æ°ú ½Ã ON */
+            if(gu16_welcome_timer == CLEAR)     /* ì¶”ì¶œ ë¯¸ì‚¬ìš© í›„ 1ë¶„ ê²½ê³¼ ì‹œ ON */
             {
                 gu16_welcome_timer = WELCOME_LED_ON_TIME;
 
@@ -2191,7 +2191,7 @@ void led_filter_open_state(void)
 
 /***********************************************************************************************************************
 * Function Name: System_ini
-* Description  : ¼öµ¿µå·¹ÀÎ ÃßÃâºÎ Ç¥½Ã
+* Description  : ìˆ˜ë™ë“œë ˆì¸ ì¶”ì¶œë¶€ í‘œì‹œ
 ***********************************************************************************************************************/
 void led_manual_drain_state(void)
 {
@@ -2214,7 +2214,7 @@ void led_all_lock(void)
 {
     all_lock_setting_led();
     
-    /* ÀüÃ¼Àá±İ ½Ã RGBµµ ²¨¾ßµÊ */
+    /* ì „ì²´ì ê¸ˆ ì‹œ RGBë„ êº¼ì•¼ë¨ */
     make_rgb_color( RGB_OFF );
     make_ice_outer_rgb_color(RGB_OFF);
     make_ice_inner_rgb_color(RGB_OFF);
@@ -2250,7 +2250,7 @@ void all_lock_setting_led(void)
 }
 
 /**
- * @brief ³Ã¿ÂÁ¤ ÃßÃâÇÒ ¶§ÀÇ ICON Ç¥½Ã
+ * @brief ëƒ‰ì˜¨ì • ì¶”ì¶œí•  ë•Œì˜ ICON í‘œì‹œ
  * 
  */
 void led_water_extract_state(void)
@@ -2285,15 +2285,15 @@ void led_water_extract_state(void)
 
 		level_led_output();
 
-        left_icon_led_output();		// ['C], [»ì±Õ], [:], [´Ü°è]
-        right_icon_led_output();	// [WIFI], [±âÈÄ], [DOT], [ml], [L]
-        under_text_led_output();	// [¾óÀ½´ë¼Ò], [³Ã¼ö°­¾à], [ÀÏ¹İ/Á¶°¢], [³Ã¼öOFF]
-        under_icon_led_output();	// [COMP LED], [ÀÚ¹°¼è]
+        left_icon_led_output();		// ['C], [ì‚´ê· ], [:], [ë‹¨ê³„]
+        right_icon_led_output();	// [WIFI], [ê¸°í›„], [DOT], [ml], [L]
+        under_text_led_output();	// [ì–¼ìŒëŒ€ì†Œ], [ëƒ‰ìˆ˜ê°•ì•½], [ì¼ë°˜/ì¡°ê°], [ëƒ‰ìˆ˜OFF]
+        under_icon_led_output();	// [COMP LED], [ìë¬¼ì‡ ]
 	}
 }
 
 /**
- * @brief ¾óÀ½ ÃßÃâÇÒ ¶§ÀÇ ICON Ç¥½Ã
+ * @brief ì–¼ìŒ ì¶”ì¶œí•  ë•Œì˜ ICON í‘œì‹œ
  * 
  */
 void led_ice_extract_state(void)
@@ -2327,9 +2327,9 @@ void led_ice_extract_state(void)
 
 		level_led_output();
 
-		left_icon_led_output();		// ['C], [»ì±Õ], [:], [´Ü°è]
-        right_icon_led_output();	// [WIFI], [±âÈÄ], [DOT], [ml], [L]
-        under_text_led_output();	// [¾óÀ½´ë¼Ò], [³Ã¼ö°­¾à], [ÀÏ¹İ/Á¶°¢], [³Ã¼öOFF]
-        under_icon_led_output();	// [COMP LED], [ÀÚ¹°¼è]
+		left_icon_led_output();		// ['C], [ì‚´ê· ], [:], [ë‹¨ê³„]
+        right_icon_led_output();	// [WIFI], [ê¸°í›„], [DOT], [ml], [L]
+        under_text_led_output();	// [ì–¼ìŒëŒ€ì†Œ], [ëƒ‰ìˆ˜ê°•ì•½], [ì¼ë°˜/ì¡°ê°], [ëƒ‰ìˆ˜OFF]
+        under_icon_led_output();	// [COMP LED], [ìë¬¼ì‡ ]
 	}
 }

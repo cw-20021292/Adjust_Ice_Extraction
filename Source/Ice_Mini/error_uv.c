@@ -39,13 +39,13 @@ U8 gu8_water_uv_error_elasped_day;
 ***********************************************************************************************************************/
 void check_error_uv(void)
 {
-    // /* ¹°ÃßÃâ ÆÄ¿ì¼Â */
+    // /* ë¬¼ì¶”ì¶œ íŒŒìš°ì…‹ */
     // check_error_uv_water_extract();
 
-    // /*..hui [24-4-3¿ÀÈÄ 7:53:59] ¾óÀ½ÅÊÅ© µÚÂÊ UV 2°³.. ¿ø·¡ ÀÖ´ø°Å¿¡ 1°³Ãß°¡..*/
+    // /*..hui [24-4-3ì˜¤í›„ 7:53:59] ì–¼ìŒíƒ±í¬ ë’¤ìª½ UV 2ê°œ.. ì›ë˜ ìˆë˜ê±°ì— 1ê°œì¶”ê°€..*/
     // check_error_uv_ice_tank_one_two();
 
-    // /*..hui [24-4-3¿ÀÈÄ 7:54:21] ¾ÆÀÌ½º Æ®·¹ÀÌ Ãø¸é 2°³.. ºĞ¸®µÅÀÖ´ø°Å 2°³ ÇÕÄ§..*/
+    // /*..hui [24-4-3ì˜¤í›„ 7:54:21] ì•„ì´ìŠ¤ íŠ¸ë ˆì´ ì¸¡ë©´ 2ê°œ.. ë¶„ë¦¬ë¼ìˆë˜ê±° 2ê°œ í•©ì¹¨..*/
     // check_error_uv_ice_tray();
 
     /* PCH ZZANG */
@@ -70,7 +70,7 @@ void check_error_uv_led(UV_Check* targetUV)
 
     if((targetUV) == (&uvWaterFaucet))
     {
-        // ÃßÃâÆÄ¿ì¼Â 1,2 UV ¿¡·¯
+        // ì¶”ì¶œíŒŒìš°ì…‹ 1,2 UV ì—ëŸ¬
         output_status = (U8)bit_uv_extract_faucet_out;
         Result_Current_Feed = gu16_AD_Result_UV_Water_Faucet_Current_Feed;
 
@@ -134,7 +134,7 @@ void check_error_uv_led(UV_Check* targetUV)
     // && ((*targetUV).gu8_uv_retry_stop_flag == CLEAR)
     )
     {
-        /*..hui [24-4-4¿ÀÈÄ 3:05:58] ³Ã¼öÅÊÅ© UV 2°³ ¿¬°á..*/
+        /*..hui [24-4-4ì˜¤í›„ 3:05:58] ëƒ‰ìˆ˜íƒ±í¬ UV 2ê°œ ì—°ê²°..*/
         if( Result_Current_Feed >= u16_check_over_ad
         || Result_Current_Feed <= u16_check_under_ad )
         {
@@ -183,7 +183,7 @@ void check_error_uv_led(UV_Check* targetUV)
         (*targetUV).gu8_error_clear_timer = 0;
         (*targetUV).gu8_error_check_timer = 0;
 
-        /* 3ÃÊ ÈÄ RETRY */
+        /* 3ì´ˆ í›„ RETRY */
         if((*targetUV).gu8_uv_retry_stop_flag == SET)
         {
             (*targetUV).gu8_uv_retry_timer++;

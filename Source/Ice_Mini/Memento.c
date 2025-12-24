@@ -14,7 +14,7 @@
 void ErrorSaveStart( U8 mu8_err_code );
 void ErrorSave(void);
 
-/*..¸Ş¸àÅä..*/
+/*..ë©”ë©˜í† ..*/
 U8 u8Memento_Buff[] = {0,0,0,0,0,0};
 bit F_ErrorSave;
 U8  u8ErrorSaveCount;
@@ -35,12 +35,12 @@ void ErrorSaveStart( U8 mu8_err_code )
 {
     U8 mu8_final_error = 0;
 /**********..Error Code..*****************************************/
-/**********..1: ±Ş¼ö¿¡·¯(F_WaterSupplyError))..********************/
-/**********..2: ´©¼ö¿¡·¯(F_WaterLeakError))..**********************/
-/**********..3: º¯ÁÂ¿Âµµ¿¡·¯(F_SeatTempOverError))..**************/
-/**********..4: Ãâ¼ö¿Âµµ¿¡·¯(F_OutTempOverError))..***************/
-/**********..5: Ãâ¼öShort/Open¿¡·¯(F_WaterTempShortOpenError))..*/
-/**********..6: º¯ÁÂShort/Open¿¡·¯(F_SeatTempShortOpenError)..***/
+/**********..1: ê¸‰ìˆ˜ì—ëŸ¬(F_WaterSupplyError))..********************/
+/**********..2: ëˆ„ìˆ˜ì—ëŸ¬(F_WaterLeakError))..**********************/
+/**********..3: ë³€ì¢Œì˜¨ë„ì—ëŸ¬(F_SeatTempOverError))..**************/
+/**********..4: ì¶œìˆ˜ì˜¨ë„ì—ëŸ¬(F_OutTempOverError))..***************/
+/**********..5: ì¶œìˆ˜Short/Openì—ëŸ¬(F_WaterTempShortOpenError))..*/
+/**********..6: ë³€ì¢ŒShort/Openì—ëŸ¬(F_SeatTempShortOpenError)..***/
 
     U8 mu8ErrorState = 0;
 
@@ -51,17 +51,17 @@ void ErrorSaveStart( U8 mu8_err_code )
     else{}
 
     #if 0
-    // 2¹ø - 101
-    // 1¹ø - 102
-    // 3¹ø - 103
-    // 5¹ø - 104
-    // 6¹ø - 105
-    // 4¹ø - 106
-    // 12¹ø - 107
-    // ±×¿Ü - 108
+    // 2ë²ˆ - 101
+    // 1ë²ˆ - 102
+    // 3ë²ˆ - 103
+    // 5ë²ˆ - 104
+    // 6ë²ˆ - 105
+    // 4ë²ˆ - 106
+    // 12ë²ˆ - 107
+    // ê·¸ì™¸ - 108
     #endif
 
-    /*..hui [23-9-26¿ÀÈÄ 5:43:04] »ï¼º COMP E29 ¼¼ºÎ ¿¡·¯ÄÚµå·Î ÀúÀå..*/
+    /*..hui [23-9-26ì˜¤í›„ 5:43:04] ì‚¼ì„± COMP E29 ì„¸ë¶€ ì—ëŸ¬ì½”ë“œë¡œ ì €ì¥..*/
     if( mu8_err_code == 29 )
     {
         if( gu8_memento_e29_detail_code == 2 )
@@ -102,8 +102,8 @@ void ErrorSaveStart( U8 mu8_err_code )
         mu8_final_error = mu8_err_code;
     }
 
-    /*if(u8Memento_Buff[0] == mu8_err_code || mu8_err_code == 0)*/ /*..¿¡·¯°¡ °°À¸¸é ³ª°£´Ù..*/
-    if(u8Memento_Buff[0] == mu8_final_error || mu8_final_error == 0) /*..¿¡·¯°¡ °°À¸¸é ³ª°£´Ù..*/
+    /*if(u8Memento_Buff[0] == mu8_err_code || mu8_err_code == 0)*/ /*..ì—ëŸ¬ê°€ ê°™ìœ¼ë©´ ë‚˜ê°„ë‹¤..*/
+    if(u8Memento_Buff[0] == mu8_final_error || mu8_final_error == 0) /*..ì—ëŸ¬ê°€ ê°™ìœ¼ë©´ ë‚˜ê°„ë‹¤..*/
     {
         return;
     }
@@ -118,7 +118,7 @@ void ErrorSaveStart( U8 mu8_err_code )
     u8Memento_Buff[0] = mu8_final_error;
 
 
-    F_ErrorSave = SET;  /*..ÀúÀå ½ÃÀÛ..*/
+    F_ErrorSave = SET;  /*..ì €ì¥ ì‹œì‘..*/
     u8ErrorSaveCount = 0;
 }
 

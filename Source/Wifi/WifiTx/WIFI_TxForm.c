@@ -8,9 +8,9 @@
     ShinHM 2021.02.22 update
 
 &History : ssg@coway.com 2023.05.24 update
-    - BLE ¼Û½ÅÃ³¸® CMD Ãß°¡
-    - Á¡À¯ÀÎÁõ Ãß°¡
-    - ¸ğ´ÏÅÍ¸µ CMD Ãß°¡
+    - BLE ì†¡ì‹ ì²˜ë¦¬ CMD ì¶”ê°€
+    - ì ìœ ì¸ì¦ ì¶”ê°€
+    - ëª¨ë‹ˆí„°ë§ CMD ì¶”ê°€
 *******************************************************************************/
 
 
@@ -47,29 +47,29 @@ const signed char AT_CMD_DEVICE_ERR[]   = "AT*ICT*OTA_SEND_END=44";
 const signed char AT_CMD_MAC[]          = "AT*ICT*MAC=?";
 
 /* API No (MCU -> Server) */
-const signed char API_TX_STOP_CONNECT[]         = "A1002";  // ¼­¹ö¿¬°áÁ¾·á
-const signed char API_TX_STATUS_SEND[]          = "A1010";  // »óÅÂÁ¤º¸Àü¼Û/Á¦¾îÀÀ´ä
-const signed char API_TX_STATUS_RESPONSE[]      = "A1012";  // »óÅÂÁ¤º¸ÀÀ´ä
-const signed char API_TX_STATUS_SEND_CONTROL[]  = "A1014";  // Á¦¾î»óÅÂÁ¤º¸Àü¼Û
-const signed char API_TX_SENSOR_SEND[]          = "A1020";  // ¼¾¼­Á¤º¸Àü¼Û
-const signed char API_TX_SENSOR_RESPONSE[]      = "A1022";  // ¼¾¼­Á¤º¸ÀÀ´ä
-const signed char API_TX_ERROR_SEND[]           = "A1030";  // ¿¡·¯Á¤º¸Àü¼Û
-const signed char API_TX_ERROR_RESPONSE[]       = "A1032";  // ¿¡·¯Á¤º¸ÀÀ´ä
-const signed char API_TX_ERROR_SELF_RESPONSE[]  = "A1034";  // ÀÚ°¡Áø´ÜÀÀ´ä
-const signed char API_TX_PARAMETER_SEND[]       = "A1050";  // ÆÄ¶ó¹ÌÅÍÀü¼Û
-const signed char API_TX_PARAMETER_RESPONSE[]   = "A1052";  // ÆÄ¶ó¹ÌÅÍÀÀ´ä
+const signed char API_TX_STOP_CONNECT[]         = "A1002";  // ì„œë²„ì—°ê²°ì¢…ë£Œ
+const signed char API_TX_STATUS_SEND[]          = "A1010";  // ìƒíƒœì •ë³´ì „ì†¡/ì œì–´ì‘ë‹µ
+const signed char API_TX_STATUS_RESPONSE[]      = "A1012";  // ìƒíƒœì •ë³´ì‘ë‹µ
+const signed char API_TX_STATUS_SEND_CONTROL[]  = "A1014";  // ì œì–´ìƒíƒœì •ë³´ì „ì†¡
+const signed char API_TX_SENSOR_SEND[]          = "A1020";  // ì„¼ì„œì •ë³´ì „ì†¡
+const signed char API_TX_SENSOR_RESPONSE[]      = "A1022";  // ì„¼ì„œì •ë³´ì‘ë‹µ
+const signed char API_TX_ERROR_SEND[]           = "A1030";  // ì—ëŸ¬ì •ë³´ì „ì†¡
+const signed char API_TX_ERROR_RESPONSE[]       = "A1032";  // ì—ëŸ¬ì •ë³´ì‘ë‹µ
+const signed char API_TX_ERROR_SELF_RESPONSE[]  = "A1034";  // ìê°€ì§„ë‹¨ì‘ë‹µ
+const signed char API_TX_PARAMETER_SEND[]       = "A1050";  // íŒŒë¼ë¯¸í„°ì „ì†¡
+const signed char API_TX_PARAMETER_RESPONSE[]   = "A1052";  // íŒŒë¼ë¯¸í„°ì‘ë‹µ
 
-const signed char API_TX_PART_SEND[]            = "A1080";  // °íÀåÁø´ÜÀü¼Û
-const signed char API_TX_PART_RESPONSE[]        = "A1082";  // °íÀåÁø´ÜÀÀ´ä
-const signed char API_TX_EXAMINE_SEND[]         = "A1090";  // Á¤¹ĞÁø´ÜÀü¼Û
-const signed char API_TX_ACCUMULATE_SEND[]      = "A10A0";  // ´©ÀûÁ¤º¸Àü¼Û
-const signed char API_TX_ACCUMULATE_RESPONSE[]  = "A10A2";  // ´©ÀûÁ¤º¸ÀÀ´ä
+const signed char API_TX_PART_SEND[]            = "A1080";  // ê³ ì¥ì§„ë‹¨ì „ì†¡
+const signed char API_TX_PART_RESPONSE[]        = "A1082";  // ê³ ì¥ì§„ë‹¨ì‘ë‹µ
+const signed char API_TX_EXAMINE_SEND[]         = "A1090";  // ì •ë°€ì§„ë‹¨ì „ì†¡
+const signed char API_TX_ACCUMULATE_SEND[]      = "A10A0";  // ëˆ„ì ì •ë³´ì „ì†¡
+const signed char API_TX_ACCUMULATE_RESPONSE[]  = "A10A2";  // ëˆ„ì ì •ë³´ì‘ë‹µ
 
-const signed char API_TX_INFO_REQUEST[]         = "A2010";  // ºÎ°¡Á¤º¸¿äÃ»
+const signed char API_TX_INFO_REQUEST[]         = "A2010";  // ë¶€ê°€ì •ë³´ìš”ì²­
 const signed char API_TX_BLE_CERT[]             = "A7010";  // BLE Cert TX (Res)
-// const signed char API_TX_MONITOR_RESPONSE[]     = "A9010";  // RAM°ª ÀÀ´ä
-const signed char API_TX_MONITOR_RESPONSE_W[]   = "A9010";  // RAM°ª ÀÀ´ä (Write)
-const signed char API_TX_MONITOR_RESPONSE_R[]   = "A9012";  // RAM°ª ÀÀ´ä (Read)
+// const signed char API_TX_MONITOR_RESPONSE[]     = "A9010";  // RAMê°’ ì‘ë‹µ
+const signed char API_TX_MONITOR_RESPONSE_W[]   = "A9010";  // RAMê°’ ì‘ë‹µ (Write)
+const signed char API_TX_MONITOR_RESPONSE_R[]   = "A9012";  // RAMê°’ ì‘ë‹µ (Read)
 
 
 /***** Variable ***************************************************************/
@@ -83,7 +83,7 @@ static void ExceptAtCmd ( U8 mExcept, I8* pBuf, U16 mLen );
 
 
 /***** Table ******************************************************************/
-/* AT CMD & TX DATA ¿ì¼±¼øÀ§ ¼³Á¤ ¹× Àü¼Û */
+/* AT CMD & TX DATA ìš°ì„ ìˆœìœ„ ì„¤ì • ë° ì „ì†¡ */
 /* To Module (AT CMD) */
 static const WifiTxTypeList_T WifiSendAtList[] =
 { /*    Tx ID                       Tx Parameter                Tx Sequence         */
@@ -332,7 +332,7 @@ static void ExceptAtCmd ( U8 mExcept, I8* pBuf, U16 mLen )
         // far_sprintf_s( mai8ModelNameSSID, 0, MODEL_NAME_CHP_BLESSID );
     }
 
-    /* AT Cmd ¿¹¿ÜÁ¶°Ç Ã³¸® */
+    /* AT Cmd ì˜ˆì™¸ì¡°ê±´ ì²˜ë¦¬ */
     if ( mExcept == TO_VERSION )
     {
         far_sprintf_s( &pBuf[mLen], 0, WIFI_VERSION );

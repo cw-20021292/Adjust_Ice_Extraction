@@ -64,7 +64,7 @@ void Timer_250us_Service(void)
     if(u8Count_500us >= 2)
     {
         u8Count_500us = 0;
-        /*..hui [24-11-13¿ÀÈÄ 2:34:48] TDS ´Ù½Ã »èÁ¦..*/
+        /*..hui [24-11-13ì˜¤í›„ 2:34:48] TDS ë‹¤ì‹œ ì‚­ì œ..*/
         /*TDS_Out_Pulse_Control();*/
     }
     else{}
@@ -82,7 +82,7 @@ void Timer_250us_Service(void)
         F_ADC_Check = SET;
         /*BuzControl();*/
 
-        /*..hui [24-11-13¿ÀÈÄ 2:34:48] TDS ´Ù½Ã »èÁ¦..*/
+        /*..hui [24-11-13ì˜¤í›„ 2:34:48] TDS ë‹¤ì‹œ ì‚­ì œ..*/
         /*TDS_In_Control();*/
 
         u8CountSync++;
@@ -146,7 +146,7 @@ void Timer_250us_Service(void)
         //}
         //else{}
 /***********************************************************************************************************************/
-        /*BuzTimeCounter();*/       // Buzzer À½ Á¦¾î ½Ã°£ Counter
+        /*BuzTimeCounter();*/       // Buzzer ìŒ ì œì–´ ì‹œê°„ Counter
 /***********************************************************************************************************************/
         //input_select_bar();
 /***********************************************************************************************************************/
@@ -158,15 +158,15 @@ void Timer_250us_Service(void)
 
 
         #if 0
-        /*..hui [20-1-14¿ÀÈÄ 8:17:29] ³Ã¸ÅÀüÈ¯¹ëºê¿¡¼­¸¸ ¾²´ø 12V Àü¿øÀ» UV¿¡¼­µµ »ç¿ëÇÏµµ·Ï º¯°æµÊ..*/
+        /*..hui [20-1-14ì˜¤í›„ 8:17:29] ëƒ‰ë§¤ì „í™˜ë°¸ë¸Œì—ì„œë§Œ ì“°ë˜ 12V ì „ì›ì„ UVì—ì„œë„ ì‚¬ìš©í•˜ë„ë¡ ë³€ê²½ë¨..*/
         if( u8PowerControl12V > 0 )
         {
-            /*..hui [20-1-14¿ÀÈÄ 8:30:42] ON..*/
+            /*..hui [20-1-14ì˜¤í›„ 8:30:42] ON..*/
             p12V_POWER = CLEAR;
         }
         else
         {
-            /*..hui [20-1-14¿ÀÈÄ 8:30:46] OFF..*/
+            /*..hui [20-1-14ì˜¤í›„ 8:30:46] OFF..*/
             p12V_POWER = SET;
         }
         #endif
@@ -187,7 +187,7 @@ void Timer_250us_Service(void)
         F_100ms = SET;
         u8Count_100ms = CLEAR;
 
-        if(gu8IceClose) { gu8IceClose--; }                      // ¾óÀ½¹® ´ÝÈû µô·¹ÀÌ
+        if(gu8IceClose) { gu8IceClose--; }                      // ì–¼ìŒë¬¸ ë‹«íž˜ ë”œë ˆì´
         if(gu8IceInnerClose) { gu8IceInnerClose--; }
         
         u8Count_1sec++;
@@ -200,17 +200,17 @@ void Timer_250us_Service(void)
         F_1sec = SET;
         u8Count_1sec = CLEAR;
 
-        F_Powerin1sec = SET; /*..Àü¿ø onÈÄ 1ÃÊ..*/
+        F_Powerin1sec = SET; /*..ì „ì› oní›„ 1ì´ˆ..*/
 #if 0
-        /*..yspark [25-2-17¿ÀÈÄ 17:00:40] ¿¬¼ÓÃßÃâ ½Ã°£ Á¦¾î Ãß°¡(¸±·¹ÀÌ ¹Ýº¹ ON/OFF ¹ö±× °³¼±)..*/
+        /*..yspark [25-2-17ì˜¤í›„ 17:00:40] ì—°ì†ì¶”ì¶œ ì‹œê°„ ì œì–´ ì¶”ê°€(ë¦´ë ˆì´ ë°˜ë³µ ON/OFF ë²„ê·¸ ê°œì„ )..*/
         if (u16Efluent_Time && (gu8_Water_Out_Step == STATE_31_WATER_EXTRACT_STATE || gu8_Water_Out_Step == STATE_32_WATER_AIR_VENT_STATE))
         {
-            u16Efluent_Time--;  // ¿¬¼ÓÃßÃâ ½Ã ÃßÃâ ½Ã°£ Ä«¿îÆ®(ÃßÃâ Áß¿¡¸¸ ½ÇÇà)
+            u16Efluent_Time--;  // ì—°ì†ì¶”ì¶œ ì‹œ ì¶”ì¶œ ì‹œê°„ ì¹´ìš´íŠ¸(ì¶”ì¶œ ì¤‘ì—ë§Œ ì‹¤í–‰)
         }
 #endif
         //IceMakeOrder();
 
-        //if(gu16MeltTime) gu16MeltTime--;                        // SB ¿øÁ¡¹Ìº¹±Í´ë±â
+        //if(gu16MeltTime) gu16MeltTime--;                        // SB ì›ì ë¯¸ë³µê·€ëŒ€ê¸°
  /***********************************************************************************************************************/
         if(gu8_test_mode_timeout_1s > 0)
         {
@@ -224,10 +224,10 @@ void Timer_250us_Service(void)
         }
         else{}
 
-        /*..hui [19-7-25¿ÀÈÄ 8:33:32] Å¸ÀÌ¸Ó 1ÃÊ·Î ÀÌµ¿..*/
+        /*..hui [19-7-25ì˜¤í›„ 8:33:32] íƒ€ì´ë¨¸ 1ì´ˆë¡œ ì´ë™..*/
         if(gu16IceStopTime > 0)
         {
-            gu16IceStopTime--;                  // Á¦ºùÁ¤ÁöÇØÁ¦ 6½Ã°£
+            gu16IceStopTime--;                  // ì œë¹™ì •ì§€í•´ì œ 6ì‹œê°„
         }
         else{}
 

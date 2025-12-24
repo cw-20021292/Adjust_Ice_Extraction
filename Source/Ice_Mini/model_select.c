@@ -16,13 +16,13 @@ void ModelSelect(void);
 
 MODEL model;
 
-#define MODEL_JUDGE_DONE_TIME       10  // 1√ 
+#define MODEL_JUDGE_DONE_TIME       10  // 1Ï¥à
 
 extern U16 gu16_IceSelect_StepMotor;
 
 /************************************************************************************************************************
 /**
- * @brief ∏ÆµÂΩ∫¿ßƒ° √ﬂ∞°ø©∫Œ ∆«¥‹ ∞¸∑√ ∫Øºˆ √ ±‚»≠
+ * @brief Î¶¨ÎìúÏä§ÏúÑÏπò Ï∂îÍ∞ÄÏó¨Î∂Ä ÌåêÎã® Í¥ÄÎ†® Î≥ÄÏàò Ï¥àÍ∏∞Ìôî
  * @date 2025-10-28
  */
 void ModelInit(void)
@@ -45,16 +45,16 @@ void ModelSelect(void)
     }
     else{}
 
-    /* √ ±‚ ¿¸ø¯ ¿Œ∞° »ƒ ¿Ã≥ µµæÓ µø¿€øœ∑· Ω√ (∆ﬁΩ∫∞™ 0) */
+    /* Ï¥àÍ∏∞ Ï†ÑÏõê Ïù∏Í∞Ä ÌõÑ Ïù¥ÎÑàÎèÑÏñ¥ ÎèôÏûëÏôÑÎ£å Ïãú (ÌéÑÏä§Í∞í 0) */
     if(gu16_IceSelect_StepMotor == 0)
     {
-        // 1√  »ƒ ∏µ® ∆«¥‹
+        // 1Ï¥à ÌõÑ Î™®Îç∏ ÌåêÎã®
         model.u8ModelCheckTimer++;
         if(model.u8ModelCheckTimer >= MODEL_JUDGE_DONE_TIME)
         {
             model.u8ModelCheckTimer = MODEL_JUDGE_DONE_TIME;
 
-            /* LOW ACTIVE (∞®¡ˆ) */
+            /* LOW ACTIVE (Í∞êÏßÄ) */
             if(GET_INNER_DOOR_REED_SW() == ACTIVE_LOW_DETECTED)
             {
                 SetModel(MODEL_REED_USE);

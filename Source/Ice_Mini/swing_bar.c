@@ -14,7 +14,7 @@
 void output_swing_bar(void);
 
 
-//===================================== Åõ¸í¾óÀ½
+//===================================== íˆ¬ëª…ì–¼ìŒ
 bit F_CristalIce;
 bit F_Cristal;
 U8 gu8_cristal_timer;
@@ -49,7 +49,7 @@ void output_swing_bar(void)
     if(F_CristalIce != SET)
     {
         gu8_cristal_timer = 0;
-        pSWING_BAR = 0;                              // ½ºÀ®¹ÙÁ¤Áö
+        pSWING_BAR = 0;                              // ìŠ¤ìœ™ë°”ì •ì§€
         return;
     }
     else{}
@@ -58,7 +58,7 @@ void output_swing_bar(void)
     if( gu8IceStep >= STATE_11_WAIT_ROOM_WATER_FULL && gu8IceStep < STATE_31_MAIN_ICE_MAKING )
     {
         gu8_cristal_timer = 0;
-        pSWING_BAR = 1;                              // ½ºÀ®¹ÙÁ¤Áö
+        pSWING_BAR = 1;                              // ìŠ¤ìœ™ë°”ì •ì§€
         return;
     }
     else{}
@@ -67,12 +67,12 @@ void output_swing_bar(void)
     if(gu16IceMakeTime <= 5)
     {
         gu8_cristal_timer = 0;
-        pSWING_BAR = 0;                              // ½ºÀ®¹ÙÁ¤Áö
+        pSWING_BAR = 0;                              // ìŠ¤ìœ™ë°”ì •ì§€
         return;
     }
     else{}
 
-    if(gu8_cristal_timer == 0 && gu8IceStep == STATE_31_MAIN_ICE_MAKING)          // Á¦ºù±¸°£ ½ºÀ®¹Ù µ¿ÀÛ
+    if(gu8_cristal_timer == 0 && gu8IceStep == STATE_31_MAIN_ICE_MAKING)          // ì œë¹™êµ¬ê°„ ìŠ¤ìœ™ë°” ë™ìž‘
     {
         F_Cristal = !F_Cristal;
 

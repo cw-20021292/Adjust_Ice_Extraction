@@ -24,7 +24,7 @@ Global functions
 #define pWIFI_RX                               P0.3
 #define pWifi_ON                               P0.4
 /******************************************************************************************************************************************/
-/* ³Ã¸ÅÀüÈ¯ STEP MOTOR */
+/* ëƒ‰ë§¤ì „í™˜ STEP MOTOR */
 #define pSTEP_MOTOR_GAS_SW_1                   P7.1
 #define pSTEP_MOTOR_GAS_SW_2                   P0.5
 #define pSTEP_MOTOR_GAS_SW_3                   P7.0
@@ -48,19 +48,19 @@ Global functions
 #define pAD_HOT_HEATER_IAD                     P3.5    //ANI 23
 #define P_ICE_DOOR_HEATER_IAD                  P3.6    //ANI 22
 /******************************************************************************************************************************************/
-/* ¸ñ¾÷ : DOOR ¹Ý´ë·Î µÇ¾îÀÖÀ½ */
+/* ëª©ì—… : DOOR ë°˜ëŒ€ë¡œ ë˜ì–´ìžˆìŒ */
 #define pSTEP_MOTOR_ICE_DOOR_1                 P3.3
 #define pSTEP_MOTOR_ICE_DOOR_2                 P3.2
 #define pSTEP_MOTOR_ICE_DOOR_3                 P10.6
 #define pSTEP_MOTOR_ICE_DOOR_4                 P10.5
 /******************************************************************************************************************************************/
-/* ¾óÀ½ ÃßÃâ ÃÖÁ¾µµ¾î STEP MOTOR */
+/* ì–¼ìŒ ì¶”ì¶œ ìµœì¢…ë„ì–´ STEP MOTOR */
 #define pSTEP_MOTOR_ICE_SELECT_4               P4.6
 #define pSTEP_MOTOR_ICE_SELECT_3               P4.5
 #define pSTEP_MOTOR_ICE_SELECT_2               P4.4
 #define pSTEP_MOTOR_ICE_SELECT_1               P4.3
 /******************************************************************************************************************************************/
-/* ¼ø°£¿Â¼ö È÷ÅÍ ¸±·¹ÀÌ */
+/* ìˆœê°„ì˜¨ìˆ˜ ížˆí„° ë¦´ë ˆì´ */
 #define pHEATER_HOT_H_RELAY                    P4.7
 /******************************************************************************************************************************************/
 /* ICE TRAY STEP MOTOR */
@@ -78,33 +78,33 @@ Global functions
 #define pCOLD_TH_POWER                         P6.3
 /******************************************************************************************************************************************/
 #ifndef FEEDER_SCREW_DIRECTION_BEFORE
-/* ¾óÀ½ ÅäÃâ¸ðÅÍ (ÃÖÁ¾) */
-#define pMOTOR_ICE_OUT_CW                      P7.4     // ¾óÀ½ ÃßÃâ Á¤¹æÇâ Ãâ·Â (¸ñ¾÷ : Ä¿³ØÅÍ ¹Ý´ë·Î)
-#define pMOTOR_ICE_OUT_CCW                     P7.5     // ¾óÀ½ ÃßÃâ ¿ª¹æÇâ Ãâ·Â (¸ñ¾÷ : Ä¿³ØÅÍ ¹Ý´ë·Î)
+/* ì–¼ìŒ í† ì¶œëª¨í„° (ìµœì¢…) */
+#define pMOTOR_ICE_OUT_CW                      P7.4     // ì–¼ìŒ ì¶”ì¶œ ì •ë°©í–¥ ì¶œë ¥ (ëª©ì—… : ì»¤ë„¥í„° ë°˜ëŒ€ë¡œ)
+#define pMOTOR_ICE_OUT_CCW                     P7.5     // ì–¼ìŒ ì¶”ì¶œ ì—­ë°©í–¥ ì¶œë ¥ (ëª©ì—… : ì»¤ë„¥í„° ë°˜ëŒ€ë¡œ)
 
 #else
-/* °³¹ß¿ë (³ë¶õ»ö) */
-#define pMOTOR_ICE_OUT_CW                      P7.5     // ¾óÀ½ ÃßÃâ Á¤¹æÇâ Ãâ·Â (¸ñ¾÷ : Ä¿³ØÅÍ ¹Ý´ë·Î)
-#define pMOTOR_ICE_OUT_CCW                     P7.4     // ¾óÀ½ ÃßÃâ ¿ª¹æÇâ Ãâ·Â (¸ñ¾÷ : Ä¿³ØÅÍ ¹Ý´ë·Î)
+/* ê°œë°œìš© (ë…¸ëž€ìƒ‰) */
+#define pMOTOR_ICE_OUT_CW                      P7.5     // ì–¼ìŒ ì¶”ì¶œ ì •ë°©í–¥ ì¶œë ¥ (ëª©ì—… : ì»¤ë„¥í„° ë°˜ëŒ€ë¡œ)
+#define pMOTOR_ICE_OUT_CCW                     P7.4     // ì–¼ìŒ ì¶”ì¶œ ì—­ë°©í–¥ ì¶œë ¥ (ëª©ì—… : ì»¤ë„¥í„° ë°˜ëŒ€ë¡œ)
 #endif
 /******************************************************************************************************************************************/
 #define pCOMP                                  P7.2
-#define P_OUT_ICE_CRUSH                        P7.3     // ¾óÀ½ ºÐ¼â¸ðÅÍ (DC)
+#define P_OUT_ICE_CRUSH                        P7.3     // ì–¼ìŒ ë¶„ì‡„ëª¨í„° (DC)
 /******************************************************************************************************************************************/
-#define pOPTION                                P7.6     // CPI(³ÃÁ¤¾ÆÀÌ½º) / CHPI(³Ã¿ÂÁ¤¾ÆÀÌ½º) ¸ðµ¨ ÆÇ´Ü (2KG´Â CHPI¸¸ ÀÖÀ½)
+#define pOPTION                                P7.6     // CPI(ëƒ‰ì •ì•„ì´ìŠ¤) / CHPI(ëƒ‰ì˜¨ì •ì•„ì´ìŠ¤) ëª¨ë¸ íŒë‹¨ (2KGëŠ” CHPIë§Œ ìžˆìŒ)
 /******************************************************************************************************************************************/
-#define P_IN_FLOW_FEEDBACK_1                   P7.7     //INTP 11 (À¯·® °¨Áö)
+#define P_IN_FLOW_FEEDBACK_1                   P7.7     //INTP 11 (ìœ ëŸ‰ ê°ì§€)
 /******************************************************************************************************************************************/
-/* ¿Â¼ö À¯·®Á¶Àý¹ëºê STEP MOTOR */
+/* ì˜¨ìˆ˜ ìœ ëŸ‰ì¡°ì ˆë°¸ë¸Œ STEP MOTOR */
 #define pSTEP_MOTOR_FLOW_1                     P8.2
 #define pSTEP_MOTOR_FLOW_2                     P8.3
 #define pSTEP_MOTOR_FLOW_3                     P8.4
 #define pSTEP_MOTOR_FLOW_4                     P8.5
 /******************************************************************************************************************************************/
-/* µå·¹ÀÎÅÊÅ© ¹× ÆßÇÁ */
+/* ë“œë ˆì¸íƒ±í¬ ë° íŽŒí”„ */
 #define pLEVEL_ICE_DRAIN_LOW                   P9.3
 #define pLEVEL_ICE_DRAIN_HIGH                  P9.4
-#define pPUMP_DRAIN_PWM                        P6.7    //TO13 (Timer PWMÀ¸·Î Á¦¾î)
+#define pPUMP_DRAIN_PWM                        P6.7    //TO13 (Timer PWMìœ¼ë¡œ ì œì–´)
 /******************************************************************************************************************************************/
 #define pHEATER_HOT_TRIAC_L                   P10.3
 /******************************************************************************************************************************************/
@@ -113,27 +113,27 @@ Global functions
 #define P_AD_COOLING_FAN_IAD                  P11.5   // ANI 26
 #define P_AD_OUTDOOR_TEMP_2                   P11.6   // ANI 25
 /******************************************************************************************************************************************/
-/* ¸®µå½ºÀ§Ä¡ */
+/* ë¦¬ë“œìŠ¤ìœ„ì¹˜ */
 #define pREED_FILTER_COVER                    P12.3
 #define pREED_FILTER                          P12.4
 #define pREED_TANK_COVER_1                    P13.7
 #define pREED_TANK_COVER_2                    P12.2
 // #define P_IN_SW_REED_5                        P12.1
 /******************************************************************************************************************************************/
-#define pHEATER_ICE_DOOR                      P14.0         /* ¾óÀ½ ÃßÃâµµ¾î ÂÊ °á·Î ¹ß»ý ¹æÁö¿ë È÷ÅÍ */
+#define pHEATER_ICE_DOOR                      P14.0         /* ì–¼ìŒ ì¶”ì¶œë„ì–´ ìª½ ê²°ë¡œ ë°œìƒ ë°©ì§€ìš© ížˆí„° */
 /******************************************************************************************************************************************/
-/* ¸¸ºù¼¾¼­ */
+/* ë§Œë¹™ì„¼ì„œ */
 #define pIR_POWER                              P14.2
 #define P_IN_ICE_FULL_RX_1                     P12.0   // ANI 19
 
-/* Àúºù¼¾¼­ */
+/* ì €ë¹™ì„¼ì„œ */
 #define pIR_POWER2                          P14.1
 #define P_IN_ICE_FULL_RX_2                     P3.7
 /******************************************************************************************************************************************/
 #define pFACTORY_TEST_RX                       P14.3
 #define pFACTORY_TEST_TX                       P14.4
 /******************************************************************************************************************************************/
-/* Æ®·¹ÀÌ ¸®¹ÌÆ® ½ºÀ§Ä¡ */
+/* íŠ¸ë ˆì´ ë¦¬ë¯¸íŠ¸ ìŠ¤ìœ„ì¹˜ */
 #define pICE_MICRO_SW_HIGH                     P0.0
 #define pICE_MICRO_SW_LOW                      P14.5
 /******************************************************************************************************************************************/
@@ -141,7 +141,7 @@ Global functions
 #define pAD_COLD_Temp                          P15.1    //ANI 9
 #define pAD_Drain_Pump_IAD                     P15.2    // ANI 10
 /******************************************************************************************************************************************/
-/* UV °ü·Ã PORT */
+/* UV ê´€ë ¨ PORT */
 #define pUV_LED_WATER_FAUCET                   P12.7
 #define pUV_LED_ICE_FAUCET_1                   P12.6
 #define pUV_LED_ICE_FAUCET_2                   P12.5
@@ -156,19 +156,19 @@ Global functions
 #define pAD_UV_ICE_TANK_3_IAD                  P10.0    // ANI 20
 #define pAD_UV_ICE_TRAY_1_2_IAD                P14.7    // ANI 18
 /******************************************************************************************************************************************/
-#define pVALVE_HOT_COLD_OVERFLOW               P5.6       // ¿Â¼ö¹öÆÛ/³Ã¼öÅÊÅ© [NOS] ¿À¹öÇÃ·Î¿ì ¹ëºê V1
-#define pVALVE_ICE_WATER_EXTRACT               P5.5       // ¾óÀ½¹° [FEED] ÃßÃâ¹ëºê (2kg Ãß°¡) V2
-#define pVALVE_ROOM_IN                         P5.4       // Á¤¼ö [FEED] ÀÔ¼ö¹ëºê V3
-#define pVALVE_COLD_DRAIN                      P5.3       // ³Ã¼ö [FEED] µå·¹ÀÎ¹ëºê V4
-#define pVALVE_COLD_IN                         P8.7       // ³Ã¼ö [FEED] ÀÔ¼ö¹ëºê V5
-#define pVALVE_ROOM_COLD_EXTRACT               P8.6       // ³Ã/Á¤¼ö [FEED] Ãâ¼ö¹ëºê V6TJD
-#define pVALVE_HOT_OUT                         P3.0       // ¿Â¼ö [FEED] Ãâ¼ö¹ëºê V7
-#define pVALVE_HOT_DRAIN                       P5.0       // ¿Â¼ö [NOS] µå·¹ÀÎ¹ëºê V8
-#define pVALVE_ICE_TRAY_IN                     P5.1       // Æ®·¹ÀÌ [FEED] ÀÔ¼ö¹ëºê V9
-#define pSWING_BAR                             P5.2       // ÀüÀÚ¼®½ºÀ®¹Ù V10
+#define pVALVE_HOT_COLD_OVERFLOW               P5.6       // ì˜¨ìˆ˜ë²„í¼/ëƒ‰ìˆ˜íƒ±í¬ [NOS] ì˜¤ë²„í”Œë¡œìš° ë°¸ë¸Œ V1
+#define pVALVE_ICE_WATER_EXTRACT               P5.5       // ì–¼ìŒë¬¼ [FEED] ì¶”ì¶œë°¸ë¸Œ (2kg ì¶”ê°€) V2
+#define pVALVE_ROOM_IN                         P5.4       // ì •ìˆ˜ [FEED] ìž…ìˆ˜ë°¸ë¸Œ V3
+#define pVALVE_COLD_DRAIN                      P5.3       // ëƒ‰ìˆ˜ [FEED] ë“œë ˆì¸ë°¸ë¸Œ V4
+#define pVALVE_COLD_IN                         P8.7       // ëƒ‰ìˆ˜ [FEED] ìž…ìˆ˜ë°¸ë¸Œ V5
+#define pVALVE_ROOM_COLD_EXTRACT               P8.6       // ëƒ‰/ì •ìˆ˜ [FEED] ì¶œìˆ˜ë°¸ë¸Œ V6TJD
+#define pVALVE_HOT_OUT                         P3.0       // ì˜¨ìˆ˜ [FEED] ì¶œìˆ˜ë°¸ë¸Œ V7
+#define pVALVE_HOT_DRAIN                       P5.0       // ì˜¨ìˆ˜ [NOS] ë“œë ˆì¸ë°¸ë¸Œ V8
+#define pVALVE_ICE_TRAY_IN                     P5.1       // íŠ¸ë ˆì´ [FEED] ìž…ìˆ˜ë°¸ë¸Œ V9
+#define pSWING_BAR                             P5.2       // ì „ìžì„ìŠ¤ìœ™ë°” V10
 
-#define pVALVE_NOS                             P8.1       // ÀÔ¼ö [NOS] ¹ëºê
-#define pVALVE_HOT_IN                          P8.0       // ¿Â¼öÀÔ¼ö [FEED] ¹ëºê (O)
+#define pVALVE_NOS                             P8.1       // ìž…ìˆ˜ [NOS] ë°¸ë¸Œ
+#define pVALVE_HOT_IN                          P8.0       // ì˜¨ìˆ˜ìž…ìˆ˜ [FEED] ë°¸ë¸Œ (O)
 /******************************************************************************************************************************************/
 /* Ice InnerDoor Reed Added 2025-10-28 */
 #define P_INNER_DOOR_REED_SW                    P12.1

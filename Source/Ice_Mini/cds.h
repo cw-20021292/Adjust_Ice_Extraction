@@ -17,10 +17,10 @@ extern U8 gu8_Amb_Temperature_One_Degree;
 extern bit F_IceFull;
 
 
-/*#define ICESTOP_TIME_SIX_HOURS               60*60*6*/                 // ÃëÄ§½Ã Á¦ºùÁ¤Áö 6½Ã°£(21600ÃÊ)
+/*#define ICESTOP_TIME_SIX_HOURS               60*60*6*/                 // ì·¨ì¹¨ì‹œ ì œë¹™ì •ì§€ 6ì‹œê°„(21600ì´ˆ)
 
-#define ICESTOP_TIME_SIX_HOURS                 21600                 // ÃëÄ§½Ã Á¦ºùÁ¤Áö 6½Ã°£(21600ÃÊ)
-#define ICESTOP_TIME_FIVE_HOURS                18000                 // ÃëÄ§½Ã Á¦ºùÁ¤Áö 5½Ã°£(21600ÃÊ)
+#define ICESTOP_TIME_SIX_HOURS                 21600                 // ì·¨ì¹¨ì‹œ ì œë¹™ì •ì§€ 6ì‹œê°„(21600ì´ˆ)
+#define ICESTOP_TIME_FIVE_HOURS                18000                 // ì·¨ì¹¨ì‹œ ì œë¹™ì •ì§€ 5ì‹œê°„(21600ì´ˆ)
 
 #define POWER_SAVING_WAKEUP_DELAY_TIME         3000
 

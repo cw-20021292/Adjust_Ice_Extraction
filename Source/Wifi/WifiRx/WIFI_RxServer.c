@@ -70,8 +70,8 @@ I8 ai8RxProtocol[LENGTH_WIFI_ALL_RX_MAX]; // RX DATA (STX ~ ETX)
 I8 ai8Mac[17U];
 
 U16 au16InfoData[WIFI_INFO_NUM];
-U16 gu16_RAM_Monitor_RESP_SIZE;         // RAM DATA ÀĞ±â/¾²±â ¿äÃ»ÇÑ °¹¼ö (RAM address °¹¼ö)
-U16 gu16_START_RAM_Address[LENGTH_RAM_ADDRESS_MAX];     // RAM ADDRESS °ª (ÃÖ´ë°¹¼ö ÁöÁ¤)
+U16 gu16_RAM_Monitor_RESP_SIZE;         // RAM DATA ì½ê¸°/ì“°ê¸° ìš”ì²­í•œ ê°¯ìˆ˜ (RAM address ê°¯ìˆ˜)
+U16 gu16_START_RAM_Address[LENGTH_RAM_ADDRESS_MAX];     // RAM ADDRESS ê°’ (ìµœëŒ€ê°¯ìˆ˜ ì§€ì •)
 U16 gu16_RAM_Address_len[LENGTH_RAM_ADDRESS_MAX];
 /***** Constant ***************************************************************/
 
@@ -108,11 +108,11 @@ typedef struct _wifi_rxapi_list_
 } WifiRxApiList_T;
 
 /* Wifi Rx Table */
-static const WifiRxApiList_T WifiRxApiList[] =   // ¸¶Áö¸·ºÎÅÍ Ãß°¡.
+static const WifiRxApiList_T WifiRxApiList[] =   // ë§ˆì§€ë§‰ë¶€í„° ì¶”ê°€.
 {   /*  API             Tx                      Function */
     {   API_RX_A1002,   WIFI_TX_NULL,               NULL    },
     // {   API_RX_A1011,   WIFI_TX_RESP_RECV,          RxA1011 },
-    {   API_RX_A1011,   WIFI_TX_NULL,               RxA1011 }, // ÀÚÃ¼ Event Check
+    {   API_RX_A1011,   WIFI_TX_NULL,               RxA1011 }, // ìì²´ Event Check
     {   API_RX_A1013,   WIFI_TX_RESP_FUNC,          NULL    },
     {   API_RX_A1091,   WIFI_TX_NULL,               RxA1091 }, // Diagnosis Result
     {   API_RX_A1023,   WIFI_TX_RESP_SENSOR,        NULL    },
@@ -292,9 +292,9 @@ static void RunAnalysis ( void )
     pList = WifiRxApiList;
 
 #ifdef UNUSED_BLE_A1011_RX
-    if (GetWifiBLESendStatus(TX_BLE_WIFI) == BLEDATA ) // BLE DATA ¼ö½Å ÀÎ °æ¿ì
+    if (GetWifiBLESendStatus(TX_BLE_WIFI) == BLEDATA ) // BLE DATA ìˆ˜ì‹  ì¸ ê²½ìš°
     {
-        if ( _STRNCMP_( (const char __FAR*) API_RX_A1011, (const char __FAR*) mai8RxAPINo, LENGTH_API_NO ) == N_TRUE ) // BLE : A1011 ÀÎ °æ¿ì
+        if ( _STRNCMP_( (const char __FAR*) API_RX_A1011, (const char __FAR*) mai8RxAPINo, LENGTH_API_NO ) == N_TRUE ) // BLE : A1011 ì¸ ê²½ìš°
         {  
             return;
         }
@@ -302,7 +302,7 @@ static void RunAnalysis ( void )
 #endif
 
 #ifdef UNUSED_A9011_RX
-    if ( _STRNCMP_( (const char __FAR*) API_RX_A9011, (const char __FAR*) mai8RxAPINo, LENGTH_API_NO ) == N_TRUE ) // BLE : A9011 ÀÎ °æ¿ì
+    if ( _STRNCMP_( (const char __FAR*) API_RX_A9011, (const char __FAR*) mai8RxAPINo, LENGTH_API_NO ) == N_TRUE ) // BLE : A9011 ì¸ ê²½ìš°
     {  
         return;
     }
@@ -317,7 +317,7 @@ static void RunAnalysis ( void )
     }
     if ( GetUserInterface( USER_SMART_SENSING_STATUS ) == TRUE )
     {
-        if ( _STRNCMP_( (const char __FAR*) API_RX_A1083, (const char __FAR*) mai8RxAPINo, LENGTH_API_NO ) == N_TRUE ) // ½º¸¶Æ®Áø´Ü Áß »ó½ÃÁø´Ü ¿äÃ» ½Ã ¿¹¿ÜÃ³¸®
+        if ( _STRNCMP_( (const char __FAR*) API_RX_A1083, (const char __FAR*) mai8RxAPINo, LENGTH_API_NO ) == N_TRUE ) // ìŠ¤ë§ˆíŠ¸ì§„ë‹¨ ì¤‘ ìƒì‹œì§„ë‹¨ ìš”ì²­ ì‹œ ì˜ˆì™¸ì²˜ë¦¬
         {  
             return;
         }
@@ -438,7 +438,7 @@ static U8 IsRecvPossible ( void )
             }
             else
             {
-                return FALSE; // Á¤¹ĞÁø´Ü ÁßÀÎ °æ¿ì Á¤¹ĞÁø´Ü Á¾·á Áö½Ã ÀÌ¿Ü ´Ù¸¥ ÀÔ·Â ±İÁö
+                return FALSE; // ì •ë°€ì§„ë‹¨ ì¤‘ì¸ ê²½ìš° ì •ë°€ì§„ë‹¨ ì¢…ë£Œ ì§€ì‹œ ì´ì™¸ ë‹¤ë¥¸ ì…ë ¥ ê¸ˆì§€
             }
         }
     }
@@ -472,7 +472,7 @@ static U8 RxA1011 ( void )
     if ( IsRecvPossible() != TRUE )
     {
         SetWifiBuzzSound( WIFI_BUZZER_ERROR );
-        if (mData != BLEDATA) // BLE DATA TEST¿ë
+        if (mData != BLEDATA) // BLE DATA TESTìš©
         {
             return TRUE;
         }
@@ -596,7 +596,7 @@ static U8 RxA7011 ( void )
     
     _MEMSET_( (void __FAR*) mi8Id, '\0', sizeof(mi8Id) );
 
-    MakeCheckId( mi8Id, 0, WIFI_BLE_CERT_0001); // A7011.0001 ÀÎ °æ¿ì
+    MakeCheckId( mi8Id, 0, WIFI_BLE_CERT_0001); // A7011.0001 ì¸ ê²½ìš°
 
     if ( _STRNCMP_( (const char __FAR*) mi8Id, (const char __FAR*) pBuf, LENGTH_WIFI_ID_ONE ) == N_TRUE ) // ID+:(5Byte) check
     {
@@ -612,20 +612,20 @@ static U8 RxA7011 ( void )
             }
         }
 
-        if((U8)(mi8Data[0]) == ASCII_NO_1) // Value °¡ '1'ÀÎ °æ¿ì
+        if((U8)(mi8Data[0]) == ASCII_NO_1) // Value ê°€ '1'ì¸ ê²½ìš°
         {
-            SetWifiApStatus(STATUS_AP_BLE_CERT,SET);    // Á¡À¯ÀÎÁõ °¡´É(Á¶ÀÛ ´ë±â) »óÅÂ·Î º¯°æ
+            SetWifiApStatus(STATUS_AP_BLE_CERT,SET);    // ì ìœ ì¸ì¦ ê°€ëŠ¥(ì¡°ì‘ ëŒ€ê¸°) ìƒíƒœë¡œ ë³€ê²½
             SetWifiCertID(WIFI_BLE_CERT_0002); // A7010.0002 :
             SetWifiCertStatus(STATUS_CERT_ON); // 0001         
-            SetWifiSendStatus(TX_DATA,WIFI_TX_SEND_BLE_CERT); // Á¡À¯ÀÎÁõ ¼º°ø Àü¼Û (A7010)
-            SetWifiBuzzSound( WIFI_BUZZER_BLE_CERT ); // Á¡À¯ÀÎÁõ ¾È³» À½¼º
+            SetWifiSendStatus(TX_DATA,WIFI_TX_SEND_BLE_CERT); // ì ìœ ì¸ì¦ ì„±ê³µ ì „ì†¡ (A7010)
+            SetWifiBuzzSound( WIFI_BUZZER_BLE_CERT ); // ì ìœ ì¸ì¦ ì•ˆë‚´ ìŒì„±
         }
         else // ASCII_NO_0 OR ASCII_NO_2 ?
         {
-            // SetWifiApStatus(STATUS_AP_BLE_CERT,CLEAR);      // Á¡À¯ÀÎÁõ Á¶ÀÛ ºÒ°¡ »óÅÂ·Î º¯°æ
+            // SetWifiApStatus(STATUS_AP_BLE_CERT,CLEAR);      // ì ìœ ì¸ì¦ ì¡°ì‘ ë¶ˆê°€ ìƒíƒœë¡œ ë³€ê²½
             SetWifiCertID(WIFI_BLE_CERT_0002); // A7010.0002 :
             SetWifiCertStatus(STATUS_CERT_FAIL); // 0002          
-            SetWifiSendStatus(TX_DATA,WIFI_TX_SEND_BLE_CERT); // Á¡À¯ÀÎÁõ ½ÇÆĞ Àü¼Û (A7010)
+            SetWifiSendStatus(TX_DATA,WIFI_TX_SEND_BLE_CERT); // ì ìœ ì¸ì¦ ì‹¤íŒ¨ ì „ì†¡ (A7010)
         }
     }
 
@@ -1002,10 +1002,10 @@ static void DoMonitorData (U8 rw_sel, I8* pBuf )
             break;
         }
     }
-    mu16Size = mcount; // ',' °¹¼ö¸¦ count ÇÏ¿© ¿äÃ» DATA°¡ ¸î°³ÀÎÁö È®ÀÎ
-    gu16_RAM_Monitor_RESP_SIZE = mu16Size; // Àü¿ªº¯¼ö¿¡ ÀúÀå (TxMake ¿¡¼­ cmd size·Î »ç¿ë)
+    mu16Size = mcount; // ',' ê°¯ìˆ˜ë¥¼ count í•˜ì—¬ ìš”ì²­ DATAê°€ ëª‡ê°œì¸ì§€ í™•ì¸
+    gu16_RAM_Monitor_RESP_SIZE = mu16Size; // ì „ì—­ë³€ìˆ˜ì— ì €ì¥ (TxMake ì—ì„œ cmd sizeë¡œ ì‚¬ìš©)
 
-    for ( i = 0 ; i < mu16Size; i++ ) // RAM Address Ã£±â
+    for ( i = 0 ; i < mu16Size; i++ ) // RAM Address ì°¾ê¸°
     {
         U8 mu8LenCount = 0U;
         WifiRxFun_T pFun;
@@ -1038,7 +1038,7 @@ static void DoMonitorData (U8 rw_sel, I8* pBuf )
             }
         }
 
-        for ( mu8LenCount = 0 ; mu8LenCount < LENGTH_WIFI_RAM_DATA-1; mu8LenCount++ ) // RAM DATA °ª Ã£±â, [RAM DATA ´Â 10Áø¼ö·Î¸¸ »ç¿ë}
+        for ( mu8LenCount = 0 ; mu8LenCount < LENGTH_WIFI_RAM_DATA-1; mu8LenCount++ ) // RAM DATA ê°’ ì°¾ê¸°, [RAM DATA ëŠ” 10ì§„ìˆ˜ë¡œë§Œ ì‚¬ìš©}
         {
 
             mi8Data[mu8LenCount] = pBuf[mu16DataCount]; // { FFFF(adress): ~ }
@@ -1062,13 +1062,13 @@ static void DoMonitorData (U8 rw_sel, I8* pBuf )
             }
 
         }
-        mi8Data[LENGTH_WIFI_RAM_DATA-1] = (I8)((mu8LenCount)-2); // Write DATA°ª ¹®ÀÚ¿­ ±æÀÌ¸¦ ¸Ç ¸¶Áö¸· ¹øÁö¿¡ ÀúÀå 
-                                                         // SetUserSystemRamMonitor¿¡¼­ ASCII¸¦ 10Áø¼ö·Î º¯È¯ ½Ã »ç¿ë
-        gu16_RAM_Address_len[i] = WIFI_ASCII2HEX(mi8Data[0]) & 0x000F; //mi8Data[0]; // ADDRESS º° Len DATA ÀúÀå
+        mi8Data[LENGTH_WIFI_RAM_DATA-1] = (I8)((mu8LenCount)-2); // Write DATAê°’ ë¬¸ìì—´ ê¸¸ì´ë¥¼ ë§¨ ë§ˆì§€ë§‰ ë²ˆì§€ì— ì €ì¥ 
+                                                         // SetUserSystemRamMonitorì—ì„œ ASCIIë¥¼ 10ì§„ìˆ˜ë¡œ ë³€í™˜ ì‹œ ì‚¬ìš©
+        gu16_RAM_Address_len[i] = WIFI_ASCII2HEX(mi8Data[0]) & 0x000F; //mi8Data[0]; // ADDRESS ë³„ Len DATA ì €ì¥
 
         for ( mi = 0 ; mi < mu16Size; mi++ )
         {   
-            m16Address_HEX_buf = (WIFI_ASCII2HEX(mi8Address[0])) ; // ASCII¸¦ 16Áø¼ö·Î º¯È¯
+            m16Address_HEX_buf = (WIFI_ASCII2HEX(mi8Address[0])) ; // ASCIIë¥¼ 16ì§„ìˆ˜ë¡œ ë³€í™˜
             m16Address_HEX = (m16Address_HEX_buf << 12) & 0xF000;
             m16Address_HEX_buf = (WIFI_ASCII2HEX(mi8Address[1])) ;
             m16Address_HEX += (m16Address_HEX_buf << 8) & 0x0F00;
@@ -1079,7 +1079,7 @@ static void DoMonitorData (U8 rw_sel, I8* pBuf )
 
             gu16_START_RAM_Address[i] = m16Address_HEX;
 
-            pFun = (pList)->RxFunc_M; //RAM Address °¹¼ö¸¸Å­ È£ÃâÇÏ±â ¶§¹®¿¡ (pList+i)->RxFunc °¡ ¾Æ´Ô.
+            pFun = (pList)->RxFunc_M; //RAM Address ê°¯ìˆ˜ë§Œí¼ í˜¸ì¶œí•˜ê¸° ë•Œë¬¸ì— (pList+i)->RxFunc ê°€ ì•„ë‹˜.
             if ( (pFun != NULL)&&(rw_sel == WiFi_M_RAM_Write) )
             {
                 pFun(m16Address_HEX, mi8Data ); // m8Address_HEX: start ram address(ex: F588)

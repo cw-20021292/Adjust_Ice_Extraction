@@ -115,7 +115,7 @@ extern TYPE_WORD          U16CompOnW;
 
 
 
-/*..hui [24-4-11¿ÀÈÄ 4:01:39] ¾óÀ½¿ì¼± º¯°æÁ¦¾î..*/
+/*..hui [24-4-11ì˜¤í›„ 4:01:39] ì–¼ìŒìš°ì„  ë³€ê²½ì œì–´..*/
 /*#define FAST_ICE_MAKE_COUNT          4*/
 #define FAST_ICE_MAKE_COUNT          3
 #define FAST_ICE_MAKE_ENABLE         0x3FF

@@ -1,7 +1,7 @@
 /// @file     Lib_ADConvert.c
 /// @date
 /// @author   Jaejin Ham
-/// @brief    AD Convert µ¿ÀÛ Á¦¾î file
+/// @brief    AD Convert ë™ì‘ ì œì–´ file
 
 #include "Global_Header.h"
 
@@ -61,19 +61,19 @@ void ADC_Stop(void)
 }
 
 
-/// @brief    AD °ª È®ÀÎ ÇÔ¼ö
+/// @brief    AD ê°’ í™•ì¸ í•¨ìˆ˜
 /// @param    mu8AD_Channel : AD Channel No
-/// @return   tAD_Data.mu16Average[mu8AD_Channel] : ÃøÁ¤ÇÑ ChannelÀÇ AD Æò±Õ°ª
+/// @return   tAD_Data.mu16Average[mu8AD_Channel] : ì¸¡ì •í•œ Channelì˜ AD í‰ê· ê°’
 U16 Get_ADC_Value(U8 mu8AD_Channel)
 {
     return  tAD_Data.mu16Average[mu8AD_Channel];
 }
 
 
-/// @brief    AD Convert µ¿ÀÛ ÇÔ¼ö
+/// @brief    AD Convert ë™ì‘ í•¨ìˆ˜
 /// @param    mu8AD_Channel : AD Channel No
-///           mu8Resolution : AD Register ShiftÇÒ Bit ¼ö
-/// @return   mu16AD_Result : AD ÃøÁ¤ °ª
+///           mu8Resolution : AD Register Shiftí•  Bit ìˆ˜
+/// @return   mu16AD_Result : AD ì¸¡ì • ê°’
 U16 Get_ADC_Operation(U8 mu8AD_Channel, U8 mu8Resolution)
 {
     U16 mu16AD_Result = 0;
@@ -97,26 +97,26 @@ U16 Get_ADC_Operation(U8 mu8AD_Channel, U8 mu8Resolution)
 }
 
 
-/// @brief    AD Convert Æò±Õ °è»ê ÇÔ¼ö
+/// @brief    AD Convert í‰ê·  ê³„ì‚° í•¨ìˆ˜
 /// @param    mu8AD_Channel : AD Channel No
-///           mu16AD_Value : AD °ª
+///           mu16AD_Value : AD ê°’
 /// @return   void
 void Average_ADC(U8 mu8AD_Channel, U16 mu16AD_Value)
 {
     if (mu16AD_Value > tAD_Data.mu16Max[mu8AD_Channel])
     {
-        tAD_Data.mu16Max[mu8AD_Channel] = mu16AD_Value;      // ÃÖ´ë°ª ÀúÀå
+        tAD_Data.mu16Max[mu8AD_Channel] = mu16AD_Value;      // ìµœëŒ€ê°’ ì €ì¥
     }
 
     if (mu16AD_Value < tAD_Data.mu16Min[mu8AD_Channel])
     {
-        tAD_Data.mu16Min[mu8AD_Channel] = mu16AD_Value;      // ÃÖ¼Ò°ª ÀúÀå
+        tAD_Data.mu16Min[mu8AD_Channel] = mu16AD_Value;      // ìµœì†Œê°’ ì €ì¥
     }
 
     tAD_Data.mu16Sum[mu8AD_Channel] += mu16AD_Value;
 
     if (++tAD_Data.mu8Count[mu8AD_Channel] >= 22)
-    {     // ÃÖ´ë, ÃÖ¼Ò°ªÀ» Á¦¿ÜÇÑ 20È¸ Æò±Õ°ª °è»ê
+    {     // ìµœëŒ€, ìµœì†Œê°’ì„ ì œì™¸í•œ 20íšŒ í‰ê· ê°’ ê³„ì‚°
         tAD_Data.mu16Average[mu8AD_Channel] = (U16)((tAD_Data.mu16Sum[mu8AD_Channel] - (tAD_Data.mu16Max[mu8AD_Channel] + tAD_Data.mu16Min[mu8AD_Channel])) / 20);
 
         tAD_Data.mu16Sum[mu8AD_Channel] = 0;
@@ -127,7 +127,7 @@ void Average_ADC(U8 mu8AD_Channel, U16 mu16AD_Value)
 }
 
 
-/// @brief    AD Convert µ¿ÀÛ ÇÔ¼ö(1ms ·çÆ¾)
+/// @brief    AD Convert ë™ì‘ í•¨ìˆ˜(1ms ë£¨í‹´)
 /// @param    void
 /// @return   void
 void AD_Convert_Control(void)

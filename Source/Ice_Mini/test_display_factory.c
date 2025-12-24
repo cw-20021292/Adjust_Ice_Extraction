@@ -124,8 +124,8 @@ bit bit_uart_cold_temp_test_finish;
 bit bit_uart_sleep_mode_test_finish;
 bit bit_uart_ice_lock_test_finish;
 bit bit_uart_all_lock_test_finish;
-bit bit_uart_my_test_finish;        /* MY ¼¼ÆÃÅ° Ãß°¡ 250213 @CH.PARK */
-bit bit_uart_cold_off_finish;       /* ³Ã¼öOFF ¼¼ÆÃÅ° Ãß°¡ 250213 @CH.PARK */
+bit bit_uart_my_test_finish;        /* MY ì„¸íŒ…í‚¤ ì¶”ê°€ 250213 @CH.PARK */
+bit bit_uart_cold_off_finish;       /* ëƒ‰ìˆ˜OFF ì„¸íŒ…í‚¤ ì¶”ê°€ 250213 @CH.PARK */
 
 bit bit_uart_water_extract_test_finish;
 bit bit_uart_ice_extract_test_finish;
@@ -178,24 +178,24 @@ void diplay_test_start(void)
     // F_TrayMotorUP = 0;
     //F_TrayMotorDOWN = 0;
 
-    /*..hui [17-12-28¿ÀÈÄ 10:54:12] ¹öÀü¸¸ Ç¥½Ã..*/
+    /*..hui [17-12-28ì˜¤í›„ 10:54:12] ë²„ì „ë§Œ í‘œì‹œ..*/
     F_FW_Version_Display_Mode = CLEAR;
     gu8_led_version_step = 2;
     gu8_version_display_Timer = 0;
 
     u8FactoryTestMode = DISPLAY_TEST_MODE;
 
-    /*..hui [19-11-5¿ÀÈÄ 5:57:28] EEPROM / RTC ½Ã°£ ÃÊ±âÈ­..*/
+    /*..hui [19-11-5ì˜¤í›„ 5:57:28] EEPROM / RTC ì‹œê°„ ì´ˆê¸°í™”..*/
     gu8_initial_all_data = 1;
 
-    /*..hui [19-12-19¿ÀÈÄ 1:26:46] Á¤¼ö ¿Âµµ¼¾¼­ Àü¿ø ON..*/
+    /*..hui [19-12-19ì˜¤í›„ 1:26:46] ì •ìˆ˜ ì˜¨ë„ì„¼ì„œ ì „ì› ON..*/
     pROOM_TH_POWER = SET;
     bit_adc_room_start = SET;
-    /*..hui [19-12-19¿ÀÈÄ 1:27:21] ³Ã¼ö ¿Âµµ¼¾¼­ Àü¿ø ON..*/
+    /*..hui [19-12-19ì˜¤í›„ 1:27:21] ëƒ‰ìˆ˜ ì˜¨ë„ì„¼ì„œ ì „ì› ON..*/
     pCOLD_TH_POWER = SET;
     bit_adc_cold_start = SET;
 
-    /*..hui [20-1-14¿ÀÈÄ 8:15:16] 12V Àü¿ø ON..*/
+    /*..hui [20-1-14ì˜¤í›„ 8:15:16] 12V ì „ì› ON..*/
     Bit2_Uart_Test_Mode_State = SET;
 
     bit_uart_ice_test_finish = CLEAR;
@@ -291,15 +291,15 @@ void Display_test_step_Handler(void)
 			gu8_front_setting_led = 0x7F;
             gu8_front_setting_led_2 = 0x7F;
 			gu8_front_under_text_led = 0xFF;
-			gu8_front_under_icon_led = 0x7A;        // BLUE ¾È¾¸
+			gu8_front_under_icon_led = 0x7A;        // BLUE ì•ˆì”€
 			break;
 
-		case DISPLAY_TEST_BTN1: // [¾óÀ½¹°] Å¬¸¯ ÈÄ
+		case DISPLAY_TEST_BTN1: // [ì–¼ìŒë¬¼] í´ë¦­ í›„
 			gu8_ice_water_select_display_timer++;
 
             if(gu8_ice_water_select_display_timer <= 2)
             {
-                // ¾óÀ½¹°
+                // ì–¼ìŒë¬¼
                 Bit1_Front_Led_Ice_Water_Select = CLEAR;
 
                 // MY 1,2,3
@@ -307,12 +307,12 @@ void Display_test_step_Handler(void)
                 Bit4_Front_Center_MY_2_Text = SET;
                 Bit5_Front_Center_MY_3_Text = SET;
 
-                // Ãâ¼öÆÄ¿ì¼Â
+                // ì¶œìˆ˜íŒŒìš°ì…‹
                 Bit0_Front_Left_Led_Eff_Faucet_Text = SET;
             }
             else if(gu8_ice_water_select_display_timer <= 4)
             {
-                // ¾óÀ½¹°
+                // ì–¼ìŒë¬¼
                 Bit1_Front_Led_Ice_Water_Select = (CLEAR);
 
                 // MY 1,2,3
@@ -320,12 +320,12 @@ void Display_test_step_Handler(void)
                 Bit4_Front_Center_MY_2_Text = SET;
                 Bit5_Front_Center_MY_3_Text = SET;
 
-                // Ãâ¼öÆÄ¿ì¼Â
+                // ì¶œìˆ˜íŒŒìš°ì…‹
                 Bit0_Front_Left_Led_Eff_Faucet_Text = SET;
             }
             else if(gu8_ice_water_select_display_timer <= 6)
             {
-                // ¾óÀ½¹°
+                // ì–¼ìŒë¬¼
                 Bit1_Front_Led_Ice_Water_Select = CLEAR;
 
                 // MY 1,2,3
@@ -333,12 +333,12 @@ void Display_test_step_Handler(void)
                 Bit4_Front_Center_MY_2_Text = CLEAR;
                 Bit5_Front_Center_MY_3_Text = SET;
 
-                // Ãâ¼öÆÄ¿ì¼Â
+                // ì¶œìˆ˜íŒŒìš°ì…‹
                 Bit0_Front_Left_Led_Eff_Faucet_Text = SET;
             }
             else if(gu8_ice_water_select_display_timer <= 8)
             {
-                // ¾óÀ½¹°
+                // ì–¼ìŒë¬¼
                 Bit1_Front_Led_Ice_Water_Select = CLEAR;
 
                 // MY 1,2,3
@@ -346,12 +346,12 @@ void Display_test_step_Handler(void)
                 Bit4_Front_Center_MY_2_Text = CLEAR;
                 Bit5_Front_Center_MY_3_Text = CLEAR;
 
-                // Ãâ¼öÆÄ¿ì¼Â
+                // ì¶œìˆ˜íŒŒìš°ì…‹
                 Bit0_Front_Left_Led_Eff_Faucet_Text = SET;
             }
             else if(gu8_ice_water_select_display_timer <= 10)
             {
-                // ¾óÀ½¹°
+                // ì–¼ìŒë¬¼
                 Bit1_Front_Led_Ice_Water_Select = CLEAR;
 
                 // MY 1,2,3
@@ -359,337 +359,337 @@ void Display_test_step_Handler(void)
                 Bit4_Front_Center_MY_2_Text = CLEAR;
                 Bit5_Front_Center_MY_3_Text = CLEAR;
 
-                // Ãâ¼öÆÄ¿ì¼Â
+                // ì¶œìˆ˜íŒŒìš°ì…‹
                 Bit0_Front_Left_Led_Eff_Faucet_Text = CLEAR;
             }
             else
             {
                 gu8_ice_water_select_display_timer = 10;
 
-                // ¾óÀ½¹°
+                // ì–¼ìŒë¬¼
                 Bit1_Front_Led_Ice_Water_Select = CLEAR;
 
                 // MY 1,2,3
                 Bit3_Front_Center_MY_1_Text = CLEAR;
                 Bit4_Front_Center_MY_2_Text = CLEAR;
                 Bit5_Front_Center_MY_3_Text = CLEAR;
-                // Ãâ¼öÆÄ¿ì¼Â
+                // ì¶œìˆ˜íŒŒìš°ì…‹
                 Bit0_Front_Left_Led_Eff_Faucet_Text = CLEAR;
             }
 			break;
 
-		case DISPLAY_TEST_BTN2: // [¾óÀ½] Å¬¸¯ ÈÄ
+		case DISPLAY_TEST_BTN2: // [ì–¼ìŒ] í´ë¦­ í›„
             gu8_ice_select_display_timer++;
             if(gu8_ice_select_display_timer <= 2)
             {
-                // ¾óÀ½
+                // ì–¼ìŒ
                 Bit0_Front_Led_Ice_Select = CLEAR;
 
-                // ¶ó¸é, µå¸³Ä¿ÇÇ, Â÷
+                // ë¼ë©´, ë“œë¦½ì»¤í”¼, ì°¨
                 Bit0_Front_Center_Recipe_Ramen_Text = SET;
                 Bit2_Front_Center_Recipe_Drip_Coffee_Text = SET;
                 Bit1_Front_Center_Tea_Text = SET;
 
-                // ¾óÀ½ºÎÁ·
+                // ì–¼ìŒë¶€ì¡±
                 Bit1_Front_Left_Led_Ice_Shortae_Text = SET;
 
-                // ¾óÀ½ ÀÏ¹İ/Á¶°¢
+                // ì–¼ìŒ ì¼ë°˜/ì¡°ê°
                 Bit6_Front_Under_Txt_Led_Ice_Normal = SET;
                 Bit7_Front_Under_Txt_Led_Ice_Piece = SET;
             }
             else if(gu8_ice_select_display_timer <= 4)
             {
-                // ¾óÀ½
+                // ì–¼ìŒ
                 Bit0_Front_Led_Ice_Select = CLEAR;
 
-                // ¶ó¸é, µå¸³Ä¿ÇÇ, Â÷
+                // ë¼ë©´, ë“œë¦½ì»¤í”¼, ì°¨
                 Bit0_Front_Center_Recipe_Ramen_Text = CLEAR;
                 Bit2_Front_Center_Recipe_Drip_Coffee_Text = SET;
                 Bit1_Front_Center_Tea_Text = SET;
 
-                // ¾óÀ½ºÎÁ·
+                // ì–¼ìŒë¶€ì¡±
                 Bit1_Front_Left_Led_Ice_Shortae_Text = SET;
 
-                // ¾óÀ½ ÀÏ¹İ/Á¶°¢
+                // ì–¼ìŒ ì¼ë°˜/ì¡°ê°
                 Bit6_Front_Under_Txt_Led_Ice_Normal = SET;
                 Bit7_Front_Under_Txt_Led_Ice_Piece = SET;
             }
             else if(gu8_ice_select_display_timer <= 6)
             {
-                // ¾óÀ½
+                // ì–¼ìŒ
                 Bit0_Front_Led_Ice_Select = CLEAR;
 
-                // ¶ó¸é, µå¸³Ä¿ÇÇ, Â÷
+                // ë¼ë©´, ë“œë¦½ì»¤í”¼, ì°¨
                 Bit0_Front_Center_Recipe_Ramen_Text = CLEAR;
                 Bit2_Front_Center_Recipe_Drip_Coffee_Text = CLEAR;
                 Bit1_Front_Center_Tea_Text = SET;
 
-                // ¾óÀ½ºÎÁ·
+                // ì–¼ìŒë¶€ì¡±
                 Bit1_Front_Left_Led_Ice_Shortae_Text = SET;
 
-                // ¾óÀ½ ÀÏ¹İ/Á¶°¢
+                // ì–¼ìŒ ì¼ë°˜/ì¡°ê°
                 Bit6_Front_Under_Txt_Led_Ice_Normal = SET;
                 Bit7_Front_Under_Txt_Led_Ice_Piece = SET;
             }
             else if(gu8_ice_select_display_timer <= 8)
             {
-                // ¾óÀ½
+                // ì–¼ìŒ
                 Bit0_Front_Led_Ice_Select = CLEAR;
 
-                // ¶ó¸é, µå¸³Ä¿ÇÇ, Â÷
+                // ë¼ë©´, ë“œë¦½ì»¤í”¼, ì°¨
                 Bit0_Front_Center_Recipe_Ramen_Text = CLEAR;
                 Bit2_Front_Center_Recipe_Drip_Coffee_Text = CLEAR;
                 Bit1_Front_Center_Tea_Text = CLEAR;
 
-                // ¾óÀ½ºÎÁ·
+                // ì–¼ìŒë¶€ì¡±
                 Bit1_Front_Left_Led_Ice_Shortae_Text = SET;
 
-                // ¾óÀ½ ÀÏ¹İ/Á¶°¢
+                // ì–¼ìŒ ì¼ë°˜/ì¡°ê°
                 Bit6_Front_Under_Txt_Led_Ice_Normal = SET;
                 Bit7_Front_Under_Txt_Led_Ice_Piece = SET;
             }
             else if(gu8_ice_select_display_timer <= 10)
             {
-                // ¾óÀ½
+                // ì–¼ìŒ
                 Bit0_Front_Led_Ice_Select = CLEAR;
 
-                // ¶ó¸é, µå¸³Ä¿ÇÇ, Â÷
+                // ë¼ë©´, ë“œë¦½ì»¤í”¼, ì°¨
                 Bit0_Front_Center_Recipe_Ramen_Text = CLEAR;
                 Bit2_Front_Center_Recipe_Drip_Coffee_Text = CLEAR;
                 Bit1_Front_Center_Tea_Text = CLEAR;
 
-                // ¾óÀ½ºÎÁ·
+                // ì–¼ìŒë¶€ì¡±
                 Bit1_Front_Left_Led_Ice_Shortae_Text = CLEAR;
 
-                // ¾óÀ½ ÀÏ¹İ/Á¶°¢
+                // ì–¼ìŒ ì¼ë°˜/ì¡°ê°
                 Bit6_Front_Under_Txt_Led_Ice_Normal = SET;
                 Bit7_Front_Under_Txt_Led_Ice_Piece = SET;
             }
             else if(gu8_ice_select_display_timer <= 12)
             {
-                // ¾óÀ½
+                // ì–¼ìŒ
                 Bit0_Front_Led_Ice_Select = CLEAR;
 
-                // ¶ó¸é, µå¸³Ä¿ÇÇ, Â÷
+                // ë¼ë©´, ë“œë¦½ì»¤í”¼, ì°¨
                 Bit0_Front_Center_Recipe_Ramen_Text = CLEAR;
                 Bit2_Front_Center_Recipe_Drip_Coffee_Text = CLEAR;
                 Bit1_Front_Center_Tea_Text = CLEAR;
 
-                // ¾óÀ½ºÎÁ·
+                // ì–¼ìŒë¶€ì¡±
                 Bit1_Front_Left_Led_Ice_Shortae_Text = CLEAR;
 
-                // ¾óÀ½ ÀÏ¹İ/Á¶°¢
+                // ì–¼ìŒ ì¼ë°˜/ì¡°ê°
                 Bit6_Front_Under_Txt_Led_Ice_Normal = CLEAR;
                 Bit7_Front_Under_Txt_Led_Ice_Piece = SET;
             }
             else if(gu8_ice_select_display_timer <= 14)
             {
-                // ¾óÀ½
+                // ì–¼ìŒ
                 Bit0_Front_Led_Ice_Select = CLEAR;
 
-                // ¶ó¸é, µå¸³Ä¿ÇÇ, Â÷
+                // ë¼ë©´, ë“œë¦½ì»¤í”¼, ì°¨
                 Bit0_Front_Center_Recipe_Ramen_Text = CLEAR;
                 Bit2_Front_Center_Recipe_Drip_Coffee_Text = CLEAR;
                 Bit1_Front_Center_Tea_Text = CLEAR;
 
-                // ¾óÀ½ºÎÁ·
+                // ì–¼ìŒë¶€ì¡±
                 Bit1_Front_Left_Led_Ice_Shortae_Text = CLEAR;
 
-                // ¾óÀ½ ÀÏ¹İ/Á¶°¢
+                // ì–¼ìŒ ì¼ë°˜/ì¡°ê°
                 Bit6_Front_Under_Txt_Led_Ice_Normal = CLEAR;
                 Bit7_Front_Under_Txt_Led_Ice_Piece = CLEAR;
             }
             else
             {
                 gu8_ice_select_display_timer = 14;
-                // ¾óÀ½
+                // ì–¼ìŒ
                 Bit0_Front_Led_Ice_Select = CLEAR;
 
-                // ¶ó¸é, µå¸³Ä¿ÇÇ, Â÷
+                // ë¼ë©´, ë“œë¦½ì»¤í”¼, ì°¨
                 Bit0_Front_Center_Recipe_Ramen_Text = CLEAR;
                 Bit2_Front_Center_Recipe_Drip_Coffee_Text = CLEAR;
                 Bit1_Front_Center_Tea_Text = CLEAR;
 
-                // ¾óÀ½ºÎÁ·
+                // ì–¼ìŒë¶€ì¡±
                 Bit1_Front_Left_Led_Ice_Shortae_Text = CLEAR;
 
-                // ¾óÀ½ ÀÏ¹İ/Á¶°¢
+                // ì–¼ìŒ ì¼ë°˜/ì¡°ê°
                 Bit6_Front_Under_Txt_Led_Ice_Normal = CLEAR;
                 Bit7_Front_Under_Txt_Led_Ice_Piece = CLEAR;
             }
 			break;
 
-		case DISPLAY_TEST_BTN3: // [¿Â¼ö] Å¬¸¯ ÈÄ
+		case DISPLAY_TEST_BTN3: // [ì˜¨ìˆ˜] í´ë¦­ í›„
             gu8_hot_select_display_timer++;
             if(gu8_hot_select_display_timer <= 2)
             {
-                // ¿Â¼ö
+                // ì˜¨ìˆ˜
                 Bit2_Front_Led_Hot_Select = CLEAR;
 
-                // ¾óÀ½°¡µæ, ÀıÀü¾ÆÀÌÄÜ
+                // ì–¼ìŒê°€ë“, ì ˆì „ì•„ì´ì½˜
                 Bit0_Front_Left_Led_Ice_Full_Text = SET;
                 Bit4_Front_Left_Led_Sleep_Icon = SET;
 
-                // ¾óÀ½ÆÄ¿ì¼Â
+                // ì–¼ìŒíŒŒìš°ì…‹
                 Bit1_Front_Left_Led_Ice_Faucet_Text = SET;
             }
             else if(gu8_hot_select_display_timer <= 4)
             {
-                // ¿Â¼ö
+                // ì˜¨ìˆ˜
                 Bit2_Front_Led_Hot_Select = CLEAR;
 
-                // ¾óÀ½°¡µæ, ÀıÀü¾ÆÀÌÄÜ
+                // ì–¼ìŒê°€ë“, ì ˆì „ì•„ì´ì½˜
                 Bit0_Front_Left_Led_Ice_Full_Text = CLEAR;
                 Bit4_Front_Left_Led_Sleep_Icon = SET;
 
-                // ¾óÀ½ÆÄ¿ì¼Â
+                // ì–¼ìŒíŒŒìš°ì…‹
                 Bit1_Front_Left_Led_Ice_Faucet_Text = SET;
             }
             else if(gu8_hot_select_display_timer <= 6)
             {
-                // ¿Â¼ö
+                // ì˜¨ìˆ˜
                 Bit2_Front_Led_Hot_Select = CLEAR;
 
-                // ¾óÀ½°¡µæ, ÀıÀü¾ÆÀÌÄÜ
+                // ì–¼ìŒê°€ë“, ì ˆì „ì•„ì´ì½˜
                 Bit0_Front_Left_Led_Ice_Full_Text = CLEAR;
                 Bit4_Front_Left_Led_Sleep_Icon = CLEAR;
 
-                // ¾óÀ½ÆÄ¿ì¼Â
+                // ì–¼ìŒíŒŒìš°ì…‹
                 Bit1_Front_Left_Led_Ice_Faucet_Text = SET;
             }
             else if(gu8_hot_select_display_timer <= 8)
             {
-                // ¿Â¼ö
+                // ì˜¨ìˆ˜
                 Bit2_Front_Led_Hot_Select = CLEAR;
 
-                // ¾óÀ½°¡µæ, ÀıÀü¾ÆÀÌÄÜ
+                // ì–¼ìŒê°€ë“, ì ˆì „ì•„ì´ì½˜
                 Bit0_Front_Left_Led_Ice_Full_Text = CLEAR;
                 Bit4_Front_Left_Led_Sleep_Icon = CLEAR;
 
-                // ¾óÀ½ÆÄ¿ì¼Â
+                // ì–¼ìŒíŒŒìš°ì…‹
                 Bit1_Front_Left_Led_Ice_Faucet_Text = CLEAR;
             }
             else
             {
                 gu8_hot_select_display_timer = 8;
-                // ¿Â¼ö
+                // ì˜¨ìˆ˜
                 Bit2_Front_Led_Hot_Select = CLEAR;
 
-                // ¾óÀ½°¡µæ, ÀıÀü¾ÆÀÌÄÜ
+                // ì–¼ìŒê°€ë“, ì ˆì „ì•„ì´ì½˜
                 Bit0_Front_Left_Led_Ice_Full_Text = CLEAR;
                 Bit4_Front_Left_Led_Sleep_Icon = CLEAR;
 
-                // ¾óÀ½ÆÄ¿ì¼Â
+                // ì–¼ìŒíŒŒìš°ì…‹
                 Bit1_Front_Left_Led_Ice_Faucet_Text = CLEAR;
             }
 
             break;
 
-		case DISPLAY_TEST_BTN4: // [Á¤¼ö] Å¬¸¯ ÈÄ
+		case DISPLAY_TEST_BTN4: // [ì •ìˆ˜] í´ë¦­ í›„
             gu8_pure_select_display_timer++;
             if(gu8_pure_select_display_timer <= 2)
             {
-                // Á¤¼ö
+                // ì •ìˆ˜
                 Bit3_Front_Led_Ambient_Select = CLEAR;
 
-                // UV»ì±Õ, °í¿Â»ì±Õ
+                // UVì‚´ê· , ê³ ì˜¨ì‚´ê· 
                 Bit2_Front_Left_Led_UV_Ster_Text = SET;
                 Bit3_Front_Left_Led_Hot_Ster_Text = SET;
 
                 // :
                 Bit6_Front_Left_Led_Clock_Colon_Icon = SET;
 
-                // ¾óÀ½Æ®·¹ÀÌ
+                // ì–¼ìŒíŠ¸ë ˆì´
                 Bit2_Front_Left_Led_Ice_Tray_Text = SET;
             }
             else if(gu8_pure_select_display_timer <= 4)
             {
-                // Á¤¼ö
+                // ì •ìˆ˜
                 Bit3_Front_Led_Ambient_Select = CLEAR;
 
-                // UV»ì±Õ, °í¿Â»ì±Õ
+                // UVì‚´ê· , ê³ ì˜¨ì‚´ê· 
                 Bit2_Front_Left_Led_UV_Ster_Text = CLEAR;
                 Bit3_Front_Left_Led_Hot_Ster_Text = SET;
 
                 // :
                 Bit6_Front_Left_Led_Clock_Colon_Icon = SET;
 
-                // ¾óÀ½Æ®·¹ÀÌ
+                // ì–¼ìŒíŠ¸ë ˆì´
                 Bit2_Front_Left_Led_Ice_Tray_Text = SET;
             }
             else if(gu8_pure_select_display_timer <= 6)
             {
-                // Á¤¼ö
+                // ì •ìˆ˜
                 Bit3_Front_Led_Ambient_Select = CLEAR;
 
-                // UV»ì±Õ, °í¿Â»ì±Õ
+                // UVì‚´ê· , ê³ ì˜¨ì‚´ê· 
                 Bit2_Front_Left_Led_UV_Ster_Text = CLEAR;
                 Bit3_Front_Left_Led_Hot_Ster_Text = CLEAR;
 
                 // :
                 Bit6_Front_Left_Led_Clock_Colon_Icon = SET;
 
-                // ¾óÀ½Æ®·¹ÀÌ
+                // ì–¼ìŒíŠ¸ë ˆì´
                 Bit2_Front_Left_Led_Ice_Tray_Text = SET;
             }
             else if(gu8_pure_select_display_timer <= 8)
             {
-                // Á¤¼ö
+                // ì •ìˆ˜
                 Bit3_Front_Led_Ambient_Select = CLEAR;
 
-                // UV»ì±Õ, °í¿Â»ì±Õ
+                // UVì‚´ê· , ê³ ì˜¨ì‚´ê· 
                 Bit2_Front_Left_Led_UV_Ster_Text = CLEAR;
                 Bit3_Front_Left_Led_Hot_Ster_Text = CLEAR;
 
                 // :
                 Bit6_Front_Left_Led_Clock_Colon_Icon = CLEAR;
 
-                // ¾óÀ½Æ®·¹ÀÌ
+                // ì–¼ìŒíŠ¸ë ˆì´
                 Bit2_Front_Left_Led_Ice_Tray_Text = SET;
             }
             else if(gu8_pure_select_display_timer <= 10)
             {
-                // Á¤¼ö
+                // ì •ìˆ˜
                 Bit3_Front_Led_Ambient_Select = CLEAR;
 
-                // UV»ì±Õ, °í¿Â»ì±Õ
+                // UVì‚´ê· , ê³ ì˜¨ì‚´ê· 
                 Bit2_Front_Left_Led_UV_Ster_Text = CLEAR;
                 Bit3_Front_Left_Led_Hot_Ster_Text = CLEAR;
 
                 // :
                 Bit6_Front_Left_Led_Clock_Colon_Icon = CLEAR;
 
-                // ¾óÀ½Æ®·¹ÀÌ
+                // ì–¼ìŒíŠ¸ë ˆì´
                 Bit2_Front_Left_Led_Ice_Tray_Text = CLEAR;
             }
             else
             {
                 gu8_pure_select_display_timer = 10;
 
-                // Á¤¼ö
+                // ì •ìˆ˜
                 Bit3_Front_Led_Ambient_Select = CLEAR;
 
-                // UV»ì±Õ, °í¿Â»ì±Õ
+                // UVì‚´ê· , ê³ ì˜¨ì‚´ê· 
                 Bit2_Front_Left_Led_UV_Ster_Text = CLEAR;
                 Bit3_Front_Left_Led_Hot_Ster_Text = CLEAR;
 
                 // :
                 Bit6_Front_Left_Led_Clock_Colon_Icon = CLEAR;
 
-                // ¾óÀ½Æ®·¹ÀÌ
+                // ì–¼ìŒíŠ¸ë ˆì´
                 Bit2_Front_Left_Led_Ice_Tray_Text = CLEAR;
             }
 
 			break;
 
-		case DISPLAY_TEST_BTN5: // [³Ã¼ö] Å¬¸¯ ÈÄ
+		case DISPLAY_TEST_BTN5: // [ëƒ‰ìˆ˜] í´ë¦­ í›„
             gu8_cold_select_display_timer++;
             if(gu8_cold_select_display_timer <= 2)
             {
-                // ³Ã¼ö
+                // ëƒ‰ìˆ˜
                 Bit4_Front_Led_Cold_Select = CLEAR;
 
-                // ºü¸¥Á¦ºù ¾ÆÀÌÄÜ
+                // ë¹ ë¥¸ì œë¹™ ì•„ì´ì½˜
                 Bit4_Front_Led_Icon_Fast_Ice = SET;
 
                 // 'C
@@ -697,10 +697,10 @@ void Display_test_step_Handler(void)
             }
             else if(gu8_cold_select_display_timer <= 4)
             {
-                // ³Ã¼ö
+                // ëƒ‰ìˆ˜
                 Bit4_Front_Led_Cold_Select = CLEAR;
 
-                // ºü¸¥Á¦ºù ¾ÆÀÌÄÜ
+                // ë¹ ë¥¸ì œë¹™ ì•„ì´ì½˜
                 Bit4_Front_Led_Icon_Fast_Ice = CLEAR;
 
                 // 'C
@@ -708,10 +708,10 @@ void Display_test_step_Handler(void)
             }
             else if(gu8_cold_select_display_timer <= 6)
             {
-                // ³Ã¼ö
+                // ëƒ‰ìˆ˜
                 Bit4_Front_Led_Cold_Select = CLEAR;
 
-                // ºü¸¥Á¦ºù ¾ÆÀÌÄÜ
+                // ë¹ ë¥¸ì œë¹™ ì•„ì´ì½˜
                 Bit4_Front_Led_Icon_Fast_Ice = CLEAR;
 
                 // 'C
@@ -720,10 +720,10 @@ void Display_test_step_Handler(void)
             else
             {
                 gu8_cold_select_display_timer = 6;
-                // ³Ã¼ö
+                // ëƒ‰ìˆ˜
                 Bit4_Front_Led_Cold_Select = CLEAR;
 
-                // ºü¸¥Á¦ºù ¾ÆÀÌÄÜ
+                // ë¹ ë¥¸ì œë¹™ ì•„ì´ì½˜
                 Bit4_Front_Led_Icon_Fast_Ice = CLEAR;
 
                 // 'C
@@ -731,44 +731,44 @@ void Display_test_step_Handler(void)
             }
 			break;
 
-		case DISPLAY_TEST_BTN6: // [¿ë·®] Å¬¸¯ ÈÄ
+		case DISPLAY_TEST_BTN6: // [ìš©ëŸ‰] í´ë¦­ í›„
             gu8_amount_select_display_timer++;
             if(gu8_amount_select_display_timer <= 2)
             {
-                // ¿ë·®
+                // ìš©ëŸ‰
                 Bit5_Front_Led_Amount_Select = CLEAR;
 
-                // ÇØ,±¸¸§,¿ì»ê
+                // í•´,êµ¬ë¦„,ìš°ì‚°
                 Bit2_Front_Right_Led_Sunny_Icon = SET;
                 Bit3_Front_Right_Led_Cloud_Icon = SET;
                 Bit4_Front_Right_Led_Rain_Icon = SET;
             }
             else if(gu8_amount_select_display_timer <= 4)
             {
-                // ¿ë·®
+                // ìš©ëŸ‰
                 Bit5_Front_Led_Amount_Select = CLEAR;
 
-                // ÇØ,±¸¸§,¿ì»ê
+                // í•´,êµ¬ë¦„,ìš°ì‚°
                 Bit2_Front_Right_Led_Sunny_Icon = CLEAR;
                 Bit3_Front_Right_Led_Cloud_Icon = SET;
                 Bit4_Front_Right_Led_Rain_Icon = SET;
             }
             else if(gu8_amount_select_display_timer <= 6)
             {
-                // ¿ë·®
+                // ìš©ëŸ‰
                 Bit5_Front_Led_Amount_Select = CLEAR;
 
-                // ÇØ,±¸¸§,¿ì»ê
+                // í•´,êµ¬ë¦„,ìš°ì‚°
                 Bit2_Front_Right_Led_Sunny_Icon = CLEAR;
                 Bit3_Front_Right_Led_Cloud_Icon = CLEAR;
                 Bit4_Front_Right_Led_Rain_Icon = SET;
             }
             else if(gu8_amount_select_display_timer <= 8)
             {
-                // ¿ë·®
+                // ìš©ëŸ‰
                 Bit5_Front_Led_Amount_Select = CLEAR;
 
-                // ÇØ,±¸¸§,¿ì»ê
+                // í•´,êµ¬ë¦„,ìš°ì‚°
                 Bit2_Front_Right_Led_Sunny_Icon = CLEAR;
                 Bit3_Front_Right_Led_Cloud_Icon = CLEAR;
                 Bit4_Front_Right_Led_Rain_Icon = CLEAR;
@@ -776,27 +776,27 @@ void Display_test_step_Handler(void)
             else
             {
                 gu8_amount_select_display_timer = 8;
-                // ¿ë·®
+                // ìš©ëŸ‰
                 Bit5_Front_Led_Amount_Select = CLEAR;
 
-                // ÇØ,±¸¸§,¿ì»ê
+                // í•´,êµ¬ë¦„,ìš°ì‚°
                 Bit2_Front_Right_Led_Sunny_Icon = CLEAR;
                 Bit3_Front_Right_Led_Cloud_Icon = CLEAR;
                 Bit4_Front_Right_Led_Rain_Icon = CLEAR;
             }
 			break;
 
-        case DISPLAY_TEST_BTN6_2: // [MY] Å¬¸¯ ÈÄ
+        case DISPLAY_TEST_BTN6_2: // [MY] í´ë¦­ í›„
             gu8_my_select_display_timer++;
             if(gu8_my_select_display_timer <= 2)
             {
                 // MY
                 Bit6_Front_Led_My_Select = CLEAR;
 
-                // ¾óÀ½ÀúÀå°í
+                // ì–¼ìŒì €ì¥ê³ 
                 Bit3_Front_Left_Led_Ice_Storage_Box_Text = SET;
 
-                // ÇÊÅÍ¼¼Ã´
+                // í•„í„°ì„¸ì²™
                 Bit4_Front_Right_Led_Filter_Clean_Text = SET;
 
                 // .
@@ -807,10 +807,10 @@ void Display_test_step_Handler(void)
                 // MY
                 Bit6_Front_Led_My_Select = CLEAR;
 
-                // ¾óÀ½ÀúÀå°í
+                // ì–¼ìŒì €ì¥ê³ 
                 Bit3_Front_Left_Led_Ice_Storage_Box_Text = CLEAR;
 
-                // ÇÊÅÍ¼¼Ã´
+                // í•„í„°ì„¸ì²™
                 Bit4_Front_Right_Led_Filter_Clean_Text = SET;
 
                 // .
@@ -821,10 +821,10 @@ void Display_test_step_Handler(void)
                 // MY
                 Bit6_Front_Led_My_Select = CLEAR;
 
-                // ¾óÀ½ÀúÀå°í
+                // ì–¼ìŒì €ì¥ê³ 
                 Bit3_Front_Left_Led_Ice_Storage_Box_Text = CLEAR;
 
-                // ÇÊÅÍ¼¼Ã´
+                // í•„í„°ì„¸ì²™
                 Bit4_Front_Right_Led_Filter_Clean_Text = CLEAR;
 
                 // .
@@ -835,10 +835,10 @@ void Display_test_step_Handler(void)
                 // MY
                 Bit6_Front_Led_My_Select = CLEAR;
 
-                // ¾óÀ½ÀúÀå°í
+                // ì–¼ìŒì €ì¥ê³ 
                 Bit3_Front_Left_Led_Ice_Storage_Box_Text = CLEAR;
 
-                // ÇÊÅÍ¼¼Ã´
+                // í•„í„°ì„¸ì²™
                 Bit4_Front_Right_Led_Filter_Clean_Text = CLEAR;
 
                 // .
@@ -850,10 +850,10 @@ void Display_test_step_Handler(void)
                 // MY
                 Bit6_Front_Led_My_Select = CLEAR;
 
-                // ¾óÀ½ÀúÀå°í
+                // ì–¼ìŒì €ì¥ê³ 
                 Bit3_Front_Left_Led_Ice_Storage_Box_Text = CLEAR;
 
-                // ÇÊÅÍ¼¼Ã´
+                // í•„í„°ì„¸ì²™
                 Bit4_Front_Right_Led_Filter_Clean_Text = CLEAR;
 
                 // .
@@ -862,11 +862,11 @@ void Display_test_step_Handler(void)
 
 			break;
 
-		case DISPLAY_TEST_BTN7: // [¾óÀ½OFF] Å¬¸¯ ÈÄ
+		case DISPLAY_TEST_BTN7: // [ì–¼ìŒOFF] í´ë¦­ í›„
             gu8_ice_off_display_timer++;
             if(gu8_ice_off_display_timer <= 2)
             {
-                // ¾óÀ½OFF
+                // ì–¼ìŒOFF
                 Bit1_Front_Led_Ice_Off = CLEAR;
 
                 // WIFI ICON
@@ -875,7 +875,7 @@ void Display_test_step_Handler(void)
             }
             else if(gu8_ice_off_display_timer <= 4)
             {
-                // ¾óÀ½OFF
+                // ì–¼ìŒOFF
                 Bit1_Front_Led_Ice_Off = CLEAR;
 
                 // WIFI ICON
@@ -884,7 +884,7 @@ void Display_test_step_Handler(void)
             }
             else if(gu8_ice_off_display_timer <= 6)
             {
-                // ¾óÀ½OFF
+                // ì–¼ìŒOFF
                 Bit1_Front_Led_Ice_Off = CLEAR;
 
                 // WIFI ICON
@@ -894,7 +894,7 @@ void Display_test_step_Handler(void)
             else
             {
                 gu8_ice_off_display_timer = 6;
-                // ¾óÀ½OFF
+                // ì–¼ìŒOFF
                 Bit1_Front_Led_Ice_Off = CLEAR;
 
                 // WIFI ICON
@@ -911,11 +911,11 @@ void Display_test_step_Handler(void)
             set_duty_percent( DIMMING__PERCENT_ICE_EXTRACT_INNER, DIIMMING__0_PERCENT );
 			break;
 
-		case DISPLAY_TEST_BTN8: // [¾óÀ½´ë¼Ò] Å¬¸¯ ÈÄ
+		case DISPLAY_TEST_BTN8: // [ì–¼ìŒëŒ€ì†Œ] í´ë¦­ í›„
             gu8_ice_size_display_timer++;
             if(gu8_ice_size_display_timer <= 2)
             {
-                // ¾óÀ½Å©±â
+                // ì–¼ìŒí¬ê¸°
                 Bit0_Front_Led_Ice_Size = CLEAR;
 
                 // L, ml
@@ -924,7 +924,7 @@ void Display_test_step_Handler(void)
             }
             else if(gu8_ice_size_display_timer <= 4)
             {
-                // ¾óÀ½Å©±â
+                // ì–¼ìŒí¬ê¸°
                 Bit0_Front_Led_Ice_Size = CLEAR;
 
                 // L, ml
@@ -934,7 +934,7 @@ void Display_test_step_Handler(void)
             }
             else if(gu8_ice_size_display_timer <= 6)
             {
-                // ¾óÀ½Å©±â
+                // ì–¼ìŒí¬ê¸°
                 Bit0_Front_Led_Ice_Size = CLEAR;
 
                 // L, ml
@@ -944,7 +944,7 @@ void Display_test_step_Handler(void)
             else
             {
                 gu8_ice_size_display_timer = 6;
-                // ¾óÀ½Å©±â
+                // ì–¼ìŒí¬ê¸°
                 Bit0_Front_Led_Ice_Size = CLEAR;
 
                 // L, ml
@@ -961,77 +961,77 @@ void Display_test_step_Handler(void)
             set_duty_percent( DIMMING__PERCENT_ICE_EXTRACT_INNER, DIIMMING__0_PERCENT );
             break;
 
-		case DISPLAY_TEST_BTN9: // [¿Â¼öÀá±İ] Å¬¸¯ ÈÄ
+		case DISPLAY_TEST_BTN9: // [ì˜¨ìˆ˜ì ê¸ˆ] í´ë¦­ í›„
             gu8_hot_lock_display_timer++;
             if(gu8_hot_lock_display_timer <= 2)
             {
-                // ¿Â¼öÀá±İ
+                // ì˜¨ìˆ˜ì ê¸ˆ
                 Bit2_Front_Led_Hot_Lock_Text = CLEAR;
 
-                // ¿Â¼öÀá±İ ¾ÆÀÌÄÜ
+                // ì˜¨ìˆ˜ì ê¸ˆ ì•„ì´ì½˜
                 Bit3_Front_Led_Icon_Led_Hot_Locker = SET;
 
                 // %
                 Bit5_Front_Right_Led_Percent_Icon = SET;
 
-                // ³Ã¼ö DOT WHITE
+                // ëƒ‰ìˆ˜ DOT WHITE
                 Bit5_Front_Led_Icon_Comp_Blue = SET;
             }
             else if(gu8_hot_lock_display_timer <= 4)
             {
-                // ¿Â¼öÀá±İ
+                // ì˜¨ìˆ˜ì ê¸ˆ
                 Bit2_Front_Led_Hot_Lock_Text = CLEAR;
 
-                // ¿Â¼öÀá±İ ¾ÆÀÌÄÜ
+                // ì˜¨ìˆ˜ì ê¸ˆ ì•„ì´ì½˜
                 Bit3_Front_Led_Icon_Led_Hot_Locker = CLEAR;
 
                 // %
                 Bit5_Front_Right_Led_Percent_Icon = SET;
 
-                // ³Ã¼ö DOT WHITE
+                // ëƒ‰ìˆ˜ DOT WHITE
                 Bit5_Front_Led_Icon_Comp_Blue = SET;
             }
             else if(gu8_hot_lock_display_timer <= 6)
             {
-                // ¿Â¼öÀá±İ
+                // ì˜¨ìˆ˜ì ê¸ˆ
                 Bit2_Front_Led_Hot_Lock_Text = CLEAR;
 
-                // ¿Â¼öÀá±İ ¾ÆÀÌÄÜ
+                // ì˜¨ìˆ˜ì ê¸ˆ ì•„ì´ì½˜
                 Bit3_Front_Led_Icon_Led_Hot_Locker = CLEAR;
 
                 // %
                 Bit5_Front_Right_Led_Percent_Icon = CLEAR;
 
-                // ³Ã¼ö DOT WHITE
+                // ëƒ‰ìˆ˜ DOT WHITE
                 Bit5_Front_Led_Icon_Comp_Blue = SET;
             }
             else if(gu8_hot_lock_display_timer <= 8)
             {
-                // ¿Â¼öÀá±İ
+                // ì˜¨ìˆ˜ì ê¸ˆ
                 Bit2_Front_Led_Hot_Lock_Text = CLEAR;
 
-                // ¿Â¼öÀá±İ ¾ÆÀÌÄÜ
+                // ì˜¨ìˆ˜ì ê¸ˆ ì•„ì´ì½˜
                 Bit3_Front_Led_Icon_Led_Hot_Locker = CLEAR;
 
                 // %
                 Bit5_Front_Right_Led_Percent_Icon = CLEAR;
 
-                // ³Ã¼ö DOT WHITE
+                // ëƒ‰ìˆ˜ DOT WHITE
                 Bit5_Front_Led_Icon_Comp_Blue = CLEAR;
             }
             else
             {
                 gu8_hot_lock_display_timer = 8;
-                // ¿Â¼öÀá±İ
+                // ì˜¨ìˆ˜ì ê¸ˆ
                 Bit2_Front_Led_Hot_Lock_Text = CLEAR;
 
-                // ¿Â¼öÀá±İ ¾ÆÀÌÄÜ
+                // ì˜¨ìˆ˜ì ê¸ˆ ì•„ì´ì½˜
                 Bit3_Front_Led_Icon_Led_Hot_Locker = CLEAR;
 
                 // %
                 Bit5_Front_Right_Led_Percent_Icon = CLEAR;
 
-                // ³Ã¼ö DOT WHITE
+                // ëƒ‰ìˆ˜ DOT WHITE
                 Bit5_Front_Led_Icon_Comp_Blue = CLEAR;
             }
 
@@ -1044,77 +1044,77 @@ void Display_test_step_Handler(void)
             set_duty_percent( DIMMING__PERCENT_ICE_EXTRACT_INNER, DIIMMING__0_PERCENT );
 			break;
 
-		case DISPLAY_TEST_BTN10: // [ºü¸¥Á¦ºù] Å¬¸¯ ÈÄ
+		case DISPLAY_TEST_BTN10: // [ë¹ ë¥¸ì œë¹™] í´ë¦­ í›„
 			gu8_fast_ice_display_timer++;
             if(gu8_fast_ice_display_timer <= 2)
             {
-                // ºü¸¥Á¦ºù
+                // ë¹ ë¥¸ì œë¹™
                 Bit3_Front_Led_Ice_First = CLEAR;
 
-                // ³Ã¼ö DOT BLUE
+                // ëƒ‰ìˆ˜ DOT BLUE
                 Bit6_Front_Led_Icon_Comp_White = SET;
 
-                // ´Ü°è
+                // ë‹¨ê³„
                 Bit5_Front_Left_Led_Step_Text = SET;
 
-                // WELCOME LED (ÁÂÃø)
+                // WELCOME LED (ì¢Œì¸¡)
                 Bit6_Front_Under_Led_Welcome_2 = SET;
             }
             else if(gu8_fast_ice_display_timer <= 4)
             {
-                // ºü¸¥Á¦ºù
+                // ë¹ ë¥¸ì œë¹™
                 Bit3_Front_Led_Ice_First = CLEAR;
 
-                // ³Ã¼ö DOT BLUE
+                // ëƒ‰ìˆ˜ DOT BLUE
                 Bit6_Front_Led_Icon_Comp_White = CLEAR;
 
-                // ´Ü°è
+                // ë‹¨ê³„
                 Bit5_Front_Left_Led_Step_Text = SET;
 
-                // WELCOME LED (ÁÂÃø)
+                // WELCOME LED (ì¢Œì¸¡)
                 Bit6_Front_Under_Led_Welcome_2 = SET;
             }
             else if(gu8_fast_ice_display_timer <= 6)
             {
-                // ºü¸¥Á¦ºù
+                // ë¹ ë¥¸ì œë¹™
                 Bit3_Front_Led_Ice_First = CLEAR;
 
-                // ³Ã¼ö DOT BLUE
+                // ëƒ‰ìˆ˜ DOT BLUE
                 Bit6_Front_Led_Icon_Comp_White = CLEAR;
 
-                // ´Ü°è
+                // ë‹¨ê³„
                 Bit5_Front_Left_Led_Step_Text = CLEAR;
 
-                // WELCOME LED (ÁÂÃø)
+                // WELCOME LED (ì¢Œì¸¡)
                 Bit6_Front_Under_Led_Welcome_2 = SET;
             }
             else if(gu8_fast_ice_display_timer <= 8)
             {
-                // ºü¸¥Á¦ºù
+                // ë¹ ë¥¸ì œë¹™
                 Bit3_Front_Led_Ice_First = CLEAR;
 
-                // ³Ã¼ö DOT BLUE
+                // ëƒ‰ìˆ˜ DOT BLUE
                 Bit6_Front_Led_Icon_Comp_White = CLEAR;
 
-                // ´Ü°è
+                // ë‹¨ê³„
                 Bit5_Front_Left_Led_Step_Text = CLEAR;
 
-                // WELCOME LED (ÁÂÃø)
+                // WELCOME LED (ì¢Œì¸¡)
                 Bit6_Front_Under_Led_Welcome_2 = CLEAR;
             }
             else
             {
                 gu8_fast_ice_display_timer = 8;
-                // ºü¸¥Á¦ºù
+                // ë¹ ë¥¸ì œë¹™
                 Bit3_Front_Led_Ice_First = CLEAR;
 
-                // ³Ã¼ö DOT BLUE
+                // ëƒ‰ìˆ˜ DOT BLUE
                 Bit6_Front_Led_Icon_Comp_White = CLEAR;
 
-                // ´Ü°è
+                // ë‹¨ê³„
                 Bit5_Front_Left_Led_Step_Text = CLEAR;
 
-                // WELCOME LED (ÁÂÃø)
+                // WELCOME LED (ì¢Œì¸¡)
                 Bit6_Front_Under_Led_Welcome_2 = CLEAR;
             }
 
@@ -1127,7 +1127,7 @@ void Display_test_step_Handler(void)
             set_duty_percent( DIMMING__PERCENT_ICE_EXTRACT_INNER, DIIMMING__0_PERCENT );
 			break;
 
-		case DISPLAY_TEST_BTN11: // [³Ã¼ö°­¾à] Å¬¸¯ ÈÄ
+		case DISPLAY_TEST_BTN11: // [ëƒ‰ìˆ˜ê°•ì•½] í´ë¦­ í›„
             gu8_left_bar_off_timer++;
             if(gu8_left_bar_off_timer <= 2)
             {
@@ -1232,15 +1232,15 @@ void Display_test_step_Handler(void)
                 Bit3_Front_Led_Temp_Setting_Bar_1_4 = CLEAR;
                 Bit4_Front_Led_Temp_Setting_Bar_1_5 = CLEAR;
 
-                // ³Ã¼ö¿Âµµ
+                // ëƒ‰ìˆ˜ì˜¨ë„
                 Bit4_Front_Led_Cold_Temp = CLEAR;
 
-                // °­ | ¾à
+                // ê°• | ì•½
                 Bit3_Front_Under_Txt_Led_Cold_High = CLEAR;
                 Bit4_Front_Under_Txt_Led_Cold_Center_Bar = CLEAR;
                 Bit5_Front_Under_Txt_Led_Cold_Low = CLEAR;
 
-                // WELCOME LED (¿ìÃø)
+                // WELCOME LED (ìš°ì¸¡)
                 Bit5_Front_Under_Led_Welcome = CLEAR;
             }
 
@@ -1253,56 +1253,56 @@ void Display_test_step_Handler(void)
             set_duty_percent( DIMMING__PERCENT_ICE_EXTRACT_INNER, DIIMMING__0_PERCENT );
 			break;
 
-		case DISPLAY_TEST_BTN12: // [³Ã¼öOFF] Å¬¸¯ ÈÄ
+		case DISPLAY_TEST_BTN12: // [ëƒ‰ìˆ˜OFF] í´ë¦­ í›„
             gu8_cold_off_display_timer++;
             if(gu8_cold_off_display_timer <= 2)
             {
-                // ³Ã¼öOFF
+                // ëƒ‰ìˆ˜OFF
                 Bit6_Front_Led_Cold_Off = CLEAR;
 
-                // ¾óÀ½Àá±İ ¾ÆÀÌÄÜ
+                // ì–¼ìŒì ê¸ˆ ì•„ì´ì½˜
                 Bit2_Front_Led_Icon_Led_Ice_Locker = SET;
 
-                // ´ë | ¼Ò
+                // ëŒ€ | ì†Œ
                 Bit0_Front_Under_Txt_Led_Ice_Large = SET;
                 Bit1_Front_Under_Txt_Led_Ice_Center_bar = SET;
                 Bit2_Front_Under_Txt_Led_Ice_Small = SET;
             }
             else if(gu8_cold_off_display_timer <= 4)
             {
-                // ³Ã¼öOFF
+                // ëƒ‰ìˆ˜OFF
                 Bit6_Front_Led_Cold_Off = CLEAR;
 
-                // ¾óÀ½Àá±İ ¾ÆÀÌÄÜ
+                // ì–¼ìŒì ê¸ˆ ì•„ì´ì½˜
                 Bit2_Front_Led_Icon_Led_Ice_Locker = CLEAR;
 
-                // ´ë | ¼Ò
+                // ëŒ€ | ì†Œ
                 Bit0_Front_Under_Txt_Led_Ice_Large = SET;
                 Bit1_Front_Under_Txt_Led_Ice_Center_bar = SET;
                 Bit2_Front_Under_Txt_Led_Ice_Small = SET;
             }
             else if(gu8_cold_off_display_timer <= 6)
             {
-                // ³Ã¼öOFF
+                // ëƒ‰ìˆ˜OFF
                 Bit6_Front_Led_Cold_Off = CLEAR;
 
-                // ¾óÀ½Àá±İ ¾ÆÀÌÄÜ
+                // ì–¼ìŒì ê¸ˆ ì•„ì´ì½˜
                 Bit2_Front_Led_Icon_Led_Ice_Locker = CLEAR;
 
-                // ´ë | ¼Ò
+                // ëŒ€ | ì†Œ
                 Bit0_Front_Under_Txt_Led_Ice_Large = CLEAR;
                 Bit1_Front_Under_Txt_Led_Ice_Center_bar = SET;
                 Bit2_Front_Under_Txt_Led_Ice_Small = SET;
             }
             else if(gu8_cold_off_display_timer <= 8)
             {
-                // ³Ã¼öOFF
+                // ëƒ‰ìˆ˜OFF
                 Bit6_Front_Led_Cold_Off = CLEAR;
 
-                // ¾óÀ½Àá±İ ¾ÆÀÌÄÜ
+                // ì–¼ìŒì ê¸ˆ ì•„ì´ì½˜
                 Bit2_Front_Led_Icon_Led_Ice_Locker = CLEAR;
 
-                // ´ë | ¼Ò
+                // ëŒ€ | ì†Œ
                 Bit0_Front_Under_Txt_Led_Ice_Large = CLEAR;
                 Bit1_Front_Under_Txt_Led_Ice_Center_bar = CLEAR;
                 Bit2_Front_Under_Txt_Led_Ice_Small = SET;
@@ -1310,13 +1310,13 @@ void Display_test_step_Handler(void)
             }
             else if(gu8_cold_off_display_timer <= 10)
             {
-                // ³Ã¼öOFF
+                // ëƒ‰ìˆ˜OFF
                 Bit6_Front_Led_Cold_Off = CLEAR;
 
-                // ¾óÀ½Àá±İ ¾ÆÀÌÄÜ
+                // ì–¼ìŒì ê¸ˆ ì•„ì´ì½˜
                 Bit2_Front_Led_Icon_Led_Ice_Locker = CLEAR;
 
-                // ´ë | ¼Ò
+                // ëŒ€ | ì†Œ
                 Bit0_Front_Under_Txt_Led_Ice_Large = CLEAR;
                 Bit1_Front_Under_Txt_Led_Ice_Center_bar = CLEAR;
                 Bit2_Front_Under_Txt_Led_Ice_Small = CLEAR;
@@ -1324,13 +1324,13 @@ void Display_test_step_Handler(void)
             else
             {
                 gu8_cold_off_display_timer = 10;
-                // ³Ã¼öOFF
+                // ëƒ‰ìˆ˜OFF
                 Bit6_Front_Led_Cold_Off = CLEAR;
 
-                // ¾óÀ½Àá±İ ¾ÆÀÌÄÜ
+                // ì–¼ìŒì ê¸ˆ ì•„ì´ì½˜
                 Bit2_Front_Led_Icon_Led_Ice_Locker = CLEAR;
 
-                // ´ë | ¼Ò
+                // ëŒ€ | ì†Œ
                 Bit0_Front_Under_Txt_Led_Ice_Large = CLEAR;
                 Bit1_Front_Under_Txt_Led_Ice_Center_bar = CLEAR;
                 Bit2_Front_Under_Txt_Led_Ice_Small = CLEAR;
@@ -1345,8 +1345,8 @@ void Display_test_step_Handler(void)
             set_duty_percent( DIMMING__PERCENT_ICE_EXTRACT_INNER, DIIMMING__0_PERCENT );
 			break;
 
-		case DISPLAY_TEST_BTN13: // [ÃëÄ§¸ğµå] Å¬¸¯ ÈÄ
-            // ¿ë·®¹Ù 5°³
+		case DISPLAY_TEST_BTN13: // [ì·¨ì¹¨ëª¨ë“œ] í´ë¦­ í›„
+            // ìš©ëŸ‰ë°” 5ê°œ
             gu8_right_bar_off_timer++;
             if(gu8_right_bar_off_timer <= 2)
             {
@@ -1407,7 +1407,7 @@ void Display_test_step_Handler(void)
             {
                 gu8_right_bar_off_timer = 12;
 
-                // ÃëÄ§¸ğµå
+                // ì·¨ì¹¨ëª¨ë“œ
                 Bit5_Front_Led_Sleep_Mode_Text = CLEAR;
 
                 Bit0_Front_Led_Amount_Setting_Bar_2_1 = CLEAR;
@@ -1431,7 +1431,7 @@ void Display_test_step_Handler(void)
             set_duty_percent( DIMMING__PERCENT_WATER_EXTRACT, DIIMMING__0_PERCENT );
 			break;
 
-		case DISPLAY_TEST_BTN14: // [¾óÀ½Àá±İ] Å¬¸¯ ÈÄ
+		case DISPLAY_TEST_BTN14: // [ì–¼ìŒì ê¸ˆ] í´ë¦­ í›„
             gu8_uart_setting_ice_lock_test_input = 1;
 			Bit0_Front_Led_Ice_Lock = CLEAR;
 
@@ -1449,7 +1449,7 @@ void Display_test_step_Handler(void)
             set_duty_percent( DIMMING__PERCENT_WATER_EXTRACT, DIIMMING__0_PERCENT );
 			break;
 
-        case DISPLAY_TEST_BTN15: // [ÀüÃ¼Àá±İ] Å¬¸¯ ÈÄ
+        case DISPLAY_TEST_BTN15: // [ì „ì²´ì ê¸ˆ] í´ë¦­ í›„
 			Bit1_Front_Led_All_Lock = CLEAR;
             gu8_uart_setting_all_lock_test_input = 1;
 
@@ -1467,7 +1467,7 @@ void Display_test_step_Handler(void)
             set_duty_percent( DIMMING__PERCENT_WATER_EXTRACT, DIIMMING__0_PERCENT );
 			break;
 
-        case DISPLAY_TEST_BTN_ICE_EXTRACT: // [¾óÀ½ ÃßÃâ ¹öÆ°] Å¬¸¯ ÈÄ
+        case DISPLAY_TEST_BTN_ICE_EXTRACT: // [ì–¼ìŒ ì¶”ì¶œ ë²„íŠ¼] í´ë¦­ í›„
             display_test_flick_timer_100ms++;
 
             Bit1_Front_Under_Ice_Inner_Blue_Extract = CLEAR;
@@ -1475,7 +1475,7 @@ void Display_test_step_Handler(void)
 
             if( display_test_flick_timer_100ms <= 3 )
             {
-                // ³»ºÎ ¿ÜºÎ white LED only
+                // ë‚´ë¶€ ì™¸ë¶€ white LED only
                 Bit3_Front_Under_Ice_Outer_White_Extract = SET;
                 Bit1_Front_Under_Ice_Inner_White_Extract = SET;
 
@@ -1486,7 +1486,7 @@ void Display_test_step_Handler(void)
             }
             else if( display_test_flick_timer_100ms <= 6 )
             {
-                // ¾óÀ½ ÃßÃâ ¿ÜºÎ RED only
+                // ì–¼ìŒ ì¶”ì¶œ ì™¸ë¶€ RED only
                 Bit3_Front_Under_Ice_Outer_White_Extract = SET;
                 Bit1_Front_Under_Ice_Inner_White_Extract = SET;
 
@@ -1497,7 +1497,7 @@ void Display_test_step_Handler(void)
             }
             else if( display_test_flick_timer_100ms <= 9 )
             {
-                // ¾óÀ½ ÃßÃâ ¿ÜºÎ GREEN only
+                // ì–¼ìŒ ì¶”ì¶œ ì™¸ë¶€ GREEN only
                 Bit3_Front_Under_Ice_Outer_White_Extract = SET;
                 Bit1_Front_Under_Ice_Inner_White_Extract = SET;
 
@@ -1508,7 +1508,7 @@ void Display_test_step_Handler(void)
             }
             else if( display_test_flick_timer_100ms <= 12 )
             {
-                // ¾óÀ½ ÃßÃâ ¿ÜºÎ BLUE only
+                // ì–¼ìŒ ì¶”ì¶œ ì™¸ë¶€ BLUE only
                 Bit3_Front_Under_Ice_Outer_White_Extract = SET;
                 Bit1_Front_Under_Ice_Inner_White_Extract = SET;
 
@@ -1519,7 +1519,7 @@ void Display_test_step_Handler(void)
             }
             else if( display_test_flick_timer_100ms <= 15 )
             {
-                // ¾óÀ½ ÃßÃâ ³»ºÎ RED only
+                // ì–¼ìŒ ì¶”ì¶œ ë‚´ë¶€ RED only
                 Bit3_Front_Under_Ice_Outer_White_Extract = SET;
                 Bit1_Front_Under_Ice_Inner_White_Extract = SET;
 
@@ -1530,7 +1530,7 @@ void Display_test_step_Handler(void)
             }
             else if( display_test_flick_timer_100ms <= 18 )
             {
-                // ¾óÀ½ ÃßÃâ ³»ºÎ GREEN only
+                // ì–¼ìŒ ì¶”ì¶œ ë‚´ë¶€ GREEN only
                 Bit3_Front_Under_Ice_Outer_White_Extract = SET;
                 Bit1_Front_Under_Ice_Inner_White_Extract = SET;
 
@@ -1541,7 +1541,7 @@ void Display_test_step_Handler(void)
             }
             else if( display_test_flick_timer_100ms <= 21 )
             {
-                // ¾óÀ½ ÃßÃâ ³»ºÎ BLUE only
+                // ì–¼ìŒ ì¶”ì¶œ ë‚´ë¶€ BLUE only
                 Bit3_Front_Under_Ice_Outer_White_Extract = SET;
                 Bit1_Front_Under_Ice_Inner_White_Extract = SET;
 
@@ -1576,23 +1576,23 @@ void Display_test_step_Handler(void)
             set_duty_percent( DIMMING__PERCENT_WATER_EXTRACT, EXTRACT__DIMMING__40_PERCETN );
             break;
 
-		case DISPLAY_TEST_BTN_EXTRACT: // [¹° ÃßÃâ¹öÆ°] Å¬¸¯ ÈÄ
+		case DISPLAY_TEST_BTN_EXTRACT: // [ë¬¼ ì¶”ì¶œë²„íŠ¼] í´ë¦­ í›„
             display_test_flick_timer_100ms++;
-			if(display_test_flick_timer_100ms <= 3) /* 0.1 ~ 1ÃÊ ±¸°£ */
+			if(display_test_flick_timer_100ms <= 3) /* 0.1 ~ 1ì´ˆ êµ¬ê°„ */
 			{
                 /* WHITE */
                 Bit4_Front_Under_Water_White_Extract = SET;
                 make_test_mode_rgb_color( TEST_MODE_RGB_OFF );
                 set_duty_percent( DIMMING__PERCENT_WATER_EXTRACT, EXTRACT__DIMMING__40_PERCETN );
 			}
-            else if(display_test_flick_timer_100ms <= 6) /* 1 ~ 2ÃÊ ±¸°£ */
+            else if(display_test_flick_timer_100ms <= 6) /* 1 ~ 2ì´ˆ êµ¬ê°„ */
 			{
                 /* RED */
 				Bit4_Front_Under_Water_White_Extract = SET;
                 make_test_mode_rgb_color( TEST_MODE_RGB_COLOR_RED );
                 set_duty_percent( DIMMING__PERCENT_WATER_EXTRACT, DIIMMING__0_PERCENT );
 			}
-            else if(display_test_flick_timer_100ms <= 9)  /* 2 ~ 3ÃÊ ±¸°£ */
+            else if(display_test_flick_timer_100ms <= 9)  /* 2 ~ 3ì´ˆ êµ¬ê°„ */
 			{
                 /* GREEN */
 				Bit4_Front_Under_Water_White_Extract = SET;
@@ -1620,18 +1620,18 @@ void Display_test_step_Handler(void)
                 display_test_flick_timer_100ms = 0;
                 Disp_test_step = DISPLAY_TEST_FINISH;
 
-                /* ¸¶¹«¸®ÇÏ±â Á÷Àü¿¡ ÇÊÅÍÄ¿¹ö Ã¼°á¿©ºÎ Ä¸ÃÄ [¹Ú¿ë¿ì´Ô ¿äÃ»] 250722 CH.PARK */
+                /* ë§ˆë¬´ë¦¬í•˜ê¸° ì§ì „ì— í•„í„°ì»¤ë²„ ì²´ê²°ì—¬ë¶€ ìº¡ì³ [ë°•ìš©ìš°ë‹˜ ìš”ì²­] 250722 CH.PARK */
                 bit_filter_cover = pREED_FILTER_COVER;
                 bit_filter_cover_old = bit_filter_cover;
                 bit_is_cover_checked = (bit)CLEAR;
             }
 			break;
 
-		case DISPLAY_TEST_FINISH: // °Ë»ç¿Ï·á -> Á¡¸ê
+		case DISPLAY_TEST_FINISH: // ê²€ì‚¬ì™„ë£Œ -> ì ë©¸
 
             bit_filter_cover = pREED_FILTER_COVER;
 
-            /* ÇÊÅÍÄ¿¹ö ¸®µå½ºÀ§Ä¡ [°¨Áö <-> ¹Ì°¨Áö] Á¶°ÇÀ¸·Î ÆÇ´Ü 250314 CH.PARK */
+            /* í•„í„°ì»¤ë²„ ë¦¬ë“œìŠ¤ìœ„ì¹˜ [ê°ì§€ <-> ë¯¸ê°ì§€] ì¡°ê±´ìœ¼ë¡œ íŒë‹¨ 250314 CH.PARK */
             if(bit_filter_cover != bit_filter_cover_old)
             {
                 bit_filter_cover_old = bit_filter_cover;
@@ -1714,14 +1714,14 @@ void Display_Test_Main(void)
     }
     else
     {
-        display_test_error();           // ¿¡·¯°ËÃâ
+        display_test_error();           // ì—ëŸ¬ê²€ì¶œ
         display_test_factory_input();
         display_test_factory_job();
 
         fnd_left_display_test();
         fnd_right_display_test();
 
-        /*..hui [23-6-30¿ÀÈÄ 1:22:01] µğ½ºÇÃ·¹ÀÌ °Ë»çÇÒ¶§µµ DC FANÀº Ç×½Ã ONÇÏµµ·Ï..*/
+        /*..hui [23-6-30ì˜¤í›„ 1:22:01] ë””ìŠ¤í”Œë ˆì´ ê²€ì‚¬í• ë•Œë„ DC FANì€ í•­ì‹œ ONí•˜ë„ë¡..*/
         pDC_FAN = SET;
     }
 
@@ -1784,7 +1784,7 @@ void display_test_factory_input(void)
     {
         bit_touch_test_finish = SET;
 
-        /* ÃßÃâ¹öÆ° ¸ÕÀú ´­·¶À» ¶§ °Ë»ç ÀÌ»óÇØÁö´Â ¹ö±× °³¼± 250718 CH.PARK */
+        /* ì¶”ì¶œë²„íŠ¼ ë¨¼ì € ëˆŒë €ì„ ë•Œ ê²€ì‚¬ ì´ìƒí•´ì§€ëŠ” ë²„ê·¸ ê°œì„  250718 CH.PARK */
         gu8_ice_color_change_timer = 23;
         gu8_water_color_change_timer = 14;
     }
@@ -1797,27 +1797,27 @@ void display_test_factory_input(void)
 ***********************************************************************************************************************/
 void display_test_error(void)
 {
-    if(gu16_AD_Result_Cold <= TEMP_SENSOR_SHORT || gu16_AD_Result_Cold >= TEMP_SENSOR_OPEN)                     /* ³Ã¼ö ¿Âµµ¼¾¼­ ¿¡·¯ */
+    if(gu16_AD_Result_Cold <= TEMP_SENSOR_SHORT || gu16_AD_Result_Cold >= TEMP_SENSOR_OPEN)                     /* ëƒ‰ìˆ˜ ì˜¨ë„ì„¼ì„œ ì—ëŸ¬ */
     {
         gu8_display_test_error = 1;
     }
-    else if(gu16_AD_Result_Hot_Heater <= TEMP_SENSOR_SHORT || gu16_AD_Result_Hot_Heater >= TEMP_SENSOR_OPEN)    /* ¿Â¼ö È÷ÅÍ ¿Âµµ¼¾¼­ ¿¡·¯ */
+    else if(gu16_AD_Result_Hot_Heater <= TEMP_SENSOR_SHORT || gu16_AD_Result_Hot_Heater >= TEMP_SENSOR_OPEN)    /* ì˜¨ìˆ˜ íˆí„° ì˜¨ë„ì„¼ì„œ ì—ëŸ¬ */
     {
         gu8_display_test_error = 2;
     }
-    else if(gu16_AD_Result_Hot_Out <= TEMP_SENSOR_SHORT || gu16_AD_Result_Hot_Out >= TEMP_SENSOR_OPEN)          /* ¿Â¼ö ÃßÃâ ¿Âµµ¼¾¼­ ¿¡·¯ */
+    else if(gu16_AD_Result_Hot_Out <= TEMP_SENSOR_SHORT || gu16_AD_Result_Hot_Out >= TEMP_SENSOR_OPEN)          /* ì˜¨ìˆ˜ ì¶”ì¶œ ì˜¨ë„ì„¼ì„œ ì—ëŸ¬ */
     {
         gu8_display_test_error = 3;
     }
-    else if(gu16_AD_Result_Hot_In <= TEMP_SENSOR_SHORT || gu16_AD_Result_Hot_In >= TEMP_SENSOR_OPEN)            /* ¿Â¼ö ÀÔ¼ö ¿Âµµ¼¾¼­ ¿¡·¯ */
+    else if(gu16_AD_Result_Hot_In <= TEMP_SENSOR_SHORT || gu16_AD_Result_Hot_In >= TEMP_SENSOR_OPEN)            /* ì˜¨ìˆ˜ ì…ìˆ˜ ì˜¨ë„ì„¼ì„œ ì—ëŸ¬ */
     {
         gu8_display_test_error = 4;
     }
-    else if(gu16_AD_Result_Room <= TEMP_SENSOR_SHORT || gu16_AD_Result_Room >= TEMP_SENSOR_OPEN)                /* Á¤¼ö ¿Âµµ¼¾¼­ ¿¡·¯ */
+    else if(gu16_AD_Result_Room <= TEMP_SENSOR_SHORT || gu16_AD_Result_Room >= TEMP_SENSOR_OPEN)                /* ì •ìˆ˜ ì˜¨ë„ì„¼ì„œ ì—ëŸ¬ */
     {
         gu8_display_test_error = 5;
     }
-    else if(gu16_AD_Result_Amb <= TEMP_SENSOR_SHORT || gu16_AD_Result_Amb >= TEMP_SENSOR_OPEN)                  /* ¿Ü±â ¿Âµµ¼¾¼­ ¿¡·¯ */
+    else if(gu16_AD_Result_Amb <= TEMP_SENSOR_SHORT || gu16_AD_Result_Amb >= TEMP_SENSOR_OPEN)                  /* ì™¸ê¸° ì˜¨ë„ì„¼ì„œ ì—ëŸ¬ */
     {
         gu8_display_test_error = 6;
     }
@@ -1829,23 +1829,23 @@ void display_test_error(void)
     {
        gu8_display_test_error = 8;
     }
-    else if(pLEVEL_ICE_DRAIN_LOW == SET)  /* µå·¹ÀÎ Àú¼öÀ§ °¨Áö ¿¡·¯ */
+    else if(pLEVEL_ICE_DRAIN_LOW == SET)  /* ë“œë ˆì¸ ì €ìˆ˜ìœ„ ê°ì§€ ì—ëŸ¬ */
     {
         gu8_display_test_error = 9;
     }
-    else if(pLEVEL_ICE_DRAIN_HIGH == SET) /* µå·¹ÀÎ ¸¸¼öÀ§ °¨Áö ¿¡·¯ */
+    else if(pLEVEL_ICE_DRAIN_HIGH == SET) /* ë“œë ˆì¸ ë§Œìˆ˜ìœ„ ê°ì§€ ì—ëŸ¬ */
     {
         gu8_display_test_error = 10;
     }
-    else if(gu16ADLeakage > 615)          /* ´©¼ö¼¾¼­ ¿¡·¯ */
+    else if(gu16ADLeakage > 615)          /* ëˆ„ìˆ˜ì„¼ì„œ ì—ëŸ¬ */
     {
         gu8_display_test_error = 11;
     }
-    else if(pREED_FILTER == SET )         /* ÇÊÅÍ ¹ÌÃ¼°á */
+    else if(pREED_FILTER == SET )         /* í•„í„° ë¯¸ì²´ê²° */
     {
         gu8_display_test_error = 14;
     }
-    else if(GET_INNER_DOOR_REED_SW() == ACTIVE_LOW_NO_DETECTED)    // [2025-11-17] CH.PARK ¾ÆÀÌ½ºµµ¾î ¸®µå ¹Ì°¨Áö
+    else if(GET_INNER_DOOR_REED_SW() == ACTIVE_LOW_NO_DETECTED)    // [2025-11-17] CH.PARK ì•„ì´ìŠ¤ë„ì–´ ë¦¬ë“œ ë¯¸ê°ì§€
     {
         gu8_display_test_error = 15;
     }
@@ -1853,11 +1853,11 @@ void display_test_error(void)
     {
         if( bit_touch_test_finish == SET )
         {
-            if( bit_display_test_filter_cover_error == SET )     // ÇÊÅÍÄ¿¹ö
+            if( bit_display_test_filter_cover_error == SET )     // í•„í„°ì»¤ë²„
             {
                 gu8_display_test_error = 12;
             }
-            else if( bit_display_test_tank_cover_error == SET )            // ¾óÀ½ÅÊÅ© Ä¿¹ö
+            else if( bit_display_test_tank_cover_error == SET )            // ì–¼ìŒíƒ±í¬ ì»¤ë²„
             {
                 gu8_display_test_error = 13;
             }
@@ -1897,7 +1897,7 @@ void display_test_error(void)
     }
     else{}
 
-    // ¹ÌÃ¼°á -> Ã¼°á »óÅÂ°¡ µÇ¾î¾ß¸¸ ¿¡·¯ ÇØÁ¦
+    // ë¯¸ì²´ê²° -> ì²´ê²° ìƒíƒœê°€ ë˜ì–´ì•¼ë§Œ ì—ëŸ¬ í•´ì œ
     if(bit_display_test_filter_cover_old != pREED_FILTER_COVER)
     {
         bit_display_test_filter_cover_old = pREED_FILTER_COVER;
@@ -1976,10 +1976,10 @@ void display_test_factory_job(void)
     }
     else{}
 
-    /* [¾óÀ½¹°] Å° ÀÔ·Â */
+    /* [ì–¼ìŒë¬¼] í‚¤ ì…ë ¥ */
     if(gu8_uart_ice_water_test_input == 1)
     {
-        // ¾óÀ½¹°
+        // ì–¼ìŒë¬¼
         Bit1_Front_Led_Ice_Water_Select = (F_cds_detect & F_Wink_500ms);
 
         // MY 1,2,3
@@ -1987,7 +1987,7 @@ void display_test_factory_job(void)
         Bit4_Front_Center_MY_2_Text = (F_cds_detect & F_Wink_500ms);
         Bit5_Front_Center_MY_3_Text = (F_cds_detect & F_Wink_500ms);
 
-        // Ãâ¼öÆÄ¿ì¼Â
+        // ì¶œìˆ˜íŒŒìš°ì…‹
         Bit0_Front_Left_Led_Eff_Faucet_Text = (F_cds_detect & F_Wink_500ms);
         bit_uart_ice_water_test_finish = SET;
     }
@@ -1995,7 +1995,7 @@ void display_test_factory_job(void)
     {
         if( bit_uart_ice_water_test_finish == CLEAR )
         {
-            // ¾óÀ½¹°
+            // ì–¼ìŒë¬¼
             Bit1_Front_Led_Ice_Water_Select = SET;
 
             // MY 1,2,3
@@ -2003,7 +2003,7 @@ void display_test_factory_job(void)
             Bit4_Front_Center_MY_2_Text = SET;
             Bit5_Front_Center_MY_3_Text = SET;
 
-            // Ãâ¼öÆÄ¿ì¼Â
+            // ì¶œìˆ˜íŒŒìš°ì…‹
             Bit0_Front_Left_Led_Eff_Faucet_Text = SET;
         }
         else
@@ -2012,21 +2012,21 @@ void display_test_factory_job(void)
         }
     }
 
-    /* [¾óÀ½] Å° ÀÔ·Â */
+    /* [ì–¼ìŒ] í‚¤ ì…ë ¥ */
     if(gu8_uart_ice_test_input == 1)
     {
-        // ¾óÀ½
+        // ì–¼ìŒ
         Bit0_Front_Led_Ice_Select = (F_cds_detect & F_Wink_500ms);
 
-        // ¶ó¸é, µå¸³Ä¿ÇÇ, Â÷
+        // ë¼ë©´, ë“œë¦½ì»¤í”¼, ì°¨
         Bit0_Front_Center_Recipe_Ramen_Text = (F_cds_detect & F_Wink_500ms);
         Bit2_Front_Center_Recipe_Drip_Coffee_Text = (F_cds_detect & F_Wink_500ms);
         Bit1_Front_Center_Tea_Text = (F_cds_detect & F_Wink_500ms);
 
-        // ¾óÀ½ºÎÁ·
+        // ì–¼ìŒë¶€ì¡±
         Bit1_Front_Left_Led_Ice_Shortae_Text = (F_cds_detect & F_Wink_500ms);
 
-        // ¾óÀ½ ÀÏ¹İ/Á¶°¢
+        // ì–¼ìŒ ì¼ë°˜/ì¡°ê°
         Bit6_Front_Under_Txt_Led_Ice_Normal = (F_cds_detect & F_Wink_500ms);
         Bit7_Front_Under_Txt_Led_Ice_Piece = (F_cds_detect & F_Wink_500ms);
         bit_uart_ice_test_finish = SET;
@@ -2035,18 +2035,18 @@ void display_test_factory_job(void)
     {
         if( bit_uart_ice_test_finish == CLEAR )
         {
-            // ¾óÀ½
+            // ì–¼ìŒ
             Bit0_Front_Led_Ice_Select = SET;
 
-            // ¶ó¸é, µå¸³Ä¿ÇÇ, Â÷
+            // ë¼ë©´, ë“œë¦½ì»¤í”¼, ì°¨
             Bit0_Front_Center_Recipe_Ramen_Text = SET;
             Bit2_Front_Center_Recipe_Drip_Coffee_Text = SET;
             Bit1_Front_Center_Tea_Text = SET;
 
-            // ¾óÀ½ºÎÁ·
+            // ì–¼ìŒë¶€ì¡±
             Bit1_Front_Left_Led_Ice_Shortae_Text = SET;
 
-            // ¾óÀ½ ÀÏ¹İ/Á¶°¢
+            // ì–¼ìŒ ì¼ë°˜/ì¡°ê°
             Bit6_Front_Under_Txt_Led_Ice_Normal = SET;
             Bit7_Front_Under_Txt_Led_Ice_Piece = SET;
         }
@@ -2056,17 +2056,17 @@ void display_test_factory_job(void)
         }
     }
 
-    /* [¿Â¼ö] Å° ÀÔ·Â */
+    /* [ì˜¨ìˆ˜] í‚¤ ì…ë ¥ */
     if(gu8_uart_hot_test_input == 1)
     {
-        // ¿Â¼ö
+        // ì˜¨ìˆ˜
         Bit2_Front_Led_Hot_Select = (F_cds_detect & F_Wink_500ms);
 
-        // ¾óÀ½°¡µæ, ÀıÀü¾ÆÀÌÄÜ
+        // ì–¼ìŒê°€ë“, ì ˆì „ì•„ì´ì½˜
         Bit0_Front_Left_Led_Ice_Full_Text = (F_cds_detect & F_Wink_500ms);
         Bit4_Front_Left_Led_Sleep_Icon = (F_cds_detect & F_Wink_500ms);
 
-        // ¾óÀ½ÆÄ¿ì¼Â
+        // ì–¼ìŒíŒŒìš°ì…‹
         Bit1_Front_Left_Led_Ice_Faucet_Text = (F_cds_detect & F_Wink_500ms);
         bit_uart_hot_test_finish = SET;
     }
@@ -2074,14 +2074,14 @@ void display_test_factory_job(void)
     {
         if( bit_uart_hot_test_finish == CLEAR )
         {
-            // ¿Â¼ö
+            // ì˜¨ìˆ˜
 			Bit2_Front_Led_Hot_Select = SET;
 
-            // ¾óÀ½°¡µæ, ÀıÀü¾ÆÀÌÄÜ
+            // ì–¼ìŒê°€ë“, ì ˆì „ì•„ì´ì½˜
             Bit0_Front_Left_Led_Ice_Full_Text = SET;
             Bit4_Front_Left_Led_Sleep_Icon = SET;
 
-            // ¾óÀ½ÆÄ¿ì¼Â
+            // ì–¼ìŒíŒŒìš°ì…‹
             Bit1_Front_Left_Led_Ice_Faucet_Text = SET;
         }
         else
@@ -2090,20 +2090,20 @@ void display_test_factory_job(void)
         }
     }
 
-    /* [Á¤¼ö] Å° ÀÔ·Â */
+    /* [ì •ìˆ˜] í‚¤ ì…ë ¥ */
     if(gu8_uart_purify_test_input == 1)
     {
-        // Á¤¼ö
+        // ì •ìˆ˜
         Bit3_Front_Led_Ambient_Select = (F_cds_detect & F_Wink_500ms);
 
-        // UV»ì±Õ, °í¿Â»ì±Õ
+        // UVì‚´ê· , ê³ ì˜¨ì‚´ê· 
         Bit2_Front_Left_Led_UV_Ster_Text = (F_cds_detect & F_Wink_500ms);
         Bit3_Front_Left_Led_Hot_Ster_Text = (F_cds_detect & F_Wink_500ms);
 
         // :
         Bit6_Front_Left_Led_Clock_Colon_Icon = (F_cds_detect & F_Wink_500ms);
 
-        // ¾óÀ½Æ®·¹ÀÌ
+        // ì–¼ìŒíŠ¸ë ˆì´
         Bit2_Front_Left_Led_Ice_Tray_Text = (F_cds_detect & F_Wink_500ms);
 
         bit_uart_ambient_test_finish = SET;
@@ -2112,17 +2112,17 @@ void display_test_factory_job(void)
     {
         if( bit_uart_ambient_test_finish == CLEAR )
         {
-            // Á¤¼ö
+            // ì •ìˆ˜
 			Bit3_Front_Led_Ambient_Select = SET;
 
-            // UV»ì±Õ, °í¿Â»ì±Õ
+            // UVì‚´ê· , ê³ ì˜¨ì‚´ê· 
             Bit2_Front_Left_Led_UV_Ster_Text = SET;
             Bit3_Front_Left_Led_Hot_Ster_Text = SET;
 
             // :
             Bit6_Front_Left_Led_Clock_Colon_Icon = SET;
 
-            // ¾óÀ½Æ®·¹ÀÌ
+            // ì–¼ìŒíŠ¸ë ˆì´
             Bit2_Front_Left_Led_Ice_Tray_Text = SET;
         }
         else
@@ -2131,13 +2131,13 @@ void display_test_factory_job(void)
         }
     }
 
-    /* [³Ã¼ö] Å° ÀÔ·Â */
+    /* [ëƒ‰ìˆ˜] í‚¤ ì…ë ¥ */
     if(gu8_uart_cold_test_input == 1)
     {
-        // ³Ã¼ö
+        // ëƒ‰ìˆ˜
         Bit4_Front_Led_Cold_Select = (F_cds_detect & F_Wink_500ms);
 
-        // ºü¸¥Á¦ºù ¾ÆÀÌÄÜ
+        // ë¹ ë¥¸ì œë¹™ ì•„ì´ì½˜
         Bit4_Front_Led_Icon_Fast_Ice = (F_cds_detect & F_Wink_500ms);
 
         // 'C
@@ -2148,10 +2148,10 @@ void display_test_factory_job(void)
     {
         if( bit_uart_cold_tst_finish == CLEAR )
         {
-            // ³Ã¼ö
+            // ëƒ‰ìˆ˜
 			Bit4_Front_Led_Cold_Select = SET;
 
-            // ºü¸¥Á¦ºù ¾ÆÀÌÄÜ
+            // ë¹ ë¥¸ì œë¹™ ì•„ì´ì½˜
             Bit4_Front_Led_Icon_Fast_Ice = SET;
 
             // 'C
@@ -2163,13 +2163,13 @@ void display_test_factory_job(void)
         }
     }
 
-    /* [¿ë·®] Å° ÀÔ·Â */
+    /* [ìš©ëŸ‰] í‚¤ ì…ë ¥ */
     if(gu8_uart_amount_test_input == 1)
     {
-        // ¿ë·®
+        // ìš©ëŸ‰
         Bit5_Front_Led_Amount_Select = (F_cds_detect & F_Wink_500ms);
 
-        // ÇØ,±¸¸§,¿ì»ê
+        // í•´,êµ¬ë¦„,ìš°ì‚°
         Bit2_Front_Right_Led_Sunny_Icon = (F_cds_detect & F_Wink_500ms);
         Bit3_Front_Right_Led_Cloud_Icon = (F_cds_detect & F_Wink_500ms);
         Bit4_Front_Right_Led_Rain_Icon = (F_cds_detect & F_Wink_500ms);
@@ -2179,10 +2179,10 @@ void display_test_factory_job(void)
     {
         if( bit_uart_amount_test_finish == CLEAR )
         {
-            // ¿ë·®
+            // ìš©ëŸ‰
 			Bit5_Front_Led_Amount_Select = SET;
 
-            // ÇØ,±¸¸§,¿ì»ê
+            // í•´,êµ¬ë¦„,ìš°ì‚°
             Bit2_Front_Right_Led_Sunny_Icon = SET;
             Bit3_Front_Right_Led_Cloud_Icon = SET;
             Bit4_Front_Right_Led_Rain_Icon = SET;
@@ -2194,16 +2194,16 @@ void display_test_factory_job(void)
         }
     }
 
-    /* [MY] ÀÔ·Â ½Ã  */
+    /* [MY] ì…ë ¥ ì‹œ  */
     if(gu8_uart_setting_my_test_input == 1)
     {
         // MY
         Bit6_Front_Led_My_Select = (F_cds_detect & F_Wink_500ms);
 
-        // ¾óÀ½ÀúÀå°í
+        // ì–¼ìŒì €ì¥ê³ 
         Bit3_Front_Left_Led_Ice_Storage_Box_Text = (F_cds_detect & F_Wink_500ms);
 
-        // ÇÊÅÍ¼¼Ã´
+        // í•„í„°ì„¸ì²™
         Bit4_Front_Right_Led_Filter_Clean_Text = (F_cds_detect & F_Wink_500ms);
 
         // .
@@ -2218,10 +2218,10 @@ void display_test_factory_job(void)
             // MY
 			Bit6_Front_Led_My_Select = SET;
 
-            // ¾óÀ½ÀúÀå°í
+            // ì–¼ìŒì €ì¥ê³ 
             Bit3_Front_Left_Led_Ice_Storage_Box_Text = SET;
 
-            // ÇÊÅÍ¼¼Ã´
+            // í•„í„°ì„¸ì²™
             Bit4_Front_Right_Led_Filter_Clean_Text = SET;
 
             // .
@@ -2233,10 +2233,10 @@ void display_test_factory_job(void)
         }
     }
 
-    /* [¾óÀ½OFF] Å° ÀÔ·Â */
+    /* [ì–¼ìŒOFF] í‚¤ ì…ë ¥ */
     if(gu8_uart_setting_ice_off_test_input == 1)
     {
-        // ¾óÀ½OFF
+        // ì–¼ìŒOFF
         Bit1_Front_Led_Ice_Off = (F_cds_detect & F_Wink_500ms);
 
         // WIFI ICON
@@ -2253,7 +2253,7 @@ void display_test_factory_job(void)
     {
         if( bit_uart_ice_off_test_finish == CLEAR )
         {
-            // ¾óÀ½OFF
+            // ì–¼ìŒOFF
             Bit1_Front_Led_Ice_Off = SET;
 
             // WIFI ICON
@@ -2266,10 +2266,10 @@ void display_test_factory_job(void)
         }
     }
 
-    /* [¾óÀ½´ë¼Ò] Å°ÀÔ·Â */
+    /* [ì–¼ìŒëŒ€ì†Œ] í‚¤ì…ë ¥ */
     if(gu8_uart_setting_ice_size_test_input == 1)
     {
-        // ¾óÀ½Å©±â
+        // ì–¼ìŒí¬ê¸°
         Bit0_Front_Led_Ice_Size = (F_cds_detect & F_Wink_500ms);
 
         // L, ml
@@ -2286,7 +2286,7 @@ void display_test_factory_job(void)
     {
         if( bit_uart_ice_size_test_finish == CLEAR )
         {
-            // ¾óÀ½Å©±â
+            // ì–¼ìŒí¬ê¸°
 			Bit0_Front_Led_Ice_Size = SET;
 
             // L, ml
@@ -2299,19 +2299,19 @@ void display_test_factory_job(void)
         }
     }
 
-    /* [¿Â¼öÀá±İ] Å° ÀÔ·Â */
+    /* [ì˜¨ìˆ˜ì ê¸ˆ] í‚¤ ì…ë ¥ */
     if(gu8_uart_setting_hot_lock_test_input == 1)
     {
-        // ¿Â¼öÀá±İ
+        // ì˜¨ìˆ˜ì ê¸ˆ
         Bit2_Front_Led_Hot_Lock_Text = (F_cds_detect & F_Wink_500ms);
 
-        // ¿Â¼öÀá±İ ¾ÆÀÌÄÜ
+        // ì˜¨ìˆ˜ì ê¸ˆ ì•„ì´ì½˜
         Bit3_Front_Led_Icon_Led_Hot_Locker = (F_cds_detect & F_Wink_500ms);
 
         // %
         Bit5_Front_Right_Led_Percent_Icon = (F_cds_detect & F_Wink_500ms);
 
-        // ³Ã¼ö DOT WHITE
+        // ëƒ‰ìˆ˜ DOT WHITE
         Bit5_Front_Led_Icon_Comp_Blue = (F_cds_detect & F_Wink_500ms);
 
         if(bit_uart_hot_lock_test_finish == CLEAR)
@@ -2324,16 +2324,16 @@ void display_test_factory_job(void)
     {
         if( bit_uart_hot_lock_test_finish == CLEAR )
         {
-            // ¿Â¼öÀá±İ
+            // ì˜¨ìˆ˜ì ê¸ˆ
             Bit2_Front_Led_Hot_Lock_Text = SET;
 
-            // ¿Â¼öÀá±İ ¾ÆÀÌÄÜ
+            // ì˜¨ìˆ˜ì ê¸ˆ ì•„ì´ì½˜
             Bit3_Front_Led_Icon_Led_Hot_Locker = SET;
 
             // %
             Bit5_Front_Right_Led_Percent_Icon = SET;
 
-            // ³Ã¼ö DOT WHITE
+            // ëƒ‰ìˆ˜ DOT WHITE
             Bit5_Front_Led_Icon_Comp_Blue = SET;
         }
         else
@@ -2342,19 +2342,19 @@ void display_test_factory_job(void)
         }
     }
 
-    /* [ºü¸¥Á¦ºù] Å° ÀÔ·Â */
+    /* [ë¹ ë¥¸ì œë¹™] í‚¤ ì…ë ¥ */
     if(gu8_uart_setting_fast_ice_test_input == 1)
     {
-        // ºü¸¥Á¦ºù
+        // ë¹ ë¥¸ì œë¹™
         Bit3_Front_Led_Ice_First = (F_cds_detect & F_Wink_500ms);
 
-        // ³Ã¼ö DOT BLUE
+        // ëƒ‰ìˆ˜ DOT BLUE
         Bit6_Front_Led_Icon_Comp_White = (F_cds_detect & F_Wink_500ms);
 
-        // ´Ü°è
+        // ë‹¨ê³„
         Bit5_Front_Left_Led_Step_Text = (F_cds_detect & F_Wink_500ms);
 
-        // WELCOME LED (ÁÂÃø)
+        // WELCOME LED (ì¢Œì¸¡)
         Bit6_Front_Under_Led_Welcome_2 = (F_cds_detect & F_Wink_500ms);
 
         if(bit_uart_fast_ice_test_finish == CLEAR)
@@ -2367,16 +2367,16 @@ void display_test_factory_job(void)
     {
         if( bit_uart_fast_ice_test_finish == CLEAR )
         {
-            // ºü¸¥Á¦ºù
+            // ë¹ ë¥¸ì œë¹™
 			Bit3_Front_Led_Ice_First = SET;
 
-            // ³Ã¼ö DOT BLUE
+            // ëƒ‰ìˆ˜ DOT BLUE
             Bit6_Front_Led_Icon_Comp_White = SET;
 
-            // ´Ü°è
+            // ë‹¨ê³„
             Bit5_Front_Left_Led_Step_Text = SET;
 
-            // WELCOME LED (ÁÂÃø)
+            // WELCOME LED (ì¢Œì¸¡)
             Bit6_Front_Under_Led_Welcome_2 = SET;
         }
         else
@@ -2385,10 +2385,10 @@ void display_test_factory_job(void)
         }
     }
 
-    /* [³Ã¼ö°­¾à] Å° ÀÔ·Â */
+    /* [ëƒ‰ìˆ˜ê°•ì•½] í‚¤ ì…ë ¥ */
     if(gu8_uart_setting_cold_temp_test_input == 1)
     {
-        // ¿Âµµ¹Ù 5°³
+        // ì˜¨ë„ë°” 5ê°œ
         gu8_hot_temp_off_timer++;
         if(gu8_hot_temp_off_timer <= 3)
         {
@@ -2432,15 +2432,15 @@ void display_test_factory_job(void)
             Bit4_Front_Led_Temp_Setting_Bar_1_5 = (F_cds_detect & F_Wink_500ms);
         }
 
-        // ³Ã¼ö¿Âµµ
+        // ëƒ‰ìˆ˜ì˜¨ë„
         Bit4_Front_Led_Cold_Temp = (F_cds_detect & F_Wink_500ms);
 
-        // °­ | ¾à
+        // ê°• | ì•½
         Bit3_Front_Under_Txt_Led_Cold_High = (F_cds_detect & F_Wink_500ms);
         Bit4_Front_Under_Txt_Led_Cold_Center_Bar = (F_cds_detect & F_Wink_500ms);
         Bit5_Front_Under_Txt_Led_Cold_Low = (F_cds_detect & F_Wink_500ms);
 
-        // WELCOME LED (¿ìÃø)
+        // WELCOME LED (ìš°ì¸¡)
         Bit5_Front_Under_Led_Welcome = (F_cds_detect & F_Wink_500ms);
 
         if(bit_uart_cold_temp_test_finish == CLEAR)
@@ -2453,22 +2453,22 @@ void display_test_factory_job(void)
     {
         if( bit_uart_cold_temp_test_finish == CLEAR )
         {
-            // ³Ã¼ö¿Âµµ
+            // ëƒ‰ìˆ˜ì˜¨ë„
 			Bit4_Front_Led_Cold_Temp = SET;
 
-            // °­ | ¾à
+            // ê°• | ì•½
 			Bit3_Front_Under_Txt_Led_Cold_High = SET;
 			Bit4_Front_Under_Txt_Led_Cold_Center_Bar = SET;
 			Bit5_Front_Under_Txt_Led_Cold_Low = SET;
 
-            // ¿Âµµ¹Ù 5°³
+            // ì˜¨ë„ë°” 5ê°œ
             Bit0_Front_Led_Temp_Setting_Bar_1_1 = SET;
             Bit1_Front_Led_Temp_Setting_Bar_1_2 = SET;
             Bit2_Front_Led_Temp_Setting_Bar_1_3 = SET;
             Bit3_Front_Led_Temp_Setting_Bar_1_4 = SET;
             Bit4_Front_Led_Temp_Setting_Bar_1_5 = SET;
 
-            // WELCOME LED (¿ìÃø)
+            // WELCOME LED (ìš°ì¸¡)
             Bit5_Front_Under_Led_Welcome = SET;
 
             gu8_hot_temp_off_timer = 0;
@@ -2479,16 +2479,16 @@ void display_test_factory_job(void)
         }
     }
 
-    /* [³Ã¼öOFF] Å° ÀÔ·Â */
+    /* [ëƒ‰ìˆ˜OFF] í‚¤ ì…ë ¥ */
     if(gu8_uart_setting_cold_off_input == 1)
     {
-        // ³Ã¼öOFF
+        // ëƒ‰ìˆ˜OFF
         Bit6_Front_Led_Cold_Off = (F_cds_detect & F_Wink_500ms);
 
-        // ¾óÀ½Àá±İ ¾ÆÀÌÄÜ
+        // ì–¼ìŒì ê¸ˆ ì•„ì´ì½˜
         Bit2_Front_Led_Icon_Led_Ice_Locker = (F_cds_detect & F_Wink_500ms);
 
-        // ´ë | ¼Ò
+        // ëŒ€ | ì†Œ
         Bit0_Front_Under_Txt_Led_Ice_Large = (F_cds_detect & F_Wink_500ms);
         Bit1_Front_Under_Txt_Led_Ice_Center_bar = (F_cds_detect & F_Wink_500ms);
         Bit2_Front_Under_Txt_Led_Ice_Small = (F_cds_detect & F_Wink_500ms);
@@ -2503,13 +2503,13 @@ void display_test_factory_job(void)
     {
         if(bit_uart_cold_off_finish == CLEAR)
         {
-            // ³Ã¼öOFF
+            // ëƒ‰ìˆ˜OFF
             Bit6_Front_Led_Cold_Off = SET;
 
-            // ¾óÀ½Àá±İ ¾ÆÀÌÄÜ
+            // ì–¼ìŒì ê¸ˆ ì•„ì´ì½˜
             Bit2_Front_Led_Icon_Led_Ice_Locker = SET;
 
-            // ´ë | ¼Ò
+            // ëŒ€ | ì†Œ
             Bit0_Front_Under_Txt_Led_Ice_Large = SET;
             Bit1_Front_Under_Txt_Led_Ice_Center_bar = SET;
             Bit2_Front_Under_Txt_Led_Ice_Small = SET;
@@ -2520,10 +2520,10 @@ void display_test_factory_job(void)
         }
     }
 
-    /* [ÃëÄ§¸ğµå] Å° ÀÔ·Â */
+    /* [ì·¨ì¹¨ëª¨ë“œ] í‚¤ ì…ë ¥ */
     if(gu8_uart_setting_sleep_mode_test_input == 1)
     {
-        // ÃëÄ§¸ğµå
+        // ì·¨ì¹¨ëª¨ë“œ
         Bit5_Front_Led_Sleep_Mode_Text = (F_cds_detect & F_Wink_500ms);
 
         gu8_cup_level_off_timer++;
@@ -2579,10 +2579,10 @@ void display_test_factory_job(void)
     {
         if( bit_uart_sleep_mode_test_finish == CLEAR )
         {
-            // ÃëÄ§¸ğµå
+            // ì·¨ì¹¨ëª¨ë“œ
 			Bit5_Front_Led_Sleep_Mode_Text = SET;
 
-            // ¿ë·®¹Ù 5°³
+            // ìš©ëŸ‰ë°” 5ê°œ
             Bit0_Front_Led_Amount_Setting_Bar_2_1 = SET;
             Bit1_Front_Led_Amount_Setting_Bar_2_2 = SET;
             Bit2_Front_Led_Amount_Setting_Bar_2_3 = SET;
@@ -2598,7 +2598,7 @@ void display_test_factory_job(void)
         }
     }
 
-    /* [¾óÀ½Àá±İ] Å° ÀÔ·Â */
+    /* [ì–¼ìŒì ê¸ˆ] í‚¤ ì…ë ¥ */
     if(gu8_uart_setting_ice_lock_test_input == 1)
     {
         Bit0_Front_Led_Ice_Lock = (F_cds_detect & F_Wink_500ms);
@@ -2621,7 +2621,7 @@ void display_test_factory_job(void)
         }
     }
 
-    /* [ÀüÃ¼Àá±İ] Å° ÀÔ·Â */
+    /* [ì „ì²´ì ê¸ˆ] í‚¤ ì…ë ¥ */
     if(gu8_uart_setting_all_lock_test_input == 1)
     {
         Bit1_Front_Led_All_Lock = (F_cds_detect & F_Wink_500ms);
@@ -2644,7 +2644,7 @@ void display_test_factory_job(void)
         }
     }
 
-    /* [³Ã¿ÂÁ¤ ÃßÃâ] Å° */
+    /* [ëƒ‰ì˜¨ì • ì¶”ì¶œ] í‚¤ */
     if(gu8_water_ext_test_input == 1)
     {
         gu8_water_color_change_timer++;
@@ -2681,7 +2681,7 @@ void display_test_factory_job(void)
         gu8_water_color_change_timer = 0;
     }
 
-    /* [¾óÀ½ ÃßÃâ] Å° ÀÔ·Â */
+    /* [ì–¼ìŒ ì¶”ì¶œ] í‚¤ ì…ë ¥ */
     if(gu8_ice_ext_test_input == 1)
     {
         gu8_ice_color_change_timer++;
@@ -2733,7 +2733,7 @@ void display_test_factory_job(void)
     switch (gu8_ice_rgb_test_step)
     {
         case 0:
-            // ³»ºÎ ¿ÜºÎ white LED only
+            // ë‚´ë¶€ ì™¸ë¶€ white LED only
             Bit3_Front_Under_Ice_Outer_White_Extract = SET;
             Bit1_Front_Under_Ice_Inner_White_Extract = SET;
 
@@ -2744,7 +2744,7 @@ void display_test_factory_job(void)
             break;
 
         case 1:
-            // ¾óÀ½ ÃßÃâ ¿ÜºÎ RED only
+            // ì–¼ìŒ ì¶”ì¶œ ì™¸ë¶€ RED only
             Bit3_Front_Under_Ice_Outer_White_Extract = SET;
             Bit1_Front_Under_Ice_Inner_White_Extract = SET;
 
@@ -2755,7 +2755,7 @@ void display_test_factory_job(void)
             break;
 
         case 2:
-            // ¾óÀ½ ÃßÃâ ¿ÜºÎ GREEN only
+            // ì–¼ìŒ ì¶”ì¶œ ì™¸ë¶€ GREEN only
             Bit3_Front_Under_Ice_Outer_White_Extract = SET;
             Bit1_Front_Under_Ice_Inner_White_Extract = SET;
 
@@ -2766,7 +2766,7 @@ void display_test_factory_job(void)
             break;
 
         case 3:
-            // ¾óÀ½ ÃßÃâ ¿ÜºÎ BLUE only
+            // ì–¼ìŒ ì¶”ì¶œ ì™¸ë¶€ BLUE only
             Bit3_Front_Under_Ice_Outer_White_Extract = SET;
             Bit1_Front_Under_Ice_Inner_White_Extract = SET;
 
@@ -2777,7 +2777,7 @@ void display_test_factory_job(void)
             break;
 
         case 4:
-            // ¾óÀ½ ÃßÃâ ³»ºÎ RED only
+            // ì–¼ìŒ ì¶”ì¶œ ë‚´ë¶€ RED only
             Bit3_Front_Under_Ice_Outer_White_Extract = SET;
             Bit1_Front_Under_Ice_Inner_White_Extract = SET;
 
@@ -2788,7 +2788,7 @@ void display_test_factory_job(void)
             break;
 
         case 5:
-            // ¾óÀ½ ÃßÃâ ³»ºÎ GREEN only
+            // ì–¼ìŒ ì¶”ì¶œ ë‚´ë¶€ GREEN only
             Bit3_Front_Under_Ice_Outer_White_Extract = SET;
             Bit1_Front_Under_Ice_Inner_White_Extract = SET;
 
@@ -2799,7 +2799,7 @@ void display_test_factory_job(void)
             break;
 
         case 6:
-            // ¾óÀ½ ÃßÃâ ³»ºÎ BLUE only
+            // ì–¼ìŒ ì¶”ì¶œ ë‚´ë¶€ BLUE only
             Bit3_Front_Under_Ice_Outer_White_Extract = SET;
             Bit1_Front_Under_Ice_Inner_White_Extract = SET;
 
@@ -2811,7 +2811,7 @@ void display_test_factory_job(void)
             break;
 
         case 7:
-            // ¿Ï·á
+            // ì™„ë£Œ
             bit_uart_ice_extract_test_finish = SET;
             Bit3_Front_Under_Ice_Outer_White_Extract = (F_cds_detect & F_Wink_500ms);
             Bit1_Front_Under_Ice_Inner_White_Extract = (F_cds_detect & F_Wink_500ms);
@@ -2837,28 +2837,28 @@ void display_test_factory_job(void)
             break;
 
         case 1:
-            // ³Ã¿ÂÁ¤ ÃßÃâ RED only
+            // ëƒ‰ì˜¨ì • ì¶”ì¶œ RED only
             Bit4_Front_Under_Water_White_Extract = SET;
             make_test_mode_rgb_color( TEST_MODE_RGB_COLOR_RED );
             set_duty_percent( DIMMING__PERCENT_WATER_EXTRACT, DIIMMING__0_PERCENT );
             break;
 
         case 2:
-            // ³Ã¿ÂÁ¤ ÃßÃâ GREEN only
+            // ëƒ‰ì˜¨ì • ì¶”ì¶œ GREEN only
             Bit4_Front_Under_Water_White_Extract = SET;
             make_test_mode_rgb_color( TEST_MODE_RGB_COLOR_GREEN );
             set_duty_percent( DIMMING__PERCENT_WATER_EXTRACT, DIIMMING__0_PERCENT );
             break;
 
         case 3:
-            // ³Ã¿ÂÁ¤ ÃßÃâ BLUE only
+            // ëƒ‰ì˜¨ì • ì¶”ì¶œ BLUE only
             Bit4_Front_Under_Water_White_Extract = SET;
             make_test_mode_rgb_color( TEST_MODE_RGB_COLOR_BLUE );
             set_duty_percent( DIMMING__PERCENT_WATER_EXTRACT, DIIMMING__0_PERCENT );
             break;
 
         case 4:
-            // ¿Ï·á
+            // ì™„ë£Œ
             bit_uart_water_extract_test_finish = SET;
 
             Bit4_Front_Under_Water_White_Extract = (F_cds_detect & F_Wink_500ms);
@@ -3059,12 +3059,12 @@ void Display_Test_Mode_Key_Short_Input(U32 u32key_input_value)
 {
     play_voice_test_mode_151();
 
-    /* ¿¡·¯°É·ÈÀ» ¶§´Â ÀÔ·Â°ª Ã³¸® ¹«½Ã 250320 CH.PARK */
+    /* ì—ëŸ¬ê±¸ë ¸ì„ ë•ŒëŠ” ì…ë ¥ê°’ ì²˜ë¦¬ ë¬´ì‹œ 250320 CH.PARK */
     if( gu8_display_test_error == 0 )
     {
         switch(u32key_input_value)
         {
-            case KEY_ICE_SELECT:                        /* [¾óÀ½] Å° */
+            case KEY_ICE_SELECT:                        /* [ì–¼ìŒ] í‚¤ */
                 gu8_uart_ice_test_input++;
 
                 if(gu8_uart_ice_test_input >= 2)
@@ -3075,7 +3075,7 @@ void Display_Test_Mode_Key_Short_Input(U32 u32key_input_value)
 
                 break;
 
-            case KEY_ICE_WATER_SELECT:                  /* [¾óÀ½¹°] Å° */
+            case KEY_ICE_WATER_SELECT:                  /* [ì–¼ìŒë¬¼] í‚¤ */
                 gu8_uart_ice_water_test_input++;
 
                 if(gu8_uart_ice_water_test_input >= 2)
@@ -3086,7 +3086,7 @@ void Display_Test_Mode_Key_Short_Input(U32 u32key_input_value)
 
                 break;
 
-            case KEY_HOT_SELECT:                        /* [¿Â¼ö] Å° */
+            case KEY_HOT_SELECT:                        /* [ì˜¨ìˆ˜] í‚¤ */
 
                 if( u8FactoryTestMode == UART_TEST_MODE  )
                 {
@@ -3123,7 +3123,7 @@ void Display_Test_Mode_Key_Short_Input(U32 u32key_input_value)
 
                 break;
 
-            case KEY_AMBIENT_SELECT:                        /* [Á¤¼ö] Å° */
+            case KEY_AMBIENT_SELECT:                        /* [ì •ìˆ˜] í‚¤ */
 
                 if( u8FactoryTestMode == UART_TEST_MODE  )
                 {
@@ -3160,7 +3160,7 @@ void Display_Test_Mode_Key_Short_Input(U32 u32key_input_value)
 
                 break;
 
-            case KEY_COLD_SELECT:                           /* [³Ã¼ö] Å° */
+            case KEY_COLD_SELECT:                           /* [ëƒ‰ìˆ˜] í‚¤ */
 
                 if( u8FactoryTestMode == UART_TEST_MODE  )
                 {
@@ -3198,7 +3198,7 @@ void Display_Test_Mode_Key_Short_Input(U32 u32key_input_value)
 
                 break;
 
-            case KEY_AMOUNT_SELECT:                         /* [¿ë·®] Å° */
+            case KEY_AMOUNT_SELECT:                         /* [ìš©ëŸ‰] í‚¤ */
 
                 gu8_uart_amount_test_input++;
 
@@ -3210,7 +3210,7 @@ void Display_Test_Mode_Key_Short_Input(U32 u32key_input_value)
 
                 break;
 
-            case KEY_MY_SELECT:                                    /* [MY] Å° */
+            case KEY_MY_SELECT:                                    /* [MY] í‚¤ */
                 gu8_uart_setting_my_test_input++;
 
                 if(gu8_uart_setting_my_test_input >= 2)
@@ -3220,7 +3220,7 @@ void Display_Test_Mode_Key_Short_Input(U32 u32key_input_value)
                 else {  }
                 break;
 
-            case KEY_SETTING_ICE_SIZE:                      /* [¾óÀ½´ë¼Ò] Å° */
+            case KEY_SETTING_ICE_SIZE:                      /* [ì–¼ìŒëŒ€ì†Œ] í‚¤ */
                 gu8_uart_setting_ice_size_test_input++;
 
                 if(gu8_uart_setting_ice_size_test_input >= 2)
@@ -3231,7 +3231,7 @@ void Display_Test_Mode_Key_Short_Input(U32 u32key_input_value)
 
                 break;
 
-            case KEY_SETTING_ICE_OFF:                       /* [¾óÀ½OFF] Å° */
+            case KEY_SETTING_ICE_OFF:                       /* [ì–¼ìŒOFF] í‚¤ */
 
                 gu8_uart_setting_ice_off_test_input++;
 
@@ -3243,7 +3243,7 @@ void Display_Test_Mode_Key_Short_Input(U32 u32key_input_value)
 
                 break;
 
-            case KEY_SETTING_HOT_LOCK:                      /* [¿Â¼öÀá±İ] Å° */
+            case KEY_SETTING_HOT_LOCK:                      /* [ì˜¨ìˆ˜ì ê¸ˆ] í‚¤ */
 
                 gu8_uart_setting_hot_lock_test_input++;
 
@@ -3255,7 +3255,7 @@ void Display_Test_Mode_Key_Short_Input(U32 u32key_input_value)
 
                 break;
 
-            case KEY_SETTING_ICE_FIRST:                     /* [ºü¸¥Á¦ºù] Å° */
+            case KEY_SETTING_ICE_FIRST:                     /* [ë¹ ë¥¸ì œë¹™] í‚¤ */
 
                 gu8_uart_setting_fast_ice_test_input++;
 
@@ -3267,7 +3267,7 @@ void Display_Test_Mode_Key_Short_Input(U32 u32key_input_value)
 
                 break;
 
-            case KEY_SETTING_COLD_TEMP:                    /* [³Ã¼ö°­¾à] Å° */
+            case KEY_SETTING_COLD_TEMP:                    /* [ëƒ‰ìˆ˜ê°•ì•½] í‚¤ */
 
                 gu8_uart_setting_cold_temp_test_input++;
 
@@ -3279,7 +3279,7 @@ void Display_Test_Mode_Key_Short_Input(U32 u32key_input_value)
 
                 break;
 
-            case KEY_COLD_WATER_OFF:                        /* [³Ã¼öOFF] Å° */
+            case KEY_COLD_WATER_OFF:                        /* [ëƒ‰ìˆ˜OFF] í‚¤ */
                 gu8_uart_setting_cold_off_input++;
 
                 if(gu8_uart_setting_cold_off_input >= 2)
@@ -3289,7 +3289,7 @@ void Display_Test_Mode_Key_Short_Input(U32 u32key_input_value)
                 else {  }
                 break;
 
-            case KEY_SETTING_SLEEP_MODE:                    /* [ÃëÄ§¸ğµå] */
+            case KEY_SETTING_SLEEP_MODE:                    /* [ì·¨ì¹¨ëª¨ë“œ] */
 
                 gu8_uart_setting_sleep_mode_test_input++;
 
@@ -3301,7 +3301,7 @@ void Display_Test_Mode_Key_Short_Input(U32 u32key_input_value)
 
                 break;
 
-            case KEY_SETTING_ICE_LOCK:                      /* [¾óÀ½Àá±İ] Å° */
+            case KEY_SETTING_ICE_LOCK:                      /* [ì–¼ìŒì ê¸ˆ] í‚¤ */
 
                 gu8_uart_setting_ice_lock_test_input++;
 
@@ -3313,7 +3313,7 @@ void Display_Test_Mode_Key_Short_Input(U32 u32key_input_value)
 
                 break;
 
-            case KEY_SETTING_ALL_LOCK:                      /* [ÀüÃ¼Àá±İ] Å° */
+            case KEY_SETTING_ALL_LOCK:                      /* [ì „ì²´ì ê¸ˆ] í‚¤ */
 
                 gu8_uart_setting_all_lock_test_input++;
 
@@ -3338,7 +3338,7 @@ void Display_Test_Mode_Key_Short_Input(U32 u32key_input_value)
 ***********************************************************************************************************************/
 void initial_ice_tray(void)
 {
-    /*..hui [25-4-22¿ÀÈÄ 4:28:51] Å¾Ä¿¹ö ¿­·ÁÀÖ´Âµ¿¾È Áö¼Ó°¨Áö..*/
+    /*..hui [25-4-22ì˜¤í›„ 4:28:51] íƒ‘ì»¤ë²„ ì—´ë ¤ìˆëŠ”ë™ì•ˆ ì§€ì†ê°ì§€..*/
     if( pREED_TANK_COVER_2 == SET )
     {
         gu8_ice_feeder_test_on_timer++;
@@ -3347,7 +3347,7 @@ void initial_ice_tray(void)
         if( gu8_ice_feeder_test_on_timer >= 20 )
         {
             gu8_ice_feeder_test_on_timer = 20;
-            /*..hui [23-6-30¿ÀÀü 11:10:15] ¿ªÈ¸Àü -> Á¤È¸ÀüÀ¸·Î º¯°æ.. ¼³Â÷Àå´Ô..*/
+            /*..hui [23-6-30ì˜¤ì „ 11:10:15] ì—­íšŒì „ -> ì •íšŒì „ìœ¼ë¡œ ë³€ê²½.. ì„¤ì°¨ì¥ë‹˜..*/
             pMOTOR_ICE_OUT_CW = CLEAR;
             pMOTOR_ICE_OUT_CCW = SET;
         }
@@ -3369,7 +3369,7 @@ void initial_ice_tray(void)
 
     input_ice_tray_micro_sw();
 
-    /*..hui [19-11-8¿ÀÈÄ 4:58:12] ¾ÆÀÌ½ºÆ®·¹ÀÌ °Ë»ç ¿Ï·á½Ã±îÁö ´ë±â..*/
+    /*..hui [19-11-8ì˜¤í›„ 4:58:12] ì•„ì´ìŠ¤íŠ¸ë ˆì´ ê²€ì‚¬ ì™„ë£Œì‹œê¹Œì§€ ëŒ€ê¸°..*/
     if( gu8_uart_tray_initial_step >= 3 )
     {
         F_TrayMotorUP = 0;
@@ -3412,7 +3412,7 @@ void initial_ice_tray(void)
 
         case 1:
 
-            up_tray_motor();    // ¸ŞÀÎ¶óÀÎ°Ë»ç
+            up_tray_motor();    // ë©”ì¸ë¼ì¸ê²€ì‚¬
             gu8_uart_tray_initial_step++;
 
             break;
@@ -3429,7 +3429,7 @@ void initial_ice_tray(void)
 
         case 3:
 
-            /*..hui [19-10-28¿ÀÈÄ 2:40:33] ¿©±â¼­ ´ë±â..*/
+            /*..hui [19-10-28ì˜¤í›„ 2:40:33] ì—¬ê¸°ì„œ ëŒ€ê¸°..*/
             F_TrayMotorUP = 0;
             F_TrayMotorDOWN = 0;
             gu8_uart_tray_initial = 0;
@@ -3451,12 +3451,12 @@ void initial_ice_tray(void)
 ***********************************************************************************************************************/
 void make_test_mode_rgb_color( U8 mu8_color )
 {
-    /*..hui [24-1-10¿ÀÈÄ 1:09:30] ÁÖ±â 10ms·Î º¯°æ.. Á¦È£ RO CT ±âÁØ..*/
+    /*..hui [24-1-10ì˜¤í›„ 1:09:30] ì£¼ê¸° 10msë¡œ ë³€ê²½.. ì œí˜¸ RO CT ê¸°ì¤€..*/
     gu8_rgb_pwm_period = 40;
 
     if( mu8_color == TEST_MODE_RGB_COLOR_RED )
     {
-        /*..hui [24-2-22¿ÀÈÄ 5:01:06] ·¹µå¸¸ 40%..*/
+        /*..hui [24-2-22ì˜¤í›„ 5:01:06] ë ˆë“œë§Œ 40%..*/
         gu8_rgb_red_on_time = 16;
         gu8_rgb_green_on_time = 0;
         gu8_rgb_blue_on_time = 0;
@@ -3469,7 +3469,7 @@ void make_test_mode_rgb_color( U8 mu8_color )
     }
     else if( mu8_color == TEST_MODE_RGB_COLOR_BLUE )
     {
-        /*..hui [24-2-22¿ÀÈÄ 5:02:02] ±×¸° 40%, ºí·ç 80%..*/
+        /*..hui [24-2-22ì˜¤í›„ 5:02:02] ê·¸ë¦° 40%, ë¸”ë£¨ 80%..*/
         gu8_rgb_red_on_time = 0;
         gu8_rgb_green_on_time = 16;
         gu8_rgb_blue_on_time = 32;
@@ -3488,12 +3488,12 @@ void make_test_mode_rgb_color( U8 mu8_color )
 ***********************************************************************************************************************/
 void make_test_mode_ice_inner_rgb_color( U8 mu8_color )
 {
-    /*..hui [24-1-10¿ÀÈÄ 1:09:30] ÁÖ±â 10ms·Î º¯°æ.. Á¦È£ RO CT ±âÁØ..*/
+    /*..hui [24-1-10ì˜¤í›„ 1:09:30] ì£¼ê¸° 10msë¡œ ë³€ê²½.. ì œí˜¸ RO CT ê¸°ì¤€..*/
     gu8_rgb_pwm_period = 40;
 
     if( mu8_color == TEST_MODE_RGB_COLOR_RED )
     {
-        /*..hui [24-2-22¿ÀÈÄ 5:01:06] ·¹µå¸¸ 40%..*/
+        /*..hui [24-2-22ì˜¤í›„ 5:01:06] ë ˆë“œë§Œ 40%..*/
         gu8_rgb_ice_inner_red_on_time = 16;
         gu8_rgb_ice_inner_green_on_time = 0;
         gu8_rgb_ice_inner_blue_on_time = 0;
@@ -3506,7 +3506,7 @@ void make_test_mode_ice_inner_rgb_color( U8 mu8_color )
     }
     else if( mu8_color == TEST_MODE_RGB_COLOR_BLUE )
     {
-        /*..hui [24-2-22¿ÀÈÄ 5:02:02] ±×¸° 40%, ºí·ç 80%..*/
+        /*..hui [24-2-22ì˜¤í›„ 5:02:02] ê·¸ë¦° 40%, ë¸”ë£¨ 80%..*/
         gu8_rgb_ice_inner_red_on_time = 0;
         gu8_rgb_ice_inner_green_on_time = 16;
         gu8_rgb_ice_inner_blue_on_time = 32;
@@ -3525,12 +3525,12 @@ void make_test_mode_ice_inner_rgb_color( U8 mu8_color )
 ***********************************************************************************************************************/
 void make_test_mode_ice_outer_rgb_color( U8 mu8_color )
 {
-    /*..hui [24-1-10¿ÀÈÄ 1:09:30] ÁÖ±â 10ms·Î º¯°æ.. Á¦È£ RO CT ±âÁØ..*/
+    /*..hui [24-1-10ì˜¤í›„ 1:09:30] ì£¼ê¸° 10msë¡œ ë³€ê²½.. ì œí˜¸ RO CT ê¸°ì¤€..*/
     gu8_rgb_pwm_period = 40;
 
     if( mu8_color == TEST_MODE_RGB_COLOR_RED )
     {
-        /*..hui [24-2-22¿ÀÈÄ 5:01:06] ·¹µå¸¸ 40%..*/
+        /*..hui [24-2-22ì˜¤í›„ 5:01:06] ë ˆë“œë§Œ 40%..*/
         gu8_rgb_ice_outer_red_on_time = 16;
         gu8_rgb_ice_outer_green_on_time = 0;
         gu8_rgb_ice_outer_blue_on_time = 0;
@@ -3543,7 +3543,7 @@ void make_test_mode_ice_outer_rgb_color( U8 mu8_color )
     }
     else if( mu8_color == TEST_MODE_RGB_COLOR_BLUE )
     {
-        /*..hui [24-2-22¿ÀÈÄ 5:02:02] ±×¸° 40%, ºí·ç 80%..*/
+        /*..hui [24-2-22ì˜¤í›„ 5:02:02] ê·¸ë¦° 40%, ë¸”ë£¨ 80%..*/
         gu8_rgb_ice_outer_red_on_time = 0;
         gu8_rgb_ice_outer_green_on_time = 16;
         gu8_rgb_ice_outer_blue_on_time = 32;

@@ -368,7 +368,7 @@ void set_duty_percent( U8 mu8_number, U8 mu8_percent )
             bit_0_3_welcome_led = mu8_percent;
         break;
 
-        /* æ∆∑°∑Œ LED ON Percent √‚∑¬ ¡§¿« √ﬂ∞° 250211 CH.PARK */
+        /* ÏïÑÎûòÎ°ú LED ON Percent Ï∂úÎ†• Ï†ïÏùò Ï∂îÍ∞Ä 250211 CH.PARK */
         case DIMMING__PERCENT_COLD_OFF: 
         bit_4_7_Cold_Off = mu8_percent; 
         break;
@@ -495,7 +495,7 @@ void all_duty_100_percent(void)
     set_duty_percent( DIMMING__PERCENT_SEG_RIGHT_ONE, SEGMENT__DIMMING__90_PERCENT );
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
-    /*..hui [24-2-22ø¿»ƒ 5:26:02] ±‚¥…∫Œ..*/////////////////////////////////
+    /*..hui [24-2-22Ïò§ÌõÑ 5:26:02] Í∏∞Îä•Î∂Ä..*/////////////////////////////////
     set_duty_percent( DIMMING__PERCENT_ICE_SELECT, FUNCTION_ICON__DIMMING__70_PERCENT );
     set_duty_percent( DIMMING__PERCENT_ICE_WATER_SELECT, FUNCTION_ICON__DIMMING__70_PERCENT );
     set_duty_percent( DIMMING__PERCENT_HOT_SELECT, FUNCTION_ICON__DIMMING__70_PERCENT );
@@ -506,7 +506,7 @@ void all_duty_100_percent(void)
     
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
-    /*..hui [24-2-22ø¿»ƒ 5:26:07] º≥¡§∫Œ..*/
+    /*..hui [24-2-22Ïò§ÌõÑ 5:26:07] ÏÑ§Ï†ïÎ∂Ä..*/
     set_duty_percent( DIMMING__PERCENT_SETTING_ICE_SIZE, DIIMMING__100_PERCENT );
     set_duty_percent( DIMMING__PERCENT_SETTING_ICE_OFF, DIIMMING__100_PERCENT );
 
@@ -520,7 +520,7 @@ void all_duty_100_percent(void)
     set_duty_percent( DIMMING__PERCENT_SETTING_HOT_LOCK, DIIMMING__100_PERCENT );
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
-    /*..hui [24-2-22ø¿»ƒ 5:32:07] ªÛ¥‹æ∆¿Ãƒ‹∫Œ..*/
+    /*..hui [24-2-22Ïò§ÌõÑ 5:32:07] ÏÉÅÎã®ÏïÑÏù¥ÏΩòÎ∂Ä..*/
     set_duty_percent( DIMMING__PERCENT_ICE_FULL_TEXT, DIIMMING__100_PERCENT );
     set_duty_percent( DIMMING__PERCENT_UV_STER_TEXT, DIIMMING__100_PERCENT );
 
@@ -577,10 +577,10 @@ void all_duty_100_percent(void)
     set_duty_percent( DIMMING__PERCENT_COMP_WHITE_DOT, DIIMMING__100_PERCENT );    /////
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
-    /*..hui [24-2-22ø¿»ƒ 5:29:05] ¡ﬂ∞£ ≈ÿΩ∫∆Æ æ∆¿Ãƒ‹∫Œ..*/
+    /*..hui [24-2-22Ïò§ÌõÑ 5:29:05] Ï§ëÍ∞Ñ ÌÖçÏä§Ìä∏ ÏïÑÏù¥ÏΩòÎ∂Ä..*/
     set_duty_percent( DIMMING__PERCENT_WELCOME_LED, DIIMMING__100_PERCENT );
 
-    /* LED 100% √‚∑¬ √ﬂ∞° 250211 CH.PARK */
+    /* LED 100% Ï∂úÎ†• Ï∂îÍ∞Ä 250211 CH.PARK */
     set_duty_percent( DIMMING__PERCENT_COLD_OFF, DIIMMING__100_PERCENT );
     set_duty_percent( DIMMING__PERCENT_ICE_SHORTAGE_TEXT, DIIMMING__100_PERCENT );
     set_duty_percent( DIMMING__PERCENT_EXT_FAUCET_TEXT, DIIMMING__100_PERCENT );
@@ -601,7 +601,7 @@ void all_duty_100_percent(void)
     
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
-    /*..hui [24-2-22ø¿»ƒ 5:26:40] √ﬂ√‚..*/
+    /*..hui [24-2-22Ïò§ÌõÑ 5:26:40] Ï∂îÏ∂ú..*/
     set_duty_percent( DIMMING__PERCENT_ICE_EXTRACT, EXTRACT__DIMMING__40_PERCETN );
     set_duty_percent( DIMMING__PERCENT_WATER_EXTRACT, EXTRACT__DIMMING__40_PERCETN );
     set_duty_percent( DIMMING__PERCENT_ICE_WATER_EXTRACT_OUTER, EXTRACT__DIMMING__40_PERCETN );

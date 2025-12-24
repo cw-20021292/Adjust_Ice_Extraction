@@ -13,8 +13,8 @@
 
 #define START_WRITEBLOCK 			0x04
 #define START_WRITEADDR  			0x00001000 
-#define END_WRITEBLOCK   			0x100					//0x100¡˜¿¸ ∫Ì∑œ±Ó¡ˆ Writing 
-#define END_WRITEADDRESS 			0x00040000				//0x00040000¡÷º“ ¡˜¿¸±Ó¡ˆ Writing	
+#define END_WRITEBLOCK   			0x100					//0x100ÏßÅÏ†Ñ Î∏îÎ°ùÍπåÏßÄ Writing 
+#define END_WRITEADDRESS 			0x00040000				//0x00040000Ï£ºÏÜå ÏßÅÏ†ÑÍπåÏßÄ Writing	
 
 #define HEADER_BLOCK_SIZE 			0x01
 #define START_SKIP_NEWBOOT_BLOCK 	16		
@@ -22,9 +22,9 @@
 
 //=== ICT_OTA_SEND_DATA command ===//
 #define PARAM_INDEX_START 		19
-#define PARAM_DATASIZE_START	24			// index 4¿⁄∏Æ ∫Ø∞Ê¿∏∑Œ ¿Œ«— ∫Ø∞Ê	23->24	
-#define PARAM_DATA_START		28			// index 4¿⁄∏Æ ∫Ø∞Ê¿∏∑Œ ¿Œ«— ∫Ø∞Ê	27->28
-#define PARAM_CRC_START			285			// index 4¿⁄∏Æ ∫Ø∞Ê¿∏∑Œ ¿Œ«— ∫Ø∞Ê	284->285
+#define PARAM_DATASIZE_START	24			// index 4ÏûêÎ¶¨ Î≥ÄÍ≤ΩÏúºÎ°ú Ïù∏Ìïú Î≥ÄÍ≤Ω	23->24	
+#define PARAM_DATA_START		28			// index 4ÏûêÎ¶¨ Î≥ÄÍ≤ΩÏúºÎ°ú Ïù∏Ìïú Î≥ÄÍ≤Ω	27->28
+#define PARAM_CRC_START			285			// index 4ÏûêÎ¶¨ Î≥ÄÍ≤ΩÏúºÎ°ú Ïù∏Ìïú Î≥ÄÍ≤Ω	284->285
 
 //=== ICT_OTA_SEND_END command ===//
 #define PARAM_RESULTCODE		18
@@ -56,7 +56,7 @@ typedef struct
 {
 	U8 mu8num;
 	__far U8* pmu8Command; 
-	U16 mu16length;			// ETX∏¶ ¡¶ø‹«— ±Ê¿Ã
+	U16 mu16length;			// ETXÎ•º Ï†úÏô∏Ìïú Í∏∏Ïù¥
 }BOOT_COMMAND_T;  
 
 __near U8 BOOT_writeProgram(void);

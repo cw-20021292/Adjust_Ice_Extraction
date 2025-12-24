@@ -55,7 +55,7 @@ void my_cup_return_decision(void)
 			gu16_my_recipe_menu_on_timer ++;
 		}
 
-		if(gu16_my_recipe_menu_on_timer > 70)		// 7ÃÊ
+		if(gu16_my_recipe_menu_on_timer > 70)		// 7âˆšÂ 
 		{
 			gu16_my_recipe_menu_on_timer = 0;
 			bit_myWater_setting_start = CLEAR;

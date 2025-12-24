@@ -25,7 +25,7 @@ U16 gu16_empty_tank_timer;
 void cody_empty_tank(void)
 {
     #if 0
-    /*..hui [20-1-29¿ÀÈÄ 1:26:45] ÅÊÅ©ºñ¿òÀº Ä¿¹ö ¿­¸°»óÅÂ¿¡¼­ ³Ã¼ö ¿¬¼ÓÃßÃâ·Î °¡´ÉÇÏ±â ¶§¹®¿¡ ¸Ş´º »èÁ¦..*/
+    /*..hui [20-1-29ì˜¤í›„ 1:26:45] íƒ±í¬ë¹„ì›€ì€ ì»¤ë²„ ì—´ë¦°ìƒíƒœì—ì„œ ëƒ‰ìˆ˜ ì—°ì†ì¶”ì¶œë¡œ ê°€ëŠ¥í•˜ê¸° ë•Œë¬¸ì— ë©”ë‰´ ì‚­ì œ..*/
     if(Bit1_Empty_Tank_Start == CLEAR)
     {
         gu8_empty_tank_step = 0;
@@ -51,7 +51,7 @@ void cody_empty_tank(void)
 
         case 1:
 
-            /*..hui [20-1-8¿ÀÈÄ 4:02:11] ³Ã¼ö µå·¹ÀÎ ¹ëºê ON..*/
+            /*..hui [20-1-8ì˜¤í›„ 4:02:11] ëƒ‰ìˆ˜ ë“œë ˆì¸ ë°¸ë¸Œ ON..*/
             gu16_empty_tank_timer++;
 
             if( gu16_empty_tank_timer >= 20 )
@@ -65,7 +65,7 @@ void cody_empty_tank(void)
 
         case 2:
 
-            /*..hui [20-1-8¿ÀÈÄ 4:04:07] µå·¹ÀÎ ÆßÇÁ FULL ON..*/
+            /*..hui [20-1-8ì˜¤í›„ 4:04:07] ë“œë ˆì¸ íŒí”„ FULL ON..*/
             gu16_empty_tank_timer = 0;
             gu8_empty_tank_step++;
 
@@ -86,7 +86,7 @@ void cody_empty_tank(void)
 
         case 4:
 
-            /*..hui [20-1-8¿ÀÈÄ 4:08:12] ³Ã¼ö µå·¹ÀÎ ¹ëºê / µå·¹ÀÎ ÆßÇÁ µÑ ´Ù OFF..*/
+            /*..hui [20-1-8ì˜¤í›„ 4:08:12] ëƒ‰ìˆ˜ ë“œë ˆì¸ ë°¸ë¸Œ / ë“œë ˆì¸ íŒí”„ ë‘˜ ë‹¤ OFF..*/
             /////Bit3_Empty_Tank_Finish_State = SET;
             gu8_empty_tank_step++;
 

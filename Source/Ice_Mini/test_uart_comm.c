@@ -55,13 +55,13 @@ U8 gu8_uart_comp_rps;
 ***********************************************************************************************************************/
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
-//                    (1) UART Åë½Å µ¥ÀÌÅÍ Ã³¸®
+//                    (1) UART í†µì‹  ë°ì´í„° ì²˜ë¦¬
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 void AT_UART_Communication(void)
 {
-    AT_UART_Rx_Process();         // 1-1 ¼ö½ÅºÎ µ¥ÀÌÅÍ º¯È¯
-    AT_UART_Tx_Process();         // 1-2 ¼Û½ÅºÎ µ¥ÀÌÅÍ º¯È¯
+    AT_UART_Rx_Process();         // 1-1 ìˆ˜ì‹ ë¶€ ë°ì´í„° ë³€í™˜
+    AT_UART_Tx_Process();         // 1-2 ì†¡ì‹ ë¶€ ë°ì´í„° ë³€í™˜
 }
 
 /***********************************************************************************************************************
@@ -70,14 +70,14 @@ void AT_UART_Communication(void)
 ***********************************************************************************************************************/
 ///""SUBR COMMENT""************************************************************
 // ID         : ATUO TEST_Rx_Process
-// °³¿ä         : ÀÚµ¿È­ Å×½ºÆ® ¼ö½ÅºÎ
+// ê°œìš”         : ìžë™í™” í…ŒìŠ¤íŠ¸ ìˆ˜ì‹ ë¶€
 //----------------------------------------------------------------------------
-// ±â´É       : ÀÚµ¿È­ Å×½ºÆ® ¼ö½ÅºÎ Ã³¸®
+// ê¸°ëŠ¥       : ìžë™í™” í…ŒìŠ¤íŠ¸ ìˆ˜ì‹ ë¶€ ì²˜ë¦¬
 //
 //----------------------------------------------------------------------------
 //""SUBR COMMENT END""********************************************************
 //------------------------
-// 1-1 ¼ö½ÅºÎ µ¥ÀÌÅÍ º¯È¯
+// 1-1 ìˆ˜ì‹ ë¶€ ë°ì´í„° ë³€í™˜
 //------------------------
 void AT_UART_Rx_Process(void)
 {
@@ -102,21 +102,21 @@ void AT_UART_Rx_Process(void)
 
     AT_mu8Temp_Data1 = AT_mu8Temp_Data2 = AT_mu8Temp_Data3 = 0;
 
-    //========================================================// CHK È®ÀÎ
+    //========================================================// CHK í™•ì¸
     AT_mu8Temp_Data3 = AT_gu8RxdMaxCNT - 2;
 
     for(AT_mu8Temp_Data1=0; AT_mu8Temp_Data1<AT_mu8Temp_Data3 ; AT_mu8Temp_Data1++)
     {
-        AT_mu8Temp_Data2 ^= AT_gu8RxData[AT_mu8Temp_Data1];                   // ¼ö½ÅÇÑ µ¥ÀÌÅÍ¸¦ °è»êÇÑ C/S
+        AT_mu8Temp_Data2 ^= AT_gu8RxData[AT_mu8Temp_Data1];                   // ìˆ˜ì‹ í•œ ë°ì´í„°ë¥¼ ê³„ì‚°í•œ C/S
     }
 
-    AT_mu8Temp_Data3 = AscToHex(AT_gu8RxData[AT_gu8RxdMaxCNT-2], AT_gu8RxData[AT_gu8RxdMaxCNT-1]);    // ¼ö½ÅµÈ C/S
+    AT_mu8Temp_Data3 = AscToHex(AT_gu8RxData[AT_gu8RxdMaxCNT-2], AT_gu8RxData[AT_gu8RxdMaxCNT-1]);    // ìˆ˜ì‹ ëœ C/S
 
     AT_mu8Temp_Data1 = 0;
     AT_mu8Temp_Data1 = AscToHex(AT_gu8RxData[1], AT_gu8RxData[2]);    //CMD
 
     AT_mu8Temp_Data4 = 0;
-    AT_mu8Temp_Data4 = AscToHex(AT_gu8RxData[3], AT_gu8RxData[4]);    //¸ð¸£´Â µ¥ÀÌÅ¸
+    AT_mu8Temp_Data4 = AscToHex(AT_gu8RxData[3], AT_gu8RxData[4]);    //ëª¨ë¥´ëŠ” ë°ì´íƒ€
 
     AT_mu8Temp_Data5 = 0;
     AT_mu8Temp_Data5 = AscToHex(AT_gu8RxData[5], AT_gu8RxData[6]);
@@ -135,7 +135,7 @@ void AT_UART_Rx_Process(void)
     /*AT_gu16_CMD_Mode = AT_mu8Temp_Data1;*/
     /*AT_gu8_CMD_MATHODE = AT_mu8Temp_Data4;*/
 
-    if( AT_F_Rx_NG == SET )                            //¼ö½Å µ¥ÀÌÅÍÀÇ CSºÒÀÏÄ¡ÇÒ°æ¿ì ¹Ù·Î No Ack ¼ÛºÎ, No Ack½Ã ´ÙÀ½½ºÅÜ ¼öÇàºÒ°¡
+    if( AT_F_Rx_NG == SET )                            //ìˆ˜ì‹  ë°ì´í„°ì˜ CSë¶ˆì¼ì¹˜í• ê²½ìš° ë°”ë¡œ No Ack ì†¡ë¶€, No Ackì‹œ ë‹¤ìŒìŠ¤í… ìˆ˜í–‰ë¶ˆê°€
     {
         #if 0
         AT_gu16_CMD_Mode = 0xFF00;
@@ -173,7 +173,7 @@ void AT_UART_Rx_Process(void)
 * Description  :
 ***********************************************************************************************************************/
 //------------------------
-// 1-2 ¼Û½ÅºÎ µ¥ÀÌÅÍ º¯È¯
+// 1-2 ì†¡ì‹ ë¶€ ë°ì´í„° ë³€í™˜
 //------------------------
 void AT_UART_Tx_Process(void)
 {
@@ -216,7 +216,7 @@ void AT_UART_Tx_Process(void)
         }
         else if( gu8UARTData[2] == (U8)(AT_UART_CMD_CURRENT_CALC / 256) && gu8UARTData[3] == (U8)(AT_UART_CMD_CURRENT_CALC % 256) )
         {
-            /*..hui [21-7-20¿ÀÀü 10:36:16] Àü·ù ÃøÁ¤°ªµµ dec¸¦ ¾Æ½ºÅ°·Î º¯È¯..*/
+            /*..hui [21-7-20ì˜¤ì „ 10:36:16] ì „ë¥˜ ì¸¡ì •ê°’ë„ decë¥¼ ì•„ìŠ¤í‚¤ë¡œ ë³€í™˜..*/
             if(gu8UARTAddr >= 4 && gu8UARTAddr <= 9)
             {
                 AT_mu16Temp_Data = DecToAsc(gu8UARTData[gu8UARTAddr]);
@@ -256,7 +256,7 @@ void AT_UART_Tx_Process(void)
 
     AT_gu8TxdCounter = 0;
 
-    TXD3 = AT_gu8TxData[AT_gu8TxdCounter];               // Ã¹¹øÂ° ¹ÙÀÌÆ® º¸³»±â
+    TXD3 = AT_gu8TxData[AT_gu8TxdCounter];               // ì²«ë²ˆì§¸ ë°”ì´íŠ¸ ë³´ë‚´ê¸°
 
     AT_gu8TxdCounter++;
 
@@ -282,12 +282,12 @@ void int_UART3_AT_TX(void)
 
     if(F_AT_TX_Finish == SET)
     {
-        // ¼ö½Å ÀÎÅÍ·´ ÈÄ¿¡ ¹Ù·Î º¸³¿
+        // ìˆ˜ì‹  ì¸í„°ëŸ½ í›„ì— ë°”ë¡œ ë³´ëƒ„
         TXD3 = AT_gu8TxData[AT_gu8TxdCounter];
 
-        if(AT_gu8TxData[AT_gu8TxdCounter] == 0x04)        // ¼Û½Å¿Ï·á
+        if(AT_gu8TxData[AT_gu8TxdCounter] == 0x04)        // ì†¡ì‹ ì™„ë£Œ
         {
-            AT_gu8TxdCounter = 0;                          // ETX ¼ö½Å ÈÄ Àü¼Û Ä«¿îÆ® ÃÊ±âÈ­
+            AT_gu8TxdCounter = 0;                          // ETX ìˆ˜ì‹  í›„ ì „ì†¡ ì¹´ìš´íŠ¸ ì´ˆê¸°í™”
             F_AT_TX_Finish = 0;
         }
         else
@@ -315,14 +315,14 @@ void int_UART3_AT_RX(void)
 
     switch(AT_gu8UARTStateMode)
     {
-        // ´ë±â
+        // ëŒ€ê¸°
         case UART_MODE_IDLE:
 
              if(gu8RxdBufferData == AT_RS232_STX)
              {                 // STX check 0x01
                  AT_gu8RxdCounter = 0;
-                 AT_gu8UARTStateMode = UART_MODE_RECEIVE;            // 0x01ÀÌ µé¾î¿À¸é '¼ö½ÅÁß'À¸·Î
-                 AT_gu8RxData[AT_gu8RxdCounter++] = gu8RxdBufferData;// Stx Ä«¿îÆ® 0
+                 AT_gu8UARTStateMode = UART_MODE_RECEIVE;            // 0x01ì´ ë“¤ì–´ì˜¤ë©´ 'ìˆ˜ì‹ ì¤‘'ìœ¼ë¡œ
+                 AT_gu8RxData[AT_gu8RxdCounter++] = gu8RxdBufferData;// Stx ì¹´ìš´íŠ¸ 0
              }
              else
              {
@@ -331,13 +331,13 @@ void int_UART3_AT_RX(void)
 
              break;
 
-         // ¼ö½ÅÁß
+         // ìˆ˜ì‹ ì¤‘
         case UART_MODE_RECEIVE:
 
              if(gu8RxdBufferData == AT_RS232_ETX)
              {                 // ETX check 0x04
                  AT_gu8RxData[AT_gu8RxdCounter] = gu8RxdBufferData;
-                 AT_F_RxComplete = 1;                                // ¼ö½Å¿Ï·á
+                 AT_F_RxComplete = 1;                                // ìˆ˜ì‹ ì™„ë£Œ
 
                  // Rx data initialize //
                  AT_gu8RxdMaxCNT = AT_gu8RxdCounter;                 // Except byte of stx, etx
@@ -346,7 +346,7 @@ void int_UART3_AT_RX(void)
              }
              else
              {
-                 AT_gu8RxData[AT_gu8RxdCounter++] = gu8RxdBufferData;// ¼ö½Å µ¥ÀÌÅÍ ÀúÀå
+                 AT_gu8RxData[AT_gu8RxdCounter++] = gu8RxdBufferData;// ìˆ˜ì‹  ë°ì´í„° ì €ìž¥
              }
 
              break;

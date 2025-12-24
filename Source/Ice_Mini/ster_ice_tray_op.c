@@ -70,7 +70,7 @@ U8 prepare_ster(void)
     {
         case 0:
 
-            /*..hui [23-5-15¿ÀÈÄ 7:39:52] ´ë±â..*/
+            /*..hui [23-5-15ì˜¤í›„ 7:39:52] ëŒ€ê¸°..*/
             gu16_prepare_ster_timer++;
 
             if( gu16_prepare_ster_timer >= ICE_TANK_STER_DELAY_TIME )
@@ -102,7 +102,7 @@ U8 prepare_ster(void)
             }
             else
             {
-                /*..hui [23-5-22¿ÀÀü 11:15:23] ÃÖ´ë Á¦ÇÑ½Ã°£Àº ÇÖ°¡½º ÃÖ´ë ½Ã°£ + 2ºĞÁ¤µµ..*/
+                /*..hui [23-5-22ì˜¤ì „ 11:15:23] ìµœëŒ€ ì œí•œì‹œê°„ì€ í•«ê°€ìŠ¤ ìµœëŒ€ ì‹œê°„ + 2ë¶„ì •ë„..*/
                 gu16_prepare_ster_timer++;
 
                 if( gu16_prepare_ster_timer >= HOT_GAS_TIME_9_UNDER_765S + 1200 )
@@ -126,7 +126,7 @@ U8 prepare_ster(void)
             }
             else
             {
-                /*..hui [23-5-22¿ÀÀü 11:38:20] µå·¹ÀÎ ´ë±â ÃÖ´ë ½Ã°£Àº ¿ì¼± 5ºĞÀ¸·Î..*/
+                /*..hui [23-5-22ì˜¤ì „ 11:38:20] ë“œë ˆì¸ ëŒ€ê¸° ìµœëŒ€ ì‹œê°„ì€ ìš°ì„  5ë¶„ìœ¼ë¡œ..*/
                 gu16_prepare_ster_timer++;
 
                 if( gu16_prepare_ster_timer >= 6000 )
@@ -142,13 +142,13 @@ U8 prepare_ster(void)
 
         case 4:
 
-            /*..hui [23-8-24¿ÀÈÄ 2:21:23] Æ®·¹ÀÌ Àç½Ãµµ ÁßÀÌ°Å³ª ¿¡·¯ÀÏ °æ¿ì..*/
+            /*..hui [23-8-24ì˜¤í›„ 2:21:23] íŠ¸ë ˆì´ ì¬ì‹œë„ ì¤‘ì´ê±°ë‚˜ ì—ëŸ¬ì¼ ê²½ìš°..*/
             if( gu8_ice_system_ok == SET )
             {
                 if( F_TrayMotorDOWN == CLEAR )
                 {
-                    /*..hui [23-7-5¿ÀÈÄ 7:37:03] Æ®·¹ÀÌ Á¦ºù ¹æÇâ ÀÌµ¿..*/
-                    up_tray_motor();    // °í¿Â»ì±Õ ½Ã »ó½Â
+                    /*..hui [23-7-5ì˜¤í›„ 7:37:03] íŠ¸ë ˆì´ ì œë¹™ ë°©í–¥ ì´ë™..*/
+                    up_tray_motor();    // ê³ ì˜¨ì‚´ê·  ì‹œ ìƒìŠ¹
                     gu16_prepare_ster_timer = 0;
                     gu16_prepare_ster_max_timer = 0;
                     gu8_prepare_ster_step++;
@@ -159,7 +159,7 @@ U8 prepare_ster(void)
 
                     if( gu16_prepare_ster_max_timer >= 600 )
                     {
-                        /*..hui [25-4-4¿ÀÀü 10:05:36] ÇÏ´ø°Å Áß´Ü Ãë¼Ò..*/
+                        /*..hui [25-4-4ì˜¤ì „ 10:05:36] í•˜ë˜ê±° ì¤‘ë‹¨ ì·¨ì†Œ..*/
                         //gu16_prepare_ster_timer = 0;
                         //gu16_prepare_ster_max_timer = 0;
                         //gu8_prepare_ster_step++;
@@ -170,7 +170,7 @@ U8 prepare_ster(void)
             }
             else
             {
-                /*..hui [25-4-4¿ÀÀü 10:05:44] ÇÏ´ø°Å Áß´Ü Ãë¼Ò..*/
+                /*..hui [25-4-4ì˜¤ì „ 10:05:44] í•˜ë˜ê±° ì¤‘ë‹¨ ì·¨ì†Œ..*/
                 //gu16_prepare_ster_timer = 0;
                 //gu16_prepare_ster_max_timer = 0;
                 //gu8_prepare_ster_step++;
@@ -181,7 +181,7 @@ U8 prepare_ster(void)
 
         case 5:
 
-            /*..hui [23-7-5¿ÀÈÄ 7:37:03] Æ®·¹ÀÌ Á¦ºù ¹æÇâ ÀÌµ¿..*/
+            /*..hui [23-7-5ì˜¤í›„ 7:37:03] íŠ¸ë ˆì´ ì œë¹™ ë°©í–¥ ì´ë™..*/
             if( gu8IceTrayLEV == ICE_TRAY_POSITION_ICE_MAKING )
             {
                 gu16_prepare_ster_timer = 0;
@@ -192,10 +192,10 @@ U8 prepare_ster(void)
             {
                 gu16_prepare_ster_max_timer++;
 
-                /*..hui [23-8-16¿ÀÈÄ 1:12:24] Æ®·¹ÀÌ ÀÌµ¿ ÃÖ´ë ½Ã°£ 1ºĞ..*/
+                /*..hui [23-8-16ì˜¤í›„ 1:12:24] íŠ¸ë ˆì´ ì´ë™ ìµœëŒ€ ì‹œê°„ 1ë¶„..*/
                 if( gu16_prepare_ster_max_timer >= 600 )
                 {
-                    /*..hui [25-4-4¿ÀÀü 10:05:44] ÇÏ´ø°Å Áß´Ü Ãë¼Ò..*/
+                    /*..hui [25-4-4ì˜¤ì „ 10:05:44] í•˜ë˜ê±° ì¤‘ë‹¨ ì·¨ì†Œ..*/
                     //gu16_prepare_ster_timer = 0;
                     //gu16_prepare_ster_max_timer = 0;
                     //gu8_prepare_ster_step++;
@@ -213,7 +213,7 @@ U8 prepare_ster(void)
             gu16_prepare_ster_max_timer = 0;
             gu8_prepare_ster_step = 0;
 
-            /*..hui [23-5-22¿ÀÀü 11:39:04] »ì±Õ ÁØºñÀÛ¾÷ Á¾·á..*/
+            /*..hui [23-5-22ì˜¤ì „ 11:39:04] ì‚´ê·  ì¤€ë¹„ì‘ì—… ì¢…ë£Œ..*/
             mu8_return = SET;
 
             break;
@@ -275,7 +275,7 @@ U8 hot_preheat_ster(void)
 
             gu16_preheat_ster_timer++;
 
-            /*..hui [25-4-4¿ÀÈÄ 1:45:17] ¿Â¼ö ÀÔ¼ö¹ëºê ON..*/
+            /*..hui [25-4-4ì˜¤í›„ 1:45:17] ì˜¨ìˆ˜ ì…ìˆ˜ë°¸ë¸Œ ON..*/
             if( gu16_preheat_ster_timer >= ICE_TANK_STER_DELAY_TIME )
             {
                 gu16_preheat_ster_timer = 0;
@@ -306,7 +306,7 @@ U8 hot_preheat_ster(void)
 
                 if( gu32_preheat_ster_max_timer >= 300 )
                 {
-                    /*..hui [25-4-4¿ÀÀü 10:05:44] ÇÏ´ø°Å Áß´Ü Ãë¼Ò..*/
+                    /*..hui [25-4-4ì˜¤ì „ 10:05:44] í•˜ë˜ê±° ì¤‘ë‹¨ ì·¨ì†Œ..*/
                     finish_ice_ster();
                 }
                 else{}
@@ -333,7 +333,7 @@ U8 hot_preheat_ster(void)
 
         case 5:
 
-            /*..hui [25-4-4¿ÀÈÄ 2:01:08] ¿¹¿­..*/
+            /*..hui [25-4-4ì˜¤í›„ 2:01:08] ì˜ˆì—´..*/
             /*if( gu8_Hot_Heater_Temperature_One_Degree >= ICE_TRAY_STER_PREHEAT_TEMP + 5 )*/
             if( gu8_Hot_Heater_Temperature_One_Degree >= ICE_TRAY_STER_PREHEAT_TEMP - 18 )
             {
@@ -372,7 +372,7 @@ U8 hot_preheat_ster(void)
 
         case 7:
 
-            /*..hui [25-4-4¿ÀÈÄ 2:09:26] ¿¹¿­ ¿Ï·á..*/
+            /*..hui [25-4-4ì˜¤í›„ 2:09:26] ì˜ˆì—´ ì™„ë£Œ..*/
             gu16_preheat_ster_timer = 0;
             gu32_preheat_ster_max_timer = 0;
             gu8_preheat_ster_step = 0;
@@ -409,7 +409,7 @@ U8 hot_input_ster(void)
 
             gu16_hot_input_ster_timer++;
 
-            /*..hui [25-4-4¿ÀÈÄ 2:14:36] Æ®·¹ÀÌ ÀÔ¼ö ¹ëºê ON..*/
+            /*..hui [25-4-4ì˜¤í›„ 2:14:36] íŠ¸ë ˆì´ ì…ìˆ˜ ë°¸ë¸Œ ON..*/
             if( gu16_hot_input_ster_timer >= ICE_TANK_STER_DELAY_TIME )
             {
                 gu16_hot_input_ster_timer = 0;
@@ -452,7 +452,7 @@ U8 hot_input_ster(void)
 
             gu16_hot_input_ster_timer++;
 
-            /*..hui [25-4-4¿ÀÈÄ 2:41:54] ¿Â¼öÈ÷ÅÍ OFF..*/
+            /*..hui [25-4-4ì˜¤í›„ 2:41:54] ì˜¨ìˆ˜íˆí„° OFF..*/
             if( gu16_hot_input_ster_timer >= ICE_TANK_STER_DELAY_TIME )
             {
                 gu16_hot_input_ster_timer = 0;
@@ -467,7 +467,7 @@ U8 hot_input_ster(void)
 
             gu16_hot_input_ster_timer++;
 
-            /*..hui [25-4-4¿ÀÈÄ 2:41:24] ¿Â¼ö ÀÔ¼ö ¹ëºê OFF..*/
+            /*..hui [25-4-4ì˜¤í›„ 2:41:24] ì˜¨ìˆ˜ ì…ìˆ˜ ë°¸ë¸Œ OFF..*/
             if( gu16_hot_input_ster_timer >= ICE_TANK_STER_DELAY_TIME )
             {
                 gu16_hot_input_ster_timer = 0;
@@ -482,7 +482,7 @@ U8 hot_input_ster(void)
 
             gu16_hot_input_ster_timer++;
 
-            /*..hui [25-4-4¿ÀÈÄ 2:42:40] Æ®·¹ÀÌ ÀÔ¼ö ¹ëºê OFF..*/
+            /*..hui [25-4-4ì˜¤í›„ 2:42:40] íŠ¸ë ˆì´ ì…ìˆ˜ ë°¸ë¸Œ OFF..*/
             if( gu16_hot_input_ster_timer >= ICE_TANK_STER_DELAY_TIME )
             {
                 gu16_hot_input_ster_timer = 0;
@@ -499,7 +499,7 @@ U8 hot_input_ster(void)
             gu32_hot_input_ster_max_timer = 0;
             gu8_hot_input_ster_step = 0;
 
-            /*..hui [25-4-4¿ÀÈÄ 2:43:08] Æ®·¹ÀÌ ¿Â¼ö ÀÔ¼ö ¿Ï·á..*/
+            /*..hui [25-4-4ì˜¤í›„ 2:43:08] íŠ¸ë ˆì´ ì˜¨ìˆ˜ ì…ìˆ˜ ì™„ë£Œ..*/
             mu8_return = SET;
 
             break;
@@ -546,8 +546,8 @@ U8 hot_wait_ster(void)
 
             gu16_hot_wait_timer++;
 
-            /*..hui [25-4-4¿ÀÈÄ 2:49:28] 5ºĞµ¿¾È Á¤Ã¼ ´ë±â..*/
-            /*..hui [25-4-4¿ÀÈÄ 2:49:47] ¿©±â¼­ ³Ã¼ö ÀÔ¼ö ¹ëºê ¾à 3ÃÊ ON..*/
+            /*..hui [25-4-4ì˜¤í›„ 2:49:28] 5ë¶„ë™ì•ˆ ì •ì²´ ëŒ€ê¸°..*/
+            /*..hui [25-4-4ì˜¤í›„ 2:49:47] ì—¬ê¸°ì„œ ëƒ‰ìˆ˜ ì…ìˆ˜ ë°¸ë¸Œ ì•½ 3ì´ˆ ON..*/
             if( gu16_hot_wait_timer >= HOT_STER_WAIT_TIME )
             {
                 gu16_hot_wait_timer = 0;
@@ -560,12 +560,12 @@ U8 hot_wait_ster(void)
 
         case 2:
 
-            /*..hui [23-8-24¿ÀÈÄ 2:21:23] Æ®·¹ÀÌ Àç½Ãµµ ÁßÀÌ°Å³ª ¿¡·¯ÀÏ °æ¿ì..*/
+            /*..hui [23-8-24ì˜¤í›„ 2:21:23] íŠ¸ë ˆì´ ì¬ì‹œë„ ì¤‘ì´ê±°ë‚˜ ì—ëŸ¬ì¼ ê²½ìš°..*/
             if( gu8_ice_system_ok == SET )
             {
                 if( F_TrayMotorUP == CLEAR )
                 {
-                    /*..hui [23-7-5¿ÀÈÄ 7:41:30] Æ®·¹ÀÌ Å»ºù ¹æÇâ ÀÌµ¿..*/
+                    /*..hui [23-7-5ì˜¤í›„ 7:41:30] íŠ¸ë ˆì´ íƒˆë¹™ ë°©í–¥ ì´ë™..*/
                     down_tray_motor();
                     gu16_hot_wait_timer = 0;
                     gu32_hot_wait_max_timer = 0;
@@ -595,7 +595,7 @@ U8 hot_wait_ster(void)
 
         case 3:
 
-            /*..hui [23-7-5¿ÀÈÄ 7:41:30] Æ®·¹ÀÌ Å»ºù ¹æÇâ ÀÌµ¿..*/
+            /*..hui [23-7-5ì˜¤í›„ 7:41:30] íŠ¸ë ˆì´ íƒˆë¹™ ë°©í–¥ ì´ë™..*/
             if( gu8IceTrayLEV == ICE_TRAY_POSITION_ICE_THROW )
             {
                 gu16_hot_wait_timer = 0;
@@ -606,7 +606,7 @@ U8 hot_wait_ster(void)
             {
                 gu32_hot_wait_max_timer++;
 
-                /*..hui [23-8-16¿ÀÈÄ 1:12:24] Æ®·¹ÀÌ ÀÌµ¿ ÃÖ´ë ½Ã°£ 1ºĞ..*/
+                /*..hui [23-8-16ì˜¤í›„ 1:12:24] íŠ¸ë ˆì´ ì´ë™ ìµœëŒ€ ì‹œê°„ 1ë¶„..*/
                 if( gu32_hot_wait_max_timer >= 600 )
                 {
                     gu16_hot_wait_timer = 0;
@@ -619,7 +619,7 @@ U8 hot_wait_ster(void)
             break;
 
         case 4:
-            /*..hui [25-7-7¿ÀÈÄ 3:04:16] ¿©±â¼­ ³Ã¼öÀÔ¼ö¹ëºê ON.. µå·¹ÀÎ ¸¸¼öÀ§¼¾¼­ °¨ÁöµÉ¶§±îÁö..*/
+            /*..hui [25-7-7ì˜¤í›„ 3:04:16] ì—¬ê¸°ì„œ ëƒ‰ìˆ˜ì…ìˆ˜ë°¸ë¸Œ ON.. ë“œë ˆì¸ ë§Œìˆ˜ìœ„ì„¼ì„œ ê°ì§€ë ë•Œê¹Œì§€..*/
             if( u8DrainWaterLevel == DRAIN_LEVEL_HIGH )
             {
                 gu16_hot_wait_timer = 0;
@@ -643,7 +643,7 @@ U8 hot_wait_ster(void)
         case 5:
             gu16_hot_wait_timer++;
 
-            /*..hui [25-7-9¿ÀÈÄ 4:10:38] 7ºĞ°£ ¹æÄ¡..*/
+            /*..hui [25-7-9ì˜¤í›„ 4:10:38] 7ë¶„ê°„ ë°©ì¹˜..*/
             if( gu16_hot_wait_timer >= 4200 )
             {
                 gu16_hot_wait_timer = 0;
@@ -664,7 +664,7 @@ U8 hot_wait_ster(void)
             }
             else
             {
-                /*..hui [23-5-22¿ÀÀü 11:38:20] µå·¹ÀÎ ´ë±â ÃÖ´ë ½Ã°£Àº ¿ì¼± 5ºĞÀ¸·Î..*/
+                /*..hui [23-5-22ì˜¤ì „ 11:38:20] ë“œë ˆì¸ ëŒ€ê¸° ìµœëŒ€ ì‹œê°„ì€ ìš°ì„  5ë¶„ìœ¼ë¡œ..*/
                 gu32_hot_wait_max_timer++;
 
                 if( gu32_hot_wait_max_timer >= 6000 )
@@ -684,7 +684,7 @@ U8 hot_wait_ster(void)
             gu32_hot_wait_max_timer = 0;
             gu8_hot_wait_step = 0;
 
-            /*..hui [25-4-4¿ÀÈÄ 2:51:00] Æ®·¹ÀÌ ´ë±â ¿Ï·á..*/
+            /*..hui [25-4-4ì˜¤í›„ 2:51:00] íŠ¸ë ˆì´ ëŒ€ê¸° ì™„ë£Œ..*/
             mu8_return = SET;
 
             break;
@@ -733,9 +733,9 @@ U8 wait_finish_clean(void)
             gu16_wait_finish_timer++;
 
             /*if( gu16_wait_finish_timer >= 10 )*/
-            /*..hui [25-4-11¿ÀÀü 10:36:50] Áõ¹ß±â ½ÄÀ»½Ã°£ 2ºĞ..*/
+            /*..hui [25-4-11ì˜¤ì „ 10:36:50] ì¦ë°œê¸° ì‹ì„ì‹œê°„ 2ë¶„..*/
             // if( gu16_wait_finish_timer >= 600 )
-            /*..hui [25-7-9¿ÀÈÄ 4:03:01] ¹æÄ¡ ½Ã°£ Áõ´ë - Áõ¹ß±â ½Ä´Â½Ã°£ ÇÊ¿ä¾øÀ½..*/
+            /*..hui [25-7-9ì˜¤í›„ 4:03:01] ë°©ì¹˜ ì‹œê°„ ì¦ëŒ€ - ì¦ë°œê¸° ì‹ëŠ”ì‹œê°„ í•„ìš”ì—†ìŒ..*/
             if( gu16_wait_finish_timer >= 10 )
             {
                 gu16_wait_finish_timer = 0;
@@ -766,7 +766,7 @@ U8 wait_finish_clean(void)
             gu16_wait_finish_max_timer = 0;
             gu8_wait_finish_step = 0;
 
-            /*..hui [25-4-4¿ÀÈÄ 2:55:45] ¿ÏÀüÈ÷ ³¡..*/
+            /*..hui [25-4-4ì˜¤í›„ 2:55:45] ì™„ì „íˆ ë..*/
             mu8_return = SET;
 
             break;
@@ -900,7 +900,7 @@ U8 drain_preheat_ster(void)
 
             gu16_drain_preheat_ster_timer++;
 
-            /*..hui [25-4-4¿ÀÈÄ 1:45:17] ¿Â¼ö ÀÔ¼ö¹ëºê ON..*/
+            /*..hui [25-4-4ì˜¤í›„ 1:45:17] ì˜¨ìˆ˜ ì…ìˆ˜ë°¸ë¸Œ ON..*/
             if( gu16_drain_preheat_ster_timer >= ICE_TANK_STER_DELAY_TIME )
             {
                 gu16_drain_preheat_ster_timer = 0;
@@ -931,7 +931,7 @@ U8 drain_preheat_ster(void)
 
                 if( gu32_drain_preheat_ster_max_timer >= 300 )
                 {
-                    /*..hui [25-4-4¿ÀÀü 10:05:44] ÇÏ´ø°Å Áß´Ü Ãë¼Ò..*/
+                    /*..hui [25-4-4ì˜¤ì „ 10:05:44] í•˜ë˜ê±° ì¤‘ë‹¨ ì·¨ì†Œ..*/
                     finish_ice_ster();
                 }
                 else{}
@@ -956,7 +956,7 @@ U8 drain_preheat_ster(void)
 
         case 5:
 
-            /*..hui [25-4-4¿ÀÈÄ 2:01:08] ¿¹¿­..*/
+            /*..hui [25-4-4ì˜¤í›„ 2:01:08] ì˜ˆì—´..*/
             /*if( gu8_Hot_Heater_Temperature_One_Degree >= ICE_TRAY_STER_PREHEAT_TEMP + 5 )*/
             if( gu8_Hot_Heater_Temperature_One_Degree >= DRAIN_TANK_STER_PREHEAT_TEMP - 10 )
             {
@@ -995,7 +995,7 @@ U8 drain_preheat_ster(void)
 
         case 7:
 
-            /*..hui [25-4-4¿ÀÈÄ 2:09:26] ¿¹¿­ ¿Ï·á..*/
+            /*..hui [25-4-4ì˜¤í›„ 2:09:26] ì˜ˆì—´ ì™„ë£Œ..*/
             gu16_drain_preheat_ster_timer = 0;
             gu32_drain_preheat_ster_max_timer = 0;
             gu8_drain_preheat_ster_step = 0;
@@ -1031,7 +1031,7 @@ U8 drain_input_ster(void)
 
             gu16_drain_input_ster_timer++;
 
-            /*..hui [25-4-4¿ÀÈÄ 2:14:36] Æ®·¹ÀÌ ÀÔ¼ö ¹ëºê ON..*/
+            /*..hui [25-4-4ì˜¤í›„ 2:14:36] íŠ¸ë ˆì´ ì…ìˆ˜ ë°¸ë¸Œ ON..*/
             if( gu16_drain_input_ster_timer >= ICE_TANK_STER_DELAY_TIME )
             {
                 gu16_drain_input_ster_timer = 0;
@@ -1074,7 +1074,7 @@ U8 drain_input_ster(void)
 
             gu16_drain_input_ster_timer++;
 
-            /*..hui [25-4-4¿ÀÈÄ 2:41:54] ¿Â¼öÈ÷ÅÍ OFF..*/
+            /*..hui [25-4-4ì˜¤í›„ 2:41:54] ì˜¨ìˆ˜íˆí„° OFF..*/
             if( gu16_drain_input_ster_timer >= ICE_TANK_STER_DELAY_TIME )
             {
                 gu16_drain_input_ster_timer = 0;
@@ -1089,7 +1089,7 @@ U8 drain_input_ster(void)
 
             gu16_drain_input_ster_timer++;
 
-            /*..hui [25-4-4¿ÀÈÄ 2:41:24] ¿Â¼ö ÀÔ¼ö ¹ëºê OFF..*/
+            /*..hui [25-4-4ì˜¤í›„ 2:41:24] ì˜¨ìˆ˜ ì…ìˆ˜ ë°¸ë¸Œ OFF..*/
             if( gu16_drain_input_ster_timer >= ICE_TANK_STER_DELAY_TIME )
             {
                 gu16_drain_input_ster_timer = 0;
@@ -1104,7 +1104,7 @@ U8 drain_input_ster(void)
 
             gu16_drain_input_ster_timer++;
 
-            /*..hui [25-4-4¿ÀÈÄ 2:42:40] Æ®·¹ÀÌ ÀÔ¼ö ¹ëºê OFF..*/
+            /*..hui [25-4-4ì˜¤í›„ 2:42:40] íŠ¸ë ˆì´ ì…ìˆ˜ ë°¸ë¸Œ OFF..*/
             if( gu16_drain_input_ster_timer >= ICE_TANK_STER_DELAY_TIME )
             {
                 gu16_drain_input_ster_timer = 0;
@@ -1121,7 +1121,7 @@ U8 drain_input_ster(void)
             gu32_drain_input_ster_max_timer = 0;
             gu8_drain_input_ster_step = 0;
 
-            /*..hui [25-4-4¿ÀÈÄ 2:43:08] Æ®·¹ÀÌ ¿Â¼ö ÀÔ¼ö ¿Ï·á..*/
+            /*..hui [25-4-4ì˜¤í›„ 2:43:08] íŠ¸ë ˆì´ ì˜¨ìˆ˜ ì…ìˆ˜ ì™„ë£Œ..*/
             mu8_return = SET;
 
             break;
@@ -1167,7 +1167,7 @@ U8 drain_wait_ster(void)
 
             gu16_drain_wait_timer++;
 
-            /*..hui [25-4-4¿ÀÈÄ 2:49:28] 2ºĞµ¿¾È Á¤Ã¼ ´ë±â..*/
+            /*..hui [25-4-4ì˜¤í›„ 2:49:28] 2ë¶„ë™ì•ˆ ì •ì²´ ëŒ€ê¸°..*/
             if( gu16_drain_wait_timer >= DRAIN_STER_WAIT_TIME )
             {
                 gu16_drain_wait_timer = 0;
@@ -1180,7 +1180,7 @@ U8 drain_wait_ster(void)
 
         case 2:
 
-            /*..hui [25-7-7¿ÀÈÄ 3:04:16] ¿©±â¼­ ³Ã¼öÀÔ¼ö¹ëºê ON.. µå·¹ÀÎ ¸¸¼öÀ§¼¾¼­ °¨ÁöµÉ¶§±îÁö..*/
+            /*..hui [25-7-7ì˜¤í›„ 3:04:16] ì—¬ê¸°ì„œ ëƒ‰ìˆ˜ì…ìˆ˜ë°¸ë¸Œ ON.. ë“œë ˆì¸ ë§Œìˆ˜ìœ„ì„¼ì„œ ê°ì§€ë ë•Œê¹Œì§€..*/
             if( u8DrainWaterLevel == DRAIN_LEVEL_HIGH )
             {
                 gu16_drain_wait_timer = 0;
@@ -1206,8 +1206,8 @@ U8 drain_wait_ster(void)
 
             gu16_drain_wait_timer++;
 
-            /*..hui [25-7-7¿ÀÈÄ 3:04:48] ³Ã¼ö¶û ¿Â¼ö ¼¯ÀÌ´Â ½Ã°£ 10ÃÊ ´ë±â..*/
-            /*..hui [25-7-9¿ÀÈÄ 4:01:59] 18ºĞ ´ë±â·Î º¯°æ..*/
+            /*..hui [25-7-7ì˜¤í›„ 3:04:48] ëƒ‰ìˆ˜ë‘ ì˜¨ìˆ˜ ì„ì´ëŠ” ì‹œê°„ 10ì´ˆ ëŒ€ê¸°..*/
+            /*..hui [25-7-9ì˜¤í›„ 4:01:59] 18ë¶„ ëŒ€ê¸°ë¡œ ë³€ê²½..*/
             // if( gu16_drain_wait_timer >= 100 )
             if( gu16_drain_wait_timer >= 10800 )
             {
@@ -1225,7 +1225,7 @@ U8 drain_wait_ster(void)
             gu32_drain_wait_max_timer = 0;
             gu8_drain_wait_step = 0;
 
-            /*..hui [25-4-4¿ÀÈÄ 2:51:00] Æ®·¹ÀÌ ´ë±â ¿Ï·á..*/
+            /*..hui [25-4-4ì˜¤í›„ 2:51:00] íŠ¸ë ˆì´ ëŒ€ê¸° ì™„ë£Œ..*/
             mu8_return = SET;
 
             break;

@@ -51,7 +51,7 @@ extern bit F_IceOut;
 ***********************************************************************************************************************/
 void output_valve_room_in_feed1(void)
 {
-    /* Á¦ºùÇÏ±â À§ÇÑ Æ®·¹ÀÌ ÀÔ¼ö ½Ã Á¤¼öÀÔ¼ö¹ëºê open */
+    /* ì œë¹™í•˜ê¸° ìœ„í•œ íŠ¸ë ˆì´ ìž…ìˆ˜ ì‹œ ì •ìˆ˜ìž…ìˆ˜ë°¸ë¸Œ open */
     if(gu8IceStep == STATE_20_WATER_IN_ICE_TRAY)
     {
         if( F_WaterOut == SET )
@@ -97,7 +97,7 @@ void output_valve_room_in_feed1(void)
     }
 
 /***********************************************************************************************/
-    /* Á¤¼ö ÃßÃâ ½Ã Á¤¼öÀÔ¼ö¹ëºê open */
+    /* ì •ìˆ˜ ì¶”ì¶œ ì‹œ ì •ìˆ˜ìž…ìˆ˜ë°¸ë¸Œ open */
     if( F_WaterOut == SET )
     {
         if(( u8WaterOutState == PURE_WATER_SELECT )
@@ -132,7 +132,7 @@ void output_valve_room_in_feed1(void)
             {
                 if(bit_tray_valve_output == SET)
                 {
-                    /*..hui [20-4-29¿ÀÀü 11:13:35] Æ®·¹ÀÌ ¹ëºê ÄÑÁö°í 300msÈÄ¿¡ ÆßÇÁ ÄÑÁöµµ·Ï..*/
+                    /*..hui [20-4-29ì˜¤ì „ 11:13:35] íŠ¸ë ˆì´ ë°¸ë¸Œ ì¼œì§€ê³  300msí›„ì— íŽŒí”„ ì¼œì§€ë„ë¡..*/
                     if(gu8_ice_melt_wait_timer >= 5)
                     {
                         gu8_ice_melt_wait_timer = 5;
@@ -198,7 +198,7 @@ void output_valve_room_in_feed1(void)
 #endif
 
 #if 0
-    /* ÇÃ·¯½Ì - È÷ÅÍ Ã¤¿ì±â ÇÒ ¶§ Á¤¼öÀÔ¼ö¹ëºê open */
+    /* í”ŒëŸ¬ì‹± - ížˆí„° ì±„ìš°ê¸° í•  ë•Œ ì •ìˆ˜ìž…ìˆ˜ë°¸ë¸Œ open */
     if(gu8_flushing_mode == FLUSHING_FILL_HOT_TANK_STATE)
     {
         if( gu8_Hot_Filling_Step >= 1 && gu8_Hot_Filling_Step <= 6 )
@@ -216,7 +216,7 @@ void output_valve_room_in_feed1(void)
     }
 #endif
 
-    /* ÄÚµðÀ¯·Î»ì±Õ Cody Water Line Clean Service */
+    /* ì½”ë””ìœ ë¡œì‚´ê·  Cody Water Line Clean Service */
     if(cody_water_line.gu8_start == SET)
     {
         if((cody_water_line.gu8_step == 0)
@@ -235,7 +235,7 @@ void output_valve_room_in_feed1(void)
         Bit5_Cody_Water_Line_Clean_State = CLEAR;
     }
 
-    /* ÇÊÅÍ±³Ã¼ ½Ã ¾Ð·Â»©±â */
+    /* í•„í„°êµì²´ ì‹œ ì••ë ¥ë¹¼ê¸° */
     if( bit_filter_all == CLEAR )
     {
         gu8_release_pressure_timer++;

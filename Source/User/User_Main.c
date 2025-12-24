@@ -4,28 +4,28 @@
 /// @author Jaejin Ham
 /// @brief  Program Main File
 
-/// @mainpage ÇÁ·Î±×·¥ ¸ŞÀÎ ÆäÀÌÁö
-/// @section intro ¼Ò°³
-/// - ¼Ò°³ :
-/// @section Program ÇÁ·Î±×·¥¸í
-/// - ÇÁ·Î±×·¥¸í  :
-/// - ÇÁ·Î±×·¥ ³»¿ë :
-/// @section info °³¹ß ¸ñÀû
+/// @mainpage í”„ë¡œê·¸ë¨ ë©”ì¸ í˜ì´ì§€
+/// @section intro ì†Œê°œ
+/// - ì†Œê°œ :
+/// @section Program í”„ë¡œê·¸ë¨ëª…
+/// - í”„ë¡œê·¸ë¨ëª…  :
+/// - í”„ë¡œê·¸ë¨ ë‚´ìš© :
+/// @section info ê°œë°œ ëª©ì 
 /// -
-/// @section advenced »ç¿ë CPU
+/// @section advenced ì‚¬ìš© CPU
 /// -
-/// @section CREATEINFO ÀÛ¼ºÁ¤º¸
-/// - ÀÛ¼ºÀÚ      :   ÇÔÀçÁø
-/// - ÀÛ¼ºÀÏ      :
-/// @section MODIFYINFO ¼öÁ¤Á¤º¸
+/// @section CREATEINFO ì‘ì„±ì •ë³´
+/// - ì‘ì„±ì      :   í•¨ì¬ì§„
+/// - ì‘ì„±ì¼      :
+/// @section MODIFYINFO ìˆ˜ì •ì •ë³´
 /// -
 
 
 #include "Global_header.h"
 
 
-/// @brief    delay ÇÔ¼ö
-/// @param    mu8Time : delay ½Ã°£(8us)
+/// @brief    delay í•¨ìˆ˜
+/// @param    mu8Time : delay ì‹œê°„(8us)
 /// @return   void
 void Delay(U16 mu8Time)
 {
@@ -38,8 +38,8 @@ void Delay(U16 mu8Time)
 }
 
 
-/// @brief    delay ms ÇÔ¼ö
-/// @param    mu8Time : delay ½Ã°£(ms)
+/// @brief    delay ms í•¨ìˆ˜
+/// @param    mu8Time : delay ì‹œê°„(ms)
 /// @return   void
 void Delay_ms(U16 mu16Time)
 {
@@ -155,16 +155,16 @@ U8 ASCII2HEX(U8 mu8AsciiData)
 
 
 
-/// @brief    Interrupt(Timer, ADC, External µî) Start ÇÔ¼ö
+/// @brief    Interrupt(Timer, ADC, External ë“±) Start í•¨ìˆ˜
 /// @param    void
 /// @return   void
 void Interrupt_Start(void)
 {
-    R_TAU0_Channel0_Start();        // Timer Interrupt Start ¼öÇà
+    R_TAU0_Channel0_Start();        // Timer Interrupt Start ìˆ˜í–‰
 }
 
 
-/// @brief    Åë½Å UARTµé ¸ğµÎ  Start ÇÔ¼ö
+/// @brief    í†µì‹  UARTë“¤ ëª¨ë‘  Start í•¨ìˆ˜
 /// @param    void
 /// @return   void
 void UART_Start(void)
@@ -173,7 +173,7 @@ void UART_Start(void)
 }
 
 
-/// @brief    ¸ğµç º¯¼ö ÃÊ±âÈ­ ÇÔ¼ö
+/// @brief    ëª¨ë“  ë³€ìˆ˜ ì´ˆê¸°í™” í•¨ìˆ˜
 /// @param    void
 /// @return   void
 void Main_Initailize(void)
@@ -212,34 +212,34 @@ void User_Main(void)
     IAWCTL = 0x00U;
     /* --- R_Systeminit END --- */
 
-    Interrupt_Start();      // °¢Á¾ Interruptµé ½ÃÀÛ ¼öÇà
+    Interrupt_Start();      // ê°ì¢… Interruptë“¤ ì‹œì‘ ìˆ˜í–‰
 
-    Delay_ms(1000);         // Àü¾Ğ ¾ÈÁ¤È­ ½Ã°£ È®º¸. While¹® ÁøÀÔ ÀÌÈÄ¿¡´Â Delay ÇÔ¼ö »ç¿ë ÀÚÁ¦(Time Scheduler ¹Ğ¸± ¼ö ÀÖÀ½)
+    Delay_ms(1000);         // ì „ì•• ì•ˆì •í™” ì‹œê°„ í™•ë³´. Whileë¬¸ ì§„ì… ì´í›„ì—ëŠ” Delay í•¨ìˆ˜ ì‚¬ìš© ìì œ(Time Scheduler ë°€ë¦´ ìˆ˜ ìˆìŒ)
 
-    Main_Initailize();      // µ¿ÀÛ Àü ¸ğµç º¯¼ö ÃÊ±âÈ­
+    Main_Initailize();      // ë™ì‘ ì „ ëª¨ë“  ë³€ìˆ˜ ì´ˆê¸°í™”
 
 //    ModelCheck();         // Model Type(CHP,CP,HP) Check
 
     EI();
 
-    UART_Start();           // °¢Á¾ UARTµé ½ÃÀÛ ¼öÇà
+    UART_Start();           // ê°ì¢… UARTë“¤ ì‹œì‘ ìˆ˜í–‰
 
-    WifiControlProcess(WIFI_TIME_INI);    // Wi-Fi Initialize. EEPROM Initialize ÀÌÀü¿¡ ½ÇÇà
+    WifiControlProcess(WIFI_TIME_INI);    // Wi-Fi Initialize. EEPROM Initialize ì´ì „ì— ì‹¤í–‰
 
     /* --- EEPROM Initialize START --- */
       // EEPROM_PRIMARY();     // EEPROM Initialize
     /* --- EEPROM Initialize END--- */
 
-    WifiControlProcess(WIFI_TIME_SET);    // Wi-Fi WifiOnOffSetting. EEPROM Initialize ÀÌÈÄ¿¡ ½ÇÇà
-    ChangeOperationMode(OPERATION_MODE_NORMAL);     // ÀÏ¹İ ¸ğµå·Î µ¿ÀÛ ½ÃÀÛ ÇÒ ¼ö ÀÖµµ·Ï ¼¼ÆÃ
+    WifiControlProcess(WIFI_TIME_SET);    // Wi-Fi WifiOnOffSetting. EEPROM Initialize ì´í›„ì— ì‹¤í–‰
+    ChangeOperationMode(OPERATION_MODE_NORMAL);     // ì¼ë°˜ ëª¨ë“œë¡œ ë™ì‘ ì‹œì‘ í•  ìˆ˜ ìˆë„ë¡ ì„¸íŒ…
     
 
     while (1)
     {
         R_WDT_Restart();
-        OperationModeSetup();       // µ¿ÀÛ ¸ğµå ¼³Á¤
-        GoTimeScheduler();          // Time Scheduler Á¦¾î µ¿ÀÛ
-        WifiControlProcess(WIFI_TIME_WHILE);    // Wi-Fi While µ¿ÀÛ
+        OperationModeSetup();       // ë™ì‘ ëª¨ë“œ ì„¤ì •
+        GoTimeScheduler();          // Time Scheduler ì œì–´ ë™ì‘
+        WifiControlProcess(WIFI_TIME_WHILE);    // Wi-Fi While ë™ì‘
     }
 }
 

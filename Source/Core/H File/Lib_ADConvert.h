@@ -1,7 +1,7 @@
 /// @file     Lib_ADConvert.h
 /// @date
 /// @author   Jaejin Ham
-/// @brief    ∞¢ ºæº≠∑˘  µø¿€ ¡¶æÓ ∞¸∑√ «Ï¥ı file
+/// @brief    Í∞Å ÏÑºÏÑúÎ•ò  ÎèôÏûë Ï†úÏñ¥ Í¥ÄÎ†® Ìó§Îçî file
 
 #ifndef __FUNC_AD_CONVERT_H__
 #define __FUNC_AD_CONVERT_H__
@@ -24,7 +24,7 @@
 #define AD_CH_14                                    14
 #define AD_CH_15                                    15
 #define AD_CH_16                                    16
-#define AD_CH_17                                    17        // Wi-Fi Uart Port ªÁøÎ±›¡ˆ
+#define AD_CH_17                                    17        // Wi-Fi Uart Port ÏÇ¨Ïö©Í∏àÏßÄ
 #define AD_CH_18                                    18
 #define AD_CH_19                                    19
 #define	AD_CH_20                                    20
@@ -51,7 +51,7 @@
 #define AD_CH_14_USE                                NO
 #define AD_CH_15_USE                                NO
 #define AD_CH_16_USE                                NO
-#define AD_CH_17_USE                                NO      // Wi-Fi Uart Port ªÁøÎ±›¡ˆ
+#define AD_CH_17_USE                                NO      // Wi-Fi Uart Port ÏÇ¨Ïö©Í∏àÏßÄ
 #define AD_CH_18_USE                                NO
 #define AD_CH_19_USE                                NO
 #define	AD_CH_20_USE                                NO

@@ -18,8 +18,8 @@ void Input(void);
 
 //void input_overflow(void);
 void check_ice_full(void);
-void check_ice_low(void);       /* Àúºù°Ë»ç Ãß°¡ 250224 CH.PARK */
-void ice_tank_amount_check(void);   /* Àúºù,¸¸ºù,Áßºù ÆÇ´Ü Ãß°¡ 250428 CH.PARK */
+void check_ice_low(void);       /* ì €ë¹™ê²€ì‚¬ ì¶”ê°€ 250224 CH.PARK */
+void ice_tank_amount_check(void);   /* ì €ë¹™,ë§Œë¹™,ì¤‘ë¹™ íŒë‹¨ ì¶”ê°€ 250428 CH.PARK */
 
 //void LeverInput(void);
 
@@ -35,24 +35,24 @@ Ice_Amount gu8_ice_tank_ice_amount_old;
 
 bit F_NoUseSave;
 bit F_DayNoUseSave;
-bit F_NightNoUseSave;             // ³· ÇØÁ¦¸¦ À§ÇØ
+bit F_NightNoUseSave;             // ë‚® í•´ì œë¥¼ ìœ„í•´
 
 //----------------------------------------------------// IR
-/* ¸¸ºù ÀÔ·Â º¯¼ö */
+/* ë§Œë¹™ ìž…ë ¥ ë³€ìˆ˜ */
 U8 gu8IRTime, gu8IRCount;
 U16 gu16IRInterval;
 
-/* Àúºù ÀÔ·Â º¯¼ö */
+/* ì €ë¹™ ìž…ë ¥ ë³€ìˆ˜ */
 U8 gu8IR_l_Time, gu8IR_l_Count;
 U16 gu16IR_l_Interval;
 /****************************************************************************/
-bit F_IceFull;                        // ¸¸ºù
-bit F_IR;                             // ¸¸ºù °Ë»ç
+bit F_IceFull;                        // ë§Œë¹™
+bit F_IR;                             // ë§Œë¹™ ê²€ì‚¬
 /****************************************************************************/
-bit F_IceLack;                    // Àúºù
-bit F_Low_IR;                         // Àúºù °Ë»ç
+bit F_IceLack;                    // ì €ë¹™
+bit F_Low_IR;                         // ì €ë¹™ ê²€ì‚¬
 
-/*..hui [18-3-8¿ÀÈÄ 5:25:49] Ã³À½ Àü¿ø ON½Ã ¸¸ºù Ã¼Å©..*/
+/*..hui [18-3-8ì˜¤í›„ 5:25:49] ì²˜ìŒ ì „ì› ONì‹œ ë§Œë¹™ ì²´í¬..*/
 bit bit_first_ice_full;
 
 U8 gu8ContyCancel;
@@ -65,37 +65,37 @@ U16 gu16Conty;
 ***********************************************************************************************************************/
 void Input(void)
 {
-    /*..hui [19-6-26¿ÀÈÄ 1:54:08] ¼öÀ§¼¾¼­ ÀÔ·Â..*/
+    /*..hui [19-6-26ì˜¤í›„ 1:54:08] ìˆ˜ìœ„ì„¼ì„œ ìž…ë ¥..*/
     input_water_level();
 
-    /*..hui [19-6-26¿ÀÈÄ 1:12:26] Æ®·¹ÀÌ ¸¶ÀÌÅ©·Î½ºÀ§Ä¡ ÀÔ·Â..*/
+    /*..hui [19-6-26ì˜¤í›„ 1:12:26] íŠ¸ë ˆì´ ë§ˆì´í¬ë¡œìŠ¤ìœ„ì¹˜ ìž…ë ¥..*/
     input_ice_tray_micro_sw();
 
-    /*..hui [19-6-26¿ÀÈÄ 1:54:12] ¸¸ºù ÀÔ·Â..*/
+    /*..hui [19-6-26ì˜¤í›„ 1:54:12] ë§Œë¹™ ìž…ë ¥..*/
     check_ice_full();
 
-    /* Àúºù ÀÔ·Â 250224 CH.PARK */
+    /* ì €ë¹™ ìž…ë ¥ 250224 CH.PARK */
     check_ice_low();
 
-    /* ¸¸,Áß,Àúºù ÆÇ´Ü 250428 CH.PARK */
+    /* ë§Œ,ì¤‘,ì €ë¹™ íŒë‹¨ 250428 CH.PARK */
     ice_tank_amount_check();
 
-    /*..hui [19-7-22¿ÀÈÄ 7:36:53] À¯·®¼¾¼­..*/
+    /*..hui [19-7-22ì˜¤í›„ 7:36:53] ìœ ëŸ‰ì„¼ì„œ..*/
     calculate_flow_input();
 
-    /*..hui [23-6-9¿ÀÈÄ 2:20:05] ÇÊÅÍ À¯·®¼¾¼­..*/
+    /*..hui [23-6-9ì˜¤í›„ 2:20:05] í•„í„° ìœ ëŸ‰ì„¼ì„œ..*/
     /////calculate_filter_flow_input();
 
-    /*..hui [19-7-25¿ÀÈÄ 8:25:00] Á¶µµ¼¾¼­ ´Ù½Ã Ãß°¡µÊ..*/
-    /*..hui [23-2-28¿ÀÈÄ 3:34:11] Á¶µµ¼¾¼­ ¾øÀ½..*/
+    /*..hui [19-7-25ì˜¤í›„ 8:25:00] ì¡°ë„ì„¼ì„œ ë‹¤ì‹œ ì¶”ê°€ë¨..*/
+    /*..hui [23-2-28ì˜¤í›„ 3:34:11] ì¡°ë„ì„¼ì„œ ì—†ìŒ..*/
     /*input_cds();*/
 
     /*detect_front_cds();*/
 
-    /* ÇÊÅÍ¸®µå, ÇÊÅÍÄ¿¹ö, ÇÊÅÍ±³Ã¼ µî °ü·Ã ÇÔ¼ö */
+    /* í•„í„°ë¦¬ë“œ, í•„í„°ì»¤ë²„, í•„í„°êµì²´ ë“± ê´€ë ¨ í•¨ìˆ˜ */
     input_filter();
 
-    /* [2025-11-17] CH.PARK ¾ÆÀÌ½ºµµ¾î ¸®µå »óÅÂ Ã¼Å© */
+    /* [2025-11-17] CH.PARK ì•„ì´ìŠ¤ë„ì–´ ë¦¬ë“œ ìƒíƒœ ì²´í¬ */
     CheckIceDoorReedStatus();
 }
 
@@ -107,7 +107,7 @@ void check_ice_full(void)
 {
     if(gu8IRTime > 0)
     {
-        gu8IRTime--;                             // ¸¸ºù°Ë»ç 10ÃÊ
+        gu8IRTime--;                             // ë§Œë¹™ê²€ì‚¬ 10ì´ˆ
     }
     else{}
 
@@ -118,7 +118,7 @@ void check_ice_full(void)
     }
     else{}
 //
-    if(pIR_POWER != SET)                                         // IR Ãâ·Â ¾øÀ»°æ¿ì
+    if(pIR_POWER != SET)                                         // IR ì¶œë ¥ ì—†ì„ê²½ìš°
     {
         pIR_POWER = SET;
 
@@ -174,21 +174,21 @@ void check_ice_full(void)
         }
         else
         {
-            gu16IRInterval = IR_INTERVAL;       /* ¸¸ºù°Ë»ç : ¾óÀ½ ÃßÃâÇÏÁö ¾ÊÀ¸¸é 15ºÐ¸¶´Ù °Ë»ç ÁøÇà */
+            gu16IRInterval = IR_INTERVAL;       /* ë§Œë¹™ê²€ì‚¬ : ì–¼ìŒ ì¶”ì¶œí•˜ì§€ ì•Šìœ¼ë©´ 15ë¶„ë§ˆë‹¤ ê²€ì‚¬ ì§„í–‰ */
         }
     }
 }
 
 /****************************************************************************************************************/
 /**
- * @brief Àúºù ÀÔ·Â Ã¼Å©
+ * @brief ì €ë¹™ ìž…ë ¥ ì²´í¬
  *
  */
 void check_ice_low(void)
 {
     if(gu8IR_l_Time > 0)
     {
-        gu8IR_l_Time--;                             // ¸¸ºù°Ë»ç 10ÃÊ
+        gu8IR_l_Time--;                             // ë§Œë¹™ê²€ì‚¬ 10ì´ˆ
     }
     else{}
 
@@ -199,7 +199,7 @@ void check_ice_low(void)
     }
     else{}
 //
-    if(pIR_POWER2 != SET)                                         // IR Ãâ·Â ¾øÀ»°æ¿ì
+    if(pIR_POWER2 != SET)                                         // IR ì¶œë ¥ ì—†ì„ê²½ìš°
     {
         pIR_POWER2 = SET;
 
@@ -214,7 +214,7 @@ void check_ice_low(void)
     }
     else{}
 
-    if(gu16ADIceLow <= ICEFULL_LEV)     // 1kg¿Í µ¿ÀÏÇÏ°Ô Àû¿ë
+    if(gu16ADIceLow <= ICEFULL_LEV)     // 1kgì™€ ë™ì¼í•˜ê²Œ ì ìš©
     {
         gu8IR_l_Count++;
     }
@@ -226,22 +226,22 @@ void check_ice_low(void)
         {
             if(gu8IR_l_Count >= 10)
             {
-                F_IceLack = CLEAR;      /* ¹Ì°¨Áö */
+                F_IceLack = CLEAR;      /* ë¯¸ê°ì§€ */
             }
             else
             {
-                F_IceLack = SET;        /* °¨Áö */
+                F_IceLack = SET;        /* ê°ì§€ */
             }
         }
         else
         {
             if(gu8IR_l_Count >= 50)
             {
-                F_IceLack = CLEAR;      /* ¹Ì°¨Áö */
+                F_IceLack = CLEAR;      /* ë¯¸ê°ì§€ */
             }
             else
             {
-                F_IceLack = SET;        /* °¨Áö */
+                F_IceLack = SET;        /* ê°ì§€ */
             }
         }
 
@@ -255,7 +255,7 @@ void check_ice_low(void)
         }
         else
         {
-            gu16IR_l_Interval = IR_INTERVAL;       /* Àúºù°Ë»ç : ¾óÀ½ ÃßÃâÇÏÁö ¾ÊÀ¸¸é 15ºÐ¸¶´Ù °Ë»ç ÁøÇà */
+            gu16IR_l_Interval = IR_INTERVAL;       /* ì €ë¹™ê²€ì‚¬ : ì–¼ìŒ ì¶”ì¶œí•˜ì§€ ì•Šìœ¼ë©´ 15ë¶„ë§ˆë‹¤ ê²€ì‚¬ ì§„í–‰ */
         }
     }
 
@@ -266,23 +266,23 @@ void check_ice_low(void)
 
 /***********************************************************************************************************************
 * Function Name: System_ini
-* Description  : ¾óÀ½ÅÊÅ© ³» ¾óÀ½ÀÜ·® ÆÇ´Ü
+* Description  : ì–¼ìŒíƒ±í¬ ë‚´ ì–¼ìŒìž”ëŸ‰ íŒë‹¨
 ***********************************************************************************************************************/
 void ice_tank_amount_check(void)
 {
-    if((F_IceFull == SET)			/* ¸¸ºù */
+    if((F_IceFull == SET)			/* ë§Œë¹™ */
     && (F_IceLack == SET)
     )
     {
         gu8_ice_tank_ice_amount = ICE_TANK_FULL;
     }
-    else if((F_IceFull == CLEAR)	/* Àúºù */
+    else if((F_IceFull == CLEAR)	/* ì €ë¹™ */
     && (F_IceLack == CLEAR)
     )
     {
         gu8_ice_tank_ice_amount = ICE_TANK_LOW;
     }
-    else if((F_IceFull == CLEAR)	/* Àúºù ~ ¸¸ºù »çÀÌ */
+    else if((F_IceFull == CLEAR)	/* ì €ë¹™ ~ ë§Œë¹™ ì‚¬ì´ */
     && (F_IceLack == SET)
     )
     {
@@ -299,7 +299,7 @@ void ice_tank_amount_check(void)
 
         if(gu8_ice_tank_ice_amount == ICE_TANK_LOW)
         {
-            /* °í°´ÇÇ·Îµµ ÀÌ½´·Î »èÁ¦ */
+            /* ê³ ê°í”¼ë¡œë„ ì´ìŠˆë¡œ ì‚­ì œ */
             // Play_Voice(VOICE_156_ICE_30_PERCENT_UNDER);
         }
         else {  }

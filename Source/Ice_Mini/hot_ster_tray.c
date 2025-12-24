@@ -12,7 +12,7 @@ HOT_STER_STEP gu8_hot_ster_step;
 U16 gu16_hot_ster_timer;
 bit F_Hot_Ster_ON;
 
-// �̻��
+// ¹Ì»ç¿ë
 void hot_ster_control()
 {
 	switch(gu8_hot_ster_step)

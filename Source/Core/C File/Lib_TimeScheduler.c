@@ -1,38 +1,38 @@
 /// @file   Lib_TimeScheduler.c"
 /// @date
 /// @author Jaejin Ham
-/// @brief  ¶óÀÌºê·¯¸® Å¸ÀÓ ½ºÄÉÁì·¯ ¶óÀÌºê·¯¸®
+/// @brief  ë¼ì´ë¸ŒëŸ¬ë¦¬ íƒ€ì„ ìŠ¤ì¼€ì¥´ëŸ¬ ë¼ì´ë¸ŒëŸ¬ë¦¬
 
 #include "Global_header.h"
 
 
-#define MAX_FUNCTION_POINTER                    20          // ½ºÄÉÁì·¯´Â 20°³ ÇÑÁ¤
-#define MAX_FUNCTION_INTP_POINTER               5           // Timer Interrput ¾È¿¡¼­ Á÷Á¢ ¼öÇàÇÏ´Â ½ºÄÉÁì·¯´Â 5°³ ÇÑÁ¤
+#define MAX_FUNCTION_POINTER                    20          // ìŠ¤ì¼€ì¥´ëŸ¬ëŠ” 20ê°œ í•œì •
+#define MAX_FUNCTION_INTP_POINTER               5           // Timer Interrput ì•ˆì—ì„œ ì§ì ‘ ìˆ˜í–‰í•˜ëŠ” ìŠ¤ì¼€ì¥´ëŸ¬ëŠ” 5ê°œ í•œì •
 
-// ½ºÄÉÁì·¯ °ü¸® ÀÚ·áÇü
+// ìŠ¤ì¼€ì¥´ëŸ¬ ê´€ë¦¬ ìë£Œí˜•
 typedef struct {
-    void    (*FunctionPointer[MAX_FUNCTION_POINTER])(void);     // ÇÔ¼ö Æ÷ÀÎÅÍ ÀÔ·Â
-    U16     mu16Counter[MAX_FUNCTION_POINTER];                  // ÇÔ¼ö ½ÇÇà ÁÖ±â Ä«¿îÅÍ, Ä«¿îÆ® µÇ¸é¼­ ÁÖ±âÀûÀ¸·Î ÇÔ¼ö¸¦ ½ÇÇàÇÔ. Counter > CallTimeCycle¿¡¼­ ¸®¼ÂµÊ
-    U16     mu16CallTimeCycle[MAX_FUNCTION_POINTER];            // ÇÔ¼ö ½ÇÇà ÁÖ±â ÀúÀå¼Ò
-    U8      mu8ActCount[MAX_FUNCTION_POINTER];                  // ¼öÇà È½¼ö Á¦ÇÑÀÌ ÀÖ´ÂÁö Ã¼Å© º¯¼ö
+    void    (*FunctionPointer[MAX_FUNCTION_POINTER])(void);     // í•¨ìˆ˜ í¬ì¸í„° ì…ë ¥
+    U16     mu16Counter[MAX_FUNCTION_POINTER];                  // í•¨ìˆ˜ ì‹¤í–‰ ì£¼ê¸° ì¹´ìš´í„°, ì¹´ìš´íŠ¸ ë˜ë©´ì„œ ì£¼ê¸°ì ìœ¼ë¡œ í•¨ìˆ˜ë¥¼ ì‹¤í–‰í•¨. Counter > CallTimeCycleì—ì„œ ë¦¬ì…‹ë¨
+    U16     mu16CallTimeCycle[MAX_FUNCTION_POINTER];            // í•¨ìˆ˜ ì‹¤í–‰ ì£¼ê¸° ì €ì¥ì†Œ
+    U8      mu8ActCount[MAX_FUNCTION_POINTER];                  // ìˆ˜í–‰ íšŸìˆ˜ ì œí•œì´ ìˆëŠ”ì§€ ì²´í¬ ë³€ìˆ˜
 }   typeTimeSchedule;
 
 
-// ½ºÄÉÁì·¯ °ü¸® ÀÚ·áÇü
+// ìŠ¤ì¼€ì¥´ëŸ¬ ê´€ë¦¬ ìë£Œí˜•
 typedef struct {
-    void    (*FunctionPointer[MAX_FUNCTION_INTP_POINTER])(void);     // ÇÔ¼ö Æ÷ÀÎÅÍ ÀÔ·Â
-    U16     mu16Counter[MAX_FUNCTION_INTP_POINTER];                  // ÇÔ¼ö ½ÇÇà ÁÖ±â Ä«¿îÅÍ, Ä«¿îÆ® µÇ¸é¼­ ÁÖ±âÀûÀ¸·Î ÇÔ¼ö¸¦ ½ÇÇàÇÔ. Counter > CallTimeCycle¿¡¼­ ¸®¼ÂµÊ
-    U16     mu16CallTimeCycle[MAX_FUNCTION_INTP_POINTER];            // ÇÔ¼ö ½ÇÇà ÁÖ±â ÀúÀå¼Ò
-    U8      mu8ActCount[MAX_FUNCTION_INTP_POINTER];                  // ¼öÇà È½¼ö Á¦ÇÑÀÌ ÀÖ´ÂÁö Ã¼Å© º¯¼ö
+    void    (*FunctionPointer[MAX_FUNCTION_INTP_POINTER])(void);     // í•¨ìˆ˜ í¬ì¸í„° ì…ë ¥
+    U16     mu16Counter[MAX_FUNCTION_INTP_POINTER];                  // í•¨ìˆ˜ ì‹¤í–‰ ì£¼ê¸° ì¹´ìš´í„°, ì¹´ìš´íŠ¸ ë˜ë©´ì„œ ì£¼ê¸°ì ìœ¼ë¡œ í•¨ìˆ˜ë¥¼ ì‹¤í–‰í•¨. Counter > CallTimeCycleì—ì„œ ë¦¬ì…‹ë¨
+    U16     mu16CallTimeCycle[MAX_FUNCTION_INTP_POINTER];            // í•¨ìˆ˜ ì‹¤í–‰ ì£¼ê¸° ì €ì¥ì†Œ
+    U8      mu8ActCount[MAX_FUNCTION_INTP_POINTER];                  // ìˆ˜í–‰ íšŸìˆ˜ ì œí•œì´ ìˆëŠ”ì§€ ì²´í¬ ë³€ìˆ˜
 }   type1msTimeInterruptSchedule;
 
 
-typeTimeSchedule tTimeSceduleHandler;                       // Å¸ÀÓ ½ºÄÉÁì·¯ º¯¼ö(While¹®¿¡¼­ ¼öÇà)
-type1msTimeInterruptSchedule t1msTimerInterruptHandler;     // 1ms Timer Interrput ¾È¿¡¼­ Á÷Á¢ ¼öÇà(¹®Á¦°¡ »ı±âÁö ¾Êµµ·Ï ÇÊ¿ä½Ã¸¸ »ç¿ëÇÏµÇ Ã³¸® ·çÆ¾ÀÌ ±æÁö ¾ÊÀº ÇÔ¼ö ¹èÄ¡ ¿ä¸Á)
+typeTimeSchedule tTimeSceduleHandler;                       // íƒ€ì„ ìŠ¤ì¼€ì¥´ëŸ¬ ë³€ìˆ˜(Whileë¬¸ì—ì„œ ìˆ˜í–‰)
+type1msTimeInterruptSchedule t1msTimerInterruptHandler;     // 1ms Timer Interrput ì•ˆì—ì„œ ì§ì ‘ ìˆ˜í–‰(ë¬¸ì œê°€ ìƒê¸°ì§€ ì•Šë„ë¡ í•„ìš”ì‹œë§Œ ì‚¬ìš©í•˜ë˜ ì²˜ë¦¬ ë£¨í‹´ì´ ê¸¸ì§€ ì•Šì€ í•¨ìˆ˜ ë°°ì¹˜ ìš”ë§)
 
 
 
-/// @brief  1ms TimerInterrupt¿¡¼­ ½ÇÇàµÇ¾î ½ºÄÉÁì·¯ÀÇ ±âÁØ ½Ã°£ÀÌ µÇ´Â ÇÔ¼ö
+/// @brief  1ms TimerInterruptì—ì„œ ì‹¤í–‰ë˜ì–´ ìŠ¤ì¼€ì¥´ëŸ¬ì˜ ê¸°ì¤€ ì‹œê°„ì´ ë˜ëŠ” í•¨ìˆ˜
 /// @param  void
 /// @return void
 void CounterTimeScheduler(void)
@@ -50,7 +50,7 @@ void CounterTimeScheduler(void)
         }
     }
 
-    Go1msTimeInterrputScheduler();      // 1ms Timer Interrput ¾È¿¡¼­ Á÷Á¢ ¼öÇà Ã³¸® Scheduler
+    Go1msTimeInterrputScheduler();      // 1ms Timer Interrput ì•ˆì—ì„œ ì§ì ‘ ìˆ˜í–‰ ì²˜ë¦¬ Scheduler
 }
 
 
@@ -62,27 +62,27 @@ void InitializeTimeScheduler(void)
     U8 mu8i = 0;
     U8 mu8j = 0;
 
-// While ¹® ¾È¿¡¼­ Ã³¸®
+// While ë¬¸ ì•ˆì—ì„œ ì²˜ë¦¬
     for (mu8i = 0 ; mu8i < MAX_FUNCTION_POINTER ; mu8i++)
     {
         tTimeSceduleHandler.FunctionPointer[mu8i] = NULL;
-        tTimeSceduleHandler.mu16Counter[mu8i] = 1;             // CallTimeCycle°ú ºñ±³¸¦ À§ÇØ 1·Î ¼¼ÆÃ
+        tTimeSceduleHandler.mu16Counter[mu8i] = 1;             // CallTimeCycleê³¼ ë¹„êµë¥¼ ìœ„í•´ 1ë¡œ ì„¸íŒ…
         tTimeSceduleHandler.mu16CallTimeCycle[mu8i] = 0;
         tTimeSceduleHandler.mu8ActCount[mu8i] = 0;
     }
 
-// 1ms Interrput ¾È¿¡¼­ Ã³¸®
+// 1ms Interrput ì•ˆì—ì„œ ì²˜ë¦¬
     for (mu8j = 0 ; mu8j < MAX_FUNCTION_INTP_POINTER ; mu8j++)
     {
         t1msTimerInterruptHandler.FunctionPointer[mu8j] = NULL;
-        t1msTimerInterruptHandler.mu16Counter[mu8j] = 1;             // CallTimeCycle°ú ºñ±³¸¦ À§ÇØ 1·Î ¼¼ÆÃ
+        t1msTimerInterruptHandler.mu16Counter[mu8j] = 1;             // CallTimeCycleê³¼ ë¹„êµë¥¼ ìœ„í•´ 1ë¡œ ì„¸íŒ…
         t1msTimerInterruptHandler.mu16CallTimeCycle[mu8j] = 0;
         t1msTimerInterruptHandler.mu8ActCount[mu8j] = 0;
     }
 }
 
 
-/// @brief  Main ÇÔ¼ö While ¹®¾È¿¡¼­ ½ÇÇàµÇ¸ç ½ÇÁ¦ ÇÔ¼ö¸¦ È£ÃâÇØ ÁÖ´Â ÇÔ¼ö
+/// @brief  Main í•¨ìˆ˜ While ë¬¸ì•ˆì—ì„œ ì‹¤í–‰ë˜ë©° ì‹¤ì œ í•¨ìˆ˜ë¥¼ í˜¸ì¶œí•´ ì£¼ëŠ” í•¨ìˆ˜
 /// @param  void
 /// @return void
 void GoTimeScheduler(void)
@@ -99,11 +99,11 @@ void GoTimeScheduler(void)
                 tTimeSceduleHandler.FunctionPointer[mu8i]();
 
                 if (tTimeSceduleHandler.mu8ActCount[mu8i])
-                {   // ÇÔ¼ö ¼öÇà Á¦ÇÑ È½¼ö°¡ ÀÖ´Â °æ¿ì
-                    tTimeSceduleHandler.mu8ActCount[mu8i]--;     // ¼öÇà È½¼ö Â÷°¨
+                {   // í•¨ìˆ˜ ìˆ˜í–‰ ì œí•œ íšŸìˆ˜ê°€ ìˆëŠ” ê²½ìš°
+                    tTimeSceduleHandler.mu8ActCount[mu8i]--;     // ìˆ˜í–‰ íšŸìˆ˜ ì°¨ê°
 
                     if (tTimeSceduleHandler.mu8ActCount[mu8i] == 0)
-                    {       // ¼öÇà È½¼ö°¡ ¸ğµÎ Â÷°¨µÈ °æ¿ì ´õÀÌ»ó ¼öÇàµÇÁö ¾Ê°Ô Ã³¸®
+                    {       // ìˆ˜í–‰ íšŸìˆ˜ê°€ ëª¨ë‘ ì°¨ê°ëœ ê²½ìš° ë”ì´ìƒ ìˆ˜í–‰ë˜ì§€ ì•Šê²Œ ì²˜ë¦¬
                         tTimeSceduleHandler.mu16CallTimeCycle[mu8i] = 0;
                     }
                 }
@@ -115,10 +115,10 @@ void GoTimeScheduler(void)
 
 
 
-/// @brief  ½ºÄÉÁì·¯¿¡ ÇÔ¼ö¸¦ µî·Ï ÇÏ´Â ÇÔ¼ö
-/// @param[in]  *tFuction µî·ÏÇÒ ÇÔ¼ö Æ÷ÀÎÅÍ
-///             mu16Timer ½ÇÇàÇÒ ÁÖ±â(½Ã°£, 1ms ´ÜÀ§)
-///             mu8OneTimeCheck 1È¸¸¸ ¼öÇàÇÏ´Â ÇÔ¼öÀÎÁö Ã¼Å© º¯¼ö(0ÀÌ¸é °è¼Ó ¼öÇà)
+/// @brief  ìŠ¤ì¼€ì¥´ëŸ¬ì— í•¨ìˆ˜ë¥¼ ë“±ë¡ í•˜ëŠ” í•¨ìˆ˜
+/// @param[in]  *tFuction ë“±ë¡í•  í•¨ìˆ˜ í¬ì¸í„°
+///             mu16Timer ì‹¤í–‰í•  ì£¼ê¸°(ì‹œê°„, 1ms ë‹¨ìœ„)
+///             mu8OneTimeCheck 1íšŒë§Œ ìˆ˜í–‰í•˜ëŠ” í•¨ìˆ˜ì¸ì§€ ì²´í¬ ë³€ìˆ˜(0ì´ë©´ ê³„ì† ìˆ˜í–‰)
 /// @return void
 void SetupTimeScheduler(void (*tFuction)(void), U16 mu16Timer, U8 mu8ActionCount)
 {
@@ -137,11 +137,11 @@ void SetupTimeScheduler(void (*tFuction)(void), U16 mu16Timer, U8 mu8ActionCount
 }
 
 
-/// @brief  Á¤ÁöµÈ ÇÔ¼öÀÇ È£ÃâÀ» ´Ù½Ã ½ÃÀÛ ÇÏ´Â ÇÔ¼ö
-/// @brief  ÇÔ¼öÀÇ È£Ãâ ½Ã°£À» º¯°æÇÏ°íÀÚ ÇÒ ´ëµµ »ç¿ëµÊ
-/// @param[in]  *tFuction ½ÃÀÛÇÒ ÇÔ¼ö Æ÷ÀÎÅÍ
-///             mu16Timer ½ÇÇàÇÒ ÁÖ±â(½Ã°£, 1ms ´ÜÀ§)
-///             mu8OneTimeCheck 1È¸¸¸ ¼öÇàÇÏ´Â ÇÔ¼öÀÎÁö Ã¼Å© º¯¼ö(0ÀÌ¸é °è¼Ó ¼öÇà)
+/// @brief  ì •ì§€ëœ í•¨ìˆ˜ì˜ í˜¸ì¶œì„ ë‹¤ì‹œ ì‹œì‘ í•˜ëŠ” í•¨ìˆ˜
+/// @brief  í•¨ìˆ˜ì˜ í˜¸ì¶œ ì‹œê°„ì„ ë³€ê²½í•˜ê³ ì í•  ëŒ€ë„ ì‚¬ìš©ë¨
+/// @param[in]  *tFuction ì‹œì‘í•  í•¨ìˆ˜ í¬ì¸í„°
+///             mu16Timer ì‹¤í–‰í•  ì£¼ê¸°(ì‹œê°„, 1ms ë‹¨ìœ„)
+///             mu8OneTimeCheck 1íšŒë§Œ ìˆ˜í–‰í•˜ëŠ” í•¨ìˆ˜ì¸ì§€ ì²´í¬ ë³€ìˆ˜(0ì´ë©´ ê³„ì† ìˆ˜í–‰)
 /// @return void
 void StartTimeScheduler(void (*tFuction)(void), U16 mu16Timer, U8 mu8ActionCount)
 {
@@ -161,8 +161,8 @@ void StartTimeScheduler(void (*tFuction)(void), U16 mu16Timer, U8 mu8ActionCount
 }
 
 
-/// @brief  µî·ÏµÈ ÇÔ¼öÀÇ È£ÃâÀ» Á¤Áö ÇÏ´Â ÇÔ¼ö
-/// @param[in]  *tFuction Á¤ÁöÇÒ ÇÔ¼ö Æ÷ÀÎÅÍ
+/// @brief  ë“±ë¡ëœ í•¨ìˆ˜ì˜ í˜¸ì¶œì„ ì •ì§€ í•˜ëŠ” í•¨ìˆ˜
+/// @param[in]  *tFuction ì •ì§€í•  í•¨ìˆ˜ í¬ì¸í„°
 /// @return void
 void StopTimeScheduler(void (*tFuction)(void))
 {
@@ -180,7 +180,7 @@ void StopTimeScheduler(void (*tFuction)(void))
 }
 
 
-/// @brief  1ms Interrput ¾È¿¡¼­ Á÷Á¢ ½ÇÇàµÇ¸ç ÇÔ¼ö¸¦ È£ÃâÇØ ÁÖ´Â ÇÔ¼ö
+/// @brief  1ms Interrput ì•ˆì—ì„œ ì§ì ‘ ì‹¤í–‰ë˜ë©° í•¨ìˆ˜ë¥¼ í˜¸ì¶œí•´ ì£¼ëŠ” í•¨ìˆ˜
 /// @param  void
 /// @return void
 void Go1msTimeInterrputScheduler(void)
@@ -202,11 +202,11 @@ void Go1msTimeInterrputScheduler(void)
                 t1msTimerInterruptHandler.FunctionPointer[mu8j]();
 
                 if (t1msTimerInterruptHandler.mu8ActCount[mu8j])
-                {   // ÇÔ¼ö ¼öÇà Á¦ÇÑ È½¼ö°¡ ÀÖ´Â °æ¿ì
-                    t1msTimerInterruptHandler.mu8ActCount[mu8j]--;     // ¼öÇà È½¼ö Â÷°¨
+                {   // í•¨ìˆ˜ ìˆ˜í–‰ ì œí•œ íšŸìˆ˜ê°€ ìˆëŠ” ê²½ìš°
+                    t1msTimerInterruptHandler.mu8ActCount[mu8j]--;     // ìˆ˜í–‰ íšŸìˆ˜ ì°¨ê°
 
                     if (t1msTimerInterruptHandler.mu8ActCount[mu8j] == 0)
-                    {       // ¼öÇà È½¼ö°¡ ¸ğµÎ Â÷°¨µÈ °æ¿ì ´õÀÌ»ó ¼öÇàµÇÁö ¾Ê°Ô Ã³¸®
+                    {       // ìˆ˜í–‰ íšŸìˆ˜ê°€ ëª¨ë‘ ì°¨ê°ëœ ê²½ìš° ë”ì´ìƒ ìˆ˜í–‰ë˜ì§€ ì•Šê²Œ ì²˜ë¦¬
                         t1msTimerInterruptHandler.mu16CallTimeCycle[mu8j] = 0;
                     }
                 }
@@ -216,10 +216,10 @@ void Go1msTimeInterrputScheduler(void)
 }
 
 
-/// @brief  ½ºÄÉÁì·¯¿¡ ÇÔ¼ö¸¦ µî·Ï ÇÏ´Â ÇÔ¼ö
-/// @param[in]  *tFuction µî·ÏÇÒ ÇÔ¼ö Æ÷ÀÎÅÍ
-///             mu16Timer ½ÇÇàÇÒ ÁÖ±â(½Ã°£, 1ms ´ÜÀ§)
-///             mu8OneTimeCheck 1È¸¸¸ ¼öÇàÇÏ´Â ÇÔ¼öÀÎÁö Ã¼Å© º¯¼ö(0ÀÌ¸é °è¼Ó ¼öÇà)
+/// @brief  ìŠ¤ì¼€ì¥´ëŸ¬ì— í•¨ìˆ˜ë¥¼ ë“±ë¡ í•˜ëŠ” í•¨ìˆ˜
+/// @param[in]  *tFuction ë“±ë¡í•  í•¨ìˆ˜ í¬ì¸í„°
+///             mu16Timer ì‹¤í–‰í•  ì£¼ê¸°(ì‹œê°„, 1ms ë‹¨ìœ„)
+///             mu8OneTimeCheck 1íšŒë§Œ ìˆ˜í–‰í•˜ëŠ” í•¨ìˆ˜ì¸ì§€ ì²´í¬ ë³€ìˆ˜(0ì´ë©´ ê³„ì† ìˆ˜í–‰)
 /// @return void
 void Setup1msTimeInterruptScheduler(void (*tFuction)(void), U16 mu16Timer, U8 mu8ActionCount)
 {
@@ -238,11 +238,11 @@ void Setup1msTimeInterruptScheduler(void (*tFuction)(void), U16 mu16Timer, U8 mu
 }
 
 
-/// @brief  Á¤ÁöµÈ ÇÔ¼öÀÇ È£ÃâÀ» ´Ù½Ã ½ÃÀÛ ÇÏ´Â ÇÔ¼ö
-/// @brief  ÇÔ¼öÀÇ È£Ãâ ½Ã°£À» º¯°æÇÏ°íÀÚ ÇÒ ´ëµµ »ç¿ëµÊ
-/// @param[in]  *tFuction ½ÃÀÛÇÒ ÇÔ¼ö Æ÷ÀÎÅÍ
-///             mu16Timer ½ÇÇàÇÒ ÁÖ±â(½Ã°£, 1ms ´ÜÀ§)
-///             mu8OneTimeCheck 1È¸¸¸ ¼öÇàÇÏ´Â ÇÔ¼öÀÎÁö Ã¼Å© º¯¼ö(0ÀÌ¸é °è¼Ó ¼öÇà)
+/// @brief  ì •ì§€ëœ í•¨ìˆ˜ì˜ í˜¸ì¶œì„ ë‹¤ì‹œ ì‹œì‘ í•˜ëŠ” í•¨ìˆ˜
+/// @brief  í•¨ìˆ˜ì˜ í˜¸ì¶œ ì‹œê°„ì„ ë³€ê²½í•˜ê³ ì í•  ëŒ€ë„ ì‚¬ìš©ë¨
+/// @param[in]  *tFuction ì‹œì‘í•  í•¨ìˆ˜ í¬ì¸í„°
+///             mu16Timer ì‹¤í–‰í•  ì£¼ê¸°(ì‹œê°„, 1ms ë‹¨ìœ„)
+///             mu8OneTimeCheck 1íšŒë§Œ ìˆ˜í–‰í•˜ëŠ” í•¨ìˆ˜ì¸ì§€ ì²´í¬ ë³€ìˆ˜(0ì´ë©´ ê³„ì† ìˆ˜í–‰)
 /// @return void
 void Start1msTimeInterruptScheduler(void (*tFuction)(void), U16 mu16Timer, U8 mu8ActionCount)
 {
@@ -262,8 +262,8 @@ void Start1msTimeInterruptScheduler(void (*tFuction)(void), U16 mu16Timer, U8 mu
 }
 
 
-/// @brief  µî·ÏµÈ ÇÔ¼öÀÇ È£ÃâÀ» Á¤Áö ÇÏ´Â ÇÔ¼ö
-/// @param[in]  *tFuction Á¤ÁöÇÒ ÇÔ¼ö Æ÷ÀÎÅÍ
+/// @brief  ë“±ë¡ëœ í•¨ìˆ˜ì˜ í˜¸ì¶œì„ ì •ì§€ í•˜ëŠ” í•¨ìˆ˜
+/// @param[in]  *tFuction ì •ì§€í•  í•¨ìˆ˜ í¬ì¸í„°
 /// @return void
 void Stop1msTimeInterruptScheduler(void (*tFuction)(void))
 {

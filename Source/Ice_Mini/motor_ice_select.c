@@ -16,17 +16,17 @@ void motor_ice_select_output(void);
 void iceSelectMotor_Control(U16 gu16_p_step);
 void IceStuckProcess(void);
 
-bit F_SelectCW;                    // »ì±Õ ÈÄ ICE Door Reset
+bit F_SelectCW;                    // ì‚´ê·  í›„ ICE Door Reset
 U16 gu16_IceSelect_StepMotor;
 
 U16 gu16IceSelectDoorCloseTimer_Min = 0; /* 60s x 60min x 24h = 86400 24Hour */
 U16 gu16IceSelectDoorCloseTimer_Hour = 0; /* 60s x 60min x 24h = 86400 24Hour */
 U16 gu16IceSelectDoorCloseResetTimer = 0;
-bit F_IceSelectDoorClose;        /* ¾ÆÀÌ½º µµ¾î ´ÝÈû */
+bit F_IceSelectDoorClose;        /* ì•„ì´ìŠ¤ ë„ì–´ ë‹«íž˜ */
 
 bit F_IceSelect;
 
-bit F_IceSelectClose;           /* Á¶°¢¾óÀ½ ÀÌ³Êµµ¾î °­Á¦´ÝÈû µ¿ÀÛÇÃ·¡±× */
+bit F_IceSelectClose;           /* ì¡°ê°ì–¼ìŒ ì´ë„ˆë„ì–´ ê°•ì œë‹«íž˜ ë™ìž‘í”Œëž˜ê·¸ */
 
 extern MODEL model;
 extern bit bit_ice_stuck_back_state;
@@ -41,29 +41,30 @@ extern TYPE_BYTE          U8FactoryTestModeB;
 #define            Bit1_Uart_Test_Mode               U8FactoryTestModeB.Bit.b1
 #define            Bit2_Display_Test_Mode            U8FactoryTestModeB.Bit.b2
 
-// [2025-11-17] CH.PARK ¾óÀ½°É¸² Á¦¾î¸¦ À§ÇÑ ±¸Á¶Ã¼ Ãß°¡
+// [2025-11-17] CH.PARK ì–¼ìŒê±¸ë¦¼ ì œì–´ë¥¼ ìœ„í•œ êµ¬ì¡°ì²´ ì¶”ê°€
 ICE_STUCK_1 IceStuck;
 ICE_DOOR_REED IceDoorReed;
+U16 gu16DoorOpenPulse = 0;
 /***********************************************************************************************************************
 * Function Name: System_ini
 * Description  :
 ***********************************************************************************************************************/
 //""SUBR COMMENT""************************************************************
 // ID         : StepMotor
-// °³¿ä       : ½ºÅÜ¸ðÅÍ ±¸µ¿ Door 3msec cycle
+// ê°œìš”       : ìŠ¤í…ëª¨í„° êµ¬ë™ Door 3msec cycle
 //----------------------------------------------------------------------------
-// ±â´É       :
-//              ICE Door ¿­¸² ´ÝÈû
+// ê¸°ëŠ¥       :
+//              ICE Door ì—´ë¦¼ ë‹«íž˜
 //----------------------------------------------------------------------------
 //""SUBR COMMENT END""********************************************************
 void motor_ice_select_output(void)
 {
-    /* 2025-10-13 CH.PARK Á¶°¢¾óÀ½ ÃßÃâ ½ÃÀÛ ½Ã 100% ¹Ð ¶§´Â ÃÖ¿ì¼± ¼øÀ§·Î µ¿ÀÛ½ÃÅ°°í ÀÌÈÄ µ¿ÀÛÇÏµµ·Ï ¼öÁ¤ (»ç¾çÃæµ¹ °³¼±) */
+    /* 2025-10-13 CH.PARK ì¡°ê°ì–¼ìŒ ì¶”ì¶œ ì‹œìž‘ ì‹œ 100% ë°€ ë•ŒëŠ” ìµœìš°ì„  ìˆœìœ„ë¡œ ë™ìž‘ì‹œí‚¤ê³  ì´í›„ ë™ìž‘í•˜ë„ë¡ ìˆ˜ì • (ì‚¬ì–‘ì¶©ëŒ ê°œì„ ) */
     if(F_IceSelectClose == SET)
     {
         if(gu16_IceSelect_StepMotor > 0)
         {
-            /* ÀÌ³Êµµ¾î CLOSE Áö¿¬ ½Ã°£ Àû¿ë */
+            /* ì´ë„ˆë„ì–´ CLOSE ì§€ì—° ì‹œê°„ ì ìš© */
             if(gu8IceInnerClose == 0)
             {
                 gu16_IceSelect_StepMotor--;
@@ -86,7 +87,7 @@ void motor_ice_select_output(void)
         return;
     }
 
-    if(F_IceSelect == SET)                                       // ¿­¸²
+    if(F_IceSelect == SET)                                       // ì—´ë¦¼
     {
         if(F_SelectCW != SET)
         {
@@ -107,17 +108,17 @@ void motor_ice_select_output(void)
             pSTEP_MOTOR_ICE_SELECT_3 = 0;
             pSTEP_MOTOR_ICE_SELECT_4 = 0;
 
-            /* ¾óÀ½ ÃßÃâÁßÀÌ ¾Æ´Ï°í ¾óÀ½ °É¸² Á¦¾îµµ ¾ÈÇÏ°í ÀÖÀ» ¶§¿¡¸¸ Å¬¸®¾î */
+            /* ì–¼ìŒ ì¶”ì¶œì¤‘ì´ ì•„ë‹ˆê³  ì–¼ìŒ ê±¸ë¦¼ ì œì–´ë„ ì•ˆí•˜ê³  ìžˆì„ ë•Œì—ë§Œ í´ë¦¬ì–´ */
             if((F_IceOut == CLEAR)
             && (IceStuck.u8IceJamResolveStep == PROCESS_ICE_JAM_INIT)
             )
             {
-                F_IceSelect = CLEAR;              // Door ¿­¸² ¿Ï·á ÈÄ Off
+                F_IceSelect = CLEAR;              // Door ì—´ë¦¼ ì™„ë£Œ í›„ Off
             }
             else{}
         }
     }
-    else                                                  // ´ÝÈû
+    else                                                  // ë‹«íž˜
     {
         if(F_SelectCW == SET)
         {
@@ -128,7 +129,7 @@ void motor_ice_select_output(void)
 
         if(gu16_IceSelect_StepMotor > 0)
         {
-            /* ÀÌ³Êµµ¾î CLOSE Áö¿¬ ½Ã°£ Àû¿ë */
+            /* ì´ë„ˆë„ì–´ CLOSE ì§€ì—° ì‹œê°„ ì ìš© */
             if(gu8IceInnerClose == 0)
             {
                 gu16_IceSelect_StepMotor--;
@@ -147,7 +148,7 @@ void motor_ice_select_output(void)
     }
 
     iceSelectMotor_Control(gu16_IceSelect_StepMotor);
-    /* 2025-10-28 CH.PARK ¾óÀ½ °É¸² ÇØÁ¦ Á¦¾î»ç¾ç Àû¿ë */
+    /* 2025-10-28 CH.PARK ì–¼ìŒ ê±¸ë¦¼ í•´ì œ ì œì–´ì‚¬ì–‘ ì ìš© */
     IceStuckProcess();
 }
 
@@ -254,21 +255,21 @@ void ice_select_door_close_24_hour(void)
     U8 mu8_return = 0;
 
     //====================================================
-    /* ¾ÆÀÌ½º µµ¾î ÁÖ±âÀûÀ¸·Î ´Ý´Â ·ÎÁ÷( 24½Ã°£ ±âÁØÀ¸·Î ¹Ýº¹ )
-     * ¾ÆÀÌ½º µµ¾î°¡ °­Á¦·Î ¿­¸° °æ¿ì¸¦ °¡Á¤ÇØ¼­ 24½Ã°£ ±âÁØÀ¸·Î ´Ý¾Æ ÁØ´Ù.*/
+    /* ì•„ì´ìŠ¤ ë„ì–´ ì£¼ê¸°ì ìœ¼ë¡œ ë‹«ëŠ” ë¡œì§( 24ì‹œê°„ ê¸°ì¤€ìœ¼ë¡œ ë°˜ë³µ )
+     * ì•„ì´ìŠ¤ ë„ì–´ê°€ ê°•ì œë¡œ ì—´ë¦° ê²½ìš°ë¥¼ ê°€ì •í•´ì„œ 24ì‹œê°„ ê¸°ì¤€ìœ¼ë¡œ ë‹«ì•„ ì¤€ë‹¤.*/
 
     if( F_LineTest == SET )
     {
-        /*..hui [18-1-23¿ÀÈÄ 2:29:46] Å×½ºÆ® ¸ðµå½Ã 60ÃÊ..*/
+        /*..hui [18-1-23ì˜¤í›„ 2:29:46] í…ŒìŠ¤íŠ¸ ëª¨ë“œì‹œ 60ì´ˆ..*/
         mu16_forced_close_time_min = 600;
-        /*..hui [18-1-23¿ÀÈÄ 2:29:52] Å×½ºÆ® ¸ðµå½Ã 1ºÐ..*/
+        /*..hui [18-1-23ì˜¤í›„ 2:29:52] í…ŒìŠ¤íŠ¸ ëª¨ë“œì‹œ 1ë¶„..*/
         mu16_forced_close_time_hour = 5;
     }
     else
     {
-        /*..hui [18-1-23¿ÀÈÄ 2:29:03] ÀÏ¹Ý ¸ðµå½Ã 60ºÐ..*/
+        /*..hui [18-1-23ì˜¤í›„ 2:29:03] ì¼ë°˜ ëª¨ë“œì‹œ 60ë¶„..*/
         mu16_forced_close_time_min = 36000;
-        /*..hui [18-1-23¿ÀÈÄ 2:29:09] ÀÏ¹Ý ¸ðµå½Ã 24½Ã°£..*/
+        /*..hui [18-1-23ì˜¤í›„ 2:29:09] ì¼ë°˜ ëª¨ë“œì‹œ 24ì‹œê°„..*/
         mu16_forced_close_time_hour = 24;
     }
 
@@ -287,7 +288,7 @@ void ice_select_door_close_24_hour(void)
     }
     else{}
 
-    /*..hui [18-1-23¿ÀÈÄ 2:12:10] 60ºÐ Å¸ÀÌ¸Ó..*/
+    /*..hui [18-1-23ì˜¤í›„ 2:12:10] 60ë¶„ íƒ€ì´ë¨¸..*/
     gu16IceSelectDoorCloseTimer_Min++;
 
     if(gu16IceSelectDoorCloseTimer_Min >= mu16_forced_close_time_min)
@@ -297,7 +298,7 @@ void ice_select_door_close_24_hour(void)
     }
     else{}
 
-    /*..hui [18-1-23¿ÀÈÄ 2:12:15] 24½Ã°£ Å¸ÀÌ¸Ó..*/
+    /*..hui [18-1-23ì˜¤í›„ 2:12:15] 24ì‹œê°„ íƒ€ì´ë¨¸..*/
     if(gu16IceSelectDoorCloseTimer_Hour >= mu16_forced_close_time_hour)
     {
         F_IceSelectDoorClose = SET;
@@ -317,7 +318,7 @@ void ice_select_door_close_24_hour(void)
     }
     else{}
 
-    /*..hui [18-1-23¿ÀÈÄ 2:44:04] ¾ÆÀÌ½ºµµ¾î °­Á¦ CLOSEÁß¿¡ ¾óÀ½ ÃßÃâÇÒ°æ¿ì FULL OPEN..*/
+    /*..hui [18-1-23ì˜¤í›„ 2:44:04] ì•„ì´ìŠ¤ë„ì–´ ê°•ì œ CLOSEì¤‘ì— ì–¼ìŒ ì¶”ì¶œí• ê²½ìš° FULL OPEN..*/
     if(gu16IceSelectDoorCloseResetTimer > 0)
     {
         gu16IceSelectDoorCloseResetTimer--;
@@ -327,7 +328,7 @@ void ice_select_door_close_24_hour(void)
 
 /***********************************************************************************************************************/
 /**
- * @brief ¾óÀ½ °É¸² Á¦¾î °ü·Ã º¯¼ö ÃÊ±âÈ­
+ * @brief ì–¼ìŒ ê±¸ë¦¼ ì œì–´ ê´€ë ¨ ë³€ìˆ˜ ì´ˆê¸°í™”
  *
  */
 void IceStuckInit(void)
@@ -340,7 +341,7 @@ void IceStuckInit(void)
 
 /***********************************************************************************************************************/
 /**
- * @brief ¾óÀ½°É¸² µ¿ÀÛ ½ÃÄö½º ¸ðµå ¼³Á¤
+ * @brief ì–¼ìŒê±¸ë¦¼ ë™ìž‘ ì‹œí€€ìŠ¤ ëª¨ë“œ ì„¤ì •
  *
  * @param mu8_ice_jam_resolve_step
  */
@@ -351,45 +352,45 @@ void SetIceStuckStatus(ICE_JAM_RESV_STEP mu8_ice_jam_resolve_step)
 
 /***********************************************************************************************************************/
 /**
- * @brief ¸®µå ½ºÀ§Ä¡ Ãß°¡µÈ ¸ðµ¨ÀÇ ¾óÀ½ °É¸² µ¿ÀÛ
+ * @brief ë¦¬ë“œ ìŠ¤ìœ„ì¹˜ ì¶”ê°€ëœ ëª¨ë¸ì˜ ì–¼ìŒ ê±¸ë¦¼ ë™ìž‘
  *
  */
 void IceStuckProcess(void)
 {
-    // [2025-11-17] CH.PARK °Ë»ç¸ðµå ½Ã ¾óÀ½°É¸² Á¦¾î ¹Ì°¡µ¿
+    // [2025-11-17] CH.PARK ê²€ì‚¬ëª¨ë“œ ì‹œ ì–¼ìŒê±¸ë¦¼ ì œì–´ ë¯¸ê°€ë™
     if( u8FactoryTestMode != NONE_TEST_MODE)
     {
         IceStuckInit();
         return;
     }
 
-    /* 2025-10-28 CH.PARK ¸ðµ¨ ÆÇ´Ü ¹Ì¿Ï·á ½Ã */
+    /* 2025-10-28 CH.PARK ëª¨ë¸ íŒë‹¨ ë¯¸ì™„ë£Œ ì‹œ */
     if(model.u8IsModelChecked == CLEAR)
     {
         IceStuckInit();
         return;
     }
 
-    /* 2025-10-28 CH.PARK ¸®µå½ºÀ§Ä¡ »ç¿ë¾ÈÇÏ´Â ¸ðµ¨(±âÁ¸¸ðµ¨)ÀÏ ½Ã */
+    /* 2025-10-28 CH.PARK ë¦¬ë“œìŠ¤ìœ„ì¹˜ ì‚¬ìš©ì•ˆí•˜ëŠ” ëª¨ë¸(ê¸°ì¡´ëª¨ë¸)ì¼ ì‹œ */
     if(model.u8model != MODEL_REED_USE)
     {
         IceStuckInit();
         return;
     }
 
-    /* 2025-10-28 CH.PARK ¾óÀ½ ÃßÃâÁßÀÏ ½Ã ¾óÀ½ °É¸² µ¿ÀÛ ¹Ì°¡µ¿ ¹× µ¥ÀÌÅÍ ÃÊ±âÈ­ */
+    /* 2025-10-28 CH.PARK ì–¼ìŒ ì¶”ì¶œì¤‘ì¼ ì‹œ ì–¼ìŒ ê±¸ë¦¼ ë™ìž‘ ë¯¸ê°€ë™ ë° ë°ì´í„° ì´ˆê¸°í™” */
     if(F_IceOut == SET)
     {
         IceStuckInit();
         return;
     }
 
-    // ¾óÀ½°É¸² »óÈ² ¹ß»ý
+    // ì–¼ìŒê±¸ë¦¼ ìƒí™© ë°œìƒ
     if(IceStuck.u8IceJamCheck == SET)
     {
         if(gu16_IceSelect_StepMotor == 0)
         {
-            /* 2025-10-28 CH.PARK ´Ý¾ÒÁö¸¸ °¨Áö ¾ÈµÆÀ¸¸é Áï½Ã ¾óÀ½ °É¸² ÇØÁ¦µ¿ÀÛ ¼öÇà */
+            /* 2025-10-28 CH.PARK ë‹«ì•˜ì§€ë§Œ ê°ì§€ ì•ˆëìœ¼ë©´ ì¦‰ì‹œ ì–¼ìŒ ê±¸ë¦¼ í•´ì œë™ìž‘ ìˆ˜í–‰ */
             if(GET_INNER_DOOR_REED_SW() == ACTIVE_LOW_NO_DETECTED)
             {
                 SetIceStuckStatus(PROCESS_ICE_JAM_DOOR_OPEN);
@@ -405,13 +406,13 @@ void IceStuckProcess(void)
     }
 
     IceStuck.u8IceJamProcessTimer++;
-    if(IceStuck.u8IceJamProcessTimer >= ICE_JAM_PROCESS_TIME_MAX)      // 1ÃÊ ¸¶´Ù
+    if(IceStuck.u8IceJamProcessTimer >= ICE_JAM_PROCESS_TIME_MAX)      // 1ì´ˆ ë§ˆë‹¤
     {
         IceStuck.u8IceJamProcessTimer = 0;
         switch (IceStuck.u8IceJamResolveStep)
         {
             case PROCESS_ICE_JAM_INIT:
-                // ´ë±â
+                // ëŒ€ê¸°
                 break;
 
             case PROCESS_ICE_JAM_DOOR_OPEN:
@@ -420,11 +421,11 @@ void IceStuckProcess(void)
                     IceStuck.u8IceJamProcessCount++;
                 }
 
-                // ÀÌ³Êµµ¾î OPEN
+                // ì´ë„ˆë„ì–´ OPEN
                 F_IceSelect = SET;
                 F_IceOpen = SET;
 
-                /* µÎ µµ¾î ¸ðµÎ ÀÌµ¿ ¿Ï·á ½Ã FEEDER Á¦¾î */
+                /* ë‘ ë„ì–´ ëª¨ë‘ ì´ë™ ì™„ë£Œ ì‹œ FEEDER ì œì–´ */
                 if((gu16_IceSelect_StepMotor == STEP_ANGLE_SELECT)
                 && (gu16_Ice_Door_StepMotor == STEP_ANGLE_DOOR)
                 )
@@ -434,11 +435,11 @@ void IceStuckProcess(void)
                 break;
 
             case PROCESS_ICE_JAM_FEEDER_BACK:
-                // ÀÌ³Êµµ¾î OPEN
+                // ì´ë„ˆë„ì–´ OPEN
                 F_IceSelect = SET;
                 F_IceOpen = SET;
 
-                // ÇÇ´õ 2ÃÊ ¿ªÈ¸Àü (³ª¸ÓÁö ÃßÃâ ¿ªÈ¸ÀüÀº ¼öÇà Ãë¼Ò)
+                // í”¼ë” 2ì´ˆ ì—­íšŒì „ (ë‚˜ë¨¸ì§€ ì¶”ì¶œ ì—­íšŒì „ì€ ìˆ˜í–‰ ì·¨ì†Œ)
                 bit_ice_stuck_back_state = SET;
                 bit_ice_out_back_1s_state = CLEAR;
                 bit_ice_out_back_state = CLEAR;
@@ -447,11 +448,11 @@ void IceStuckProcess(void)
                 break;
 
             case PROCESS_ICE_JAM_FEEDER_CHECK:
-                // ÀÌ³Êµµ¾î CLOSE
+                // ì´ë„ˆë„ì–´ CLOSE
                 F_IceSelect = SET;
                 F_IceOpen = SET;
 
-                /* ¿ªÈ¸ÀüÁ¦¾î ¿Ï·á ½Ã */
+                /* ì—­íšŒì „ì œì–´ ì™„ë£Œ ì‹œ */
                 if(bit_ice_stuck_back_state == CLEAR)
                 {
                     SetIceStuckStatus(PROCESS_ICE_JAM_DOOR_CLOSE);
@@ -469,11 +470,11 @@ void IceStuckProcess(void)
             case PROCESS_ICE_JAM_DOOR_CLOSE_CHECK:
                 if(gu16_IceSelect_StepMotor == 0)
                 {
-                    /* 2025-10-28 CH.PARK ÃÖ´ë 1È¸ ¾óÀ½ °É¸² ÇØÁ¦ µ¿ÀÛ ³ÑÀ» ½Ã ±×³É µ¿ÀÛ ÇØÁ¦ */
-                    /* 2025-10-29 CH.PARK È®Àå¼ºÀ» »ý°¢ÇØ¼­ ±×³É È½¼ö¸¸ ´Ü¹ß¼º 1È¸·Î ¼öÁ¤ */
+                    /* 2025-10-28 CH.PARK ìµœëŒ€ 1íšŒ ì–¼ìŒ ê±¸ë¦¼ í•´ì œ ë™ìž‘ ë„˜ì„ ì‹œ ê·¸ëƒ¥ ë™ìž‘ í•´ì œ */
+                    /* 2025-10-29 CH.PARK í™•ìž¥ì„±ì„ ìƒê°í•´ì„œ ê·¸ëƒ¥ íšŸìˆ˜ë§Œ ë‹¨ë°œì„± 1íšŒë¡œ ìˆ˜ì • */
                     if(IceStuck.u8IceJamProcessCount >= ICE_JAM_RESV_COUNT_MAX)
                     {
-                        /* LOW : °¨Áö */
+                        /* LOW : ê°ì§€ */
                         if(GET_INNER_DOOR_REED_SW() == ACTIVE_LOW_DETECTED)
                         {
                             // IceDoor ClOSE
@@ -481,13 +482,13 @@ void IceStuckProcess(void)
                         }
                         else
                         {
-                            // ¹Ì°¨Áö ½Ã À½¼º¾È³» ÈÄ ÇØÁ¦ Á¦¾î Á¾·á
+                            // ë¯¸ê°ì§€ ì‹œ ìŒì„±ì•ˆë‚´ í›„ í•´ì œ ì œì–´ ì¢…ë£Œ
                             SetIceStuckStatus(PROCESS_ICE_JAM_ERROR);
                         }
                     }
                     else
                     {
-                        /* LOW : °¨Áö */
+                        /* LOW : ê°ì§€ */
                         if(GET_INNER_DOOR_REED_SW() == ACTIVE_LOW_DETECTED)
                         {
                             // IceDoor ClOSE
@@ -495,7 +496,7 @@ void IceStuckProcess(void)
                         }
                         else
                         {
-                            // ¹Ì°¨Áö ½Ã Ã³À½ºÎÅÍ ´Ù½Ã
+                            // ë¯¸ê°ì§€ ì‹œ ì²˜ìŒë¶€í„° ë‹¤ì‹œ
                             SetIceStuckStatus(PROCESS_ICE_JAM_DOOR_OPEN);
                         }
                     }
@@ -505,25 +506,25 @@ void IceStuckProcess(void)
             case PROCESS_ICE_JAM_DONE:
                 SetIceStuckStatus(PROCESS_ICE_JAM_INIT);
 
-                /* 2025-10-28 CH.PARK °É¸² ÇØÁ¦ ¿Ï·á ½Ã ¾ÆÀÌ½ºµµ¾î ´ÝÀ½ */
+                /* 2025-10-28 CH.PARK ê±¸ë¦¼ í•´ì œ ì™„ë£Œ ì‹œ ì•„ì´ìŠ¤ë„ì–´ ë‹«ìŒ */
                 F_IceOpen = CLEAR;
                 break;
 
             case PROCESS_ICE_JAM_ERROR:
                 SetIceStuckStatus(PROCESS_ICE_JAM_VOICE_INFO_PLAY);
 
-                /* 2025-10-28 CH.PARK °É¸² ÇØÁ¦ ¿Ï·á ½Ã ¾ÆÀÌ½ºµµ¾î ´ÝÀ½ */
+                /* 2025-10-28 CH.PARK ê±¸ë¦¼ í•´ì œ ì™„ë£Œ ì‹œ ì•„ì´ìŠ¤ë„ì–´ ë‹«ìŒ */
                 F_IceOpen = CLEAR;
                 break;
 
-            case PROCESS_ICE_JAM_VOICE_INFO_PLAY:       // [2025-11-17] CH.PARK ¾óÀ½°É¸² ÇØÁ¦ ¾È³»À½¼º ¾È³»
-                /* [2025-11-17] CH.PARK ¾ÆÀÌ½ºµµ¾î ´ÝÈû ½Ã À½¼º¾È³» ¼ÛÃâ */
+            case PROCESS_ICE_JAM_VOICE_INFO_PLAY:       // [2025-11-17] CH.PARK ì–¼ìŒê±¸ë¦¼ í•´ì œ ì•ˆë‚´ìŒì„± ì•ˆë‚´
+                /* [2025-11-17] CH.PARK ì•„ì´ìŠ¤ë„ì–´ ë‹«íž˜ ì‹œ ìŒì„±ì•ˆë‚´ ì†¡ì¶œ */
                 if(gu16_Ice_Door_StepMotor == CLEAR)
                 {
-                    // ¾óÀ½°É¸² ÇØÁ¦ ¾È³»À½¼º ¾È³»
+                    // ì–¼ìŒê±¸ë¦¼ í•´ì œ ì•ˆë‚´ìŒì„± ì•ˆë‚´
                     SetIceStuckStatus(PROCESS_ICE_JAM_INIT);
 
-                    // ºÎÆÃ ÈÄ ÃÖ´ë 2È¸±îÁö¸¸ À½¼º¾È³» ¼ÛÃâ
+                    // ë¶€íŒ… í›„ ìµœëŒ€ 2íšŒê¹Œì§€ë§Œ ìŒì„±ì•ˆë‚´ ì†¡ì¶œ
                     if(IceStuck.u8IceJamVoicePlayCount < ICE_JAM_VOICE_INFO_PLAY_COUNT_MAX)
                     {
                         Play_Voice(VOICE_1365_ICE_STUCK_DETECTED);
@@ -542,7 +543,7 @@ void IceStuckProcess(void)
 
 /***********************************************************************************************************************/
 /**
- * @brief ¾ÆÀÌ½ºµµ¾î ¸®µå »óÅÂ ÃÊ±âÈ­
+ * @brief ì•„ì´ìŠ¤ë„ì–´ ë¦¬ë“œ ìƒíƒœ ì´ˆê¸°í™”
  *
  */
  void IceDoorReedInit(void)
@@ -555,13 +556,13 @@ void IceStuckProcess(void)
 
 /***********************************************************************************************************************/
 /**
- * @brief ¾óÀ½¹® ¸®µå »óÅÂ Á¶È¸ (1ÃÊÀÌ»ó ¹Ì°¨Áö/°¨Áö ½Ã È®Á¤)
+ * @brief ì–¼ìŒë¬¸ ë¦¬ë“œ ìƒíƒœ ì¡°íšŒ (1ì´ˆì´ìƒ ë¯¸ê°ì§€/ê°ì§€ ì‹œ í™•ì •)
  *
  * @return U8
  */
 void CheckIceDoorReedStatus(void)
 {
-    /* 2025-10-28 CH.PARK ¸®µå½ºÀ§Ä¡ »ç¿ë¾ÈÇÏ´Â ¸ðµ¨(±âÁ¸¸ðµ¨)ÀÏ ½Ã */
+    /* 2025-10-28 CH.PARK ë¦¬ë“œìŠ¤ìœ„ì¹˜ ì‚¬ìš©ì•ˆí•˜ëŠ” ëª¨ë¸(ê¸°ì¡´ëª¨ë¸)ì¼ ì‹œ */
     if(GetModel() != MODEL_REED_USE)
     {
         return;
@@ -595,7 +596,7 @@ void CheckIceDoorReedStatus(void)
 
 /***********************************************************************************************************************/
 /**
- * @brief ¾ÆÀÌ½ºµµ¾î ¸®µå »óÅÂ ¼³Á¤
+ * @brief ì•„ì´ìŠ¤ë„ì–´ ë¦¬ë“œ ìƒíƒœ ì„¤ì •
  *
  * @param mu8_reed_status
  */
@@ -606,7 +607,7 @@ void SetIceDoorReedStatus(REED_INFO mu8_reed_status)
 
 /***********************************************************************************************************************/
 /**
- * @brief ¾ÆÀÌ½ºµµ¾î ¸®µå »óÅÂ ¸®ÅÏ
+ * @brief ì•„ì´ìŠ¤ë„ì–´ ë¦¬ë“œ ìƒíƒœ ë¦¬í„´
  *
  * @return REED_INFO
  */
@@ -616,7 +617,7 @@ REED_INFO GetIceDoorReedStatus(void)
 }
 
 /**
- * @brief ¾óÀ½°É¸² À½¼º¾È³» È½¼ö Ä«¿îÆ® ÃÊ±âÈ­
+ * @brief ì–¼ìŒê±¸ë¦¼ ìŒì„±ì•ˆë‚´ íšŸìˆ˜ ì¹´ìš´íŠ¸ ì´ˆê¸°í™”
  *
  */
 void IceJamVoicePlayCountInit(void)

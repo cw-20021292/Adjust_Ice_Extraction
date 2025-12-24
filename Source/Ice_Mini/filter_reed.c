@@ -23,7 +23,7 @@ TYPE_BYTE          U8FilterResetStateB;
 
 bit bit_filter_cover;
 bit bit_filter_cover_open_to_close;
-bit bit_filter_reed;		/* ÇÊÅÍ¸®µå ½ºÀ§Ä¡ bit Ãß°¡ */
+bit bit_filter_reed;		/* í•„í„°ë¦¬ë“œ ìŠ¤ìœ„ì¹˜ bit ì¶”ê°€ */
 bit bit_filter_reed_old;
 
 U16 gu16_filter_reset_timer_sec;
@@ -124,11 +124,11 @@ U8 gu8_filter_change_type;
 U8 gu8_filter_alarm_popup_enable;
 
 
-bit bit_yes_no_popup;			/* ÇÊÅÍ ±³Ã¼ ÇÃ·¯½ÌÀ» ÁøÇàÇÒÁö ¸»Áö °áÁ¤ÇÒ ¶§ SET */
+bit bit_yes_no_popup;			/* í•„í„° êµì²´ í”ŒëŸ¬ì‹±ì„ ì§„í–‰í• ì§€ ë§ì§€ ê²°ì •í•  ë•Œ SET */
 bit bit_filter_all;
 
-bit bit_filter_reset_yes;		/* ÇÊÅÍ ±³Ã¼ ÁøÇà ÇÃ·¡±× (´ë±âÁß ¹°ÃßÃâ Å°) */
-bit bit_filter_reset_no;		/* ÇÊÅÍ ±³Ã¼ Ãë¼Ò ÇÃ·¡±× (´ë±âÁß ³Ã¼ö Å°) */
+bit bit_filter_reset_yes;		/* í•„í„° êµì²´ ì§„í–‰ í”Œë˜ê·¸ (ëŒ€ê¸°ì¤‘ ë¬¼ì¶”ì¶œ í‚¤) */
+bit bit_filter_reset_no;		/* í•„í„° êµì²´ ì·¨ì†Œ í”Œë˜ê·¸ (ëŒ€ê¸°ì¤‘ ëƒ‰ìˆ˜ í‚¤) */
 
 bit bit_wifi_neo_filter_1_reset;
 bit bit_wifi_ro_filter_2_reset;
@@ -140,7 +140,7 @@ U16 gu16_filter_change_reset_timer;
 U16 gu16_1_3_remain_day_before;
 U16 gu16_1_2_3_remain_day_before;
 
-U8 gu8_filter_cover_reed_data;		/* ÇÊÅÍÄ¿¹ö ¸®µå½ºÀ§Ä¡ port ÀÔ·Â µ¥ÀÌÅÍ */
+U8 gu8_filter_cover_reed_data;		/* í•„í„°ì»¤ë²„ ë¦¬ë“œìŠ¤ìœ„ì¹˜ port ì…ë ¥ ë°ì´í„° */
 
 extern bit bit_filter_reed;
 extern U8 gu8_front_rcv_filter_reed_data;
@@ -155,7 +155,7 @@ void filter_reset(void);
 void init_filter(void);
 /******************************************************************************************************/
 /**
- * @brief ÇÊÅÍ °íÁ¤ ¸®µå½ºÀ§Ä¡ °¨Áö
+ * @brief í•„í„° ê³ ì • ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€
  * 
  */
 void input_filter_reed_sw(void)
@@ -181,10 +181,10 @@ void input_filter_reed_sw(void)
 		}
 	}
 
-	/* 2KGÀÇ ÇÊÅÍ ¸®µå½ºÀ§Ä¡´Â ÇÁ·ĞÆ®°¡ ¾Æ´Ñ ¸ŞÀÎ¿¡ ¿¬°áµÇ¾î ÀÖÀ½ 250219 CH.PARK */
+	/* 2KGì˜ í•„í„° ë¦¬ë“œìŠ¤ìœ„ì¹˜ëŠ” í”„ë¡ íŠ¸ê°€ ì•„ë‹Œ ë©”ì¸ì— ì—°ê²°ë˜ì–´ ìˆìŒ 250219 CH.PARK */
 	gu8_front_rcv_filter_reed_data = pREED_FILTER;
 	
-	/* ÇÊÅÍ ¸®µå½ºÀ§Ä¡ [¿­¸²] */
+	/* í•„í„° ë¦¬ë“œìŠ¤ìœ„ì¹˜ [ì—´ë¦¼] */
 	if(gu8_front_rcv_filter_reed_data == SET)
 	{
 		gu8_filter_reed_off_decision_cnt = 0;
@@ -196,12 +196,12 @@ void input_filter_reed_sw(void)
 
 			if( bit_filter_reed == SET )
 			{			
-				/*..hui [21-8-3¿ÀÈÄ 12:49:03] ¿­¸²..*/
+				/*..hui [21-8-3ì˜¤í›„ 12:49:03] ì—´ë¦¼..*/
 				bit_filter_reed = CLEAR;
 				power_saving_init();
 				play_voice_filter_reed_sw_open_4();
 
-				/* ÃßÃâÁßÀÌ¾ú´Ù¸é ÃßÃâ Áï½Ã ÁßÁö */
+				/* ì¶”ì¶œì¤‘ì´ì—ˆë‹¤ë©´ ì¶”ì¶œ ì¦‰ì‹œ ì¤‘ì§€ */
 				if(F_WaterOut == SET)
 				{
 					F_WaterOut = CLEAR;
@@ -219,7 +219,7 @@ void input_filter_reed_sw(void)
 				}
 				else {  }
 
-				/* ÇÊÅÍ¸®µå ¹× ÇÊÅÍÄ¿¹ö OPEN ½Ã µ¿½Ã ÃßÃâ °ü·ÃµÈ µ¥ÀÌÅÍ Å¬¸®¾î 250730 CH.PARK */
+				/* í•„í„°ë¦¬ë“œ ë° í•„í„°ì»¤ë²„ OPEN ì‹œ ë™ì‹œ ì¶”ì¶œ ê´€ë ¨ëœ ë°ì´í„° í´ë¦¬ì–´ 250730 CH.PARK */
 				Extract_Stack.U8_iceSelect = CLEAR;
 				Extract_Stack.U8_waterSelect = CLEAR;
 			}
@@ -235,7 +235,7 @@ void input_filter_reed_sw(void)
 		{
 			gu8_filter_reed_off_decision_cnt = FILTER_REED_DETECT_TIME;
 		
-			/* ÇÊÅÍ ¸®µå½ºÀ§Ä¡ [´İÈû] */
+			/* í•„í„° ë¦¬ë“œìŠ¤ìœ„ì¹˜ [ë‹«í˜] */
 			if( bit_filter_reed == CLEAR )
 			{
 				bit_filter_reed = SET;
@@ -249,7 +249,7 @@ void input_filter_reed_sw(void)
 
 /******************************************************************************************************/
 /**
- * @brief ÇÊÅÍÄ¿¹ö ¿­¸² °¨Áö
+ * @brief í•„í„°ì»¤ë²„ ì—´ë¦¼ ê°ì§€
  * 
  */
 void	input_filter_cover_sw(void)
@@ -275,10 +275,10 @@ void	input_filter_cover_sw(void)
 		}
 	}
 
-	/* 2KGÀÇ ÇÊÅÍ ¸®µå½ºÀ§Ä¡´Â ÇÁ·ĞÆ®°¡ ¾Æ´Ñ ¸ŞÀÎ¿¡ ¿¬°áµÇ¾î ÀÖÀ½ 250219 CH.PARK */
+	/* 2KGì˜ í•„í„° ë¦¬ë“œìŠ¤ìœ„ì¹˜ëŠ” í”„ë¡ íŠ¸ê°€ ì•„ë‹Œ ë©”ì¸ì— ì—°ê²°ë˜ì–´ ìˆìŒ 250219 CH.PARK */
 	gu8_filter_cover_reed_data = pREED_FILTER_COVER;
 	
-	/* ÇÊÅÍ ¸®µå½ºÀ§Ä¡ [¿­¸²] */
+	/* í•„í„° ë¦¬ë“œìŠ¤ìœ„ì¹˜ [ì—´ë¦¼] */
 	if(gu8_filter_cover_reed_data == SET)
 	{
 		gu8_filter_cover_reed_off_decision_cnt = 0;
@@ -290,10 +290,10 @@ void	input_filter_cover_sw(void)
 
 			if( bit_filter_cover == SET )
 			{
-				/*..hui [21-8-3¿ÀÈÄ 12:49:03] ¿­¸²..*/
+				/*..hui [21-8-3ì˜¤í›„ 12:49:03] ì—´ë¦¼..*/
 				bit_filter_cover = CLEAR;
 
-				/* ÃßÃâÁßÀÌ¾ú´Ù¸é ÃßÃâ Áï½Ã ÁßÁö */
+				/* ì¶”ì¶œì¤‘ì´ì—ˆë‹¤ë©´ ì¶”ì¶œ ì¦‰ì‹œ ì¤‘ì§€ */
 				if(F_WaterOut == SET)
 				{
 					F_WaterOut = CLEAR;
@@ -310,7 +310,7 @@ void	input_filter_cover_sw(void)
 				}
 				else {  }
 
-				/* ÇÊÅÍ¸®µå ¹× ÇÊÅÍÄ¿¹ö OPEN ½Ã µ¿½Ã ÃßÃâ °ü·ÃµÈ µ¥ÀÌÅÍ Å¬¸®¾î 250730 CH.PARK */
+				/* í•„í„°ë¦¬ë“œ ë° í•„í„°ì»¤ë²„ OPEN ì‹œ ë™ì‹œ ì¶”ì¶œ ê´€ë ¨ëœ ë°ì´í„° í´ë¦¬ì–´ 250730 CH.PARK */
 				Extract_Stack.U8_iceSelect = CLEAR;
 				Extract_Stack.U8_waterSelect = CLEAR;
 
@@ -328,12 +328,12 @@ void	input_filter_cover_sw(void)
 		{
 			gu8_filter_cover_reed_off_decision_cnt = FILTER_REED_DETECT_TIME;
 		
-			/* ÇÊÅÍ ¸®µå½ºÀ§Ä¡ [´İÈû] */
+			/* í•„í„° ë¦¬ë“œìŠ¤ìœ„ì¹˜ [ë‹«í˜] */
 			if( bit_filter_cover == CLEAR )
 			{
 				bit_filter_cover = SET;
 
-				/* ÇÊÅÍ¸®µå ½ºÀ§Ä¡´Â ¿­·ÁÀÖÀ¸¸é "ÇÊÅÍ°¡ ¿Ã¹Ù¸£°Ô °áÇÕµÇÁö ¾ÊÀº °ÍÀ¸·Î °¨ÁöµÇ¾ú½À´Ï´Ù..." */
+				/* í•„í„°ë¦¬ë“œ ìŠ¤ìœ„ì¹˜ëŠ” ì—´ë ¤ìˆìœ¼ë©´ "í•„í„°ê°€ ì˜¬ë°”ë¥´ê²Œ ê²°í•©ë˜ì§€ ì•Šì€ ê²ƒìœ¼ë¡œ ê°ì§€ë˜ì—ˆìŠµë‹ˆë‹¤..." */
 				if(bit_filter_reed == CLEAR)
 				{
 					play_voice_filter_not_detected_14();
@@ -342,10 +342,10 @@ void	input_filter_cover_sw(void)
 				{
 					play_melody_setting_on_198();
 
-					/*..hui [24-1-17¿ÀÈÄ 5:01:07] ÃÖÃÊ ÇÊÅÍ ÇÃ·¯½Ì ½ÃÀÛ Àü¿¡¸¸.. ÇÊÅÍ °ü·Ã À½¼º Ãâ·Â..*/
-					/*..hui [24-1-17¿ÀÈÄ 5:01:25] 1,3¹øÀ¸·Î ÇÊÅÍ ÇÃ·¯½Ì Áß¿¡ Ä¿¹ö ¿­¾î¼­ Áß´ÜÇÏ°í 2¹ø ±³Ã¼ °¨Áö°¡ µÇ¸é..*/
-					/*..hui [24-1-17¿ÀÈÄ 5:01:41] ´İ¾ÒÀ»¶§ ÇÊÅÍ À½¼ºÀº ¾È³»º¸³»°í ÇÃ·¯½Ì ½Ã°£¸¸ ro ÇÃ·¯½Ì 30ºĞÀ¸·Î º¯°æÇÑ´Ù..*/
-					/* ÇÊÅÍ°¡ Á¦´ë·Î ´İÇô ÀÖÀ» ¶§¿¡¸¸ ÇÊÅÍ±³Ã¼ °ü·ÃµÈ ÆË¾÷À» ¶ç¿ì°Ô ÇÑ´Ù 250515 CH.PARK */
+					/*..hui [24-1-17ì˜¤í›„ 5:01:07] ìµœì´ˆ í•„í„° í”ŒëŸ¬ì‹± ì‹œì‘ ì „ì—ë§Œ.. í•„í„° ê´€ë ¨ ìŒì„± ì¶œë ¥..*/
+					/*..hui [24-1-17ì˜¤í›„ 5:01:25] 1,3ë²ˆìœ¼ë¡œ í•„í„° í”ŒëŸ¬ì‹± ì¤‘ì— ì»¤ë²„ ì—´ì–´ì„œ ì¤‘ë‹¨í•˜ê³  2ë²ˆ êµì²´ ê°ì§€ê°€ ë˜ë©´..*/
+					/*..hui [24-1-17ì˜¤í›„ 5:01:41] ë‹«ì•˜ì„ë•Œ í•„í„° ìŒì„±ì€ ì•ˆë‚´ë³´ë‚´ê³  í”ŒëŸ¬ì‹± ì‹œê°„ë§Œ ro í”ŒëŸ¬ì‹± 30ë¶„ìœ¼ë¡œ ë³€ê²½í•œë‹¤..*/
+					/* í•„í„°ê°€ ì œëŒ€ë¡œ ë‹«í˜€ ìˆì„ ë•Œì—ë§Œ í•„í„°êµì²´ ê´€ë ¨ëœ íŒì—…ì„ ë„ìš°ê²Œ í•œë‹¤ 250515 CH.PARK */
 					if( gu8_filter_flushing_state == FILTER_FLUSHING_NONE )
 					{
 						bit_filter_cover_open_to_close = SET;
@@ -362,7 +362,7 @@ void	input_filter_cover_sw(void)
 }
 
 /**
- * @brief ÇÊÅÍ OPEN/CLOSE »óÅÂ È®ÀÎ ÇÔ¼ö
+ * @brief í•„í„° OPEN/CLOSE ìƒíƒœ í™•ì¸ í•¨ìˆ˜
  */
 void input_filter_all(void)
 {
@@ -377,7 +377,7 @@ void input_filter_all(void)
 		bit_filter_all = SET;
 	}
 
-	/* ÇÊÅÍ °ü·ÃµÈ °Å ÇÏ³ª¶óµµ ¿­¸®¸é Áï½Ã ÇÃ·¯½Ì ÀÏ½ÃÁ¤Áö */
+	/* í•„í„° ê´€ë ¨ëœ ê±° í•˜ë‚˜ë¼ë„ ì—´ë¦¬ë©´ ì¦‰ì‹œ í”ŒëŸ¬ì‹± ì¼ì‹œì •ì§€ */
 	if(bit_filter_all == CLEAR)
 	{
 		if(gu8_flushing_mode > FLUSHING_STANDBY_STATE)
@@ -394,7 +394,7 @@ void input_filter_all(void)
 
 void filter_reset_timer__ino(void)
 {
-	/*..hui [23-12-19¿ÀÈÄ 3:13:15] ¼³Ä¡ ÇÃ·¯½ÌÀÏ¶§´Â È®ÀÎÇÏÁö ¾Ê´Â´Ù..*/
+	/*..hui [23-12-19ì˜¤í›„ 3:13:15] ì„¤ì¹˜ í”ŒëŸ¬ì‹±ì¼ë•ŒëŠ” í™•ì¸í•˜ì§€ ì•ŠëŠ”ë‹¤..*/
     if( bit_install_flushing_state == SET )
     {
         return;
@@ -414,7 +414,7 @@ void filter_reset_timer__ino(void)
 
 			if( u8FilterResetState == NEO_INO_FILTER_CHANGE )
 			{
-				// ÇÊÅÍ¸¦ ±³Ã¼Çß´Ù¸é ¹° ÃßÃâ ¹öÆ°À» ´­·¯ÁÖ¼¼¿ä
+				// í•„í„°ë¥¼ êµì²´í–ˆë‹¤ë©´ ë¬¼ ì¶”ì¶œ ë²„íŠ¼ì„ ëˆŒëŸ¬ì£¼ì„¸ìš”
 				play_voice_1_3_filter_change_detect_18();
 			}
 			else{}
@@ -430,7 +430,7 @@ void filter_reset_timer__ino(void)
     }
     else{}
 
-	/* 1½Ã°£¸¶´Ù ÇÊÅÍ±³Ã¼ÁÖÁö Ä«¿îÆ® */
+	/* 1ì‹œê°„ë§ˆë‹¤ í•„í„°êµì²´ì£¼ì§€ ì¹´ìš´íŠ¸ */
     if(gu8_filter_reset_timer_min >= 60)
     {
         gu8_filter_reset_timer_min = 0;
@@ -438,7 +438,7 @@ void filter_reset_timer__ino(void)
     }
     else{}
 
-	/* ÇÊÅÍ ±³Ã¼ÁÖ±â : 456ÀÏ */
+	/* í•„í„° êµì²´ì£¼ê¸° : 456ì¼ */
     if( gu16_reset_day_filter >= FILTER_RESET_456_DAY )
     {
         gu16_reset_day_filter = FILTER_RESET_456_DAY;
@@ -447,7 +447,7 @@ void filter_reset_timer__ino(void)
 }
 
 /**
- * @brief ÇÊÅÍÇÃ·¯½Ì ÀçÁøÇà °¨Áö
+ * @brief í•„í„°í”ŒëŸ¬ì‹± ì¬ì§„í–‰ ê°ì§€
  */
 void decesion_filter_flushing(void)
 {
@@ -456,8 +456,8 @@ void decesion_filter_flushing(void)
         if( u8FilterResetState > 0 )
         {
             gu16_filter_change_reset_timer++;
-            /*..hui [24-1-3¿ÀÈÄ 4:01:19] 15ºĞÀ¸·Î º¯°æ.. °­Á¦ ÇÃ·¯½Ì ±â´É°ú µ¿ÀÏÇÏ°Ô °¡Á®°¡±âÀ§ÇØ..*/
-            /*..hui [24-1-3¿ÀÈÄ 4:01:38] ÇÔÀçÁø, ÀÌÁ¦È£¿Í ÇùÀÇ ¹× È®Á¤..*/
+            /*..hui [24-1-3ì˜¤í›„ 4:01:19] 15ë¶„ìœ¼ë¡œ ë³€ê²½.. ê°•ì œ í”ŒëŸ¬ì‹± ê¸°ëŠ¥ê³¼ ë™ì¼í•˜ê²Œ ê°€ì ¸ê°€ê¸°ìœ„í•´..*/
+            /*..hui [24-1-3ì˜¤í›„ 4:01:38] í•¨ì¬ì§„, ì´ì œí˜¸ì™€ í˜‘ì˜ ë° í™•ì •..*/
             if( gu16_filter_change_reset_timer >= FILTER_CHANGE_RESET_TIME )
             {
                 gu16_filter_change_reset_timer = 0;
@@ -477,51 +477,51 @@ void decesion_filter_flushing(void)
 
 	if( bit_filter_cover_open_to_close == SET )
     {
-        /*..hui [23-12-11¿ÀÈÄ 5:42:14] ÇÊÅÍÄ¿¹ö OPEN->CLOSEÇßÀ»¶§.. ÇÊÅÍ ¸®µå½ºÀ§Ä¡°¡ Á¤»ó °¨ÁöµÆÀ»¶§¸¸..*/
+        /*..hui [23-12-11ì˜¤í›„ 5:42:14] í•„í„°ì»¤ë²„ OPEN->CLOSEí–ˆì„ë•Œ.. í•„í„° ë¦¬ë“œìŠ¤ìœ„ì¹˜ê°€ ì •ìƒ ê°ì§€ëì„ë•Œë§Œ..*/
 		if( u8FilterResetState == NEO_INO_FILTER_CHANGE )
 		{
 			bit_filter_cover_open_to_close = CLEAR;
 			start_filter_flushing();
 			
-			/* ÇÊÅÍ¸¦ ±³Ã¼ÇÏ¼Ì³ª¿ä? ±³Ã¼ÇÏ¼Ì´Ù¸é ¹° ÃßÃâ¹öÆ°À» ´­·¯ÁÖ¼¼¿ä. .. 250515 CH.PARK */
+			/* í•„í„°ë¥¼ êµì²´í•˜ì…¨ë‚˜ìš”? êµì²´í•˜ì…¨ë‹¤ë©´ ë¬¼ ì¶”ì¶œë²„íŠ¼ì„ ëˆŒëŸ¬ì£¼ì„¸ìš”. .. 250515 CH.PARK */
 			play_voice_1_3_filter_change_finish_19();
 		}
 		else
 		{
-			// /*..hui [23-12-6¿ÀÈÄ 2:22:33] 1,3¹ø ±³Ã¼Â÷·ÊÀÎµ¥ 1,2,3ÀÌ °¨Áö°¡µÇµµ ÇÃ·¯½Ì ÁøÇà..*/
-			// /*..hui [23-12-6¿ÀÈÄ 2:22:40] ´Ü, ¸®¼ÂÀº 1,3¹ø¸¸ ÇÑ´Ù..*/
+			// /*..hui [23-12-6ì˜¤í›„ 2:22:33] 1,3ë²ˆ êµì²´ì°¨ë¡€ì¸ë° 1,2,3ì´ ê°ì§€ê°€ë˜ë„ í”ŒëŸ¬ì‹± ì§„í–‰..*/
+			// /*..hui [23-12-6ì˜¤í›„ 2:22:40] ë‹¨, ë¦¬ì…‹ì€ 1,3ë²ˆë§Œ í•œë‹¤..*/
 			// start_filter_flushing();
 		}
 	}
 }
 
 /**
- * @brief ÇÊÅÍÇÃ·¯½Ì ÀçÁøÇà ÇÔ¼ö
+ * @brief í•„í„°í”ŒëŸ¬ì‹± ì¬ì§„í–‰ í•¨ìˆ˜
  */
 void start_filter_flushing(void)
 {
 	gu8_flushing_mode = FLUSHING_STANDBY_STATE;
 	
-    /*..hui [23-6-14¿ÀÈÄ 6:44:36] ÇÊÅÍ ÇÃ·¯½Ì ÇÑ¹ø ½ÃÀÛÇÏ¸é Ãë¼Ò ¾ÈµÇ°Ô..*/
-    /*..hui [23-6-14¿ÀÈÄ 6:44:55] ÀÌÈÄ¿¡ ´Ù½Ã Ä¿¹ö ¿­·È´Ù ´İÇôµµ yes no Ç¥½Ã ¾ÈÇÔ..*/
+    /*..hui [23-6-14ì˜¤í›„ 6:44:36] í•„í„° í”ŒëŸ¬ì‹± í•œë²ˆ ì‹œì‘í•˜ë©´ ì·¨ì†Œ ì•ˆë˜ê²Œ..*/
+    /*..hui [23-6-14ì˜¤í›„ 6:44:55] ì´í›„ì— ë‹¤ì‹œ ì»¤ë²„ ì—´ë ¸ë‹¤ ë‹«í˜€ë„ yes no í‘œì‹œ ì•ˆí•¨..*/
     /*if( gu8_filter_flushing_state == FILTER_FLUSHING_NONE )*/
 
-    /*..hui [23-9-1¿ÀÀü 9:44:25] ÇÊÅÍÇÃ·¯½Ì ¸ğµåµµ ¾Æ´Ï°í, ¼³Ä¡ÇÃ·¯½Ìµµ ¾Æ´Ò¶§..*/
-    /*..hui [23-9-1¿ÀÀü 9:44:44] ¼³Ä¡ÇÃ·¯½Ì => »çÀÌµåÄ¿¹ö ¿­¸² => »çÀÌµåÄ¿¹ö ´İÈû => Ãë¼Ò => ¸ŞÀÎÈ­¸éÀ¸·Î µ¹¾Æ°¨..*/
+    /*..hui [23-9-1ì˜¤ì „ 9:44:25] í•„í„°í”ŒëŸ¬ì‹± ëª¨ë“œë„ ì•„ë‹ˆê³ , ì„¤ì¹˜í”ŒëŸ¬ì‹±ë„ ì•„ë‹ë•Œ..*/
+    /*..hui [23-9-1ì˜¤ì „ 9:44:44] ì„¤ì¹˜í”ŒëŸ¬ì‹± => ì‚¬ì´ë“œì»¤ë²„ ì—´ë¦¼ => ì‚¬ì´ë“œì»¤ë²„ ë‹«í˜ => ì·¨ì†Œ => ë©”ì¸í™”ë©´ìœ¼ë¡œ ëŒì•„ê°..*/
     if( (gu8_filter_flushing_state == FILTER_FLUSHING_NONE) 
 	&& (bit_install_flushing_state == CLEAR)
 	)
     {
         bit_yes_no_popup = SET;
 
-        /*..hui [24-1-11¿ÀÀü 10:48:12] ¿©±â¼­µµ ÃÊ±âÈ­.. ¼³Ä¡ ÇÃ·¯½Ì Á¾·á = 100% = ÇÊÅÍÇÃ·¯½Ì ¹Ù·Î ½ÃÀÛÇÏ¸é 100%·Î ½ÃÀÛµÊ..*/
+        /*..hui [24-1-11ì˜¤ì „ 10:48:12] ì—¬ê¸°ì„œë„ ì´ˆê¸°í™”.. ì„¤ì¹˜ í”ŒëŸ¬ì‹± ì¢…ë£Œ = 100% = í•„í„°í”ŒëŸ¬ì‹± ë°”ë¡œ ì‹œì‘í•˜ë©´ 100%ë¡œ ì‹œì‘ë¨..*/
         gu8_display_flushing_total_percent = 0;
     }
     else {  }
 }
 
 /**
- * @brief ±³Ã¼ÇÃ·¯½Ì Ãë¼Ò
+ * @brief êµì²´í”ŒëŸ¬ì‹± ì·¨ì†Œ
  */
 void cancel_filter_flushing(void)
 {
@@ -539,7 +539,7 @@ void cancel_filter_flushing(void)
 }
 
 /**
- * @brief ÇÊÅÍ °ü·Ã µ¥ÀÌÅÍ ÃÊ±âÈ­ ÇÔ¼ö
+ * @brief í•„í„° ê´€ë ¨ ë°ì´í„° ì´ˆê¸°í™” í•¨ìˆ˜
  */
 void init_filter(void)
 {
@@ -553,7 +553,7 @@ void init_filter(void)
 }
 
 /**
- * @brief ÇÊÅÍ ±³Ã¼ ½Ã »ç¿ë·® °ü·ÃµÈ µ¥ÀÌÅÍ ÃÊ±âÈ­
+ * @brief í•„í„° êµì²´ ì‹œ ì‚¬ìš©ëŸ‰ ê´€ë ¨ëœ ë°ì´í„° ì´ˆê¸°í™”
  */
 void filter_reset(void)
 {
@@ -574,7 +574,7 @@ void filter_reset(void)
 	
 	if( u8FilterResetState == NEO_INO_FILTER_CHANGE )
 	{
-		reset_time_ino_filter();		/* ÇÊÅÍ»ç¿ë·® ÃÊ±âÈ­ */
+		reset_time_ino_filter();		/* í•„í„°ì‚¬ìš©ëŸ‰ ì´ˆê¸°í™” */
 		// send_wifi_system_function();
 	}
 	else
@@ -584,7 +584,7 @@ void filter_reset(void)
 }
 
 /**
- * @brief ÇÊÅÍ±³Ã¼ ¹ß»ı ½Ã °ü·ÃµÈ µ¥ÀÌÅÍ ÃÊ±âÈ­
+ * @brief í•„í„°êµì²´ ë°œìƒ ì‹œ ê´€ë ¨ëœ ë°ì´í„° ì´ˆê¸°í™”
  */
 void reset_time_ino_filter(void)
 {
@@ -609,7 +609,7 @@ void reset_time_ino_filter(void)
 }
 
 /**
- * @brief ÇÊÅÍÀÔ·Â °ü·ÃµÈ ÇÔ¼ö ¸ğÀ½
+ * @brief í•„í„°ì…ë ¥ ê´€ë ¨ëœ í•¨ìˆ˜ ëª¨ìŒ
  */
 void input_filter(void)
 {
@@ -626,29 +626,29 @@ void input_filter(void)
     }
     else{}
 
-	/*..hui [19-10-23¿ÀÈÄ 7:56:31] ÅÊÅ© Ä¿¹ö ¸®µå½ºÀ§Ä¡ ..*/
+	/*..hui [19-10-23ì˜¤í›„ 7:56:31] íƒ±í¬ ì»¤ë²„ ë¦¬ë“œìŠ¤ìœ„ì¹˜ ..*/
     service_reed_sw_input();
 
-    /*..hui [20-2-19¿ÀÈÄ 5:57:55] UV Â÷´Ü¿ë ÅÊÅ© Ä¿¹ö ¸®µå½ºÀ§Ä¡ µû·Î ºĞ¸®..*/
-    /*..hui [20-2-19¿ÀÈÄ 5:58:13] ÅÊÅ© Ä¿¹ö ¿­¾úÀ»¶§ Áï½Ã UV Â÷´ÜÇÏ±â À§ÇØ ºĞ¸®ÇÔ..*/
+    /*..hui [20-2-19ì˜¤í›„ 5:57:55] UV ì°¨ë‹¨ìš© íƒ±í¬ ì»¤ë²„ ë¦¬ë“œìŠ¤ìœ„ì¹˜ ë”°ë¡œ ë¶„ë¦¬..*/
+    /*..hui [20-2-19ì˜¤í›„ 5:58:13] íƒ±í¬ ì»¤ë²„ ì—´ì—ˆì„ë•Œ ì¦‰ì‹œ UV ì°¨ë‹¨í•˜ê¸° ìœ„í•´ ë¶„ë¦¬í•¨..*/
     uv_tank_reed_sw_input();
 
-    /*..hui [21-8-25¿ÀÈÄ 5:29:54] ÆŞÅÍ °³º° ¸®µå½ºÀ§Ä¡..*/
+    /*..hui [21-8-25ì˜¤í›„ 5:29:54] í„í„° ê°œë³„ ë¦¬ë“œìŠ¤ìœ„ì¹˜..*/
     input_filter_reed_sw();
     
-    /* ÇÊÅÍÄ¿¹ö ¸®µå½ºÀ§Ä¡ °¨Áö 250219 CH.PARK */
-    input_filter_cover_sw();     // Á¦´ë·Î µÈ »ùÇÃ ¿À¸é ±×¶§ ÁÖ¼® Á¦°Å
+    /* í•„í„°ì»¤ë²„ ë¦¬ë“œìŠ¤ìœ„ì¹˜ ê°ì§€ 250219 CH.PARK */
+    input_filter_cover_sw();     // ì œëŒ€ë¡œ ëœ ìƒ˜í”Œ ì˜¤ë©´ ê·¸ë•Œ ì£¼ì„ ì œê±°
 
-    /* ÇÊÅÍ »óÅÂ È®ÀÎ 250421 CH.PARK */
+    /* í•„í„° ìƒíƒœ í™•ì¸ 250421 CH.PARK */
     input_filter_all();
 
-    /* ÇÊÅÍ±³Ã¼ÁÖ±â °è»ê */
+    /* í•„í„°êµì²´ì£¼ê¸° ê³„ì‚° */
     filter_reset_timer__ino();
 
-    /* ÇÊÅÍ±³Ã¼ È®ÀÎ */
+    /* í•„í„°êµì²´ í™•ì¸ */
     decesion_filter_flushing();
 
-	/* ÇÊÅÍ±³Ã¼ ½Ã »ç¿ë·® µ¥ÀÌÅÍ ÃÊ±âÈ­ */
+	/* í•„í„°êµì²´ ì‹œ ì‚¬ìš©ëŸ‰ ë°ì´í„° ì´ˆê¸°í™” */
 	filter_reset();
 
 	// if(bit_filter_cover == CLEAR && bit_filter_reed == CLEAR)

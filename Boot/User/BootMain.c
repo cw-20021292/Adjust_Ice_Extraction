@@ -7,7 +7,7 @@
 
 #include "BootMain.h"
 
-__near U16 gu16BootModuleInitCnt = 100;	// 1sec. ¸ğµâ Àü¿ø/¸®¼ÂÇÉ Á¦¾î¸¦ À§ÇÑ Ä«¿îÆ®
+__near U16 gu16BootModuleInitCnt = 100;	// 1sec. ëª¨ë“ˆ ì „ì›/ë¦¬ì…‹í•€ ì œì–´ë¥¼ ìœ„í•œ ì¹´ìš´íŠ¸
 __near U16 gu16BootInitTimeoutCnt = 6000; // 1min.
 __near U8 gu8BootModuleInit_F;
 __near U8 gu8BootFailCnt; 
@@ -34,8 +34,8 @@ __near void BOOT_R_CGC_Create(void)
 
 __near void BOOT_R_PORT_Create(void)
 {
-	// Boot ¿µ¿ª¿¡¼­ Æ÷Æ® Default InputÀ¸·Î »ç¿ë 
-	// Wi-Fi Àü¿ø, ¸®¼Â Æ÷Æ® Output Low·Î ¾Æ·¡¿Í °°ÀÌ ¼³Á¤
+	// Boot ì˜ì—­ì—ì„œ í¬íŠ¸ Default Inputìœ¼ë¡œ ì‚¬ìš© 
+	// Wi-Fi ì „ì›, ë¦¬ì…‹ í¬íŠ¸ Output Lowë¡œ ì•„ë˜ì™€ ê°™ì´ ì„¤ì •
 	#ifdef BOOT_PM_MODULE_POWER
 		BOOT_PM_MODULE_POWER = LOW;			// LOW : Output
 	#endif
@@ -156,7 +156,7 @@ __near void BOOT_R_UART1_Create(void)
     PM0 |= 0x08U;
     /* Set TxD1 pin */
     PMC0 &= 0xFBU;
-    //P0 |= 0x04U;		// Module Àü¿ø µô·¹ÀÌ Á¦¾î¸¦ À§ÇÑ TXD1(P0.2) ÁÖ¼® Ã³¸®
+    //P0 |= 0x04U;		// Module ì „ì› ë”œë ˆì´ ì œì–´ë¥¼ ìœ„í•œ TXD1(P0.2) ì£¼ì„ ì²˜ë¦¬
     PM0 &= 0xFBU;  
 }
 
@@ -242,15 +242,15 @@ __near void hdwinit(void)
 
 __near static U8 BOOT_initModulePort(void)
 {
-	if(gu16BootModuleInitCnt <= 50) // 500ms °æ°ú
+	if(gu16BootModuleInitCnt <= 50) // 500ms ê²½ê³¼
 	{
-		if(BOOT_P_MODULE_POWER == CLEAR) BOOT_P_UART_TX = SET;		// Æ÷Æ® Àü¿ø µô·¹ÀÌ Á¦¾î Á¾·á ½Ã , TXD1 Ãâ·ÂÀº High 1È¸ Àû¿ë(positive edge trigger ÇüÅÂ)
+		if(BOOT_P_MODULE_POWER == CLEAR) BOOT_P_UART_TX = SET;		// í¬íŠ¸ ì „ì› ë”œë ˆì´ ì œì–´ ì¢…ë£Œ ì‹œ , TXD1 ì¶œë ¥ì€ High 1íšŒ ì ìš©(positive edge trigger í˜•íƒœ)
 		else{}	
 		BOOT_P_MODULE_POWER = SET;
 	}
-	else BOOT_P_UART_TX = CLEAR;									// Æ÷Æ® Àü¿ø µô·¹ÀÌ Á¦¾î ÁøÇà ½Ã, TXD1(P02) Ãâ·ÂÀº Low·Î °íÁ¤
+	else BOOT_P_UART_TX = CLEAR;									// í¬íŠ¸ ì „ì› ë”œë ˆì´ ì œì–´ ì§„í–‰ ì‹œ, TXD1(P02) ì¶œë ¥ì€ Lowë¡œ ê³ ì •
 	
-	if(gu16BootModuleInitCnt == 0) // 1ÃÊ °æ°ú
+	if(gu16BootModuleInitCnt == 0) // 1ì´ˆ ê²½ê³¼
 	{
 		BOOT_P_MODULE_RESET = SET;
 		return SET;
@@ -308,8 +308,8 @@ void boot_main(void)
 				{
 					mu8RxDataSaved = mu8RxData;
 					mu8RxData = BOOT_UartRxData(); 
-					if(mu8DeviceReady == BOOT_RX_NONE && mu8RxData == 'Y') mu8DeviceReady = BOOT_RX_DOING; 			// *ICT*DEVICEREAD'Y' ¼ö½Å Ã¼Å©
-					else if(mu8DeviceReady == BOOT_RX_DOING && mu8RxData == 0x0A) mu8DeviceReady = BOOT_RX_DONE;	// DEVICEREADY¸í·ÉÀÇ ETX(0x0A)±îÁö È®ÀÎ
+					if(mu8DeviceReady == BOOT_RX_NONE && mu8RxData == 'Y') mu8DeviceReady = BOOT_RX_DOING; 			// *ICT*DEVICEREAD'Y' ìˆ˜ì‹  ì²´í¬
+					else if(mu8DeviceReady == BOOT_RX_DOING && mu8RxData == 0x0A) mu8DeviceReady = BOOT_RX_DONE;	// DEVICEREADYëª…ë ¹ì˜ ETX(0x0A)ê¹Œì§€ í™•ì¸
 					else{}
 					
 					if(mu8DeviceReady == BOOT_RX_DONE)
@@ -327,19 +327,19 @@ void boot_main(void)
 						else if(mu8BootState == 0x00)
 						{	
 							gu8BootAuConValue = AUCON_DEACTIVATE;
-							BOOT_UartTxMsg(AT_ICT_AUCONMODE); 				// Auto Connection ºñÈ°¼ºÈ­ ¸í·É ¼Û½Å
-							gu16BootInitTimeoutCnt = BOOT_RxCheckTime;		// ÀÀ´ä ´ë±â¸¦ À§ÇÑ 30ÃÊ ÇÒ´ç
+							BOOT_UartTxMsg(AT_ICT_AUCONMODE); 				// Auto Connection ë¹„í™œì„±í™” ëª…ë ¹ ì†¡ì‹ 
+							gu16BootInitTimeoutCnt = BOOT_RxCheckTime;		// ì‘ë‹µ ëŒ€ê¸°ë¥¼ ìœ„í•œ 30ì´ˆ í• ë‹¹
 							mu8BootState++; 
 						}
-						else if(mu8BootState == 0x01 && mu8RxData == 'K')	mu8BootState++; 	// AUCONMODE:O'K' ¼ö½Å Ã¼Å©
-						else if(mu8BootState == 0x02 && mu8RxData == 0x0A)						// ETX(0x0A)±îÁö È®ÀÎ
+						else if(mu8BootState == 0x01 && mu8RxData == 'K')	mu8BootState++; 	// AUCONMODE:O'K' ìˆ˜ì‹  ì²´í¬
+						else if(mu8BootState == 0x02 && mu8RxData == 0x0A)						// ETX(0x0A)ê¹Œì§€ í™•ì¸
 						{
 							gu16BootInitTimeoutCnt = 6000;
 							#ifdef BOOT_MODULE_WIFI 
 								mu8BootState++; 
 							#endif
 							#ifdef BOOT_MODULE_LTE
-								mu8BootState = 0x04;			// LTE ¸ğµâÀÇ °æ¿ì AUCONMODE:OK ¼ö½Å ÀÌÈÄ, Reset ¹Ì¼öÇà
+								mu8BootState = 0x04;			// LTE ëª¨ë“ˆì˜ ê²½ìš° AUCONMODE:OK ìˆ˜ì‹  ì´í›„, Reset ë¯¸ìˆ˜í–‰
 								gu8BootModuleInit_F = SET;
 							break;
 							#endif
@@ -349,10 +349,10 @@ void boot_main(void)
 							gu8BootModuleInit_F = SET;
 							break;
 						} 
-						else if(mu8BootState == 0xF0 && mu8RxDataSaved == 'R' && mu8RxData == 'T') mu8BootState++;	// *ICT*OTA_SEND_STA'RT'=513 ¼ö½Å È®ÀÎ
-						else if(mu8BootState == 0xF1 && mu8RxData == 0x0A) // ETX(0x0A)±îÁö È®ÀÎ
+						else if(mu8BootState == 0xF0 && mu8RxDataSaved == 'R' && mu8RxData == 'T') mu8BootState++;	// *ICT*OTA_SEND_STA'RT'=513 ìˆ˜ì‹  í™•ì¸
+						else if(mu8BootState == 0xF1 && mu8RxData == 0x0A) // ETX(0x0A)ê¹Œì§€ í™•ì¸
 						{
-							BOOT_UartTxMsg(AT_ICT_OTA_SEND_DATA);	 // ¼Û½Å ÀÌÈÄ, gu16BootInitTimeoutCnt º¯¼ö¿¡ ÀÇÇØ Reset 
+							BOOT_UartTxMsg(AT_ICT_OTA_SEND_DATA);	 // ì†¡ì‹  ì´í›„, gu16BootInitTimeoutCnt ë³€ìˆ˜ì— ì˜í•´ Reset 
 							mu8BootState = 0xF2;
 						}
 						else{}
@@ -360,23 +360,23 @@ void boot_main(void)
 					else{}
 				}
 				else{}	
-				if(mu8BootState == 0x03 && (gu16BootInitTimeoutCnt < 5900)) // 1ÃÊ °æ°ú ½Ã ¸ğµâ ¸®¼Â(60ÃÊ->59ÃÊ)
+				if(mu8BootState == 0x03 && (gu16BootInitTimeoutCnt < 5900)) // 1ì´ˆ ê²½ê³¼ ì‹œ ëª¨ë“ˆ ë¦¬ì…‹(60ì´ˆ->59ì´ˆ)
 				{
 						gu16BootModuleInitCnt = 100;
 						BOOT_P_MODULE_POWER = BOOT_P_MODULE_RESET = CLEAR; 
 						mu8DeviceReady = BOOT_RX_NONE;
 						mu8BootState++; 
 				}
-				else if(mu8BootState == 0xF0) gu16BootInitTimeoutCnt = 300;	// *ICT*OTA_SEND_START=513 ¼ö½Å ´ë±â (3ÃÊ ÃÊ±âÈ­ Áö¼Ó)
+				else if(mu8BootState == 0xF0) gu16BootInitTimeoutCnt = 300;	// *ICT*OTA_SEND_START=513 ìˆ˜ì‹  ëŒ€ê¸° (3ì´ˆ ì´ˆê¸°í™” ì§€ì†)
 				else{} 
 			}
 			else{}
-			if(!gu16BootInitTimeoutCnt) // 1) DEVICEREADY ¹Ì¼ö½Å 1ºĞ °æ°ú ½Ã, Reset	2) DEVICEREADY ¼ö½Å ÈÄ, AUCONMODE:OK ¹Ì¼ö½Å 30ÃÊ °æ°ú ½Ã 
+			if(!gu16BootInitTimeoutCnt) // 1) DEVICEREADY ë¯¸ìˆ˜ì‹  1ë¶„ ê²½ê³¼ ì‹œ, Reset	2) DEVICEREADY ìˆ˜ì‹  í›„, AUCONMODE:OK ë¯¸ìˆ˜ì‹  30ì´ˆ ê²½ê³¼ ì‹œ 
 			{
-				if(mu8BootState != 0xF2)	// FOTA 5È¸ ½ÇÆĞ ÈÄ, ¸®¼ÂÇÏ´Â °æ¿ì¿¡´Â ½ÇÆĞÄ«¿îÆ®¸¦ Àû¿ëÇÏÁö ¾ÊÀ½
+				if(mu8BootState != 0xF2)	// FOTA 5íšŒ ì‹¤íŒ¨ í›„, ë¦¬ì…‹í•˜ëŠ” ê²½ìš°ì—ëŠ” ì‹¤íŒ¨ì¹´ìš´íŠ¸ë¥¼ ì ìš©í•˜ì§€ ì•ŠìŒ
 				{
 					gu8BootFailCnt--;
-					BOOT_FDLWriteByte(DATAFLASH_ADDR_BOOTFAILCNT, &gu8BootFailCnt, 1);	// ½ÇÆĞ Ä«¿îÆ® »ó½Â	
+					BOOT_FDLWriteByte(DATAFLASH_ADDR_BOOTFAILCNT, &gu8BootFailCnt, 1);	// ì‹¤íŒ¨ ì¹´ìš´íŠ¸ ìƒìŠ¹	
 				}
 				else{} 
 				while(1){}	
@@ -396,11 +396,11 @@ void boot_main(void)
 				{
 					#ifdef BOOT_MODULE_WIFI
 						gu8BootAuConValue = AUCON_ACTIVATE;
-						BOOT_UartTxMsg(AT_ICT_AUCONMODE); 		// Auto Connection È°¼ºÈ­ ¸í·É ¼Û½Å
+						BOOT_UartTxMsg(AT_ICT_AUCONMODE); 		// Auto Connection í™œì„±í™” ëª…ë ¹ ì†¡ì‹ 
 						mu8BootState++;
 					#endif
 					#ifdef BOOT_MODULE_LTE
-						while(1){}								// LTE ¸ğµâÀÇ °æ¿ì, Reset ¼öÇà ½Ã Auto Connection È°¼ºÈ­»óÅÂ·Î µ¿ÀÛ
+						while(1){}								// LTE ëª¨ë“ˆì˜ ê²½ìš°, Reset ìˆ˜í–‰ ì‹œ Auto Connection í™œì„±í™”ìƒíƒœë¡œ ë™ì‘
 					#endif
 				}
 				else{} 		
@@ -408,15 +408,15 @@ void boot_main(void)
 			else if(mu8BootState == 0x05)
 			{
 				mu8RxData = BOOT_UartRxData();
-				if(mu8RxData == 'K') while(1){}				// *ICT*AUCONMODE:O'K' ¼ö½Å Ã¼Å© ¹× Reset ¼öÇà
+				if(mu8RxData == 'K') while(1){}				// *ICT*AUCONMODE:O'K' ìˆ˜ì‹  ì²´í¬ ë° Reset ìˆ˜í–‰
 				else{}
 			}
 			else{}
 			if(gu16BootModuleRxCheck == 0) 
 			{
 				gu8BootFailCnt--;
-				BOOT_FDLWriteByte(DATAFLASH_ADDR_BOOTFAILCNT, &gu8BootFailCnt, 1);	// ½ÇÆĞ Ä«¿îÆ® »ó½Â
-				while(1){}	// ¿¡·¯ ¹ß»ı ½Ã, ¸®¼Â
+				BOOT_FDLWriteByte(DATAFLASH_ADDR_BOOTFAILCNT, &gu8BootFailCnt, 1);	// ì‹¤íŒ¨ ì¹´ìš´íŠ¸ ìƒìŠ¹
+				while(1){}	// ì—ëŸ¬ ë°œìƒ ì‹œ, ë¦¬ì…‹
 			}
 			else{}
 		}
@@ -431,12 +431,12 @@ void boot_main(void)
 			{
 				gu8BootFailCnt--;
 				BOOT_FDLWriteByte(DATAFLASH_ADDR_BOOTFAILCNT, &gu8BootFailCnt, 1);
-				BOOT_setOTARequest();	// Erase ½ÇÆĞ ½Ã, ½ÇÆĞÄ«¿îÆ® »ó½Â ÈÄ, FOTA Àç½ÃÀÛ
+				BOOT_setOTARequest();	// Erase ì‹¤íŒ¨ ì‹œ, ì‹¤íŒ¨ì¹´ìš´íŠ¸ ìƒìŠ¹ í›„, FOTA ì¬ì‹œì‘
 			}
 		}
 		mu8FDLRxData[0] = mu8FDLRxData[1] = mu8FDLRxData[2] = 0xFF;			// CLEAR
-		BOOT_FDLWriteByte(DATAFLASH_ADDR_OTASTATUS, mu8FDLRxData, 3);		// OTA »óÅÂ ÃÊ±âÈ­
-		BOOT_FDLWriteByte(DATAFLASH_ADDR_BOOTFAILCNT, mu8FDLRxData, 1);		// ½ÇÆĞ Ä«¿îÆ® ÃÊ±âÈ­ 
+		BOOT_FDLWriteByte(DATAFLASH_ADDR_OTASTATUS, mu8FDLRxData, 3);		// OTA ìƒíƒœ ì´ˆê¸°í™”
+		BOOT_FDLWriteByte(DATAFLASH_ADDR_BOOTFAILCNT, mu8FDLRxData, 1);		// ì‹¤íŒ¨ ì¹´ìš´íŠ¸ ì´ˆê¸°í™” 
 	}
 	else 
 	{

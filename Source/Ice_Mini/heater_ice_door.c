@@ -23,24 +23,24 @@ TYPE_BYTE          U8HEATERIceDoorOFFB;
 #define            u8HEATIceDoorOFF                       U8HEATERIceDoorOFFB.byte
 #define            Bit0_Ice_Out_H_Off_State               U8HEATERIceDoorOFFB.Bit.b0
 /**********************************************************************************************************************/
-bit Bit_IceDoor_Heater_Output;                          /* ¾óÀ½µµ¾îºÎ È÷ÅÍ Ãâ·Â ÇöÈ² */
-U8  U8_Door_Heater_No_FB_Detect_Timer_100ms = CLEAR;    /* ¾óÀ½µµ¾îºÎ È÷ÅÍ Àü·ùÇÇµå¹é ¿¡·¯ °ËÃâ Å¸ÀÌ¸Ó */
-U8  U8_Door_Heater_No_FB_Clear_Timer_100ms = CLEAR;     /* ¾óÀ½µµ¾îºÎ È÷ÅÍ Àü·ùÇÇµå¹é ¿¡·¯ ÇØÁ¦ Å¸ÀÌ¸Ó */
-U8  U8_Door_Heater_No_FB_Start_Timer_100ms = CLEAR;     /* ¾óÀ½µµ¾îºÎ È÷ÅÍ Àü·ùÇÇµå¹é ÆÇ´Ü ½ÃÀÛ Å¸ÀÌ¸Ó */
-U8  gu8_ice_on_door_heater_op_timer_100ms  = CLEAR;     /* ¾óÀ½µµ¾î È÷ÅÍ µ¿ÀÛ °£°İ 10ÃÊ */
+bit Bit_IceDoor_Heater_Output;                          /* ì–¼ìŒë„ì–´ë¶€ íˆí„° ì¶œë ¥ í˜„í™© */
+U8  U8_Door_Heater_No_FB_Detect_Timer_100ms = CLEAR;    /* ì–¼ìŒë„ì–´ë¶€ íˆí„° ì „ë¥˜í”¼ë“œë°± ì—ëŸ¬ ê²€ì¶œ íƒ€ì´ë¨¸ */
+U8  U8_Door_Heater_No_FB_Clear_Timer_100ms = CLEAR;     /* ì–¼ìŒë„ì–´ë¶€ íˆí„° ì „ë¥˜í”¼ë“œë°± ì—ëŸ¬ í•´ì œ íƒ€ì´ë¨¸ */
+U8  U8_Door_Heater_No_FB_Start_Timer_100ms = CLEAR;     /* ì–¼ìŒë„ì–´ë¶€ íˆí„° ì „ë¥˜í”¼ë“œë°± íŒë‹¨ ì‹œì‘ íƒ€ì´ë¨¸ */
+U8  gu8_ice_on_door_heater_op_timer_100ms  = CLEAR;     /* ì–¼ìŒë„ì–´ íˆí„° ë™ì‘ ê°„ê²© 10ì´ˆ */
 /**********************************************************************************************************************/
 extern ICE_STEP gu8IceStep;
 /**********************************************************************************************************************/
 
 /**
- * @brief ¾óÀ½ µµ¾î È÷ÅÍ Àü·ù ÇÇµå¹é È®ÀÎ ÇÔ¼ö
+ * @brief ì–¼ìŒ ë„ì–´ íˆí„° ì „ë¥˜ í”¼ë“œë°± í™•ì¸ í•¨ìˆ˜
  * 
  */
 void    DETECT_ICE_DOOR_HEATER_NO_FB(void);
 
 /**********************************************************************************************************************/
 /**
- * @brief ¾ÆÀÌ½º µµ¾î µğ½ºÆæ¼­ ºÎÀ§ È÷ÅÍ Á¦¾î ÇÔ¼ö
+ * @brief ì•„ì´ìŠ¤ ë„ì–´ ë””ìŠ¤íœì„œ ë¶€ìœ„ íˆí„° ì œì–´ í•¨ìˆ˜
  * 
  */
 void OUTPUT_HEATER_ICE_DOOR(void)
@@ -53,7 +53,7 @@ void OUTPUT_HEATER_ICE_DOOR(void)
 
     Bit0_Ice_Enable_State = F_IceOn;
 
-    /* Á¦ºùÁßÀÏ ¶§´Â ÄÔ 250618 CH.PARK */
+    /* ì œë¹™ì¤‘ì¼ ë•ŒëŠ” ì¼¬ 250618 CH.PARK */
     if((gu8IceStep >= STATE_11_WAIT_ROOM_WATER_FULL)
     && (gu8IceStep <= STATE_50_ICE_FULL_IR_CHECK)
     )
@@ -65,7 +65,7 @@ void OUTPUT_HEATER_ICE_DOOR(void)
         Bit1_Ice_Making_State = CLEAR;
     }
     
-    // /* (ÀÓ½Ã) ¾óÀ½ÃßÃâÇÒ ¶§´Â ÀÓ½ÃÀûÀ¸·Î È÷ÅÍ OFF */
+    // /* (ì„ì‹œ) ì–¼ìŒì¶”ì¶œí•  ë•ŒëŠ” ì„ì‹œì ìœ¼ë¡œ íˆí„° OFF */
     // if(F_IceOut == SET)
     // {
     //     Bit0_Ice_Out_H_Off_State = SET;
@@ -100,7 +100,7 @@ void OUTPUT_HEATER_ICE_DOOR(void)
 
 /**********************************************************************************************************************/
 /**
- * @brief ¾óÀ½ µµ¾î È÷ÅÍ Àü·ù ÇÇµå¹é È®ÀÎ ÇÔ¼ö
+ * @brief ì–¼ìŒ ë„ì–´ íˆí„° ì „ë¥˜ í”¼ë“œë°± í™•ì¸ í•¨ìˆ˜
  * 
  */
 void    DETECT_ICE_DOOR_HEATER_NO_FB(void)
@@ -108,12 +108,12 @@ void    DETECT_ICE_DOOR_HEATER_NO_FB(void)
     if(Bit_IceDoor_Heater_Output == SET)
     {
         U8_Door_Heater_No_FB_Start_Timer_100ms++;
-        /* È÷ÅÍ °¡µ¿ ÈÄ 3ÃÊ ÀÌÈÄºÎÅÍ °¨Áö ½ÃÀÛ (AD°ª ¾ÈÁ¤È­) 250228 CH.PARK */
+        /* íˆí„° ê°€ë™ í›„ 3ì´ˆ ì´í›„ë¶€í„° ê°ì§€ ì‹œì‘ (ADê°’ ì•ˆì •í™”) 250228 CH.PARK */
         if(U8_Door_Heater_No_FB_Start_Timer_100ms >= 3)
         {
             U8_Door_Heater_No_FB_Start_Timer_100ms = 3;
 
-            /* ÀÏÁ¤ AD°ª ÀÌÇÏ·Î °¨ÁöµÇ¸é ¿¡·¯ Ä«¿îÆ® ½ÃÀÛ 250228 CH.PARK */
+            /* ì¼ì • ADê°’ ì´í•˜ë¡œ ê°ì§€ë˜ë©´ ì—ëŸ¬ ì¹´ìš´íŠ¸ ì‹œì‘ 250228 CH.PARK */
             if(gu16_AD_Result_IceDoor_Heater_Current <= ICE_DOOR_HEATER_FB_AD)
             {
                 U8_Door_Heater_No_FB_Clear_Timer_100ms = CLEAR;
@@ -122,7 +122,7 @@ void    DETECT_ICE_DOOR_HEATER_NO_FB(void)
                 if(U8_Door_Heater_No_FB_Detect_Timer_100ms >= 100)
                 {
                     U8_Door_Heater_No_FB_Detect_Timer_100ms = 100;
-                    // ¿¡·¯ ¹ß»ı
+                    // ì—ëŸ¬ ë°œìƒ
                 }
                 else {  }
             }
@@ -134,7 +134,7 @@ void    DETECT_ICE_DOOR_HEATER_NO_FB(void)
                 if(U8_Door_Heater_No_FB_Clear_Timer_100ms >= 100)
                 {
                     U8_Door_Heater_No_FB_Clear_Timer_100ms = 100;
-                    // ¿¡·¯ ÇØÁ¦
+                    // ì—ëŸ¬ í•´ì œ
                 }
                 else {  }
             }

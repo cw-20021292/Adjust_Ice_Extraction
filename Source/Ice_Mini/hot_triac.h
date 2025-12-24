@@ -79,8 +79,8 @@ extern U8 gu8_Test_dbg_drain_Mode;
 extern bit bit_ice_tank_ster_start;
 extern ICE_STER_MODE gu8_ice_ster_mode;
 extern FLUSHING_STEP gu8_flushing_mode;
-extern U8 gu8_hot_filling_max_hz;							// ¢®U 2025-06-10 Phil 
-extern U8 u8Target_Hz_Hot; 										// ¢®U 2025-06-10 Phil 
+extern U8 gu8_hot_filling_max_hz;							// Â¢Â®U 2025-06-10 Phil 
+extern U8 u8Target_Hz_Hot; 										// Â¢Â®U 2025-06-10 Phil 
 
 extern bit F_hot_flow_error;    //cbr_test
 extern U8 gu8_hot_drain_cold;

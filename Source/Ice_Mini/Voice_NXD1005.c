@@ -181,18 +181,18 @@ void send_volume_next_lab(void)
     }
     else{}
 
-    /*º¼·ı ¼³Á¤*/
-    /* ÁÖ¿ä º¸ÀÌ½º Ç×¸ñµé¿¡ ´ëÇØ¼­´Â º¼·ıÀ» ÃÖ´ë·Î ÇÑ´Ù. */
+    /*ë³¼ë¥¨ ì„¤ì •*/
+    /* ì£¼ìš” ë³´ì´ìŠ¤ í•­ëª©ë“¤ì— ëŒ€í•´ì„œëŠ” ë³¼ë¥¨ì„ ìµœëŒ€ë¡œ í•œë‹¤. */
     if( IsCriticalVoice( gu16_voice_address ) == TRUE )
     {
-        /*..hui [21-10-13¿ÀÈÄ 7:29:19] 5´Ü°è·Î º¯°æ..*/
+        /*..hui [21-10-13ì˜¤í›„ 7:29:19] 5ë‹¨ê³„ë¡œ ë³€ê²½..*/
         gu16_voice_command = 0xE100 + VOICE_COMMAND_VOLUME_5;
     }
     else
     {
         if( bit_sleep_mode_start == SET )
         {
-            /*..hui [24-2-20¿ÀÈÄ 2:00:21] ÃëÄ§¸ğµåÀÏ °æ¿ì º¼·ı 1·Î ³·Ãã..*/
+            /*..hui [24-2-20ì˜¤í›„ 2:00:21] ì·¨ì¹¨ëª¨ë“œì¼ ê²½ìš° ë³¼ë¥¨ 1ë¡œ ë‚®ì¶¤..*/
             gu16_voice_command = 0xE100 + gu16BeepVolumeRegList[ SOUND_VOLUME_LEVEL_1 ];
         }
         else
@@ -208,9 +208,9 @@ void send_volume_next_lab(void)
         }
     }
 
-    Delay_Next_Lab(400);   // ¾à25us
+    Delay_Next_Lab(400);   // ì•½25us
     SEND_SPI_COMMAND_NEXT_LAB();
-    Delay_Next_Lab(400);   // ¾à25us
+    Delay_Next_Lab(400);   // ì•½25us
 }
 
 /***********************************************************************************************************************
@@ -225,7 +225,7 @@ void send_data_next_lab(void)
           gu16_voice_command = VOICE_COMMAND_ADDRESS_256; //phase group=0, high address = 000
           SEND_SPI_COMMAND_NEXT_LAB();
           //set lower 8 bit address on $E0 register
-          Delay_Next_Lab(400);   // ¾à25us
+          Delay_Next_Lab(400);   // ì•½25us
           gu16_voice_command = VOICE_COMMAND_ADDRESS_0 + gu16_voice_address; //set lower 8 bit address on $E0 register
           SEND_SPI_COMMAND_NEXT_LAB();
       }
@@ -235,19 +235,19 @@ void send_data_next_lab(void)
           gu16_voice_command = VOICE_COMMAND_ADDRESS_512; //phrase group = 1, high address = 1
           SEND_SPI_COMMAND_NEXT_LAB();
           //set lower 8 bit address on $E0 register
-          Delay_Next_Lab(400);   // ¾à25us
+          Delay_Next_Lab(400);   // ì•½25us
           gu16_voice_command = VOICE_COMMAND_ADDRESS_0 + (gu16_voice_address - 256); //set lower 8 bit address on $E0 register
           SEND_SPI_COMMAND_NEXT_LAB();
       }
       //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-      /*..Ãß°¡ (È®Àå)..*/
+      /*..ì¶”ê°€ (í™•ì¥)..*/
       //set $E4 register = 0x02 if address is 512~767
       else if ( gu16_voice_address < 768)
       {                                       //set phrase group & higher 3 bit address on $E4 register
           gu16_voice_command = VOICE_COMMAND_ADDRESS_768; //phrase group = 2, high address = 010
           SEND_SPI_COMMAND_NEXT_LAB();
           //set lower 8 bit address on $E0 register
-          Delay_Next_Lab(400);   // ¾à25us
+          Delay_Next_Lab(400);   // ì•½25us
           gu16_voice_command = VOICE_COMMAND_ADDRESS_0 + (gu16_voice_address - 512); //set lower 8 bit address on $E0 register
           SEND_SPI_COMMAND_NEXT_LAB();
       }
@@ -257,7 +257,7 @@ void send_data_next_lab(void)
           gu16_voice_command = VOICE_COMMAND_ADDRESS_1024; //phrase group = 3, high address = 011
           SEND_SPI_COMMAND_NEXT_LAB();
           //set lower 8 bit address on $E0 register
-          Delay_Next_Lab(400);   // ¾à25us
+          Delay_Next_Lab(400);   // ì•½25us
           gu16_voice_command = VOICE_COMMAND_ADDRESS_0 + (gu16_voice_address - 768); //set lower 8 bit address on $E0 register
           SEND_SPI_COMMAND_NEXT_LAB();
       }
@@ -267,7 +267,7 @@ void send_data_next_lab(void)
           gu16_voice_command = VOICE_COMMAND_ADDRESS_1280; //phrase group = 4, high address = 100
           SEND_SPI_COMMAND_NEXT_LAB();
           //set lower 8 bit address on $E0 register
-          Delay_Next_Lab(400);   // ¾à25us
+          Delay_Next_Lab(400);   // ì•½25us
           gu16_voice_command = VOICE_COMMAND_ADDRESS_0 + (gu16_voice_address - 1024); //set lower 8 bit address on $E0 register
           SEND_SPI_COMMAND_NEXT_LAB();
       }
@@ -277,7 +277,7 @@ void send_data_next_lab(void)
           gu16_voice_command = VOICE_COMMAND_ADDRESS_1536; //phrase group = 5, high address = 101
           SEND_SPI_COMMAND_NEXT_LAB();
           //set lower 8 bit address on $E0 register
-          Delay_Next_Lab(400);   // ¾à25us
+          Delay_Next_Lab(400);   // ì•½25us
           gu16_voice_command = VOICE_COMMAND_ADDRESS_0 + (gu16_voice_address - 1280); //set lower 8 bit address on $E0 register
           SEND_SPI_COMMAND_NEXT_LAB();
       }
@@ -287,7 +287,7 @@ void send_data_next_lab(void)
           gu16_voice_command = VOICE_COMMAND_ADDRESS_1792; //phrase group = 6, high address = 110
           SEND_SPI_COMMAND_NEXT_LAB();
           //set lower 8 bit address on $E0 register
-          Delay_Next_Lab(400);   // ¾à25us
+          Delay_Next_Lab(400);   // ì•½25us
           gu16_voice_command = VOICE_COMMAND_ADDRESS_0 + (gu16_voice_address - 1536); //set lower 8 bit address on $E0 register
           SEND_SPI_COMMAND_NEXT_LAB();
       }
@@ -297,13 +297,13 @@ void send_data_next_lab(void)
           gu16_voice_command = VOICE_COMMAND_ADDRESS_2048; //phrase group = 7, high address = 111
           SEND_SPI_COMMAND_NEXT_LAB();
           //set lower 8 bit address on $E0 register
-          Delay_Next_Lab(400);   // ¾à25us
+          Delay_Next_Lab(400);   // ì•½25us
           gu16_voice_command = VOICE_COMMAND_ADDRESS_0 + (gu16_voice_address - 1792); //set lower 8 bit address on $E0 register
           SEND_SPI_COMMAND_NEXT_LAB();
       }
       else
       {
-         /*..Ãâ·Â ¾ÈÇÔ..*/
+         /*..ì¶œë ¥ ì•ˆí•¨..*/
       }
 }
 
@@ -318,20 +318,20 @@ void SEND_SPI_COMMAND_NEXT_LAB(void)
    int i = 0;
 
    Port_VOICE_CSB = 0; //start SPI
-   //Delay_us(5);        /*CSB Low ÈÄ 5ns~20ns delay*/
+   //Delay_us(5);        /*CSB Low í›„ 5ns~20ns delay*/
    //Delay_Next_Lab(8);
-   //Delay_Next_Lab(640);                    // ¾à40us
-   //Delay_Next_Lab(1000);                    // ¾à40us   //?????????????????????????????????????
-   Delay_Next_Lab(24000);                    // CSB Low ÈÄ ¾à 1.4ms   //?????????????????????????????????????
+   //Delay_Next_Lab(640);                    // ì•½40us
+   //Delay_Next_Lab(1000);                    // ì•½40us   //?????????????????????????????????????
+   Delay_Next_Lab(24000);                    // CSB Low í›„ ì•½ 1.4ms   //?????????????????????????????????????
    Port_VOICE_clk = 0; //stand-by status,
 
-   /*16bit Ã³¸®*/
+   /*16bit ì²˜ë¦¬*/
    while (i < 16)
    {
       Port_VOICE_clk = 0;
       //Delay_us(5); /*mimium 500ns*/
       //Delay_Next_Lab(8);
-      Delay_Next_Lab(160);                 // ¾à10us
+      Delay_Next_Lab(160);                 // ì•½10us
 
       if(gu16_voice_command & MK_COMMAND)
       {
@@ -345,7 +345,7 @@ void SEND_SPI_COMMAND_NEXT_LAB(void)
       gu16_voice_command <<= 1; //shift left
       //Delay_us(5);   /*mimium 500ns*/
       //Delay_Next_Lab(8);
-      Delay_Next_Lab(160);                 // ¾à10us
+      Delay_Next_Lab(160);                 // ì•½10us
 
       Port_VOICE_clk = 1;
       i++;
@@ -354,11 +354,11 @@ void SEND_SPI_COMMAND_NEXT_LAB(void)
 
        if(i == 8)
        {
-           Delay_Next_Lab(640);               // ¾à40us (1Byte-1byte ÆĞÅ¶±¸ºĞ)
+           Delay_Next_Lab(640);               // ì•½40us (1Byte-1byte íŒ¨í‚·êµ¬ë¶„)
        }
        else
        {
-           Delay_Next_Lab(320);              // ¾à20us
+           Delay_Next_Lab(320);              // ì•½20us
        }
    }
 
@@ -366,7 +366,7 @@ void SEND_SPI_COMMAND_NEXT_LAB(void)
    //Delay_us(5);
    Delay_Next_Lab(8);                    // 0.5us
    Port_VOICE_CSB = 1; //stand-by status
-   //Delay_us(10);       /*KMH next command¸¦ À§ÇØ 5us delay*/
+   //Delay_us(10);       /*KMH next commandë¥¼ ìœ„í•´ 5us delay*/
    //Delay_Next_Lab(12);
    Delay_Next_Lab(320);                  // 20us
 }

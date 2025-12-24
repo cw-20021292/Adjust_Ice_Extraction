@@ -29,31 +29,31 @@ TYPE_WORD          U16ColdOperationW;
 #define            u16ColdOperation                            U16ColdOperationW.word
 #define            u8ColdOperation_L                           U16ColdOperationW.byte[0]
 #define            u8ColdOperation_H                           U16ColdOperationW.byte[1]
-#define            Bit0_Cold_Setting                           U16ColdOperationW.Bit.b0         /* (³Ã°¢) ³Ã¼ö ON/OFF ¼³Á¤¿©ºÎ */
-#define            Bit1_Cold_Temp_Protect                      U16ColdOperationW.Bit.b1         /* (³Ã°¢) ³Ã°¢ ½Ã º¸È£ µ¿ÀÛ */
-#define            Bit2_Cold_Temp_Control                      U16ColdOperationW.Bit.b2         /* (³Ã°¢) ³Ã¼ö ¿ÂµµÁ¦¾î */
-#define            Bit3_Ice_Init_Cold_Stop                     U16ColdOperationW.Bit.b3         /* (³Ã°¢) ¾óÀ½ °ü·Ã ÃÊ±âÈ­ ¿©ºÎ */
-#define            Bit4_Cold_Error                             U16ColdOperationW.Bit.b4         /* (³Ã°¢) ³Ã°¢ °ü·Ã ¿¡·¯ ¿©ºÎ */
-#define            Bit5_Cold_Flushing_Stop                     U16ColdOperationW.Bit.b5         /* (³Ã°¢) ÇÃ·¯½ÌÁß¿¡ ³Ã°¢ ±İÁö */
-#define            Bit6_Cold_Ice_Ster_Stop                     U16ColdOperationW.Bit.b6         /* (³Ã°¢) ¾óÀ½Æ®·¹ÀÌ °í¿Â»ì±ÕÁß ³Ã°¢ ±İÁö */
-#define            Bit7_Cody_Service_Cold_Off                  U16ColdOperationW.Bit.b7         /* (³Ã°¢) ÄÚµğ ¼­ºñ½ºÁß¿¡´Â ³Ã°¢ ±İÁö */
+#define            Bit0_Cold_Setting                           U16ColdOperationW.Bit.b0         /* (ëƒ‰ê°) ëƒ‰ìˆ˜ ON/OFF ì„¤ì •ì—¬ë¶€ */
+#define            Bit1_Cold_Temp_Protect                      U16ColdOperationW.Bit.b1         /* (ëƒ‰ê°) ëƒ‰ê° ì‹œ ë³´í˜¸ ë™ì‘ */
+#define            Bit2_Cold_Temp_Control                      U16ColdOperationW.Bit.b2         /* (ëƒ‰ê°) ëƒ‰ìˆ˜ ì˜¨ë„ì œì–´ */
+#define            Bit3_Ice_Init_Cold_Stop                     U16ColdOperationW.Bit.b3         /* (ëƒ‰ê°) ì–¼ìŒ ê´€ë ¨ ì´ˆê¸°í™” ì—¬ë¶€ */
+#define            Bit4_Cold_Error                             U16ColdOperationW.Bit.b4         /* (ëƒ‰ê°) ëƒ‰ê° ê´€ë ¨ ì—ëŸ¬ ì—¬ë¶€ */
+#define            Bit5_Cold_Flushing_Stop                     U16ColdOperationW.Bit.b5         /* (ëƒ‰ê°) í”ŒëŸ¬ì‹±ì¤‘ì— ëƒ‰ê° ê¸ˆì§€ */
+#define            Bit6_Cold_Ice_Ster_Stop                     U16ColdOperationW.Bit.b6         /* (ëƒ‰ê°) ì–¼ìŒíŠ¸ë ˆì´ ê³ ì˜¨ì‚´ê· ì¤‘ ëƒ‰ê° ê¸ˆì§€ */
+#define            Bit7_Cody_Service_Cold_Off                  U16ColdOperationW.Bit.b7         /* (ëƒ‰ê°) ì½”ë”” ì„œë¹„ìŠ¤ì¤‘ì—ëŠ” ëƒ‰ê° ê¸ˆì§€ */
 
 
 TYPE_WORD          U16IceOperationW;
 #define            u16IceOperation                            U16IceOperationW.word
 #define            u8IceOperation_L                           U16IceOperationW.byte[0]
 #define            u8IceOperation_H                           U16IceOperationW.byte[1]
-#define            Bit0_Ice_Setting                           U16IceOperationW.Bit.b0           /* (Á¦ºù) ¾óÀ½ ON/OFF ¼³Á¤¿©ºÎ */
-#define            Bit1_Ice_Temp_Protect                      U16IceOperationW.Bit.b1           /* (Á¦ºù) Æ®·¹ÀÌ ÀÔ¼ö Á¤»ó¿©ºÎ */
-#define            Bit2_Ice_Full                              U16IceOperationW.Bit.b2           /* (Á¦ºù) ¾óÀ½ÅÊÅ© ¸¸ºù¿©ºÎ (¸¸ºùÀÌ¸é CLEAR) */
-#define            Bit3_Ice_Stop_Six_Hour                     U16IceOperationW.Bit.b3           /* (Á¦ºù) ½½¸³¸ğµå »ç¿ë¿©ºÎ : »ç¾ç ¹ÌÁ¤ */
-#define            Bit4_Ice_Init_Ice_Stop                     U16IceOperationW.Bit.b4           /* (Á¦ºù) ¾óÀ½ °ü·Ã ÃÊ±âÈ­ ¿©ºÎ */
-#define            Bit5_Ice_Stop_Safty_Routine                U16IceOperationW.Bit.b5           /* (Á¦ºù) ¾óÀ½ ¾ÈÀü °ü·Ã : ¾óÀ½Æ®·¹ÀÌ °É¸² */
-#define            Bit6_Ice_Error                             U16IceOperationW.Bit.b6           /* (Á¦ºù) ¾óÀ½°ü·Ã ¿¡·¯ ¹ß»ı¿©ºÎ */
-#define            Bit7_Cody_Service_Ice_Off                  U16IceOperationW.Bit.b7           /* (Á¦ºù) ÄÚµğ Á¡°Ë ¿©ºÎ - ÅÊÅ©Ä¿¹ö ¿­¸² */
-#define            Bit8_Ice_Stop_Flushing                     U16IceOperationW.Bit.b8           /* (Á¦ºù) ÇÃ·¯½ÌÁß¿¡´Â Á¦ºù ±İÁö */
-#define            Bit9_Ice_Stop_Ice_Ster                     U16IceOperationW.Bit.b9           /* (Á¦ºù) ¾óÀ½Æ®·¹ÀÌ °í¿Â»ì±ÕÁß Á¦ºù ±İÁö */
-#define            Bit10_Fast_Ice_Make_Limit                  U16IceOperationW.Bit.b10          /* (Á¦ºù) ºü¸¥Á¦ºù Á¦ºùÈ½¼ö Ä«¿îÆÃ ¿©ºÎ */
+#define            Bit0_Ice_Setting                           U16IceOperationW.Bit.b0           /* (ì œë¹™) ì–¼ìŒ ON/OFF ì„¤ì •ì—¬ë¶€ */
+#define            Bit1_Ice_Temp_Protect                      U16IceOperationW.Bit.b1           /* (ì œë¹™) íŠ¸ë ˆì´ ì…ìˆ˜ ì •ìƒì—¬ë¶€ */
+#define            Bit2_Ice_Full                              U16IceOperationW.Bit.b2           /* (ì œë¹™) ì–¼ìŒíƒ±í¬ ë§Œë¹™ì—¬ë¶€ (ë§Œë¹™ì´ë©´ CLEAR) */
+#define            Bit3_Ice_Stop_Six_Hour                     U16IceOperationW.Bit.b3           /* (ì œë¹™) ìŠ¬ë¦½ëª¨ë“œ ì‚¬ìš©ì—¬ë¶€ : ì‚¬ì–‘ ë¯¸ì • */
+#define            Bit4_Ice_Init_Ice_Stop                     U16IceOperationW.Bit.b4           /* (ì œë¹™) ì–¼ìŒ ê´€ë ¨ ì´ˆê¸°í™” ì—¬ë¶€ */
+#define            Bit5_Ice_Stop_Safty_Routine                U16IceOperationW.Bit.b5           /* (ì œë¹™) ì–¼ìŒ ì•ˆì „ ê´€ë ¨ : ì–¼ìŒíŠ¸ë ˆì´ ê±¸ë¦¼ */
+#define            Bit6_Ice_Error                             U16IceOperationW.Bit.b6           /* (ì œë¹™) ì–¼ìŒê´€ë ¨ ì—ëŸ¬ ë°œìƒì—¬ë¶€ */
+#define            Bit7_Cody_Service_Ice_Off                  U16IceOperationW.Bit.b7           /* (ì œë¹™) ì½”ë”” ì ê²€ ì—¬ë¶€ - íƒ±í¬ì»¤ë²„ ì—´ë¦¼ */
+#define            Bit8_Ice_Stop_Flushing                     U16IceOperationW.Bit.b8           /* (ì œë¹™) í”ŒëŸ¬ì‹±ì¤‘ì—ëŠ” ì œë¹™ ê¸ˆì§€ */
+#define            Bit9_Ice_Stop_Ice_Ster                     U16IceOperationW.Bit.b9           /* (ì œë¹™) ì–¼ìŒíŠ¸ë ˆì´ ê³ ì˜¨ì‚´ê· ì¤‘ ì œë¹™ ê¸ˆì§€ */
+#define            Bit10_Fast_Ice_Make_Limit                  U16IceOperationW.Bit.b10          /* (ì œë¹™) ë¹ ë¥¸ì œë¹™ ì œë¹™íšŸìˆ˜ ì¹´ìš´íŒ… ì—¬ë¶€ */
 
 
 TYPE_BYTE          U8ColdTempControlB;
@@ -81,7 +81,7 @@ U16 gu16_cold_add_op_timer;
 U8 gu8_dual_temp_check_timer;
 bit F_Dual_Mode_Disable;
 
-/*..hui [20-1-29¿ÀÈÄ 1:42:16] ³Ã¼ö ¼¾¼­ ON/OFF Ãß°¡·Î °¨Áö Å¸ÀÌ¸Ó Ãß°¡.. È¤½Ã¸ô¶ó..*/
+/*..hui [20-1-29ì˜¤í›„ 1:42:16] ëƒ‰ìˆ˜ ì„¼ì„œ ON/OFF ì¶”ê°€ë¡œ ê°ì§€ íƒ€ì´ë¨¸ ì¶”ê°€.. í˜¹ì‹œëª°ë¼..*/
 U8 gu8_cold_on_timer;
 U16 gu16_cold_off_timer;
 U8 gu8_cold_protect_timer;
@@ -116,7 +116,7 @@ U16 mu16_cold_off_temp;
 ***********************************************************************************************************************/
 void Make_Mode_Decision(void)
 {
-    /*..hui [19-10-23¿ÀÈÄ 10:17:47] Ã³À½ Àü¿ø ON½Ã ¸¸ºù°Ë»ç ¿Ï·á ÈÄ ÁøÀÔÇÏ±â À§ÇØ..*/
+    /*..hui [19-10-23ì˜¤í›„ 10:17:47] ì²˜ìŒ ì „ì› ONì‹œ ë§Œë¹™ê²€ì‚¬ ì™„ë£Œ í›„ ì§„ì…í•˜ê¸° ìœ„í•´..*/
     if(F_FW_Version_Display_Mode == CLEAR)
     {
         return;
@@ -146,15 +146,15 @@ void cold_mode_decision(void)
     else
     {
         /*Bit2_Cold_Temp_Protect = CLEAR;*/
-        /*..hui [20-1-29¿ÀÈÄ 2:02:15] cold_comp_test ÇÔ¼ö¿¡¼­ Ã³¸®..*/
+        /*..hui [20-1-29ì˜¤í›„ 2:02:15] cold_comp_test í•¨ìˆ˜ì—ì„œ ì²˜ë¦¬..*/
         Bit1_Cold_Temp_Protect = SET;
     }
 
     Bit2_Cold_Temp_Control = cold_comp_test();
 
 
-    /*..hui [23-9-4¿ÀÈÄ 4:17:26] Æ®·¹ÀÌ ¿¡·¯ °É·ÈÀ»¶§ ³Ã°¢Àº Á¤»ó µ¿ÀÛÇÏ±âÀ§ÇØ..*/
-    /*..hui [23-9-4¿ÀÈÄ 4:17:42] Æ®·¹ÀÌ ¿¡·¯ °É·ÈÀ»¶§ F_IceInitÀÌ SETµÈ »óÅÂ·Î ³¡³¯¼öÀÕÀ½..*/
+    /*..hui [23-9-4ì˜¤í›„ 4:17:26] íŠ¸ë ˆì´ ì—ëŸ¬ ê±¸ë ¸ì„ë•Œ ëƒ‰ê°ì€ ì •ìƒ ë™ì‘í•˜ê¸°ìœ„í•´..*/
+    /*..hui [23-9-4ì˜¤í›„ 4:17:42] íŠ¸ë ˆì´ ì—ëŸ¬ ê±¸ë ¸ì„ë•Œ F_IceInitì´ SETëœ ìƒíƒœë¡œ ëë‚ ìˆ˜ì‡ìŒ..*/
     if( Bit17_Tray_Micro_SW_Dual_Detect_Error__E61 == SET
         || Bit18_Tray_Micro_SW_Up_Move_Error__E62 == SET
         || Bit19_Tray_Micro_SW_Down_Move_Error__E63 == SET )
@@ -166,11 +166,11 @@ void cold_mode_decision(void)
         Bit3_Ice_Init_Cold_Stop = ~F_IceInit;
     }
 
-    /*..hui [19-8-2¿ÀÈÄ 7:28:42] ³Ã¼ö °ü·Ã ¿¡·¯ ¹ß»ı ½Ã ³Ã¼öÃø ³Ã°¢ Á¤Áö..*/
-    /*..hui [19-8-2¿ÀÈÄ 7:28:56] ³Ã¼ö ¿¡·¯ ¹ß»ıÇØµµ Á¦ºùÃøÀº Á¤»ó µ¿ÀÛÇØ¾ßÇÏ±â ¶§¹®¿¡ ÀÌÂÊÀ¸·Î ÀÌµ¿..*/
+    /*..hui [19-8-2ì˜¤í›„ 7:28:42] ëƒ‰ìˆ˜ ê´€ë ¨ ì—ëŸ¬ ë°œìƒ ì‹œ ëƒ‰ìˆ˜ì¸¡ ëƒ‰ê° ì •ì§€..*/
+    /*..hui [19-8-2ì˜¤í›„ 7:28:56] ëƒ‰ìˆ˜ ì—ëŸ¬ ë°œìƒí•´ë„ ì œë¹™ì¸¡ì€ ì •ìƒ ë™ì‘í•´ì•¼í•˜ê¸° ë•Œë¬¸ì— ì´ìª½ìœ¼ë¡œ ì´ë™..*/
     Bit4_Cold_Error = ~Bit0_Cold_Operation_Disable_State;
 
-    /* ÇÃ·¯½ÌÁß¿¡´Â ³Ã°¢ ±İÁö */
+    /* í”ŒëŸ¬ì‹±ì¤‘ì—ëŠ” ëƒ‰ê° ê¸ˆì§€ */
     if( bit_install_flushing_state == CLEAR && gu8_flushing_mode == FLUSHING_NONE_STATE )
     {
         Bit5_Cold_Flushing_Stop = SET;
@@ -180,7 +180,7 @@ void cold_mode_decision(void)
         Bit5_Cold_Flushing_Stop = CLEAR;
     }
     
-    /* Æ®·¹ÀÌ °í¿Â»ì±ÕÁß¿¡´Â ³Ã°¢ ±İÁö */
+    /* íŠ¸ë ˆì´ ê³ ì˜¨ì‚´ê· ì¤‘ì—ëŠ” ëƒ‰ê° ê¸ˆì§€ */
     if( bit_ice_tank_ster_start == CLEAR )
     {
         Bit6_Cold_Ice_Ster_Stop = SET;
@@ -190,7 +190,7 @@ void cold_mode_decision(void)
         Bit6_Cold_Ice_Ster_Stop = CLEAR;
     }
 
-    /*..hui [24-7-29¿ÀÈÄ 2:57:56] ±¸¿¬»ê ¼¼Ã´ Áß ³Ã°¢ Á¤Áö..*/
+    /*..hui [24-7-29ì˜¤í›„ 2:57:56] êµ¬ì—°ì‚° ì„¸ì²™ ì¤‘ ëƒ‰ê° ì •ì§€..*/
     if( bit_self_test_start == CLEAR )
     {
         Bit7_Cody_Service_Cold_Off = SET;
@@ -210,7 +210,7 @@ void ice_mode_decision(void)
     Bit0_Ice_Setting = F_IceOn;
 
     #if 0
-	/*..sean [25-01-20] 2µµ ÀÌ»óÀÏ¶§¿¡¸¸ Á¦ºù µ¿ÀÛÇÏµµ·Ï ¼¼ÆÃ..*/
+	/*..sean [25-01-20] 2ë„ ì´ìƒì¼ë•Œì—ë§Œ ì œë¹™ ë™ì‘í•˜ë„ë¡ ì„¸íŒ…..*/
     if(gu16_Cold_Temperature > PROTECT_COLD_TEMP)
     {
         Bit1_Ice_Temp_Protect = SET;
@@ -218,7 +218,7 @@ void ice_mode_decision(void)
     else
     {
         /*Bit2_Ice_Temp_Protect = CLEAR;*/
-        /*..hui [19-11-7¿ÀÈÄ 3:36:57] Á¦ºùÀº »èÁ¦..*/
+        /*..hui [19-11-7ì˜¤í›„ 3:36:57] ì œë¹™ì€ ì‚­ì œ..*/
         Bit1_Ice_Temp_Protect = SET;
     }
     #endif
@@ -245,28 +245,28 @@ void ice_mode_decision(void)
     }
 
     /*Bit4_Ice_Stop_Six_Hour = ~F_IceStop;*/
-    /*..hui [23-6-29¿ÀÈÄ 5:20:21] ¹Ì»ç¿ëÀıÀü¸ğµå´Â Á¦ºùÇÏ°í´Â »ó°ü¾øÀ½..*/
-    /*..hui [23-6-29¿ÀÈÄ 5:20:47] ÃëÄ§¸ğµå´Â ¸¸ºù±îÁö Ã¤¿ìÁö¾Ê°í ÁøÀÔ Áï½Ã ÇÏ´ø°Å±îÁö¸¸ ÇÏ°í Á¦ºù ¸ØÃã.. ÃÖÀÎ½Ä..*/
+    /*..hui [23-6-29ì˜¤í›„ 5:20:21] ë¯¸ì‚¬ìš©ì ˆì „ëª¨ë“œëŠ” ì œë¹™í•˜ê³ ëŠ” ìƒê´€ì—†ìŒ..*/
+    /*..hui [23-6-29ì˜¤í›„ 5:20:47] ì·¨ì¹¨ëª¨ë“œëŠ” ë§Œë¹™ê¹Œì§€ ì±„ìš°ì§€ì•Šê³  ì§„ì… ì¦‰ì‹œ í•˜ë˜ê±°ê¹Œì§€ë§Œ í•˜ê³  ì œë¹™ ë©ˆì¶¤.. ìµœì¸ì‹..*/
     Bit3_Ice_Stop_Six_Hour = ~bit_sleep_mode_start;
 
     Bit4_Ice_Init_Ice_Stop = ~F_IceInit;
     
 
-    /*..hui [19-12-18¿ÀÈÄ 1:49:10] Æ®·¹ÀÌ ÀÌµ¿¿¡·¯ Àç½Ãµµ ÁøÀÔÁß¿¡´Â Á¦ºù Á¤Áö ÈÄ ³Ã°¢ ÀüÈ¯..*/
+    /*..hui [19-12-18ì˜¤í›„ 1:49:10] íŠ¸ë ˆì´ ì´ë™ì—ëŸ¬ ì¬ì‹œë„ ì§„ì…ì¤‘ì—ëŠ” ì œë¹™ ì •ì§€ í›„ ëƒ‰ê° ì „í™˜..*/
     Bit5_Ice_Stop_Safty_Routine = ~F_Safety_Routine;
 
-    /*..hui [19-12-18¿ÀÈÄ 8:03:47] Á¦ºù ºÒ°¡ ¿¡·¯..*/
+    /*..hui [19-12-18ì˜¤í›„ 8:03:47] ì œë¹™ ë¶ˆê°€ ì—ëŸ¬..*/
     Bit6_Ice_Error = ~Bit2_Ice_Operation_Disable_State;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////
-    /*..hui [24-4-2¿ÀÈÄ 7:42:15] µå·¹ÀÎ ÅÊÅ© ¸¸¼öÀ§ »óÅÂ°¡ 5ºĞ ÀÌ»ó Áö¼Ó½Ã Á¦ºù ÁøÀÔ ±İÁö..*/
-    /*..hui [24-4-2¿ÀÈÄ 7:42:31] ¹è¼ö ¸·Çô¼­ ¾óÀ½ ÅÊÅ© ¹° ³ÑÄ¥¼öÀÖÀ½..*/
+    /*..hui [24-4-2ì˜¤í›„ 7:42:15] ë“œë ˆì¸ íƒ±í¬ ë§Œìˆ˜ìœ„ ìƒíƒœê°€ 5ë¶„ ì´ìƒ ì§€ì†ì‹œ ì œë¹™ ì§„ì… ê¸ˆì§€..*/
+    /*..hui [24-4-2ì˜¤í›„ 7:42:31] ë°°ìˆ˜ ë§‰í˜€ì„œ ì–¼ìŒ íƒ±í¬ ë¬¼ ë„˜ì¹ ìˆ˜ìˆìŒ..*/
     if( u8DrainWaterLevel == DRAIN_LEVEL_HIGH )
     {
         gu16_drain_full_timer++;
 
-        /*..hui [24-4-5¿ÀÈÄ 4:09:04] 5ºĞ -> 10ºĞÀ¸·Î º¯°æ..*/
+        /*..hui [24-4-5ì˜¤í›„ 4:09:04] 5ë¶„ -> 10ë¶„ìœ¼ë¡œ ë³€ê²½..*/
         if( gu16_drain_full_timer >= DRAIN_FULL_ICE_STOP_TIME )
         {
             gu16_drain_full_timer = DRAIN_FULL_ICE_STOP_TIME;
@@ -283,9 +283,9 @@ void ice_mode_decision(void)
         bit_drain_full_ice_stop = CLEAR;
     }
     
-    /*..hui [20-1-20¿ÀÈÄ 10:26:55] ÄÚµğ ¼­ºñ½º ¸ğµå ÁøÇà Áß Á¦ºù Á¤Áö..*/
-    /*..hui [23-12-20¿ÀÈÄ 5:14:23] °íÀåÁø´ÜÁßÀÏ¶§´Â Á¤Áö..*/
-	/*.. sean [25-01-20] °íÀå Áø´ÜÁß¿¡´Â Á¤Áö..*/
+    /*..hui [20-1-20ì˜¤í›„ 10:26:55] ì½”ë”” ì„œë¹„ìŠ¤ ëª¨ë“œ ì§„í–‰ ì¤‘ ì œë¹™ ì •ì§€..*/
+    /*..hui [23-12-20ì˜¤í›„ 5:14:23] ê³ ì¥ì§„ë‹¨ì¤‘ì¼ë•ŒëŠ” ì •ì§€..*/
+	/*.. sean [25-01-20] ê³ ì¥ ì§„ë‹¨ì¤‘ì—ëŠ” ì •ì§€..*/
     if( u8CodyInspectOperation == 0 && bit_drain_full_ice_stop == CLEAR && bit_self_test_start == CLEAR )
     {
         Bit7_Cody_Service_Ice_Off = SET;
@@ -295,7 +295,7 @@ void ice_mode_decision(void)
         Bit7_Cody_Service_Ice_Off = CLEAR;
     }
 
-    /* ÇÃ·¯½ÌÁß¿¡´Â Á¦ºù ±İÁö */
+    /* í”ŒëŸ¬ì‹±ì¤‘ì—ëŠ” ì œë¹™ ê¸ˆì§€ */
     if( bit_install_flushing_state == CLEAR && gu8_flushing_mode == FLUSHING_NONE_STATE )
     {
         Bit8_Ice_Stop_Flushing = SET;
@@ -305,7 +305,7 @@ void ice_mode_decision(void)
         Bit8_Ice_Stop_Flushing = CLEAR;
     }
     
-    /* Æ®·¹ÀÌ °í¿Â»ì±Õ Áß¿¡´Â Á¦ºù ±İÁö */
+    /* íŠ¸ë ˆì´ ê³ ì˜¨ì‚´ê·  ì¤‘ì—ëŠ” ì œë¹™ ê¸ˆì§€ */
     if( bit_ice_tank_ster_start == CLEAR )
     {
         Bit9_Ice_Stop_Ice_Ster = SET;
@@ -319,42 +319,42 @@ void ice_mode_decision(void)
 ////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////
-    /*..hui [24-4-11¿ÀÈÄ 7:08:35] È¤½Ã¸ô¶ó.. ÀÌÀü ¸ğµå º¯°æ Æ¯¼ö¸ğµå Ãß°¡..*/
+    /*..hui [24-4-11ì˜¤í›„ 7:08:35] í˜¹ì‹œëª°ë¼.. ì´ì „ ëª¨ë“œ ë³€ê²½ íŠ¹ìˆ˜ëª¨ë“œ ì¶”ê°€..*/
     if( gu8_recover_org_fast_ice == NEW_FAST_ICE )
     {
-        /*..hui [24-4-11¿ÀÈÄ 3:53:13] ¾óÀ½¿ì¼±ÀÏ¶§.. Á¦ºù È½¼ö Ã¼Å©..*/
+        /*..hui [24-4-11ì˜¤í›„ 3:53:13] ì–¼ìŒìš°ì„ ì¼ë•Œ.. ì œë¹™ íšŸìˆ˜ ì²´í¬..*/
         count_ice_make();
 
         if( bit_fast_ice_make == ICE_FIRST_ICE_MAKE )
         {
             if( F_IceOn == CLEAR )
             {
-                /*..hui [24-4-11¿ÀÈÄ 3:57:33] ¾óÀ½ OFF -> ON ½Ã È½¼ö ÃÊ±âÈ­..*/
+                /*..hui [24-4-11ì˜¤í›„ 3:57:33] ì–¼ìŒ OFF -> ON ì‹œ íšŸìˆ˜ ì´ˆê¸°í™”..*/
                 gu8_fast_ice_make_count = 0;
             }
             else{}
 
             if( bit_sleep_mode_start == SET )
             {
-                /*..hui [24-4-12¿ÀÈÄ 12:14:40] ÃëÄ§¸ğµå ÁøÀÔ½Ã È½¼ö ÃÊ±âÈ­..*/
+                /*..hui [24-4-12ì˜¤í›„ 12:14:40] ì·¨ì¹¨ëª¨ë“œ ì§„ì…ì‹œ íšŸìˆ˜ ì´ˆê¸°í™”..*/
                 gu8_fast_ice_make_count = 0;
             }
             else{}
 
-            /*..hui [24-4-11¿ÀÈÄ 3:11:27] ¾óÀ½¿ì¼± / Á¦ºù 4È¸ ÇÏ°í ³ª¼­..*/
+            /*..hui [24-4-11ì˜¤í›„ 3:11:27] ì–¼ìŒìš°ì„  / ì œë¹™ 4íšŒ í•˜ê³  ë‚˜ì„œ..*/
             if( gu8_fast_ice_make_count >= FAST_ICE_MAKE_COUNT )
             {
-                /*..hui [24-4-11¿ÀÈÄ 3:11:34] ³Ã°¢ °¡µ¿ Á¶°ÇÀÌ¸é ³Ã°¢À¸·Î ÀÌµ¿..*/
+                /*..hui [24-4-11ì˜¤í›„ 3:11:34] ëƒ‰ê° ê°€ë™ ì¡°ê±´ì´ë©´ ëƒ‰ê°ìœ¼ë¡œ ì´ë™..*/
                 if( u16ColdOperation == COLD_MAKE_GOGOGO )
                 {
                     Bit10_Fast_Ice_Make_Limit = CLEAR;
 
-                    /*..hui [24-4-11¿ÀÈÄ 4:04:28] ³Ã°¢ ¸ğµå·Î °¡µ¿ÁßÀÎ Á¶°Ç¿¡¼­ È®ÀÎ..*/
+                    /*..hui [24-4-11ì˜¤í›„ 4:04:28] ëƒ‰ê° ëª¨ë“œë¡œ ê°€ë™ì¤‘ì¸ ì¡°ê±´ì—ì„œ í™•ì¸..*/
                     if( Bit0_Cold_Mode_On_State == SET && F_Comp_Output == SET )
                     {
                         gu16_fast_ice_cold_max_timer++;
 
-                        /*..hui [24-4-11¿ÀÈÄ 4:02:20] ³Ã°¢ °¡µ¿½Ã°£ ÃÖ´ë 1½Ã°£ °æ°ú½Ã ´Ù½Ã Á¦ºùÇØ¾ßÇÔ..*/
+                        /*..hui [24-4-11ì˜¤í›„ 4:02:20] ëƒ‰ê° ê°€ë™ì‹œê°„ ìµœëŒ€ 1ì‹œê°„ ê²½ê³¼ì‹œ ë‹¤ì‹œ ì œë¹™í•´ì•¼í•¨..*/
                         if( gu16_fast_ice_cold_max_timer >= FAST_ICE_COLD_MAX_OP_TIME )
                         {
                             gu16_fast_ice_cold_max_timer = 0;
@@ -368,9 +368,9 @@ void ice_mode_decision(void)
                 {
                     Bit10_Fast_Ice_Make_Limit = SET;
                     gu16_fast_ice_cold_max_timer = 0;
-                    /*..hui [24-4-11¿ÀÈÄ 3:15:38] ³Ã°¢ ¹Ì°¡µ¿ Á¶°ÇÀÏ°æ¿ì Ä«¿îÆ® ÃÊ±âÈ­ÇÏ°í ´Ù½Ã 4È¸ Á¦ºù..*/
-                    /*..hui [24-4-11¿ÀÈÄ 7:39:40] ¿©±â¼­´Â ÃÊ±âÈ­ÇÏ¸é¾ÈµÊ..*/
-                    /*..hui [24-4-11¿ÀÈÄ 7:39:53] 4¹øÀÌÈÄ ÇÑ¹ø Á¦ºùÇÏ°í °è¼Ó ³Ã°¢Á¶°Ç È®ÀÎÇØ¾ßÇÏ±â ¶§¹®..*/
+                    /*..hui [24-4-11ì˜¤í›„ 3:15:38] ëƒ‰ê° ë¯¸ê°€ë™ ì¡°ê±´ì¼ê²½ìš° ì¹´ìš´íŠ¸ ì´ˆê¸°í™”í•˜ê³  ë‹¤ì‹œ 4íšŒ ì œë¹™..*/
+                    /*..hui [24-4-11ì˜¤í›„ 7:39:40] ì—¬ê¸°ì„œëŠ” ì´ˆê¸°í™”í•˜ë©´ì•ˆë¨..*/
+                    /*..hui [24-4-11ì˜¤í›„ 7:39:53] 4ë²ˆì´í›„ í•œë²ˆ ì œë¹™í•˜ê³  ê³„ì† ëƒ‰ê°ì¡°ê±´ í™•ì¸í•´ì•¼í•˜ê¸° ë•Œë¬¸..*/
                     /*gu8_fast_ice_make_count = 0;*/
                 }
             }
@@ -384,7 +384,7 @@ void ice_mode_decision(void)
         {
             Bit10_Fast_Ice_Make_Limit = SET;
             gu16_fast_ice_cold_max_timer = 0;
-            /*..hui [24-4-11¿ÀÈÄ 3:15:38] ³Ã°¢ ¹Ì°¡µ¿ Á¶°ÇÀÏ°æ¿ì Ä«¿îÆ® ÃÊ±âÈ­ÇÏ°í ´Ù½Ã 4È¸ Á¦ºù..*/
+            /*..hui [24-4-11ì˜¤í›„ 3:15:38] ëƒ‰ê° ë¯¸ê°€ë™ ì¡°ê±´ì¼ê²½ìš° ì¹´ìš´íŠ¸ ì´ˆê¸°í™”í•˜ê³  ë‹¤ì‹œ 4íšŒ ì œë¹™..*/
             gu8_fast_ice_make_count = 0;
         }
     }
@@ -394,7 +394,7 @@ void ice_mode_decision(void)
 
         Bit10_Fast_Ice_Make_Limit = SET;
         gu16_fast_ice_cold_max_timer = 0;
-        /*..hui [24-4-11¿ÀÈÄ 3:15:38] ³Ã°¢ ¹Ì°¡µ¿ Á¶°ÇÀÏ°æ¿ì Ä«¿îÆ® ÃÊ±âÈ­ÇÏ°í ´Ù½Ã 4È¸ Á¦ºù..*/
+        /*..hui [24-4-11ì˜¤í›„ 3:15:38] ëƒ‰ê° ë¯¸ê°€ë™ ì¡°ê±´ì¼ê²½ìš° ì¹´ìš´íŠ¸ ì´ˆê¸°í™”í•˜ê³  ë‹¤ì‹œ 4íšŒ ì œë¹™..*/
         gu8_fast_ice_make_count = 0;
     }
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -448,7 +448,7 @@ void count_ice_make(void)
 U8 cold_mode_comp_control(void)
 {
 
-/*..hui [20-1-29¿ÀÈÄ 2:00:42] ³Ã°¢ Áö¿¬½Ã°£ ÀÖ´Â ¹öÀü.. È¤½Ã ³ªÁß¿¡ º¯°æµÉ¼öÀÖÀ¸´Ï ³²°ÜµÎ´Â°É·Î..*/
+/*..hui [20-1-29ì˜¤í›„ 2:00:42] ëƒ‰ê° ì§€ì—°ì‹œê°„ ìˆëŠ” ë²„ì „.. í˜¹ì‹œ ë‚˜ì¤‘ì— ë³€ê²½ë ìˆ˜ìˆìœ¼ë‹ˆ ë‚¨ê²¨ë‘ëŠ”ê±¸ë¡œ..*/
 #if 0
     U16 mu16_cold_on_temp = 0;
     U16 mu16_cold_off_temp = 0;
@@ -463,7 +463,7 @@ U8 cold_mode_comp_control(void)
     }
     //gu16_Amb_Front_Temperature=333;
 
-    /*..hui [19-7-25¿ÀÈÄ 8:45:00] 30µµ ÀÌ»óÀÌ¾ú´Ù°¡ 30ºĞ Ãß°¡ ³Ã°¢Áß 30µµ ¹Ì¸¸À¸·Î ´Ù½Ã ³»·Á¿À¸é..??????..*/
+    /*..hui [19-7-25ì˜¤í›„ 8:45:00] 30ë„ ì´ìƒì´ì—ˆë‹¤ê°€ 30ë¶„ ì¶”ê°€ ëƒ‰ê°ì¤‘ 30ë„ ë¯¸ë§Œìœ¼ë¡œ ë‹¤ì‹œ ë‚´ë ¤ì˜¤ë©´..??????..*/
     if(gu16_Amb_Front_Temperature < COLD_OFF_REF_TEMP_AMB)
     {
         mu16_cold_off_temp = COLD_OFF_TEMP_4_DEGREE;
@@ -477,7 +477,7 @@ U8 cold_mode_comp_control(void)
     {
         Bit0_Temp_Control = SET;
 
-        /*..hui [19-7-25¿ÀÈÄ 5:37:11] 30ºĞ Ãß°¡ ±âµ¿ Áß ´Ù½Ã °¡µ¿Á¶°Ç µÆÀ»¶§ ÃÊ±âÈ­..*/
+        /*..hui [19-7-25ì˜¤í›„ 5:37:11] 30ë¶„ ì¶”ê°€ ê¸°ë™ ì¤‘ ë‹¤ì‹œ ê°€ë™ì¡°ê±´ ëì„ë•Œ ì´ˆê¸°í™”..*/
         Bit1_Temp_Add_Control = CLEAR;
         F_cold_add_op = CLEAR;
         gu16_cold_add_op_timer = 0;
@@ -507,14 +507,14 @@ U8 cold_mode_comp_control(void)
 
     if(Bit1_Temp_Add_Control == SET)
     {
-        /*..hui [19-7-26¿ÀÈÄ 7:32:20] ºĞÇÒ³Ã°¢..*/
+        /*..hui [19-7-26ì˜¤í›„ 7:32:20] ë¶„í• ëƒ‰ê°..*/
         if(gu8_GasSwitch_Status == GAS_SWITCH_COLD)
         {
             gu16_cold_add_op_timer++;
         }
         else{}
 
-        /*..hui [19-7-25¿ÀÈÄ 5:33:28] 30ºĞ Ãß°¡ ±âµ¿ ÈÄ Á¾·á..*/
+        /*..hui [19-7-25ì˜¤í›„ 5:33:28] 30ë¶„ ì¶”ê°€ ê¸°ë™ í›„ ì¢…ë£Œ..*/
         if(gu16_cold_add_op_timer >= COLD_ADD_OPERATION_TIME)
         {
             Bit1_Temp_Add_Control = CLEAR;
@@ -530,7 +530,7 @@ U8 cold_mode_comp_control(void)
         gu16_cold_add_op_timer = 0;
     }
 
-    /*..hui [19-7-25¿ÀÈÄ 5:40:39] 2µµ ÀÌÇÏ ÇÁ·ÎÅØÆ® OFF À§Ä¡ÀÌµ¿..*/
+    /*..hui [19-7-25ì˜¤í›„ 5:40:39] 2ë„ ì´í•˜ í”„ë¡œí…íŠ¸ OFF ìœ„ì¹˜ì´ë™..*/
     if(gu16_Cold_Temperature <= PROTECT_COLD_TEMP)
     {
         gu8_Cold_Temp_Control = 0;
@@ -553,7 +553,7 @@ U8 cold_mode_comp_control(void)
 
 /***********************************************************************************************************************
 * Function Name: System_ini
-* Description  : ³Ã°¢ ¿ÂµµÁ¦¾î (³Ã°¢Å×ÀÌºí)
+* Description  : ëƒ‰ê° ì˜¨ë„ì œì–´ (ëƒ‰ê°í…Œì´ë¸”)
 ***********************************************************************************************************************/
 U8 cold_comp_test(void)
 {
@@ -565,26 +565,26 @@ U8 cold_comp_test(void)
 
     if( ( gu8_recover_org_fast_ice == NEW_FAST_ICE
     && bit_fast_ice_make == ICE_FIRST_ICE_MAKE
-    && u16IceOperation == FAST_ICE_MAKE_ENABLE )    // ºü¸¥Á¦ºù + ³Ã°¢ °¡µ¿Á¶°ÇÀÏ ¶§
+    && u16IceOperation == FAST_ICE_MAKE_ENABLE )    // ë¹ ë¥¸ì œë¹™ + ëƒ‰ê° ê°€ë™ì¡°ê±´ì¼ ë•Œ
     || ( gu8_recover_org_fast_ice == NEW_FAST_ICE
     && bit_fast_ice_make == ICE_FIRST_ICE_MAKE
-    && u16IceOperation == ICE_MAKE_GOGOGO )         // ºü¸¥Á¦ºù + ¸¸ºù¾Æ´Ô, ³Ã°¢ °¡µ¿Á¶°ÇÀÌ ¾Æ´Ò ¶§
+    && u16IceOperation == ICE_MAKE_GOGOGO )         // ë¹ ë¥¸ì œë¹™ + ë§Œë¹™ì•„ë‹˜, ëƒ‰ê° ê°€ë™ì¡°ê±´ì´ ì•„ë‹ ë•Œ
     )
     {
-        /*..hui [24-4-11¿ÀÈÄ 2:37:22] ¾óÀ½ ¿ì¼± ¼³Á¤µÅÀÖÀ»¶§.. ³Ã°¢ ¿Âµµ 15µµ, 7.5µµ..*/
+        /*..hui [24-4-11ì˜¤í›„ 2:37:22] ì–¼ìŒ ìš°ì„  ì„¤ì •ë¼ìˆì„ë•Œ.. ëƒ‰ê° ì˜¨ë„ 15ë„, 7.5ë„..*/
         mu16_cold_on_temp = 150;
         mu16_cold_off_temp = 75;
         mu16_cold_delay_time = 20;
 
-        /*..hui [25-7-8¿ÀÈÄ 4:59:39] ºí·çLEDÇ¥½Ã ¿Âµµ °¢°¢ °³º°·Î..*/
+        /*..hui [25-7-8ì˜¤í›„ 4:59:39] ë¸”ë£¨LEDí‘œì‹œ ì˜¨ë„ ê°ê° ê°œë³„ë¡œ..*/
         gu16_display_cold_on_temp = 75;
         gu16_display_cold_off_temp = 58;
 
-        /*..hui [24-4-11¿ÀÈÄ 5:08:34] ¾óÀ½¿ì¼± Á¦ºù Á¶°Ç ¾Æ´Ñ °æ¿ì -> Á¦ºù Á¶°ÇÀ¸·Î º¯°æµÉ¶§..*/
-        /*..hui [24-4-11¿ÀÈÄ 5:08:39] ³Ã°¢ °¡µ¿ Á¶°Ç ´Ù½Ã È®ÀÎÇÏ±â À§ÇØ..*/
-        /*..hui [24-4-11¿ÀÈÄ 5:09:15] ´õ¹ÌÅ»ºù -> ³Ã°¢ °¡µ¿Á¶°Ç 8µµ -> ³Ã°¢ °¡µ¿Á¶°Ç set -> ´õ¹ÌÅ»ºù Á¾·á..*/
-        /*..hui [24-4-11¿ÀÈÄ 5:09:39] Á¦ºù -> 4È¸ ÁøÇà -> °¡µ¿Á¶°Ç setµÅÀÖ±â ¶§¹®¿¡ ³Ã°¢ °¡µ¿À¸·Î ³Ñ¾î°¨..*/
-        /*..hui [24-4-11¿ÀÈÄ 5:10:00] Á¦ºù °¡µ¿ Á¶°ÇµÇ¸é ³Ã°¢ Á¶°ÇÀº ´Ù½Ã 15µµ·Î È®ÀÎÇÏµµ·Ï..*/
+        /*..hui [24-4-11ì˜¤í›„ 5:08:34] ì–¼ìŒìš°ì„  ì œë¹™ ì¡°ê±´ ì•„ë‹Œ ê²½ìš° -> ì œë¹™ ì¡°ê±´ìœ¼ë¡œ ë³€ê²½ë ë•Œ..*/
+        /*..hui [24-4-11ì˜¤í›„ 5:08:39] ëƒ‰ê° ê°€ë™ ì¡°ê±´ ë‹¤ì‹œ í™•ì¸í•˜ê¸° ìœ„í•´..*/
+        /*..hui [24-4-11ì˜¤í›„ 5:09:15] ë”ë¯¸íƒˆë¹™ -> ëƒ‰ê° ê°€ë™ì¡°ê±´ 8ë„ -> ëƒ‰ê° ê°€ë™ì¡°ê±´ set -> ë”ë¯¸íƒˆë¹™ ì¢…ë£Œ..*/
+        /*..hui [24-4-11ì˜¤í›„ 5:09:39] ì œë¹™ -> 4íšŒ ì§„í–‰ -> ê°€ë™ì¡°ê±´ setë¼ìˆê¸° ë•Œë¬¸ì— ëƒ‰ê° ê°€ë™ìœ¼ë¡œ ë„˜ì–´ê°..*/
+        /*..hui [24-4-11ì˜¤í›„ 5:10:00] ì œë¹™ ê°€ë™ ì¡°ê±´ë˜ë©´ ëƒ‰ê° ì¡°ê±´ì€ ë‹¤ì‹œ 15ë„ë¡œ í™•ì¸í•˜ë„ë¡..*/
         if( bit_set_temp_change == CLEAR )
         {
             bit_set_temp_change = SET;
@@ -602,7 +602,7 @@ U8 cold_comp_test(void)
             {
                 if( bit_sleep_mode_start  == SET )
                 {
-                    /*..hui [23-4-7ï¿½ï¿½ï¿½ï¿½ 11:15:58] 10ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½..*/
+                    /*..hui [23-4-7å ì™ì˜™å ì™ì˜™ 11:15:58] 10å ì™ì˜™ å ì™ì˜™å ì™ì˜™..*/
                     mu16_cold_on_temp = 100;
                     mu16_cold_off_temp = 65;
                     mu16_cold_delay_time = 20;
@@ -614,7 +614,7 @@ U8 cold_comp_test(void)
                     mu16_cold_delay_time = COLD_DELAY_TIME_10DE_UNDER;
                 }
 
-                /*..hui [25-7-8¿ÀÈÄ 4:59:39] ºí·çLEDÇ¥½Ã ¿Âµµ °¢°¢ °³º°·Î..*/
+                /*..hui [25-7-8ì˜¤í›„ 4:59:39] ë¸”ë£¨LEDí‘œì‹œ ì˜¨ë„ ê°ê° ê°œë³„ë¡œ..*/
                 gu16_display_cold_on_temp = COLD_ON_TEMP_10DE_UNDER;
                 gu16_display_cold_off_temp = COLD_OFF_TEMP_10DE_UNDER;
             }
@@ -622,7 +622,7 @@ U8 cold_comp_test(void)
             {
                 if( bit_sleep_mode_start  == SET )
                 {
-                    /*..hui [23-4-7ï¿½ï¿½ï¿½ï¿½ 11:16:02] 20ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½..*/
+                    /*..hui [23-4-7å ì™ì˜™å ì™ì˜™ 11:16:02] 20å ì™ì˜™ å ì™ì˜™å ì™ì˜™..*/
                     mu16_cold_on_temp = 100;
                     mu16_cold_off_temp = 58;
                     mu16_cold_delay_time = 20;
@@ -650,7 +650,7 @@ U8 cold_comp_test(void)
                     }
                 }
 
-                /*..hui [25-7-8¿ÀÈÄ 4:59:39] ºí·çLEDÇ¥½Ã ¿Âµµ °¢°¢ °³º°·Î..*/
+                /*..hui [25-7-8ì˜¤í›„ 4:59:39] ë¸”ë£¨LEDí‘œì‹œ ì˜¨ë„ ê°ê° ê°œë³„ë¡œ..*/
                 if( bit_cold_first_op == SET )
                 {
                     gu16_display_cold_on_temp = COLD_ON_TEMP_10_20DE;
@@ -666,7 +666,7 @@ U8 cold_comp_test(void)
             {
                 if( bit_sleep_mode_start  == SET )
                 {
-                    /*..hui [23-4-7ï¿½ï¿½ï¿½ï¿½ 11:16:10] 30ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½..*/
+                    /*..hui [23-4-7å ì™ì˜™å ì™ì˜™ 11:16:10] 30å ì™ì˜™ å ì™ì˜™å ì™ì˜™..*/
                     mu16_cold_on_temp = 100;
                     mu16_cold_off_temp = 58;
                     mu16_cold_delay_time = 20;
@@ -686,7 +686,7 @@ U8 cold_comp_test(void)
                     }
                 }
 
-                /*..hui [25-7-8¿ÀÈÄ 4:59:39] ºí·çLEDÇ¥½Ã ¿Âµµ °¢°¢ °³º°·Î..*/
+                /*..hui [25-7-8ì˜¤í›„ 4:59:39] ë¸”ë£¨LEDí‘œì‹œ ì˜¨ë„ ê°ê° ê°œë³„ë¡œ..*/
                 gu16_display_cold_on_temp = COLD_ON_TEMP_20_30DE;
                 gu16_display_cold_off_temp = COLD_OFF_TEMP_20_30DE;
             }
@@ -694,7 +694,7 @@ U8 cold_comp_test(void)
             {
                 if( bit_sleep_mode_start  == SET )
                 {
-                    /*..hui [23-4-7ï¿½ï¿½ï¿½ï¿½ 11:16:14] 30ï¿½ï¿½ ï¿½Ê°ï¿½..*/
+                    /*..hui [23-4-7å ì™ì˜™å ì™ì˜™ 11:16:14] 30å ì™ì˜™ å ì‹­ê³¤ì˜™..*/
                     mu16_cold_on_temp = 100;
                     mu16_cold_off_temp = 58;
                     mu16_cold_delay_time = 3000;
@@ -714,7 +714,7 @@ U8 cold_comp_test(void)
                         mu16_cold_delay_time = COLD_DELAY_TIME_30DE_UPDER;
                     }
 
-                    /*..hui [25-7-8¿ÀÈÄ 4:59:39] ºí·çLEDÇ¥½Ã ¿Âµµ °¢°¢ °³º°·Î..*/
+                    /*..hui [25-7-8ì˜¤í›„ 4:59:39] ë¸”ë£¨LEDí‘œì‹œ ì˜¨ë„ ê°ê° ê°œë³„ë¡œ..*/
                     if( bit_cold_first_op == SET )
                     {
                         gu16_display_cold_on_temp = COLD_ON_TEMP_30DE_UPDER;
@@ -730,18 +730,18 @@ U8 cold_comp_test(void)
         }
         else /*if( gu8_cold_setting_level == COLD_TEMP_LOW )*/
         {
-            /*..hui [25-3-19ï¿½ï¿½ï¿½ï¿½ 2:22:52] ï¿½ì¼± ï¿½Ã¼ï¿½ ï¿½à¼³ï¿½ï¿½ï¿½ï¿½ 14ï¿½ï¿½ 10ï¿½ï¿½ï¿½ï¿½..*/
-            mu16_cold_on_temp = 110;        // ³Ã¼ö [¾à] Å×ÀÌºí ¹İ¿µ 250728 CH.PARK
-            mu16_cold_off_temp = 70;        // ³Ã¼ö [¾à] Å×ÀÌºí ¹İ¿µ 250728 CH.PARK
-            mu16_cold_delay_time = 20;      // ³Ã¼ö [¾à] Å×ÀÌºí ¹İ¿µ 250728 CH.PARK
+            /*..hui [25-3-19å ì™ì˜™å ì™ì˜™ 2:22:52] å ìŒì„  å ì‹œì‡½ì˜™ å ì…ì„¤å ì™ì˜™å ì™ì˜™ 14å ì™ì˜™ 10å ì™ì˜™å ì™ì˜™..*/
+            mu16_cold_on_temp = 110;        // ëƒ‰ìˆ˜ [ì•½] í…Œì´ë¸” ë°˜ì˜ 250728 CH.PARK
+            mu16_cold_off_temp = 70;        // ëƒ‰ìˆ˜ [ì•½] í…Œì´ë¸” ë°˜ì˜ 250728 CH.PARK
+            mu16_cold_delay_time = 20;      // ëƒ‰ìˆ˜ [ì•½] í…Œì´ë¸” ë°˜ì˜ 250728 CH.PARK
 
-            /*..hui [25-7-8¿ÀÈÄ 4:59:39] ºí·çLEDÇ¥½Ã ¿Âµµ °¢°¢ °³º°·Î..*/
+            /*..hui [25-7-8ì˜¤í›„ 4:59:39] ë¸”ë£¨LEDí‘œì‹œ ì˜¨ë„ ê°ê° ê°œë³„ë¡œ..*/
             gu16_display_cold_on_temp = 110;
             gu16_display_cold_off_temp = 70;
         }
     }
 
-    /*..hui [24-4-11¿ÀÈÄ 4:22:44] µğ¹ö±ë.. È®ÀÎ¿ë..*/
+    /*..hui [24-4-11ì˜¤í›„ 4:22:44] ë””ë²„ê¹….. í™•ì¸ìš©..*/
     gu16_test_cold_on_temp = mu16_cold_on_temp;
     gu16_test_cold_off_temp = mu16_cold_off_temp;
     gu16_test_cold_delay_time = mu16_cold_delay_time;
@@ -789,7 +789,7 @@ U8 cold_comp_test(void)
                     gu16_cold_off_timer = 0;
                     Bit0_Temp_Control = CLEAR;
 
-                    /*..hui [24-4-12¿ÀÀü 11:43:45] ³Ã°¢ ¿Ï·á½Ã Á¦ºù È½¼ö ÃÊ±âÈ­ ÀÌÂÊ¿¡¼­..*/
+                    /*..hui [24-4-12ì˜¤ì „ 11:43:45] ëƒ‰ê° ì™„ë£Œì‹œ ì œë¹™ íšŸìˆ˜ ì´ˆê¸°í™” ì´ìª½ì—ì„œ..*/
                     gu8_fast_ice_make_count = 0;
                 }
                 else{}
@@ -805,7 +805,7 @@ U8 cold_comp_test(void)
         }
     }
 
-    /*..hui [19-7-25¿ÀÈÄ 5:40:39] 2µµ ÀÌÇÏ ÇÁ·ÎÅØÆ® OFF À§Ä¡ÀÌµ¿..*/
+    /*..hui [19-7-25ì˜¤í›„ 5:40:39] 2ë„ ì´í•˜ í”„ë¡œí…íŠ¸ OFF ìœ„ì¹˜ì´ë™..*/
     if(gu16_Cold_Temperature <= PROTECT_COLD_TEMP)
     {
         gu8_cold_protect_timer++;
@@ -878,7 +878,7 @@ void cold_priority_decision(void)
 
         case MAKE_COLD:
 
-            /*..hui [19-7-25¿ÀÈÄ 4:21:53] ³Ã°¢ Áß ³Ã°¢ Á¶°Ç Á¾·á ½Ã Á¦ºù/³Ã°¢ Á¶°Ç Àç È®ÀÎ..*/
+            /*..hui [19-7-25ì˜¤í›„ 4:21:53] ëƒ‰ê° ì¤‘ ëƒ‰ê° ì¡°ê±´ ì¢…ë£Œ ì‹œ ì œë¹™/ëƒ‰ê° ì¡°ê±´ ì¬ í™•ì¸..*/
             if(u16ColdOperation != COLD_MAKE_GOGOGO)
             {
                 gu8_Make_Mode = MAKE_STOP;
@@ -889,11 +889,11 @@ void cold_priority_decision(void)
 
         case MAKE_ICE:
 
-            /*..hui [19-7-25¿ÀÈÄ 4:22:10] Á¦ºù Áß Á¦ºù ¿Ï·á ½Ã Á¦ºù/³Ã°¢ Á¶°Ç Àç È®ÀÎ..*/
+            /*..hui [19-7-25ì˜¤í›„ 4:22:10] ì œë¹™ ì¤‘ ì œë¹™ ì™„ë£Œ ì‹œ ì œë¹™/ëƒ‰ê° ì¡°ê±´ ì¬ í™•ì¸..*/
             /*if(gu8IceStep == STATE_51_FINISH_ICE_MAKE)*/
             if(gu8IceStep == STATE_0_STANDBY)
             {
-                /*..hui [20-1-21¿ÀÀü 11:15:35] Á¦ºù ¸ğµå Áß ´ë±â »óÅÂ¿¡¼­ ³Ã°¢ Á¶°Ç ¹ß»ı ½Ã..*/
+                /*..hui [20-1-21ì˜¤ì „ 11:15:35] ì œë¹™ ëª¨ë“œ ì¤‘ ëŒ€ê¸° ìƒíƒœì—ì„œ ëƒ‰ê° ì¡°ê±´ ë°œìƒ ì‹œ..*/
                 if(u16ColdOperation == COLD_MAKE_GOGOGO)
                 {
                     gu8_Make_Mode = MAKE_STOP;
@@ -926,14 +926,14 @@ void ice_priority_decision(void)
     {
         case MAKE_STOP:
 
-            /*..hui [19-7-26¿ÀÈÄ 8:09:21] Á¦ºù ¿ì¼±ÀÌ¹Ç·Î ¸¸ºùµÉ¶§±îÁö Á¦ºù ¸ÕÀú..*/
+            /*..hui [19-7-26ì˜¤í›„ 8:09:21] ì œë¹™ ìš°ì„ ì´ë¯€ë¡œ ë§Œë¹™ë ë•Œê¹Œì§€ ì œë¹™ ë¨¼ì €..*/
             if(u16IceOperation == ICE_MAKE_GOGOGO)
             {
                 gu8_Make_Mode = MAKE_ICE;
             }
             else
             {
-                /*..hui [19-7-26¿ÀÈÄ 8:09:34] Á¦ºù Á¶°Ç ¾Æ´Ò¶§¸¸ ³Ã°¢ µ¿ÀÛ..*/
+                /*..hui [19-7-26ì˜¤í›„ 8:09:34] ì œë¹™ ì¡°ê±´ ì•„ë‹ë•Œë§Œ ëƒ‰ê° ë™ì‘..*/
                 if(u16ColdOperation == COLD_MAKE_GOGOGO)
                 {
                     gu8_Make_Mode = MAKE_COLD;
@@ -950,12 +950,12 @@ void ice_priority_decision(void)
 
             if(u16IceOperation == ICE_MAKE_GOGOGO)
             {
-                /*..hui [19-11-6¿ÀÈÄ 1:57:36] ³Ã°¢ Áß Á¦ºù Á¶°Ç ¹ß»ı ½Ã..*/
+                /*..hui [19-11-6ì˜¤í›„ 1:57:36] ëƒ‰ê° ì¤‘ ì œë¹™ ì¡°ê±´ ë°œìƒ ì‹œ..*/
                 gu8_Make_Mode = MAKE_STOP;
             }
             else if(u16ColdOperation != COLD_MAKE_GOGOGO)
             {
-                /*..hui [19-11-6¿ÀÈÄ 1:57:57] ³Ã°¢ Áß ³Ã°¢ Á¶°Ç ÇØÁ¦ ½Ã..*/
+                /*..hui [19-11-6ì˜¤í›„ 1:57:57] ëƒ‰ê° ì¤‘ ëƒ‰ê° ì¡°ê±´ í•´ì œ ì‹œ..*/
                 gu8_Make_Mode = MAKE_STOP;
             }
             else{}
@@ -964,11 +964,11 @@ void ice_priority_decision(void)
 
         case MAKE_ICE:
 
-            /*..hui [19-11-6¿ÀÈÄ 1:59:36] Á¦ºù Áß Á¦ºù ¿Ï·á ½Ã Á¦ºù/³Ã°¢ Á¶°Ç Àç È®ÀÎ..*/
+            /*..hui [19-11-6ì˜¤í›„ 1:59:36] ì œë¹™ ì¤‘ ì œë¹™ ì™„ë£Œ ì‹œ ì œë¹™/ëƒ‰ê° ì¡°ê±´ ì¬ í™•ì¸..*/
             /*if(gu8IceStep == STATE_51_FINISH_ICE_MAKE)*/
             if(gu8IceStep == STATE_0_STANDBY)
             {
-                /*..hui [19-12-18¿ÀÈÄ 4:06:39] ¾óÀ½ ¸ğµåÁß ´ë±â »óÅÂ¿¡¼­ ¾óÀ½ ¸ğµå ÇØÁöÁ¶°Ç ¹ß»ı ½Ã..*/
+                /*..hui [19-12-18ì˜¤í›„ 4:06:39] ì–¼ìŒ ëª¨ë“œì¤‘ ëŒ€ê¸° ìƒíƒœì—ì„œ ì–¼ìŒ ëª¨ë“œ í•´ì§€ì¡°ê±´ ë°œìƒ ì‹œ..*/
                 if(u16IceOperation != ICE_MAKE_GOGOGO)
                 {
                     gu8_Make_Mode = MAKE_STOP;

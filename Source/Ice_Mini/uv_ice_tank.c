@@ -22,7 +22,7 @@ void initial_ice_tank_uv_timer(void);
 void uv_tank_reed_sw_input(void);
 
 /***********************************************************************************************************************/
-/* TANK UV 1,2 Á¦¾î */
+/* TANK UV 1,2 ì œì–´ */
 TYPE_BYTE          U8IceTankUvONB;
 #define            u8IceTankUvON                                        U8IceTankUvONB.byte
 #define            Bit0_Ice_Tank_UV_On_State                            U8IceTankUvONB.Bit.b0
@@ -35,7 +35,7 @@ TYPE_BYTE          U8IceTankUvOFFB;
 #define            Bit4_Ice_Tank_YV_Ice_Off_State                       U8IceTankUvOFFB.Bit.b4
 
 /***********************************************************************************************************************/
-/* TANK UV 3 Á¦¾î */
+/* TANK UV 3 ì œì–´ */
 TYPE_BYTE          U8IceTankUv3ONB;
 #define            u8IceTankUv3ON                                        U8IceTankUv3ONB.byte
 #define            Bit0_Ice_Tank_UV3_On_State                            U8IceTankUv3ONB.Bit.b0
@@ -128,15 +128,15 @@ void output_ice_tank_uv(void)
     }
     else{}
 
-    /* ¾óÀ½ÅÊÅ© : 6½Ã°£ OFF ¡ê 2½Ã°£ ON (8½Ã°£¸¶´Ù) */
+    /* ì–¼ìŒíƒ±í¬ : 6ì‹œê°„ OFF â†” 2ì‹œê°„ ON (8ì‹œê°„ë§ˆë‹¤) */
     Bit0_Ice_Tank_UV_On_State = uv_ice_tank_control();
     Bit0_Ice_Tank_UV3_On_State = Bit0_Ice_Tank_UV_On_State;
 
-    /* ÅÊÅ©Ä¿¹ö°¡ ÇÏ³ª¶óµµ ¿­·ÈÀ¸¸é ¹Ù·Î Æ®·¹ÀÌ UV´Â OFF. 250224 CH.PARK */
+    /* íƒ±í¬ì»¤ë²„ê°€ í•˜ë‚˜ë¼ë„ ì—´ë ¸ìœ¼ë©´ ë°”ë¡œ íŠ¸ë ˆì´ UVëŠ” OFF. 250224 CH.PARK */
     Bit0_Tank_Open_UV_Off_State = (~bit_uv_tank_input);
     Bit0_Tank_Open_UV3_Off_State = (~bit_uv_tank_input);
 
-    /* ¾óÀ½ÃßÃâ ½Ã UV LED OFF. 250224 CH.PARK */
+    /* ì–¼ìŒì¶”ì¶œ ì‹œ UV LED OFF. 250224 CH.PARK */
     if(F_IceOut == SET)
     {
         Bit1_Ice_Extract_UV_Off_State = F_IceOut;
@@ -152,7 +152,7 @@ void output_ice_tank_uv(void)
         else {  }
     }
 
-    /* ¾óÀ½ OFF»óÅÂÀÏ ¶§ UV LED¸¦ ²û. 250224 CH.PARK */
+    /* ì–¼ìŒ OFFìƒíƒœì¼ ë•Œ UV LEDë¥¼ ë”. 250224 CH.PARK */
     if(F_IceOn == CLEAR)
     {
         Bit4_Ice_Tank_YV_Ice_Off_State = SET;
@@ -223,7 +223,7 @@ void uv_tank_reed_sw_input(void)
 
         if( gu8_uv_service_reed_on_cnt >= UV_TANK_COVER_REED_DETECT_TIME )
         {
-            /*..hui [19-1-29¿ÀÈÄ 3:51:34] ÅÊÅ© Ä¿¹ö ´ÝÈû..*/
+            /*..hui [19-1-29ì˜¤í›„ 3:51:34] íƒ±í¬ ì»¤ë²„ ë‹«íž˜..*/
             gu8_uv_service_reed_on_cnt = UV_TANK_COVER_REED_DETECT_TIME;
             bit_uv_tank_input = SET;
         }
@@ -236,7 +236,7 @@ void uv_tank_reed_sw_input(void)
 
         if( gu8_uv_service_reed_off_cnt >= UV_TANK_COVER_REED_DETECT_TIME )
         {
-            /*..hui [19-1-29¿ÀÈÄ 3:51:38] ÅÊÅ© Ä¿¹ö ¿­¸²..*/
+            /*..hui [19-1-29ì˜¤í›„ 3:51:38] íƒ±í¬ ì»¤ë²„ ì—´ë¦¼..*/
             gu8_uv_service_reed_on_cnt = UV_TANK_COVER_REED_DETECT_TIME;
             bit_uv_tank_input = CLEAR;
         }
@@ -254,7 +254,7 @@ U8 uv_ice_tank_control(void)
     U8 mu8_return = 0;
     U8 mu8_finish = 0;
 
-    /*..hui [23-6-30???? 10:20:26] ??? ?¡À???????? ????..*/
+    /*..hui [23-6-30???? 10:20:26] ??? ?Ã·???????? ????..*/
     /*if( F_IceOn == CLEAR || bit_install_flushing_state == SET )*/
     /*..hui [24-1-12???? 2:43:29] ???? OFF????? UV ?????????..*/
     /*if( bit_install_flushing_state == SET )*/
@@ -273,7 +273,7 @@ U8 uv_ice_tank_control(void)
     {
         case 0 :
 
-            /*..hui [19-10-24???? 8:34:44] 6?©£? ???..*/
+            /*..hui [19-10-24???? 8:34:44] 6?Ã°? ???..*/
             mu8_finish = ice_tank_uv_standby_timer();
 
             if(mu8_finish == SET)
@@ -287,10 +287,10 @@ U8 uv_ice_tank_control(void)
 
         case 1 :
 
-            /*..hui [19-10-24???? 8:34:49] 2?©£? ????..*/
+            /*..hui [19-10-24???? 8:34:49] 2?Ã°? ????..*/
             if(bit_ice_tank_uv_start == SET)
             {
-                /*..hui [19-10-25???? 9:41:56] ???? ??? ????????? ??Äî?? ????..*/
+                /*..hui [19-10-25???? 9:41:56] ???? ??? ????????? ??ì¿¡?? ????..*/
                 if( u8IceTankUvOFF == 0 )
                 {
                     ice_tank_uv_operation_timer();
@@ -330,7 +330,7 @@ void ice_tank_uv_operation_timer(void)
     }
     else{}
 
-    /*..hui [19-10-24???? 8:23:29] ?©£? ?????? ??? ??? ?¬Õ?????..LCD ????..*/
+    /*..hui [19-10-24???? 8:23:29] ?Ã°? ?????? ??? ??? ?Ð´?????..LCD ????..*/
     if(gu8_ice_tank_uv_operation_timer_min >= ICE_TANK_UV_OEPRATION_MAX_TIME)
     {
         bit_ice_tank_uv_start = CLEAR;

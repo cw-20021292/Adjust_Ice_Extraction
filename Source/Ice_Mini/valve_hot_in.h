@@ -29,11 +29,11 @@ extern bit bit_hot_filling_start;
 extern U8 gu8_Hot_Filling_Step;
 extern bit F_First_Hot_Effluent;
 
-extern U8 gu8_Hot_Preheat_Temp;											// ¢®U2025-06-02 Phil
-extern U8 gu8_preheat_Closed_max_timer;							// ¢®U2025-06-02 Phil
-extern U8 gu8_Hot_Heater_Temperature_One_Degree;		// ¢®U2025-06-02 Phil
-extern U16 u16Heater_Power_Save;										// ¢®U2025-06-02 Phil
-extern U8 gu8_hot_setting_temperature;							// ¢®U2025-06-02 Phil
+extern U8 gu8_Hot_Preheat_Temp;											// Â¢Â®U2025-06-02 Phil
+extern U8 gu8_preheat_Closed_max_timer;							// Â¢Â®U2025-06-02 Phil
+extern U8 gu8_Hot_Heater_Temperature_One_Degree;		// Â¢Â®U2025-06-02 Phil
+extern U16 u16Heater_Power_Save;										// Â¢Â®U2025-06-02 Phil
+extern U8 gu8_hot_setting_temperature;							// Â¢Â®U2025-06-02 Phil
 
 extern U8 gu8_Hot_In_Temperature_One_Degree;        //2025-06-05 20:43:54 cbr
 

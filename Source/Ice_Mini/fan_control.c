@@ -59,8 +59,8 @@ void output_fan(void)
     if( F_FW_Version_Display_Mode == CLEAR )
     {
         #if 0
-        /*..hui [24-3-25¿ÀÈÄ 2:20:03] ¿Ü±â 33µµ ÀÌÇÏ¿¡¼­´Â FAN 5ºĞ °¡µ¿ ¾ÈÇÔ..*/
-        /*..hui [24-3-25¿ÀÈÄ 3:31:18] Àü¿ø Ä×À»¶§¸¸ È®ÀÎ..*/
+        /*..hui [24-3-25ì˜¤í›„ 2:20:03] ì™¸ê¸° 33ë„ ì´í•˜ì—ì„œëŠ” FAN 5ë¶„ ê°€ë™ ì•ˆí•¨..*/
+        /*..hui [24-3-25ì˜¤í›„ 3:31:18] ì „ì› ì¼°ì„ë•Œë§Œ í™•ì¸..*/
         if( gu8_Amb_Temperature_One_Degree < 34 )
         {
             bit_fan_first = SET;
@@ -83,8 +83,8 @@ void output_fan(void)
         Bit0_CF_Cold_Make_State = CLEAR;
     }
 
-    /*..hui [23-4-13¿ÀÀü 10:11:47] ¿¬¼Ó Á¦ºù - Æ®·¹ÀÌ ¿Ã¸®°í COMP °¡µ¿ ½Ã ¹Ù·Î °¡µ¿..*/
-    /*..hui [23-4-13¿ÀÀü 10:12:09] Ã¹ Á¦ºù - Æ®·¹ÀÌ ¿Ã¸®°í ¹° ³Ö°í COMP °¡µ¿ ½Ã °¡µ¿..*/
+    /*..hui [23-4-13ì˜¤ì „ 10:11:47] ì—°ì† ì œë¹™ - íŠ¸ë ˆì´ ì˜¬ë¦¬ê³  COMP ê°€ë™ ì‹œ ë°”ë¡œ ê°€ë™..*/
+    /*..hui [23-4-13ì˜¤ì „ 10:12:09] ì²« ì œë¹™ - íŠ¸ë ˆì´ ì˜¬ë¦¬ê³  ë¬¼ ë„£ê³  COMP ê°€ë™ ì‹œ ê°€ë™..*/
     if( gu8IceStep >= STATE_14_CHECK_ICE_TRAY_HZ && gu8IceStep <= STATE_41_GAS_SWITCH_HOT_GAS )
     {
         /*Bit1_CF_Ice_Make_State = F_Comp_Output;*/
@@ -116,12 +116,12 @@ void output_fan(void)
     }
 
 
-    /*..hui [24-3-25¿ÀÈÄ 2:13:27] ÄÄÇÁ OFF ÈÄ 15ºĞ°£ Áö¿¬ ÈÄ OFF..*/
+    /*..hui [24-3-25ì˜¤í›„ 2:13:27] ì»´í”„ OFF í›„ 15ë¶„ê°„ ì§€ì—° í›„ OFF..*/
     if( F_Comp_Output == SET )
     {
-        /*..hui [24-3-25¿ÀÈÄ 4:39:49] ¿Ü±â¿Âµµ 34µµ ÀÌ»ó¿¡¼­¸¸..*/
+        /*..hui [24-3-25ì˜¤í›„ 4:39:49] ì™¸ê¸°ì˜¨ë„ 34ë„ ì´ìƒì—ì„œë§Œ..*/
         /*if( gu8_Amb_Temperature_One_Degree >= 34 )*/
-        /*..hui [25-3-19¿ÀÈÄ 5:44:26] 14µµ ÀÌ»ó¿¡¼­¸¸ 5ºĞ Áö¿¬ °¡µ¿ÈÄ OFF ÀÌ°æ¹Î´Ô..*/
+        /*..hui [25-3-19ì˜¤í›„ 5:44:26] 14ë„ ì´ìƒì—ì„œë§Œ 5ë¶„ ì§€ì—° ê°€ë™í›„ OFF ì´ê²½ë¯¼ë‹˜..*/
         if( gu8_Amb_Temperature_One_Degree > HOT_GAS_AMB_TEMP_13_DIGREE )
         {
             bit_comp_off_check = SET;
@@ -133,7 +133,7 @@ void output_fan(void)
     }
     else
     {
-        /*..hui [24-3-25¿ÀÈÄ 4:39:41] Á¦ºù ÁøÀÔÈÄ¿¡´Â Á¤Áö..*/
+        /*..hui [24-3-25ì˜¤í›„ 4:39:41] ì œë¹™ ì§„ì…í›„ì—ëŠ” ì •ì§€..*/
         if( gu8IceStep > STATE_0_STANDBY )
         {
             bit_comp_off_check = CLEAR;
@@ -163,7 +163,7 @@ void output_fan(void)
     }
 
     #if 0
-    /*..hui [24-3-25¿ÀÈÄ 2:20:03] ¿Ü±â 33µµ ÀÌÇÏ¿¡¼­´Â FAN 5ºĞ °¡µ¿ ¾ÈÇÔ..*/
+    /*..hui [24-3-25ì˜¤í›„ 2:20:03] ì™¸ê¸° 33ë„ ì´í•˜ì—ì„œëŠ” FAN 5ë¶„ ê°€ë™ ì•ˆí•¨..*/
     if( gu8_Amb_Temperature_One_Degree < 34 )
     {
         bit_fan_first = SET;
@@ -172,12 +172,12 @@ void output_fan(void)
     #endif
 
     #if 0
-    /*..hui [24-3-25¿ÀÈÄ 2:13:07] Àü¿ø ÀÎ°¡ ÈÄ 5ºĞµ¿¾È ¹«Á¶°Ç µ¿ÀÛ..*/
+    /*..hui [24-3-25ì˜¤í›„ 2:13:07] ì „ì› ì¸ê°€ í›„ 5ë¶„ë™ì•ˆ ë¬´ì¡°ê±´ ë™ì‘..*/
     if( bit_fan_first == CLEAR )
     {
         gu16_fan_first_timer++;
 
-        /*..hui [23-7-12¿ÀÀü 11:21:08] Ã³À½ Àü¿øÄÑ°í ´õ¹ÌÅ»ºù Àü 5ºĞµ¿¾È FAN °¡µ¿ - °æÁ¾°úÀå..*/
+        /*..hui [23-7-12ì˜¤ì „ 11:21:08] ì²˜ìŒ ì „ì›ì¼œê³  ë”ë¯¸íƒˆë¹™ ì „ 5ë¶„ë™ì•ˆ FAN ê°€ë™ - ê²½ì¢…ê³¼ì¥..*/
         if( gu16_fan_first_timer >= 3000 )
         {
             bit_fan_first = SET;
@@ -199,7 +199,7 @@ void output_fan(void)
 
 
     #if 0
-    /*..hui [23-9-4¿ÀÈÄ 2:51:07] Æ®·¹ÀÌ Á¦ºù¹æÇâ Àç½ÃµµÁß ÇØºùÀÛ¾÷ ÇÖ°¡½º °¡µ¿ÇÒ¶§ Á¶°Ç..*/
+    /*..hui [23-9-4ì˜¤í›„ 2:51:07] íŠ¸ë ˆì´ ì œë¹™ë°©í–¥ ì¬ì‹œë„ì¤‘ í•´ë¹™ì‘ì—… í•«ê°€ìŠ¤ ê°€ë™í• ë•Œ ì¡°ê±´..*/
     if( F_Safety_Routine == SET && F_Ice_Tray_Down_Move_Reset == SET )
     {
         if( gu8_over_ice_melt_proc == 5 )
@@ -226,7 +226,7 @@ void output_fan(void)
     }
     #endif
 
-    /*..hui [23-9-22¿ÀÀü 9:54:36] ÇØºù µ¿ÀÛ¶§ ÇÖ°¡½º »èÁ¦..*/
+    /*..hui [23-9-22ì˜¤ì „ 9:54:36] í•´ë¹™ ë™ì‘ë•Œ í•«ê°€ìŠ¤ ì‚­ì œ..*/
     /*Bit3_CF_Tray_Melt_Operation_State = CLEAR;*/
 
 /***********************************************************************************************/
@@ -262,27 +262,27 @@ U8 get_hotgas_fan_operation(void)
     }
     else if( gu8_Amb_Temperature_One_Degree <= HOT_GAS_AMB_TEMP_13_DIGREE )
     {
-        /*..hui [23-4-7¿ÀÈÄ 1:23:42] 9µµ ~ 13µµ..*/
+        /*..hui [23-4-7ì˜¤í›„ 1:23:42] 9ë„ ~ 13ë„..*/
         mu8_return = CLEAR;
     }
     else if( gu8_Amb_Temperature_One_Degree <= HOT_GAS_AMB_TEMP_19_DIGREE )
     {
-        /*..hui [23-4-7¿ÀÈÄ 1:23:55] 14µµ ~ 19µµ..*/
+        /*..hui [23-4-7ì˜¤í›„ 1:23:55] 14ë„ ~ 19ë„..*/
         mu8_return = CLEAR;
     }
     else if( gu8_Amb_Temperature_One_Degree <= HOT_GAS_AMB_TEMP_24_DIGREE )
     {
-        /*..hui [23-4-7¿ÀÈÄ 1:24:08] 20µµ ~ 24µµ..*/
+        /*..hui [23-4-7ì˜¤í›„ 1:24:08] 20ë„ ~ 24ë„..*/
         mu8_return = SET;
     }
     else if( gu8_Amb_Temperature_One_Degree <= HOT_GAS_AMB_TEMP_29_DIGREE )
     {
-        /*..hui [23-4-7¿ÀÈÄ 1:24:18] 25µµ ~ 29µµ..*/
+        /*..hui [23-4-7ì˜¤í›„ 1:24:18] 25ë„ ~ 29ë„..*/
         mu8_return = SET;
     }
     else
     {
-        /*..hui [23-4-7¿ÀÈÄ 1:24:23] 30µµ ÀÌ»ó..*/
+        /*..hui [23-4-7ì˜¤í›„ 1:24:23] 30ë„ ì´ìƒ..*/
         mu8_return = SET;
     }
 

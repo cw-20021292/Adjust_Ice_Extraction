@@ -45,34 +45,34 @@ typedef unsigned long int   U32;
 //====================================================================================//
 //******** define only 1 Clock *********//
 //#define  OCO_CLOCK_16MHz		
-#define  OCO_CLOCK_32MHz				// 16MHz base ÇÁ·ÎÁ§Æ®ÆÄÀÏÀÌ¹Ç·Î 32MHz »ç¿ë½Ã, ¿É¼Ç¹ÙÀÌÆ®µµ º¯°æ ÁøÇà ÇÊ¿ä 
+#define  OCO_CLOCK_32MHz				// 16MHz base í”„ë¡œì íŠ¸íŒŒì¼ì´ë¯€ë¡œ 32MHz ì‚¬ìš©ì‹œ, ì˜µì…˜ë°”ì´íŠ¸ë„ ë³€ê²½ ì§„í–‰ í•„ìš” 
 //====================================================================================//
 
 //====================================================================================//
 //=========== 3. Port Setting ========================================================//
 //====================================================================================//
-#define  BOOT_PM_MODULE_POWER		PM0.4	// Output Only¿¡ ÇØ´çÇÏ´Â Æ÷Æ® »ç¿ë ½Ã, ÇØ´ç Define »èÁ¦ÇÒ °Í  
+#define  BOOT_PM_MODULE_POWER		PM0.4	// Output Onlyì— í•´ë‹¹í•˜ëŠ” í¬íŠ¸ ì‚¬ìš© ì‹œ, í•´ë‹¹ Define ì‚­ì œí•  ê²ƒ  
 #define  BOOT_P_MODULE_POWER		P0.4	
 
 #ifdef BOOT_MODULE_WIFI
-#define  BOOT_PM_MODULE_RESET		PM0.1	// Output Only¿¡ ÇØ´çÇÏ´Â Æ÷Æ® »ç¿ë ½Ã, ÇØ´ç Define »èÁ¦ÇÒ °Í  
+#define  BOOT_PM_MODULE_RESET		PM0.1	// Output Onlyì— í•´ë‹¹í•˜ëŠ” í¬íŠ¸ ì‚¬ìš© ì‹œ, í•´ë‹¹ Define ì‚­ì œí•  ê²ƒ  
 #define  BOOT_P_MODULE_RESET		P0.1 
 #endif
 
-#ifdef BOOT_MODULE_LTE	// LTE ¸ðµâ »ç¿ë ½Ã, RESETÆ÷Æ®´Â POWERÆ÷Æ®¿Í µ¿ÀÏÇÏ°Ô ÀÛ¼ºµÊ
-#define  BOOT_PM_MODULE_RESET		BOOT_PM_MODULE_POWER	// Output Only¿¡ ÇØ´çÇÏ´Â Æ÷Æ® »ç¿ë ½Ã, ÇØ´ç Define »èÁ¦ÇÒ °Í 
-#define  BOOT_P_MODULE_RESET		BOOT_P_MODULE_POWER		// LTE ¸ðµâ »ç¿ë ½Ã, RESET Æ÷Æ®´Â POWER Æ÷Æ®¿Í µ¿ÀÏÇÏ°Ô ÀÛ¼ºµÊ 
+#ifdef BOOT_MODULE_LTE	// LTE ëª¨ë“ˆ ì‚¬ìš© ì‹œ, RESETí¬íŠ¸ëŠ” POWERí¬íŠ¸ì™€ ë™ì¼í•˜ê²Œ ìž‘ì„±ë¨
+#define  BOOT_PM_MODULE_RESET		BOOT_PM_MODULE_POWER	// Output Onlyì— í•´ë‹¹í•˜ëŠ” í¬íŠ¸ ì‚¬ìš© ì‹œ, í•´ë‹¹ Define ì‚­ì œí•  ê²ƒ 
+#define  BOOT_P_MODULE_RESET		BOOT_P_MODULE_POWER		// LTE ëª¨ë“ˆ ì‚¬ìš© ì‹œ, RESET í¬íŠ¸ëŠ” POWER í¬íŠ¸ì™€ ë™ì¼í•˜ê²Œ ìž‘ì„±ë¨ 
 #endif
 
-//#define  BOOT_PM_MODULE_LED_SINK		PM0.3	// Output Only¿¡ ÇØ´çÇÏ´Â Æ÷Æ® »ç¿ë ½Ã, ÇØ´ç Define »èÁ¦ÇÒ °Í 
-//#define  BOOT_P_MODULE_LED_SINK			P0.3	// ÇØ´ç Æ÷Æ® ¹Ì»ç¿ë ½Ã, ÇØ´ç Define »èÁ¦ ÇÒ °Í
+//#define  BOOT_PM_MODULE_LED_SINK		PM0.3	// Output Onlyì— í•´ë‹¹í•˜ëŠ” í¬íŠ¸ ì‚¬ìš© ì‹œ, í•´ë‹¹ Define ì‚­ì œí•  ê²ƒ 
+//#define  BOOT_P_MODULE_LED_SINK			P0.3	// í•´ë‹¹ í¬íŠ¸ ë¯¸ì‚¬ìš© ì‹œ, í•´ë‹¹ Define ì‚­ì œ í•  ê²ƒ
 
-//#define  BOOT_PM_MODULE_LED_DRIVE		PM0.4	// Output Only¿¡ ÇØ´çÇÏ´Â Æ÷Æ® »ç¿ë ½Ã, ÇØ´ç Define »èÁ¦ÇÒ °Í
-//#define  BOOT_P_MODULE_LED_DRIVE		P0.4	// ÇØ´ç Æ÷Æ® ¹Ì»ç¿ë ½Ã, ÇØ´ç Define »èÁ¦ ÇÒ °Í
-//#define  BOOT_P_MODULE_LED_DRIVE_LEVEL	LOW		// È¸·Î ±¸¼º¿¡ µû¶ó HIGH/LOW ¼±ÅÃ
+//#define  BOOT_PM_MODULE_LED_DRIVE		PM0.4	// Output Onlyì— í•´ë‹¹í•˜ëŠ” í¬íŠ¸ ì‚¬ìš© ì‹œ, í•´ë‹¹ Define ì‚­ì œí•  ê²ƒ
+//#define  BOOT_P_MODULE_LED_DRIVE		P0.4	// í•´ë‹¹ í¬íŠ¸ ë¯¸ì‚¬ìš© ì‹œ, í•´ë‹¹ Define ì‚­ì œ í•  ê²ƒ
+//#define  BOOT_P_MODULE_LED_DRIVE_LEVEL	LOW		// íšŒë¡œ êµ¬ì„±ì— ë”°ë¼ HIGH/LOW ì„ íƒ
 //====================================================================================//
 
-#define  BOOT_P_UART_TX					P0.2	// R5F100MG ±âÁØ, UART1 Tx Port => P02
+#define  BOOT_P_UART_TX					P0.2	// R5F100MG ê¸°ì¤€, UART1 Tx Port => P02
 
 #ifdef OCO_CLOCK_16MHz
 #define R_PFDL_FDL_FRQ      16      /* Sets the frequency (16 MHz)             */

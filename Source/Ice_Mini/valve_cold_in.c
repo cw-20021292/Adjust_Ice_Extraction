@@ -17,12 +17,12 @@ void output_valve_cold_in_feed2(void);
 TYPE_BYTE          U8ColdInValveONB;
 #define            u8ColdInValveON                         U8ColdInValveONB.byte
 #define            Bit0_Cold_In_Water_Out_On_State         U8ColdInValveONB.Bit.b0
-#define            Bit1_Tank_Fill_Cold_In                  U8ColdInValveONB.Bit.b1	/* ³Ã¼öÅÊÅ© Ã¤¿ì±â */
+#define            Bit1_Tank_Fill_Cold_In                  U8ColdInValveONB.Bit.b1	/* Â³ÃƒÂ¼Ã¶Ã…ÃŠÃ…Â© ÃƒÂ¤Â¿Ã¬Â±Ã¢ */
 #define            Bit2_Cold_In_IceWater_Out_On_State      U8ColdInValveONB.Bit.b2
 #define            Bit3_CIV_Ice_Tray_Ster_State            U8ColdInValveONB.Bit.b3
 #define			   Bit4_Cody_Water_Line_Clean_State		   U8ColdInValveONB.Bit.b4	/* Cody Water Line Clean Service */
 #define            Bit5_Circul_Drain_On_State              U8ColdInValveONB.Bit.b5
-#define			   Bit6_Tank_Flushing_Cold_In			   U8ColdInValveONB.Bit.b6	/* ³Ã¼öÅÊÅ© ÇÃ·¯½Ì */
+#define			   Bit6_Tank_Flushing_Cold_In			   U8ColdInValveONB.Bit.b6	/* Â³ÃƒÂ¼Ã¶Ã…ÃŠÃ…Â© Ã‡ÃƒÂ·Â¯Â½ÃŒ */
 
 TYPE_BYTE          U8ColdInValveOFFB;
 #define            u8ColdInValveOFF                        U8ColdInValveOFFB.byte
@@ -48,12 +48,12 @@ void output_valve_cold_in_feed2(void)
 {
 
 /***********************************************************************************************/
-	/* ÇÃ·¯½Ì - ³Ã¼öÅÊÅ© Ã¤¿ì±â */
+	/* Ã‡ÃƒÂ·Â¯Â½ÃŒ - Â³ÃƒÂ¼Ã¶Ã…ÃŠÃ…Â© ÃƒÂ¤Â¿Ã¬Â±Ã¢ */
 	if(gu8_flushing_mode == FLUSHING_FILL_COLD_TANK_START_STATE)
 	{
 		if(bit_fill_cold_start == SET)
 		{
-			if(gu8_cold_tank_fill_step == COLD_TANK_FILL_COLD_OPEN)	//step2¿¡¼­ ³Ã¼ö ¿À¹öÇÃ·Î¿ì ¹ëºê ¿¬ ÈÄ 3¿¡¼­ ³Ã¼öÀÔ¼ö¹ëºê ¿­±â
+			if(gu8_cold_tank_fill_step == COLD_TANK_FILL_COLD_OPEN)	//step2Â¿Â¡Â¼Â­ Â³ÃƒÂ¼Ã¶ Â¿Ã€Â¹Ã¶Ã‡ÃƒÂ·ÃŽÂ¿Ã¬ Â¹Ã«ÂºÃª Â¿Â¬ ÃˆÃ„ 3Â¿Â¡Â¼Â­ Â³ÃƒÂ¼Ã¶Ã€Ã”Â¼Ã¶Â¹Ã«ÂºÃª Â¿Â­Â±Ã¢
 			{
 				Bit1_Tank_Fill_Cold_In = SET;
 			}
@@ -72,7 +72,7 @@ void output_valve_cold_in_feed2(void)
 		Bit1_Tank_Fill_Cold_In = CLEAR;
 	}
 
-	if(gu8_flushing_mode == FLUSHING_COLD_TANK)	/* ÇÃ·¯½Ì - ³Ã¼öÅÊÅ© ÇÃ·¯½Ì */
+	if(gu8_flushing_mode == FLUSHING_COLD_TANK)	/* Ã‡ÃƒÂ·Â¯Â½ÃŒ - Â³ÃƒÂ¼Ã¶Ã…ÃŠÃ…Â© Ã‡ÃƒÂ·Â¯Â½ÃŒ */
 	{
 		if(gu8_cold_tank_flushing_step == COLDTANK_FLUSHING_5MINUTE)
 		{
@@ -111,7 +111,7 @@ void output_valve_cold_in_feed2(void)
 		Bit6_Tank_Flushing_Cold_In = CLEAR;
 	}
 
-	/* ÃßÃâ */
+	/* ÃƒÃŸÃƒÃ¢ */
 	if( F_WaterOut == SET )
     {
 		if( u8IceOutState == ICE_SELECT__ICE_WATER )
@@ -128,7 +128,7 @@ void output_valve_cold_in_feed2(void)
 		}
 		else
 		{
-			/* ¹°ÃßÃâ ÇÏ·Á´Âµ¥ ³Ã¼ö ¼±ÅÃµÇ¾î ÀÖÀ¸¸é */
+			/* Â¹Â°ÃƒÃŸÃƒÃ¢ Ã‡ÃÂ·ÃÂ´Ã‚ÂµÂ¥ Â³ÃƒÂ¼Ã¶ Â¼Â±Ã…ÃƒÂµÃ‡Â¾Ã® Ã€Ã–Ã€Â¸Â¸Ã© */
 			if( u8WaterOutState == COLD_WATER_SELECT )
 			{
 				if( gu8_Water_Out_Step >= STATE_10_WATER_IN_FEED_ON_STATE
@@ -153,7 +153,7 @@ void output_valve_cold_in_feed2(void)
 		Bit2_Cold_In_IceWater_Out_On_State = CLEAR;
     }
 
-	/* °í¿Â»ì±Õ */
+	/* Â°Ã­Â¿Ã‚Â»Ã¬Â±Ã• */
 	if( bit_ice_tank_ster_start == SET )
 	 {
 			 if( gu8_ice_ster_mode == STER_MODE_HOT_WAIT_STATE )
@@ -204,7 +204,7 @@ void output_valve_cold_in_feed2(void)
 		Bit3_CIV_Ice_Tray_Ster_State = CLEAR;
 	 }
 
-	/* ÄÚµðÀ¯·Î»ì±Õ Cody Water Line Clean Service */
+	/* Ã„ÃšÂµÃ°Ã€Â¯Â·ÃŽÂ»Ã¬Â±Ã• Cody Water Line Clean Service */
     if(cody_water_line.gu8_start == SET)
     {
         if(cody_water_line.gu8_step == 2)

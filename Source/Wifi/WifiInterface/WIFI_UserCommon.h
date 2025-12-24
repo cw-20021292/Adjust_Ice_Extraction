@@ -63,16 +63,16 @@ typedef double              D64;
 
 
 // Define structures for parsed JSON data
-#define USER_DATA_JSON_ONE_MAX      200                             // API ID´ç JSON ÃÑ ÃÖ´ë ±æÀÌ
-// #define USER_DATA_JSON_UART_MAX     (LENGTH_WIFI_ALL_MAX_N)         // JSON UART ÃÖ´ë ±æÀÌ
-// #define USER_DATA_JSON_MAX          400                             // JSON ÃÑ ÃÖ´ë ±æÀÌ
-#define USER_MAX_KEY_LEN            5                               // Key ÃÖ´ë ±æÀÌ
-#define USER_MAX_VALUE_LEN          80                              // Value ÃÖ´ë ±æÀÌ
-#define USER_MAX_VALUE_ARRAY_LEN    150                             // Array Value ÃÖ´ë ±æÀÌ
+#define USER_DATA_JSON_ONE_MAX      200                             // API IDë‹¹ JSON ì´ ìµœëŒ€ ê¸¸ì´
+// #define USER_DATA_JSON_UART_MAX     (LENGTH_WIFI_ALL_MAX_N)         // JSON UART ìµœëŒ€ ê¸¸ì´
+// #define USER_DATA_JSON_MAX          400                             // JSON ì´ ìµœëŒ€ ê¸¸ì´
+#define USER_MAX_KEY_LEN            5                               // Key ìµœëŒ€ ê¸¸ì´
+#define USER_MAX_VALUE_LEN          80                              // Value ìµœëŒ€ ê¸¸ì´
+#define USER_MAX_VALUE_ARRAY_LEN    150                             // Array Value ìµœëŒ€ ê¸¸ì´
 
-#define USER_MAX_ITEMS              USER_JSON_MAX_ITEMS              // ÃÖ´ë Å°-°ª ½ÖÀÇ ¼ö
-#define USER_MAX_ARRAY_VALUE        USER_JSON_MAX_ARRAY_VALUE        // ÃÖ´ë Array °¹¼ö     
-#define USER_MAX_ARRAY_OBJECT       USER_JSON_MAX_ARRAY_OBJECT       // ArrayÀÇ object ¼ö
+#define USER_MAX_ITEMS              USER_JSON_MAX_ITEMS              // ìµœëŒ€ í‚¤-ê°’ ìŒì˜ ìˆ˜
+#define USER_MAX_ARRAY_VALUE        USER_JSON_MAX_ARRAY_VALUE        // ìµœëŒ€ Array ê°¯ìˆ˜     
+#define USER_MAX_ARRAY_OBJECT       USER_JSON_MAX_ARRAY_OBJECT       // Arrayì˜ object ìˆ˜
 
 // USER Define (RomSize/ProductNum)
 
@@ -110,23 +110,23 @@ enum
 
 // USER Define (Buzzer)
 enum{
-    WIFI_BUZZER_SELECT,          // Æä¾î¸µ (¼±ÅÃÀ½ "¶ò") 
-    WIFI_BUZZER_AP_CONNECT,      // AP¿¬°á (ÁøÀÔÀ½ "¶ì¸®¸µ" / Wi-Fi ¿¬°á¸ðµå°¡ È°¼ºÈ­ µÇ¾ú½À´Ï´Ù.)
-    WIFI_BUZZER_BLE_CONNECT,     // AP¿¬°á (ÁøÀÔÀ½ "¶ì¸®¸µ" / BLE¿¬°á¸ðµå°¡ È°¼ºÈ­ µÇ¾ú½À´Ï´Ù.)
-    WIFI_BUZZER_SETUP,           // WIFI ON (¼³Á¤À½ "¶òµ¿¢Ö" / Á¦Ç°ÀÇ Wi-Fi°¡ ÄÑÁ³½À´Ï´Ù.)
-    WIFI_BUZZER_SERVER_CONNECT,  // ¼­¹ö¿¬°á (¿¬°áÀ½ "¶ì¸®¸µ¢Ö" / Á¦Ç°°ú ¾ÛÀÌ ¼º°øÀûÀ¸·Î ¿¬°áµÇ¾ú½À´Ï´Ù.)
-    WIFI_BUZZER_AP_FAIL,         // Æä¾î¸µ30ºÐ °æ°ú (ÇØÁ¦À½ "µ¿¶ò" / Á¦Ç°°ú ¾ÛÀÇ ¿¬°áÀÌ ½ÇÆÐÇÏ¿´½À´Ï´Ù.)
-    WIFI_BUZZER_CANCEL,          // WIFI OFF (ÇØÁ¦À½ "µ¿¶ò" / Á¦Ç°ÀÇ Wi-Fi°¡ ²¨Á³½À´Ï´Ù.)
-    WIFI_BUZZER_AP_START,        // AP½ÃÀÛÀ½ (¼³Á¤À½ "¶òµ¿ ¢Ö")
-    WIFI_BUZZER_ERROR,           // ºÒ°¡À½ (¿¡·¯À½ "¶ò±ø¶ò±ø")
-    WIFI_BUZZER_WiFi_OFF,         // Wi-Fi Æä¾î¸µ ÇØÁ¦À½(µ¿¶ò) / Wi-Fi ¿¬°á ¸ðµå°¡ ºñÈ°¼ºÈ­ µÇ¾ú½À´Ï´Ù.
-    WIFI_BUZZER_BLE_OFF,	      // ºí·çÅõ½º Æä¾î¸µ ÇØÁ¦À½(µ¿¶ò) / ºí·çÅõ½º ¿¬°á ¸ðµå°¡ ºñÈ°¼ºÈ­ µÇ¾ú½À´Ï´Ù.
-    WIFI_BUZZER_BLE_CERT,         // (¼±ÅÃÀ½ "¶ò") / ºí·çÅõ½º Á¡À¯ÀÎÁõ È°¼ºÈ­ »óÅÂ / Á¦Ç°ÀÎÁõÀ» ÁøÇà ÁßÀÔ´Ï´Ù. ¾Û¿¡¼­ °¡ÀÌµåÇÏ´Â ¹öÆ°À» ´­·¯ÁÖ¼¼¿ä.
-    WIFI_BUZZER_SERVER_FIRST,     // ÃÖÃÊ ¼­¹ö¿¬°á (¿¬°áÀ½ "¶ì¸®¸µ¢Ö" / Á¦Ç°°ú ¾ÛÀÌ ¼º°øÀûÀ¸·Î ¿¬°áµÇ¾ú½À´Ï´Ù.
+    WIFI_BUZZER_SELECT,          // íŽ˜ì–´ë§ (ì„ íƒìŒ "ëµ") 
+    WIFI_BUZZER_AP_CONNECT,      // APì—°ê²° (ì§„ìž…ìŒ "ë ë¦¬ë§" / Wi-Fi ì—°ê²°ëª¨ë“œê°€ í™œì„±í™” ë˜ì—ˆìŠµë‹ˆë‹¤.)
+    WIFI_BUZZER_BLE_CONNECT,     // APì—°ê²° (ì§„ìž…ìŒ "ë ë¦¬ë§" / BLEì—°ê²°ëª¨ë“œê°€ í™œì„±í™” ë˜ì—ˆìŠµë‹ˆë‹¤.)
+    WIFI_BUZZER_SETUP,           // WIFI ON (ì„¤ì •ìŒ "ëµë™â†—" / ì œí’ˆì˜ Wi-Fiê°€ ì¼œì¡ŒìŠµë‹ˆë‹¤.)
+    WIFI_BUZZER_SERVER_CONNECT,  // ì„œë²„ì—°ê²° (ì—°ê²°ìŒ "ë ë¦¬ë§â†—" / ì œí’ˆê³¼ ì•±ì´ ì„±ê³µì ìœ¼ë¡œ ì—°ê²°ë˜ì—ˆìŠµë‹ˆë‹¤.)
+    WIFI_BUZZER_AP_FAIL,         // íŽ˜ì–´ë§30ë¶„ ê²½ê³¼ (í•´ì œìŒ "ë™ëµ" / ì œí’ˆê³¼ ì•±ì˜ ì—°ê²°ì´ ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.)
+    WIFI_BUZZER_CANCEL,          // WIFI OFF (í•´ì œìŒ "ë™ëµ" / ì œí’ˆì˜ Wi-Fiê°€ êº¼ì¡ŒìŠµë‹ˆë‹¤.)
+    WIFI_BUZZER_AP_START,        // APì‹œìž‘ìŒ (ì„¤ì •ìŒ "ëµë™ â†—")
+    WIFI_BUZZER_ERROR,           // ë¶ˆê°€ìŒ (ì—ëŸ¬ìŒ "ëµê¹¡ëµê¹¡")
+    WIFI_BUZZER_WiFi_OFF,         // Wi-Fi íŽ˜ì–´ë§ í•´ì œìŒ(ë™ëµ) / Wi-Fi ì—°ê²° ëª¨ë“œê°€ ë¹„í™œì„±í™” ë˜ì—ˆìŠµë‹ˆë‹¤.
+    WIFI_BUZZER_BLE_OFF,	      // ë¸”ë£¨íˆ¬ìŠ¤ íŽ˜ì–´ë§ í•´ì œìŒ(ë™ëµ) / ë¸”ë£¨íˆ¬ìŠ¤ ì—°ê²° ëª¨ë“œê°€ ë¹„í™œì„±í™” ë˜ì—ˆìŠµë‹ˆë‹¤.
+    WIFI_BUZZER_BLE_CERT,         // (ì„ íƒìŒ "ëµ") / ë¸”ë£¨íˆ¬ìŠ¤ ì ìœ ì¸ì¦ í™œì„±í™” ìƒíƒœ / ì œí’ˆì¸ì¦ì„ ì§„í–‰ ì¤‘ìž…ë‹ˆë‹¤. ì•±ì—ì„œ ê°€ì´ë“œí•˜ëŠ” ë²„íŠ¼ì„ ëˆŒëŸ¬ì£¼ì„¸ìš”.
+    WIFI_BUZZER_SERVER_FIRST,     // ìµœì´ˆ ì„œë²„ì—°ê²° (ì—°ê²°ìŒ "ë ë¦¬ë§â†—" / ì œí’ˆê³¼ ì•±ì´ ì„±ê³µì ìœ¼ë¡œ ì—°ê²°ë˜ì—ˆìŠµë‹ˆë‹¤.
 
-    WIFI_BUZZER_SMART_CHECK_START,       // (¼³Á¤À½ "¶òµ¿ ¢Ö") / ½º¸¶Æ® Áø´ÜÀ» ½ÃÀÛÇÕ´Ï´Ù. ÁøÇà Áß¿¡´Â Á¦Ç°À» »ç¿ëÇÒ ¼ö ¾øÀ¸´Ï Àá½Ã¸¸ ±â´Ù·Á ÁÖ¼¼¿ä.
-    WIFI_BUZZER_SMART_CHECK_OK,          // (¼³Á¤À½ "¶òµ¿ ¢Ö") / ½º¸¶Æ® Áø´ÜÀÌ ¿Ï·á µÇ¾î Á¦Ç°À» »ç¿ëÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.
-    WIFI_BUZZER_SMART_CHECK_ERROR,       // ºÒ°¡À½ (¿¡·¯À½ "¶ò±ø¶ò±ø") / ½º¸¶Æ® Áø´ÜÀÌ ¿Ï·á µÇ¾ú½À´Ï´Ù.
+    WIFI_BUZZER_SMART_CHECK_START,       // (ì„¤ì •ìŒ "ëµë™ â†—") / ìŠ¤ë§ˆíŠ¸ ì§„ë‹¨ì„ ì‹œìž‘í•©ë‹ˆë‹¤. ì§„í–‰ ì¤‘ì—ëŠ” ì œí’ˆì„ ì‚¬ìš©í•  ìˆ˜ ì—†ìœ¼ë‹ˆ ìž ì‹œë§Œ ê¸°ë‹¤ë ¤ ì£¼ì„¸ìš”.
+    WIFI_BUZZER_SMART_CHECK_OK,          // (ì„¤ì •ìŒ "ëµë™ â†—") / ìŠ¤ë§ˆíŠ¸ ì§„ë‹¨ì´ ì™„ë£Œ ë˜ì–´ ì œí’ˆì„ ì‚¬ìš©í•˜ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+    WIFI_BUZZER_SMART_CHECK_ERROR,       // ë¶ˆê°€ìŒ (ì—ëŸ¬ìŒ "ëµê¹¡ëµê¹¡") / ìŠ¤ë§ˆíŠ¸ ì§„ë‹¨ì´ ì™„ë£Œ ë˜ì—ˆìŠµë‹ˆë‹¤.
 };
 
 

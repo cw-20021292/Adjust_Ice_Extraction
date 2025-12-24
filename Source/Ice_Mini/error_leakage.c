@@ -69,16 +69,16 @@ U16 gu16_flow_leak_error_check_timer;
 ***********************************************************************************************************************/
 void check_flow_error(void)
 {
-    /*..hui [18-11-22¿ÀÈÄ 3:36:39] ´©¼ö ¼¾¼­ ¿¡·¯..*/
+    /*..hui [18-11-22ì˜¤í›„ 3:36:39] ëˆ„ìˆ˜ ì„¼ì„œ ì—ëŸ¬..*/
     check_error_leakage_sensor();
 
-    /* Æ®·¹ÀÌ ÀÔ¼ö ´Ü¼ö¿¡·¯ */
+    /* íŠ¸ë ˆì´ ìž…ìˆ˜ ë‹¨ìˆ˜ì—ëŸ¬ */
     check_error_blocked_trayin();
 
-    /*..hui [23-6-9¿ÀÈÄ 2:43:47] ´Ü¼ö¿¡·¯..*/
+    /*..hui [23-6-9ì˜¤í›„ 2:43:47] ë‹¨ìˆ˜ì—ëŸ¬..*/
     check_error_blocked_water_flow();
 
-    /*..hui [18-11-22¿ÀÈÄ 3:36:46] À¯·®¼¾¼­ ´©¼ö ¿¡·¯..*/
+    /*..hui [18-11-22ì˜¤í›„ 3:36:46] ìœ ëŸ‰ì„¼ì„œ ëˆ„ìˆ˜ ì—ëŸ¬..*/
     // check_error_leaked_water_flow();
 
 }
@@ -135,7 +135,7 @@ void check_error_leaked_water_flow(void)
     u8_check_enable = flow_leak_condition();
 
     /*if( (u16ValveOutputState & 0x7FD) == (U16)0 )*/
-    /*..hui [19-2-14¿ÀÈÄ 9:22:33] °¨ÁöµÉ¼öÀÖ´Â Á¶°ÇÀ¸·Î º¯°æ..*/
+    /*..hui [19-2-14ì˜¤í›„ 9:22:33] ê°ì§€ë ìˆ˜ìžˆëŠ” ì¡°ê±´ìœ¼ë¡œ ë³€ê²½..*/
     if(u8_check_enable == 0)
     {
         if( gu8_Flow_1sec >= LEAKAGE_DETECT_HZ )
@@ -185,7 +185,7 @@ U8 flow_leak_condition(void)
 {
     U8 mu8_return = 0;
 
-    /*..hui [19-2-14¿ÀÈÄ 4:18:50] ¹° ÃßÃâ½Ã..*/
+    /*..hui [19-2-14ì˜¤í›„ 4:18:50] ë¬¼ ì¶”ì¶œì‹œ..*/
     if( F_WaterOut == SET)
     {
         Bit0_Flow_Leak_Check_State1 = SET;
@@ -267,8 +267,8 @@ void check_error_blocked_trayin(void)
         {
             if( F_WaterOut == SET )
             {
-                /*..hui [20-6-22¿ÀÀü 10:21:02] ÃßÃâÇÒ¶§ Ä«¿îÆ® ÃÊ±âÈ­ÇÏµµ·Ï ¼öÁ¤.. ¹Ýº¹ÀûÀÎ ÃßÃâÀÏ¶§ ÇØÁ¦µ¿ÀÛÀÌ Á¦´ë·Î ¾ÈÀÌ·ç¾îÁú¼öÀÖÀ½..*/
-                /*..hui [20-6-22¿ÀÀü 10:21:06] ÀÌ½ÂÇå°úÀå..*/
+                /*..hui [20-6-22ì˜¤ì „ 10:21:02] ì¶”ì¶œí• ë•Œ ì¹´ìš´íŠ¸ ì´ˆê¸°í™”í•˜ë„ë¡ ìˆ˜ì •.. ë°˜ë³µì ì¸ ì¶”ì¶œì¼ë•Œ í•´ì œë™ìž‘ì´ ì œëŒ€ë¡œ ì•ˆì´ë£¨ì–´ì§ˆìˆ˜ìžˆìŒ..*/
+                /*..hui [20-6-22ì˜¤ì „ 10:21:06] ì´ìŠ¹í—Œê³¼ìž¥..*/
                 u16_tray_flow_check_timer = 0;
             }
             else{  }
@@ -325,7 +325,7 @@ void check_error_blocked_water_flow(void)
             {
                 gu16_flow_block_check_timer++;
 
-                if(gu16_flow_block_check_timer >= FLOW_BLOCK_ERROR_CHECK_TIME)      /* ´Ü¼ö 20ÃÊ °¨Áö */
+                if(gu16_flow_block_check_timer >= FLOW_BLOCK_ERROR_CHECK_TIME)      /* ë‹¨ìˆ˜ 20ì´ˆ ê°ì§€ */
                 {
                     gu16_flow_block_check_timer = 0;
                     Bit6_Main_Water_Flow_Block_Error__E09 = SET;
@@ -352,7 +352,7 @@ void check_error_blocked_water_flow(void)
     }
     else
     {
-        /*..hui [23-11-1¿ÀÀü 11:31:02] ÇÃ·¯½Ì¶§ ´Ü¼ö¿¡·¯´Â ¹öÆ° ´©¸£±â Àü±îÁö´Â °è¼Ó Ç¥½ÃÇÏ°íÀÖ´Â°É·Î..*/
+        /*..hui [23-11-1ì˜¤ì „ 11:31:02] í”ŒëŸ¬ì‹±ë•Œ ë‹¨ìˆ˜ì—ëŸ¬ëŠ” ë²„íŠ¼ ëˆ„ë¥´ê¸° ì „ê¹Œì§€ëŠ” ê³„ì† í‘œì‹œí•˜ê³ ìžˆëŠ”ê±¸ë¡œ..*/
         gu16_flow_block_clear_timer = 0;
     }
 #endif
@@ -388,7 +388,7 @@ U8 flow_block_condition(void)
 {
     U8 mu8_return = 0;
 
-    /*..hui [19-2-14¿ÀÈÄ 4:18:50] ¹° ÃßÃâ½Ã..*/
+    /*..hui [19-2-14ì˜¤í›„ 4:18:50] ë¬¼ ì¶”ì¶œì‹œ..*/
     if( F_WaterOut == SET
     && u8WaterOutState != HOT_WATER_SELECT)
     {
@@ -429,7 +429,7 @@ U8 flow_block_condition(void)
         Bit3_Flow_Block_Check_State4 = CLEAR;
     }
 
-    // /* ¾óÀ½ Á¦ºùÀ» À§ÇÑ Æ®·¹ÀÌ ÀÔ¼ö´Ü°è¿¡¼­ ¿ø¼ö ´Ü¼ö Ã¼Å© 250423 CH.PARK */
+    // /* ì–¼ìŒ ì œë¹™ì„ ìœ„í•œ íŠ¸ë ˆì´ ìž…ìˆ˜ë‹¨ê³„ì—ì„œ ì›ìˆ˜ ë‹¨ìˆ˜ ì²´í¬ 250423 CH.PARK */
     // if(gu8IceStep == STATE_20_WATER_IN_ICE_TRAY)
     // {
     //     Bit4_Flow_Block_Check_State5 = SET;
@@ -455,17 +455,17 @@ U8 flow_block_condition(void)
     }
     else
     {
-        /* À¯·Î»ì±Õ¸ðµå ÇØÁ¦ ÈÄ °è¼Ó E09 ¿¡·¯ ¹ß»ýµÇ´Â Çö»ó °³¼± 250724 CH.PARK */
+        /* ìœ ë¡œì‚´ê· ëª¨ë“œ í•´ì œ í›„ ê³„ì† E09 ì—ëŸ¬ ë°œìƒë˜ëŠ” í˜„ìƒ ê°œì„  250724 CH.PARK */
         Bit5_Flow_Block_Check_State6 = CLEAR;
     }
 
 
 
-    /*..hui [24-12-17¿ÀÀü 10:55:19] ³ªÁß¿¡ ´Ù½Ã..*/
+    /*..hui [24-12-17ì˜¤ì „ 10:55:19] ë‚˜ì¤‘ì— ë‹¤ì‹œ..*/
     if( u8FlowBlockCheckState > 0 )
     {
-        /*..hui [19-2-14¿ÀÈÄ 6:26:57] ¸ÞÀÎ NOS ¹ëºê°¡ Àá±ÅÁ®ÀÖÁö ¾ÊÀ»¶§¸¸.. È¤½Ã³ªÇØ¼­..*/
-        /*..hui [23-8-23¿ÀÈÄ 2:10:37] FEED ¿­·ÁÀÖÀ»¶§ Ãß°¡..*/
+        /*..hui [19-2-14ì˜¤í›„ 6:26:57] ë©”ì¸ NOS ë°¸ë¸Œê°€ ìž ê¶ˆì ¸ìžˆì§€ ì•Šì„ë•Œë§Œ.. í˜¹ì‹œë‚˜í•´ì„œ..*/
+        /*..hui [23-8-23ì˜¤í›„ 2:10:37] FEED ì—´ë ¤ìžˆì„ë•Œ ì¶”ê°€..*/
         if( pVALVE_NOS != SET )
         {
             mu8_return = SET;

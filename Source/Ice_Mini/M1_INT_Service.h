@@ -91,8 +91,8 @@ extern bit  F_NewDataReceive;
 //extern bit  F_RemoReceiveFinish;
 //extern bit  F_ChildNozzleChange;
 extern bit  F_ChildNozzleChange_Bidet;
-extern F32 f32InHot_Temperature;      /*..ÇÔ¼ö¿¡¼­ ¾ò¾î¿Â ¿Âµµ °ª..*/
-extern F32 f32OutHot_Temperature;      /*..ÇÔ¼ö¿¡¼­ ¾ò¾î¿Â ¿Âµµ °ª..*/
+extern F32 f32InHot_Temperature;      /*..í•¨ìˆ˜ì—ì„œ ì–»ì–´ì˜¨ ì˜¨ë„ ê°’..*/
+extern F32 f32OutHot_Temperature;      /*..í•¨ìˆ˜ì—ì„œ ì–»ì–´ì˜¨ ì˜¨ë„ ê°’..*/
 extern U16 u16Seat_Temperature;
 extern U16 u16ADEWFeedbackResult;
 extern U8 gu8_Error_Code;

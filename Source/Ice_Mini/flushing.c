@@ -118,8 +118,8 @@ bit bit_cold_air_remove_state;
 bit bit_first_full_water;
 
 COLDTANK_FLUSHING_STEP gu8_cold_tank_flushing_step;
-U16 gu16_cold_tank_flushing_timer;		/* ³Ã¼öÅÊÅ© ÇÃ·¯½Ì °¢ ´Ü°è Å¸ÀÌ¸Ó */
-U16 gu16_cold_tank_flushing_max_timer;	/* ³Ã¼öÅÊÅ© ÇÃ·¯½Ì ÃÖ´ë ½Ã°£ Å¸ÀÌ¸Ó */
+U16 gu16_cold_tank_flushing_timer;		/* ëƒ‰ìˆ˜íƒ±í¬ í”ŒëŸ¬ì‹± ê° ë‹¨ê³„ íƒ€ì´ë¨¸ */
+U16 gu16_cold_tank_flushing_max_timer;	/* ëƒ‰ìˆ˜íƒ±í¬ í”ŒëŸ¬ì‹± ìµœëŒ€ ì‹œê°„ íƒ€ì´ë¨¸ */
 
 U16 gu16_flushing_finish_delay_timer;
 
@@ -184,12 +184,12 @@ void flushing_main(void)
 
     switch( gu8_flushing_mode )
     {
-        /*..hui [23-6-2¿ÀÀü 11:08:29] ÇÃ·¯½Ì °¡´É »óÅÂ È®ÀÎ..*/
+        /*..hui [23-6-2ì˜¤ì „ 11:08:29] í”ŒëŸ¬ì‹± ê°€ëŠ¥ ìƒíƒœ í™•ì¸..*/
         case FLUSHING_NONE_STATE:
             check_flushing_enable();
         break;
 
-		/*..hui [23-6-2¿ÀÀü 11:08:29] ÇÃ·¯½Ì °¡´É »óÅÂ È®ÀÎ..*/
+		/*..hui [23-6-2ì˜¤ì „ 11:08:29] í”ŒëŸ¬ì‹± ê°€ëŠ¥ ìƒíƒœ í™•ì¸..*/
 		case FLUSHING_STANDBY_STATE:
 			Flushing_Standby();
 			break;
@@ -213,7 +213,7 @@ void flushing_main(void)
 			break;
 
         case FLUSHING_FINISH_STATE:
-            /*..hui [23-6-2¿ÀÀü 11:08:42] ÇÃ·¯½Ì Á¾·á..*/
+            /*..hui [23-6-2ì˜¤ì „ 11:08:42] í”ŒëŸ¬ì‹± ì¢…ë£Œ..*/
             flushing_finish();
         break;
 
@@ -232,7 +232,7 @@ void flushing_main(void)
 ***********************************************************************************************************************/
 void check_flushing_enable(void)
 {
-	//bit_flushing_check_finish = SET; // ÀÓ½Ã·Î SETÇØµÒ
+	//bit_flushing_check_finish = SET; // ì„ì‹œë¡œ SETí•´ë‘ 
 
 	if( bit_flushing_check_finish == SET )
 	{
@@ -264,9 +264,9 @@ void check_flushing_enable(void)
 	bit_flushing_check_finish = SET;
 
 #if 0
-	/* ¼³Ä¡ÇÃ·¯½Ì ¹× ÇÊÅÍÇÃ·¯½Ì µÑÁß ÇÏ³ª¶óµµ ¿Ï·á ¾ÈµÆ´Ù¸é Ã³À½ºÎÅÍ ½ÃÀÛ 250228 CH.PARK */
+	/* ì„¤ì¹˜í”ŒëŸ¬ì‹± ë° í•„í„°í”ŒëŸ¬ì‹± ë‘˜ì¤‘ í•˜ë‚˜ë¼ë„ ì™„ë£Œ ì•ˆëë‹¤ë©´ ì²˜ìŒë¶€í„° ì‹œì‘ 250228 CH.PARK */
 	if( (bit_install_flushing_state == SET)
-	|| (gu8_filter_flushing_state == SET)		/* ¼³Ä¡ ¹× ÇÊÅÍÇÃ·¯½Ì */
+	|| (gu8_filter_flushing_state == SET)		/* ì„¤ì¹˜ ë° í•„í„°í”ŒëŸ¬ì‹± */
 	)
 	{
 		gu8_flushing_mode = FLUSHING_STANDBY_STATE;
@@ -276,7 +276,7 @@ void check_flushing_enable(void)
 	{
 		gu8_flushing_mode = FLUSHING_STANDBY_STATE;
 	}
-	else if( F_First_Hot_Effluent == SET )		/* Àü¿øÇÃ·¯½Ì */
+	else if( F_First_Hot_Effluent == SET )		/* ì „ì›í”ŒëŸ¬ì‹± */
 	{
 		gu8_flushing_mode = FLUSHING_FILL_COLD_TANK_START_STATE;
 	}
@@ -292,7 +292,7 @@ void Flushing_Standby(void)
 {
 	if(gu8_flushing_okay_key_indicator == SET)
 	{
-		/* ÇÊÅÍ¸®µå½ºÀ§Ä¡, ÇÊÅÍÄ¿¹ö Áß ÇÏ³ª¶óµµ ¿­·ÁÀÖÀ¸¸é ÇÃ·¯½Ì ÁøÇà ¸·À½ */
+		/* í•„í„°ë¦¬ë“œìŠ¤ìœ„ì¹˜, í•„í„°ì»¤ë²„ ì¤‘ í•˜ë‚˜ë¼ë„ ì—´ë ¤ìˆìœ¼ë©´ í”ŒëŸ¬ì‹± ì§„í–‰ ë§‰ìŒ */
 		if(bit_filter_cover == CLEAR)
 		{
 			play_voice_filter_cover_opened_44();
@@ -314,12 +314,12 @@ void Flushing_Standby(void)
 			return;
 		}
 
-		/*..hui [24-1-17¿ÀÈÄ 4:55:43] yes, no ÆË¾÷ ¶á »óÅÂ¿¡¼­ ÃßÃâ ¹öÆ° ´©¸¦ °æ¿ì....*/
-		/*..hui [24-1-17¿ÀÈÄ 4:55:52] RO ±³Ã¼ÇØµµ Ãë¼Ò °¡´ÉÇÏµµ·Ï ¹Ù²ñ..*/
+		/*..hui [24-1-17ì˜¤í›„ 4:55:43] yes, no íŒì—… ëœ¬ ìƒíƒœì—ì„œ ì¶”ì¶œ ë²„íŠ¼ ëˆ„ë¥¼ ê²½ìš°....*/
+		/*..hui [24-1-17ì˜¤í›„ 4:55:52] RO êµì²´í•´ë„ ì·¨ì†Œ ê°€ëŠ¥í•˜ë„ë¡ ë°”ë€œ..*/
 		if( bit_yes_no_popup == SET )
 		{
 			bit_yes_no_popup = CLEAR;
-			bit_filter_reset_yes = SET;		// ÇÊÅÍ¸®¼Â!
+			bit_filter_reset_yes = SET;		// í•„í„°ë¦¬ì…‹!
 			bit_filter_reset_no = CLEAR;
 
 			#ifdef __DUMMY_PROGRAM__
@@ -394,7 +394,7 @@ void Flushing_Standby(void)
 
 			if( gu8_install_voice_timer >= 70 )
 			{
-				// À½¼º¾È³» ÇÊ¼ö
+				// ìŒì„±ì•ˆë‚´ í•„ìˆ˜
 				play_voice_install_guide_75();
 
 				gu8_install_voice_timer = 0;
@@ -410,8 +410,8 @@ void flushing_pairing_start(void)
 {
     U8 mu8_ble_ap_mode = 0;
 
-    /*..hui [21-8-10¿ÀÈÄ 9:04:14] ÇÊÅÍ ÇÃ·¯½Ì ÃÊ±âÈ­ Ãë¼Ò ±â´É Ãß°¡µÊ..*/
-    /*..hui [21-8-10¿ÀÈÄ 9:04:33] Ãë¼ÒÇß´Ù°¡ ´Ù½Ã ½ÃÀÛÇÏ¸é ¿¬°á ²÷¾îÁö´Ï±î È®ÀÎ ÈÄ¿¡~~..*/
+    /*..hui [21-8-10ì˜¤í›„ 9:04:14] í•„í„° í”ŒëŸ¬ì‹± ì´ˆê¸°í™” ì·¨ì†Œ ê¸°ëŠ¥ ì¶”ê°€ë¨..*/
+    /*..hui [21-8-10ì˜¤í›„ 9:04:33] ì·¨ì†Œí–ˆë‹¤ê°€ ë‹¤ì‹œ ì‹œì‘í•˜ë©´ ì—°ê²° ëŠì–´ì§€ë‹ˆê¹Œ í™•ì¸ í›„ì—~~..*/
     mu8_ble_ap_mode  = GetWifiStatusValue( WIFI_STATUS_AP_BLE );
 
 
@@ -421,7 +421,7 @@ void flushing_pairing_start(void)
     {
         WifiKey(WIFI_KEY_BLE);
 
-        /*..hui [24-1-10¿ÀÈÄ 2:13:36] ÀÚµ¿À¸·Î ½ÃÀÛÇÕ´Ï´Ù À½¼º Ãâ·Â ¾ÈÇÔ..*/
+        /*..hui [24-1-10ì˜¤í›„ 2:13:36] ìë™ìœ¼ë¡œ ì‹œì‘í•©ë‹ˆë‹¤ ìŒì„± ì¶œë ¥ ì•ˆí•¨..*/
         /*play_voice_pairing_auto_start_76();*/
     }
     else{}
@@ -489,15 +489,15 @@ void Flushing_Filter(void)
 
 /************************************************************************************************/
 /**
- * @brief ³Ã¼öÅÊÅ© Ã¤¿ì±â °úÁ¤
+ * @brief ëƒ‰ìˆ˜íƒ±í¬ ì±„ìš°ê¸° ê³¼ì •
  *
  */
 void control_fill_cold_tank(void)
 {
     U8 mu8_finish = 0;
 
-    /*..hui [21-6-21¿ÀÈÄ 8:44:43] ³Ã¼öÅÊÅ© ¹° Ã¤¿ì´Ù ¿¡·¯ °É·ÈÀ»¶§´Â ¾î¶»°Ô..?..*/
-    /*..hui [21-6-28¿ÀÈÄ 3:28:43] ³Ã¼öÅÊÅ© Ã¤¿ì±â Áß ¿¡·¯ ¹ß»ıÇÒ ¼ö ÀÖ±â ¶§¹®¿¡ ..*/
+    /*..hui [21-6-21ì˜¤í›„ 8:44:43] ëƒ‰ìˆ˜íƒ±í¬ ë¬¼ ì±„ìš°ë‹¤ ì—ëŸ¬ ê±¸ë ¸ì„ë•ŒëŠ” ì–´ë–»ê²Œ..?..*/
+    /*..hui [21-6-28ì˜¤í›„ 3:28:43] ëƒ‰ìˆ˜íƒ±í¬ ì±„ìš°ê¸° ì¤‘ ì—ëŸ¬ ë°œìƒí•  ìˆ˜ ìˆê¸° ë•Œë¬¸ì— ..*/
     /*if( gu8_flushing_mode == FLUSHING_AIR_REMOVE_FINISH_STATE
         || gu8_flushing_mode == FLUSHING_FILL_COLD_TANK_START_STATE )*/
 
@@ -539,7 +539,7 @@ U8 cold_tank_fill_proc(void)
 
     switch( gu8_cold_tank_fill_step )
     {
-        case COLD_TANK_FILL_HZ_SET:		// ³Ã¼öÅÊÅ© Ã¤¿ì±â Àü¿¡ À¯·® È®Á¤
+        case COLD_TANK_FILL_HZ_SET:		// ëƒ‰ìˆ˜íƒ±í¬ ì±„ìš°ê¸° ì „ì— ìœ ëŸ‰ í™•ì •
 
             gu16_cold_tank_timer++;
 
@@ -547,7 +547,7 @@ U8 cold_tank_fill_proc(void)
             {
                 gu16_cold_tank_timer = 0;
                 gu16_cold_tank__max_timer = 0;
-                gu16_Cold_Tank_Fill_Hz = COLD_TANK_FILL_CC;		// ³Ã¼öÅÊÅ© Ã¤¿ì±â ÃÖ´ë ¿ë·® : [1L]
+                gu16_Cold_Tank_Fill_Hz = COLD_TANK_FILL_CC;		// ëƒ‰ìˆ˜íƒ±í¬ ì±„ìš°ê¸° ìµœëŒ€ ìš©ëŸ‰ : [1L]
                 gu8_cold_tank_fill_step++;
             }
             else
@@ -556,7 +556,7 @@ U8 cold_tank_fill_proc(void)
 			}
 			break;
 
-        case COLD_TANK_FILL_DRAIN:		// ³Ã¼öÅÊÅ© Ã¤¿ì±â Àü¿¡ ¹è¼öÅÊÅ© ¼öÀ§ ¿ÏÀüÈ÷ ºñ¿ì±â
+        case COLD_TANK_FILL_DRAIN:		// ëƒ‰ìˆ˜íƒ±í¬ ì±„ìš°ê¸° ì „ì— ë°°ìˆ˜íƒ±í¬ ìˆ˜ìœ„ ì™„ì „íˆ ë¹„ìš°ê¸°
 			if( u8DrainWaterLevel == DRAIN_LEVEL_EMPTY )
 			{
 				gu16_cold_tank_timer = 0;
@@ -566,7 +566,7 @@ U8 cold_tank_fill_proc(void)
 			else
 			{
 				gu16_cold_tank__max_timer++;
-				if( gu16_cold_tank__max_timer >= 9000 ) // ÇöÀç 15ºĞÀÎµ¥ È®ÀÎ ÇÊ¿äÇÔ;;
+				if( gu16_cold_tank__max_timer >= 9000 ) // í˜„ì¬ 15ë¶„ì¸ë° í™•ì¸ í•„ìš”í•¨;;
 				{
 					gu16_cold_tank_timer = 0;
 					gu16_cold_tank__max_timer = 0;
@@ -575,7 +575,7 @@ U8 cold_tank_fill_proc(void)
 				else{}
 			}
 #if 0
-            /*..hui [21-6-21¿ÀÀü 11:01:45] FEED3   ON..*/
+            /*..hui [21-6-21ì˜¤ì „ 11:01:45] FEED3   ON..*/
             gu16_cold_tank_timer++;
             if( gu16_cold_tank_timer >= 20 )
             {
@@ -599,10 +599,10 @@ U8 cold_tank_fill_proc(void)
 #endif
             break;
 
-        case COLD_TANK_FILL_OVERFLOW_OPEN: // ¿À¹öÇÃ·Î¿ì ¹ëºê OPEN
+        case COLD_TANK_FILL_OVERFLOW_OPEN: // ì˜¤ë²„í”Œë¡œìš° ë°¸ë¸Œ OPEN
 
-            /*..hui [21-7-5¿ÀÈÄ 5:08:31] 2ÃÊ ´ë±â..*/
-            /*..hui [21-11-10¿ÀÈÄ 2:40:19] ¾Ğ·ÂÇØÁ¦, ¿¡¾î»©±â °ü·Ã ±â´É º¯°æ..FEED4 ON, FEED3 OFF, FEED5 OFF ÈÄ 2ÃÊ ´ë±â..*/
+            /*..hui [21-7-5ì˜¤í›„ 5:08:31] 2ì´ˆ ëŒ€ê¸°..*/
+            /*..hui [21-11-10ì˜¤í›„ 2:40:19] ì••ë ¥í•´ì œ, ì—ì–´ë¹¼ê¸° ê´€ë ¨ ê¸°ëŠ¥ ë³€ê²½..FEED4 ON, FEED3 OFF, FEED5 OFF í›„ 2ì´ˆ ëŒ€ê¸°..*/
             gu16_cold_tank_timer++;
             if( gu16_cold_tank_timer >= 20 )
             {
@@ -613,8 +613,8 @@ U8 cold_tank_fill_proc(void)
 
             break;
 
-        case COLD_TANK_FILL_COLD_OPEN:		// ³Ã¼öÀÔ¼ö ¹ëºê OPEN
-			/* ¹°ÅÊÅ© ¼öÀ§¿¡ º¯È­°¡ »ı±â¸é (¹°ÀÌ Á¶±İÀÌ¶óµµ Â÷¸é) Áï½Ã ´ÙÀ½ ½ºÅÜÀ¸·Î ÀÌµ¿ */
+        case COLD_TANK_FILL_COLD_OPEN:		// ëƒ‰ìˆ˜ì…ìˆ˜ ë°¸ë¸Œ OPEN
+			/* ë¬¼íƒ±í¬ ìˆ˜ìœ„ì— ë³€í™”ê°€ ìƒê¸°ë©´ (ë¬¼ì´ ì¡°ê¸ˆì´ë¼ë„ ì°¨ë©´) ì¦‰ì‹œ ë‹¤ìŒ ìŠ¤í…ìœ¼ë¡œ ì´ë™ */
 			if(u8DrainWaterLevel >= DRAIN_LEVEL_LOW)
 			{
 				gu16_cold_tank__max_timer = 0;
@@ -622,8 +622,8 @@ U8 cold_tank_fill_proc(void)
 				return;
 			}
 
-            /*..hui [21-6-21¿ÀÀü 11:01:45] FEED5 ON..*/
-            /*..hui [21-11-10¿ÀÈÄ 2:40:44] FEED4 OFF, FEED3 ON, FEED5 ON..*/
+            /*..hui [21-6-21ì˜¤ì „ 11:01:45] FEED5 ON..*/
+            /*..hui [21-11-10ì˜¤í›„ 2:40:44] FEED4 OFF, FEED3 ON, FEED5 ON..*/
             if( gu16_Cold_Tank_Fill_Hz <= 0 )
             {
                 gu16_cold_tank_timer = 0;
@@ -631,7 +631,7 @@ U8 cold_tank_fill_proc(void)
             }
             else
             {
-				/* ³Ã¼öÅÊÅ© Ã¤¿ì±â ½Ã°£ ÃÖ´ë [3ºĞ] */
+				/* ëƒ‰ìˆ˜íƒ±í¬ ì±„ìš°ê¸° ì‹œê°„ ìµœëŒ€ [3ë¶„] */
                 gu16_cold_tank__max_timer++;
                 if( gu16_cold_tank__max_timer >= COLD_FILLING_MAX_TIME )
                 {
@@ -643,7 +643,7 @@ U8 cold_tank_fill_proc(void)
 
             break;
 
-        case COLD_TANK_FILL_COLD_CLOSE: // ³Ã¼ö ÀÔ¼ö¹ëºê CLOSE
+        case COLD_TANK_FILL_COLD_CLOSE: // ëƒ‰ìˆ˜ ì…ìˆ˜ë°¸ë¸Œ CLOSE
 			gu16_cold_tank_timer++;
 			if(gu16_cold_tank_timer > 10)
 			{
@@ -653,7 +653,7 @@ U8 cold_tank_fill_proc(void)
 
 			break;
 
-       case COLD_TANK_FILL_OVERFLOW_CLOSE: // ¿À¹öÇÃ·Î¿ì ¹ëºê CLOSE
+       case COLD_TANK_FILL_OVERFLOW_CLOSE: // ì˜¤ë²„í”Œë¡œìš° ë°¸ë¸Œ CLOSE
 			gu16_cold_tank_timer++;
 			if(gu16_cold_tank_timer > 10)
 			{
@@ -679,13 +679,13 @@ void Cold_Tank_Flushing(void)
 {
 	switch(gu8_cold_tank_flushing_step)
 	{
-		case COLDTANK_FLUSHING_NONE:		// ³Ã¼öÅÊÅ© ÇÃ·¯½Ì ½ÃÀÛ
+		case COLDTANK_FLUSHING_NONE:		// ëƒ‰ìˆ˜íƒ±í¬ í”ŒëŸ¬ì‹± ì‹œì‘
 			gu8_flushing_mode = FLUSHING_COLD_TANK;
 			gu8_cold_tank_flushing_step++;
 
 			break;
 
-		case COLDTANK_FLUSHING_INIT:		// ³Ã¼öÅÊÅ© ÇÃ·¯½ÌÀ» À§ÇÑ À¯·® È®Á¤
+		case COLDTANK_FLUSHING_INIT:		// ëƒ‰ìˆ˜íƒ±í¬ í”ŒëŸ¬ì‹±ì„ ìœ„í•œ ìœ ëŸ‰ í™•ì •
 			gu16_cold_tank_flushing_timer++;
 			if(gu16_cold_tank_flushing_timer > 10) //1s init
 			{
@@ -693,11 +693,11 @@ void Cold_Tank_Flushing(void)
 
 				gu16_cold_tank_flushing_timer = 0;
 
-				gu16_Cold_Tank_Flush_Hz = COLD_TANK_FLUSH_CC;		// ÇÃ·¯½Ì ÃÖ´ë À¯·® : [2L]
+				gu16_Cold_Tank_Flush_Hz = COLD_TANK_FLUSH_CC;		// í”ŒëŸ¬ì‹± ìµœëŒ€ ìœ ëŸ‰ : [2L]
 			}
 			break;
 
-		case COLDTANK_FLUSHING_5MINUTE:		// ³Ã¼öÅÊÅ© ÀÌ¹°Áú ¹Ğ¾î³»±â
+		case COLDTANK_FLUSHING_5MINUTE:		// ëƒ‰ìˆ˜íƒ±í¬ ì´ë¬¼ì§ˆ ë°€ì–´ë‚´ê¸°
 			gu16_cold_tank_flushing_timer++;
 
 			if(u8DrainWaterLevel >= DRAIN_LEVEL_HIGH)
@@ -713,7 +713,7 @@ void Cold_Tank_Flushing(void)
 			}
 			else {  }
 
-			/* ³Ã¼öÅÊÅ© ÇÃ·¯½Ì ÃÖ´ë ½Ã°£ : [5ºĞ] */
+			/* ëƒ‰ìˆ˜íƒ±í¬ í”ŒëŸ¬ì‹± ìµœëŒ€ ì‹œê°„ : [5ë¶„] */
 			gu16_cold_tank_flushing_max_timer++;
 			if(gu16_cold_tank_flushing_max_timer >= COLD_FLUSHING_MAX_TIME)
 			{
@@ -724,7 +724,7 @@ void Cold_Tank_Flushing(void)
 			else {  }
 		break;
 
-		case COLDTANK_FLUSHING_DRAIN_READY:		// ¹è¼öÅÊÅ© ºñ¿ì±â Á÷Àü ÀÔ¼ö Àá±İ
+		case COLDTANK_FLUSHING_DRAIN_READY:		// ë°°ìˆ˜íƒ±í¬ ë¹„ìš°ê¸° ì§ì „ ì…ìˆ˜ ì ê¸ˆ
 			gu16_cold_tank_flushing_timer++;
 			if(gu16_cold_tank_flushing_timer > 10) //1s ready
 			{
@@ -733,7 +733,7 @@ void Cold_Tank_Flushing(void)
 			}
 			break;
 
-		case COLDTANK_FLUSHING_DRAIN:			// ¹è¼öÅÊÅ© ºñ¿ì±â
+		case COLDTANK_FLUSHING_DRAIN:			// ë°°ìˆ˜íƒ±í¬ ë¹„ìš°ê¸°
 			gu16_cold_tank_flushing_timer++;
 
 			if(u8DrainWaterLevel == DRAIN_LEVEL_EMPTY)
@@ -749,7 +749,7 @@ void Cold_Tank_Flushing(void)
 			}
 			break;
 
-		case COLDTANK_FLUSHING_FINISH:			// ³Ã¼öÅÊÅ© ÇÃ·¯½Ì ¿Ï·á
+		case COLDTANK_FLUSHING_FINISH:			// ëƒ‰ìˆ˜íƒ±í¬ í”ŒëŸ¬ì‹± ì™„ë£Œ
 			gu16_cold_tank_flushing_timer++;
 			if(gu16_cold_tank_flushing_timer > 20) //2s wait
 			{
@@ -780,9 +780,9 @@ void Cold_Tank_Flushing(void)
 void flushing_finish(void)
 {
 	gu16_flushing_finish_delay_timer++;
-	if(gu16_flushing_finish_delay_timer >= 5)		// 500ms ÈÄ finish Ã³¸®
+	if(gu16_flushing_finish_delay_timer >= 5)		// 500ms í›„ finish ì²˜ë¦¬
 	{
-		/*..hui [23-12-18¿ÀÈÄ 7:04:18] ÇÃ·¯½Ì ¹° »ç¿ë·® °è»ê..*/
+		/*..hui [23-12-18ì˜¤í›„ 7:04:18] í”ŒëŸ¬ì‹± ë¬¼ ì‚¬ìš©ëŸ‰ ê³„ì‚°..*/
 		calc_flushing_water();
 		gu8_display_flushing_total_percent = 100;
 
@@ -805,16 +805,16 @@ void flushing_finish(void)
 
 		//init_tank_flushing();
 
-		/*..hui [23-8-16¿ÀÈÄ 3:35:12] ´ÙÀ½¿¡ ´Ù½Ã ÇÃ·¯½Ì ÇÏ°ÔµÉ¶§ ro µå·¹ÀÎºÎÅÍ ÇÏ±âÀ§ÇØ..*/
+		/*..hui [23-8-16ì˜¤í›„ 3:35:12] ë‹¤ìŒì— ë‹¤ì‹œ í”ŒëŸ¬ì‹± í•˜ê²Œë ë•Œ ro ë“œë ˆì¸ë¶€í„° í•˜ê¸°ìœ„í•´..*/
 		bit_ro_drain_finish = CLEAR;
 
-		/*..hui [24-1-11¿ÀÀü 10:43:17] ¼³Ä¡ ÇÃ·¯½Ì ¿Ï·á -> ¹Ù·Î ÇÊÅÍÇÃ·¯½Ì µé¾î°¡¸é.. 100%ºÎÅÍ ½ÃÀÛÇÔ..*/
+		/*..hui [24-1-11ì˜¤ì „ 10:43:17] ì„¤ì¹˜ í”ŒëŸ¬ì‹± ì™„ë£Œ -> ë°”ë¡œ í•„í„°í”ŒëŸ¬ì‹± ë“¤ì–´ê°€ë©´.. 100%ë¶€í„° ì‹œì‘í•¨..*/
 		gu8_display_flushing_total_percent = 0;
 
-		/*..hui [24-1-18¿ÀÀü 9:14:00] ÇÊÅÍ °¨Áö »óÅÂµµ ÃÊ±âÈ­..*/
+		/*..hui [24-1-18ì˜¤ì „ 9:14:00] í•„í„° ê°ì§€ ìƒíƒœë„ ì´ˆê¸°í™”..*/
 		u8FilterResetState = FILTER_NO_CHANGE;
 
-		/*..hui [24-2-21¿ÀÈÄ 4:11:06] CT °­Á¦ ÇÃ·¯½Ì Á¾·á..*/
+		/*..hui [24-2-21ì˜¤í›„ 4:11:06] CT ê°•ì œ í”ŒëŸ¬ì‹± ì¢…ë£Œ..*/
 		//finish_ct_forced_flushing();
 
 		bit_instruction_mode_start = CLEAR;
@@ -826,7 +826,7 @@ void flushing_percent_display(void)
 {
 	if((bit_install_flushing_state == SET)
 	&& (gu8_filter_flushing_state == CLEAR)
-	)	// ¼³Ä¡ÇÃ·¯½ÌÀÏ ¶§!
+	)	// ì„¤ì¹˜í”ŒëŸ¬ì‹±ì¼ ë•Œ!
 	{
 		if(gu8_flushing_mode == FLUSHING_FILTER)
 		{
@@ -893,7 +893,7 @@ void flushing_percent_display(void)
 	}
 	else if((bit_install_flushing_state == CLEAR)
 	&& (gu8_filter_flushing_state == SET)
-	)	// ÇÊÅÍ±³Ã¼ ÇÃ·¯½ÌÀÏ ¶§ !!
+	)	// í•„í„°êµì²´ í”ŒëŸ¬ì‹±ì¼ ë•Œ !!
 	{
 		if(gu8_flushing_mode == FLUSHING_FILTER)
 		{
@@ -952,7 +952,7 @@ void flushing_percent_display(void)
 	}
 	else
 	{
-		// Àü¿ø ÇÃ·¯½ÌÀÏ ¶§ !!
+		// ì „ì› í”ŒëŸ¬ì‹±ì¼ ë•Œ !!
 		if(gu8_flushing_mode == FLUSHING_FILL_COLD_TANK_START_STATE)
 		{
 			if(gu8_cold_tank_fill_step == COLD_TANK_FILL_HZ_SET)

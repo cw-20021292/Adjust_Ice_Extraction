@@ -107,7 +107,7 @@ const signed char JSON_KEY_UV_FAUCETINFO[] 				= "fc"; 	// FaucetInfo
 const signed char JSON_KEY_ARRAY_SUPPLIES[] 			= "sl";  	// Supplies
 const signed char JSON_KEY_SUPPLIES_SEQ[] 				= "ss"; 	// Supplies SEQ
 const signed char JSON_KEY_SUPPLIES_MEMBERSHIP_TYPE[] 	= "mt"; 	// Membershop type
-const signed char JSON_KEY_SUPPLIES_REMAIN[] 			= "fr"; 	// Remain ÀÜ¿©·® (%)
+const signed char JSON_KEY_SUPPLIES_REMAIN[] 			= "fr"; 	// Remain ì”ì—¬ëŸ‰ (%)
 
 /* 0032 ENVIRONMENT KEY */
 const signed char JSON_KEY_SAVE_PLASTIC[] 				= "spb"; 	// Plastic
@@ -135,7 +135,7 @@ void SetUserSystemJsonObject ( U16 mu16Info, I8 *pBuf )
 			cJsonParseJson(pBuf, &JsonObjectDepth_1, NULL);			// Object O, Array X - Json parsing Depth1 c:"S1000"
 
 			mu8SAPCode = JsonSAPCodeSuccess(&JsonObjectDepth_1);
-			if (mu8SAPCode == F1000)                                // SAP Á¢¼Ó ½ÇÆĞ (CODE : F1000, SAP001)
+			if (mu8SAPCode == F1000)                                // SAP ì ‘ì† ì‹¤íŒ¨ (CODE : F1000, SAP001)
 			{
 				SetWifiSapStatus(STATUS_SVR_SAP_0030_UV_DATE, F1000);
 				return;
@@ -150,12 +150,12 @@ void SetUserSystemJsonObject ( U16 mu16Info, I8 *pBuf )
 			}
 
 			mu8KeyIndex = (U8)GetJsonKeyIndexSearch(JSON_KEY_UV_FAUCETINFO, &JsonObjectDepth_1);   // Key "fc"
-			if(mu8KeyIndex != (U8)0xFF){ // Index Ã£±â ¿Ï·á ½Ã
+			if(mu8KeyIndex != (U8)0xFF){ // Index ì°¾ê¸° ì™„ë£Œ ì‹œ
 				cJsonParseJson(JsonObjectDepth_1.items[mu8KeyIndex].value, &JsonObjectDepth_2, NULL); // Depth2 Parsing - Object -> "fc": { Key:Value, Key:Value }
-				/* ÆÄ¿ì¼Â UV ÃÖ±Ù µ¿ÀÛ½Ã°£ */
+				/* íŒŒìš°ì…‹ UV ìµœê·¼ ë™ì‘ì‹œê°„ */
 				GetJsonDateValue(gJsonValue.UV_Faucet.u8JsonDateLD, JSON_KEY_LAST_DATE, &JsonObjectDepth_2);
 				SetUserSystemJson(WIFI_JSON_UV_FAUCET_LD);
-				/* ÆÄ¿ì¼Â UV µ¿ÀÛ ¿¹Á¤½Ã°£ */
+				/* íŒŒìš°ì…‹ UV ë™ì‘ ì˜ˆì •ì‹œê°„ */
 				GetJsonDateValue(gJsonValue.UV_Faucet.u8JsonDateND, JSON_KEY_NEXT_DATE, &JsonObjectDepth_2);
 				SetUserSystemJson(WIFI_JSON_UV_FAUCET_ND);
 			}
@@ -184,7 +184,7 @@ void SetUserSystemJson (U8 mu8JsonKey)
 
 	switch ( mu8JsonKey )
     {
-		/* ex: ÆÄ¿ì¼Â UV ÃÖ±Ù µ¿ÀÛ½Ã°£ : YY MM DD HH MM */
+		/* ex: íŒŒìš°ì…‹ UV ìµœê·¼ ë™ì‘ì‹œê°„ : YY MM DD HH MM */
 		case WIFI_JSON_UV_FAUCET_LD:
 		/* ex)
 			mu8work[0] = (U8)pu8data[WIFI_JSON_T1_YEAR];
@@ -193,7 +193,7 @@ void SetUserSystemJson (U8 mu8JsonKey)
 			mu8work[3] = (U8)pu8data[WIFI_JSON_T1_HOUR];
 			mu8work[4] = (U8)pu8data[WIFI_JSON_T1_MIN]; */
 		break;
-		/* ÆÄ¿ì¼Â UV µ¿ÀÛ ¿¹Á¤½Ã°£ : YY MM DD HH MM */
+		/* íŒŒìš°ì…‹ UV ë™ì‘ ì˜ˆì •ì‹œê°„ : YY MM DD HH MM */
 		case WIFI_JSON_UV_FAUCET_ND:
 		/* ex)
 			mu8work[0] = (U8)pu8data[WIFI_JSON_T1_YEAR];

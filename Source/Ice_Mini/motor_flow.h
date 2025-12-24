@@ -16,7 +16,7 @@
 
 /*#define MAX_DECREASE_FLOW              1000*/
 // #define MAX_DECREASE_FLOW              1500
-#define MAX_DECREASE_FLOW              1800         //2025-07-11 cbr �̴ϻ��
+#define MAX_DECREASE_FLOW              1800         //2025-07-11 cbr 미니사양
 
 
 

@@ -66,7 +66,7 @@ void water_durable_test(void)
     }
     else{}
 
-    /* Æ®·¹ÀÌ»ì±Õ ³»±¸¼º ÇÁ·Î±×·¥ - ¾ç»ê Àü »èÁ¦ */
+    /* íŠ¸ë ˆì´ì‚´ê·  ë‚´êµ¬ì„± í”„ë¡œê·¸ë¨ - ì–‘ì‚° ì „ ì‚­ì œ */
     #ifdef __TRAY_STER_ENDURANCE__
     switch( gu16_durable_test_step )
     {
@@ -89,13 +89,13 @@ void water_durable_test(void)
 
             break;
 
-        case 1:                             /* Æ®·¹ÀÌ °í¿Â»ì±Õ ³»±¸¼º ½ÃÀÛ */
-            /* ³Ã¼ö ¼±ÅÃ */
+        case 1:                             /* íŠ¸ë ˆì´ ê³ ì˜¨ì‚´ê·  ë‚´êµ¬ì„± ì‹œì‘ */
+            /* ëƒ‰ìˆ˜ ì„ íƒ */
             key_manual_ice_tank_ster();
             gu16_durable_test_step++;
             break;
 
-        case 2:                             /* ³»±¸¼º µ¿ÀÛ¿Ï·á */
+        case 2:                             /* ë‚´êµ¬ì„± ë™ì‘ì™„ë£Œ */
             if(bit_ice_tank_ster_start == CLEAR)
             {
                 gu32_durable_test_timer++;
@@ -108,7 +108,7 @@ void water_durable_test(void)
             }
             break;
 
-        case 3:                             /* ÇØÁ¦ ÈÄ 2½Ã°£ ´ë±â */
+        case 3:                             /* í•´ì œ í›„ 2ì‹œê°„ ëŒ€ê¸° */
             gu32_durable_test_timer++;
             if(gu32_durable_test_timer >= AGING_TEST_MODE_DELAY_TIME_2HOUR)
             {
@@ -127,7 +127,7 @@ void water_durable_test(void)
     }
     #endif
 
-    /* ¾óÀ½ÃßÃâ ³»±¸¼º ÇÁ·Î±×·¥ - ¾ç»ê Àü »èÁ¦ÇÒ °Í */
+    /* ì–¼ìŒì¶”ì¶œ ë‚´êµ¬ì„± í”„ë¡œê·¸ë¨ - ì–‘ì‚° ì „ ì‚­ì œí•  ê²ƒ */
     #ifdef __ICE_OUT_ENDURANCE__
     switch( gu16_durable_test_step )
     {
@@ -150,7 +150,7 @@ void water_durable_test(void)
 
             break;
 
-        case 1:                                 /* ÀÏ¹İ¾óÀ½ ¼±ÅÃ */
+        case 1:                                 /* ì¼ë°˜ì–¼ìŒ ì„ íƒ */
             gu32_durable_test_timer++;
 
             if(gu32_durable_test_timer >= 20)
@@ -163,7 +163,7 @@ void water_durable_test(void)
             }
             break;
 
-        case 2:                                 /* ¾óÀ½ ÃßÃâ 3´Ü°è */
+        case 2:                                 /* ì–¼ìŒ ì¶”ì¶œ 3ë‹¨ê³„ */
 
             gu32_durable_test_timer++;
 
@@ -177,7 +177,7 @@ void water_durable_test(void)
 
             break;
 
-        case 3:                                 /* ÃßÃâ¿Ï·á ÈÄ 2½Ã°£ ´ë±â */
+        case 3:                                 /* ì¶”ì¶œì™„ë£Œ í›„ 2ì‹œê°„ ëŒ€ê¸° */
 
             gu32_durable_test_timer++;
             if(gu32_durable_test_timer >= AGING_TEST_MODE_DELAY_TIME_30MIN)
@@ -189,7 +189,7 @@ void water_durable_test(void)
 
             break;
 
-        case 4:                                 /* ºĞ¼â¾óÀ½ ¼±ÅÃ */
+        case 4:                                 /* ë¶„ì‡„ì–¼ìŒ ì„ íƒ */
 
             gu32_durable_test_timer++;
             if(gu32_durable_test_timer >= 20)
@@ -204,7 +204,7 @@ void water_durable_test(void)
 
             break;
 
-        case 5:                                 /* ¾óÀ½ 3´Ü°è ÃßÃâ */
+        case 5:                                 /* ì–¼ìŒ 3ë‹¨ê³„ ì¶”ì¶œ */
             gu32_durable_test_timer++;
             if(gu32_durable_test_timer >= 20)
             {
@@ -216,7 +216,7 @@ void water_durable_test(void)
 
             break;
 
-        case 6:                                 /* ÃßÃâ¿Ï·á ½Ã 2½Ã°£ ´ë±â */
+        case 6:                                 /* ì¶”ì¶œì™„ë£Œ ì‹œ 2ì‹œê°„ ëŒ€ê¸° */
             gu32_durable_test_timer++;
             if(gu32_durable_test_timer >= AGING_TEST_MODE_DELAY_TIME_30MIN)
             {
@@ -226,7 +226,7 @@ void water_durable_test(void)
             else{}
             break;
 
-        case 7:                                 /* ¾óÀ½¹° ¼±ÅÃ */
+        case 7:                                 /* ì–¼ìŒë¬¼ ì„ íƒ */
             gu32_durable_test_timer++;
             if(gu32_durable_test_timer >= 20)
             {
@@ -238,7 +238,7 @@ void water_durable_test(void)
             else{}
             break;
 
-        case 8:                                 /* ¾óÀ½¹° ÃßÃâ */
+        case 8:                                 /* ì–¼ìŒë¬¼ ì¶”ì¶œ */
 
             gu32_durable_test_timer++;
             if(gu32_durable_test_timer >= 20)
@@ -251,7 +251,7 @@ void water_durable_test(void)
 
             break;
 
-        case 9:                                 /* ÃßÃâ¿Ï·á ½Ã Ã³À½ºÎÅÍ */
+        case 9:                                 /* ì¶”ì¶œì™„ë£Œ ì‹œ ì²˜ìŒë¶€í„° */
                 gu32_durable_test_timer++;
                 if(gu32_durable_test_timer >= AGING_TEST_MODE_DELAY_TIME_30MIN)
                 {
@@ -294,7 +294,7 @@ void water_durable_test(void)
             break;
 
         case 1:
-            /* ¿Â¼ö ¼±ÅÃ */
+            /* ì˜¨ìˆ˜ ì„ íƒ */
             key_hot_water_select_job();
             gu16_durable_test_step++;
 
@@ -380,7 +380,7 @@ void water_durable_test(void)
             break;
 
         case 1:
-            /* ¿Â¼ö ¼±ÅÃ */
+            /* ì˜¨ìˆ˜ ì„ íƒ */
             key_hot_water_select_job();
             gu16_durable_test_step++;
 
@@ -406,10 +406,10 @@ void water_durable_test(void)
             {
                 gu32_durable_test_timer++;
 
-                if(gu32_durable_test_timer >= 50)       /* 5ÃÊ ÈÄ */
+                if(gu32_durable_test_timer >= 50)       /* 5ì´ˆ í›„ */
                 {
                     gu32_durable_test_timer = 0;
-                    /* Á¤¼ö ¼±ÅÃ */
+                    /* ì •ìˆ˜ ì„ íƒ */
                     key_ambient_water_select_job();
                     gu16_durable_test_step++;
                 }
@@ -443,10 +443,10 @@ void water_durable_test(void)
             {
                 gu32_durable_test_timer++;
 
-                if(gu32_durable_test_timer >= 50)       /* 5ÃÊ ÈÄ */
+                if(gu32_durable_test_timer >= 50)       /* 5ì´ˆ í›„ */
                 {
                     gu32_durable_test_timer = 0;
-                    /* ³Ã¼ö ¼±ÅÃ */
+                    /* ëƒ‰ìˆ˜ ì„ íƒ */
                     key_cold_water_select_job();
                     gu16_durable_test_step++;
                 }
@@ -481,7 +481,7 @@ void water_durable_test(void)
             {
                 gu32_durable_test_timer++;
 
-                if(gu32_durable_test_timer >= 36000)            /* 1½Ã°£ ´ë±â */
+                if(gu32_durable_test_timer >= 36000)            /* 1ì‹œê°„ ëŒ€ê¸° */
                 {
                     gu32_durable_test_timer = 0;
                     gu16_durable_test_step = 0;
@@ -491,7 +491,7 @@ void water_durable_test(void)
                 if(F_IceFull == SET)
                 {
                     gu16_Ice_Extract_30min_Timer++;
-                    if(gu16_Ice_Extract_30min_Timer >= 18000)   /* ¸¸ºù °¨Áö 30ºĞ ÈÄ */
+                    if(gu16_Ice_Extract_30min_Timer >= 18000)   /* ë§Œë¹™ ê°ì§€ 30ë¶„ í›„ */
                     {
                         if(gu16_durable_test_step == 7)
                         {
@@ -528,7 +528,7 @@ void water_durable_test(void)
     #ifdef __AGING_TEST__
 
     #else
-    /* Á¦Ç° ³»±¸¼º */
+    /* ì œí’ˆ ë‚´êµ¬ì„± */
     switch( gu16_durable_test_step )
     {
         case 0:
@@ -552,7 +552,7 @@ void water_durable_test(void)
             break;
 
         case 1:
-            /* ³Ã¼ö ¼±ÅÃ */
+            /* ëƒ‰ìˆ˜ ì„ íƒ */
             key_cold_water_select_job();
             gu16_durable_test_step++;
 
@@ -581,7 +581,7 @@ void water_durable_test(void)
                 if(gu32_durable_test_timer >= AGING_TEST_MODE_DELAY_TIME_10MIN)
                 {
                     gu32_durable_test_timer = 0;
-                    /* Á¤¼ö ¼±ÅÃ */
+                    /* ì •ìˆ˜ ì„ íƒ */
                     key_ambient_water_select_job();
                     gu16_durable_test_step++;
                 }
@@ -618,7 +618,7 @@ void water_durable_test(void)
                 if(gu32_durable_test_timer >= AGING_TEST_MODE_DELAY_TIME_10MIN)
                 {
                     gu32_durable_test_timer = 0;
-                    /* ¿Â¼ö ¼±ÅÃ */
+                    /* ì˜¨ìˆ˜ ì„ íƒ */
                     key_hot_water_select_job();
                     gu16_durable_test_step++;
                 }
@@ -655,7 +655,7 @@ void water_durable_test(void)
                 if(gu32_durable_test_timer >= AGING_TEST_MODE_DELAY_TIME_10MIN)
                 {
                     gu32_durable_test_timer = 0;
-                    /* Á¤¼ö ¼±ÅÃ */
+                    /* ì •ìˆ˜ ì„ íƒ */
                     key_ambient_water_select_job();
                     gu16_durable_test_step++;
                 }
@@ -727,7 +727,7 @@ void water_durable_test(void)
                 if(gu32_durable_test_timer >= AGING_TEST_MODE_DELAY_TIME_10MIN)
                 {
                     gu32_durable_test_timer = 0;
-                    /* ¸¸ºùÀÌ¸é ¾óÀ½ ¿¬¼ÓÃßÃâ */
+                    /* ë§Œë¹™ì´ë©´ ì–¼ìŒ ì—°ì†ì¶”ì¶œ */
                     if(F_IceFull == SET)
                     {
                         key_ice_select_job();
@@ -736,7 +736,7 @@ void water_durable_test(void)
                     }
                     else
                     {
-                        gu16_durable_test_step = 13;              /* ¸¸ºù¾Æ´Ï¸é ¾óÀ½¹° ÃßÃâ·Î ÀÌµ¿ */
+                        gu16_durable_test_step = 13;              /* ë§Œë¹™ì•„ë‹ˆë©´ ì–¼ìŒë¬¼ ì¶”ì¶œë¡œ ì´ë™ */
                     }
 
                 }
@@ -754,7 +754,7 @@ void water_durable_test(void)
             if(gu32_durable_test_timer >= 10)
             {
                 gu32_durable_test_timer = 0;
-                ice_extract_long_key();             /* ¾óÀ½ ¿¬¼ÓÃßÃâ */
+                ice_extract_long_key();             /* ì–¼ìŒ ì—°ì†ì¶”ì¶œ */
 
                 gu16_durable_test_step++;
             }
@@ -772,7 +772,7 @@ void water_durable_test(void)
                 if(gu32_durable_test_timer >= 10)
                 {
                     gu32_durable_test_timer = 0;
-                    /* 2kg´Â ¾óÀ½¹° ÃßÃâ */
+                    /* 2kgëŠ” ì–¼ìŒë¬¼ ì¶”ì¶œ */
                     key_ice_water_select_job();
                     gu16_durable_test_step++;
                 }
@@ -822,7 +822,7 @@ void water_durable_test(void)
         case 16:
             gu32_durable_test_timer++;
 
-            /*..hui [25-3-26¿ÀÀü 9:45:43] 10ºĞ´ë±âÈÄ Ã³À½ºÎÅÍ..*/
+            /*..hui [25-3-26ì˜¤ì „ 9:45:43] 10ë¶„ëŒ€ê¸°í›„ ì²˜ìŒë¶€í„°..*/
             if(gu32_durable_test_timer >= 6000)
             {
                 gu32_durable_test_timer = 0;

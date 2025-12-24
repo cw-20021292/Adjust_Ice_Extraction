@@ -51,7 +51,7 @@ void wifi_time_setting(void)
     U16 mu16_req_time = 0;
 
     #if 0
-    /*..hui [21-3-9¿ÀÈÄ 1:01:08] ¿¬°áµÆÀ»¶§¸¸..*/
+    /*..hui [21-3-9ì˜¤í›„ 1:01:08] ì—°ê²°ëì„ë•Œë§Œ..*/
     if( gu8_Wifi_Connect_State != WIFI_CONNECT )
     {
         return;
@@ -59,7 +59,7 @@ void wifi_time_setting(void)
     else{}
     #endif
 
-    /*..hui [21-8-23¿ÀÈÄ 4:50:56] Çö¹ÎÀÌÂÊ¿¡¼­ ½Ã°£À» ºÒ·¯¿Íµµ ½áÁÖ´Â°Ç ³Ö¾î¾ß...........*/
+    /*..hui [21-8-23ì˜¤í›„ 4:50:56] í˜„ë¯¼ì´ìª½ì—ì„œ ì‹œê°„ì„ ë¶ˆëŸ¬ì™€ë„ ì¨ì£¼ëŠ”ê±´ ë„£ì–´ì•¼...........*/
     write_rtc_wifi_time();
 }
 
@@ -106,10 +106,10 @@ void write_rtc_wifi_time(void)
     {
         F_Wifi_Time_Read_Finish = CLEAR;
 
-        /*..hui [23-6-29¿ÀÈÄ 2:43:45] WIFI ÇöÀç½Ã°£ Àü¼Û ¿Ï·á..*/
+        /*..hui [23-6-29ì˜¤í›„ 2:43:45] WIFI í˜„ìž¬ì‹œê°„ ì „ì†¡ ì™„ë£Œ..*/
         bit_first_time_setting = SET;
 
-        /*..hui [20-3-12¿ÀÈÄ 2:10:12] ¿©±âµµ ÇÊÅÍ¸µ Ãß°¡.. ¾ÈÀü»ç¾ç..*/
+        /*..hui [20-3-12ì˜¤í›„ 2:10:12] ì—¬ê¸°ë„ í•„í„°ë§ ì¶”ê°€.. ì•ˆì „ì‚¬ì–‘..*/
         if( ( gu8_wifi_time_Year >= SETTING_MIN_YEAR && gu8_wifi_time_Year <= SETTING_MAX_YEAR )
             && ( gu8_wifi_time_Month >= 1 && gu8_wifi_time_Month <= 12 )
             && ( gu8_wifi_time_Date  >= 1 && gu8_wifi_time_Date  <= 31 )
@@ -125,7 +125,7 @@ void write_rtc_wifi_time(void)
 
             if( gu8_wifi_time_Sec >= 2 )
             {
-                /*..hui [21-3-9¿ÀÈÄ 12:56:28] 1ÃÊ º¸Á¤..*/
+                /*..hui [21-3-9ì˜¤í›„ 12:56:28] 1ì´ˆ ë³´ì •..*/
                 gu8_rtc_time_Sec = gu8_wifi_time_Sec - 2;
             }
             else

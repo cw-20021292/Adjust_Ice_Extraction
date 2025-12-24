@@ -1,7 +1,7 @@
 /// @file   User_define.h
 /// @date
 /// @author Jaejin Ham
-/// @brief  User°¡ ¼¼ÆÃÇÏ´Â Pin µîÀÇ define Header
+/// @brief  Userê°€ ì„¸íŒ…í•˜ëŠ” Pin ë“±ì˜ define Header
 
 #ifndef __USER_DEFINE_H__
 #define __USER_DEFINE_H__

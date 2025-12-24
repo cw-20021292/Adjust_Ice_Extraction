@@ -166,7 +166,7 @@ extern U16 gu16_tds_water_acc;
 extern tsSTEPMOTOR sStepMotor;
 
 //for test
-extern bit F_IceFull;                        // ¡Ë¡þ¡Ë¡þ¡§¡þu
+extern bit F_IceFull;                        // Â¡Ã‹Â¡Ã¾Â¡Ã‹Â¡Ã¾Â¡Â§Â¡Ã¾u
 extern bit F_IceLack;
 extern bit bit_ice_size;
 extern bit bit_tray_in_error_temporary;

@@ -110,7 +110,7 @@ extern TYPE_BYTE       U8OperationB;
 
 
 #define FLUSHING_DELAY_TIME                  5
-/*..hui [23-6-2¿ÀÀü 10:17:43] ¼³Ä¡ÇÃ·¯½Ì 30ºÐ..*/
+/*..hui [23-6-2ì˜¤ì „ 10:17:43] ì„¤ì¹˜í”ŒëŸ¬ì‹± 30ë¶„..*/
 #define INSTALL_FLUSHING_TIME                30
 
 
@@ -127,8 +127,8 @@ extern TYPE_BYTE       U8OperationB;
 //#define FLUSHING_LOW_WATER_MAX_TIME          54000
 //#define FLUSHING_HIGH_WATER_MAX_TIME         36000
 
-/*..hui [23-11-13¿ÀÀü 10:02:08] Àú¼öÀ§±îÁö 2½Ã°£.. ¸¸¼öÀ§±îÁö 1½Ã°£30ºÐÀ¸·Î º¯°æ..*/
-/*..hui [23-11-13¿ÀÀü 10:02:17] »ùÇÃ ½Ã·á¿¡¼­ 20PSI ´Ü¼ö °É·ÈÀ½..*/
+/*..hui [23-11-13ì˜¤ì „ 10:02:08] ì €ìˆ˜ìœ„ê¹Œì§€ 2ì‹œê°„.. ë§Œìˆ˜ìœ„ê¹Œì§€ 1ì‹œê°„30ë¶„ìœ¼ë¡œ ë³€ê²½..*/
+/*..hui [23-11-13ì˜¤ì „ 10:02:17] ìƒ˜í”Œ ì‹œë£Œì—ì„œ 20PSI ë‹¨ìˆ˜ ê±¸ë ¸ìŒ..*/
 /*#define FLUSHING_LOW_WATER_MAX_TIME          72000*/
 /*#define FLUSHING_HIGH_WATER_MAX_TIME         54000*/
 

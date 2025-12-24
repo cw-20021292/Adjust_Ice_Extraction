@@ -115,7 +115,7 @@ void ControlGasSwitch(void)
     /* CONTROL SMPS 12V */
     if( gu8_GasSwitch_Mode != GAS_SWITCH_MODE_NONE )
     {
-        /*..hui [20-1-14¿ÀÈÄ 8:13:59] UV¿¡¼­µµ 12V »ç¿ëÇÏ¹Ç·Î..*/
+        /*..hui [20-1-14ì˜¤í›„ 8:13:59] UVì—ì„œë„ 12V ì‚¬ìš©í•˜ë¯€ë¡œ..*/
         /*p12V_POWER = CLEAR;*/
         Bit0_Gas_Switch_12V_Out_State = SET;
     }
@@ -127,7 +127,7 @@ void ControlGasSwitch(void)
 
     #if 0
     /* Power Init */
-    // ¿øÁ¡À» Àâ±â À§ÇØ ÃÊ±âÈ­ ÇÑ ÈÄ, ÃÊ±â À§Ä¡ ¼³Á¤À» ³Ã¼öÃøÀ¸·Î Á¤ÀÇÇÑ´Ù.
+    // ì›ì ì„ ìž¡ê¸° ìœ„í•´ ì´ˆê¸°í™” í•œ í›„, ì´ˆê¸° ìœ„ì¹˜ ì„¤ì •ì„ ëƒ‰ìˆ˜ì¸¡ìœ¼ë¡œ ì •ì˜í•œë‹¤.
     if( (gu8_GasSwitch_Mode & GAS_SWITCH_MODE_POWER_INIT ) == GAS_SWITCH_MODE_POWER_INIT )
     {
         mu8Ret = InitSwitch();
@@ -147,8 +147,8 @@ void ControlGasSwitch(void)
 
 
     /* Init */
-    // ÃÊ±âÈ­¸¦ ÇÏ°í ½ÇÁ¦ ½ºÅÜ À§Ä¡´Â ³Ã¼öÃøÀÌÁö¸¸,
-    // À§Ä¡ ¼³Á¤Àº ÇÏÁö ¾Ê´Â´Ù.
+    // ì´ˆê¸°í™”ë¥¼ í•˜ê³  ì‹¤ì œ ìŠ¤í… ìœ„ì¹˜ëŠ” ëƒ‰ìˆ˜ì¸¡ì´ì§€ë§Œ,
+    // ìœ„ì¹˜ ì„¤ì •ì€ í•˜ì§€ ì•ŠëŠ”ë‹¤.
     if( (gu8_GasSwitch_Mode & GAS_SWITCH_MODE_INIT ) == GAS_SWITCH_MODE_INIT )
     {
         mu8Ret = InitSwitch();
@@ -382,7 +382,7 @@ static U8 IceSwitch(void)
             }
             break;
 
-        // ÇöÀç À§Ä¡ÀÌ¸é ÀÌµ¿ ¾øÀÌ Á¤»ó Á¾·á
+        // í˜„ìž¬ ìœ„ì¹˜ì´ë©´ ì´ë™ ì—†ì´ ì •ìƒ ì¢…ë£Œ
         case ICE_CHECK_POSITION:
             if( gs16_sm_info_target == GAS_SWITCH_ICE_STEP_VAL )
             {
@@ -448,7 +448,7 @@ static U8 HotGasSwitch(void)
             }
             break;
 
-        // ?„ìž¬ ?„ì¹˜?´ë©´ ?´ë™ ?†ì´ ?•ìƒ ì¢…ë£Œ
+        // ?ê¾©ì˜± ?ê¾©íŠ‚?ëŒ€ãˆƒ ?ëŒ€ë£ž ?ë†ì”  ?ëº¤ê¸½ é†«ë‚…ì¦º
         case HOTGAS_CHECK_POSITION:
             /*if( HAL_GetTargetStep( GAS_SWITCH_ID ) == GAS_SWITCH_HOTGAS_STEP_VAL )*/
             if( gs16_sm_info_target == GAS_SWITCH_HOTGAS_STEP_VAL )
@@ -504,14 +504,14 @@ void ProcessGasSwitch(void)
 
         if( F_Comp_Output == OFF )
         {
-            F_GasSwitch_Initial = SET;  // ¿øÁ¡ ÃÊ±âÈ­ ¼³Á¤
+            F_GasSwitch_Initial = SET;  // ì›ì  ì´ˆê¸°í™” ì„¤ì •
         }
         else{}
     }
     else{}
 
 
-    // ¾ÐÃà±â OFF ÈÄ, 4ºÐ ÈÄ¿¡ ¿øÁ¡ ÃÊ±âÈ­ µ¿ÀÛ
+    // ì••ì¶•ê¸° OFF í›„, 4ë¶„ í›„ì— ì›ì  ì´ˆê¸°í™” ë™ìž‘
     if( F_GasSwitch_Initial == SET )
     {
         if(Bit0_Restart_5min_Delay_State == SET)
@@ -647,7 +647,7 @@ void HAL_MoveStep( void )
 * Description  :
 ***********************************************************************************************************************/
 /**
- * ³Ã¸Å À¯·Î ÀüÈ¯ ½ºÅÜ¸ðÅÍ
+ * ëƒ‰ë§¤ ìœ ë¡œ ì „í™˜ ìŠ¤í…ëª¨í„°
  */
 static void HAL_ControlGasValveMotor( U8 mode )
 {

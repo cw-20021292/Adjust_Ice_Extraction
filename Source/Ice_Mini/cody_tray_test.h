@@ -24,9 +24,9 @@ extern void play_melody_setting_off_199( void );
 
 extern TYPE_BYTE          U8CodyInspectOperationB;
 #define            u8CodyInspectOperation                      U8CodyInspectOperationB.byte
-#define            Bit0_Cody_Service_Kit_Start                 U8CodyInspectOperationB.Bit.b0       // ÄÚµğ Á¡°ËÀ» À§ÇÑ Á¦ºùÁßÁö
-#define            Bit1_Empty_Tank_Start                       U8CodyInspectOperationB.Bit.b1       // ÄÚµğ Á¡°ËÀ» À§ÇÑ ÅÊÅ©ºñ¿ò (¹Ì»ç¿ë)
-#define            Bit2_Ice_Tray_Test_Start                    U8CodyInspectOperationB.Bit.b2       // ÄÚµğ Á¡°ËÀ» À§ÇÑ Æ®·¹ÀÌ µ¿ÀÛÁ¡°Ë
+#define            Bit0_Cody_Service_Kit_Start                 U8CodyInspectOperationB.Bit.b0       // ì½”ë”” ì ê²€ì„ ìœ„í•œ ì œë¹™ì¤‘ì§€
+#define            Bit1_Empty_Tank_Start                       U8CodyInspectOperationB.Bit.b1       // ì½”ë”” ì ê²€ì„ ìœ„í•œ íƒ±í¬ë¹„ì›€ (ë¯¸ì‚¬ìš©)
+#define            Bit2_Ice_Tray_Test_Start                    U8CodyInspectOperationB.Bit.b2       // ì½”ë”” ì ê²€ì„ ìœ„í•œ íŠ¸ë ˆì´ ë™ì‘ì ê²€
 
 
 

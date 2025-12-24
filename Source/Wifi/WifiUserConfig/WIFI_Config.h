@@ -28,11 +28,11 @@
 
 /* USER WIFI H/W Port & Uart Register */
 /* ------------------------------------
-Uart Baudrate			£º115200bps
-Data bit Len		    £º8bit
-Start bit				£º1bit
-Stop bit				£º1bit
-Parity Check			£ºNone
+Uart Baudrate			Â£Âº115200bps
+Data bit Len		    Â£Âº8bit
+Start bit				Â£Âº1bit
+Stop bit				Â£Âº1bit
+Parity Check			Â£ÂºNone
 R_TXD                   : TXD1
 R_RXD                   : RXD1
 R_STIF                  : STIF1

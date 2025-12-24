@@ -1,7 +1,7 @@
 /// @file   Global_define.h
 /// @date
 /// @author Jaejin Ham
-/// @brief  headerµéÀ» includeÇÏ±â À§ÇÑ ÅëÇÕ headerÆÄÀÏ
+/// @brief  headerë“¤ì„ includeí•˜ê¸° ìœ„í•œ í†µí•© headeríŒŒì¼
 
 #ifndef __GLOBAL_HEADER_H__
 #define __GLOBAL_HEADER_H__

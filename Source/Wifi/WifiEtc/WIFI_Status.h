@@ -134,8 +134,8 @@ enum
 /***** FOTA STATUS ************************************************************/
 typedef enum
 {
-    STATUS_FOTA_SEQ = 0x00, // FOTA $)C4k1b (SET : 4k1b / CLEAR : >x@=)
-    STATUS_FOTA_MODULE,     // $)C8p5b FOTA ;sEB (SET : FOTA AxG`A_ / CLEAR : 0|0h>x@=)
+    STATUS_FOTA_SEQ = 0x00, // FOTA 대기 (SET : 대기 / CLEAR : 없음)
+    STATUS_FOTA_MODULE,     // 모듈 FOTA 상태 (SET : FOTA 진행중 / CLEAR : 관계없음)
     STATUS_FOTA_MCU,
 		
     STATUS_FOTA_NUM
@@ -162,10 +162,10 @@ typedef enum
     STATUS_AP_FIRST = 0x00, // SET / CLEAR 
     STATUS_AP_WIFI,         // AP MODE (SET/ CLEAR)
     STATUS_AP_BLE,
-    STATUS_AP_BLE_CERT,     // $)CA!@/@NAu KEY0! A6@[@L 0!4IGQ ;sEB @NAv? (0:A!@/@NAu:R0!;sEB/1:A!@/@NAu0!4I;sEB/2:A!@/@NAu?O7a;sEB)
-    STATUS_AP_BLE_CON,      // (0(Clear): $)C9L?,0a, 1(SET) : ?,0a A_  (BLE STATUS : 3), 2(Done) : ?,0a A_ 30:P0f0z =C
-    STATUS_AP_BLE_ALWAYS,   // (0(Clear): BLE OFF, 1(SET): BLE $)C;s=C ON;sEB, 2(Done): BLE OFF =C @gH0<:H- Av=C A_)
-    STATUS_AP_BLE_STATUS2_RESPONSE,   // (0(Clear): $)CCJ1bH-, 1(SET): @@4d @V@=
+    STATUS_AP_BLE_CERT,     // 점유인증 KEY가 조작이 가능한 상태 인지? (0:점유인증불가상태/1:점유인증가능상태/2:점유인증완료상태)
+    STATUS_AP_BLE_CON,      // (0(Clear): 미연결, 1(SET) : 연결 중  (BLE STATUS : 3), 2(Done) : 연결 중 30분경과 시
+    STATUS_AP_BLE_ALWAYS,   // (0(Clear): BLE OFF, 1(SET): BLE 상시 ON상태, 2(Done): BLE OFF 시 재활성화 지시 중)
+    STATUS_AP_BLE_STATUS2_RESPONSE,   // (0(Clear): 초기화, 1(SET): 응답 있음
 
     STATUS_AP_NUM
 } E_WIFI_STATUS_AP_T;
@@ -228,25 +228,25 @@ void ClearWifi_BLE_SendStatus ( E_WIFI_STATUS_SEND_WIFI_BLE_T mId , U8 mu8Status
 
 /***** Send Cert Data STATUS NUMBER ****************************************************/
 
-// A7010.0002 $)C;sEB
+// A7010.0002 상태
 typedef enum
 {
-    STATUS_CERT_NOTUSED = 0x00,  // $)C9L;g?k
-    STATUS_CERT_ON,              // $)CA!@/@NAu ON
-    STATUS_CERT_FAIL,            // $)CA!@/@NAu FAIL
+    STATUS_CERT_NOTUSED = 0x00,  // 미사용
+    STATUS_CERT_ON,              // 점유인증 ON
+    STATUS_CERT_FAIL,            // 점유인증 FAIL
 
 
     STATUS_CERT_NUM  
 };
 
-// A7010.0003 $)C0a0z
+// A7010.0003 결과
 typedef enum
 {
-    RESULT_CERT_NOTUSED = 0x00,  // $)C9L;g?k
-    RESULT_CERT_SUCCESS,         // $)CA!@/@NAu <:0x
-    RESULT_CERT_TIME_OUT,        // $)CA!@/@NAu =C0#887a
-    RESULT_CERT_CANCEL,          // $)CA!@/@NAu Ck<R
-    RESULT_CERT_ERROR,           // $)CA!@/@NAu 1bE8 ?!7/
+    RESULT_CERT_NOTUSED = 0x00,  // 미사용
+    RESULT_CERT_SUCCESS,         // 점유인증 성공
+    RESULT_CERT_TIME_OUT,        // 점유인증 시간만료
+    RESULT_CERT_CANCEL,          // 점유인증 취소
+    RESULT_CERT_ERROR,           // 점유인증 기타 에러
 
     RESULT_CERT_NUM  
 };

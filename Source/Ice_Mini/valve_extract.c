@@ -51,9 +51,9 @@ TYPE_BYTE          U8HotOutFeed7ValveOFFB;
 
 U8 gu8LockLEDFlick;
 
-bit F_LineTest;                   // ¶óÀÎ Å×½ºÆ®
-bit F_LineTest2;                  // ¶óÀÎ Å×½ºÆ®2
-//bit F_PartTest;                   // ÆÄÆ® Å×½ºÆ®
+bit F_LineTest;                   // ë¼ì¸ í…ŒìŠ¤íŠ¸
+bit F_LineTest2;                  // ë¼ì¸ í…ŒìŠ¤íŠ¸2
+//bit F_PartTest;                   // íŒŒíŠ¸ í…ŒìŠ¤íŠ¸
 //bit F_PBATest;                    // PBA TEST
 //bit F_NfcTest;
 
@@ -154,7 +154,7 @@ void output_valve_room_cold_extract_feed5(void)
         Bit0_RCOF6_Water_Out_State = CLEAR;
     }
 #endif
-    /* ÄÚµğÀ¯·Î»ì±Õ Cody Water Line Clean Service */
+    /* ì½”ë””ìœ ë¡œì‚´ê·  Cody Water Line Clean Service */
     if(cody_water_line.gu8_start == SET)
     {
         if((cody_water_line.gu8_step == 0)
@@ -174,7 +174,7 @@ void output_valve_room_cold_extract_feed5(void)
         Bit3_Cody_Water_Line_Clean_State = CLEAR;
     }
 
-    /* ¼øÈ¯¹è¼ö ½Ã ÃßÃâ¹ëºê Àá±İ 250620 CH.PARK */
+    /* ìˆœí™˜ë°°ìˆ˜ ì‹œ ì¶”ì¶œë°¸ë¸Œ ì ê¸ˆ 250620 CH.PARK */
     if( F_Circul_Drain == SET )
     {
         if( F_DrainStatus == SET )

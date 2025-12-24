@@ -33,7 +33,7 @@ void fnd_right_all_off(void);
 U8 gu8_min_setting_blink_timer;
 bit bit_min_blink_500ms;
 
-/* ½Ã°£¼³Á¤¸ðµå °ü·Ã Blink º¯¼ö */
+/* ì‹œê°„ì„¤ì •ëª¨ë“œ ê´€ë ¨ Blink ë³€ìˆ˜ */
 U8 gu8_volume_setting_blink_timer;
 bit bit_volume_blink_500ms;
 
@@ -183,11 +183,11 @@ void fnd_right_flushing_state(void)
 
 	if( gu8_flushing_mode == FLUSHING_STANDBY_STATE || bit_flushing_halt == SET )
 	{
-        /*..hui [23-6-14¿ÀÈÄ 4:30:12] ÇÃ·¯½Ì ¾ÈµÇ´Â ¿¡·¯ ¹ß»ý½Ã ¿¡·¯¹øÈ£ Ç¥½Ã..*/
+        /*..hui [23-6-14ì˜¤í›„ 4:30:12] í”ŒëŸ¬ì‹± ì•ˆë˜ëŠ” ì—ëŸ¬ ë°œìƒì‹œ ì—ëŸ¬ë²ˆí˜¸ í‘œì‹œ..*/
         if( Bit3_Leakage_Sensor_Error__E01 == SET )
         {
             /*mu8_temporary_hundred = DISPLAY_OFF;*/
-            /*..hui [23-11-24¿ÀÈÄ 2:30:48] ¿¡·¯ ¾ÆÀÌÄÜ ºüÁö¸é¼­ Exx·Î Ç¥½Ã..*/
+            /*..hui [23-11-24ì˜¤í›„ 2:30:48] ì—ëŸ¬ ì•„ì´ì½˜ ë¹ ì§€ë©´ì„œ Exxë¡œ í‘œì‹œ..*/
             mu8_temporary_hundred = DISPLAY_NUM_LARGE_E;
             mu8_temporary_ten = DISPLAY_NUM_0;
             mu8_temporary_one = DISPLAY_NUM_1;
@@ -195,16 +195,16 @@ void fnd_right_flushing_state(void)
         else if( Bit6_Main_Water_Flow_Block_Error__E09 == SET )
         {
             /*mu8_temporary_hundred = DISPLAY_OFF;*/
-            /*..hui [23-11-24¿ÀÈÄ 2:30:48] ¿¡·¯ ¾ÆÀÌÄÜ ºüÁö¸é¼­ Exx·Î Ç¥½Ã..*/
+            /*..hui [23-11-24ì˜¤í›„ 2:30:48] ì—ëŸ¬ ì•„ì´ì½˜ ë¹ ì§€ë©´ì„œ Exxë¡œ í‘œì‹œ..*/
             mu8_temporary_hundred = DISPLAY_NUM_LARGE_E;
             mu8_temporary_ten = DISPLAY_NUM_0;
             mu8_temporary_one = DISPLAY_NUM_9;
         }
         else if( Bit16_Drain_Pump_Error__E60 == SET )
         {
-            /*..hui [23-8-18¿ÀÈÄ 3:15:33] ÅÊÅ© ÇÃ·¯½Ì Ãß°¡¶§¹®¿¡.. µå·¹ÀÎÆßÇÁ °íÀåÀÏ °æ¿ì ÁøÇà¾ÈµÊ..*/
+            /*..hui [23-8-18ì˜¤í›„ 3:15:33] íƒ±í¬ í”ŒëŸ¬ì‹± ì¶”ê°€ë•Œë¬¸ì—.. ë“œë ˆì¸íŽŒí”„ ê³ ìž¥ì¼ ê²½ìš° ì§„í–‰ì•ˆë¨..*/
             /*mu8_temporary_hundred = DISPLAY_OFF;*/
-            /*..hui [23-11-24¿ÀÈÄ 2:30:48] ¿¡·¯ ¾ÆÀÌÄÜ ºüÁö¸é¼­ Exx·Î Ç¥½Ã..*/
+            /*..hui [23-11-24ì˜¤í›„ 2:30:48] ì—ëŸ¬ ì•„ì´ì½˜ ë¹ ì§€ë©´ì„œ Exxë¡œ í‘œì‹œ..*/
             mu8_temporary_hundred = DISPLAY_NUM_LARGE_E;
             mu8_temporary_ten = DISPLAY_NUM_6;
             mu8_temporary_one = DISPLAY_NUM_0;
@@ -289,7 +289,7 @@ void fnd_right_my_recipe(void)
 	}
 	else if(my_recipe_select == MY_INDEX_MY1)
 	{
-        if(my_setting[MY_INDEX_MY1].amount >= 1000)             /* 1L ÀÌ»ó */
+        if(my_setting[MY_INDEX_MY1].amount >= 1000)             /* 1L ì´ìƒ */
         {
             mu8_temporary_hundred = (U8)(my_setting[MY_INDEX_MY1].amount / 1000);
             mu8_temporary_ten = (U8)((my_setting[MY_INDEX_MY1].amount % 1000) / 100);
@@ -319,7 +319,7 @@ void fnd_right_my_recipe(void)
 	}
 	else if(my_recipe_select == MY_INDEX_MY2)
 	{
-		if(my_setting[MY_INDEX_MY2].amount >= 1000)             /* 1L ÀÌ»ó */
+		if(my_setting[MY_INDEX_MY2].amount >= 1000)             /* 1L ì´ìƒ */
         {
             mu8_temporary_hundred = (U8)(my_setting[MY_INDEX_MY2].amount / 1000);
             mu8_temporary_ten = (U8)((my_setting[MY_INDEX_MY2].amount % 1000) / 100);
@@ -349,7 +349,7 @@ void fnd_right_my_recipe(void)
 	}
     else if(my_recipe_select == MY_INDEX_MY3)
 	{
-        if(my_setting[MY_INDEX_MY3].amount >= 1000)             /* 1L ÀÌ»ó */
+        if(my_setting[MY_INDEX_MY3].amount >= 1000)             /* 1L ì´ìƒ */
         {
             mu8_temporary_hundred = (U8)(my_setting[MY_INDEX_MY3].amount / 1000);
             mu8_temporary_ten = (U8)((my_setting[MY_INDEX_MY3].amount % 1000) / 100);
@@ -479,7 +479,7 @@ void fnd_right_display_ml(void)
             mu8_temporary_one = (U8)(gu32_feeder_screw_ccw_count % 10);
         }
         #else
-        /* ¾óÀ½ ¼±ÅÃ ½Ã ¿ë·®Ç¥½Ã ²¨¾ßµÊ */
+        /* ì–¼ìŒ ì„ íƒ ì‹œ ìš©ëŸ‰í‘œì‹œ êº¼ì•¼ë¨ */
         if( u8IceOutState == ICE_SELECT__ICE )
         {
             mu8_temporary_hundred = DISPLAY_OFF;
@@ -861,7 +861,7 @@ void fnd_right_display_test(void)
 
 /***********************************************************************************************************************/
 /**
- * @brief ¼Ò¸®¼³Á¤ ½Ã ¿ìÃø fnd Ç¥½Ã
+ * @brief ì†Œë¦¬ì„¤ì • ì‹œ ìš°ì¸¡ fnd í‘œì‹œ
  */
 void fnd_right_volume_setting(void)
 {
@@ -877,7 +877,7 @@ void fnd_right_volume_setting(void)
     }
     else {  }
 
-    /* °¡¿îµ¥ ¼³Á¤°ª¸¸ Á¡¸ê (ÀÓ½Ã) */
+    /* ê°€ìš´ë° ì„¤ì •ê°’ë§Œ ì ë©¸ (ìž„ì‹œ) */
     if(bit_volume_blink_500ms == CLEAR)
     {
         mu8_temporary_hundred = DISPLAY_BAR;
@@ -921,7 +921,7 @@ void    memento_error_code_display(U8 U8_p_ErrorCode)
     U8 mu8_temporary_ten = 0;
     U8 mu8_temporary_one = 0;
 
-    /* COMP ¿¡·¯ */
+    /* COMP ì—ëŸ¬ */
     if(U8_p_ErrorCode >= 101 && U8_p_ErrorCode <= 108)
     {
         mu8_temporary_hundred = DISPLAY_NUM_LARGE_E;
@@ -1068,10 +1068,10 @@ void fnd_right_button_set(void)
             {
                 /*if( F_Mute_Enable == SET )*/
 
-                /*..hui [23-7-26¿ÀÈÄ 7:15:45] ¼Ò¸®°¡ ³ª´Â°Ô ONÀÓ.. UI È®ÀÎ¹Þ¾ÒÀ½.. ³»°¡ÇÑ°Ô ¸Â¾Ò³×..*/
+                /*..hui [23-7-26ì˜¤í›„ 7:15:45] ì†Œë¦¬ê°€ ë‚˜ëŠ”ê²Œ ONìž„.. UI í™•ì¸ë°›ì•˜ìŒ.. ë‚´ê°€í•œê²Œ ë§žì•˜ë„¤..*/
                 if( F_Mute_Enable == CLEAR )
                 {
-                    /*..hui [23-5-12¿ÀÈÄ 2:01:32] ¼Ò¸® OFFÀÌ¹Ç·Î ONÇ¥½Ã..*/
+                    /*..hui [23-5-12ì˜¤í›„ 2:01:32] ì†Œë¦¬ OFFì´ë¯€ë¡œ ONí‘œì‹œ..*/
                     mu8_temporary_hundred = DISPLAY_NUM_LARGE_O;
                     mu8_temporary_ten = DISPLAY_NUM_SMALL_n;
                     mu8_temporary_one = DISPLAY_OFF;
@@ -1127,7 +1127,7 @@ void fnd_right_button_set(void)
 
             if( mu8_flick_state == SET )
             {
-                /*..hui [24-4-11¿ÀÈÄ 7:27:17] ¾óÀ½¿ì¼± ¿¹Àü »ç¾çÀ¸·Î..*/
+                /*..hui [24-4-11ì˜¤í›„ 7:27:17] ì–¼ìŒìš°ì„  ì˜ˆì „ ì‚¬ì–‘ìœ¼ë¡œ..*/
                 if( gu8_recover_org_fast_ice == RECOVER_FAST_ICE )
                 {
                     mu8_temporary_hundred = DISPLAY_NUM_LARGE_O;
@@ -1158,7 +1158,7 @@ void fnd_right_button_set(void)
         break;
     }
 
-    // 2025-09-04 CH.PARK [V1.0.0.5] ¼Ò¸®¼³Á¤ ½Ã ¿ìÃø fnd ¹à±â Á¦¾î ¹ÌÈí °³¼±
+    // 2025-09-04 CH.PARK [V1.0.0.5] ì†Œë¦¬ì„¤ì • ì‹œ ìš°ì¸¡ fnd ë°ê¸° ì œì–´ ë¯¸í¡ ê°œì„ 
     set_duty_percent( DIMMING__PERCENT_SEG_RIGHT_HUNDRED, right_normal_state_percent );
     set_duty_percent( DIMMING__PERCENT_SEG_RIGHT_TEN, right_normal_state_percent );
     set_duty_percent( DIMMING__PERCENT_SEG_RIGHT_ONE, right_normal_state_percent );

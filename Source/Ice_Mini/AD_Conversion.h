@@ -36,7 +36,7 @@
 #define	AD_Count_25						            25
 #define	AD_Count_26						            26
 /***********************************************************************************************************************/
-/* ADC·Î ¹Ş¾ÆµéÀÌ´Â Ã¤³Î Á¤¸® */
+/* ADCë¡œ ë°›ì•„ë“¤ì´ëŠ” ì±„ë„ ì •ë¦¬ */
 #define AD_Channel_DC_Current_24V                   0       // O
 #define AD_Channel_DC_Current_12V                   1       // O
 #define AD_Channel_Water_Leakage                    2       // O
@@ -57,7 +57,7 @@
 #define AD_Channel_UV_Ice_Tank_3_Current            20      // O x
 
 #define AD_Channel_Ice_Full_Receive_1               19      // O
-#define AD_Channel_Ice_Full_Receive_2               21      // 2KG ¾óÀ½ÅÊÅ© ¸¸ºù °ü·Ã Ã¤³Î Ãß°¡. 250207 @CH.PARK
+#define AD_Channel_Ice_Full_Receive_2               21      // 2KG ì–¼ìŒíƒ±í¬ ë§Œë¹™ ê´€ë ¨ ì±„ë„ ì¶”ê°€. 250207 @CH.PARK
 #define AD_Channel_Ice_Door_Heater_IAD              22      // O
 #define AD_Channel_Hot_Heater_Current               23      // O
 #define AD_Channel_Amb_2_Temp                       25      // O

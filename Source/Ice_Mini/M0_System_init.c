@@ -36,7 +36,7 @@ void System_ini(void)
 {
     DI();
 
-    /*..hui [21-9-8���� 1:57:51] FOTA ����.. �������� �̵�..*/
+    /*..hui [21-9-8ï¿½ï¿½ï¿½ï¿½ 1:57:51] FOTA ï¿½ï¿½ï¿½ï¿½.. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½..*/
     R_Systeminit();
 
     Ram_Init();
@@ -56,7 +56,7 @@ void System_ini(void)
     R_UART2_Start();           /* BLDC Comp */
     R_UART3_Start();           /* Line Test, Pc */
 
-    /*..hui [24-11-13���� 4:36:12] TDS ����..*/
+    /*..hui [24-11-13ï¿½ï¿½ï¿½ï¿½ 4:36:12] TDS ï¿½ï¿½ï¿½ï¿½..*/
     /*R_INTC4_Start();*/           /* TDS In */
     /*R_INTC7_Start();*/           /* Flow Sensor - Filter */
     R_INTC11_Start();          /* Flow Sensor */
@@ -85,7 +85,7 @@ void Ram_Init(void)
     #endif
 
     #if 0
-    /*..hui [24-7-17���� 7:51:49] 100SH..*/
+    /*..hui [24-7-17ï¿½ï¿½ï¿½ï¿½ 7:51:49] 100SH..*/
     for(ram_addr = 0xFBF00; ram_addr < 0xFFE00; ram_addr++)
     {
         p_ram_addr = (U8 *)ram_addr;
@@ -129,15 +129,15 @@ void Variable_Init(void)
 
     F_Safety_Routine = 0;
     gu8_IceHeaterControl = 0;
-    //F_TrayMotorUP = 0;                                // Tray ����
+    //F_TrayMotorUP = 0;                                // Tray ï¿½ï¿½ï¿½ï¿½
     //F_TrayMotorDOWN = 0;                               //
-    F_IceInit = 1;                                    // ���� �������� ������
-    F_IR = SET;                                       // �������� ����
+    F_IceInit = 1;                                    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    F_IR = SET;                                       // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     F_Low_IR = SET;
 
     InitGasSwitch();
 
-    /*..hui [19-8-1���� 8:49:18] ����Ʈ ���? ����..*/
+    /*..hui [19-8-1ï¿½ï¿½ï¿½ï¿½ 8:49:18] ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿? ï¿½ï¿½ï¿½ï¿½..*/
     F_Front_Tx_Request = SET;
 
     /*gu8_test_mode_timeout_1s = 30;*/
@@ -148,7 +148,7 @@ void Variable_Init(void)
 
     init_before_save_data();
 
-    /*..hui [23-2-15���� 11:10:25] ��ȯ�����? ����Ʈ ON..*/
+    /*..hui [23-2-15ï¿½ï¿½ï¿½ï¿½ 11:10:25] ï¿½ï¿½È¯ï¿½ï¿½ï¿½ï¿½ï¿? ï¿½ï¿½ï¿½ï¿½Æ® ON..*/
     F_Circul_Drain = SET;
 
     bit_first_drain = SET;
@@ -172,7 +172,7 @@ void Variable_Init(void)
 
     gu8_durable_test_start = CLEAR;
 
-    /*..hui [23-11-8���� 3:48:54] ���� ��ô�� OFF���? ����..*/
+    /*..hui [23-11-8ï¿½ï¿½ï¿½ï¿½ 3:48:54] ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã´ï¿½ï¿½ OFFï¿½ï¿½ï¿? ï¿½ï¿½ï¿½ï¿½..*/
     bit_periodic_ster_enable = SET;
 
 
@@ -183,12 +183,12 @@ void Variable_Init(void)
 
     gu16_wifi_hot_target_time_min = 0;
 
-    /* ������ ����Ʈ ���� */
+    /* ¾óÀ½·® µðÆúÆ® ¼³Á¤ */
     gu8_ice_amount_step = ICE_LEVEL_1_STEP;
 
     Voice_Initialize();
 
-    /*..hui [24-11-28���� 9:47:30] UV ���� �׽�Ʈ ����..*/
+    /*..hui [24-11-28ï¿½ï¿½ï¿½ï¿½ 9:47:30] UV ï¿½ï¿½ï¿½ï¿½ ï¿½×½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½..*/
     bit_uv_fault_test_start = SET;
 
     gu8_hk16_bright = DIMMING_SET_DEFAULT;
@@ -228,49 +228,49 @@ void Variable_Init(void)
     my_setting[MY_INDEX_MY3].use = 1;
     #endif
 
-    // �¿��� FND ���
+    // ÁÂ¿ìÃø FND ¹à±â
     left_normal_state_percent = DIMMING_FND_LEFT_NORMAL_STATE;
     right_normal_state_percent = DIMMING_FND_RIGHT_NORMAL_STATE;
 
-    // ������� �� ��� (��ɺ�, �ϴ� ������)
-    setting_mode_function_main_percent = DIMMING_SETTING_MODE_FUNCTION_STATE_MAIN;      // �̻��
+    // ¼³Á¤¸ðµå ½Ã ¹à±â (±â´ÉºÎ, ÇÏ´Ü ¼³Á¤ºÎ)
+    setting_mode_function_main_percent = DIMMING_SETTING_MODE_FUNCTION_STATE_MAIN;      // ¹Ì»ç¿ë
     setting_mode_function_extra_percent = DIMMING_SETTING_MODE_FUNCTION_STATE_EXTRA;
 
-    // ��ɺ� (������ ~ MY) �Ϲݻ��� ���
+    // ±â´ÉºÎ (¾óÀ½¹° ~ MY) ÀÏ¹Ý»óÅÂ ¹à±â
     funtion_led_percent = DIMMING_FUNTION_LED_STATE;
 
-    // ������� (�ڹ���, ����ũ�� ��)
+    // ¼³Á¤¸ðµå (ÀÚ¹°¼è, ¾óÀ½Å©±â µî)
     setting_led_percent = DIMMING_SETTING_LED_STATE;
 
-    // ���� �� ����� ���
+    // ¿ìÃø ¹° ÃßÃâºÎ ¹à±â
     water_extract_led_percent = DIMMING_EXTRACT_LED_STATE;
 
-    // ���� ���� ����� ���
+    // ÁÂÃø ¾óÀ½ ÃßÃâºÎ ¹à±â
     ice_extract_outer_led_percent = DIMMING_ICE_EXTRACT_OUTER_LED_STATE;
     ice_extract_inner_led_percent = DIMMING_ICE_EXTRACT_INNER_LED_STATE;
 
-    // ���� BAR ���
+    // ¼³Á¤ BAR ¹à±â
     bar_led_percent = DIMMING_BAR_LED_STATE;
 
-    // ���̿��� ���� ���
+    // ¸¶ÀÌ¿öÅÍ °ü·Ã ¹à±â
     receipe_led_percent = DIMMING_RECEIPE_LED_STATE;
 
-    // ���»��, UV��� (ū �۲�) ���� ���
+    // °í¿Â»ì±Õ, UV»ì±Õ (Å« ±Û²Ã) °ü·Ã ¹à±â
     big_ster_led_percent = DIMMING_BIG_STER_LED_STATE;
 
-    // UV (���� �۲�) ���� ���
+    // UV (ÀÛÀº ±Û²Ã) °ü·Ã ¹à±â
     small_ster_led_percent = DIMMING_SMALL_STER_LED_STATE;
 
-    // �帳Ŀ�� ���
+    // µå¸³Ä¿ÇÇ ¹à±â
     receipe_led_dripcoffee_percent = DIMMING_RECEIPE_LED_DRIPCOFFEE_STATE;
 
-    // [�������], [��ü���] ǥ��
+    // [¾óÀ½Àá±Ý], [ÀüÃ¼Àá±Ý] Ç¥½Ã
     setting_led_side_percent = DIMMING_SETTING_LED_SIDE_STATE;
 
-    // [��ħ��� ������], [:], [��������,����], [WIFI] ��
+    // [ÃëÄ§¸ðµå ¾ÆÀÌÄÜ], [:], [¾óÀ½ºÎÁ·,°¡µæ], [WIFI] µî
     top_small_led_percent = DIMMING_TOP_SMALL_LED_STATE;
 
-    // ['C] ������
+    // ['C] ¾ÆÀÌÄÜ
     middle_small_led_percent = DIMMING_MIDDLE_SMALL_LED_STATE;
 
     colon_dot_led_percent = DIMMING_COLON_SEG_DOT_STATE;
@@ -285,7 +285,7 @@ void Variable_Init(void)
     // diplay_test_start();
     #endif
 
-    /* 2025-10-28 CH.PARK ���彺��ġ �߰� ���Ǵ� */
+    /* 2025-10-28 CH.PARK ¸®µå½ºÀ§Ä¡ Ãß°¡ ¸ðµ¨ÆÇ´Ü */
     ModelInit();
     IceStuckInit();
     IceDoorReedInit();

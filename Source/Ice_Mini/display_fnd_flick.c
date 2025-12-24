@@ -68,7 +68,7 @@ U8 on_off_flick_timer(U8 flick_time, U8 interval)
     }
     else{}
 
-    /*..hui [23-3-15¿ÀÈÄ 5:46:39] ¾ÆÀÌÄÜ ¾ÆÀÌ½º = Á¡¸êÀÌ ¾Æ´Ï¶ó ¾à 2ÃÊ°£ Á¡µîÀÓ.. º¯°æ..*/
+    /*..hui [23-3-15ì˜¤í›„ 5:46:39] ì•„ì´ì½˜ ì•„ì´ìŠ¤ = ì ë©¸ì´ ì•„ë‹ˆë¼ ì•½ 2ì´ˆê°„ ì ë“±ì„.. ë³€ê²½..*/
     gu16_on_off_flick_timer++;
 
     if( gu16_on_off_flick_timer >= flick_time )
@@ -207,10 +207,10 @@ U8 uv_time_display_timer(U16 flick_time )
 ***********************************************************************************************************************/
 void start_button_set_display( U8 mu8_mode )
 {
-    /*..hui [23-5-12¿ÀÈÄ 2:06:57] FND Ç¥½Ã ¸ŞÀÎ È­¸é¿¡¼­¸¸ Ç¥½Ã..*/
+    /*..hui [23-5-12ì˜¤í›„ 2:06:57] FND í‘œì‹œ ë©”ì¸ í™”ë©´ì—ì„œë§Œ í‘œì‹œ..*/
     /*if( gu8_Led_Display_Step == LED_Display__MAIN )*/
 
-    /*..hui [23-12-19¿ÀÈÄ 4:55:10] ¿Â¼ö OFF -> ¿Â¼ö ¼±ÅÃ OFFÇ¥½ÃÁß¿¡ 3ÃÊ ´©¸£°íÀÖÀ¸¸é ON Ç¥½Ã¾ÈµÊ..*/
+    /*..hui [23-12-19ì˜¤í›„ 4:55:10] ì˜¨ìˆ˜ OFF -> ì˜¨ìˆ˜ ì„ íƒ OFFí‘œì‹œì¤‘ì— 3ì´ˆ ëˆ„ë¥´ê³ ìˆìœ¼ë©´ ON í‘œì‹œì•ˆë¨..*/
     if( gu8_Led_Display_Step == LED_Display__MAIN
     || gu8_Led_Display_Step == LED_Display__BUTTON_SET
     || gu8_Led_Display_Step == LED_Display__ERROR )

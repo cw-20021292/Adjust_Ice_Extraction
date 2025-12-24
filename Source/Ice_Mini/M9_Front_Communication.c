@@ -33,9 +33,9 @@ void front_transmit_start(void);
 
 
 
-/*..hui [18-8-9¿ÀÈÄ 1:10:24] ¾Æ½ºÅ°·Î ¹ŞÀº µ¥ÀÌÅÍ ¹öÆÛ..*/
+/*..hui [18-8-9ì˜¤í›„ 1:10:24] ì•„ìŠ¤í‚¤ë¡œ ë°›ì€ ë°ì´í„° ë²„í¼..*/
 //U8 gu8_front_rx_buffer_temp[FRONT_RX_BUFFER_SIZE];
-/*..hui [18-8-9¿ÀÈÄ 1:10:38] ¾Æ½ºÅ°¸¦ 10Áø¼ö·Î º¯È¯ÇÑ ÃÖÁ¾ µ¥ÀÌÅÍ ¹öÆÛ..*/
+/*..hui [18-8-9ì˜¤í›„ 1:10:38] ì•„ìŠ¤í‚¤ë¥¼ 10ì§„ìˆ˜ë¡œ ë³€í™˜í•œ ìµœì¢… ë°ì´í„° ë²„í¼..*/
 U8 gu8_front_rx_buffer[FRONT_RX_BUFFER_SIZE];
 
 //U8 gu8_front_tx_buffer_temp[FRONT_TX_BUFFER_SIZE];
@@ -143,17 +143,17 @@ void front_rx_communication(void)
 
         if( gu8_front_comm_error_timer >= 30 )
         {
-            /*..hui [24-1-9¿ÀÀü 10:11:54] 3ÃÊ ÀÌ»ó Åë½ÅÀÌ»ó ¹ß»ı ½Ã Á¤»ó º¹±ÍµÇ¸é º¸ÀÌ½ºIC ¸®¼Â..*/
+            /*..hui [24-1-9ì˜¤ì „ 10:11:54] 3ì´ˆ ì´ìƒ í†µì‹ ì´ìƒ ë°œìƒ ì‹œ ì •ìƒ ë³µê·€ë˜ë©´ ë³´ì´ìŠ¤IC ë¦¬ì…‹..*/
             bit_voice_reset = SET;
             /////Port_VOICE_RESET = CLEAR;
         }
         else{}
 
-        /*..hui [19-12-13¿ÀÈÄ 7:01:15] 5ÃÊ ¿¬¼Ó Åë½Å ¾ÈµÉ°æ¿ì Å° ÀÔ·Â ÃÊ±âÈ­..*/
+        /*..hui [19-12-13ì˜¤í›„ 7:01:15] 5ì´ˆ ì—°ì† í†µì‹  ì•ˆë ê²½ìš° í‚¤ ì…ë ¥ ì´ˆê¸°í™”..*/
         if(gu8_front_comm_error_timer >= 100)
         {
             gu8_front_comm_error_timer = 100;
-            /*..hui [19-7-17¿ÀÈÄ 7:51:24] Åë½Å ¿¡·¯ ¹ß»ı ½Ã Å° ÀÔ·Â ÃÊ±âÈ­..*/
+            /*..hui [19-7-17ì˜¤í›„ 7:51:24] í†µì‹  ì—ëŸ¬ ë°œìƒ ì‹œ í‚¤ ì…ë ¥ ì´ˆê¸°í™”..*/
             gu8_Key_Water_Extract = 0;
             gu8_Key_Ice_Extract = 0;
             gu32_Key_Input = 0;
@@ -220,7 +220,7 @@ void apply_receive_data(U8 *mu8_rx_data)
 
     gu8_front_model = mu8_rx_data[2];
     gu8_front_version = mu8_rx_data[3];
-    /* Å° Ãß°¡¿¡ µû¸¥ Ãß°¡ 250210 @CH.PARK */
+    /* í‚¤ ì¶”ê°€ì— ë”°ë¥¸ ì¶”ê°€ 250210 @CH.PARK */
     gu32_front_rcv_select_key_data = (U32)((U32)((U32)mu8_rx_data[4] * 0x00010000) + (U32)((U32)mu8_rx_data[5] * 0x00000100) + mu8_rx_data[6]);
     gu32_front_rcv_select_key_data = (U32)(gu32_front_rcv_select_key_data & 0x0007FFFF);
     // gu8_front_rcv_filter_reed_data = mu8_rx_data[7];
@@ -240,9 +240,9 @@ void apply_receive_data(U8 *mu8_rx_data)
     }
     else{}
 
-    gu8_Key_Water_Extract = (U8)((gu32_front_rcv_select_key_data >> 1) & 0x01);           // ¹° ÃßÃâ ¹öÆ°
-    gu8_Key_Ice_Extract  = (U8)((U32)(gu32_front_rcv_select_key_data >> 15) & 0x02);      // ¾óÀ½ ¹× ¾óÀ½¹° ÃßÃâ ¹öÆ° 
-    gu32_Key_Input = (U32)(gu32_front_rcv_select_key_data & 0xFFFEFFFE);                  // À§ ÃßÃâ¹öÆ°À» Á¦¿ÜÇÑ ¸ğµç ¹öÆ° ÀÔ·Â
+    gu8_Key_Water_Extract = (U8)((gu32_front_rcv_select_key_data >> 1) & 0x01);           // ë¬¼ ì¶”ì¶œ ë²„íŠ¼
+    gu8_Key_Ice_Extract  = (U8)((U32)(gu32_front_rcv_select_key_data >> 15) & 0x02);      // ì–¼ìŒ ë° ì–¼ìŒë¬¼ ì¶”ì¶œ ë²„íŠ¼ 
+    gu32_Key_Input = (U32)(gu32_front_rcv_select_key_data & 0xFFFEFFFE);                  // ìœ„ ì¶”ì¶œë²„íŠ¼ì„ ì œì™¸í•œ ëª¨ë“  ë²„íŠ¼ ì…ë ¥
 }
 
 /***********************************************************************************************************************
@@ -272,7 +272,7 @@ void front_transmit_start(void)
         u8Uart1_Busy_Chk = CLEAR;
     }
 
-    /* º°µµ Ã³¸®°¡ ¾øÀ½. ÇÊ¿äÇÏ¸é Ãß°¡ÇÏ±â */
+    /* ë³„ë„ ì²˜ë¦¬ê°€ ì—†ìŒ. í•„ìš”í•˜ë©´ ì¶”ê°€í•˜ê¸° */
     // if(u8Uart1_Busy_Chk == CLEAR)
     // {
     //     if(F_Front_Tx_Request == SET)
@@ -345,27 +345,27 @@ void make_front_tx_data(void)
     gu8_front_tx_buffer[0] = PROTOCOL_STX;
     gu8_front_tx_buffer[1] = PROTOCOL_DEVICE_ID_FRONT;
     
-    /* ¿ŞÂÊ Segments */
+    /* ì™¼ìª½ Segments */
     gu8_front_tx_buffer[2] = gu8_front_temp_fnd_hundred;
     gu8_front_tx_buffer[3] = gu8_front_temp_fnd_ten;
     gu8_front_tx_buffer[4] = gu8_front_temp_fnd_one;
     
-    /* ¿À¸¥ÂÊ Segments */
+    /* ì˜¤ë¥¸ìª½ Segments */
     gu8_front_tx_buffer[5] = gu8_front_amount_fnd_hundred;
     gu8_front_tx_buffer[6] = gu8_front_amount_fnd_ten;
     gu8_front_tx_buffer[7] = gu8_front_amount_fnd_one;
 
     /* Icon LEDs */
     gu8_front_tx_buffer[8] = gu8_front_left_led;
-    gu8_front_tx_buffer[9] = gu8_front_left_led_2;      // LED Ãß°¡ @CH.PARK
+    gu8_front_tx_buffer[9] = gu8_front_left_led_2;      // LED ì¶”ê°€ @CH.PARK
     gu8_front_tx_buffer[10] = gu8_front_right_led;
 
-    /* ÁÂ¿ìÃø BARs, °¡¿îµ¥ Icon LEDs */
+    /* ì¢Œìš°ì¸¡ BARs, ê°€ìš´ë° Icon LEDs */
     gu8_front_tx_buffer[11] = gu8_front_temp_setting_bar_led;
     gu8_front_tx_buffer[12] = gu8_front_amount_setting_bar_led;
     gu8_front_tx_buffer[13] = gu8_front_center_recipe_led;
 
-    /* ¼±ÅÃºÎ LEDs */
+    /* ì„ íƒë¶€ LEDs */
     gu8_front_tx_buffer[14] = gu8_front_select_led;
     gu8_front_tx_buffer[15] = gu8_front_setting_led;
     gu8_front_tx_buffer[16] = gu8_front_setting_led_2;
@@ -436,13 +436,13 @@ void make_front_tx_data(void)
     gu8_front_tx_buffer[69] = gu8_animation_dimming_five;
     gu8_front_tx_buffer[70] = gu8_animation_dimming_six;
     gu8_front_tx_buffer[71] = gu8_animation_dimming_seven;
-    gu8_front_tx_buffer[72] = gu8_animation_dimming_eight;      // LPP Ãß°¡
+    gu8_front_tx_buffer[72] = gu8_animation_dimming_eight;      // LPP ì¶”ê°€
     
 ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////
     gu8_front_tx_buffer[73] = gu8_fota_start;
 
-    /*..hui [23-6-23¿ÀÈÄ 1:51:48] È¤½Ã¸ô¶ó ¿©ºĞ Ãß°¡..*/
+    /*..hui [23-6-23ì˜¤í›„ 1:51:48] í˜¹ì‹œëª°ë¼ ì—¬ë¶„ ì¶”ê°€..*/
     gu8_front_tx_buffer[74] = gu8_animation_dimming_six;
     gu8_front_tx_buffer[75] = gu8_rgb_pwm_period;
     gu8_front_tx_buffer[76] = gu8_rgb_red_on_time;
@@ -468,8 +468,8 @@ void make_front_tx_data(void)
     {
         bit_sleep_voice_sync = CLEAR;
 
-        /* ¿ÍÀÌÆÄÀÌ·Î ÃëÄ§¸ğµå »ç¿ë / ¹Ì»ç¿ë ¼³Á¤ ½Ã ÃÖÃÊ 1È¸´Â ½ºÅµÇÔ. 
-        (¼Ò¸®°¡ 1·Î ÁÙ¾îµé°í ¼³Á¤À½À» ³»º¸³»¾ßÇÔ) 250827 CH.PARK */
+        /* ì™€ì´íŒŒì´ë¡œ ì·¨ì¹¨ëª¨ë“œ ì‚¬ìš© / ë¯¸ì‚¬ìš© ì„¤ì • ì‹œ ìµœì´ˆ 1íšŒëŠ” ìŠ¤í‚µí•¨. 
+        (ì†Œë¦¬ê°€ 1ë¡œ ì¤„ì–´ë“¤ê³  ì„¤ì •ìŒì„ ë‚´ë³´ë‚´ì•¼í•¨) 250827 CH.PARK */
         gu8_front_tx_buffer[85] = CLEAR;
         gu8_front_tx_buffer[86] = CLEAR;
     }

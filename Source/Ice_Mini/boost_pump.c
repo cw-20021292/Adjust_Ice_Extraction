@@ -61,7 +61,7 @@ void output_boost_pump(void)
 
     if( bit_boost_pump_connect == SET )
     {
-        /*..hui [20-9-25¿ÀÈÄ 5:39:12] ÇÇµå¹ëºê µ¿ÀÛÁß¿¡ °°ÀÌ µ¿ÀÛ..*/
+        /*..hui [20-9-25ì˜¤í›„ 5:39:12] í”¼ë“œë°¸ë¸Œ ë™ì‘ì¤‘ì— ê°™ì´ ë™ì‘..*/
         if( bit_feed_output == SET )
         {
             gu8_pump_delay_timer++;
@@ -152,7 +152,7 @@ U8 pump_retry_proc( void )
     {
         if( bit_boost_init_check == SET )
         {
-            /*..hui [23-3-24¿ÀÀü 11:31:08] Á¤¼öÅÊÅ© ¼öÀ§°¡ Àú¼öÀ§->Áß¼öÀ§/¸¸¼öÀ§·Î º¯°æµÈ°æ¿ì Ã»¹ÇºÎÅÍ ´Ù½Ã..*/
+            /*..hui [23-3-24ì˜¤ì „ 11:31:08] ì •ìˆ˜íƒ±í¬ ìˆ˜ìœ„ê°€ ì €ìˆ˜ìœ„->ì¤‘ìˆ˜ìœ„/ë§Œìˆ˜ìœ„ë¡œ ë³€ê²½ëœê²½ìš° ì²­ë¯€ë¶€í„° ë‹¤ì‹œ..*/
             bit_boost_init_check = CLEAR;
             gu8_pump_retry_step = STEP0_STANDBY;
         }

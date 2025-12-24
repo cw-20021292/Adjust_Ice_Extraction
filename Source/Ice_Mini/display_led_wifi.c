@@ -36,7 +36,7 @@ extern bit bit_install_flushing_state;
 ***********************************************************************************************************************/
 void led_wifi_pairing(void)
 {
-    /*..hui [23-12-4¿ÀÈÄ 2:14:16] Æä¾î¸µ È­¸é¿¡¼­´Â wifi ¾ÆÀÌÄÜÀÌ¶û ÆÛ¼¾Æ®¸¸ Ç¥½Ã..*/
+    /*..hui [23-12-4ì˜¤í›„ 2:14:16] íŽ˜ì–´ë§ í™”ë©´ì—ì„œëŠ” wifi ì•„ì´ì½˜ì´ëž‘ í¼ì„¼íŠ¸ë§Œ í‘œì‹œ..*/
     wifi_icon_output();
 	percent_icon_out();
 }
@@ -89,7 +89,7 @@ void wifi_icon_output(void)
         {
             if( bit_install_flushing_state == SET )
             {
-                /*..hui [24-8-6???? 9:49:17] ??? ?¡À???????? ?????????? ???? ???..*/
+                /*..hui [24-8-6???? 9:49:17] ??? ?Ã·???????? ?????????? ???? ???..*/
                 gu16_wifi_pairing_30min_timer = 0;
                 gu8_wifi_pairing_5sec_timer = 0;
                 bit_pairing_5s_display_start = CLEAR;
@@ -101,7 +101,7 @@ void wifi_icon_output(void)
 
                 if( gu16_wifi_pairing_30min_timer >= WIFI_PAIRING_START_30_MIN )
                 {
-                    /*..hui [24-8-6???? 9:50:14] ???????? 30?¬Ö??? ??? ?? OFF ???..*/
+                    /*..hui [24-8-6???? 9:50:14] ???????? 30?Ðµ??? ??? ?? OFF ???..*/
                     gu16_wifi_pairing_30min_timer  = WIFI_PAIRING_START_30_MIN;
 
                     if( bit_pairing_5s_display_start == SET

@@ -31,7 +31,7 @@ static const WifiNormalList_T WifiSensorProtocolList[] =
     {   WIFI_SENSOR_0004_OUT_TEMP,     TYPE_SIGNED      },
     {   WIFI_SENSOR_000E_WATT_DATA,    TYPE_SENSOR_WATT },
     {   WIFI_SENSOR_000F_COMP_DATA,    TYPE_UNSIGNED    },
-    {   WIFI_SENSOR_0015_OUT2_TEMP,    TYPE_SIGNED      },      // LPP Ãß°¡
+    {   WIFI_SENSOR_0015_OUT2_TEMP,    TYPE_SIGNED      },      // LPP ì¶”ê°€
     // {   WIFI_SENSOR_0014_HEATER_DATA,  TYPE_UNSIGNED    },
 };
 
@@ -78,7 +78,7 @@ I16 GetUserSystemSensor ( U16 mu16Sen )
         break;
 
         case WIFI_SENSOR_0002_HOT_TEMP:
-            /* 2kg ¹ÌÀû¿ë */
+            /* 2kg ë¯¸ì ìš© */
         break;
 
         case WIFI_SENSOR_0003_WATER_TEMP:
@@ -125,7 +125,7 @@ I16 GetUserSystemSensor ( U16 mu16Sen )
         }
         break;
 
-        case WIFI_SENSOR_0015_OUT2_TEMP:        /* ¿Ü±â¿Âµµ¼¾¼­ 2 LPP Ãß°¡ 250609 CH.PARK */
+        case WIFI_SENSOR_0015_OUT2_TEMP:        /* ì™¸ê¸°ì˜¨ë„ì„¼ì„œ 2 LPP ì¶”ê°€ 250609 CH.PARK */
             mi16Data = gu8_Amb_Side_Temperature_One_Degree;
 
             if ( mi16Data >= 99 )
